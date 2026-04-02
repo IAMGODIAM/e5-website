@@ -49,6 +49,10 @@
       "rewrite": "/store/index.html"
     },
     {
+      "route": "/volunteer",
+      "rewrite": "/volunteer/index.html"
+    },
+    {
       "route": "/api/*",
       "allowedRoles": ["anonymous"]
     }
@@ -66,6 +70,7 @@
       "/data/*",
       "/blog/*",
       "/store/*",
+      "/volunteer/*",
       "/pillars/*.html",
       "/donate.html",
       "/api/*"
