@@ -1,5 +1,77 @@
 [
   {
+    "slug": "food-apartheid-to-food-sovereignty",
+    "title": "From Food Apartheid to Food Sovereignty: How Community-Owned Agriculture Is Building Black Economic Power",
+    "excerpt": "23.5 million Americans live in food-apartheid zones. Blockchain-enabled community agriculture offers a path out — not through charity, but through sovereignty.",
+    "date": "2026-04-02",
+    "author": "Israel Lee Armstead",
+    "authorRole": "President & Chief Visionary",
+    "category": "FarmBlock",
+    "tags": [
+      "food-sovereignty",
+      "food-apartheid",
+      "urban-agriculture",
+      "blockchain",
+      "farmblock",
+      "pine-bluff"
+    ],
+    "image": "/images/blog/food-apartheid-to-food-sovereignty.svg",
+    "readTime": "17 min read",
+    "featured": true,
+    "pullQuotes": [
+      "Food apartheid is not a market failure — it is a market functioning exactly as designed. The same system that stripped 11.3 million acres from Black farmers now charges their grandchildren $4.99 for a head of lettuce at a gas station.",
+      "We do not ask permission to feed our communities. We build the infrastructure, train the people, plant the seeds, and put the data on-chain where no one can erase it. That is sovereignty. Everything else is a press release."
+    ]
+  },
+  {
+    "slug": "new-black-land-trust-movement",
+    "title": "The New Black Land Trust Movement: Why Community Land Ownership Is the Most Radical Act of Self-Determination in 2026",
+    "excerpt": "Between 1910 and today, Black Americans lost 12 million acres of farmland. Community Land Trusts are the legal weapon to take it back.",
+    "date": "2026-04-02",
+    "author": "Israel Lee Armstead",
+    "authorRole": "President & Chief Visionary",
+    "category": "Economic",
+    "tags": [
+      "land-trust",
+      "community-ownership",
+      "economic-sovereignty",
+      "heirs-property",
+      "black-land-loss",
+      "cooperative"
+    ],
+    "image": "/images/blog/new-black-land-trust-movement.svg",
+    "readTime": "20 min read",
+    "featured": false,
+    "pullQuotes": [
+      "Land is not a metaphor. It is the literal ground beneath your feet, and whoever owns it owns the future built on top of it. Every acre returned to Black community control is a acre of sovereignty that cannot be rezoned, gentrified, or legislated away.",
+      "The Community Land Trust is not charity. It is not aid. It is a legal architecture of permanent collective ownership — the single most durable vehicle for intergenerational wealth that American law allows. And Black communities invented it."
+    ]
+  },
+  {
+    "slug": "cooperative-economics-as-reparations",
+    "title": "Cooperative Economics as Reparations: How Black Urban Farms Are Building the Solidarity Economy From the Ground Up",
+    "excerpt": "While the reparations debate stalls in Congress, Black communities are building reparative economic systems through cooperative agriculture — one harvest at a time.",
+    "date": "2026-04-02",
+    "author": "Israel Lee Armstead",
+    "authorRole": "President & Chief Visionary",
+    "category": "Economic",
+    "tags": [
+      "cooperative-economics",
+      "reparations",
+      "solidarity-economy",
+      "urban-farming",
+      "ujamaa",
+      "black-wealth"
+    ],
+    "image": "/images/blog/cooperative-economics-as-reparations.svg",
+    "readTime": "18 min read",
+    "featured": false,
+    "pullQuotes": [
+      "Reparations are not a check to be cashed — they are systems to be built. Every cooperative share purchased, every harvest distributed through community governance, every smart contract that encodes equity into economic exchange is an act of reparative justice that requires no congressional approval.",
+      "When W.E.B. Du Bois documented 154 Black cooperative enterprises in 1907, he was not cataloging curiosities — he was mapping the DNA of an economic counter-tradition that slavery could not extinguish and capitalism has never been able to fully absorb."
+    ]
+  },
+  {
     "slug": "farmblock-pilot-pine-bluff",
     "title": "FarmBlock Pilot Launches in Pine Bluff: Where Urban Agriculture Meets Web3",
     "excerpt": "Our flagship initiative breaks ground in Pine Bluff, Arkansas — deploying IoT sensors, FarmBot automation, and blockchain-powered supply chain transparency to transform vacant lots into smart food production sites.",
@@ -7,10 +79,16 @@
     "author": "Israel Lee Armstead",
     "authorRole": "President & Chief Visionary",
     "category": "FarmBlock",
-    "tags": ["farmblock", "urban-agriculture", "web3", "pine-bluff", "food-sovereignty"],
+    "tags": [
+      "farmblock",
+      "urban-agriculture",
+      "web3",
+      "pine-bluff",
+      "food-sovereignty"
+    ],
     "image": "/images/blog/farmblock-pilot.svg",
     "readTime": "8 min read",
-    "featured": true,
+    "featured": false,
     "pullQuotes": [
       "We're not just growing food — we're growing sovereignty. Every sensor, every seed, every block of data is a brick in the wall of self-determination.",
       "The blockchain doesn't lie. When a community can trace every tomato from soil to table, that's not just transparency — that's power."
@@ -24,7 +102,13 @@
     "author": "Israel Lee Armstead",
     "authorRole": "President & Chief Visionary",
     "category": "Economic",
-    "tags": ["economic-sovereignty", "liberty-city", "land-ownership", "cooperative", "web3"],
+    "tags": [
+      "economic-sovereignty",
+      "liberty-city",
+      "land-ownership",
+      "cooperative",
+      "web3"
+    ],
     "image": "/images/blog/buying-black-blocks.svg",
     "readTime": "12 min read",
     "featured": false,
@@ -41,7 +125,13 @@
     "author": "Israel Lee Armstead",
     "authorRole": "President & Chief Visionary",
     "category": "Emancipated",
-    "tags": ["media", "podcast", "black-excellence", "entrepreneurship", "culture"],
+    "tags": [
+      "media",
+      "podcast",
+      "black-excellence",
+      "entrepreneurship",
+      "culture"
+    ],
     "image": "/images/blog/block-to-boardroom.svg",
     "readTime": "6 min read",
     "featured": false,
@@ -58,7 +148,13 @@
     "author": "Israel Lee Armstead",
     "authorRole": "President & Chief Visionary",
     "category": "Environmental",
-    "tags": ["clean-up-green-up", "overtown", "community-gardens", "legacy", "miami"],
+    "tags": [
+      "clean-up-green-up",
+      "overtown",
+      "community-gardens",
+      "legacy",
+      "miami"
+    ],
     "image": "/images/blog/clean-up-green-up.svg",
     "readTime": "10 min read",
     "featured": false,
