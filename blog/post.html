@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TITLE}} | E5 Enclave</title>
+  <meta name="description" content="{{EXCERPT}}">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{EXCERPT}}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://e5enclave.com/blog/{{SLUG}}">
+  <meta property="og:site_name" content="E5 Enclave">
+  <meta property="og:image" content="https://e5enclave.com{{IMAGE}}">
+  <meta property="article:published_time" content="{{DATE}}">
+  <meta property="article:author" content="{{AUTHOR}}">
+  {{OG_TAGS}}
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{TITLE}}">
+  <meta name="twitter:description" content="{{EXCERPT}}">
+  <meta name="twitter:image" content="https://e5enclave.com{{IMAGE}}">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{TITLE}}",
+    "description": "{{EXCERPT}}",
+    "datePublished": "{{DATE}}",
+    "author": {
+      "@type": "Person",
+      "name": "{{AUTHOR}}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "E5 Enclave",
+      "url": "https://e5enclave.com"
+    },
+    "mainEntityOfPage": "https://e5enclave.com/blog/{{SLUG}}"
+  }
+  </script>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/blog.css">
+  
+  <link rel="icon" href="/favicon.ico">
+  
+  <!-- Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18059035038"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-18059035038');</script>
+</head>
+<body class="article-page">
+  <!-- Navigation -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container">
+      <a href="/" class="logo">
+        <span class="logo-e5">E5</span>
+        <span class="logo-text">Enclave</span>
+      </a>
+      <div class="nav-menu" id="navMenu">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/#about" class="nav-link">About</a>
+        <a href="/#pillars" class="nav-link">Our Pillars</a>
+        <a href="/#programs" class="nav-link">Programs</a>
+        <a href="/#farmblock" class="nav-link">FarmBlock</a>
+        <a href="/blog" class="nav-link active">Blog</a>
+        <a href="/#contact" class="nav-link">Contact</a>
+        <a href="/donate" class="nav-link nav-donate">Donate</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Article Content (hydrated by Pretext) -->
+  <article>
+    <!-- Server-rendered content for SEO -->
+    <div class="article-content" id="article-content" data-slug="{{SLUG}}">
+      {{SSR_CONTENT}}
+    </div>
+    
+    <!-- Article Footer -->
+    <div class="article-content">
+      <div class="article-footer">
+        <div class="article-footer__cta">
+          <h3>Support This Work</h3>
+          <p>E5 Enclave is a 501(c)(3) nonprofit building sustainable communities through the five pillars of empowerment. Every contribution makes a difference.</p>
+          <a href="/donate" class="btn btn-primary">Donate Now</a>
+        </div>
+        <nav class="article-nav">
+          <a href="/blog" class="article-nav__link">&larr; All Posts</a>
+        </nav>
+      </div>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="/" class="footer-logo">
+            <span class="logo-e5">E5</span>
+            <span class="logo-text">Enclave</span>
+          </a>
+          <p class="footer-motto">"Dum Spiro, Spero"</p>
+          <p class="footer-description">Building sustainable communities through the five pillars of empowerment.</p>
+        </div>
+        <div class="footer-links">
+          <h4>The Five E's</h4>
+          <a href="/pillars/environmental">Environmental</a>
+          <a href="/pillars/economic">Economic</a>
+          <a href="/pillars/educational">Educational</a>
+          <a href="/pillars/equality">Equality</a>
+          <a href="/pillars/emancipated">Emancipated</a>
+        </div>
+        <div class="footer-links">
+          <h4>Get Involved</h4>
+          <a href="/donate">Donate</a>
+          <a href="/blog">Blog</a>
+          <a href="/#contact">Volunteer</a>
+          <a href="/#contact">Partner</a>
+          <a href="/#contact">Contact</a>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>E5 Enclave Inc.</p>
+          <p>Miami, FL</p>
+          <p><a href="mailto:info@e5enclave.com">info@e5enclave.com</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 E5 Enclave Inc. All rights reserved. 501(c)(3) Nonprofit Organization.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Blog JS (Pretext editorial engine) -->
+  <script src="/js/blog-bundle.js"></script>
+  
+  <!-- Nav JS -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+    }
+  </script>
+</body>
+</html>

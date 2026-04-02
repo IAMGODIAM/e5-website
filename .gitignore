@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+api/node_modules/
+
+# Environment & secrets
+.env
+.env.local
+.env.production
+api/local.settings.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Build artifacts
+dist/
+.cache/
+
+# Azure SWA local
+.swa/

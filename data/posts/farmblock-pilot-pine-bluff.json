@@ -1,0 +1,77 @@
+{
+  "slug": "farmblock-pilot-pine-bluff",
+  "title": "FarmBlock Pilot Launches in Pine Bluff: Where Urban Agriculture Meets Web3",
+  "subtitle": "Deploying IoT sensors, FarmBot automation, and blockchain-powered supply chain transparency",
+  "date": "2026-03-15",
+  "author": "Israel Lee Armstead",
+  "authorRole": "President & Chief Visionary",
+  "category": "FarmBlock",
+  "tags": ["farmblock", "urban-agriculture", "web3", "pine-bluff", "food-sovereignty"],
+  "readTime": "8 min read",
+  "pullQuotes": [
+    "We're not just growing food — we're growing sovereignty. Every sensor, every seed, every block of data is a brick in the wall of self-determination.",
+    "The blockchain doesn't lie. When a community can trace every tomato from soil to table, that's not just transparency — that's power."
+  ],
+  "body": [
+    {
+      "type": "dropcap",
+      "text": "Pine Bluff, Arkansas is not the first place most people think of when they hear \"agricultural technology innovation.\" That's precisely why we chose it. FarmBlock was never designed for the places that already have resources — it was built for the communities that have been systematically denied them."
+    },
+    {
+      "type": "paragraph",
+      "text": "On March 1st, 2026, E5 Enclave broke ground on our first FarmBlock pilot site — a formerly vacant lot in the heart of Pine Bluff that will become a model for technology-driven urban agriculture. The site integrates four systems that, together, represent something entirely new in community food production."
+    },
+    {
+      "type": "heading",
+      "text": "The Four Systems"
+    },
+    {
+      "type": "paragraph",
+      "text": "First: IoT sensor networks. We've deployed soil moisture sensors, ambient temperature monitors, pH meters, and light measurement stations across the site. Every data point feeds into a central dashboard that any community member can access. No gatekeeping. No proprietary lock-in. The data belongs to the community."
+    },
+    {
+      "type": "paragraph",
+      "text": "Second: FarmBot automation. The open-source FarmBot platform handles precision planting, watering, and weeding. It reduces the physical labor barrier that keeps many elderly and disabled community members from participating in food production. A grandmother with arthritis can now manage a garden bed from her phone."
+    },
+    {
+      "type": "paragraph",
+      "text": "Third: blockchain-powered supply chain transparency. Every harvest is logged on-chain. From the moment a seed enters the soil to the moment produce reaches a family's table, the entire journey is verifiable. This isn't cryptocurrency speculation — it's applied distributed ledger technology solving a real problem: trust in food systems."
+    },
+    {
+      "type": "paragraph",
+      "text": "Fourth: community education infrastructure. Every technology we deploy comes with a training program. We don't parachute in, install hardware, and leave. We train community members to operate, maintain, and eventually improve every system. The goal is sovereignty, not dependency."
+    },
+    {
+      "type": "heading",
+      "text": "Why Pine Bluff"
+    },
+    {
+      "type": "paragraph",
+      "text": "Pine Bluff sits in Jefferson County, one of the most economically distressed regions in Arkansas. The city has lost nearly 25% of its population over the past two decades. Food deserts are not a metaphor here — they are a daily reality for thousands of families who must travel miles to access fresh produce."
+    },
+    {
+      "type": "paragraph",
+      "text": "But Pine Bluff also has something that Silicon Valley cannot manufacture: community resilience. The people here have been building with less for generations. They don't need saving — they need tools. FarmBlock provides those tools."
+    },
+    {
+      "type": "paragraph",
+      "text": "Our pilot targets 50 households in the first year, with a goal of reducing food insecurity by 30% within the pilot zone. Every metric will be publicly reported. Every dollar will be accounted for. Transparency is not optional — it is foundational."
+    },
+    {
+      "type": "heading",
+      "text": "The Road Ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "Pine Bluff is the proof of concept. Liberty City, Miami is next. And after that, any community that needs this model can replicate it — because every piece of our technology stack is open-source, every process is documented, and every lesson learned will be shared publicly."
+    },
+    {
+      "type": "paragraph",
+      "text": "This is what E5 Enclave was built to do: create durable, replicable systems that transfer power to communities. Not charity. Not temporary relief. Permanent infrastructure for permanent sovereignty."
+    },
+    {
+      "type": "paragraph",
+      "text": "Dum spiro, spero. While I breathe, I hope. And while we build, we liberate."
+    }
+  ]
+}

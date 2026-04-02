@@ -1,0 +1,8 @@
+{
+  "name": "e5-enclave-api",
+  "version": "1.0.0",
+  "description": "E5 Enclave donation API",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}

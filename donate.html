@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18059035038"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18059035038');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support E5 Enclave Incorporated — Donate to empower Black communities through environmental sustainability, economic self-reliance, and educational advancement.">
+    <meta property="og:title" content="Donate — E5 Enclave Incorporated">
+    <meta property="og:description" content="Your contribution builds power, institutions, and legacy for Black communities.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://e5enclave.com/donate">
+    <link rel="canonical" href="https://e5enclave.com/donate">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <title>Donate — E5 Enclave Incorporated</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pillar-page.css">
+    <style>
+        .donate-page-hero {
+            min-height: 45vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: var(--black);
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        .donate-page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse at 30% 60%, rgba(139, 26, 26, 0.1) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 40%, rgba(201, 168, 76, 0.08) 0%, transparent 60%);
+            z-index: 1;
+        }
+        .donate-page-hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 0 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .donate-page-hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        .donate-page-hero p {
+            font-size: 1.1rem;
+            color: var(--gray-light);
+            line-height: 1.8;
+        }
+
+        /* Donation Amount Selector */
+        .donate-form-section {
+            padding: 5rem 0;
+            background: var(--black-light);
+        }
+        .donate-form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .amount-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .amount-btn {
+            background: var(--black);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+        }
+        .amount-btn:hover,
+        .amount-btn.selected {
+            border-color: var(--gold);
+            background: rgba(201, 168, 76, 0.08);
+        }
+        .amount-btn .amount {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--gold);
+            display: block;
+        }
+        .amount-btn .label {
+            font-size: 0.75rem;
+            color: var(--gray);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+        }
+        .custom-amount {
+            margin-bottom: 2rem;
+        }
+        .custom-amount label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+        .custom-amount input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            font-family: var(--font-body);
+            font-size: 1.2rem;
+            color: var(--white);
+            background: var(--black);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .custom-amount input:focus {
+            border-color: var(--gold);
+        }
+        .custom-amount input::placeholder {
+            color: var(--gray-dark);
+        }
+        .frequency-toggle {
+            display: flex;
+            gap: 0;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+        }
+        .freq-btn {
+            flex: 1;
+            padding: 0.8rem;
+            text-align: center;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gray);
+            background: var(--black);
+            border: none;
+            transition: all 0.3s;
+        }
+        .freq-btn.selected {
+            background: var(--gold);
+            color: var(--black);
+        }
+        .donate-submit {
+            width: 100%;
+            padding: 1.2rem;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .donate-submit:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+        .donate-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .donate-secure {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+        .donate-alt-methods {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(201, 168, 76, 0.1);
+        }
+        .donate-alt-methods h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        .donate-alt-methods p {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Impact Section */
+        .donate-impact {
+            padding: 5rem 0;
+            background: var(--black);
+        }
+        .donate-impact .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .impact-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .impact-item {
+            background: var(--black-light);
+            border: 1px solid rgba(201, 168, 76, 0.1);
+            padding: 2rem;
+        }
+        .impact-item .amount {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+        .impact-item p {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .donate-tax {
+            background: rgba(201, 168, 76, 0.05);
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            padding: 1.5rem 2rem;
+            margin-top: 3rem;
+        }
+        .donate-tax p {
+            color: var(--gray-light);
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+        .donate-tax strong {
+            color: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .amount-grid { grid-template-columns: repeat(2, 1fr); }
+            .impact-list { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .amount-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <span class="logo-e5">E5</span>
+                <span class="logo-text">ENCLAVE</span>
+                <span class="logo-inc">INCORPORATED</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#pillars">Our Pillars</a></li>
+                <li><a href="/#programs">Programs</a></li>
+                <li><a href="/#farmblock">FarmBlock</a></li>
+                <li><a href="/#impact">Impact</a></li>
+                <li><a href="/#contact">Contact</a></li>
+                <li><a href="/donate" class="nav-donate">Donate</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="donate-page-hero">
+        <div class="donate-page-hero-content">
+            <h1>Support the Mission</h1>
+            <p>Every dollar builds power, institutions, and legacy for Black communities. E5 Enclave Incorporated is a 501(c)(3) public charitable organization — your donation is tax-deductible.</p>
+        </div>
+    </section>
+
+    <!-- Donation Form -->
+    <section class="donate-form-section">
+        <div class="donate-form-container">
+            <!-- Frequency Toggle -->
+            <div class="frequency-toggle">
+                <button class="freq-btn selected" data-freq="one-time">One-Time</button>
+                <button class="freq-btn" data-freq="monthly">Monthly</button>
+            </div>
+
+            <!-- Amount Grid -->
+            <div class="amount-grid">
+                <div class="amount-btn" data-amount="25">
+                    <span class="amount">$25</span>
+                    <span class="label">Seed</span>
+                </div>
+                <div class="amount-btn" data-amount="50">
+                    <span class="amount">$50</span>
+                    <span class="label">Cultivate</span>
+                </div>
+                <div class="amount-btn selected" data-amount="100">
+                    <span class="amount">$100</span>
+                    <span class="label">Build</span>
+                </div>
+                <div class="amount-btn" data-amount="250">
+                    <span class="amount">$250</span>
+                    <span class="label">Empower</span>
+                </div>
+                <div class="amount-btn" data-amount="500">
+                    <span class="amount">$500</span>
+                    <span class="label">Transform</span>
+                </div>
+                <div class="amount-btn" data-amount="1000">
+                    <span class="amount">$1,000</span>
+                    <span class="label">Liberate</span>
+                </div>
+            </div>
+
+            <!-- Custom Amount -->
+            <div class="custom-amount">
+                <label for="customAmount">Or enter a custom amount</label>
+                <input type="number" id="customAmount" placeholder="$ Enter amount" min="1" step="1">
+            </div>
+
+            <!-- Submit -->
+            <button class="donate-submit" id="donateBtn">
+                Donate $100
+            </button>
+            <p class="donate-secure">🔒 Secure payment powered by Stripe. 256-bit SSL encryption.</p>
+
+            <!-- Alt Methods -->
+            <div class="donate-alt-methods">
+                <h3>Other Ways to Give</h3>
+                <p>For corporate partnerships, grants, in-kind donations, or to discuss a major gift, contact us at <a href="mailto:hermes@e5enclave.com">hermes@e5enclave.com</a> or call <a href="tel:+18332417356">(833) 241-7356</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="donate-impact">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Your Impact</p>
+                <h2 class="section-title">What Your Donation Builds</h2>
+            </div>
+            <div class="impact-list">
+                <div class="impact-item">
+                    <div class="amount">$25</div>
+                    <p>Provides seeds and supplies for a community garden bed, producing fresh food for families in food deserts.</p>
+                </div>
+                <div class="impact-item">
+                    <div class="amount">$100</div>
+                    <p>Sponsors a youth participant in our Leadership Academy for one month — mentorship, digital skills, and community engagement.</p>
+                </div>
+                <div class="impact-item">
+                    <div class="amount">$250</div>
+                    <p>Funds a financial literacy workshop for 20 community members — budgeting, credit repair, and homeownership education.</p>
+                </div>
+                <div class="impact-item">
+                    <div class="amount">$1,000</div>
+                    <p>Equips a FarmBlock garden site with IoT sensors and irrigation — technology-driven food production serving an entire block.</p>
+                </div>
+            </div>
+            <div class="donate-tax">
+                <p><strong>Tax Deductible.</strong> E5 Enclave Incorporated is a registered 501(c)(3) public charitable organization. Your donation is fully tax-deductible to the extent allowed by law. You will receive a receipt for your records.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-e5">E5</span>
+                        <span class="logo-text">ENCLAVE</span>
+                    </div>
+                    <p class="footer-tagline">Empowering Black Communities Through Self-Determination and Economic Sovereignty</p>
+                    <p class="footer-status">501(c)(3) Public Charitable Organization</p>
+                </div>
+                <div class="footer-links">
+                    <h4>The Five E's</h4>
+                    <ul>
+                        <li><a href="/pillars/environmental">Environmental</a></li>
+                        <li><a href="/pillars/economic">Economic</a></li>
+                        <li><a href="/pillars/educational">Educational</a></li>
+                        <li><a href="/pillars/equality">Equality</a></li>
+                        <li><a href="/pillars/emancipated">Emancipated</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="/donate">Donate</a></li>
+                        <li><a href="/#contact">Volunteer</a></li>
+                        <li><a href="/#contact">Partner With Us</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>Liberty City, Miami, FL</p>
+                    <p><a href="tel:+18332417356">(833) 241-7356</a></p>
+                    <p><a href="mailto:hermes@e5enclave.com">hermes@e5enclave.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 E5 Enclave Incorporated. All rights reserved.</p>
+                <p class="footer-motto">Dum spiro, spero — While I breathe, I hope</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+
+        // Amount selection
+        let selectedAmount = 100;
+        let frequency = 'one-time';
+        const amountBtns = document.querySelectorAll('.amount-btn');
+        const customInput = document.getElementById('customAmount');
+        const donateBtn = document.getElementById('donateBtn');
+        const freqBtns = document.querySelectorAll('.freq-btn');
+
+        function updateButtonText() {
+            const freqLabel = frequency === 'monthly' ? '/month' : '';
+            donateBtn.textContent = `Donate $${selectedAmount.toLocaleString()}${freqLabel}`;
+        }
+
+        amountBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                amountBtns.forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                selectedAmount = parseInt(btn.dataset.amount);
+                customInput.value = '';
+                updateButtonText();
+            });
+        });
+
+        customInput.addEventListener('input', () => {
+            const val = parseInt(customInput.value);
+            if (val > 0) {
+                amountBtns.forEach(b => b.classList.remove('selected'));
+                selectedAmount = val;
+                updateButtonText();
+            }
+        });
+
+        freqBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                freqBtns.forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                frequency = btn.dataset.freq;
+                updateButtonText();
+            });
+        });
+
+        // Stripe Checkout
+        donateBtn.addEventListener('click', async () => {
+            donateBtn.disabled = true;
+            donateBtn.textContent = 'Processing...';
+
+            try {
+                const response = await fetch('/api/create-checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        amount: selectedAmount,
+                        frequency: frequency
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.url) {
+                    window.location.href = data.url;
+                } else {
+                    throw new Error(data.error || 'Failed to create checkout session');
+                }
+            } catch (err) {
+                console.error('Checkout error:', err);
+                alert('We\'re setting up our payment system. For now, please email hermes@e5enclave.com to arrange your donation. Thank you for your generosity!');
+                donateBtn.disabled = false;
+                updateButtonText();
+            }
+        });
+    });
+    </script>
+</body>
+</html>

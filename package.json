@@ -1,0 +1,19 @@
+{
+  "name": "e5-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:blog": "node scripts/build-blog.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@chenglou/pretext": "^0.0.4"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.0"
+  }
+}
