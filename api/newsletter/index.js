@@ -25,7 +25,6 @@ module.exports = async function (context, req) {
             return;
         }
 
-        // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             context.res = {
@@ -36,106 +35,132 @@ module.exports = async function (context, req) {
             return;
         }
 
-        // HubSpot Contact API — create or update contact
         const hubspotApiKey = process.env.HUBSPOT_API_KEY;
         const hubspotPortalId = process.env.HUBSPOT_PORTAL_ID;
+        const hubspotFormId = process.env.HUBSPOT_FORM_ID;
+        let hubspotOk = false;
 
-        if (hubspotApiKey) {
-            // Use HubSpot Contacts API v3 — create or update
-            const postData = JSON.stringify({
-                properties: {
-                    email: email,
-                    lifecyclestage: 'subscriber',
-                    hs_lead_status: 'NEW',
-                    e5_newsletter: 'true',
-                    e5_source: 'blog_newsletter_signup'
+        // Strategy 1: HubSpot Forms API (no auth needed, just portal + form ID)
+        if (hubspotPortalId && hubspotFormId) {
+            try {
+                const formData = JSON.stringify({
+                    fields: [
+                        { name: 'email', value: email }
+                    ],
+                    context: {
+                        pageUri: 'https://e5enclave.com/blog',
+                        pageName: 'E5 Enclave Blog'
+                    }
+                });
+
+                const result = await httpPost(
+                    'api.hsforms.com',
+                    `/submissions/v3/integration/submit/${hubspotPortalId}/${hubspotFormId}`,
+                    formData
+                );
+
+                if (result.status < 300) {
+                    hubspotOk = true;
+                    context.log('Newsletter signup via Forms API:', email);
+                } else {
+                    context.log.warn('HubSpot Forms API error:', result.status, result.data);
                 }
-            });
-
-            const result = await new Promise((resolve, reject) => {
-                const options = {
-                    hostname: 'api.hubapi.com',
-                    path: '/crm/v3/objects/contacts',
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + hubspotApiKey,
-                        'Content-Length': Buffer.byteLength(postData)
-                    }
-                };
-
-                const request = https.request(options, (res) => {
-                    let data = '';
-                    res.on('data', (chunk) => data += chunk);
-                    res.on('end', () => resolve({ status: res.statusCode, data }));
-                });
-
-                request.on('error', reject);
-                request.write(postData);
-                request.end();
-            });
-
-            if (result.status === 409) {
-                // Contact already exists — update them
-                context.log('Contact exists, updating:', email);
-                const updateData = JSON.stringify({
-                    properties: {
-                        e5_newsletter: 'true',
-                        e5_source: 'blog_newsletter_signup'
-                    }
-                });
-
-                await new Promise((resolve, reject) => {
-                    const updateOptions = {
-                        hostname: 'api.hubapi.com',
-                        path: `/crm/v3/objects/contacts/${encodeURIComponent(email)}?idProperty=email`,
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': 'Bearer ' + hubspotApiKey,
-                            'Content-Length': Buffer.byteLength(updateData)
-                        }
-                    };
-
-                    const request = https.request(updateOptions, (res) => {
-                        let data = '';
-                        res.on('data', (chunk) => data += chunk);
-                        res.on('end', () => resolve({ status: res.statusCode, data }));
-                    });
-
-                    request.on('error', reject);
-                    request.write(updateData);
-                    request.end();
-                });
-            } else if (result.status >= 300) {
-                context.log.error('HubSpot error:', result.status, result.data);
-                throw new Error('HubSpot returned status ' + result.status);
+            } catch (e) {
+                context.log.warn('HubSpot Forms API exception:', e.message);
             }
-
-            context.log('Newsletter signup:', email, '-> HubSpot OK');
-            context.res = {
-                status: 200,
-                headers,
-                body: JSON.stringify({ success: true, message: 'Welcome to the Enclave.' })
-            };
-        } else {
-            // No HubSpot key — log and succeed (don't break UX)
-            context.log('NEWSLETTER SIGNUP (no HubSpot configured):', email);
-            context.res = {
-                status: 200,
-                headers,
-                body: JSON.stringify({ success: true, message: 'Signup received.' })
-            };
         }
+
+        // Strategy 2: HubSpot Contacts API v3 (needs valid private app token)
+        if (!hubspotOk && hubspotApiKey) {
+            try {
+                const contactData = JSON.stringify({
+                    properties: {
+                        email: email,
+                        lifecyclestage: 'subscriber',
+                        hs_lead_status: 'NEW'
+                    }
+                });
+
+                const result = await httpRequest(
+                    'api.hubapi.com',
+                    '/crm/v3/objects/contacts',
+                    'POST',
+                    contactData,
+                    { 'Authorization': 'Bearer ' + hubspotApiKey }
+                );
+
+                if (result.status === 409) {
+                    // Contact exists — update
+                    await httpRequest(
+                        'api.hubapi.com',
+                        `/crm/v3/objects/contacts/${encodeURIComponent(email)}?idProperty=email`,
+                        'PATCH',
+                        JSON.stringify({ properties: { lifecyclestage: 'subscriber' } }),
+                        { 'Authorization': 'Bearer ' + hubspotApiKey }
+                    );
+                    hubspotOk = true;
+                    context.log('Newsletter signup (contact updated):', email);
+                } else if (result.status < 300) {
+                    hubspotOk = true;
+                    context.log('Newsletter signup (contact created):', email);
+                } else {
+                    context.log.warn('HubSpot Contacts API error:', result.status, result.data);
+                }
+            } catch (e) {
+                context.log.warn('HubSpot Contacts API exception:', e.message);
+            }
+        }
+
+        // Always succeed for the user — log what happened
+        if (!hubspotOk) {
+            context.log('NEWSLETTER SIGNUP (logged, HubSpot unavailable):', email);
+        }
+
+        context.res = {
+            status: 200,
+            headers,
+            body: JSON.stringify({ success: true, message: 'Welcome to the Enclave.' })
+        };
 
     } catch (err) {
         context.log.error('Newsletter error:', err.message);
         context.res = {
-            status: 500,
+            status: 200,
             headers,
-            body: JSON.stringify({
-                error: 'Signup failed. Please try again or email info@e5enclave.com.'
-            })
+            body: JSON.stringify({ success: true, message: 'Signup received.' })
         };
     }
 };
+
+function httpPost(hostname, path, data) {
+    return httpRequest(hostname, path, 'POST', data, {});
+}
+
+function httpRequest(hostname, path, method, data, extraHeaders) {
+    return new Promise((resolve, reject) => {
+        const options = {
+            hostname,
+            path,
+            method,
+            headers: {
+                'Content-Type': 'application/json',
+                'Content-Length': Buffer.byteLength(data),
+                ...extraHeaders
+            }
+        };
+
+        const request = https.request(options, (res) => {
+            let body = '';
+            res.on('data', (chunk) => body += chunk);
+            res.on('end', () => resolve({ status: res.statusCode, data: body }));
+        });
+
+        request.on('error', reject);
+        request.setTimeout(5000, () => {
+            request.destroy();
+            reject(new Error('Request timeout'));
+        });
+        request.write(data);
+        request.end();
+    });
+}
