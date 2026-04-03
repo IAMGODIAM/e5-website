@@ -1,266 +1,626 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <!-- SEO -->
-  <title>Black Dragon Collection — Premium Merch | E5 Enclave</title>
-  <meta name="description" content="Shop the Black Dragon Collection. Premium streetwear, accessories, art prints, and digital goods featuring photorealistic dragon artwork. Limited drops. E5 Enclave official merch.">
-  <meta name="keywords" content="Black Dragon, E5 Enclave, merch, streetwear, dragon art, premium apparel, hoodie, tee, accessories">
-  <link rel="canonical" href="https://e5enclave.com/store">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Black Dragon Collection — E5 Enclave Merch Store">
-  <meta property="og:description" content="Premium streetwear and accessories featuring photorealistic black dragon artwork with gold accents. Limited drops.">
-  <meta property="og:image" content="https://e5enclave.com/images/store/og-store.webp">
-  <meta property="og:url" content="https://e5enclave.com/store">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="E5 Enclave">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Black Dragon Collection — E5 Enclave">
-  <meta name="twitter:description" content="Premium merch. Photorealistic dragons. Gold accents. Limited drops.">
-  <meta name="twitter:image" content="https://e5enclave.com/images/store/og-store.webp">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/favicon.png">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-
-  <!-- Store Styles -->
-  <link rel="stylesheet" href="/store/css/store.css">
-
-  <!-- Snipcart CSS -->
-  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.6.1/default/snipcart.css">
-
-  <!-- Preload critical assets -->
-  <link rel="preload" href="/store/js/store.js" as="script">
-
-  <!-- JSON-LD: WebPage Schema (product schemas injected via JS) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Black Dragon Collection — E5 Enclave Merch Store",
-    "description": "Premium streetwear and accessories featuring photorealistic black dragon artwork with gold accents.",
-    "url": "https://e5enclave.com/store",
-    "publisher": {
-      "@type": "Organization",
-      "name": "E5 Enclave",
-      "url": "https://e5enclave.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://e5enclave.com/images/logo.png"
-      }
-    },
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://e5enclave.com"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Store",
-          "item": "https://e5enclave.com/store"
-        }
-      ]
-    }
-  }
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Black Dragon Collection — Premium merch by E5 Enclave. Every purchase fuels community programs in Liberty City, Miami.">
+    <meta property="og:title" content="Black Dragon Collection — E5 Enclave Store">
+    <meta property="og:description" content="Every Purchase Fuels the Mission. Premium merch supporting Black community empowerment.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://e5enclave.com/store">
+    <meta property="og:image" content="https://e5enclave.com/images/og-share.png">
+    <link rel="canonical" href="https://e5enclave.com/store">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <title>Black Dragon Collection — E5 Enclave Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/store.css">
 </head>
 <body>
 
-  <!-- ==================== ANNOUNCEMENT BAR ==================== -->
-  <div class="announcement-bar" role="banner">
-    <span>Free shipping on orders over $75 — Limited edition drops every month</span>
-  </div>
-
-  <!-- ==================== NAVIGATION ==================== -->
-  <nav class="store-nav" role="navigation" aria-label="Store navigation">
-    <div class="container">
-      <a href="/" class="store-nav__logo" aria-label="E5 Enclave Home">
-        E5 <span>ENCLAVE</span>
-      </a>
-
-      <ul class="store-nav__links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/store" class="active">Store</a></li>
-        <li><a href="/#about">About</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-
-      <button class="cart-btn snipcart-checkout" aria-label="Open shopping cart">
-        <svg class="cart-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 01-8 0"/>
-        </svg>
-        Cart
-        <span class="cart-btn__count snipcart-items-count" style="display:none;">0</span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ==================== HERO ==================== -->
-  <section class="hero" role="banner" aria-label="Black Dragon Collection">
-    <div class="hero__bg" aria-hidden="true"></div>
-
-    <div class="hero__particles" aria-hidden="true">
-      <div class="hero__particle"></div>
-      <div class="hero__particle"></div>
-      <div class="hero__particle"></div>
-      <div class="hero__particle"></div>
-      <div class="hero__particle"></div>
-      <div class="hero__particle"></div>
-      <div class="hero__particle"></div>
-      <div class="hero__particle"></div>
-    </div>
-
-    <div class="hero__content">
-      <p class="hero__eyebrow">E5 Enclave Presents</p>
-      <h1 class="hero__title">
-        Black Dragon
-        <em>Collection</em>
-      </h1>
-      <p class="hero__subtitle">Premium Merch &bull; Limited Drops</p>
-      <div class="hero__divider" aria-hidden="true"></div>
-      <p class="hero__description">
-        Forged in darkness, adorned in gold. Photorealistic dragon artwork meets premium streetwear.
-        Each piece is a statement — crafted for those who move in silence and strike with precision.
-      </p>
-      <a href="#collection" class="hero__cta" id="hero-cta">
-        Shop the Collection
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="5" y1="12" x2="19" y2="12"/>
-          <polyline points="12 5 19 12 12 19"/>
-        </svg>
-      </a>
-    </div>
-  </section>
-
-  <!-- ==================== FILTERS ==================== -->
-  <section class="filters" id="collection" aria-label="Product filters">
-    <div class="container">
-      <div class="filters__header">
-        <h2 class="filters__title">The Collection</h2>
-        <span class="filters__count" id="product-count">10 items</span>
-      </div>
-      <ul class="filters__tabs" role="tablist" aria-label="Filter by category">
-        <li>
-          <button class="filter-tab active" role="tab" data-filter="all" aria-selected="true">
-            All
-          </button>
-        </li>
-        <li>
-          <button class="filter-tab" role="tab" data-filter="apparel" aria-selected="false">
-            Apparel
-          </button>
-        </li>
-        <li>
-          <button class="filter-tab" role="tab" data-filter="accessories" aria-selected="false">
-            Accessories
-          </button>
-        </li>
-        <li>
-          <button class="filter-tab" role="tab" data-filter="art-prints" aria-selected="false">
-            Art &amp; Prints
-          </button>
-        </li>
-        <li>
-          <button class="filter-tab" role="tab" data-filter="digital" aria-selected="false">
-            Digital
-          </button>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ==================== PRODUCT GRID ==================== -->
-  <section class="products" aria-label="Products">
-    <div class="container">
-      <div class="product-grid" id="product-grid" role="list">
-        <!-- Products rendered by JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== TRUST BAR ==================== -->
-  <section class="trust-bar" aria-label="Store guarantees">
-    <div class="container">
-      <div class="trust-bar__grid">
-        <div class="trust-item">
-          <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="1" y="3" width="22" height="18" rx="2" ry="2"/>
-            <line x1="1" y1="9" x2="23" y2="9"/>
-          </svg>
-          <span class="trust-item__label">Secure Checkout</span>
-          <span class="trust-item__sub">256-bit SSL encrypted</span>
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <span class="logo-e5">E5</span>
+                <span class="logo-text">ENCLAVE</span>
+                <span class="logo-inc">INCORPORATED</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#pillars">Our Pillars</a></li>
+                <li><a href="/#programs">Programs</a></li>
+                <li><a href="/#farmblock">FarmBlock</a></li>
+                <li><a href="/#impact">Impact</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/store" style="color: var(--gold);">Store</a></li>
+                <li><a href="/volunteer">Volunteer</a></li>
+                <li><a href="/#contact">Contact</a></li>
+                <li><a href="/donate" class="nav-donate">Donate</a></li>
+                <li><a href="#" class="snipcart-checkout nav-cart" title="Shopping Cart">🛒 <span class="snipcart-items-count">0</span></a></li>
+            </ul>
         </div>
-        <div class="trust-item">
-          <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"/>
-            <path d="M12 5l7 7-7 7"/>
-          </svg>
-          <span class="trust-item__label">Free Shipping</span>
-          <span class="trust-item__sub">On orders over $75</span>
+    </nav>
+
+    <!-- ============================================
+         STORE HERO
+         ============================================ -->
+    <section class="store-hero">
+        <div class="store-hero-content">
+            <span class="store-hero-badge">Leviathan Rising</span>
+            <h1 class="store-hero-title">
+                <span class="dragon-text">Black Dragon</span><br>
+                Collection
+            </h1>
+            <p class="store-hero-subtitle">Every Purchase Fuels the Mission. $5 Per Item to E5 Programs.</p>
+            <div class="impact-counter">
+                <span class="counter-icon">🐉</span>
+                <span><span class="counter-amount">$X</span> donated to community programs</span>
+            </div>
+            <p class="store-hero-tagline" style="font-style: italic; opacity: 0.85; margin-top: 0.5rem; font-size: 1rem;">Made Without Fear — Job 41:33</p>
         </div>
-        <div class="trust-item">
-          <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-          <span class="trust-item__label">Quality Guarantee</span>
-          <span class="trust-item__sub">Premium materials only</span>
+    </section>
+
+    <!-- ============================================
+         CATEGORY FILTERS
+         ============================================ -->
+    <div class="store-filters">
+        <div class="filter-tabs" id="filterTabs">
+            <button class="filter-tab active" data-category="all">All</button>
+            <button class="filter-tab" data-category="leviathan">Leviathan Rising</button>
+            <button class="filter-tab" data-category="sovereign">Sovereign</button>
+            <button class="filter-tab" data-category="everyday">Everyday</button>
+            <button class="filter-tab" data-category="art">Art &amp; Prints</button>
+            <button class="filter-tab" data-category="bundles">Bundles</button>
         </div>
-        <div class="trust-item">
-          <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-          <span class="trust-item__label">Print on Demand</span>
-          <span class="trust-item__sub">Made to order via Printful</span>
-        </div>
-      </div>
     </div>
-  </section>
 
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="store-footer" role="contentinfo">
-    <div class="container">
-      <div class="store-footer__inner">
-        <div class="store-footer__brand">
-          Black Dragon Collection
+    <!-- ============================================
+         PRODUCT GRID
+         ============================================ -->
+    <section class="store-products">
+        <div class="container">
+            <div class="products-grid" id="productsGrid">
+
+                <!-- 1. Black Dragon Gold Tee -->
+                <div class="product-card" data-category="leviathan">
+                    <div class="product-image">
+                        <img src="/images/products/gold_tee.png" alt="Black Dragon Gold Tee - Black t-shirt with gold dragon print" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Black Dragon Gold Tee</h3>
+                        <div class="product-price">$38</div>
+                        <span class="product-impact">$5 funds E5 programs</span>
+                        <button class="btn-add-cart snipcart-add-item"
+                            data-item-id="bd-gold-tee"
+                            data-item-name="Black Dragon Gold Tee"
+                            data-item-price="38.00"
+                            data-item-url="/store"
+                            data-item-description="Leviathan Rising. Premium heavyweight tee with gold dragon print. Upon earth there is not its like — Made Without Fear."
+                            data-item-image="/images/products/gold_tee.png">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2. Black Dragon Crimson Tee -->
+                <div class="product-card" data-category="sovereign">
+                    <div class="product-image">
+                        <img src="/images/products/crimson_tee.png" alt="Black Dragon Crimson Tee - Black t-shirt with crimson dragon print" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Black Dragon Crimson Tee</h3>
+                        <div class="product-price">$38</div>
+                        <span class="product-impact">$5 funds E5 programs</span>
+                        <button class="btn-add-cart snipcart-add-item"
+                            data-item-id="bd-crimson-tee"
+                            data-item-name="Black Dragon Crimson Tee"
+                            data-item-price="38.00"
+                            data-item-url="/store"
+                            data-item-description="Sovereign determination in crimson fire. Premium heavyweight tee. Unchained and Unafraid."
+                            data-item-image="/images/products/crimson_tee.png">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3. Dragon Heavyweight Hoodie -->
+                <div class="product-card" data-category="leviathan">
+                    <div class="product-image">
+                        <img src="/images/products/hoodie.png" alt="Dragon Heavyweight Hoodie - Black hoodie with dragon embroidery" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Dragon Heavyweight Hoodie</h3>
+                        <div class="product-price">$68</div>
+                        <span class="product-impact">$5 funds E5 programs</span>
+                        <button class="btn-add-cart snipcart-add-item"
+                            data-item-id="bd-hoodie"
+                            data-item-name="Dragon Heavyweight Hoodie"
+                            data-item-price="68.00"
+                            data-item-url="/store"
+                            data-item-description="The dragon rises. Premium heavyweight hoodie with embroidered Leviathan. Scales joined one to another — Many, Yet We Move as One."
+                            data-item-image="/images/products/hoodie.png">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 4. Dragon Snapback -->
+                <div class="product-card" data-category="leviathan">
+                    <div class="product-image">
+                        <img src="/images/products/merch_7.png" alt="Dragon Snapback - Black snapback hat with gold dragon embroidery" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Dragon Snapback</h3>
+                        <div class="product-price">$35</div>
+                        <span class="product-impact">$5 funds E5 programs</span>
+                        <button class="btn-add-cart snipcart-add-item"
+                            data-item-id="bd-snapback"
+                            data-item-name="Dragon Snapback"
+                            data-item-price="35.00"
+                            data-item-url="/store"
+                            data-item-description="Crown yourself. Gold dragon embroidery on structured snapback. No Master But God."
+                            data-item-image="/images/products/merch_7.png">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 5. Dragon Dad Hat -->
+                <div class="product-card" data-category="sovereign">
+                    <div class="product-image">
+                        <img src="/images/products/merch_8.png" alt="Dragon Dad Hat - Relaxed-fit dad hat with embroidered dragon" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Dragon Dad Hat</h3>
+                        <div class="product-price">$32</div>
+                        <span class="product-impact">$5 funds E5 programs</span>
+                        <button class="btn-add-cart snipcart-add-item"
+                            data-item-id="bd-dad-hat"
+                            data-item-name="Dragon Dad Hat"
+                            data-item-price="32.00"
+                            data-item-url="/store"
+                            data-item-description="Sovereign. Relaxed-fit with embroidered dragon crest. Our Communities, Our Control."
+                            data-item-image="/images/products/merch_8.png">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 6. Dragon Art Print 18x24 -->
+                <div class="product-card" data-category="leviathan art">
+                    <div class="product-image">
+                        <img src="/images/products/poster_18x24.png" alt="Dragon Art Print 18x24 - High-quality dragon art print on premium paper" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Dragon Art Print 18x24</h3>
+                        <div class="product-price">$35</div>
+                        <span class="product-impact">$5 funds E5 programs</span>
+                        <button class="btn-add-cart snipcart-add-item"
+                            data-item-id="bd-art-print"
+                            data-item-name="Dragon Art Print 18x24"
+                            data-item-price="35.00"
+                            data-item-url="/store"
+                            data-item-description="Gallery-quality Leviathan Rising art print on archival paper. The cosmic Black dragon in full ascension. 18x24."
+                            data-item-image="/images/products/poster_18x24.png">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 7. Dragon Phone Case -->
+                <div class="product-card" data-category="sovereign">
+                    <div class="product-image">
+                        <img src="/images/products/merch_3.png" alt="Dragon Phone Case - Protective phone case with Black Dragon design" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Dragon Phone Case</h3>
+                        <div class="product-price">$28</div>
+                        <span class="product-impact">$5 funds E5 programs</span>
+                        <button class="btn-add-cart snipcart-add-item"
+                            data-item-id="bd-phone-case"
+                            data-item-name="Dragon Phone Case"
+                            data-item-price="28.00"
+                            data-item-url="/store"
+                            data-item-description="Carry the dragon. Tough protective case with Black Dragon design. We define ourselves."
+                            data-item-image="/images/products/merch_3.png">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 8. Dragon Mug -->
+                <div class="product-card" data-category="everyday">
+                    <div class="product-image">
+                        <img src="/images/products/mug_11oz.png" alt="Dragon Mug - 11oz ceramic mug with Black Dragon design" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Dragon Mug</h3>
+                        <div class="product-price">$22</div>
+                        <span class="product-impact">$5 funds E5 programs</span>
+                        <button class="btn-add-cart snipcart-add-item"
+                            data-item-id="bd-mug"
+                            data-item-name="Dragon Mug"
+                            data-item-price="22.00"
+                            data-item-url="/store"
+                            data-item-description="Morning fire. 11oz ceramic with Black Dragon design. Fuel the revolution, one cup at a time."
+                            data-item-image="/images/products/mug_11oz.png">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 9. Dragon Sticker Pack -->
+                <div class="product-card" data-category="everyday">
+                    <div class="product-image">
+                        <img src="/images/products/sticker.png" alt="Dragon Sticker Pack - Pack of premium vinyl dragon stickers" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Dragon Sticker Pack</h3>
+                        <div class="product-price">$12</div>
+                        <span class="product-impact">$5 funds E5 programs</span>
+                        <button class="btn-add-cart snipcart-add-item"
+                            data-item-id="bd-sticker-pack"
+                            data-item-name="Dragon Sticker Pack"
+                            data-item-price="12.00"
+                            data-item-url="/store"
+                            data-item-description="Mark your territory. Premium vinyl dragon stickers for laptops, water bottles, and everywhere the movement goes."
+                            data-item-image="/images/products/sticker.png">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 10. Dragon Enamel Pin -->
+                <div class="product-card" data-category="everyday">
+                    <div class="product-image">
+                        <img src="/images/products/merch_5.png" alt="Dragon Enamel Pin - Hard enamel pin with Black Dragon design" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Dragon Enamel Pin</h3>
+                        <div class="product-price">$15</div>
+                        <span class="product-impact">$5 funds E5 programs</span>
+                        <button class="btn-add-cart snipcart-add-item"
+                            data-item-id="bd-enamel-pin"
+                            data-item-name="Dragon Enamel Pin"
+                            data-item-price="15.00"
+                            data-item-url="/store"
+                            data-item-description="Badge of the movement. Hard enamel Black Dragon pin. Wear the scales of unity."
+                            data-item-image="/images/products/merch_5.png">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 11. Dragon Joggers (NEW) -->
+                <div class="product-card" data-category="leviathan">
+                    <div class="product-image">
+                        <img src="/images/products/merch_4.png" alt="Dragon Joggers - Premium heavyweight joggers with dragon scale embroidery" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Dragon Joggers</h3>
+                        <div class="product-price">$62</div>
+                        <span class="product-impact">$5 funds E5 programs</span>
+                        <button class="btn-add-cart snipcart-add-item"
+                            data-item-id="bd-joggers"
+                            data-item-name="Dragon Joggers"
+                            data-item-price="62.00"
+                            data-item-url="/store"
+                            data-item-description="Premium heavyweight joggers with subtle dragon scale embroidery down the leg. The Leviathan moves with you."
+                            data-item-image="/images/products/merch_4.png">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 12. Leviathan Crewneck (NEW) -->
+                <div class="product-card" data-category="leviathan">
+                    <div class="product-image">
+                        <img src="/images/products/merch_6.png" alt="Leviathan Crewneck - Heavyweight fleece crewneck with dragon print" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Leviathan Crewneck</h3>
+                        <div class="product-price">$58</div>
+                        <span class="product-impact">$5 funds E5 programs</span>
+                        <button class="btn-add-cart snipcart-add-item"
+                            data-item-id="bd-crewneck"
+                            data-item-name="Leviathan Crewneck"
+                            data-item-price="58.00"
+                            data-item-url="/store"
+                            data-item-description="Heavyweight fleece crewneck. The dragon rises on the back. Made Without Fear."
+                            data-item-image="/images/products/merch_6.png">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 13. Sovereign Tote (NEW) -->
+                <div class="product-card" data-category="sovereign">
+                    <div class="product-image">
+                        <img src="/images/products/merch_2.png" alt="Sovereign Tote - Canvas tote with dragon design" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Sovereign Tote</h3>
+                        <div class="product-price">$28</div>
+                        <span class="product-impact">$5 funds E5 programs</span>
+                        <button class="btn-add-cart snipcart-add-item"
+                            data-item-id="bd-tote"
+                            data-item-name="Sovereign Tote"
+                            data-item-price="28.00"
+                            data-item-url="/store"
+                            data-item-description="Our Communities, Our Control. Canvas tote built to carry the weight."
+                            data-item-image="/images/products/merch_2.png">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <ul class="store-footer__links">
-          <li><a href="/privacy">Privacy</a></li>
-          <li><a href="/terms">Terms</a></li>
-          <li><a href="/returns">Returns</a></li>
-          <li><a href="/#contact">Contact</a></li>
-        </ul>
-      </div>
-      <p class="store-footer__copy">
-        &copy; 2025 E5 Enclave. All rights reserved. Black Dragon Collection is a trademark of E5 Enclave.
-        Fulfillment by Printful.
-      </p>
-    </div>
-  </footer>
+    </section>
 
-  <!-- ==================== SNIPCART ==================== -->
-  <div hidden id="snipcart" data-api-key="SNIPCART_API_KEY_HERE" data-config-modal-style="side" data-currency="usd">
-  </div>
-  <script async src="https://cdn.snipcart.com/themes/v3.6.1/default/snipcart.js"></script>
+    <!-- ============================================
+         BUNDLE SECTION
+         ============================================ -->
+    <section class="store-bundles" id="bundlesSection">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Save More, Fund More</p>
+                <h2 class="section-title">Dragon Bundles</h2>
+            </div>
+            <div class="bundles-grid">
 
-  <!-- ==================== STORE JS ==================== -->
-  <script src="/store/js/store.js"></script>
+                <!-- Bundle 1: Dragon Starter Pack -->
+                <div class="bundle-card">
+                    <span class="bundle-save-badge">Save $13</span>
+                    <div class="bundle-image">
+                        <img src="/images/products/gold_tee.png" alt="Dragon Starter Pack - Includes Tee, Hat, and Sticker Pack" loading="lazy">
+                    </div>
+                    <div class="bundle-info">
+                        <h3 class="bundle-name">Dragon Starter Pack</h3>
+                        <p class="bundle-contents">Tee + Hat + Sticker Pack</p>
+                        <div class="bundle-pricing">
+                            <span class="bundle-price">$72</span>
+                            <span class="bundle-original">$85</span>
+                        </div>
+                        <button class="btn-add-bundle snipcart-add-item"
+                            data-item-id="bd-starter-pack"
+                            data-item-name="Dragon Starter Pack"
+                            data-item-price="72.00"
+                            data-item-url="/store"
+                            data-item-description="Bundle: Tee + Hat + Sticker Pack"
+                            data-item-image="/images/products/gold_tee.png">
+                            Add Bundle to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bundle 2: Hoodie + Jogger Set (NEW) -->
+                <div class="bundle-card">
+                    <span class="bundle-save-badge">Save $10</span>
+                    <div class="bundle-image">
+                        <img src="/images/products/hoodie.png" alt="Hoodie + Jogger Set - The complete Leviathan set" loading="lazy">
+                    </div>
+                    <div class="bundle-info">
+                        <h3 class="bundle-name">Hoodie + Jogger Set</h3>
+                        <p class="bundle-contents">Hoodie + Joggers</p>
+                        <div class="bundle-pricing">
+                            <span class="bundle-price">$120</span>
+                            <span class="bundle-original">$130</span>
+                        </div>
+                        <button class="btn-add-bundle snipcart-add-item"
+                            data-item-id="bd-hoodie-jogger-set"
+                            data-item-name="Hoodie + Jogger Set"
+                            data-item-price="120.00"
+                            data-item-url="/store"
+                            data-item-description="The Set. Hoodie + Joggers. Scales of unity, head to toe."
+                            data-item-image="/images/products/hoodie.png">
+                            Add Bundle to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bundle 3: Full Dragon Kit (UPGRADED) -->
+                <div class="bundle-card">
+                    <span class="bundle-save-badge">Save $28</span>
+                    <div class="bundle-image">
+                        <img src="/images/products/hoodie.png" alt="Full Dragon Kit - Hoodie, Joggers, Tee, and Hat" loading="lazy">
+                    </div>
+                    <div class="bundle-info">
+                        <h3 class="bundle-name">Full Dragon Kit</h3>
+                        <p class="bundle-contents">Hoodie + Joggers + Tee + Hat</p>
+                        <div class="bundle-pricing">
+                            <span class="bundle-price">$175</span>
+                            <span class="bundle-original">$203</span>
+                        </div>
+                        <button class="btn-add-bundle snipcart-add-item"
+                            data-item-id="bd-full-kit"
+                            data-item-name="Full Dragon Kit"
+                            data-item-price="175.00"
+                            data-item-url="/store"
+                            data-item-description="Bundle: Hoodie + Joggers + Tee + Hat"
+                            data-item-image="/images/products/hoodie.png">
+                            Add Bundle to Cart
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         STORE MISSION FOOTER
+         ============================================ -->
+    <section class="store-mission">
+        <div class="container">
+            <div class="mission-content">
+                <p class="mission-statement">
+                    Every purchase supports <em>E5 Enclave community programs</em> in Liberty City, Miami
+                </p>
+                <div class="mission-breakdown">
+                    <div class="mission-stat">
+                        <div class="mission-stat-icon">🌱</div>
+                        <span class="mission-stat-number">$5</span>
+                        <span class="mission-stat-label">Per Item to Programs</span>
+                    </div>
+                    <div class="mission-stat">
+                        <div class="mission-stat-icon">🏗️</div>
+                        <span class="mission-stat-number">5</span>
+                        <span class="mission-stat-label">Programs Funded</span>
+                    </div>
+                    <div class="mission-stat">
+                        <div class="mission-stat-icon">🐉</div>
+                        <span class="mission-stat-number">100%</span>
+                        <span class="mission-stat-label">Black-Owned Operation</span>
+                    </div>
+                </div>
+                <p class="mission-detail" style="margin-top: 1.5rem; font-size: 1rem; opacity: 0.9; line-height: 1.6;">
+                    A portion of every purchase supports E5 Enclave community programs in Liberty City, Miami. The dragon protects its own.
+                </p>
+                <p class="mission-cta">
+                    Want to make an even bigger impact? <a href="/donate">Donate directly</a> to E5 Enclave programs.
+                    <br>All donations to E5 Enclave Inc. are tax-deductible. EIN available upon request.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-e5">E5</span>
+                        <span class="logo-text">ENCLAVE</span>
+                    </div>
+                    <p class="footer-tagline">Empowering Black Communities Through Self-Determination and Economic Sovereignty</p>
+                    <p class="footer-status">501(c)(3) Public Charitable Organization</p>
+                </div>
+                <div class="footer-links">
+                    <h4>The Five E's</h4>
+                    <ul>
+                        <li><a href="/pillars/environmental">Environmental</a></li>
+                        <li><a href="/pillars/economic">Economic</a></li>
+                        <li><a href="/pillars/educational">Educational</a></li>
+                        <li><a href="/pillars/equality">Equality</a></li>
+                        <li><a href="/pillars/emancipated">Emancipated</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="/donate">Donate</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/store">Store</a></li>
+                        <li><a href="/volunteer">Volunteer</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>Liberty City, Miami, FL</p>
+                    <p><a href="tel:+18332417356">(833) 241-7356</a></p>
+                    <p><a href="mailto:hermes@e5enclave.com">hermes@e5enclave.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 E5 Enclave Incorporated. All rights reserved.</p>
+                <p class="footer-motto">Dum spiro, spero — While I breathe, I hope</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Snipcart E-Commerce Engine -->
+    <link rel="preconnect" href="https://cdn.snipcart.com">
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.css" />
+    <div id="snipcart" data-api-key="ZjRiMjk1MjctNWRkNi00N2MzLTk3ZTktNjc1MGIwOTAxMWQ2NjM5MTA3Njk4MTQxMDE5NDEz" data-config-modal-style="side" data-currency="usd" data-config-add-product-url="https://e5enclave.com/api/shipping-rates" hidden></div>
+    <script async src="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.js"></script>
+
+    <script>
+    // ============================================
+    // STORE PAGE — JavaScript
+    // ============================================
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- Mobile menu toggle ---
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                });
+            });
+        }
+
+        // --- Category filter tabs ---
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const productCards = document.querySelectorAll('.product-card');
+        const bundlesSection = document.getElementById('bundlesSection');
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                filterTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const category = tab.dataset.category;
+
+                // Handle bundles tab — show/hide bundles section and products
+                if (category === 'bundles') {
+                    // Hide all product cards, show bundles section
+                    productCards.forEach(card => {
+                        card.style.display = 'none';
+                    });
+                    if (bundlesSection) {
+                        bundlesSection.style.display = '';
+                        bundlesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                    return;
+                }
+
+                // For non-bundle tabs, always show bundles section
+                if (bundlesSection) {
+                    bundlesSection.style.display = '';
+                }
+
+                // Filter products
+                productCards.forEach(card => {
+                    const cardCategories = card.dataset.category.split(' ');
+                    if (category === 'all' || cardCategories.includes(category)) {
+                        card.style.display = '';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(10px)';
+                        requestAnimationFrame(() => {
+                            requestAnimationFrame(() => {
+                                card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            });
+                        });
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+    </script>
 
 </body>
 </html>

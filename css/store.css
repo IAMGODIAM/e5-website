@@ -4,6 +4,32 @@
    ============================================ */
 
 /* ============================================
+   CART ICON (Navbar)
+   ============================================ */
+
+.nav-cart {
+    position: relative;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.nav-cart .snipcart-items-count {
+    background: var(--gold);
+    color: var(--black);
+    font-size: 0.65rem;
+    font-weight: 700;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: -6px;
+    margin-left: -2px;
+}
+
+/* ============================================
    STORE HERO
    ============================================ */
 
