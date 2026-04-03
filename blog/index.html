@@ -12,6 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://e5enclave.com/blog">
   <meta property="og:site_name" content="E5 Enclave">
+  <link rel="canonical" href="https://e5enclave.com/blog/">
   <meta property="og:image" content="https://e5enclave.com/images/og-blog.jpg">
   
   <!-- Twitter -->
@@ -156,14 +157,21 @@
     function handleNewsletterSubmit(e) {
       e.preventDefault();
       var email = document.getElementById('newsletterEmail').value;
+      var btn = document.querySelector('.newsletter-btn');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
       fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email })
+      }).then(function(res) {
+        if (!res.ok) throw new Error('Server error');
+        return res.json();
+      }).then(function() {
+        document.getElementById('newsletter').classList.add('newsletter--submitted');
       }).catch(function() {
-        window.location.href = 'mailto:info@e5enclave.com?subject=Newsletter%20Signup&body=Please%20add%20' + encodeURIComponent(email) + '%20to%20the%20newsletter.';
+        document.getElementById('newsletter').classList.add('newsletter--submitted');
       });
-      document.getElementById('newsletter').classList.add('newsletter--submitted');
       return false;
     }
   </script>
