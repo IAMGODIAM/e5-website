@@ -257,6 +257,10 @@ a:hover {
         animation: none;
     }
 
+    .hero-content::after {
+        animation: none;
+    }
+
     .scroll-line {
         animation: none;
     }
@@ -281,6 +285,62 @@ a:hover {
     z-index: 3;
     text-align: center;
     padding: 0 2rem;
+}
+
+/* Futuristic focal motif behind the hero title */
+.hero-content::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -1.5rem;
+    transform: translateX(-50%);
+    width: min(720px, 92vw);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+    border: 1px solid rgba(201, 168, 76, 0.22);
+    background:
+        radial-gradient(circle at 35% 30%, rgba(201, 168, 76, 0.18) 0%, transparent 55%),
+        radial-gradient(circle at 60% 70%, rgba(139, 26, 26, 0.10) 0%, transparent 58%);
+    box-shadow:
+        0 0 70px rgba(201, 168, 76, 0.10),
+        inset 0 0 45px rgba(201, 168, 76, 0.07);
+    opacity: 0.95;
+}
+
+.hero-content::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -1.5rem;
+    transform: translateX(-50%);
+    width: min(820px, 100vw);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    opacity: 0.20;
+    background:
+        conic-gradient(
+            from 210deg,
+            rgba(201, 168, 76, 0.00) 0deg,
+            rgba(201, 168, 76, 0.28) 10deg,
+            rgba(201, 168, 76, 0.00) 20deg,
+            rgba(201, 168, 76, 0.18) 32deg,
+            rgba(201, 168, 76, 0.00) 44deg,
+            rgba(201, 168, 76, 0.22) 58deg,
+            rgba(201, 168, 76, 0.00) 78deg,
+            rgba(201, 168, 76, 0.00) 360deg
+        );
+    animation: heroOrbitSpin 26s linear infinite;
+    filter: blur(0.4px);
+}
+
+@keyframes heroOrbitSpin {
+    from { transform: translateX(-50%) rotate(0deg); }
+    to { transform: translateX(-50%) rotate(360deg); }
 }
 
 .hero-tagline {
