@@ -52,6 +52,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/blog.css">
+  <link rel="stylesheet" href="/css/newsletter.css">
   
   <link rel="icon" href="/favicon.ico">
   
@@ -98,6 +99,24 @@
           <p>E5 Enclave is a 501(c)(3) nonprofit building sustainable communities through the five pillars of empowerment. Every contribution makes a difference.</p>
           <a href="/donate" class="btn btn-primary">Donate Now</a>
         </div>
+
+        <!-- Newsletter Signup -->
+        <section class="newsletter-section" id="newsletter">
+          <div class="newsletter-inner">
+            <h2 class="newsletter-headline">Stay in the Fight</h2>
+            <p class="newsletter-subtext">Get dispatches on food sovereignty, economic liberation, and community power — delivered to your inbox.</p>
+            <form class="newsletter-form" id="newsletterForm" onsubmit="return handleNewsletterSubmit(event)">
+              <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="Your email address" required aria-label="Email address">
+              <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+            <div class="newsletter-success" id="newsletterSuccess">
+              <span class="newsletter-checkmark">✓</span>
+              <span>You're in. Welcome to the Enclave.</span>
+            </div>
+            <p class="newsletter-privacy">No spam. Unsubscribe anytime. We respect your sovereignty — including your inbox.</p>
+          </div>
+        </section>
+
         <nav class="article-nav">
           <a href="/blog" class="article-nav__link">&larr; All Posts</a>
         </nav>
@@ -158,6 +177,26 @@
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
       });
+    }
+  </script>
+
+  <!-- Newsletter JS -->
+  <script>
+    function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      var email = document.getElementById('newsletterEmail').value;
+      // Placeholder endpoint — wire HubSpot later
+      fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      }).catch(function() {
+        // Fallback: mailto
+        window.location.href = 'mailto:info@e5enclave.com?subject=Newsletter%20Signup&body=Please%20add%20' + encodeURIComponent(email) + '%20to%20the%20newsletter.';
+      });
+      // Show success state regardless (we'll validate server-side later)
+      document.getElementById('newsletter').classList.add('newsletter--submitted');
+      return false;
     }
   </script>
 </body>

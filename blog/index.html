@@ -27,6 +27,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/blog.css">
+  <link rel="stylesheet" href="/css/newsletter.css">
   
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico">
@@ -75,6 +76,23 @@
 
   <!-- Masonry Grid -->
   <div class="blog-masonry" id="blog-masonry"></div>
+
+  <!-- Newsletter Signup -->
+  <section class="newsletter-section" id="newsletter">
+    <div class="newsletter-inner">
+      <h2 class="newsletter-headline">Stay in the Fight</h2>
+      <p class="newsletter-subtext">Get dispatches on food sovereignty, economic liberation, and community power — delivered to your inbox.</p>
+      <form class="newsletter-form" id="newsletterForm" onsubmit="return handleNewsletterSubmit(event)">
+        <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="Your email address" required aria-label="Email address">
+        <button type="submit" class="newsletter-btn">Subscribe</button>
+      </form>
+      <div class="newsletter-success" id="newsletterSuccess">
+        <span class="newsletter-checkmark">✓</span>
+        <span>You're in. Welcome to the Enclave.</span>
+      </div>
+      <p class="newsletter-privacy">No spam. Unsubscribe anytime. We respect your sovereignty — including your inbox.</p>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="footer">
@@ -130,6 +148,23 @@
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
       });
+    }
+  </script>
+
+  <!-- Newsletter JS -->
+  <script>
+    function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      var email = document.getElementById('newsletterEmail').value;
+      fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      }).catch(function() {
+        window.location.href = 'mailto:info@e5enclave.com?subject=Newsletter%20Signup&body=Please%20add%20' + encodeURIComponent(email) + '%20to%20the%20newsletter.';
+      });
+      document.getElementById('newsletter').classList.add('newsletter--submitted');
+      return false;
     }
   </script>
 </body>
