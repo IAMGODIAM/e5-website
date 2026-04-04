@@ -639,14 +639,14 @@ a:hover {
 
 .pillar-card {
     background: linear-gradient(180deg, rgba(201, 168, 76, 0.05) 0%, rgba(10, 10, 10, 1) 100%);
-    border: 1px solid rgba(201, 168, 76, 0.14);
+    border: 1px solid rgba(201, 168, 76, 0.22);
     border-radius: 14px;
     padding: 2.5rem 1.5rem;
     text-align: center;
     transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25), inset 0 0 0 1px rgba(201, 168, 76, 0.10);
 }
 
 .pillar-card::before {
@@ -669,9 +669,9 @@ a:hover {
     inset: -1px;
     pointer-events: none;
     background:
-        radial-gradient(circle at 20% 20%, rgba(201, 168, 76, 0.14) 0%, transparent 55%),
+        radial-gradient(circle at 20% 20%, rgba(201, 168, 76, 0.18) 0%, transparent 55%),
         radial-gradient(circle at 80% 60%, rgba(139, 26, 26, 0.10) 0%, transparent 60%);
-    opacity: 0.45;
+    opacity: 0.52;
     transition: opacity 0.35s ease;
 }
 
@@ -680,9 +680,9 @@ a:hover {
 }
 
 .pillar-card:hover {
-    border-color: rgba(201, 168, 76, 0.33);
-    transform: translateY(-6px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+    border-color: rgba(201, 168, 76, 0.36);
+    transform: translateY(-4px);
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(201, 168, 76, 0.16);
 }
 
 .pillar-card:hover::after {
@@ -743,13 +743,13 @@ a:hover {
 
 .program-card {
     background: linear-gradient(180deg, rgba(201, 168, 76, 0.03) 0%, var(--black-light) 100%);
-    border: 1px solid rgba(201, 168, 76, 0.10);
+    border: 1px solid rgba(201, 168, 76, 0.16);
     border-radius: 14px;
     padding: 2.5rem;
     transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.22), inset 0 0 0 1px rgba(201, 168, 76, 0.10);
 }
 
 .program-card::before {
@@ -779,13 +779,13 @@ a:hover {
 }
 
 .program-card:hover {
-    border-color: rgba(201, 168, 76, 0.30);
-    transform: translateY(-6px);
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.60);
+    border-color: rgba(201, 168, 76, 0.32);
+    transform: translateY(-4px);
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.60), inset 0 0 0 1px rgba(201, 168, 76, 0.14);
 }
 
 .program-card:hover::before {
-    opacity: 0.85;
+    opacity: 0.78;
 }
 
 .program-card:hover::after {
@@ -794,7 +794,7 @@ a:hover {
 }
 
 .program-card.featured {
-    border-color: rgba(201, 168, 76, 0.75);
+    border-color: rgba(201, 168, 76, 0.65);
     background: linear-gradient(135deg, rgba(201, 168, 76, 0.08) 0%, var(--black-light) 100%);
 }
 
