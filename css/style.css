@@ -268,6 +268,16 @@ a:hover {
     .btn-primary::before {
         transition: none;
     }
+
+    .pillar-card,
+    .program-card {
+        transition: none !important;
+    }
+
+    .pillar-card:hover,
+    .program-card:hover {
+        transform: none !important;
+    }
 }
 
 .hero-overlay {
@@ -623,17 +633,20 @@ a:hover {
 .pillars-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 1.5rem;
+    gap: 1.25rem;
+    align-items: stretch;
 }
 
 .pillar-card {
-    background: var(--black);
-    border: 1px solid rgba(201, 168, 76, 0.1);
+    background: linear-gradient(180deg, rgba(201, 168, 76, 0.05) 0%, rgba(10, 10, 10, 1) 100%);
+    border: 1px solid rgba(201, 168, 76, 0.14);
+    border-radius: 14px;
     padding: 2.5rem 1.5rem;
     text-align: center;
-    transition: all 0.4s ease;
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
 }
 
 .pillar-card::before {
@@ -645,7 +658,21 @@ a:hover {
     height: 2px;
     background: var(--gold);
     transform: scaleX(0);
-    transition: transform 0.4s ease;
+    transform-origin: center;
+    transition: transform 0.35s ease;
+    opacity: 0.9;
+}
+
+.pillar-card::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(201, 168, 76, 0.14) 0%, transparent 55%),
+        radial-gradient(circle at 80% 60%, rgba(139, 26, 26, 0.10) 0%, transparent 60%);
+    opacity: 0.45;
+    transition: opacity 0.35s ease;
 }
 
 .pillar-card:hover::before {
@@ -653,12 +680,19 @@ a:hover {
 }
 
 .pillar-card:hover {
-    border-color: rgba(201, 168, 76, 0.3);
-    transform: translateY(-4px);
+    border-color: rgba(201, 168, 76, 0.33);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+}
+
+.pillar-card:hover::after {
+    opacity: 0.75;
 }
 
 .pillar-icon {
     margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
 }
 
 .pillar-letter {
@@ -666,6 +700,8 @@ a:hover {
     font-size: 2.5rem;
     font-weight: 900;
     color: var(--gold);
+    position: relative;
+    z-index: 1;
 }
 
 .pillar-letter sub {
@@ -678,12 +714,16 @@ a:hover {
     font-size: 1.1rem;
     color: var(--white);
     margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
 }
 
 .pillar-card p {
     font-size: 0.85rem;
     color: var(--gray-light);
     line-height: 1.7;
+    position: relative;
+    z-index: 1;
 }
 
 /* ============================================
@@ -697,25 +737,65 @@ a:hover {
 .programs-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 1.5rem;
+    align-items: stretch;
 }
 
 .program-card {
-    background: var(--black-light);
-    border: 1px solid rgba(201, 168, 76, 0.08);
+    background: linear-gradient(180deg, rgba(201, 168, 76, 0.03) 0%, var(--black-light) 100%);
+    border: 1px solid rgba(201, 168, 76, 0.10);
+    border-radius: 14px;
     padding: 2.5rem;
-    transition: all 0.4s ease;
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.22);
+}
+
+.program-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 15% 15%, rgba(201, 168, 76, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 85% 70%, rgba(139, 26, 26, 0.12) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.program-card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.9), transparent);
+    transform: translateY(-8px);
+    opacity: 0;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    pointer-events: none;
 }
 
 .program-card:hover {
-    border-color: rgba(201, 168, 76, 0.25);
-    transform: translateY(-4px);
+    border-color: rgba(201, 168, 76, 0.30);
+    transform: translateY(-6px);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.60);
+}
+
+.program-card:hover::before {
+    opacity: 0.85;
+}
+
+.program-card:hover::after {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .program-card.featured {
-    border-color: var(--gold);
-    background: linear-gradient(135deg, rgba(201, 168, 76, 0.05) 0%, var(--black-light) 100%);
+    border-color: rgba(201, 168, 76, 0.75);
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.08) 0%, var(--black-light) 100%);
 }
 
 .program-badge {
