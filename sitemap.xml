@@ -7,6 +7,12 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://e5enclave.com/faq</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://e5enclave.com/pillars/environmental</loc>
     <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
