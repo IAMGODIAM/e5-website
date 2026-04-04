@@ -53,6 +53,10 @@
       "rewrite": "/volunteer/index.html"
     },
     {
+      "route": "/faq",
+      "rewrite": "/faq.html"
+    },
+    {
       "route": "/api/*",
       "allowedRoles": ["anonymous"]
     }
