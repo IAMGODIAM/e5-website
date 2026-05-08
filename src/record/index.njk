@@ -1,0 +1,46 @@
+---
+layout: base
+permalink: /record/
+title: "The Record"
+description: "The Record — three founding documents anchor the work of E5 Enclave: Parallel Negros, Measure the Wound, Restitution 246. Published openly, audited against practice, built to be cited."
+breadcrumbs:
+  - { label: "The Record" }
+---
+<header class="vc-page-head reveal">
+  <div class="vc-page-eyebrow">— The Record · Volume I —</div>
+  <h1 class="vc-page-h">Dispatches from <em>the Coalition.</em></h1>
+  <p class="vc-page-deck">Three documents anchor the founding work — a Think Tank dispatch, the foundational record of the harms we repair, and the campaign framework for restitution. Each is published openly, audited against practice, and built to be cited.</p>
+</header>
+
+<section class="vc-record" style="background: var(--vc-bone); padding-top:24px;">
+  <div class="vc-record-grid reveal">
+    {% for paper in papers %}
+    <article class="vc-record-card{% if paper.lead %} vc-record-lead{% endif %}">
+      <div class="num">№ {{ paper.numeral }}.</div>
+      <div class="kind">{{ paper.kind }}</div>
+      <h2 class="title">{{ paper.title }}</h2>
+      <p class="lede">{{ paper.lede }}</p>
+      <a href="/record/{{ paper.slug }}/" class="link">Read on E5 <span aria-hidden="true">→</span></a>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="vc-feat">
+  <div class="vc-feat-rubric reveal">How The Record works</div>
+  <h2 class="vc-feat-h reveal">Published openly. <em>Built to be cited.</em></h2>
+  <div class="vc-feat-cols reveal">
+    <div class="vc-feat-col">
+      <h3><span class="roman">I.</span>Open Record</h3>
+      <p class="drop">Every paper enters The Record with named authorship, a published methodology section, and a citation block. <em>What is measured cannot be dismissed.</em></p>
+    </div>
+    <div class="vc-feat-col">
+      <h3><span class="roman">II.</span>Dual-source verification</h3>
+      <p class="drop">Empirical claims carry dual-source verification where the evidence permits it. The methodology section names both sources and any unresolved <em>open questions</em>.</p>
+    </div>
+    <div class="vc-feat-col">
+      <h3><span class="roman">III.</span>Living documents</h3>
+      <p class="drop">The Record updates. When evidence sharpens, when methodology improves, when an open question closes — the record reflects it, with named, dated revisions in the <em>changelog</em>.</p>
+    </div>
+  </div>
+</section>

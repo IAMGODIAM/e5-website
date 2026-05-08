@@ -1,0 +1,29 @@
+---
+layout: base
+permalink: /blog/
+title: "Dispatches"
+description: "Dispatches from the Coalition — long-form essays on cooperative economics, food sovereignty, land trusts, and the architecture of Black self-determination."
+breadcrumbs:
+  - { label: "Dispatches" }
+---
+<header class="vc-page-head reveal">
+  <div class="vc-page-eyebrow">— Dispatches · Long-form Essays —</div>
+  <h1 class="vc-page-h">Dispatches from <em>the Coalition.</em></h1>
+  <p class="vc-page-deck">Long-form essays on cooperative economics, food sovereignty, land trusts, and the architecture of Black self-determination.</p>
+</header>
+
+<section style="max-width:1180px; margin:0 auto; padding:32px 56px 96px;" class="reveal">
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top:1.5px solid var(--vc-ink); border-bottom:1.5px solid var(--vc-ink);">
+  {% for post in collections.post %}
+    <article style="padding:36px 32px; border-right:1px solid var(--vc-rule-2); display:flex; flex-direction:column; gap:14px; min-height:380px; background: var(--vc-bone);" class="post-card">
+      <div style="font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-muted); font-weight:600; padding-bottom:12px; border-bottom:1px solid var(--vc-rule-2);">{{ post.data.category or 'Dispatch' }} · {{ post.data.date | longDate }}</div>
+      <h2 style="font-family:var(--vc-display); font-weight:400; font-size:28px; line-height:1.1; margin:0; letter-spacing:-0.012em;"><a href="{{ post.url }}" style="color:var(--vc-ink);">{{ post.data.title }}</a></h2>
+      <p style="font-family:var(--vc-display); font-size:16px; line-height:1.55; color:var(--vc-ink-3); margin:0;">{{ post.data.excerpt or post.data.subtitle }}</p>
+      <div style="margin-top:auto; padding-top:14px; border-top:1px solid var(--vc-rule-2); display:flex; justify-content:space-between; gap:12px;">
+        <span style="font-family:var(--vc-display); font-style:italic; font-size:14px; color:var(--vc-muted);">{{ post.data.author }}{% if post.data.readTime %} · {{ post.data.readTime }}{% endif %}</span>
+        <a href="{{ post.url }}" style="font-family:var(--vc-text); font-size:10px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-oxblood); font-weight:600;">Read <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+  {% endfor %}
+  </div>
+</section>

@@ -1,0 +1,55 @@
+<footer class="vc-foot">
+  {% include "_seal.njk" %}
+  <div class="vc-foot-grid">
+    <div class="colophon">
+      <strong>Colophon</strong>
+      Convened in {{ site.established.city }}, Florida. Set in Cormorant Garamond &amp; Inter. Printed for the Coalition of the Willing, founded {{ site.established.date }}.
+    </div>
+    <div>
+      <h4>The Record</h4>
+      <ul>
+        {% for paper in collections.paper -%}
+        <li><a href="{{ paper.url }}">{{ paper.data.title }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+    <div>
+      <h4>Departments</h4>
+      <ul>
+        <li><a href="/doctrine/">Doctrine</a></li>
+        <li><a href="/pillars/">The Five Pillars</a></li>
+        <li><a href="/record/">The Record</a></li>
+        <li><a href="/press/">Press</a></li>
+        <li><a href="/blog/">Dispatches</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Programs</h4>
+      <ul>
+        {% for prog in collections.program -%}
+        <li><a href="{{ prog.url }}">{{ prog.data.title or prog.data.name }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+    <div>
+      <h4>The Coalition</h4>
+      <ul>
+        <li><a href="/coalition/">Members</a></li>
+        <li><a href="/coalition/apply/">Apply</a></li>
+        <li><a href="/donate/">Donate</a></li>
+        <li><a href="/store/">Store</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="vc-foot-fine">
+    <span>© MMXX{{ '' }}VI <em>{{ site.fullName }}</em></span>
+    <span>Founded {{ site.established.date }} · {{ site.established.city }}</span>
+    <span>For the next thousand years</span>
+  </div>
+  <div class="vc-foot-fine" style="border-top:0; padding-top:8px;">
+    <span><a href="/faq/">FAQ</a></span>
+    <span><a href="/privacy-policy/">Privacy</a></span>
+    <span><a href="/terms-of-service/">Terms</a></span>
+  </div>
+</footer>

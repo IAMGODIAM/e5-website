@@ -1,0 +1,45 @@
+---
+layout: base
+permalink: /pillars/
+title: "The Five Pillars"
+description: "The Five Pillars of E5 Enclave — Environmental, Economic, Educational, Engagement, Emancipated. The structure of the harm is the structure of the remedy."
+breadcrumbs:
+  - { label: "The Five Pillars" }
+---
+<header class="vc-page-head reveal">
+  <div class="vc-page-eyebrow">— The Five Pillars —</div>
+  <h1 class="vc-page-h">The structure of the harm is the structure of the <em>remedy.</em></h1>
+  <p class="vc-page-deck">Five named domains of doctrine, each anchored to a flagship program or campaign. Together they form the architecture of repair.</p>
+</header>
+
+<section class="vc-pillars" style="background: var(--vc-bone); padding-top:24px;">
+  <div class="vc-pillars-grid reveal">
+    {% for pillar in pillars %}
+    <a class="vc-pillar" href="/pillars/{{ pillar.slug }}/" aria-label="{{ pillar.name }} pillar">
+      <div class="num">{{ pillar.numeral }}.</div>
+      <div class="name">{{ pillar.name }}</div>
+      <div class="body">{{ pillar.body }}</div>
+      <div class="flag">{{ pillar.flagLabel }}<em>{{ pillar.flagName }}</em></div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="vc-feat" id="how-they-relate">
+  <div class="vc-feat-rubric reveal">How the Pillars relate</div>
+  <h2 class="vc-feat-h reveal">No pillar stands <em>alone.</em></h2>
+  <div class="vc-feat-cols reveal">
+    <div class="vc-feat-col">
+      <h3><span class="roman">I.</span>Mutually reinforcing</h3>
+      <p class="drop">Economic empowerment without education produces wealth without the capacity to govern it. Education without environmental stewardship produces knowledge disconnected from the systems that sustain life. <em>Each pillar reinforces the others.</em></p>
+    </div>
+    <div class="vc-feat-col">
+      <h3><span class="roman">II.</span>Programs as proof</h3>
+      <p class="drop">Each pillar names a flagship program or campaign that demonstrates the doctrine in practice — McCartney Academy under Educational, Lineage Farms · FarmBlock under Environmental, <em>Restitution 246</em> under Emancipated.</p>
+    </div>
+    <div class="vc-feat-col">
+      <h3><span class="roman">III.</span>The center holds</h3>
+      <p class="drop">The Coalition convenes the work across pillars. Member organizations contribute capacity to one or more pillars without being absorbed into any of them. <em>Sovereign capacity, coordinated.</em></p>
+    </div>
+  </div>
+</section>

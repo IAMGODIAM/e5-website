@@ -1,0 +1,20 @@
+---
+layout: base
+---
+<header class="vc-page-head reveal">
+  <div class="vc-page-eyebrow">{{ eyebrow }}</div>
+  <h1 class="vc-page-h">{{ title | safe }}</h1>
+  {% if deck %}<p class="vc-page-deck">{{ deck | safe }}</p>{% endif %}
+</header>
+<article class="vc-prose reveal">
+{{ content | safe }}
+</article>
+<section class="vc-join">
+  <div class="vc-join-rubric">Engage with this program</div>
+  <h2 class="vc-join-h">Join, partner, or <em>support.</em></h2>
+  <p class="vc-join-deck">Coalition seats, partner institutions, donors, and volunteers are how programs become permanent. Reach out — the door is open.</p>
+  <div class="vc-join-cta">
+    <a class="vc-cta-primary" href="/coalition/apply/">Apply to the Coalition <span aria-hidden="true">→</span></a>
+    <a class="vc-cta-link" href="/contact/">or, <em>send a message</em></a>
+  </div>
+</section>

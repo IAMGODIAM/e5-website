@@ -1,0 +1,34 @@
+---
+layout: base
+---
+{%- set pillar = pillars | byKey('slug', slug) -%}
+<header class="vc-page-head reveal">
+  <div class="vc-page-eyebrow">№ {{ pillar.numeral | upper }} · The Five Pillars</div>
+  <h1 class="vc-page-h">{{ pillar.name }} <em>—</em><br/>{{ deck | safe }}</h1>
+</header>
+<article class="vc-prose reveal">
+{{ content | safe }}
+</article>
+<section class="vc-r246">
+  <div class="vc-r246-grid">
+    <div>
+      <div class="vc-r246-rubric">Continue reading</div>
+      <h2 class="vc-r246-h" style="font-size:clamp(40px,5vw,72px);">Adjacent <em>pillars.</em></h2>
+      <p class="vc-r246-body">The structure of the harm is the structure of the remedy. Each pillar reinforces the others.</p>
+      <div class="vc-r246-cta">
+        <a class="vc-cta-primary" href="/pillars/">All five pillars <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <aside class="vc-mech">
+      <div class="label">{{ pillar.flagLabel }}</div>
+      <div class="tag" style="font-size:32px; line-height:1.1; margin-bottom:24px;">{{ pillar.flagName }}</div>
+      <p class="body">{{ pillar.body }}</p>
+      <hr/>
+      <dl class="attr">
+        <div class="attr-row"><dt>Numeral</dt><dd>{{ pillar.numeral | upper }}</dd></div>
+        <div class="attr-row"><dt>Designation</dt><dd>{{ pillar.name }}</dd></div>
+        <div class="attr-row"><dt>Status</dt><dd>Active</dd></div>
+      </dl>
+    </aside>
+  </div>
+</section>

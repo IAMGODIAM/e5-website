@@ -1,35 +1,27 @@
 {
   "routes": [
-    { "route": "/robots.txt", "rewrite": "/robots.txt" },
-    { "route": "/sitemap.xml", "rewrite": "/sitemap.xml" },
-    { "route": "/llms.txt", "rewrite": "/llms.txt" },
-    { "route": "/favicon.ico", "rewrite": "/favicon.ico" },
-    { "route": "/pillars/environmental", "rewrite": "/pillars/environmental.html" },
-    { "route": "/pillars/economic", "rewrite": "/pillars/economic.html" },
-    { "route": "/pillars/educational", "rewrite": "/pillars/educational.html" },
-    { "route": "/pillars/equality", "rewrite": "/pillars/equality.html" },
-    { "route": "/pillars/emancipated", "rewrite": "/pillars/emancipated.html" },
-    { "route": "/donate", "rewrite": "/donate.html" },
-    { "route": "/blog", "rewrite": "/blog/index.html" },
-    { "route": "/store", "rewrite": "/store/index.html" },
-    { "route": "/volunteer", "rewrite": "/volunteer/index.html" },
-    { "route": "/faq", "rewrite": "/faq.html" },
-    { "route": "/privacy-policy", "rewrite": "/privacy-policy.html" },
-    { "route": "/terms-of-service", "rewrite": "/terms-of-service.html" },
+    { "route": "/farmblock", "redirect": "/programs/lineage-farms/", "statusCode": 301 },
+    { "route": "/farmblock/", "redirect": "/programs/lineage-farms/", "statusCode": 301 },
+    { "route": "/pillars/equality", "redirect": "/pillars/engagement/", "statusCode": 301 },
+    { "route": "/pillars/equality/", "redirect": "/pillars/engagement/", "statusCode": 301 },
+    { "route": "/volunteer", "redirect": "/coalition/apply/", "statusCode": 301 },
+    { "route": "/volunteer/", "redirect": "/coalition/apply/", "statusCode": 301 },
     { "route": "/api/*", "allowedRoles": ["anonymous"] }
   ],
   "navigationFallback": {
-    "rewrite": "/index.html",
+    "rewrite": "/404.html",
     "exclude": [
-      "/robots.txt", "/sitemap.xml", "/llms.txt", "/favicon.ico",
-      "/css/*", "/js/*", "/images/*", "/data/*",
-      "/blog/*", "/store/*", "/volunteer/*", "/pillars/*.html",
-      "/donate.html", "/privacy-policy.html", "/terms-of-service.html",
-      "/api/*"
+      "/assets/*",
+      "/images/*",
+      "/api/*",
+      "/robots.txt",
+      "/sitemap.xml",
+      "/llms.txt",
+      "/favicon.ico"
     ]
   },
   "responseOverrides": {
-    "404": { "rewrite": "/index.html", "statusCode": 404 }
+    "404": { "rewrite": "/404.html", "statusCode": 404 }
   },
   "globalHeaders": {
     "X-Frame-Options": "SAMEORIGIN",
@@ -37,6 +29,11 @@
     "Referrer-Policy": "strict-origin-when-cross-origin",
     "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
   },
-  "mimeTypes": { ".txt": "text/plain", ".xml": "application/xml" },
-  "platform": { "apiRuntime": "node:18" }
+  "mimeTypes": {
+    ".txt": "text/plain",
+    ".xml": "application/xml"
+  },
+  "platform": {
+    "apiRuntime": "node:18"
+  }
 }
