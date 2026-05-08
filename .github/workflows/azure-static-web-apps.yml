@@ -1,13 +1,11 @@
-name: Deploy E5 Enclave Website
+name: Deploy E5 Enclave Website (Azure SWA)
 
+# Azure deploy is currently dormant — primary deploy is GitHub Pages
+# (.github/workflows/github-pages.yml). This workflow stays in the repo so
+# Azure can be re-enabled by changing the triggers back to push/pull_request
+# on main when the Azure resources are healthy.
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   build_and_deploy:

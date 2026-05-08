@@ -1,4 +1,5 @@
 {
+  "$comment": "Azure Static Web Apps config — currently dormant. Primary deploy is GitHub Pages (CNAME e5enclave.com). This file stays in the repo so Azure can be re-enabled by flipping the trigger in .github/workflows/azure-static-web-apps.yml back to push/pull_request on main.",
   "routes": [
     { "route": "/farmblock", "redirect": "/programs/lineage-farms/", "statusCode": 301 },
     { "route": "/farmblock/", "redirect": "/programs/lineage-farms/", "statusCode": 301 },

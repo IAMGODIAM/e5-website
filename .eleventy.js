@@ -6,6 +6,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('favicon.ico');
   eleventyConfig.addPassthroughCopy('llms.txt');
   eleventyConfig.addPassthroughCopy('staticwebapp.config.json');
+  eleventyConfig.addPassthroughCopy('CNAME');
+  eleventyConfig.addPassthroughCopy('.nojekyll');
   eleventyConfig.addPassthroughCopy({ 'images': 'images' });
 
   // Watch targets
