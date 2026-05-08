@@ -1,19 +1,18 @@
 {
   "name": "e5-website",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.1.0",
+  "description": "E5 Enclave — A Lineage-based Think Tank. Multi-page editorial website built with Eleventy.",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:blog": "node scripts/build-blog.js"
+    "dev": "eleventy --serve --port=8080",
+    "build": "eleventy",
+    "clean": "rimraf _site",
+    "lint:html": "html-validate \"_site/**/*.html\""
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@chenglou/pretext": "^0.0.4"
-  },
   "devDependencies": {
-    "esbuild": "^0.28.0"
+    "@11ty/eleventy": "^3.0.0",
+    "html-validate": "^8.18.0",
+    "rimraf": "^5.0.5"
   }
 }

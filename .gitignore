@@ -17,6 +17,7 @@ Thumbs.db
 .idea/
 
 # Build artifacts
+_site/
 dist/
 .cache/
 

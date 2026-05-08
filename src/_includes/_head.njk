@@ -1,0 +1,37 @@
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>{% if title %}{{ title }} — {{ site.name }}{% else %}{{ site.name }} — {{ site.tagline }}{% endif %}</title>
+<meta name="description" content="{{ description or site.description or (site.name + ' — ' + site.tagline) }}"/>
+<link rel="canonical" href="{{ site.url }}{{ page.url }}"/>
+<meta name="theme-color" content="{{ site.themeColor }}"/>
+
+{# Open Graph / Twitter #}
+<meta property="og:type" content="{{ ogType or 'website' }}"/>
+<meta property="og:site_name" content="{{ site.name }}"/>
+<meta property="og:title" content="{{ title or (site.name + ' — ' + site.tagline) }}"/>
+<meta property="og:description" content="{{ description or site.description or (site.name + ' — ' + site.tagline) }}"/>
+<meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:image" content="{{ site.url }}{{ ogImage or site.ogImage }}"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="{{ title or (site.name + ' — ' + site.tagline) }}"/>
+<meta name="twitter:description" content="{{ description or site.description or (site.name + ' — ' + site.tagline) }}"/>
+<meta name="twitter:image" content="{{ site.url }}{{ ogImage or site.ogImage }}"/>
+
+{# Favicons #}
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="icon" type="image/svg+xml" href="/assets/img/favicon/favicon.svg"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png"/>
+
+{# Fonts #}
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap"/>
+
+{# Styles #}
+<link rel="stylesheet" href="/assets/css/editorial.css"/>
+{% if extraCss %}{% for href in extraCss %}<link rel="stylesheet" href="{{ href }}"/>{% endfor %}{% endif %}
+
+{% if site.analytics.plausible %}<script defer data-domain="{{ site.analytics.plausibleDomain or 'e5enclave.com' }}" src="https://plausible.io/js/script.js"></script>{% endif %}

@@ -1,0 +1,15 @@
+---
+layout: base
+---
+<header class="vc-page-head reveal">
+  {% if eyebrow %}<div class="vc-page-eyebrow">{{ eyebrow }}</div>{% endif %}
+  <h1 class="vc-page-h">{{ title | safe }}</h1>
+  {% if deck %}<p class="vc-page-deck">{{ deck | safe }}</p>{% endif %}
+</header>
+{% if showProse | default(true) %}
+<article class="vc-prose reveal">
+{{ content | safe }}
+</article>
+{% else %}
+{{ content | safe }}
+{% endif %}

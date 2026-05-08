@@ -1,0 +1,30 @@
+[
+  {
+    "order": 1,
+    "numeral": "I",
+    "slug": "parallel-negros",
+    "title": "Parallel Negros",
+    "kind": "Think Tank Dispatch",
+    "lede": "A foundational comparative dispatch from the E5 think tank — examining the parallel architectures that shape the lineage's path through American history, and the institutional remedies they require.",
+    "external": "https://sue-app-ec34c434.base44.app/DocParallelNegros",
+    "lead": true
+  },
+  {
+    "order": 2,
+    "numeral": "II",
+    "slug": "measure-the-wound",
+    "title": "Measure the Wound",
+    "kind": "Foundational Record",
+    "lede": "Documentation of the harms we repair. What is measured cannot be dismissed — this is the evidentiary foundation against which every E5 program is built.",
+    "external": "https://sue-app-ec34c434.base44.app/DocMeasureWound"
+  },
+  {
+    "order": 3,
+    "numeral": "III",
+    "slug": "restitution-246",
+    "title": "Restitution 246",
+    "kind": "Campaign Framework",
+    "lede": "The Lloyd Kelly framework — a disciplined wage-loss and opportunity-loss mechanism for the 246 years of stolen labor, anchored to the Craemer (2015) wage-hour methodology.",
+    "external": "https://sue-app-ec34c434.base44.app/DocReparations"
+  }
+]

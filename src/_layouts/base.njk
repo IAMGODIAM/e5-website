@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+{% include "_head.njk" %}
+</head>
+<body class="{{ bodyClass or '' }}">
+{% include "_skiplink.njk" %}
+{% if isHome %}
+  {% include "_masthead.njk" %}
+{% else %}
+  {% include "_sub-masthead.njk" %}
+{% endif %}
+{% include "_nav.njk" %}
+{% if breadcrumbs and not isHome %}{% include "_breadcrumb.njk" %}{% endif %}
+<main id="main">
+{{ content | safe }}
+</main>
+{% include "_footer.njk" %}
+<script src="/assets/js/editorial.js" defer></script>
+{% if extraJs %}{% for src in extraJs %}<script src="{{ src }}" defer></script>{% endfor %}{% endif %}
+</body>
+</html>

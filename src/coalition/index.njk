@@ -1,0 +1,55 @@
+---
+layout: base
+permalink: /coalition/
+title: "The Coalition"
+description: "The Coalition of the Willing — the founding contributors to E5 Enclave: editorial, programs, campaigns, and in memoriam."
+breadcrumbs:
+  - { label: "Coalition" }
+---
+<header class="vc-page-head reveal">
+  <div class="vc-page-eyebrow">— A Coalition of the Willing —</div>
+  <h1 class="vc-page-h">A masthead of <em>builders, stewards, and elders.</em></h1>
+  <p class="vc-page-deck">The founding Coalition of E5 Enclave. Black-led organizations, individual builders, partner institutions, and the elders we honor.</p>
+</header>
+
+<section class="vc-contrib" style="background: var(--vc-bone); padding-top:24px;">
+  <div class="vc-contrib-grid reveal">
+    {% for col in contributors.columns %}
+    <div class="vc-contrib-col">
+      <h2 class="contrib-col-h" style="font-size: 9.5px; letter-spacing: 0.42em; text-transform: uppercase; color: var(--vc-oxblood); margin: 0 0 10px; font-weight: 600; padding-bottom: 8px; border-bottom: 1px solid var(--vc-rule-2);">{{ col.title }}</h2>
+      <ul>
+        {% for m in col.members %}<li>{{ m.name }}<small>{{ m.role }}</small></li>{% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="vc-feat">
+  <div class="vc-feat-rubric reveal">How the Coalition works</div>
+  <h2 class="vc-feat-h reveal">Sovereign organizations, <em>coordinated work.</em></h2>
+  <div class="vc-feat-cols reveal">
+    <div class="vc-feat-col">
+      <h3><span class="roman">I.</span>33 / 17 / 50</h3>
+      <p class="drop">Coalition seats follow a 33/17/50 model: <em>33% institutional members</em> (Black-led organizations), <em>17% individual builders</em>, <em>50% reserved seats</em> for partner institutions and aligned coalitions. The model is published, audited, and rebalanced annually.</p>
+    </div>
+    <div class="vc-feat-col">
+      <h3><span class="roman">II.</span>Sovereign capacity</h3>
+      <p class="drop">Member organizations remain <em>sovereign</em>. The Enclave coordinates; it does not absorb. Member data, leadership, and futures stay with their organizations.</p>
+    </div>
+    <div class="vc-feat-col">
+      <h3><span class="roman">III.</span>Open record</h3>
+      <p class="drop">Coalition membership is published openly. Conflicts of interest are declared. The list above is the <em>founding masthead</em> — the Coalition expands by application.</p>
+    </div>
+  </div>
+</section>
+
+<section class="vc-join" id="apply">
+  <div class="vc-join-rubric">Coalition seats are open</div>
+  <h2 class="vc-join-h">Apply to <em>the Coalition.</em></h2>
+  <p class="vc-join-deck">Black-led organizations, individual builders, funders, and partner institutions: submit your interest. A member of the Council will respond.</p>
+  <div class="vc-join-cta">
+    <a href="/coalition/apply/" class="vc-cta-primary">Open the application <span aria-hidden="true">→</span></a>
+    <a href="mailto:{{ site.contact.primary }}" class="vc-cta-link">or, <em>email the Council</em></a>
+  </div>
+</section>

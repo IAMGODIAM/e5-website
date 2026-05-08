@@ -1,0 +1,67 @@
+---
+layout: base
+permalink: /contact/
+title: "Contact"
+description: "Contact E5 Enclave — the Council, press, programs, and partnership."
+extraJs:
+  - /assets/js/forms.js
+breadcrumbs:
+  - { label: "Contact" }
+---
+<header class="vc-page-head reveal">
+  <div class="vc-page-eyebrow">Send a message</div>
+  <h1 class="vc-page-h">Reach <em>the Council.</em></h1>
+  <p class="vc-page-deck">For partnerships, press, programs, and the Coalition. Use the form, or any of the addresses below — we route to the right desk.</p>
+</header>
+
+<section style="max-width:1080px; margin:0 auto; padding:0 56px 32px; display:grid; grid-template-columns: repeat(3, 1fr); gap:32px;" class="reveal">
+  <div>
+    <h2 style="font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-oxblood); margin:0 0 8px; font-weight:600;">General</h2>
+    <p style="font-family:var(--vc-display); font-style:italic; font-size:18px; color:var(--vc-ink); margin:0;"><a href="mailto:{{ site.contact.primary }}" style="border-bottom: 1px solid var(--vc-rule-2);">{{ site.contact.primary }}</a></p>
+  </div>
+  <div>
+    <h2 style="font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-oxblood); margin:0 0 8px; font-weight:600;">Press</h2>
+    <p style="font-family:var(--vc-display); font-style:italic; font-size:18px; color:var(--vc-ink); margin:0;"><a href="mailto:{{ site.contact.press }}" style="border-bottom: 1px solid var(--vc-rule-2);">{{ site.contact.press }}</a></p>
+  </div>
+  <div>
+    <h2 style="font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-oxblood); margin:0 0 8px; font-weight:600;">Address</h2>
+    <p style="font-family:var(--vc-display); font-style:italic; font-size:18px; color:var(--vc-ink); margin:0;">Liberty City<br/>Florida · United States</p>
+  </div>
+</section>
+
+<form class="vc-form reveal" data-vc-form data-subject="website-contact" data-endpoint="/api/contact" novalidate>
+  <div class="field-row">
+    <div class="row">
+      <label for="c-name">Name</label>
+      <input id="c-name" name="name" type="text" required autocomplete="name"/>
+    </div>
+    <div class="row">
+      <label for="c-email">Email</label>
+      <input id="c-email" name="email" type="email" required autocomplete="email"/>
+    </div>
+  </div>
+  <div class="row">
+    <label for="c-topic">Topic</label>
+    <select id="c-topic" name="topic">
+      <option value="general">General inquiry</option>
+      <option value="press">Press / media</option>
+      <option value="partnership">Partnership / institution</option>
+      <option value="programs">Programs (McCartney / Lineage Farms / Block to Boardroom)</option>
+      <option value="coalition">Coalition application</option>
+      <option value="campaign-r246">Restitution 246 campaign</option>
+    </select>
+  </div>
+  <div class="row">
+    <label for="c-msg">Message</label>
+    <textarea id="c-msg" name="message" required></textarea>
+  </div>
+  <div class="actions">
+    <button type="submit" class="vc-cta-primary" data-label="Send message">Send message <span aria-hidden="true">→</span></button>
+    <span class="hint">We respond within five business days.</span>
+  </div>
+</form>
+
+<div class="vc-form-success" role="status">
+  <strong style="font-family: var(--vc-text); font-size: 9.5px; letter-spacing: 0.42em; text-transform: uppercase; color: var(--vc-oxblood); display: block; margin-bottom: 8px;">Received.</strong>
+  Thank you. A member of the Council will respond personally. The center holds.
+</div>

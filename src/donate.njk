@@ -1,0 +1,71 @@
+---
+layout: base
+permalink: /donate/
+title: "Donate"
+description: "Sustain the Record. Donate to E5 Enclave — a 501(c)(3) Lineage-based Think Tank. EIN: 99-3822441."
+extraJs:
+  - /assets/js/donate.js
+breadcrumbs:
+  - { label: "Donate" }
+---
+<header class="vc-page-head reveal">
+  <div class="vc-page-eyebrow">Sustain the Record · 501(c)(3) · EIN 99-3822441</div>
+  <h1 class="vc-page-h">Your investment in <em>coordinated lineage power.</em></h1>
+  <p class="vc-page-deck">E5 Enclave Incorporated is a Florida 501(c)(3) public charitable organization. Donations are generally tax-deductible to the extent permitted by law.</p>
+</header>
+
+<section style="max-width:880px; margin:0 auto; padding:32px 56px 64px;" class="reveal">
+  <form id="checkout-form" data-vc-form-donate novalidate>
+    <fieldset style="border:0; padding:0; margin:0 0 32px;">
+      <legend style="font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-oxblood); font-weight:600; margin-bottom:18px;">Frequency</legend>
+      <div style="display:flex; gap:12px;">
+        <button type="button" class="freq-btn selected vc-cta-link" data-freq="one-time" aria-pressed="true">One-Time</button>
+        <button type="button" class="freq-btn vc-cta-link" data-freq="monthly" aria-pressed="false">Monthly</button>
+      </div>
+    </fieldset>
+
+    <fieldset style="border:0; padding:0; margin:0 0 32px;">
+      <legend style="font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-oxblood); font-weight:600; margin-bottom:18px;">Choose an amount</legend>
+      <div class="amount-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px;">
+        {% for amt in [25, 50, 100, 250, 500, 1000] %}
+        <button type="button" class="amount-btn{% if amt == 100 %} selected{% endif %}" data-amount="{{ amt }}" aria-pressed="{% if amt == 100 %}true{% else %}false{% endif %}"
+          style="padding:24px; border:1px solid var(--vc-rule-2); background:var(--vc-bone-2); cursor:pointer; transition: border-color .2s ease, background .2s ease; text-align:center;">
+          <span style="display:block; font-family:var(--vc-display); font-size:36px; line-height:1; color:var(--vc-ink);">${{ amt }}</span>
+          {% set labels = { '25': 'Sustain', '50': 'Build', '100': 'Anchor', '250': 'Steward', '500': 'Transform', '1000': 'Patron' } %}
+          <span style="display:block; margin-top:8px; font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-muted); font-weight:600;">{{ labels[amt|string] }}</span>
+        </button>
+        {% endfor %}
+      </div>
+    </fieldset>
+
+    <div class="row" style="display:flex; flex-direction:column; gap:6px; margin-bottom:32px;">
+      <label for="customAmount" style="font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-oxblood); font-weight:600;">Or enter a custom amount</label>
+      <input id="customAmount" name="amount" type="number" min="1" step="1" placeholder="$ Enter amount"
+        style="font-family:var(--vc-display); font-size:24px; color:var(--vc-ink); background:transparent; border:0; border-bottom:1px solid var(--vc-rule-2); padding:8px 0; outline:0; width:100%;"/>
+    </div>
+
+    <div style="display:flex; gap:24px; align-items:center; padding-top:24px; border-top:1px solid var(--vc-rule-2);">
+      <button type="submit" id="donate-submit" class="vc-cta-primary" data-label="Continue to checkout">Continue to checkout <span aria-hidden="true">→</span></button>
+      <span style="font-family:var(--vc-display); font-style:italic; font-size:14px; color:var(--vc-muted);">Secure checkout · 501(c)(3) · receipts issued.</span>
+    </div>
+  </form>
+</section>
+
+<section class="vc-feat" style="padding-top:64px;">
+  <div class="vc-feat-rubric reveal">Where the dollar goes</div>
+  <h2 class="vc-feat-h reveal">Every dollar is <em>budgeted publicly.</em></h2>
+  <div class="vc-feat-cols reveal">
+    <div class="vc-feat-col">
+      <h3><span class="roman">I.</span>Programs</h3>
+      <p class="drop">Direct funding for the three flagship programs — <em>McCartney Academy</em>, <em>Lineage Farms · FarmBlock</em>, and <em>Block to the Boardroom</em> — and the founding fund that capitalizes them.</p>
+    </div>
+    <div class="vc-feat-col">
+      <h3><span class="roman">II.</span>The Record</h3>
+      <p class="drop">Research, methodology, and publication. The dispatches, the foundational records, and the campaign frameworks live and breathe because they are <em>funded as a publication of record.</em></p>
+    </div>
+    <div class="vc-feat-col">
+      <h3><span class="roman">III.</span>Operations</h3>
+      <p class="drop">A deliberately lean, agentic-first operating team. Audited annually. Published in the open. <em>What is measured cannot be dismissed.</em></p>
+    </div>
+  </div>
+</section>

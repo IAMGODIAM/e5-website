@@ -1,0 +1,18 @@
+---
+layout: base
+---
+{%- set paper = papers | byKey('slug', slug) -%}
+<header class="vc-page-head reveal">
+  <div class="vc-page-eyebrow">№ {{ paper.numeral }} · {{ paper.kind }}</div>
+  <h1 class="vc-page-h">{{ paper.title }}</h1>
+  <p class="vc-page-deck">{{ paper.lede }}</p>
+</header>
+<article class="vc-prose reveal">
+{{ content | safe }}
+<hr/>
+<p style="font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-muted); margin-top:48px;">Read the full document</p>
+<p>
+  <a class="vc-cta-primary" href="{{ paper.external }}" target="_blank" rel="noopener">Open <em>{{ paper.title }}</em> <span aria-hidden="true">→</span></a>
+</p>
+<p style="font-family:var(--vc-display); font-style:italic; font-size:14px; color:var(--vc-muted); margin-top:24px;">External link · published on the E5 base44 reading surface · opens in a new tab.</p>
+</article>

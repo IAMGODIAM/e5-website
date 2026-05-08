@@ -1,0 +1,11 @@
+---
+layout: base
+---
+<header class="vc-page-head reveal">
+  <div class="vc-page-eyebrow">{{ eyebrow or 'Legal Notice' }}</div>
+  <h1 class="vc-page-h">{{ title | safe }}</h1>
+  {% if effective %}<p class="vc-page-deck">Effective: {{ effective }}</p>{% endif %}
+</header>
+<article class="vc-prose reveal">
+{{ content | safe }}
+</article>

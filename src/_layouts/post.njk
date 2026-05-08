@@ -1,0 +1,35 @@
+---
+layout: base
+---
+<header class="vc-page-head reveal">
+  <div class="vc-page-eyebrow">{{ category or 'Dispatch' }} · {{ date | longDate }}</div>
+  <h1 class="vc-page-h">{{ title | safe }}</h1>
+  {% if subtitle %}<p class="vc-page-deck">{{ subtitle | safe }}</p>{% endif %}
+  <div style="margin-top:32px; font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-muted);">
+    By <em style="font-family:var(--vc-display); font-style:italic; font-size:15px; letter-spacing:0.01em; text-transform:none; color:var(--vc-ink);">{{ author }}</em>
+    {% if authorRole %} · {{ authorRole }}{% endif %}
+    {% if readTime %} · {{ readTime }}{% endif %}
+  </div>
+</header>
+<article class="vc-prose reveal">
+{{ content | safe }}
+</article>
+<section class="vc-contrib" aria-label="More dispatches">
+  <div class="vc-contrib-rubric">— Continue Reading —</div>
+  <h2 class="vc-contrib-h">More <em>dispatches.</em></h2>
+  <div class="vc-contrib-grid" style="grid-template-columns: repeat(3, 1fr);">
+    {% set siblings = collections.post | reverse %}
+    {% set count = 0 %}
+    {% for sib in siblings %}
+      {% if sib.url != page.url and count < 3 %}
+        {% set count = count + 1 %}
+        <div class="vc-contrib-col">
+          <h4>{{ sib.data.category or 'Dispatch' }}</h4>
+          <ul>
+            <li><a href="{{ sib.url }}">{{ sib.data.title }}<small>{{ sib.data.date | longDate }} · {{ sib.data.readTime or '—' }}</small></a></li>
+          </ul>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>

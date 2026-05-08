@@ -1,0 +1,78 @@
+---
+layout: base
+permalink: /store/
+title: "Store · Black Dragon"
+description: "The E5 Enclave store — Black Dragon merch. Every purchase funds the work."
+breadcrumbs:
+  - { label: "Store" }
+---
+{# Snipcart integration: classes (snipcart-add-item, snipcart-checkout, snipcart-items-count)
+   and data-item-* attributes are preserved verbatim — never modify or remove. #}
+<link rel="preconnect" href="https://app.snipcart.com"/>
+<link rel="preconnect" href="https://cdn.snipcart.com"/>
+<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.css"/>
+<header class="vc-page-head reveal">
+  <div class="vc-page-eyebrow">— E5 Enclave Store · Black Dragon —</div>
+  <h1 class="vc-page-h">Wear it. <em>Fund the work.</em></h1>
+  <p class="vc-page-deck">A small Black Dragon merch line. Every purchase routes a portion of revenue to the founding fund. <a href="#" class="snipcart-checkout" style="color:var(--vc-oxblood); border-bottom:1px solid var(--vc-rule-2);">View cart (<span class="snipcart-items-count">0</span>)</a></p>
+</header>
+
+<section style="max-width:1280px; margin:0 auto; padding:32px 56px 96px;">
+  <div style="display:flex; gap:14px; flex-wrap:wrap; padding:0 0 24px; border-bottom:1px solid var(--vc-rule-2); margin-bottom:32px;" id="filterTabs" role="tablist" aria-label="Filter products">
+    {% for cat in [['all','All'], ['apparel','Apparel'], ['art','Art &amp; Prints'], ['accessories','Accessories']] %}
+    <button class="filter-tab{% if cat[0] == 'all' %} active{% endif %}" data-category="{{ cat[0] }}" role="tab" aria-selected="{% if cat[0] == 'all' %}true{% else %}false{% endif %}"
+      style="border:0; background:transparent; font-family:var(--vc-text); font-size:10.5px; letter-spacing:0.42em; text-transform:uppercase; font-weight:600; padding:8px 0 12px; color:var(--vc-ink); cursor:pointer; border-bottom:1.5px solid transparent;">{{ cat[1] | safe }}</button>
+    {% endfor %}
+  </div>
+
+  <div id="productsGrid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:32px;">
+    {% set products = [
+      { id: 'bd-gold-tee', name: 'Black Dragon Gold Tee', price: 35, cat: 'apparel', desc: 'Premium Black Dragon tee with gold print', img: '/images/products/gold_tee.png' },
+      { id: 'bd-crimson-tee', name: 'Black Dragon Crimson Tee', price: 35, cat: 'apparel', desc: 'Premium Black Dragon tee with crimson print', img: '/images/products/crimson_tee.png' },
+      { id: 'bd-print', name: 'Black Dragon Print', price: 28, cat: 'art', desc: 'Limited Black Dragon archival print', img: '/images/products/dragon_print.png' },
+      { id: 'bd-tote', name: 'Black Dragon Tote', price: 22, cat: 'accessories', desc: 'Heavyweight cotton tote with Black Dragon mark', img: '/images/products/dragon_tote.png' }
+    ] %}
+    {% for p in products %}
+    <article class="product-card" data-category="{{ p.cat }}" style="background:var(--vc-bone); border:1px solid var(--vc-rule); padding:24px; display:flex; flex-direction:column; gap:14px;">
+      <div style="aspect-ratio:1; background:var(--vc-bone-2); display:flex; align-items:center; justify-content:center; font-family:var(--vc-display); font-style:italic; color:var(--vc-muted);" class="product-image">— {{ p.name }} —</div>
+      <div>
+        <span style="display:block; font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-muted); font-weight:600;">{{ p.cat | upper }}</span>
+        <h2 class="product-name" style="font-family:var(--vc-display); font-weight:400; font-size:24px; line-height:1.1; margin:6px 0 6px;">{{ p.name }}</h2>
+        <div class="product-price" style="font-family:var(--vc-display); font-size:22px; color:var(--vc-oxblood);">${{ p.price }}</div>
+        <span class="product-impact" style="display:block; margin-top:4px; font-family:var(--vc-display); font-style:italic; font-size:14px; color:var(--vc-muted);">~$3 funds E5 programs</span>
+      </div>
+      <button class="btn-add-cart snipcart-add-item vc-cta-primary"
+        data-item-id="{{ p.id }}"
+        data-item-name="{{ p.name }}"
+        data-item-price="{{ p.price }}.00"
+        data-item-url="/store"
+        data-item-description="{{ p.desc }}"
+        data-item-image="{{ p.img }}">Add to cart <span aria-hidden="true">→</span></button>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.filter-tab');
+  var cards = document.querySelectorAll('#productsGrid .product-card');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('active'); t.style.borderBottomColor='transparent'; t.setAttribute('aria-selected','false'); });
+      tab.classList.add('active'); tab.style.borderBottomColor='var(--vc-oxblood)'; tab.setAttribute('aria-selected','true');
+      var cat = tab.dataset.category;
+      cards.forEach(function(c){
+        c.style.display = (cat === 'all' || c.dataset.category === cat) ? '' : 'none';
+      });
+    });
+  });
+  // initialize
+  var first = document.querySelector('.filter-tab.active');
+  if (first) first.style.borderBottomColor = 'var(--vc-oxblood)';
+})();
+</script>
+
+{# Snipcart container — required by Snipcart for cart UI #}
+<div hidden id="snipcart" data-api-key="" data-config-modal-style="side"></div>
+<script async src="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.js"></script>

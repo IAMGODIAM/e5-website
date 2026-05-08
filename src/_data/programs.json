@@ -1,0 +1,26 @@
+[
+  {
+    "order": 1,
+    "slug": "mccartney-academy",
+    "name": "McCartney Academy",
+    "pillar": "Educational",
+    "kicker": "Flagship under Educational",
+    "summary": "A lineage-centered private academy: STEM, emerging technologies, civic literacy, and the leadership formation Black children deserve."
+  },
+  {
+    "order": 2,
+    "slug": "lineage-farms",
+    "name": "Lineage Farms · FarmBlock",
+    "pillar": "Environmental",
+    "kicker": "Flagship under Environmental",
+    "summary": "Food sovereignty as infrastructure: cooperative urban agriculture, land trusts, and a blockchain-anchored governance layer (FarmBlock) that records every contribution and every distribution."
+  },
+  {
+    "order": 3,
+    "slug": "block-to-the-boardroom",
+    "name": "Block to the Boardroom",
+    "pillar": "Engagement",
+    "kicker": "Flagship under Engagement",
+    "summary": "A pipeline from neighborhood organizing to policy authorship — civic education, public policy literacy, media training, and mobilization at every rung from the block to the boardroom."
+  }
+]

@@ -1,0 +1,73 @@
+---
+layout: base
+permalink: /coalition/apply/
+title: "Apply to the Coalition"
+description: "Apply to the Coalition of the Willing — Black-led organizations, individual builders, funders, and partner institutions."
+extraJs:
+  - /assets/js/forms.js
+breadcrumbs:
+  - { label: "Coalition", url: "/coalition/" }
+  - { label: "Apply" }
+---
+<header class="vc-page-head reveal">
+  <div class="vc-page-eyebrow">Coalition · Application</div>
+  <h1 class="vc-page-h">Apply to <em>the Coalition.</em></h1>
+  <p class="vc-page-deck">Tell us who you are, what you steward, and how you would contribute. A member of the Council will respond personally — usually within five business days.</p>
+</header>
+
+<form class="vc-form reveal" data-vc-form data-subject="coalition-apply" data-endpoint="/api/contact" novalidate>
+  <div class="field-row">
+    <div class="row">
+      <label for="apply-name">Name</label>
+      <input id="apply-name" name="name" type="text" required autocomplete="name"/>
+    </div>
+    <div class="row">
+      <label for="apply-org">Organization</label>
+      <input id="apply-org" name="organization" type="text" autocomplete="organization"/>
+    </div>
+  </div>
+  <div class="field-row">
+    <div class="row">
+      <label for="apply-email">Email</label>
+      <input id="apply-email" name="email" type="email" required autocomplete="email"/>
+    </div>
+    <div class="row">
+      <label for="apply-role">Role</label>
+      <input id="apply-role" name="role" type="text" autocomplete="organization-title"/>
+    </div>
+  </div>
+  <div class="row">
+    <label for="apply-track">Track</label>
+    <select id="apply-track" name="track" required>
+      <option value="">Select…</option>
+      <option value="institutional">Institutional member (Black-led organization)</option>
+      <option value="individual">Individual builder</option>
+      <option value="partner">Partner institution / aligned coalition</option>
+      <option value="funder">Funder / institutional partner</option>
+    </select>
+  </div>
+  <div class="row">
+    <label for="apply-pillar">Primary pillar interest</label>
+    <select id="apply-pillar" name="pillar">
+      <option value="">No preference / multiple</option>
+      <option value="environmental">Environmental — Lineage Farms · FarmBlock</option>
+      <option value="economic">Economic</option>
+      <option value="educational">Educational — McCartney Academy</option>
+      <option value="engagement">Engagement — Block to the Boardroom</option>
+      <option value="emancipated">Emancipated — Restitution 246</option>
+    </select>
+  </div>
+  <div class="row">
+    <label for="apply-msg">What would you contribute, and what do you hope to gain?</label>
+    <textarea id="apply-msg" name="message" required></textarea>
+  </div>
+  <div class="actions">
+    <button type="submit" class="vc-cta-primary" data-label="Submit application">Submit application <span aria-hidden="true">→</span></button>
+    <span class="hint">Or email <a href="mailto:{{ site.contact.primary }}" style="color:var(--vc-oxblood); border-bottom: 1px solid var(--vc-rule-2);">{{ site.contact.primary }}</a></span>
+  </div>
+</form>
+
+<div class="vc-form-success" role="status">
+  <strong style="font-family: var(--vc-text); font-size: 9.5px; letter-spacing: 0.42em; text-transform: uppercase; color: var(--vc-oxblood); display: block; margin-bottom: 8px;">Received.</strong>
+  Thank you. A member of the Council will respond personally — usually within five business days. The center holds.
+</div>

@@ -1,0 +1,10 @@
+{
+  "primary": [
+    { "label": "Doctrine", "url": "/doctrine/" },
+    { "label": "Pillars", "url": "/pillars/" },
+    { "label": "The Record", "url": "/record/" },
+    { "label": "Restitution 246", "url": "/restitution-246/" },
+    { "label": "Coalition", "url": "/coalition/" },
+    { "label": "Join", "url": "/coalition/apply/" }
+  ]
+}
