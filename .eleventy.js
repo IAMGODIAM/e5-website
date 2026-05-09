@@ -6,6 +6,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('favicon.ico');
   eleventyConfig.addPassthroughCopy('llms.txt');
   eleventyConfig.addPassthroughCopy('staticwebapp.config.json');
+  eleventyConfig.addPassthroughCopy('CNAME');
+  eleventyConfig.addPassthroughCopy('.nojekyll');
   eleventyConfig.addPassthroughCopy({ 'images': 'images' });
 
   // Watch targets
@@ -41,6 +43,36 @@ module.exports = function (eleventyConfig) {
 
   // Shortcodes
   eleventyConfig.addShortcode('year', () => String(new Date().getFullYear()));
+  eleventyConfig.addShortcode('ornament', (glyph) =>
+    `<div class="vc-disp-ornament" aria-hidden="true">${glyph || '§'}</div>`,
+  );
+
+  // Paired shortcodes — body chrome for dispatch readers
+  // Args are positional, comma-separated.
+  eleventyConfig.addPairedShortcode('pullQuote', (content, mark) =>
+    `<aside class="vc-disp-pull"><span class="mark">${mark || '❧'}</span>${content}</aside>`,
+  );
+  eleventyConfig.addPairedShortcode('qCard', (content, num, eyebrow, title) => {
+    const e = eyebrow ? `<div class="q-eyebrow">${eyebrow}</div>` : '';
+    const n = num ? `<div class="q-num">${num}</div>` : '';
+    const t = title ? `<h3 class="q-title">${title}</h3>` : '';
+    return `<section class="vc-disp-q-card">${e}${n}${t}<div class="q-body">${content}</div></section>`;
+  });
+  eleventyConfig.addPairedShortcode('witness', (content, lbl, title, source) => {
+    const l = lbl ? `<div class="w-lbl">${lbl}</div>` : '<div class="w-lbl">Witness</div>';
+    const t = title ? `<h3 class="w-title">${title}</h3>` : '';
+    const s = source ? `<div class="w-source">${source}</div>` : '';
+    return `<aside class="vc-disp-witness">${l}${t}<div class="w-body">${content}</div>${s}</aside>`;
+  });
+  eleventyConfig.addPairedShortcode('statRibbon', (content, num, lbl) => {
+    const n = num ? `<div class="s-num">${num}</div>` : '';
+    const l = lbl ? `<div class="s-lbl">${lbl}</div>` : '';
+    return `<aside class="vc-disp-stat-ribbon">${n}<div class="s-content">${l}<p>${content}</p></div></aside>`;
+  });
+  eleventyConfig.addPairedShortcode('marginalia', (content, lbl) => {
+    const l = lbl ? `<span class="m-lbl">${lbl}</span>` : '';
+    return `<aside class="vc-disp-marg">${l}${content}</aside>`;
+  });
 
   // Collections
   eleventyConfig.addCollection('post', (api) =>
@@ -69,9 +101,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addLayoutAlias('page', 'page.njk');
   eleventyConfig.addLayoutAlias('post', 'post.njk');
   eleventyConfig.addLayoutAlias('record', 'record.njk');
+  eleventyConfig.addLayoutAlias('dispatch', 'dispatch.njk');
   eleventyConfig.addLayoutAlias('pillar', 'pillar.njk');
   eleventyConfig.addLayoutAlias('program', 'program.njk');
   eleventyConfig.addLayoutAlias('legal', 'legal.njk');
+  eleventyConfig.addLayoutAlias('monumental', 'monumental.njk');
+  eleventyConfig.addLayoutAlias('scaffold', 'scaffold.njk');
 
   return {
     dir: {

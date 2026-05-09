@@ -33,11 +33,11 @@ The two-sentence version:
 
 Records published on this site, on the Enclave's reading surfaces (base44), and in subsequent publications carry citation blocks. The standing format:
 
-> *[Title]*. E5 Enclave, MMXXVI. Liberty City. The Record · Volume [N], № [Numeral]. [Methodology, where applicable].
+> *[Title]*. E5 Enclave, MMXXVI. Liberty City. The Record. [Methodology, where applicable].
 
 Example:
 
-> *Restitution 246: A Wage-Loss and Opportunity-Loss Campaign Framework.* E5 Enclave, MMXXVI. Liberty City. The Record · Volume I, № III. Lloyd Kelly Framework. Methodology: Craemer, 2015.
+> *Restitution 246: A Wage-Loss and Opportunity-Loss Campaign Framework.* E5 Enclave, MMXXVI. Liberty City. The Record. Lloyd Kelly Framework. Methodology: Craemer, 2015.
 
 ## Founder
 

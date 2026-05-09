@@ -2,37 +2,13 @@
 layout: base
 isHome: true
 title: false
-description: "E5 Enclave is a Lineage-based Think Tank comprised of a Coalition of the Willing — building the institutions, evidence systems, and projects the lineage needs to repair, rise, and govern its future."
+description: "E5 Enclave is a lineage-led think tank comprised of a Coalition of the Willing — building the institutions, evidence systems, and projects the lineage needs to repair, rise, and govern its future."
 permalink: /
 ---
 
-<section class="vc-cover">
-  <aside class="vc-cover-rail">
-    <div class="vol">N°<br/>01</div>
-    <hr/>
-    <div class="meta-block">From {{ site.established.city }}<br/><em>To the Nation</em></div>
-    <hr/>
-    <div class="feature-list">
-      <span class="head">In this issue</span>
-      <a href="/record/parallel-negros/"><em>Parallel Negros <span class="pg">№ I</span></em></a>
-      <a href="/record/measure-the-wound/"><em>Measure the Wound <span class="pg">№ II</span></em></a>
-      <a href="/record/restitution-246/"><em>Restitution 246 <span class="pg">№ III</span></em></a>
-      <a href="#pillars"><em>The Five Pillars <span class="pg">p. 32</span></em></a>
-      <a href="#coalition"><em>The Coalition <span class="pg">p. 58</span></em></a>
-    </div>
-  </aside>
-  <div class="vc-cover-main reveal">
-    <div class="vc-cover-rubric">The Founding Address</div>
-    <h2 class="vc-cover-h">We turn scattered<br/>community effort<br/>into <em>coordinated</em><br/><em>lineage</em> power.</h2>
-    <p class="vc-cover-deck">A Lineage-based Think Tank comprised of a Coalition of the Willing — convening builders, educators, farmers, technologists, advocates, and community leaders to repair, rise, and govern the lineage's future.</p>
-    <div class="vc-cover-byline">
-      <span>Issued by<br/><em>The Enclave</em></span>
-      <span>Convened in<br/><em>{{ site.established.city }}</em></span>
-      <span>Set in<br/><em>Cormorant Garamond</em></span>
-      <span>Printed for<br/><em>The Coalition</em></span>
-    </div>
-  </div>
-</section>
+{% include "_counter-band.njk" %}
+
+{% include "_covenant.njk" %}
 
 <section class="vc-feat" id="doctrine">
   <div class="vc-feat-orn vc-orn-rule reveal"><span class="mk">§</span></div>
@@ -41,7 +17,7 @@ permalink: /
   <div class="vc-feat-cols reveal">
     <div class="vc-feat-col">
       <h3><span class="roman">I.</span>The Mission of Record</h3>
-      <p class="drop">E5 Enclave is a Lineage-based Think Tank convening a Coalition of the Willing to build the institutions, evidence systems, collaborative platforms, and community projects needed to advance the future of <em>the lineage</em>.</p>
+      <p class="drop">E5 Enclave is a lineage-led think tank convening a Coalition of the Willing to build the institutions, evidence systems, collaborative platforms, and community projects needed to advance the future of <em>the lineage</em>.</p>
     </div>
     <div class="vc-feat-col">
       <h3><span class="roman">II.</span>The Public Mission</h3>
@@ -57,12 +33,10 @@ permalink: /
 <section class="vc-letter">
   <div class="vc-letter-grid">
     <aside class="vc-letter-side reveal">
-      <span class="vc-letter-rubric">Department No 02</span>
-      <h2 class="dept">Letter from the Founder</h2>
-      <span class="pg">Folio · p. 06</span>
+      <span class="vc-letter-rubric">Letter from the Founder</span>
+      <h2 class="dept">A note to the lineage.</h2>
     </aside>
     <div class="vc-letter-body reveal">
-      <div class="vc-letter-rubric-2">— A note to the lineage —</div>
       <h2>This is not a campaign. It is <em>a record being built.</em></h2>
       <p class="first">For three centuries the obligations of emancipation went unrecorded &mdash; not because they were unknown, but because the architecture of remedy was never built. E5 Enclave is the architecture. The Coalition is the network. The Five Pillars are the doctrine. The projects are the proof.</p>
       <p>We do not promise a finish line. We promise <em>discipline of scope</em> &mdash; naming precisely what we are doing, and what we are not. We promise coordination over competition. We promise that what is measured cannot be dismissed.</p>
@@ -168,25 +142,25 @@ permalink: /
 
 <section class="vc-record" id="record">
   <div class="vc-record-orn vc-orn-rule reveal"><span class="mk">¶</span></div>
-  <div class="vc-record-rubric reveal">— The Record · Volume I —</div>
+  <div class="vc-record-rubric reveal">— The Record —</div>
   <h2 class="vc-record-h reveal">Dispatches from <em>the Coalition.</em></h2>
   <p class="vc-record-intro reveal">Three documents anchor the founding work — a Think Tank dispatch, the foundational record of the harms we repair, and the campaign framework for restitution. Each is published openly, audited against practice, and built to be cited.</p>
   <div class="vc-record-grid reveal">
     {% for paper in papers %}
     <article class="vc-record-card{% if paper.lead %} vc-record-lead{% endif %}">
-      <div class="num">№ {{ paper.numeral }}.</div>
       <div class="kind">{{ paper.kind }}</div>
       <h3 class="title">{{ paper.title }}</h3>
       <p class="lede">{{ paper.lede }}</p>
-      <a href="/record/{{ paper.slug }}/" class="link">Read the {{ 'dispatch' if paper.numeral == 'I' else ('record' if paper.numeral == 'II' else 'campaign') }} <span aria-hidden="true">→</span></a>
+      <a href="/record/{{ paper.slug }}/" class="link">Read on E5 <span aria-hidden="true">→</span></a>
     </article>
     {% endfor %}
   </div>
+  <p class="vc-record-colophon">Set in Cormorant Garamond &amp; Inter. Convened in {{ site.established.city }}. <em>For the next thousand years.</em></p>
 </section>
 
 <section class="vc-contrib" id="coalition">
   <div class="vc-contrib-orn vc-orn-rule reveal"><span class="mk">¶</span></div>
-  <div class="vc-contrib-rubric reveal">— Contributors to the Founding Issue —</div>
+  <div class="vc-contrib-rubric reveal">— Contributors to the Founding —</div>
   <h2 class="vc-contrib-h reveal">A masthead of <em>builders, stewards, and elders.</em></h2>
   <div class="vc-contrib-grid reveal">
     {% for col in contributors.columns %}

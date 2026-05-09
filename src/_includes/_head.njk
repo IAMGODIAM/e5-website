@@ -33,5 +33,6 @@
 {# Styles #}
 <link rel="stylesheet" href="/assets/css/editorial.css"/>
 {% if extraCss %}{% for href in extraCss %}<link rel="stylesheet" href="{{ href }}"/>{% endfor %}{% endif %}
+{% if layout == 'dispatch' or page.url and '/record/' in page.url and page.url != '/record/' %}<link rel="stylesheet" href="/assets/css/dispatch.css"/>{% endif %}
 
 {% if site.analytics.plausible %}<script defer data-domain="{{ site.analytics.plausibleDomain or 'e5enclave.com' }}" src="https://plausible.io/js/script.js"></script>{% endif %}

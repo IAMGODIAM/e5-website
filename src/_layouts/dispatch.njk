@@ -1,0 +1,90 @@
+---
+layout: base
+extraCss:
+  - /assets/css/dispatch.css
+extraJs:
+  - /assets/js/dispatch-reader.js
+---
+<header class="vc-disp-plate" data-screen-label="plate">
+  <div class="numeral">№ {{ numeral }}</div>
+  <div class="kind">{{ kind }}</div>
+  <h1>{{ title | safe }}</h1>
+  {% if deck %}<p class="deck">{{ deck | safe }}</p>{% endif %}
+  <div class="meta">
+    <span>By<br/><em>{{ byline }}</em></span>
+    {% if date %}<span>Dated<br/><em>{{ date | longDate }}</em></span>{% endif %}
+    {% if readTime %}<span>Read time<br/><em>{{ readTime }}</em></span>{% endif %}
+    <span>Status<br/><em>{{ status or 'Open Record' }}</em></span>
+  </div>
+</header>
+
+<div class="vc-disp-layout">
+  <aside class="vc-disp-rail" data-screen-label="apparatus-rail">
+    <div class="rail-h">— The Apparatus —</div>
+    {% if chapters and chapters.length %}
+    <ol>
+      {% for ch in chapters %}
+      <li><span class="n">{{ ch.numeral }}</span><a href="#{{ ch.id }}">{{ ch.label }}</a></li>
+      {% endfor %}
+    </ol>
+    {% endif %}
+    <div class="progress" aria-hidden="true"><span class="thread"></span></div>
+    <div class="actions">
+      <button type="button" class="js-cite-btn">Cite</button>
+      <button type="button" class="js-print-btn">Print</button>
+      {% if external %}<a href="{{ external }}" target="_blank" rel="noopener"><button type="button">Original</button></a>{% endif %}
+    </div>
+  </aside>
+
+  <article class="vc-disp-body" data-dispatch-title="{{ title }}" data-screen-label="body">
+{{ content | safe }}
+
+{% if bibliography or citations or methodologyNote %}
+<section class="vc-disp-endmatter" data-screen-label="endmatter">
+  {% if methodologyNote %}
+  <h3>Methodology</h3>
+  <div class="methodology"><p>{{ methodologyNote | safe }}</p></div>
+  {% endif %}
+
+  {% if bibliography and bibliography.length %}
+  <h3>Bibliography</h3>
+  <ul>
+    {% for ref in bibliography %}<li>{{ ref | safe }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if citations %}
+  <h3>How to cite</h3>
+  <div class="vc-disp-citation js-citation">
+    <div class="tabs">
+      <button type="button" data-fmt="apa" class="active">APA</button>
+      <button type="button" data-fmt="chicago">Chicago</button>
+      <button type="button" data-fmt="bibtex">BibTeX</button>
+    </div>
+    <pre data-fmt="apa">{{ citations.apa }}</pre>
+    <pre data-fmt="chicago" hidden>{{ citations.chicago }}</pre>
+    <pre data-fmt="bibtex" hidden>{{ citations.bibtex }}</pre>
+    <button type="button" class="copy-btn js-copy-cite">Copy citation</button>
+    {% if bibPath %}<a href="{{ bibPath }}" download class="copy-btn">Download .bib</a>{% endif %}
+  </div>
+  {% endif %}
+</section>
+{% endif %}
+
+<p class="vc-disp-colophon">Set in Cormorant Garamond &amp; Inter. Convened in {{ site.established.city }}. <em>For the next thousand years.</em></p>
+
+<section class="vc-disp-crosslinks" data-screen-label="crosslinks">
+  <h3>Read also</h3>
+  <div class="vc-disp-crosslinks-grid">
+    {% for paper in collections.paper %}
+      {% if paper.url != page.url %}
+      <a href="{{ paper.url }}">
+        <span class="cl-kind">№ {{ paper.data.numeral }} · {{ paper.data.kind }}</span>
+        <span class="cl-title">{{ paper.data.title }}</span>
+      </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+  </article>
+</div>
