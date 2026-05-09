@@ -1,12 +1,16 @@
+---
+layout: base
+isHome: false
+---
+{# Replace the standard sub-masthead with the monumental foundation slab.
+   We render the masthead manually here rather than via _masthead.njk because
+   the wordmark is a single-line foundation mark, not the E5+ENCLAVE composition. #}
 <header class="vc-masthead">
   <div class="vc-masthead-rule" aria-hidden="true"><span class="mk">✦</span></div>
-  <div class="vc-masthead-eyebrow">{{ site.established.city }} · Established MMXXIV</div>
+  <div class="vc-masthead-eyebrow">{{ site.established.city }} · A Lineage-led Think Tank</div>
   <div class="vc-foundation">
-    <h1 class="vc-wordmark" aria-label="{{ site.name }}">
-      <span class="em5" aria-hidden="true">E5</span>
-      <span class="word">Enclave</span>
-    </h1>
-    <p class="vc-tagline">A <span class="ll">lineage-led think tank</span> comprised of a <span class="cw">Coalition of the Willing</span>.</p>
+    <h1 class="vc-foundation-mark">ENCLAVE</h1>
+    <p class="vc-tagline" style="margin-top: 36px;">A <span class="ll">lineage-led think tank</span> comprised of a <span class="cw">Coalition of the Willing</span>.</p>
     <div class="vc-dates" role="list">
       <div class="vc-date" role="listitem">
         <span class="lbl">{{ site.established.label }}</span>
@@ -24,3 +28,5 @@
     <p class="vc-foundation-colophon">{{ site.colophon | safe }}</p>
   </div>
 </header>
+
+{{ content | safe }}

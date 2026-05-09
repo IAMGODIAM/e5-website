@@ -1,15 +1,24 @@
 {
   "name": "E5 Enclave",
   "fullName": "E5 Enclave Incorporated",
-  "tagline": "A Lineage-based Think Tank",
-  "credo": "A Lineage-based Think Tank · comprised of a Coalition of the Willing.",
+  "tagline": "A lineage-led think tank comprised of a Coalition of the Willing.",
+  "credo": "A lineage-led think tank · comprised of a Coalition of the Willing.",
   "url": "https://e5enclave.com",
   "established": {
-    "city": "Liberty City",
-    "date": "Juneteenth · MMXXVI",
-    "year": "2026"
+    "label": "Founded",
+    "date": "2 June 2024",
+    "year": 2024,
+    "city": "Liberty City"
   },
-  "edenLaunch": "17 February 2027",
+  "publicAnnouncement": {
+    "label": "Public Announcement",
+    "date": "Juneteenth · <em>MMXXVI</em>"
+  },
+  "edenLaunch": {
+    "label": "Eden Launch",
+    "date": "17 February · <em>MMXXVII</em>"
+  },
+  "colophon": "Set against the calendar of the lineage. The dates carry their own genealogy. <span class=\"center\">The center holds.</span>",
   "founder": {
     "name": "Israel Lee",
     "title": "Chairman",
@@ -22,10 +31,18 @@
     "phone": "(833) 241-7356"
   },
   "ein": "99-3822441",
+  "counters": {
+    "supporters": 1247,
+    "memberOrgs": 38,
+    "pillars": 5
+  },
   "social": {},
   "analytics": {
-    "plausible": false
+    "plausible": false,
+    "plausibleDomain": "e5enclave.com"
   },
-  "ogImage": "/assets/img/og/default.png",
+  "preLaunch": true,
+  "ogImage": "/assets/img/og/editorial.png",
+  "ogImageOriginal": "/assets/img/og/original.png",
   "themeColor": "#0a0908"
 }

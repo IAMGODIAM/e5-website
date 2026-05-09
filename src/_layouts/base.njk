@@ -1,6 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-palette="editorial">
 <head>
+{# FOUC guard — set palette from localStorage before first paint #}
+<script>(function(){try{var p=localStorage.getItem('e5-palette');if(p==='original'||p==='editorial'){document.documentElement.setAttribute('data-palette',p);}}catch(_){}})();</script>
 {% include "_head.njk" %}
 </head>
 <body class="{{ bodyClass or '' }}">
