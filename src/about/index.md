@@ -60,6 +60,10 @@ Born and raised in Liberty City, Miami. Graduate of Charles R. Drew K-8 (2001) a
 
 The McCartney Academy at Charles R. Drew is named in honor of Ralph McCartney — Israel's grand-uncle, a Liberty City elder who served on the Miami-Dade County Public Schools board committee and worked as a security guard at Charles R. Drew K-8 during Israel's years there. The Enclave carries that lineage forward.
 
+**[View the Founder's Forensic Genealogy Case File →](/about/forensic-genealogy/)**
+
+*A complete evidentiary case file tracing six confirmed generations — from Liberty City, Miami to the chattel slavery of antebellum Clarke County, Alabama — prepared to the Genealogical Proof Standard.*
+
 ---
 
 ## Organizational Record
