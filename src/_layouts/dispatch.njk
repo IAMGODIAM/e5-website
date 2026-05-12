@@ -5,19 +5,164 @@ extraCss:
 extraJs:
   - /assets/js/dispatch-reader.js
 ---
+
+{# ── COVER IMAGE MAP ── #}
+{%- set coverImages = {
+  "measure-the-wound":    "https://media.base44.com/images/public/69d7dd5e015cd1aa45c3e283/76f80fb28_762856E6-589B-45C8-9113-3ED8B3C9C295.png",
+  "parallel-negros":      "https://media.base44.com/images/public/69d7dd5e015cd1aa45c3e283/7ea4df129_3DE599C5-2DCF-464B-A0E0-92CEC675A11B.png",
+  "restitution-246":      "https://media.base44.com/images/public/69d7dd5e015cd1aa45c3e283/238774f53_restitution_246_D_executor_of_record.png"
+} -%}
+{%- set coverImg = coverImages[slug] -%}
+
+{# ── ISSUE NUMBER MAP ── #}
+{%- set issueMap = {
+  "parallel-negros":   { "no": "No. I",  "kind": "Foundational Comparative Dispatch" },
+  "measure-the-wound": { "no": "No. II", "kind": "Foundational Record" },
+  "restitution-246":   { "no": "No. III","kind": "Campaign Framework" }
+} -%}
+{%- set issueInfo = issueMap[slug] or { "no": "No. " + numeral, "kind": kind } -%}
+
 <header class="vc-disp-plate" data-screen-label="plate">
-  <div class="numeral">№ {{ numeral }}</div>
-  <div class="kind">{{ kind }}</div>
-  <h1>{{ title | safe }}</h1>
-  {% if deck %}<p class="deck">{{ deck | safe }}</p>{% endif %}
-  <div class="meta">
-    <span>By<br/><em>{{ byline }}</em></span>
-    {% if date %}<span>Dated<br/><em>{{ date | longDate }}</em></span>{% endif %}
-    {% if readTime %}<span>Read time<br/><em>{{ readTime }}</em></span>{% endif %}
-    <span>Status<br/><em>{{ status or 'Open Record' }}</em></span>
+
+  {# Full-bleed cover photo #}
+  {% if coverImg %}
+  <div class="cover-img" aria-hidden="true">
+    <img src="{{ coverImg }}" alt="" role="presentation" loading="eager" fetchpriority="high">
   </div>
+  {% endif %}
+
+  <div class="cover-inner">
+
+    {# ── TOP RAIL ── #}
+    <div class="cover-top-rail">
+      <span>The Record · Founded Issue</span>
+      <span class="ctr">◆ &nbsp;One Table. One Code. One Legacy.&nbsp; ◆</span>
+      <span class="rgt">{{ issueInfo.no }} · {{ issueInfo.kind }}</span>
+    </div>
+
+    {# ── MASTHEAD ── #}
+    <div class="cover-masthead">
+      <div class="cover-pub-name">E5 Enclave Incorporated &nbsp;·&nbsp; House of Spades</div>
+      <span class="cover-wordmark">ENCLAVE</span>
+      <div class="cover-issue-line">
+        <span>{{ issueInfo.no }} · {{ issueInfo.kind | upper }}</span>
+
+        {# SVG seal badge — inline so no extra request #}
+        <svg class="seal-badge" viewBox="0 0 100 100" aria-hidden="true">
+          <defs>
+            <path id="circ-{{ slug }}" d="M 50 50 m -38 0 a 38 38 0 1 1 76 0 a 38 38 0 1 1 -76 0"/>
+          </defs>
+          <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(244,238,226,0.3)" stroke-width="0.8"/>
+          <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(244,238,226,0.15)" stroke-width="0.4"/>
+          <text font-family="Inter" font-size="5.5" fill="rgba(244,238,226,0.45)" letter-spacing="2.2">
+            <textPath href="#circ-{{ slug }}" startOffset="0">E5 ENCLAVE · LIBERTY CITY · CC0 · MMXXVI ·</textPath>
+          </text>
+          <text x="50" y="48" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="20" fill="rgba(196,164,104,0.85)">E5</text>
+          <path d="M 50 30 L 53 44 L 67 44 L 56 53 L 60 67 L 50 58 L 40 67 L 44 53 L 33 44 L 47 44 Z"
+                fill="none" stroke="rgba(196,164,104,0.3)" stroke-width="0.8"/>
+          <text x="50" y="62" text-anchor="middle" font-family="Inter" font-size="4.5" fill="rgba(244,238,226,0.4)" letter-spacing="1.5">EST · 2024</text>
+        </svg>
+      </div>
+    </div>
+
+    {# ── HERO — left: title/deck/colophon · right: evidence tags ── #}
+    <div class="cover-hero">
+      <div class="cover-hero-left">
+
+        <div class="cover-kicker">{{ kind | upper }}</div>
+
+        <h1>{{ title | safe }}</h1>
+
+        {% if deck %}
+        <p class="cover-deck">{{ deck | safe }}</p>
+        {% endif %}
+
+        <div class="cover-colophon">
+          <div>
+            <span>By</span>
+            <em>{{ byline }}</em>
+          </div>
+          {% if date %}
+          <div>
+            <span>Dated</span>
+            <em>{{ date | longDate }}</em>
+          </div>
+          {% endif %}
+          {% if readTime %}
+          <div>
+            <span>Read</span>
+            <em>{{ readTime }}</em>
+          </div>
+          {% endif %}
+          <div>
+            <span>Status</span>
+            <em>{{ status or "Open Record" }}</em>
+          </div>
+        </div>
+
+      </div>
+
+      {# Right sidebar — evidence tags (per dispatch) #}
+      <div class="cover-hero-right" aria-hidden="true">
+        {% if slug == "measure-the-wound" %}
+        <div class="cover-tag-group">
+          <span class="tg-label">Evidence Tags</span>
+          EPA EJScreen<br>
+          HRSA HPSA<br>
+          USDA Food Access<br>
+          CDC BRFSS<br>
+          HUD AFFH<br>
+          BJS Violence<br>
+          NOAA Heat Risk<br>
+          ACS 5-Yr
+        </div>
+        <div class="cover-tag-group">
+          <span class="tg-label">Data Freshness</span>
+          Q2 2025
+        </div>
+        {% elif slug == "parallel-negros" %}
+        <div class="cover-tag-group">
+          <span class="tg-label">Archive Sources</span>
+          British Colonial Records<br>
+          Spanish Municipal Plans<br>
+          Bacolod City Archive<br>
+          Negros Chronicle<br>
+          1902 Taxation Rolls
+        </div>
+        <div class="cover-tag-group">
+          <span class="tg-label">Classification</span>
+          Comparative Dossier<br>
+          File E5-001
+        </div>
+        {% elif slug == "restitution-246" %}
+        <div class="cover-tag-group">
+          <span class="tg-label">Framework Basis</span>
+          Federal Wage Record<br>
+          Opportunity-Loss Calc<br>
+          246 Years Labor<br>
+          Lloyd Kelly · Architect
+        </div>
+        <div class="cover-tag-group">
+          <span class="tg-label">Bond</span>
+          Policy · Sovereignty
+        </div>
+        {% endif %}
+      </div>
+
+    </div>{# /cover-hero #}
+
+    {# ── FOOTER STRIP ── #}
+    <div class="cover-footer">
+      <span class="cf-pub">E5 Enclave Incorporated</span>
+      <span>A Sovereign Black Institution · Built for the Preservation, Protection and Progression of Black Life and Legacy.</span>
+      <span class="cf-note">Not for Distortion · Not for Erasure</span>
+      <span>Liberty City · MMXXVI</span>
+    </div>
+
+  </div>{# /cover-inner #}
 </header>
 
+{# ── READER LAYOUT — apparatus rail + body ── #}
 <div class="vc-disp-layout">
   <aside class="vc-disp-rail" data-screen-label="apparatus-rail">
     <div class="rail-h">— The Apparatus —</div>
