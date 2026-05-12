@@ -3,6 +3,7 @@ const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 module.exports = function (eleventyConfig) {
   // Passthrough copy
   eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
+  eleventyConfig.addPassthroughCopy({ 'src/gospel': 'gospel' });
   eleventyConfig.addPassthroughCopy('favicon.ico');
   eleventyConfig.addPassthroughCopy('llms.txt');
   eleventyConfig.addPassthroughCopy('staticwebapp.config.json');
