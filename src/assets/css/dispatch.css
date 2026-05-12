@@ -411,3 +411,302 @@
   .vc-disp-endmatter h3 { color: #000 !important; }
   a { color: #000 !important; text-decoration: underline; }
 }
+
+/* ============================================================
+   E5 Enclave — Dispatch Magazine Upgrade
+   Transforms dispatch plate into full ENCLAVE magazine cover.
+   Appended to dispatch.css — all tokens inherit from editorial.css
+   ============================================================ */
+
+/* ===== MAGAZINE COVER PLATE — replaces .vc-disp-plate ===== */
+
+.vc-disp-plate {
+  position: relative;
+  background: #0a0908;
+  color: var(--vc-bone);
+  border-bottom: 0;
+  padding: 0;
+  text-align: left;
+  overflow: hidden;
+  min-height: 88vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+/* Cover image — full bleed with overlay */
+.vc-disp-plate .cover-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.vc-disp-plate .cover-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: brightness(0.42) contrast(1.08) saturate(0.85);
+}
+.vc-disp-plate .cover-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom,
+      rgba(10,9,8,0.72) 0%,
+      rgba(10,9,8,0.18) 30%,
+      rgba(10,9,8,0.10) 55%,
+      rgba(10,9,8,0.75) 80%,
+      rgba(10,9,8,0.96) 100%
+    );
+}
+
+.vc-disp-plate .cover-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 88vh;
+}
+
+/* ── TOP RAIL ── */
+.vc-disp-plate .cover-top-rail {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 16px clamp(24px, 4vw, 56px);
+  border-bottom: 1px solid rgba(244,238,226,0.15);
+  font-family: var(--vc-text);
+  font-size: 9.5px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: rgba(244,238,226,0.45);
+}
+.vc-disp-plate .cover-top-rail .ctr { text-align: center; color: rgba(244,238,226,0.32); }
+.vc-disp-plate .cover-top-rail .rgt { text-align: right; }
+
+/* ── MASTHEAD — ENCLAVE wordmark ── */
+.vc-disp-plate .cover-masthead {
+  padding: 0 clamp(24px, 4vw, 56px);
+  border-bottom: 2px solid rgba(244,238,226,0.18);
+}
+.vc-disp-plate .cover-pub-name {
+  font-family: var(--vc-text);
+  font-size: 9px;
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: rgba(244,238,226,0.4);
+  text-align: center;
+  padding: 10px 0 2px;
+}
+.vc-disp-plate .cover-wordmark {
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  font-weight: 700;
+  font-size: clamp(72px, 16vw, 180px);
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+  color: var(--vc-gold);
+  text-align: center;
+  display: block;
+  padding: 4px 0 4px;
+  text-shadow:
+    0 1px 0 rgba(196,164,104,0.35),
+    0 2px 12px rgba(0,0,0,0.5),
+    0 0 60px rgba(196,164,104,0.06);
+}
+.vc-disp-plate .cover-issue-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px clamp(2px, 1vw, 12px) 12px;
+  border-top: 1px solid rgba(244,238,226,0.13);
+  font-family: var(--vc-text);
+  font-size: 9px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: rgba(244,238,226,0.38);
+}
+.vc-disp-plate .cover-issue-line .seal-badge {
+  width: 44px; height: 44px; flex-shrink: 0;
+}
+
+/* ── HERO BODY ── */
+.vc-disp-plate .cover-hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: end;
+  padding: clamp(28px, 5vw, 60px) clamp(24px, 4vw, 56px);
+}
+@media (max-width: 740px) {
+  .vc-disp-plate .cover-hero { grid-template-columns: 1fr; }
+  .vc-disp-plate .cover-hero-right { display: none; }
+}
+
+.vc-disp-plate .cover-kicker {
+  font-family: var(--vc-text);
+  font-size: 9.5px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--vc-gold-2);
+  margin: 0 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.vc-disp-plate .cover-kicker::after {
+  content: "";
+  flex: 0 0 40px;
+  height: 1px;
+  background: var(--vc-gold-2);
+  opacity: 0.45;
+}
+
+.vc-disp-plate h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: clamp(52px, 9vw, 130px);
+  line-height: 0.91;
+  letter-spacing: -0.025em;
+  margin: 0 0 20px;
+  color: var(--vc-bone);
+  text-shadow: 0 2px 24px rgba(0,0,0,0.4);
+  text-wrap: balance;
+  max-width: 18ch;
+}
+.vc-disp-plate h1 em {
+  font-style: italic;
+  color: var(--vc-gold-2);
+}
+
+.vc-disp-plate .cover-deck {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: clamp(16px, 1.8vw, 22px);
+  line-height: 1.45;
+  color: rgba(244,238,226,0.72);
+  max-width: 48ch;
+  margin: 0 0 24px;
+  font-weight: 400;
+}
+
+/* ── COLOPHON ── */
+.vc-disp-plate .cover-colophon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 28px;
+  align-items: center;
+  padding: 16px 0 0;
+  border-top: 1px solid rgba(244,238,226,0.15);
+  font-family: var(--vc-text);
+  font-size: 9px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: rgba(244,238,226,0.38);
+}
+.vc-disp-plate .cover-colophon em {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: rgba(244,238,226,0.78);
+  margin-top: 3px;
+}
+
+/* ── RIGHT SIDEBAR — evidence tags ── */
+.vc-disp-plate .cover-hero-right {
+  min-width: 180px;
+  max-width: 200px;
+  border-left: 1px solid rgba(244,238,226,0.12);
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-self: center;
+}
+.vc-disp-plate .cover-tag-group {
+  font-family: var(--vc-text);
+  font-size: 9px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: rgba(244,238,226,0.35);
+  line-height: 1.9;
+}
+.vc-disp-plate .cover-tag-group .tg-label {
+  color: var(--vc-gold-2);
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+  font-size: 8.5px;
+  letter-spacing: 0.48em;
+}
+
+/* ── FOOTER STRIP ── */
+.vc-disp-plate .cover-footer {
+  border-top: 1px solid rgba(244,238,226,0.15);
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 20px;
+  align-items: center;
+  padding: 14px clamp(24px, 4vw, 56px);
+  font-family: var(--vc-text);
+  font-size: 8.5px;
+  letter-spacing: 0.44em;
+  text-transform: uppercase;
+  color: rgba(244,238,226,0.32);
+  background: rgba(10,9,8,0.5);
+}
+.vc-disp-plate .cover-footer .cf-pub { color: rgba(244,238,226,0.52); font-weight: 600; }
+.vc-disp-plate .cover-footer .cf-note { color: rgba(196,164,104,0.52); }
+@media (max-width: 600px) {
+  .vc-disp-plate .cover-footer { grid-template-columns: 1fr 1fr; gap: 8px 14px; }
+}
+
+/* ===== TRANSITION into body ===== */
+.vc-disp-plate + .vc-disp-layout { padding-top: 72px; }
+
+/* ===== ORNAMENT RULE — diamond separator ===== */
+.vc-disp-orn-rule {
+  display: flex; align-items: center; gap: 16px;
+  margin: 48px 0; color: var(--vc-rule-2);
+}
+.vc-disp-orn-rule::before,
+.vc-disp-orn-rule::after {
+  content: ""; flex: 1; height: 1px; background: currentColor;
+}
+.vc-disp-orn-rule .mk {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic; font-size: 20px;
+  color: var(--vc-oxblood); line-height: 1;
+}
+
+/* ===== RECORD CARD UPGRADES ===== */
+.vc-record-card {
+  border: 1px solid var(--vc-rule);
+  padding: 32px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.vc-record-card:hover {
+  border-color: var(--vc-oxblood);
+  box-shadow: 0 2px 24px rgba(109,31,32,0.08);
+}
+.vc-record-card .kind {
+  font-family: var(--vc-text);
+  font-size: 9px; letter-spacing: 0.44em;
+  text-transform: uppercase; color: var(--vc-oxblood);
+  margin-bottom: 14px;
+}
+.vc-record-card .title {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400; font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.0; letter-spacing: -0.02em;
+  margin: 0 0 16px; color: var(--vc-ink);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .vc-disp-plate { min-height: 100svh; }
+  .vc-disp-plate .cover-top-rail .ctr { display: none; }
+}
