@@ -1,37 +1,23 @@
 {
-  "$comment": "Azure Static Web Apps config — currently dormant. Primary deploy is GitHub Pages (CNAME e5enclave.com). Re-enable Azure by flipping the trigger in .github/workflows/azure-static-web-apps.yml back to push/pull_request on main.",
   "routes": [
-    { "route": "/farmblock", "redirect": "/programs/lineage-farms/", "statusCode": 301 },
-    { "route": "/farmblock/", "redirect": "/programs/lineage-farms/", "statusCode": 301 },
-    { "route": "/pillars/equality", "redirect": "/pillars/engagement/", "statusCode": 301 },
-    { "route": "/pillars/equality/", "redirect": "/pillars/engagement/", "statusCode": 301 },
-    { "route": "/volunteer", "redirect": "/coalition/apply/", "statusCode": 301 },
-    { "route": "/volunteer/", "redirect": "/coalition/apply/", "statusCode": 301 },
-    { "$comment": "Future: flip /restitution-246 to a 301 to https://restitution246.com when target is content-ready" },
-    { "route": "/api/*", "allowedRoles": ["anonymous"] }
+    { "route": "/black-dragons-initiative-1", "redirect": "/black-dragons-initiative/", "statusCode": 301 },
+    { "route": "/black-dragons-initiative-1/*", "redirect": "/black-dragons-initiative/", "statusCode": 301 },
+    { "route": "/BDI", "redirect": "/black-dragons-initiative/", "statusCode": 301 },
+    { "route": "/bdi", "redirect": "/black-dragons-initiative/", "statusCode": 301 },
+    { "route": "/contact-us", "redirect": "/contact/", "statusCode": 301 },
+    { "route": "/contact-us/*", "redirect": "/contact/", "statusCode": 301 },
+    { "route": "/gospel-of-love", "redirect": "/blog/", "statusCode": 301 },
+    { "route": "/gospel-of-love/*", "redirect": "/blog/", "statusCode": 301 },
+    { "route": "/gospel-of-love-%2Four-blogs", "redirect": "/blog/", "statusCode": 301 },
+    { "route": "/black-dragon-gear", "redirect": "/store/", "statusCode": 301 },
+    { "route": "/black-dragon-gear/*", "redirect": "/store/", "statusCode": 301 },
+    { "route": "/about-e5", "redirect": "/about/", "statusCode": 301 },
+    { "route": "/about-e5/*", "redirect": "/about/", "statusCode": 301 },
+    { "route": "/f/*", "redirect": "/blog/", "statusCode": 301 },
+    { "route": "/e5-blog/*", "redirect": "/blog/", "statusCode": 301 }
   ],
   "navigationFallback": {
     "rewrite": "/404.html",
-    "exclude": [
-      "/assets/*",
-      "/images/*",
-      "/api/*",
-      "/robots.txt",
-      "/sitemap.xml",
-      "/llms.txt",
-      "/favicon.ico",
-      "/CNAME"
-    ]
-  },
-  "responseOverrides": {
-    "404": { "rewrite": "/404.html", "statusCode": 404 }
-  },
-  "globalHeaders": {
-    "X-Frame-Options": "SAMEORIGIN",
-    "X-Content-Type-Options": "nosniff",
-    "Referrer-Policy": "strict-origin-when-cross-origin",
-    "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
-  },
-  "mimeTypes": { ".txt": "text/plain", ".xml": "application/xml" },
-  "platform": { "apiRuntime": "node:18" }
+    "exclude": ["/assets/*", "/*.{css,js,png,jpg,svg,ico,html,xml,json,txt}"]
+  }
 }
