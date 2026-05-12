@@ -42,6 +42,7 @@
     "plausibleDomain": "e5enclave.com"
   },
   "preLaunch": false,
+  "googleVerification": "googled96f21727c9c95d7",
   "ogImage": "/assets/img/og/editorial.png",
   "ogImageOriginal": "/assets/img/og/original.png",
   "themeColor": "#0a0908"
