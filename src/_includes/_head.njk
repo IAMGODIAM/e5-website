@@ -5,6 +5,9 @@
 <link rel="canonical" href="{{ site.url }}{{ page.url }}"/>
 <meta name="theme-color" content="{{ site.themeColor }}"/>
 
+{# Google Search Console Verification #}
+{% if site.googleVerification %}<meta name="google-site-verification" content="{{ site.googleVerification }}"/>{% endif %}
+
 {# Open Graph / Twitter #}
 <meta property="og:type" content="{{ ogType or 'website' }}"/>
 <meta property="og:site_name" content="{{ site.name }}"/>
