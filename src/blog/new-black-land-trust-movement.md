@@ -7,7 +7,7 @@ subtitle: "Between 1910 and today, Black Americans lost 12 million acres of farm
 excerpt: "Between 1910 and today, Black Americans lost 12 million acres of farmland. Community Land Trusts are the legal weapon to take it back."
 date: 2026-04-02
 author: "Israel Lee Armstead"
-authorRole: "President & Chief Visionary"
+authorRole: "President & CVO, E5 Enclave Inc."
 category: "Economic"
 readTime: "20 min read"
 description: "Community land trusts as reparative infrastructure — how Black communities are using land trust models to build permanent, anti-displacement housing and wealth outside the speculative market."
