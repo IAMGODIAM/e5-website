@@ -7,8 +7,13 @@
 </head>
 <body class="{{ bodyClass or '' }}">
   {%- if site.gtmId %}
-  <!-- Google Tag Manager (noscript) -->
+  <!-- Google Tag Manager (noscript) GT-5TG37D4M -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtmId }}"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  {%- endif %}
+  {%- if site.gtm2Id %}
+  <!-- Google Tag Manager 2 (noscript) GT-TW5MMTD8 -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm2Id }}"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   {%- endif %}
