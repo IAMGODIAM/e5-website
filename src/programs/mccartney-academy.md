@@ -10,6 +10,14 @@ breadcrumbs:
   - { label: "Programs", url: "/" }
   - { label: "McCartney Academy" }
 tags: page
+schema:
+  type: EducationalOrganization
+  name: McCartney Academy
+  provider: E5 Enclave Incorporated
+  url: https://e5enclave.com/programs/mccartney-academy/
+  description: McCartney Academy is a lineage-centered private K-12 institution in Liberty City, Miami — equally fluent in STEM, emerging technologies, classical humanities, and the practice of self-governance.
+  educationalLevel: K-12
+  programType: Private Academy
 ---
 
 <p class="first">McCartney Academy is the long horizon of the Enclave's Educational work — a lineage-centered private K–12 institution named in honor of Ralph McCartney, a Liberty City community elder, oral historian, and veteran of decades of displacement resistance whose life of service was honored on the floor of the United States Congress by Congresswoman Carrie Meek. The Academy is the long horizon by design. Schools are not built in budget cycles. They are built in <em>generations.</em></p>
