@@ -1,0 +1,69 @@
+{
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  "name": "E5 Enclave Incorporated",
+  "legalName": "E5 Enclave Incorporated",
+  "alternateName": ["E5 Enclave", "E5 Enclave Inc"],
+  "url": "https://e5enclave.com",
+  "logo": "https://e5enclave.com/assets/img/og/editorial.png",
+  "foundingDate": "2024-06-30",
+  "taxID": "99-3822441",
+  "nonprofitStatus": "Nonprofit501c3",
+  "telephone": "+1-305-967-0200",
+  "email": "contact@e5enclave.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "820 NW 64th Street",
+    "addressLocality": "Miami",
+    "addressRegion": "FL",
+    "postalCode": "33150",
+    "addressCountry": "US"
+  },
+  "description": "E5 Enclave Incorporated is a Black-led 501(c)(3) nonprofit think tank building cooperative economics, food sovereignty, private education, and civic leadership infrastructure in Liberty City, Miami, Florida.",
+  "areaServed": [
+    {"@type": "City", "name": "Miami"},
+    {"@type": "State", "name": "Florida"},
+    {"@type": "Country", "name": "United States"}
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Israel Lee Armstead",
+    "jobTitle": "President & Chief Visionary Officer"
+  },
+  "knowsAbout": [
+    "Black community development",
+    "cooperative economics",
+    "food sovereignty",
+    "urban agriculture",
+    "civic leadership pipeline",
+    "reparative economics",
+    "Black education",
+    "community data sovereignty"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "E5 Enclave Programs",
+    "itemListElement": [
+      {"@type": "Offer", "name": "FarmBlock — Urban Agriculture & Food Sovereignty", "url": "https://e5enclave.com/farmblock/"},
+      {"@type": "Offer", "name": "McCartney Academy — Private K-12 Education", "url": "https://e5enclave.com/programs/mccartney-academy/"},
+      {"@type": "Offer", "name": "Block to the Boardroom — Civic Leadership Pipeline", "url": "https://e5enclave.com/programs/block-to-the-boardroom/"},
+      {"@type": "Offer", "name": "Black Dragons Initiative — Data & Media", "url": "https://e5enclave.com/black-dragons-initiative/"}
+    ]
+  },
+  "sameAs": [
+    "https://twitter.com/wearegodweare",
+    "https://www.tiktok.com/@e5blackdragons",
+    "https://www.linkedin.com/company/e5enclave",
+    "https://www.guidestar.org/profile/99-3822441",
+    "https://www.charitynavigator.org/ein/993822441",
+    "https://dos.myflorida.com/sunbiz/search/conceptsearch/",
+    "https://sam.gov/entity/H8NGXEYE2HH8"
+  ],
+  "identifier": [
+    {"@type": "PropertyValue", "propertyID": "EIN", "value": "99-3822441"},
+    {"@type": "PropertyValue", "propertyID": "UEI", "value": "H8NGXEYE2HH8"},
+    {"@type": "PropertyValue", "propertyID": "CAGE", "value": "07E88"},
+    {"@type": "PropertyValue", "propertyID": "SAM_EXPIRATION", "value": "2026-08-04"},
+    {"@type": "PropertyValue", "propertyID": "FLORIDA_DOC_NUMBER", "value": "N24000007976"}
+  ]
+}
