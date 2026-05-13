@@ -14,7 +14,12 @@
     { "route": "/about-e5", "redirect": "/about/", "statusCode": 301 },
     { "route": "/about-e5/*", "redirect": "/about/", "statusCode": 301 },
     { "route": "/f/*", "redirect": "/blog/", "statusCode": 301 },
-    { "route": "/e5-blog/*", "redirect": "/blog/", "statusCode": 301 }
+    { "route": "/e5-blog/*", "redirect": "/blog/", "statusCode": 301 },
+    { "route": "/support", "redirect": "/contact/", "statusCode": 301 },
+    { "route": "/support/*", "redirect": "/contact/", "statusCode": 301 },
+    { "route": "/m/login", "redirect": "/coalition/apply/", "statusCode": 301 },
+    { "route": "/m/create-account", "redirect": "/coalition/apply/", "statusCode": 301 },
+    { "route": "/m/*", "redirect": "/coalition/apply/", "statusCode": 301 }
   ],
   "navigationFallback": {
     "rewrite": "/404.html",
