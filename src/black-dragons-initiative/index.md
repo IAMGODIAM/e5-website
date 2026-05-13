@@ -1,10 +1,10 @@
 ---
 layout: page
 permalink: /black-dragons-initiative/
-title: "Black Dragons Initiative"
+title: "Black Dragons Initiative — Black Youth Technology & Economic Power"
 eyebrow: "Flagship under Engagement — E5 Enclave"
 deck: "<em>The vanguard arm. Culture, technology, and economic power — forged from the lineage.</em>"
-description: "The Black Dragons Initiative (BDI) is E5 Enclave's sovereign cultural and technology vanguard — producing media, data, merch, and movement infrastructure for Black liberation."
+description: "The Black Dragons Initiative is E5 Enclave's cultural and technology vanguard — producing data, media, and movement infrastructure for Black economic power and liberation from Liberty City, Miami."
 tags: page
 ---
 
