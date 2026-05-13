@@ -7,7 +7,7 @@ subtitle: "23.5 million Americans live in food-apartheid zones. Blockchain-enabl
 excerpt: "23.5 million Americans live in food-apartheid zones. Blockchain-enabled community agriculture offers a path out — not through charity, but through sovereignty."
 date: 2026-04-02
 author: "Israel Lee Armstead"
-authorRole: "President & Chief Visionary"
+authorRole: "President & CVO, E5 Enclave Inc."
 category: "FarmBlock"
 readTime: "17 min read"
 description: "Food deserts are not natural. They are manufactured by policy. This dispatch traces the path from food apartheid — the structural denial of nutrition — to food sovereignty in Black communities."
