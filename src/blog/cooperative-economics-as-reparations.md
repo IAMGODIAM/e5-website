@@ -7,7 +7,7 @@ subtitle: "While the reparations debate stalls in Congress, Black communities ar
 excerpt: "While the reparations debate stalls in Congress, Black communities are building reparative economic systems through cooperative agriculture — one harvest at a time."
 date: 2026-04-02
 author: "Israel Lee Armstead"
-authorRole: "President & Chief Visionary"
+authorRole: "President & CVO, E5 Enclave Inc."
 category: "Economic"
 readTime: "18 min read"
 description: "How Black urban cooperative farms build reparative economic systems — while the reparations debate stalls in Congress, communities build the solidarity economy one harvest at a time."
