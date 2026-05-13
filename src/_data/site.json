@@ -2,7 +2,7 @@
   "name": "E5 Enclave",
   "fullName": "E5 Enclave Incorporated",
   "tagline": "A lineage-led think tank comprised of a Coalition of the Willing.",
-  "credo": "A lineage-led think tank \u00b7 comprised of a Coalition of the Willing.",
+  "credo": "A lineage-led think tank · comprised of a Coalition of the Willing.",
   "url": "https://e5enclave.com",
   "established": {
     "label": "Founded",
@@ -12,11 +12,11 @@
   },
   "publicAnnouncement": {
     "label": "Public Announcement",
-    "date": "Juneteenth \u00b7 <em>MMXXVI</em>"
+    "date": "Juneteenth · <em>MMXXVI</em>"
   },
   "edenLaunch": {
     "label": "Eden Launch",
-    "date": "17 February \u00b7 <em>MMXXVII</em>"
+    "date": "17 February · <em>MMXXVII</em>"
   },
   "colophon": "Set against the calendar of the lineage. The dates carry their own genealogy. <span class=\"center\">The center holds.</span>",
   "founder": {
@@ -36,11 +36,16 @@
     "memberOrgs": 38,
     "pillars": 5
   },
-  "social": {},
+  "social": {
+    "twitter": "https://twitter.com/wearegodweare",
+    "tiktok": "https://tiktok.com/@e5blackdragons"
+  },
   "analytics": {
     "plausible": false,
     "plausibleDomain": "e5enclave.com"
   },
+  "gtmId": "PENDING_GTM_ID",
+  "ga4Id": "PENDING_GA4_ID",
   "preLaunch": false,
   "googleVerification": "googled96f21727c9c95d7",
   "ogImage": "/assets/img/og/editorial.png",
