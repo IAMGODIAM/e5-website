@@ -14,6 +14,38 @@ layout: base
 <article class="vc-prose reveal">
 {{ content | safe }}
 </article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ title | safe }}",
+  "description": "{{ description | safe }}",
+  "datePublished": "{{ date | isoDate }}",
+  "dateModified": "{{ date | isoDate }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ author }}",
+    "jobTitle": "{{ authorRole }}"
+  },
+  "publisher": {
+    "@type": "NGO",
+    "name": "E5 Enclave Incorporated",
+    "url": "https://e5enclave.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://e5enclave.com/assets/img/og/og-default.png"
+    }
+  },
+  "url": "{{ site.url }}{{ page.url }}",
+  "image": "{{ feature_image or site.url + '/assets/img/og/og-default.png' }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ site.url }}{{ page.url }}"
+  }
+}
+</script>
+
 <section class="vc-contrib" aria-label="More dispatches">
   <div class="vc-contrib-rubric">— Continue Reading —</div>
   <h2 class="vc-contrib-h">More <em>dispatches.</em></h2>
