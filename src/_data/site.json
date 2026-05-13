@@ -44,11 +44,13 @@
     "plausible": false,
     "plausibleDomain": "e5enclave.com"
   },
-  "gtmId": "PENDING_GTM_ID",
-  "ga4Id": "PENDING_GA4_ID",
+  "gtmId": "GT-5TG37D4M",
+  "ga4Id": "G-05PYDYP5S0",
   "preLaunch": false,
   "googleVerification": "googled96f21727c9c95d7",
   "ogImage": "/assets/img/og/editorial.png",
   "ogImageOriginal": "/assets/img/og/original.png",
-  "themeColor": "#0a0908"
+  "themeColor": "#0a0908",
+  "gadsId": "AW-16672489240",
+  "gtm2Id": "GT-TW5MMTD8"
 }
