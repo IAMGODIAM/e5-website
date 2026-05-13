@@ -38,9 +38,28 @@
 {% if extraCss %}{% for href in extraCss %}<link rel="stylesheet" href="{{ href }}"/>{% endfor %}{% endif %}
 {% if layout == 'dispatch' or page.url and '/record/' in page.url and page.url != '/record/' %}<link rel="stylesheet" href="/assets/css/dispatch.css"/>{% endif %}
 
-{# ── TASK 1: Google Tag Manager — SEO Sprint 2026-05-13 ── #}
+{# ── Analytics Suite — GA4 + GTM + Google Ads — installed 2026-05-13 ── #}
+
+{# GA4 Global Site Tag (gtag.js) — G-05PYDYP5S0 #}
+{% if site.ga4Id %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4Id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ site.ga4Id }}', { anonymize_ip: true });
+  {% if site.gadsId %}gtag('config', '{{ site.gadsId }}');{% endif %}
+</script>
+{% endif %}
+
+{# Google Tag Manager — GT-5TG37D4M #}
 {% if site.gtmId %}
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","{{ site.gtmId }}");</script>
+{% endif %}
+
+{# Google Tag Manager 2 — GT-TW5MMTD8 #}
+{% if site.gtm2Id %}
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","{{ site.gtm2Id }}");</script>
 {% endif %}
 
 {# ── TASK 8: Organization Schema (homepage only) ── #}
