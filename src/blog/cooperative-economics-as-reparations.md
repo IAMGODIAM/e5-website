@@ -2,7 +2,7 @@
 layout: post
 tags: [post]
 permalink: /blog/cooperative-economics-as-reparations/
-title: "Cooperative Economics as Reparations: How Black Urban Farms Are Building the Solidarity Economy From the Ground Up"
+title: "Cooperative Economics as Reparations — E5 Enclave Blog"
 subtitle: "While the reparations debate stalls in Congress, Black communities are building reparative economic systems through cooperative agriculture — one harvest at a time."
 excerpt: "While the reparations debate stalls in Congress, Black communities are building reparative economic systems through cooperative agriculture — one harvest at a time."
 date: 2026-04-02
@@ -10,7 +10,7 @@ author: "Israel Lee Armstead"
 authorRole: "President & Chief Visionary"
 category: "Economic"
 readTime: "18 min read"
-description: "While the reparations debate stalls in Congress, Black communities are building reparative economic systems through cooperative agriculture — one harvest at a time."
+description: "How Black urban cooperative farms build reparative economic systems — while the reparations debate stalls in Congress, communities build the solidarity economy one harvest at a time."
 breadcrumbs:
   - { label: "Dispatches", url: "/blog/" }
   - { label: "Cooperative Economics as Reparations: How Black Urban Farms …" }

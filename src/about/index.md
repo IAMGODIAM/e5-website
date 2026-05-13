@@ -1,10 +1,10 @@
 ---
 layout: page
 permalink: /about/
-title: "About E5 Enclave"
+title: "About E5 Enclave — Black-Led Nonprofit Think Tank | Liberty City Miami"
 eyebrow: "E5 Enclave Incorporated · Est. 2 June 2024 · Liberty City, Miami"
 deck: "<em>A lineage-led think tank comprised of a Coalition of the Willing.</em>"
-description: "E5 Enclave Incorporated is a Miami 501(c)(3) nonprofit think tank building the institutions, evidence systems, and community infrastructure needed to advance the future of the Black lineage."
+description: "E5 Enclave Incorporated is a Miami 501(c)(3) nonprofit think tank building the institutions, evidence systems, and community infrastructure to advance Black sovereignty. Founded Liberty City, 2024."
 tags: page
 ---
 

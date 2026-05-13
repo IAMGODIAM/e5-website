@@ -1,10 +1,10 @@
 ---
 layout: page
 permalink: /restitution-246/
-title: "Restitution <em>246.</em>"
+title: "Restitution 246 — E5 Enclave Reparations Campaign"
 eyebrow: "A Campaign under Emancipated"
 deck: "A disciplined wage-loss and opportunity-loss framework for the 246 years of stolen labor — anchored to the Craemer (2015) methodology and the Lloyd Kelly framework."
-description: "Restitution 246: a disciplined wage-loss and opportunity-loss campaign for the 246 years of stolen labor under American chattel slavery. The Five Questions, the methodology, the mechanism."
+description: "Restitution 246: the E5 Enclave reparations campaign. Wage-loss accounting, the Lloyd Kelly method, 246 years of documented stolen labor — one disciplined lane of the larger reparations question."
 breadcrumbs:
   - { label: "Restitution 246" }
 ---

@@ -5,7 +5,7 @@ slug: restitution-246
 order: 3
 numeral: "III"
 kind: "Campaign Framework"
-title: "Restitution 246"
+title: "Restitution 246 — Reparations Framework | E5 Enclave Record"
 deck: "A framework in five questions. The Lloyd Kelly accounting model paired with the Craemer (2015) wage-hour methodology — one disciplined lane of the reparations question."
 byline: "Lloyd Kelly"
 date: 2026-04-22
@@ -13,7 +13,7 @@ readTime: "28 min"
 external: "https://sue-app-ec34c434.base44.app/DocReparations"
 bibPath: "/assets/bib/restitution-246.bib"
 status: "Open Record"
-description: "A framework in five questions. The Lloyd Kelly accounting model paired with the Craemer (2015) wage-hour methodology — one disciplined lane of the reparations question."
+description: "Restitution 246: a five-question reparations framework using the Lloyd Kelly method and Craemer (2015) wage-hour methodology. One disciplined lane of the reparations question."
 breadcrumbs:
   - { label: "The Record", url: "/record/" }
   - { label: "Restitution 246" }

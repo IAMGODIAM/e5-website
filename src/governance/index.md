@@ -1,10 +1,10 @@
 ---
 layout: scaffold
 permalink: /governance/
-title: "Governance"
+title: "Governance — E5 Enclave | Structure & Operating Doctrine"
 eyebrow: "Awaits Chairman direction"
 deck: "The Council of Elders and affinity-leaders structure will be published when convened."
-description: "The governance structure of E5 Enclave Incorporated — Council of Elders and affinity-leaders structure forthcoming."
+description: "E5 Enclave governance structure — the Coalition model, board composition, cooperative ownership doctrine, and the institutional architecture built to outlast any one leader or cycle."
 breadcrumbs:
   - { label: "Governance" }
 ---

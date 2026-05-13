@@ -2,9 +2,9 @@
 layout: pillar
 permalink: /pillars/economic/
 slug: economic
-title: "Economic"
+title: "Black Economic Empowerment — Cooperative Ownership & Power | E5 Enclave"
 deck: "<em>from survival to power.</em>"
-description: "The Economic pillar of E5 Enclave: business formation, government contracting, cooperative ownership, and circular economics."
+description: "E5 Enclave's Economic pillar: business formation, government contracting, cooperative ownership, and circular economics building Black economic power from Liberty City, Miami."
 breadcrumbs:
   - { label: "Pillars", url: "/pillars/" }
   - { label: "Economic" }

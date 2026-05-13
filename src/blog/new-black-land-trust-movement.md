@@ -2,7 +2,7 @@
 layout: post
 tags: [post]
 permalink: /blog/new-black-land-trust-movement/
-title: "The New Black Land Trust Movement: Why Community Land Ownership Is the Most Radical Act of Self-Determination in 2026"
+title: "The New Black Land Trust Movement — E5 Enclave Blog"
 subtitle: "Between 1910 and today, Black Americans lost 12 million acres of farmland. Community Land Trusts are the legal weapon to take it back."
 excerpt: "Between 1910 and today, Black Americans lost 12 million acres of farmland. Community Land Trusts are the legal weapon to take it back."
 date: 2026-04-02
@@ -10,7 +10,7 @@ author: "Israel Lee Armstead"
 authorRole: "President & Chief Visionary"
 category: "Economic"
 readTime: "20 min read"
-description: "Between 1910 and today, Black Americans lost 12 million acres of farmland. Community Land Trusts are the legal weapon to take it back."
+description: "Community land trusts as reparative infrastructure — how Black communities are using land trust models to build permanent, anti-displacement housing and wealth outside the speculative market."
 breadcrumbs:
   - { label: "Dispatches", url: "/blog/" }
   - { label: "The New Black Land Trust Movement: Why Community Land Owners…" }

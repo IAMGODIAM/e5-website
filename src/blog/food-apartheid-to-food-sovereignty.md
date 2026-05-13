@@ -2,7 +2,7 @@
 layout: post
 tags: [post]
 permalink: /blog/food-apartheid-to-food-sovereignty/
-title: "From Food Apartheid to Food Sovereignty: How Community-Owned Agriculture Is Building Black Economic Power"
+title: "From Food Apartheid to Food Sovereignty — E5 Enclave Blog"
 subtitle: "23.5 million Americans live in food-apartheid zones. Blockchain-enabled community agriculture offers a path out — not through charity, but through sovereignty."
 excerpt: "23.5 million Americans live in food-apartheid zones. Blockchain-enabled community agriculture offers a path out — not through charity, but through sovereignty."
 date: 2026-04-02
@@ -10,7 +10,7 @@ author: "Israel Lee Armstead"
 authorRole: "President & Chief Visionary"
 category: "FarmBlock"
 readTime: "17 min read"
-description: "23.5 million Americans live in food-apartheid zones. Blockchain-enabled community agriculture offers a path out — not through charity, but through sovereignty."
+description: "Food deserts are not natural. They are manufactured by policy. This dispatch traces the path from food apartheid — the structural denial of nutrition — to food sovereignty in Black communities."
 breadcrumbs:
   - { label: "Dispatches", url: "/blog/" }
   - { label: "From Food Apartheid to Food Sovereignty: How Community-Owned…" }

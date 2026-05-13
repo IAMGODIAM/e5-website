@@ -2,10 +2,10 @@
 layout: program
 permalink: /programs/block-to-the-boardroom/
 slug: block-to-the-boardroom
-title: "Block to the Boardroom"
+title: "Block to the Boardroom — Civic Leadership Pipeline | E5 Enclave"
 eyebrow: "Flagship under Engagement"
 deck: "<em>organized neighborhoods become organized capacity.</em>"
-description: "Block to the Boardroom — the flagship program under the Engagement pillar. A structured pipeline from neighborhood organizing to policy authorship to board service."
+description: "Block to the Boardroom is E5 Enclave's civic leadership pipeline — from neighborhood organizing to policy authorship to board service. Building Black civic power in Liberty City and beyond."
 breadcrumbs:
   - { label: "Programs", url: "/" }
   - { label: "Block to the Boardroom" }

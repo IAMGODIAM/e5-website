@@ -2,9 +2,9 @@
 layout: pillar
 permalink: /pillars/emancipated/
 slug: emancipated
-title: "Emancipated"
+title: "Reparations & the Unfinished Obligations of Freedom | E5 Enclave"
 deck: "<em>the unfinished obligations of freedom.</em>"
-description: "The Emancipated pillar of E5 Enclave: the unfinished obligations of freedom. Documented obligations become policy. Campaign: Restitution 246."
+description: "E5 Enclave's Emancipated pillar — documented reparations frameworks, wage-loss accounting, and policy tools for the unfinished obligations of American freedom. Campaign: Restitution 246."
 breadcrumbs:
   - { label: "Pillars", url: "/pillars/" }
   - { label: "Emancipated" }

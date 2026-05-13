@@ -2,9 +2,9 @@
 layout: pillar
 permalink: /pillars/educational/
 slug: educational
-title: "Educational"
+title: "Black Education & Lineage-Centered Learning | E5 Enclave Miami"
 deck: "<em>private education for a sovereign lineage.</em>"
-description: "The Educational pillar of E5 Enclave: private education, STEM, emerging technologies, leadership, and lineage-centered curriculum. Flagship: McCartney Academy."
+description: "E5 Enclave's Educational pillar — private K–12 education rooted in the lineage. STEM, emerging technologies, civic literacy, and self-governance. Flagship: McCartney Academy, Liberty City."
 breadcrumbs:
   - { label: "Pillars", url: "/pillars/" }
   - { label: "Educational" }

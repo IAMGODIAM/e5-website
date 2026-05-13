@@ -2,9 +2,9 @@
 layout: pillar
 permalink: /pillars/environmental/
 slug: environmental
-title: "Environmental"
+title: "Food Sovereignty & Urban Agriculture — E5 Enclave Miami"
 deck: "<em>food sovereignty as infrastructure.</em>"
-description: "The Environmental pillar of E5 Enclave: food sovereignty, land stewardship, agriculture, and anti-food-apartheid infrastructure. Flagship: Lineage Farms · FarmBlock."
+description: "E5 Enclave's Environmental pillar — food sovereignty, cooperative urban agriculture, and anti-food-apartheid infrastructure for Black communities. Flagship: Lineage Farms · FarmBlock."
 breadcrumbs:
   - { label: "Pillars", url: "/pillars/" }
   - { label: "Environmental" }

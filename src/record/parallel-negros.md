@@ -5,7 +5,7 @@ slug: parallel-negros
 order: 1
 numeral: "I"
 kind: "Think Tank Dispatch"
-title: "Parallel Negros"
+title: "Parallel Negros — Think Tank Dispatch | E5 Enclave Record"
 deck: "A foundational comparative dispatch — examining the parallel architectures that shape the lineage's path through American history, and the institutional remedies they require."
 byline: "Israel Lee"
 date: 2026-04-22
@@ -13,7 +13,7 @@ readTime: "32 min"
 external: "https://sue-app-ec34c434.base44.app/DocParallelNegros"
 bibPath: "/assets/bib/parallel-negros.bib"
 status: "Open Record"
-description: "A foundational comparative dispatch — examining the parallel architectures that shape the lineage's path through American history, and the institutional remedies they require."
+description: "Parallel Negros: a foundational comparative dispatch examining the parallel architectures of Black American structural distress and the institutional remedies they require."
 breadcrumbs:
   - { label: "The Record", url: "/record/" }
   - { label: "Parallel Negros" }

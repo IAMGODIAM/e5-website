@@ -1,10 +1,10 @@
 ---
 layout: page
 permalink: /press/
-title: "Press &amp; <em>media kit.</em>"
+title: "Press — E5 Enclave | Media Inquiries & Press Kit"
 eyebrow: "For Editors, Journalists, and Researchers"
 deck: "Press contact, mission boilerplate, citation style, downloadable brand assets, and the Enclave's standing offer to make experts available for substantive coverage."
-description: "Press kit for E5 Enclave — boilerplate, citation guidance, contact, and brand assets."
+description: "E5 Enclave press resources — interview requests, citations, media kit, and press contact. For journalists, researchers, and substantive coverage of the work."
 breadcrumbs:
   - { label: "Press" }
 ---

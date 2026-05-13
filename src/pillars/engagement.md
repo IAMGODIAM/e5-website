@@ -2,9 +2,9 @@
 layout: pillar
 permalink: /pillars/engagement/
 slug: engagement
-title: "Engagement"
+title: "Civic Power & Community Organizing — E5 Enclave Liberty City"
 deck: "<em>from the block to the boardroom.</em>"
-description: "The Engagement pillar of E5 Enclave: civic education, public policy literacy, media, storytelling, and mobilization. Flagship: Block to the Boardroom."
+description: "E5 Enclave's Engagement pillar — civic education, policy literacy, media, and organized community power from Liberty City to the national stage. Flagship: Block to the Boardroom."
 breadcrumbs:
   - { label: "Pillars", url: "/pillars/" }
   - { label: "Engagement" }

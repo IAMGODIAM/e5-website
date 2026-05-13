@@ -5,7 +5,7 @@ slug: measure-the-wound
 order: 2
 numeral: "II"
 kind: "Foundational Record"
-title: "Measure the Wound"
+title: "Measure the Wound — BDI Sovereign Dataset | E5 Enclave Record"
 deck: "Documentation of the harms we repair. What is measured cannot be dismissed — this is the evidentiary foundation against which every E5 program is built."
 byline: "Israel Lee"
 date: 2026-04-22
@@ -13,7 +13,7 @@ readTime: "54 min"
 external: "https://sue-app-ec34c434.base44.app/DocMeasureWound"
 bibPath: "/assets/bib/measure-the-wound.bib"
 status: "Open Record"
-description: "Documentation of the harms we repair. What is measured cannot be dismissed — this is the evidentiary foundation against which every E5 program is built."
+description: "Measure the Wound: A Sovereign Empirical Record of Black American Structural Distress, 1991–2024. 1,855 data points. 8 pillars. 50 cities. CC0 — free, no restrictions."
 breadcrumbs:
   - { label: "The Record", url: "/record/" }
   - { label: "Measure the Wound" }

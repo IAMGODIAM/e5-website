@@ -2,10 +2,10 @@
 layout: program
 permalink: /programs/lineage-farms/
 slug: lineage-farms
-title: "Lineage Farms · FarmBlock"
+title: "Lineage Farms · FarmBlock — Cooperative Urban Agriculture | Miami"
 eyebrow: "Flagship under Environmental"
 deck: "<em>cooperative urban agriculture, on-chain.</em>"
-description: "Lineage Farms · FarmBlock — the flagship program under the Environmental pillar. Cooperative urban agriculture coupled with blockchain-anchored governance."
+description: "Lineage Farms · FarmBlock is E5 Enclave's cooperative urban agriculture program — community-owned farms, blockchain-anchored governance, and food sovereignty infrastructure in Liberty City, Miami."
 breadcrumbs:
   - { label: "Programs", url: "/" }
   - { label: "Lineage Farms · FarmBlock" }

@@ -23,6 +23,10 @@
     {
       "label": "Apply",
       "url": "/coalition/apply/"
+    },
+    {
+      "label": "Volunteer",
+      "url": "/volunteer/"
     }
   ]
 }
