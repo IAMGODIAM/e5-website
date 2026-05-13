@@ -9,6 +9,13 @@ description: "Lineage Farms · FarmBlock is E5 Enclave's cooperative urban agric
 breadcrumbs:
   - { label: "Programs", url: "/" }
   - { label: "Lineage Farms · FarmBlock" }
+schema:
+  type: NGO
+  name: Lineage Farms — FarmBlock Cooperative Agriculture
+  provider: E5 Enclave Incorporated
+  url: https://e5enclave.com/programs/lineage-farms/
+  description: Lineage Farms is E5 Enclave cooperative urban agriculture program — community-owned farms, blockchain-anchored governance, and food sovereignty infrastructure in Liberty City, Miami.
+  programType: Cooperative Agriculture
 ---
 
 <p class="first">Lineage Farms · FarmBlock is the flagship program under the Environmental pillar — and the most architecturally ambitious of the Enclave's founding programs. It pairs *cooperative urban agriculture* (the ancient practice) with a *blockchain-anchored governance layer* (the new tool). Land is community-held. Labor is community-recorded. Distribution is community-governed. *Every contribution counts. Every distribution is recorded. The ledger does not forget.*</p>
