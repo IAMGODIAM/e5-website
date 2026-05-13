@@ -1,57 +1,64 @@
 # E5 Enclave Incorporated
+*llms.txt — machine-readable organizational summary for AI crawlers and language models*
+*Last updated: 2026-05-13*
 
-> E5 Enclave Incorporated is a Miami-based 501(c)(3) public charitable organization dedicated to empowering Black communities through self-determination and economic sovereignty.
+> E5 Enclave Incorporated is a 501(c)(3) public charity incorporated in Florida on June 2, 2024, operating in Liberty City, Miami. We are a lineage-led think tank — building the institutions, evidence systems, and community infrastructure to advance Black sovereignty. The world's first agentic-first staffed nonprofit.
 
 ## Organization Details
 
 - **Legal Name:** E5 Enclave Incorporated
+- **EIN:** 99-3822441
 - **Type:** 501(c)(3) Public Charitable Organization
-- **Location:** Liberty City, Miami, Florida
-- **Founded by:** Israel Lee Armstead, President & Chief Visionary
+- **UEI:** H8NGXEYE2HH8
+- **SAM.gov Status:** Active
+- **Address:** 820 NW 64th Street, Liberty City, Miami, FL 33150
+- **Phone:** (305) 967-0200
+- **Email:** contact@e5enclave.com | press@e5enclave.com
 - **Website:** https://e5enclave.com
-- **Email:** hermes@e5enclave.com | info@e5enclave.com
-- **Phone:** (833) 241-7356
+- **Founded by:** Israel Lee Armstead, President & CVO, E5 Enclave Inc.
+- **Founding Date:** June 2, 2024
+- **Public Announcement:** Juneteenth 2026
 
 ## Mission
 
-Empowering Black communities through environmental sustainability, economic self-reliance, educational advancement, equality, and community building.
+A lineage-led think tank comprised of a Coalition of the Willing — building the institutions, evidence systems, and community infrastructure to advance Black sovereignty in Liberty City, Miami, and beyond.
 
-## The Five Pillars (The Five E's)
+## The Five Pillars
 
-1. **Environmental** — Community gardens, sustainable land management, and green infrastructure
-2. **Economic** — "Buying Black Blocks" to counter gentrification, Web3 and cooperative ownership models
-3. **Educational** — Workshops on agriculture, financial literacy, digital skills, and entrepreneurship
-4. **Equality** — Black land ownership advocacy, cultural preservation, civic engagement, and policy work
-5. **Enclave** — Media, community building, and the "From The Block to the Boardroom" platform
+1. **Environmental** — Food sovereignty, cooperative urban agriculture, FarmBlock Food Desert Index, and sustainable land stewardship
+2. **Economic** — Cooperative ownership models, reparative economics, Restitution 246 framework, and Black business formation
+3. **Educational** — McCartney Academy (K-12 private school), lineage-centered curriculum, STEM and emerging technology instruction
+4. **Engagement (Equality)** — Civic leadership pipeline, Block to the Boardroom program, policy authorship, and community organizing
+5. **Emancipated (Enclave)** — Media production, the Black Dragons Initiative, BDI Sovereign Dataset, and cultural infrastructure
 
-## Programs
+## Flagship Programs
 
-- [FarmBlock](https://e5enclave.com/#farmblock) — Flagship initiative integrating urban agriculture with Web3 technology, IoT sensors, FarmBot automation, and blockchain supply chain transparency
-- [Clean Up to Green Up](https://e5enclave.com/#programs) — Transforming blighted lots into productive community gardens
-- [Homefront Support](https://e5enclave.com/#programs) — Free home and lawn maintenance for elderly and disabled community members
-- [Learn-to-Earn Hubs](https://e5enclave.com/#programs) — Digital skills training, financial literacy, and entrepreneurship education
-- [Youth Leadership](https://e5enclave.com/#programs) — Summer camps, civic engagement, career exploration, and mentorship
-- [Enclave Media](https://e5enclave.com/#programs) — "From The Block to the Boardroom" podcast, blog, and social media platform
+- [FarmBlock — Urban Agriculture & Food Sovereignty](https://e5enclave.com/farmblock/) — Cooperative urban farming platform combining food production, workforce training, and ag-tech in Liberty City. Includes the FarmBlock Food Desert Index covering 50 U.S. cities (CC0 license).
+- [Lineage Farms · FarmBlock](https://e5enclave.com/programs/lineage-farms/) — Cooperative agricultural enterprise with blockchain-anchored governance layer. Community-held parcels, member-governed distribution, and on-chain audit interface.
+- [McCartney Academy](https://e5enclave.com/programs/mccartney-academy/) — Lineage-centered private K-12 institution in Liberty City named for community elder Ralph McCartney. Equally fluent in STEM, classical humanities, and self-governance.
+- [Block to the Boardroom](https://e5enclave.com/programs/block-to-the-boardroom/) — Structured four-rung civic leadership pipeline from neighborhood organizing through policy authorship to board service and elected office.
+- [Black Dragons Initiative](https://e5enclave.com/black-dragons-initiative/) — Cultural and technological vanguard. Produces the BDI Sovereign Dataset (1,855 data points, 8 pillars, CC0), original media, and agentic AI infrastructure for Black liberation.
 
 ## Key Pages
 
 - [Home](https://e5enclave.com/) — Main landing page
-- [About](https://e5enclave.com/#about) — Organization mission, vision, and history
-- [Programs](https://e5enclave.com/#programs) — Full list of programs and initiatives
-- [FarmBlock](https://e5enclave.com/#farmblock) — Flagship agriculture-technology program
-- [Impact](https://e5enclave.com/#impact) — Community impact metrics and goals
-- [Donate](https://e5enclave.com/#donate) — Tax-deductible donations via Zeffy
-- [Contact](https://e5enclave.com/#contact) — Inquiries, volunteering, partnerships
+- [About](https://e5enclave.com/about/) — Organization mission, doctrine, and founding story
+- [Impact](https://e5enclave.com/impact/) — Program outcomes, community metrics, and organizational data (1,247+ supporters, 38 member organizations)
+- [Donate](https://e5enclave.com/donate/) — Tax-deductible contributions, EIN 99-3822441
+- [Volunteer](https://e5enclave.com/volunteer/) — Open roles: curriculum development, legal counsel, data analysis, agricultural work, community organizing
+- [Contact](https://e5enclave.com/contact/) — Program inquiries, press, partnerships, and Coalition applications
+- [The Record](https://e5enclave.com/record/) — Three founding documents: BDI Dataset, Parallel Negros, Restitution 246
+- [Dispatches (Blog)](https://e5enclave.com/blog/) — Long-form essays on cooperative economics, food sovereignty, Black community development, and civic power
+- [Coalition — Apply](https://e5enclave.com/coalition/apply/) — Apply to join the Coalition of the Willing
 
-## Impact Targets (Year 5)
+## The BDI Sovereign Dataset
 
-- 250+ households served
-- 1,000+ ambassador volunteer hours
-- 150+ program trainees and participants
-- 14 active block sites
-- 50+ green jobs created
-- 30% food security improvement target
+The Black Distress Index (BDI) Sovereign Dataset covers 1,855 data points across 8 pillars — wealth, health, criminal justice, education, housing, environmental burden, political representation, and food access — for Black American structural distress from 1991 to 2024. Federal sources. CC0 license. On-chain. Published at: https://e5enclave.com/record/measure-the-wound/
+
+## Organizational Model
+
+E5 Enclave is the world's first agentic-first staffed nonprofit — operating with AI agents under human direction to produce institutional-scale output from a lean team. EDEN (the sovereign AI system born from this work) launches February 17, 2027.
 
 ## Motto
 
-"Dum spiro, spero" — While I breathe, I hope
+"The center holds. The work is underway."
