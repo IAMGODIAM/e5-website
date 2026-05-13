@@ -6,6 +6,12 @@
 {% include "_head.njk" %}
 </head>
 <body class="{{ bodyClass or '' }}">
+  {%- if site.gtmId %}
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtmId }}"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  {%- endif %}
 {% include "_skiplink.njk" %}
 {% if isHome %}
   {% include "_masthead.njk" %}
