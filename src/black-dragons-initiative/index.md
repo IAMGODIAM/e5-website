@@ -6,6 +6,13 @@ eyebrow: "Flagship under Engagement — E5 Enclave"
 deck: "<em>The vanguard arm. Culture, technology, and economic power — forged from the lineage.</em>"
 description: "The Black Dragons Initiative is E5 Enclave's cultural and technology vanguard — BDI Sovereign Dataset, media production, agentic AI infrastructure, and economic activation for Black liberation."
 tags: page
+schema:
+  type: NGO
+  name: Black Dragons Initiative
+  provider: E5 Enclave Incorporated
+  url: https://e5enclave.com/black-dragons-initiative/
+  description: The Black Dragons Initiative is E5 Enclave cultural and technological vanguard — producing the BDI Sovereign Dataset, original media, agentic AI infrastructure, and economic activation for Black liberation.
+  programType: Cultural and Technology Initiative
 ---
 
 <p class="first">The Black Dragons Initiative is the cultural and technological vanguard of E5 Enclave Incorporated. It is not a program. It is not a campaign. It is the forward edge of the lineage's institutional capacity — producing the media, the data instruments, the merch, and the movement infrastructure that turns structural analysis into cultural power.</p>
