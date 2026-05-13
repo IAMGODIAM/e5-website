@@ -5,12 +5,12 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {%- for p in collections.all -%}
-{%- if p.url and p.url != '/404.html' and p.data.eleventyExcludeFromCollections != true %}
+{%- if p.url and p.url != "/404.html" and p.data.eleventyExcludeFromCollections != true %}
   <url>
     <loc>{{ site.url }}{{ p.url }}</loc>
     <lastmod>{{ p.date | isoDate }}</lastmod>
-    <changefreq>{% if p.url == '/' %}weekly{% else %}monthly{% endif %}</changefreq>
-    <priority>{% if p.url == '/' %}1.0{% elif '/blog/' in p.url or '/record/' in p.url %}0.8{% else %}0.7{% endif %}</priority>
+    <changefreq>{% if p.url == "/" %}daily{% elif "/blog/" in p.url or "/record/" in p.url %}weekly{% elif "/programs/" in p.url or "/farmblock" in p.url or "/black-dragons" in p.url or "/impact" in p.url or "/donate" in p.url %}weekly{% else %}monthly{% endif %}</changefreq>
+    <priority>{% if p.url == "/" %}1.0{% elif "/blog/" in p.url or "/record/" in p.url %}0.9{% elif "/programs/" in p.url or "/farmblock" in p.url or "/black-dragons" in p.url %}0.85{% elif "/impact" in p.url or "/donate" in p.url or "/volunteer" in p.url or "/contact" in p.url or "/about" in p.url %}0.8{% else %}0.7{% endif %}</priority>
   </url>
 {%- endif -%}
 {%- endfor %}
