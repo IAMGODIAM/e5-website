@@ -6,6 +6,15 @@ eyebrow: "E5 Enclave Incorporated · Est. 2 June 2024 · Liberty City, Miami"
 deck: "<em>A lineage-led think tank comprised of a Coalition of the Willing.</em>"
 description: "E5 Enclave Incorporated is a Miami 501(c)(3) nonprofit think tank building the institutions, evidence systems, and community infrastructure to advance Black sovereignty. Founded Liberty City, 2024."
 tags: page
+schema:
+  type: NGO
+  name: E5 Enclave Incorporated
+  provider: E5 Enclave Incorporated
+  url: https://e5enclave.com/about/
+  description: E5 Enclave Incorporated is a Miami 501(c)(3) nonprofit think tank building cooperative economics, food sovereignty, private education, and civic leadership infrastructure in Liberty City, Miami. Founded 2024.
+  taxID: 99-3822441
+  founderName: Israel Lee Armstead
+  founderRole: President & CVO
 ---
 
 <p class="first">E5 Enclave Incorporated is a 501(c)(3) public charity incorporated in the state of Florida on June 2, 2024, in Liberty City, Miami. We are a lineage-led think tank — convening builders, educators, farmers, technologists, advocates, and community leaders to repair, rise, and govern the lineage's future.</p>
