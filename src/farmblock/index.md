@@ -7,6 +7,14 @@ eyebrow: "Flagship under Environmental — E5 Enclave"
 deck: "<em>Cooperative urban farming, workforce development, and ag-tech in Liberty City.</em>"
 description: "FarmBlock is E5 Enclave's urban agriculture and food sovereignty program in Liberty City, Miami. Cooperative farms, workforce training, and the FarmBlock Food Desert Index — measuring food apartheid across 50 U.S. cities."
 tags: page
+schema:
+  type: NGO
+  name: FarmBlock — Urban Agriculture and Food Sovereignty
+  provider: E5 Enclave Incorporated
+  url: https://e5enclave.com/farmblock/
+  description: FarmBlock is E5 Enclave Incorporated flagship Environmental program — cooperative urban farming, food sovereignty infrastructure, workforce development, and the FarmBlock FDI Dataset covering 50 U.S. cities.
+  programType: Community Development Program
+  programPrerequisites: Liberty City residents and Coalition members eligible; no prior experience required
 ---
 
 <p class="first">FarmBlock is E5 Enclave's flagship Environmental program — a cooperative urban farming platform combining food production, workforce training, and agricultural technology in Liberty City, Miami. FarmBlock turns vacant land into sovereign food infrastructure. It turns food deserts into food systems. It turns community members into farmers, technologists, and cooperative owners.</p>
