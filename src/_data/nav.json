@@ -1,36 +1,12 @@
 {
   "primary": [
-    {
-      "label": "Doctrine",
-      "url": "/doctrine/"
-    },
-    {
-      "label": "Pillars",
-      "url": "/pillars/"
-    },
-    {
-      "label": "BDI",
-      "url": "/black-dragons-initiative/"
-    },
-    {
-      "label": "The Record",
-      "url": "/record/"
-    },
-    {
-      "label": "Impact",
-      "url": "/impact/"
-    },
-    {
-      "label": "Coalition",
-      "url": "/coalition/"
-    },
-    {
-      "label": "Apply",
-      "url": "/coalition/apply/"
-    },
-    {
-      "label": "Volunteer",
-      "url": "/volunteer/"
-    }
+    { "label": "Programs", "url": "/programs/" },
+    { "label": "Doctrine", "url": "/doctrine/" },
+    { "label": "Pillars", "url": "/pillars/" },
+    { "label": "BDI", "url": "/black-dragons-initiative/" },
+    { "label": "The Record", "url": "/record/" },
+    { "label": "Impact", "url": "/impact/" },
+    { "label": "Coalition", "url": "/coalition/" },
+    { "label": "Volunteer", "url": "/volunteer/" }
   ]
 }
