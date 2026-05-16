@@ -12,115 +12,260 @@ breadcrumbs:
   <p class="vc-page-deck">What E5 is, how we work, how the Coalition operates, how to support, and how to apply.</p>
 </header>
 
-<article class="vc-prose reveal">
+<style>
+.faq-section { max-width: 860px; margin: 0 auto; padding: 0 56px 24px; }
+.faq-category { font-family: var(--vc-text); font-size: 9.5px; letter-spacing: 0.42em; text-transform: uppercase; color: var(--vc-oxblood); font-weight: 600; padding: 48px 0 20px; border-top: 1.5px solid var(--vc-ink); margin-top: 16px; }
+.faq-category:first-of-type { border-top: none; padding-top: 24px; }
+details.faq-item { border-bottom: 1px solid var(--vc-rule-2); }
+details.faq-item summary {
+  font-family: var(--vc-display);
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 400;
+  line-height: 1.3;
+  padding: 20px 40px 20px 0;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  color: var(--vc-ink);
+}
+details.faq-item summary::-webkit-details-marker { display: none; }
+details.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--vc-text);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--vc-oxblood);
+  transition: transform 0.2s ease;
+  line-height: 1;
+}
+details.faq-item[open] summary::after { content: "−"; }
+details.faq-item summary:hover { color: var(--vc-oxblood); }
+.faq-answer {
+  font-family: var(--vc-display);
+  font-size: clamp(15px, 1.8vw, 17px);
+  line-height: 1.7;
+  color: var(--vc-ink-3);
+  padding: 0 40px 24px 0;
+  max-width: 720px;
+}
+.faq-answer p { margin-bottom: 14px; }
+.faq-answer a { color: var(--vc-oxblood); border-bottom: 1px solid var(--vc-rule-2); text-decoration: none; }
+.faq-answer a:hover { border-color: var(--vc-oxblood); }
+.faq-answer strong { color: var(--vc-ink); font-weight: 600; }
+.faq-cta-band {
+  background: var(--vc-bone-2);
+  border-top: 1.5px solid var(--vc-ink);
+  border-bottom: 1.5px solid var(--vc-ink);
+  padding: 64px 56px;
+  max-width: 100%;
+  margin: 48px 0 0;
+  text-align: center;
+}
+.faq-cta-band h2 { font-family: var(--vc-display); font-size: clamp(28px, 4vw, 42px); font-weight: 400; margin-bottom: 16px; }
+.faq-cta-band p { font-family: var(--vc-display); font-size: 18px; color: var(--vc-ink-3); max-width: 560px; margin: 0 auto 32px; }
+.faq-cta-row { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.faq-newsletter { max-width: 860px; margin: 0 auto; padding: 48px 56px 80px; }
+.faq-newsletter h3 { font-family: var(--vc-display); font-size: clamp(22px, 3vw, 30px); font-weight: 400; margin-bottom: 12px; }
+.faq-newsletter p { font-family: var(--vc-display); font-size: 16px; color: var(--vc-ink-3); margin-bottom: 24px; line-height: 1.6; }
+.newsletter-row { display: flex; gap: 12px; max-width: 480px; }
+.newsletter-row input[type="email"] {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid var(--vc-rule);
+  background: var(--vc-bone);
+  font-family: var(--vc-display);
+  font-size: 16px;
+  color: var(--vc-ink);
+}
+.newsletter-row input[type="email"]:focus { border-color: var(--vc-oxblood); outline: none; }
+@media (max-width: 640px) {
+  .faq-section, .faq-newsletter { padding: 0 24px 24px; }
+  .faq-cta-band { padding: 48px 24px; }
+  .newsletter-row { flex-direction: column; }
+}
+</style>
 
-## What is E5 Enclave?
+<div class="faq-section reveal">
 
-E5 Enclave Incorporated is a 501(c)(3) Lineage-based Think Tank — a publication of record, a coordinating institution, and a Coalition of the Willing. We convene Black-led organizations, individual builders, partner institutions, and aligned coalitions to repair, rise, and govern the lineage's future.
+  <div class="faq-category">About E5 Enclave</div>
 
-Founded Juneteenth, MMXXVI, in Liberty City, Florida. EIN: 99-3822441.
+  <details class="faq-item">
+    <summary>What is E5 Enclave?</summary>
+    <div class="faq-answer">
+      <p>E5 Enclave Incorporated is a 501(c)(3) lineage-led think tank — a publication of record, a coordinating institution, and a Coalition of the Willing. We convene Black-led organizations, individual builders, partner institutions, and aligned coalitions to repair, rise, and govern the lineage's future.</p>
+      <p>Founded June 30, 2024 in Liberty City, Miami. EIN: 99-3822441. Headquartered at 820 NW 64th Street — inside the community we are building for.</p>
+    </div>
+  </details>
 
-## What is FarmBlock?
+  <details class="faq-item">
+    <summary>What does "lineage-led" mean?</summary>
+    <div class="faq-answer">
+      <p>It means the institution is built by and for the descendants of the African diaspora in America — the lineage that bore the weight of chattel slavery and its ongoing structural consequences. Leadership, ownership, governance, and benefit flow to the lineage first.</p>
+      <p>Coalition allies strengthen the work. They do not govern it. The center holds.</p>
+    </div>
+  </details>
 
-[FarmBlock](/programs/lineage-farms/) is the blockchain-anchored governance layer of our flagship Environmental program, *Lineage Farms*. It pairs cooperative urban agriculture with a transparent, member-governed ledger — every contribution recorded, every distribution rule member-authored, every audit interface open to the membership.
+  <details class="faq-item">
+    <summary>What are the Five Pillars?</summary>
+    <div class="faq-answer">
+      <p>E5 Enclave's work is organized across five pillars — each one addressing a structural dimension of the harm and its remedy:</p>
+      <p><strong>Economic</strong> — cooperative ownership, Black business development, credit access.<br/>
+      <strong>Environmental</strong> — food sovereignty, urban agriculture, the FarmBlock FDI dataset.<br/>
+      <strong>Educational</strong> — the McCartney Academy initiative at Charles R. Drew K-8.<br/>
+      <strong>Engagement</strong> — the Black Dragons Initiative, media, data, cultural infrastructure.<br/>
+      <strong>Emancipated</strong> — Restitution 246, the reparations framework.</p>
+      <p>The structure of the harm is the structure of the remedy. <a href="/pillars/">Read the Five Pillars →</a></p>
+    </div>
+  </details>
 
-## What is Restitution 246?
+  <details class="faq-item">
+    <summary>What is an "enclave economy"?</summary>
+    <div class="faq-answer">
+      <p>An enclave economy is a geographically concentrated community that builds economic systems serving its own members first — circulating wealth, ownership, and institutional power within the community before exporting value outward. <a href="/blog/what-is-an-enclave-economy/">Read the full explainer →</a></p>
+    </div>
+  </details>
 
-[Restitution 246](/restitution-246/) is the Enclave's lead campaign under the Emancipated pillar — a disciplined wage-loss and opportunity-loss framework for the 246 years of stolen labor under American chattel slavery. Anchored to the Craemer (2015) wage-hour methodology and the Lloyd Kelly framework. R246 is *one disciplined lane* of the larger reparations question; it does not claim to settle the whole.
+  <div class="faq-category">Programs</div>
 
-## How does the Coalition work?
+  <details class="faq-item">
+    <summary>What is Lineage Farms · FarmBlock?</summary>
+    <div class="faq-answer">
+      <p><a href="/programs/lineage-farms/">Lineage Farms · FarmBlock</a> is E5 Enclave's flagship Environmental program — cooperative urban farming in Liberty City paired with a blockchain-anchored governance layer. Land is community-held. Labor is community-recorded. Distribution is community-governed. The FarmBlock Food Desert Index (FDI) measures food access across 50 U.S. cities. CC0 license. Free to anyone working in food justice.</p>
+    </div>
+  </details>
 
-The Coalition follows a **33/17/50** model: 33% institutional members (Black-led organizations), 17% individual builders, and 50% reserved seats for partner institutions and aligned coalitions. Member organizations remain *sovereign* — we coordinate, we do not absorb. [Read more about the Coalition →](/coalition/)
+  <details class="faq-item">
+    <summary>What is the McCartney Academy?</summary>
+    <div class="faq-answer">
+      <p>The McCartney Academy is E5 Enclave's educational initiative at Charles R. Drew K-8 in Liberty City — named for Ralph McCartney, Liberty City elder and community steward. It targets the pipeline gap between K-8 and high school that has historically routed Black students in Liberty City away from higher education. The program is in development. <a href="/pillars/educational/">Read more →</a></p>
+    </div>
+  </details>
 
-## How can I support the work?
+  <details class="faq-item">
+    <summary>What is the Black Dragons Initiative?</summary>
+    <div class="faq-answer">
+      <p>The BDI is E5 Enclave's cultural and technological vanguard — producing the BDI Sovereign Dataset (1,855 data points, 8 pillars, CC0), original media, agentic AI infrastructure, and economic activation tools for Black liberation. Not a campaign. The forward edge of the lineage's institutional capacity. <a href="/black-dragons-initiative/">Read more →</a></p>
+    </div>
+  </details>
 
-- **Donate** to the founding fund: [/donate/](/donate/)
-- **Apply** to the Coalition: [/coalition/apply/](/coalition/apply/)
-- **Buy** through the store: [/store/](/store/) (proceeds support programs)
-- **Partner** as an institution or coalition: [/contact/](/contact/)
-- **Cite** our records in your work — and keep us honest
+  <details class="faq-item">
+    <summary>How do I join a program?</summary>
+    <div class="faq-answer">
+      <p>Each program page names its own application path. The fastest single point of entry is the <a href="/coalition/apply/">Coalition application</a> — note in the message which program(s) you're interested in (McCartney Academy, Lineage Farms · FarmBlock, Block to the Boardroom, BDI). A member of the Council responds personally within five business days.</p>
+    </div>
+  </details>
 
-## Are donations tax-deductible?
+  <div class="faq-category">The Coalition</div>
 
-E5 Enclave Incorporated is a 501(c)(3) public charitable organization (EIN: 99-3822441). Donations made through our official channels are generally tax-deductible to the extent permitted by law. Please consult your tax advisor for guidance specific to your situation. We provide donation receipts for tax purposes.
+  <details class="faq-item">
+    <summary>How does the Coalition work?</summary>
+    <div class="faq-answer">
+      <p>The Coalition follows a <strong>33/17/50 model</strong>: 33% institutional members (Black-led organizations), 17% individual builders, and 50% reserved for partner institutions and aligned coalitions. Member organizations remain sovereign — E5 coordinates, does not absorb.</p>
+      <p>Coalition members gain access to the collective research base, the coordination network, program partnership opportunities, and the institutional record. <a href="/coalition/">Read more about the Coalition →</a></p>
+    </div>
+  </details>
 
-## How do I join a program?
+  <details class="faq-item">
+    <summary>Who can apply to the Coalition?</summary>
+    <div class="faq-answer">
+      <p>Four tracks: <strong>Black-led organizations</strong> aligned with one or more pillars; <strong>individual builders</strong> contributing research, technology, or community capacity; <strong>partner institutions</strong> — universities, foundations, coalitions — that amplify without governing; and <strong>funders</strong> providing institutional support. <a href="/coalition/apply/">Apply here →</a></p>
+    </div>
+  </details>
 
-Each [program page](/coalition/) names its own application path. The fastest single point of entry is the [Coalition application](/coalition/apply/) — note in the message which program(s) you're interested in (McCartney Academy, Lineage Farms · FarmBlock, Block to the Boardroom).
+  <details class="faq-item">
+    <summary>How do organizations formally partner with E5?</summary>
+    <div class="faq-answer">
+      <p>Black-led organizations apply through the <a href="/coalition/apply/">Coalition application</a>. Partner institutions, foundations, and coalitions reach out via <a href="mailto:contact@e5enclave.com">contact@e5enclave.com</a> — we route to the right desk and respond within five business days.</p>
+    </div>
+  </details>
 
-## How do I get on the press list?
+  <div class="faq-category">Giving &amp; Support</div>
 
-For interview requests, citations, and substantive coverage, write [press@e5enclave.com](mailto:press@e5enclave.com). The full [press kit](/press/) lives at /press/.
+  <details class="faq-item">
+    <summary>Are donations tax-deductible?</summary>
+    <div class="faq-answer">
+      <p>Yes. E5 Enclave Incorporated is a 501(c)(3) public charitable organization (EIN: 99-3822441). Donations made through our official channels are generally tax-deductible to the extent permitted by law. We issue donation receipts for every contribution. Consult your tax advisor for guidance specific to your situation.</p>
+    </div>
+  </details>
 
-## How do organizations partner with E5?
+  <details class="faq-item">
+    <summary>Can I designate my gift to a specific program?</summary>
+    <div class="faq-answer">
+      <p>Yes. In the checkout notes field, designate your gift to McCartney Academy, Lineage Farms · FarmBlock, Block to the Boardroom, or The Record (research and publication). Undesignated gifts go to the area of greatest need as determined by the Council.</p>
+    </div>
+  </details>
 
-Black-led organizations apply to the Coalition through the [application form](/coalition/apply/). Partner institutions, foundations, and aligned coalitions reach out via [contact@e5enclave.com](mailto:contact@e5enclave.com) — we route to the right desk and respond within five business days.
+  <details class="faq-item">
+    <summary>How does monthly giving work?</summary>
+    <div class="faq-answer">
+      <p>Monthly donors are the backbone of a publication of record. Select "Monthly" on the <a href="/donate/">donate page</a>. Your card is charged on the same date each month. Pause or cancel at any time — no penalty, no questions. Monthly donors receive our annual report and program updates by email.</p>
+    </div>
+  </details>
 
-## Where can I read the founding documents?
+  <details class="faq-item">
+    <summary>Are there other ways to give?</summary>
+    <div class="faq-answer">
+      <p>Yes — stock transfers, donor-advised funds (DAF), wire transfer, and institutional gifts are all welcome. Write <a href="mailto:contact@e5enclave.com">contact@e5enclave.com</a> with "Gift" in the subject line. We respond within two business days. For government and institutional grants, see our <a href="/contracts-grants/">Contracts &amp; Grants</a> page.</p>
+    </div>
+  </details>
 
-The three founding documents — *Parallel Negros*, *Measure the Wound*, and *Restitution 246* — are published on the Enclave's reading surface and indexed in [The Record](/record/).
+  <div class="faq-category">Institutional &amp; Press</div>
 
----
+  <details class="faq-item">
+    <summary>How do I get on the press list?</summary>
+    <div class="faq-answer">
+      <p>For interview requests, citations, and substantive coverage: <a href="mailto:press@e5enclave.com">press@e5enclave.com</a>. The full press kit lives at <a href="/press/">/press/</a>.</p>
+    </div>
+  </details>
 
-## Still have a question?
+  <details class="faq-item">
+    <summary>Where can I read the founding documents?</summary>
+    <div class="faq-answer">
+      <p>The three founding documents — <em>Parallel Negros</em>, <em>Measure the Wound</em>, and <em>Restitution 246</em> — are published on the Enclave's reading surface and indexed in <a href="/record/">The Record</a>.</p>
+    </div>
+  </details>
 
-Send a message via [our contact page](/contact/), or write directly to [contact@e5enclave.com](mailto:contact@e5enclave.com). We respond within five business days.
+  <details class="faq-item">
+    <summary>Is E5 Enclave registered as a federal contractor?</summary>
+    <div class="faq-answer">
+      <p>Yes. E5 Enclave Incorporated is registered in SAM.gov and eligible for federal contracts and grants. Our federal identifiers: <strong>UEI: H8NGXEYE2HH8 · CAGE: 07E88 · EIN: 99-3822441</strong>. SAM.gov registration expires August 4, 2026. See our <a href="/contracts-grants/">Contracts &amp; Grants</a> page for full procurement information.</p>
+    </div>
+  </details>
 
-</article>
+</div>
+
+<div class="faq-cta-band reveal">
+  <h2>Ready to <em>support the work?</em></h2>
+  <p>Every dollar funds Black community development in Liberty City — research, farms, schools, and the infrastructure the lineage has been owed.</p>
+  <div class="faq-cta-row">
+    <a href="/donate/" class="vc-cta-primary">Donate now →</a>
+    <a href="/coalition/apply/" class="vc-cta-link">Apply to the Coalition →</a>
+  </div>
+</div>
+
+<div class="faq-newsletter reveal">
+  <h3>Stay in the record.</h3>
+  <p>Dispatches from the Coalition — long-form essays, program updates, and research from the board. No noise. No more than twice a month.</p>
+  <form class="newsletter-row" data-vc-form data-subject="newsletter-signup" data-endpoint="/api/contact" novalidate>
+    <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address"/>
+    <button type="submit" class="vc-cta-primary" style="white-space:nowrap;">Join the record →</button>
+  </form>
+  <p style="font-size:13px; color:var(--vc-muted); margin-top:12px; font-family:var(--vc-text);">No spam. Unsubscribe anytime. Your information is never sold.</p>
+</div>
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is E5 Enclave?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "E5 Enclave Incorporated is a 501(c)(3) lineage-based think tank — a publication of record, a coordinating institution, and a Coalition of the Willing. We convene Black-led organizations, individual builders, partner institutions, and aligned coalitions to repair, rise, and govern the lineage's future. Founded Juneteenth, MMXXVI, in Liberty City, Florida. EIN: 99-3822441."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is FarmBlock?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "FarmBlock is E5 Enclave's flagship Environmental program — a cooperative urban farming platform combining food production, workforce training, and agricultural technology in Liberty City, Miami."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does the Coalition work?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The Coalition follows a 33/17/50 model: 33% institutional members (Black-led organizations), 17% individual builders, and 50% reserved seats for partner institutions and aligned coalitions. Member organizations remain sovereign — we coordinate, we do not absorb."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are donations tax-deductible?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "E5 Enclave Incorporated is a 501(c)(3) public charitable organization (EIN: 99-3822441). Donations made through our official channels are generally tax-deductible to the extent permitted by law."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How can I support E5 Enclave?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can donate to the founding fund at e5enclave.com/donate/, apply to the Coalition at e5enclave.com/coalition/apply/, volunteer your skills at e5enclave.com/volunteer/, or purchase from the store at e5enclave.com/store/."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do organizations partner with E5?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Black-led organizations apply to the Coalition through the application form at e5enclave.com/coalition/apply/. Partner institutions, foundations, and aligned coalitions reach out via contact@e5enclave.com — we route to the right desk and respond within five business days."
-      }
-    }
+    {"@type": "Question", "name": "What is E5 Enclave?", "acceptedAnswer": {"@type": "Answer", "text": "E5 Enclave Incorporated is a 501(c)(3) lineage-led think tank — a publication of record, a coordinating institution, and a Coalition of the Willing. Founded June 30, 2024 in Liberty City, Miami. EIN: 99-3822441."}},
+    {"@type": "Question", "name": "Are donations tax-deductible?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. E5 Enclave Incorporated is a 501(c)(3) public charitable organization (EIN: 99-3822441). Donations are generally tax-deductible."}},
+    {"@type": "Question", "name": "How does the Coalition work?", "acceptedAnswer": {"@type": "Answer", "text": "The Coalition follows a 33/17/50 model: 33% institutional members (Black-led organizations), 17% individual builders, and 50% reserved for partner institutions. Member organizations remain sovereign."}},
+    {"@type": "Question", "name": "Is E5 Enclave registered as a federal contractor?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. UEI: H8NGXEYE2HH8, CAGE: 07E88, EIN: 99-3822441. SAM.gov registration active through August 4, 2026."}}
   ]
 }
 </script>
