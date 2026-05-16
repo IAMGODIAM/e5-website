@@ -10,7 +10,7 @@ deck: "Documentation of the harms we repair. What is measured cannot be dismisse
 byline: "Israel Lee"
 date: 2026-04-22
 readTime: "54 min"
-external: "https://sue-app-ec34c434.base44.app/DocMeasureWound"
+external: "https://e5enclave.com/record/measure-the-wound/"
 bibPath: "/assets/bib/measure-the-wound.bib"
 status: "Open Record"
 description: "Measure the Wound: A Sovereign Empirical Record of Black American Structural Distress, 1991–2024. 1,855 data points. 8 pillars. 50 cities. CC0 — free, no restrictions."
