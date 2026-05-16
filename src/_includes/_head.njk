@@ -68,12 +68,17 @@
 {
   "@context": "https://schema.org",
   "@type": "NGO",
-  "name": "{{ site.fullName }}",
-  "alternateName": "{{ site.name }}",
-  "url": "{{ site.url }}",
-  "logo": "{{ site.url }}/assets/img/og/editorial.png",
-  "foundingDate": "2024-06-02",
-  "description": "{{ site.tagline }}",
+  "name": "E5 Enclave Incorporated",
+  "alternateName": ["E5 Enclave", "E5", "IAMGODIAM"],
+  "url": "https://e5enclave.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://e5enclave.com/assets/img/og/editorial.png",
+    "width": 1200,
+    "height": 630
+  },
+  "foundingDate": "2024-06-30",
+  "description": "E5 Enclave Incorporated is a 501(c)(3) lineage-led think tank building Black economic sovereignty, food justice, education, and community power from Liberty City, Miami.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "820 NW 64th Street",
@@ -83,17 +88,62 @@
     "addressCountry": "US"
   },
   "telephone": "+18332417356",
-  "email": "{{ site.contact.primary }}",
-  "taxID": "{{ site.ein }}",
+  "email": "contact@e5enclave.com",
+  "taxID": "99-3822441",
   "nonprofitStatus": "Nonprofit501c3",
+  "legalName": "E5 Enclave Incorporated",
+  "areaServed": {
+    "@type": "Place",
+    "name": "Liberty City, Miami, Florida"
+  },
+  "knowsAbout": [
+    "Black economic sovereignty",
+    "Cooperative economics",
+    "Food sovereignty",
+    "Reparations",
+    "Enclave economy",
+    "Community development",
+    "Agentic AI for nonprofits"
+  ],
   "founder": {
     "@type": "Person",
-    "name": "Israel Lee Armstead"
+    "name": "Israel Lee Armstead",
+    "jobTitle": "President & Chief Visionary Officer",
+    "url": "https://www.linkedin.com/in/israel-lee-armstead-a262b3244"
+  },
+  "employee": {
+    "@type": "Person",
+    "name": "Israel Lee Armstead",
+    "jobTitle": "President & Chief Visionary Officer"
   },
   "sameAs": [
     "https://twitter.com/wearegodweare",
-    "https://www.tiktok.com/@e5blackdragons"
+    "https://www.tiktok.com/@e5blackdragons",
+    "https://www.linkedin.com/in/israel-lee-armstead-a262b3244",
+    "https://github.com/IAMGODIAM",
+    "https://sam.gov/entity/H8NGXEYE2HH8"
   ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "E5 Enclave",
+  "url": "https://e5enclave.com",
+  "description": "E5 Enclave Incorporated — a lineage-led think tank building Black economic sovereignty from Liberty City, Miami.",
+  "publisher": {
+    "@type": "NGO",
+    "name": "E5 Enclave Incorporated"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://e5enclave.com/blog/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
 }
 </script>
 {% endif %}
