@@ -1,0 +1,8 @@
+{
+  "name": "e5-netlify-functions",
+  "version": "1.0.0",
+  "description": "E5 Enclave Netlify Functions — divine equivalent of Azure Functions",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}
