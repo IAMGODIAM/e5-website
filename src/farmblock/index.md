@@ -108,3 +108,44 @@ Secondary participants are the academic and research institutions, ag-tech compa
 **Download the FDI Dataset** — CC0, free, no restrictions: [/record/measure-the-wound/](/record/measure-the-wound/)
 
 **Volunteer** — soil technicians, data analysts, community organizers, cooperative legal advisors: [/volunteer/](/volunteer/)
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "FarmBlock Food Desert Index (FDI) — Sovereign Community Dataset",
+  "description": "The FarmBlock Food Desert Index measures food access, community distress, and agricultural capacity across 50 U.S. cities. Eight pillars, CC0 license, sourced entirely from federal data (USDA, CDC, U.S. Census). Produced by E5 Enclave Incorporated.",
+  "url": "https://e5enclave.com/farmblock/",
+  "identifier": "farmblock-fdi-v2-2026",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "creator": {
+    "@type": "NGO",
+    "name": "E5 Enclave Incorporated",
+    "url": "https://e5enclave.com"
+  },
+  "publisher": {
+    "@type": "NGO",
+    "name": "E5 Enclave Incorporated"
+  },
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-05-16",
+  "keywords": ["food desert", "food sovereignty", "food apartheid", "community distress", "Black communities", "urban agriculture", "FDI", "USDA", "CDC", "enclave economy"],
+  "spatialCoverage": {
+    "@type": "Place",
+    "name": "United States — 50 cities"
+  },
+  "variableMeasured": [
+    "Food access index",
+    "Economic distress score",
+    "Health burden index",
+    "Agricultural capacity score",
+    "Community wealth gap",
+    "Infrastructure access",
+    "Educational attainment gap",
+    "Civic participation index"
+  ],
+  "isAccessibleForFree": true,
+  "usageInfo": "CC0 — freely available to any person, organization, or AI working in Black liberation. No paywall. No access request required."
+}
+</script>
