@@ -1,7 +1,7 @@
 ---
 layout: base
 title: "BLM Grassroots Miami — E5 Enclave Coalition Brief | E5 Enclave"
-description: "E5 Enclave's strategic brief for BLM Grassroots Miami — five priorities, $160K+ in near-term grant opportunities, and a partnership framework for the next chapter of Black civic power in Miami."
+description: "E5 Enclave Incorporated's strategic brief for BLM Grassroots Miami — five priorities and a partnership framework for the next chapter of Black civic power in Miami."
 permalink: /coalition/blm-grassroots-miami/
 breadcrumbs:
   - { label: "The Coalition", url: "/coalition/" }
@@ -30,8 +30,7 @@ breadcrumbs:
       <li><span class="n">i.</span><a href="#overview">Overview</a></li>
       <li><span class="n">ii.</span><a href="#priorities">Five Priorities</a></li>
       <li><span class="n">iii.</span><a href="#grants">Grant Opportunities</a></li>
-      <li><span class="n">iv.</span><a href="#infrastructure">Infrastructure</a></li>
-      <li><span class="n">v.</span><a href="#next-steps">Next Steps</a></li>
+      <li><span class="n">iv.</span><a href="#infrastructure">E5 Infrastructure</a></li>
     </ol>
     <div style="margin-top:32px; padding-top:24px; border-top:1px solid var(--vc-rule-2);">
       <a href="/coalition/" class="vc-cta-link" style="font-size:10px;">← The Coalition</a>
@@ -41,7 +40,7 @@ breadcrumbs:
   <article class="vc-disp-body">
 
     <h2 id="overview">Overview</h2>
-    <p class="first">E5 Enclave Incorporated is a lineage-led think tank and 501(c)(3) public charity operating from Liberty City, Miami — the same corridor BLM Grassroots Miami has organized for years. This brief responds directly to the five priorities raised by Dr. Melina Abdullah and outlines how E5's evidence systems, grant pipeline, and agentic infrastructure can serve as a coordination layer for BLM Grassroots Miami's next chapter.</p>
+    <p class="first">E5 Enclave Incorporated is a lineage-led think tank and 501(c)(3) public charity operating from Liberty City, Miami — the same corridor BLM Grassroots Miami has organized for years. This brief outlines how E5's evidence systems, grant pipeline, and civic infrastructure can serve as a coordination layer for BLM Grassroots Miami's next chapter.</p>
     <p>This is not a proposal for E5 to lead. It is a proposal for a coordinated, sovereign partnership — each organization doing what it does best, in the same direction, at the same time.</p>
 
     <hr/>
@@ -58,7 +57,7 @@ breadcrumbs:
     <p>E5's <em>Measure the Wound</em> dataset documents 1,855 data points across 8 structural pillars — including carceral state metrics by city. Miami's carceral data is in the record. We can produce city-specific reports, policy briefs, and testimony-ready evidence packages on request.</p>
 
     <h3>iv. Political Power &amp; Civic Infrastructure</h3>
-    <p>E5 holds a NationBuilder-compatible contact database of over 200,000 civic-engaged contacts across South Florida. This infrastructure, combined with BLM Grassroots Miami's ground network, creates a coordinated civic mobilization capacity that neither organization has alone.</p>
+    <p>E5 maintains robust civic engagement infrastructure and coalition relationships across multiple regions. This capacity, combined with BLM Grassroots Miami's ground network, creates coordinated civic mobilization that neither organization has alone.</p>
 
     <h3>v. Healing &amp; Wellness for the Movement</h3>
     <p>The Block to the Boardroom pillar addresses intergenerational trauma through economic mobility programs. E5's coalition framework explicitly names healing as an institutional responsibility — not an afterthought. We are open to co-designing programming with BLM Grassroots Miami's wellness leadership.</p>
@@ -66,7 +65,7 @@ breadcrumbs:
     <hr/>
 
     <h2 id="grants">Grant Opportunities — Near-Term Pipeline</h2>
-    <p>E5's grant intelligence system has identified <strong>$160,000+ in near-term, low-competition grant opportunities</strong> directly aligned with BLM Grassroots Miami's priorities. These are not aspirational — they are actionable within 90 days with the right partnership structure.</p>
+    <p>E5's grant intelligence system has identified <strong>$160,000+ in near-term, low-competition grant opportunities</strong> directly aligned with BLM Grassroots Miami's priorities. These are actionable within 90 days with the right partnership structure.</p>
 
     <div style="background:var(--vc-bone-2); border:1.5px solid var(--vc-rule-2); border-left:3px solid var(--vc-oxblood); padding:28px 32px; margin:32px 0;">
       <div style="font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-oxblood); font-weight:600; margin-bottom:16px;">Priority Targets</div>
@@ -79,7 +78,7 @@ breadcrumbs:
       </ul>
     </div>
 
-    <p>Full grant intelligence reports — including application windows, officer contacts, and competitive positioning — are available to coalition partners upon formal engagement.</p>
+    <p>Full grant intelligence reports — including application windows and competitive positioning — are available to coalition partners upon formal engagement.</p>
 
     <hr/>
 
@@ -88,16 +87,10 @@ breadcrumbs:
       <li><strong>Evidence systems</strong> — <em>Measure the Wound</em> dataset, city-level reports, policy briefs on demand</li>
       <li><strong>Grant intelligence</strong> — active pipeline monitoring, LOI drafting, submission support</li>
       <li><strong>Land &amp; food sovereignty</strong> — FarmBlock site analysis, FDI mapping, municipal engagement</li>
-      <li><strong>Civic contact database</strong> — 200,000+ South Florida contacts, NationBuilder-compatible</li>
-      <li><strong>Agentic research staff</strong> — institutional-scale output from a lean, AI-augmented team</li>
+      <li><strong>Civic engagement capacity</strong> — coalition relationships and civic infrastructure across multiple regions</li>
+      <li><strong>Research &amp; analysis</strong> — institutional-scale output with rigorous sourcing and documentation</li>
       <li><strong>501(c)(3) standing</strong> — EIN 99-3822441, SAM.gov registered, federal contractor eligible</li>
     </ul>
-
-    <hr/>
-
-    <h2 id="next-steps">Next Steps</h2>
-    <p>E5 proposes a 30-minute working session with Dr. Abdullah and BLM Grassroots Miami leadership to align on one priority area for immediate coordinated action. From there, we move to a formal MOU and shared grant submission.</p>
-    <p>The Coalition of the Willing is open. The infrastructure is built. The work is the work.</p>
 
     <div style="margin-top:48px; padding:28px 32px; background:var(--vc-bone-2); border:1.5px solid var(--vc-ink); display:flex; gap:16px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
       <div>
@@ -121,7 +114,6 @@ breadcrumbs:
       <div><dt>EIN</dt><dd style="font-family:var(--vc-display); font-style:italic; font-size:14px; color:var(--vc-ink); letter-spacing:0; text-transform:none; margin-top:4px;">99-3822441</dd></div>
       <div><dt>Status</dt><dd style="font-family:var(--vc-display); font-style:italic; font-size:14px; color:var(--vc-ink); letter-spacing:0; text-transform:none; margin-top:4px;">501(c)(3) Public Charity</dd></div>
       <div><dt>Location</dt><dd style="font-family:var(--vc-display); font-style:italic; font-size:14px; color:var(--vc-ink); letter-spacing:0; text-transform:none; margin-top:4px;">Liberty City · Miami, Florida</dd></div>
-      <div><dt>URL</dt><dd style="font-family:var(--vc-display); font-style:italic; font-size:14px; color:var(--vc-ink); letter-spacing:0; text-transform:none; margin-top:4px;">e5enclave.com/coalition/blm-grassroots-miami/</dd></div>
     </dl>
   </div>
 </section>
