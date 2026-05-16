@@ -31,7 +31,7 @@ The two-sentence version:
 
 ## Citation guidance
 
-Records published on this site, on the Enclave's reading surfaces (base44), and in subsequent publications carry citation blocks. The standing format:
+Records published on this site, on this site and in subsequent publications carry citation blocks. The standing format:
 
 > *[Title]*. E5 Enclave, MMXXVI. Liberty City. The Record. [Methodology, where applicable].
 
