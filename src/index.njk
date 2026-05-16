@@ -157,23 +157,6 @@ permalink: /
   </div>
   <p class="vc-record-colophon">Set in Cormorant Garamond &amp; Inter. Convened in {{ site.established.city }}. <em>For the next thousand years.</em></p>
 </section>
-
-<section class="vc-contrib" id="coalition">
-  <div class="vc-contrib-orn vc-orn-rule reveal"><span class="mk">¶</span></div>
-  <div class="vc-contrib-rubric reveal">— Contributors to the Founding —</div>
-  <h2 class="vc-contrib-h reveal">A masthead of <em>builders, stewards, and elders.</em></h2>
-  <div class="vc-contrib-grid reveal">
-    {% for col in contributors.columns %}
-    <div class="vc-contrib-col">
-      <h4>{{ col.title }}</h4>
-      <ul>
-        {% for m in col.members %}<li>{{ m.name }}<small>{{ m.role }}</small></li>{% endfor %}
-      </ul>
-    </div>
-    {% endfor %}
-  </div>
-</section>
-
 <section class="vc-join" id="join">
   <div class="vc-join-rubric">How to join</div>
   <h2 class="vc-join-h">Apply to <em>the Coalition.</em></h2>
