@@ -13,3 +13,45 @@ layout: base
 {% else %}
 {{ content | safe }}
 {% endif %}
+
+{% if schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ schema.type or 'WebPage' }}",
+  "name": "{{ schema.name or title }}",
+  "description": "{{ schema.description or description }}",
+  "url": "{{ site.url }}{{ page.url }}",
+  {% if schema.provider %}
+  "parentOrganization": {
+    "@type": "NGO",
+    "name": "{{ schema.provider }}",
+    "url": "https://e5enclave.com"
+  },
+  {% endif %}
+  {% if schema.programType %}
+  "programType": "{{ schema.programType }}",
+  {% endif %}
+  "isPartOf": {
+    "@type": "NGO",
+    "name": "E5 Enclave Incorporated",
+    "url": "https://e5enclave.com"
+  },
+  "publisher": {
+    "@type": "NGO",
+    "name": "E5 Enclave Incorporated",
+    "url": "https://e5enclave.com"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/"},
+    {"@type": "ListItem", "position": 2, "name": "{{ title }}", "item": "{{ site.url }}{{ page.url }}"}
+  ]
+}
+</script>
+{% endif %}
