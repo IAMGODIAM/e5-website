@@ -10,7 +10,7 @@ deck: "A foundational comparative dispatch — examining the parallel architectu
 byline: "Israel Lee"
 date: 2026-04-22
 readTime: "32 min"
-external: "https://sue-app-ec34c434.base44.app/DocParallelNegros"
+external: "https://e5enclave.com/record/parallel-negros/"
 bibPath: "/assets/bib/parallel-negros.bib"
 status: "Open Record"
 description: "Parallel Negros: a foundational comparative dispatch examining the parallel architectures of Black American structural distress and the institutional remedies they require."
