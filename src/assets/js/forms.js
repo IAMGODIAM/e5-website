@@ -1,5 +1,5 @@
 // Lightweight form poster used by /contact/ and /coalition/apply/.
-// Posts to /api/contact (Azure Function). Falls back to a mailto: link
+// Posts to /api/contact (Netlify Function via redirect in netlify.toml). Falls back to a mailto: link
 // when the function is unavailable.
 (function () {
   var forms = document.querySelectorAll('[data-vc-form]');
