@@ -10,7 +10,7 @@ deck: "A framework in five questions. The Lloyd Kelly accounting model paired wi
 byline: "Lloyd Kelly"
 date: 2026-04-22
 readTime: "28 min"
-external: "https://sue-app-ec34c434.base44.app/DocReparations"
+external: "https://e5enclave.com/record/restitution-246/"
 bibPath: "/assets/bib/restitution-246.bib"
 status: "Open Record"
 description: "Restitution 246: a five-question reparations framework using the Lloyd Kelly method and Craemer (2015) wage-hour methodology. One disciplined lane of the reparations question."
