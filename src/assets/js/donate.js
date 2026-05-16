@@ -1,6 +1,7 @@
-// Donate page — preserved Stripe flow:
+// Donate page — Stripe Checkout flow:
 //   - selected amount-btn / freq-btn drives selectedAmount / frequency
-//   - submit POSTs { amount, frequency } to /api/create-checkout (Azure Function)
+//   - submit POSTs { amount, frequency } to /api/create-checkout (Netlify Function)
+//   - Netlify redirects /api/create-checkout → /.netlify/functions/create-checkout
 //   - Function returns { url } for Stripe Checkout redirect
 
 (function () {
