@@ -5,8 +5,8 @@
     { "label": "Pillars", "url": "/pillars/" },
     { "label": "BDI", "url": "/black-dragons-initiative/" },
     { "label": "The Record", "url": "/record/" },
-    { "label": "Impact", "url": "/impact/" },
     { "label": "Coalition", "url": "/coalition/" },
-    { "label": "Volunteer", "url": "/volunteer/" }
+    { "label": "Grants", "url": "/contracts-grants/" },
+    { "label": "Donate", "url": "/donate/" }
   ]
 }
