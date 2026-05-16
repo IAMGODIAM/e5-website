@@ -65,7 +65,7 @@ The structure of the harm is the structure of the remedy.
 
 **Israel Lee Armstead** — Chairman & Founder, E5 Enclave Incorporated.
 
-Born and raised in Liberty City, Miami. Graduate of Charles R. Drew K-8 (2001) and Miami Northwestern Senior High (2005). Former General Councilor and Candidacy Member, Urantia Book Fellowship. Executive Director, E5 Enclave Incorporated. Chairman, IAMGODIAM.
+Born and raised in Liberty City, Miami. Graduate of Charles R. Drew K-8 (2001) and Miami Northwestern Senior High (2005). Former General Councilor and Candidacy Member, Urantia Book Fellowship. Executive Director, E5 Enclave Incorporated.
 
 The McCartney Academy at Charles R. Drew is named in honor of Ralph McCartney — Israel's grand-uncle, a Liberty City elder who served on the Miami-Dade County Public Schools board committee and worked as a security guard at Charles R. Drew K-8 during Israel's years there. The Enclave carries that lineage forward.
 
