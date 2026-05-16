@@ -2,7 +2,7 @@
   "name": "E5 Enclave",
   "fullName": "E5 Enclave Incorporated",
   "tagline": "A lineage-led think tank comprised of a Coalition of the Willing.",
-  "credo": "A lineage-led think tank · comprised of a Coalition of the Willing.",
+  "credo": "A lineage-led think tank \u00b7 comprised of a Coalition of the Willing.",
   "url": "https://e5enclave.com",
   "established": {
     "label": "Founded",
@@ -12,11 +12,11 @@
   },
   "publicAnnouncement": {
     "label": "Public Announcement",
-    "date": "Juneteenth · <em>MMXXVI</em>"
+    "date": "Juneteenth \u00b7 <em>MMXXVI</em>"
   },
   "edenLaunch": {
     "label": "Eden Launch",
-    "date": "17 February · <em>MMXXVII</em>"
+    "date": "17 February \u00b7 <em>MMXXVII</em>"
   },
   "colophon": "Set against the calendar of the lineage. The dates carry their own genealogy. <span class=\"center\">The center holds.</span>",
   "founder": {
@@ -52,5 +52,31 @@
   "ogImageOriginal": "/assets/img/og/original.png",
   "themeColor": "#0a0908",
   "gadsId": "AW-16672489240",
-  "gtm2Id": "GT-TW5MMTD8"
+  "gtm2Id": "GT-TW5MMTD8",
+  "editorialGate": {
+    "version": "1.0",
+    "updated": "2026-05-16",
+    "authority": "E5 Enclave Editorial Council",
+    "prohibitedTerms": [
+      "NationBuilder",
+      "nation builder",
+      "IAMGODIAM",
+      "Base44",
+      "base44.app",
+      "media.base44.com",
+      "sue-app-",
+      "200,000 contacts",
+      "200k contacts",
+      "next steps",
+      "cold contacts",
+      "warm contacts",
+      "CRM",
+      "contact database",
+      "contact list",
+      "internal",
+      "board agent",
+      "Chief of Staff"
+    ],
+    "rule": "No internal operational data, platform names, contact database references, or internal nomenclature may appear in any public-facing page. All external pages must refer only to E5 Enclave Incorporated, its programs, published doctrine, and public-facing coalition work."
+  }
 }
