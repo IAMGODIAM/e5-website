@@ -33,6 +33,87 @@ html[data-palette="original"] {
   --vc-ink-rgb: 1,1,1;
 }
 
+/* ============================================================
+   THEME ENGINE — How to change the entire site's color scheme
+   ============================================================
+   The E5 Enclave design system is fully token-driven.
+   Every color on every page resolves through CSS custom properties
+   defined in ONE of these three palette blocks below.
+
+   TO CHANGE THE SITE-WIDE PALETTE:
+   Edit src/_layouts/base.njk line:
+     <html lang="en" data-palette="editorial">
+   Change "editorial" to "original" or "midnight".
+   One word change. Every page on the site repaints.
+
+   TO CREATE A NEW PALETTE:
+   1. Add a new html[data-palette="yourname"] { } block below.
+   2. Define all 19 --vc- tokens.
+   3. Set data-palette="yourname" in base.njk.
+   That's it.
+
+   TOKEN MAP (semantic — not literal colors):
+   --vc-bone          Background 1 (lightest)
+   --vc-bone-2        Background 2 (cards, panels)
+   --vc-bone-3        Background 3 (deep panels)
+   --vc-ink           Text primary
+   --vc-ink-2         Text secondary
+   --vc-ink-3         Text tertiary / muted body
+   --vc-oxblood       Accent / emphasis (oxblood in editorial, forest in original)
+   --vc-oxblood-2     Accent deep / hover
+   --vc-gold          Gold accent (used for ornaments, highlights)
+   --vc-gold-2        Gold light
+   --vc-muted         Metadata / captions / eyebrows
+   --vc-muted-2       Very muted / placeholder
+   --vc-rule          Border light (14% ink)
+   --vc-rule-2        Border medium (32% ink)
+   --vc-rule-3        Border strong (62% ink)
+   --vc-bone-rgb      RGB values of --vc-bone (for rgba() usage)
+   --vc-ink-rgb       RGB values of --vc-ink (for rgba() usage)
+   --vc-display       Display/headline typeface stack
+   --vc-text          Body/UI typeface stack
+   ============================================================ */
+
+html[data-palette="midnight"] {
+  --vc-bone: #0c0c0e; --vc-bone-2: #141416; --vc-bone-3: #1c1c20;
+  --vc-ink: #f0ebe0; --vc-ink-2: #d8d2c4; --vc-ink-3: #b0a898;
+  --vc-oxblood: #c9a84c; --vc-oxblood-2: #a8884a;
+  --vc-gold: #c9a84c; --vc-gold-2: #e0c070;
+  --vc-muted: #707070; --vc-muted-2: #505050;
+  --vc-rule: rgba(240,235,224,0.10); --vc-rule-2: rgba(240,235,224,0.22); --vc-rule-3: rgba(240,235,224,0.50);
+  --vc-bone-rgb: 12,12,14;
+  --vc-ink-rgb: 240,235,224;
+}
+
+/* ── PALETTE SWITCHER UI ─────────────────────────────────────────
+   Floating pill in the bottom-right corner.
+   Lets Chairman toggle palettes without touching code.
+   Remove this section if you want palettes locked to code only.
+   ──────────────────────────────────────────────────────────────── */
+.vc-palette-switcher {
+  position: fixed; bottom: 24px; right: 24px; z-index: 999;
+  display: flex; gap: 6px; align-items: center;
+  background: var(--vc-bone-2); border: 1px solid var(--vc-rule-2);
+  padding: 6px 10px; border-radius: 40px;
+  font-family: var(--vc-text); font-size: 9px; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--vc-muted);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  opacity: 0.7; transition: opacity 0.2s;
+}
+.vc-palette-switcher:hover { opacity: 1; }
+.vc-palette-swatch {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 1.5px solid var(--vc-rule-2);
+  cursor: pointer; transition: transform 0.15s, border-color 0.15s;
+}
+.vc-palette-swatch:hover { transform: scale(1.2); border-color: var(--vc-oxblood); }
+.vc-palette-swatch[data-p="editorial"] { background: #f4eee2; }
+.vc-palette-swatch[data-p="original"]  { background: #e2dbd3; border-color: #293d1b; }
+.vc-palette-swatch[data-p="midnight"]  { background: #0c0c0e; border-color: #c9a84c; }
+.vc-palette-swatch.active { border-color: var(--vc-oxblood); box-shadow: 0 0 0 2px var(--vc-oxblood); }
+
+
+
 * { box-sizing: border-box; }
 html, body {
   margin: 0; padding: 0;
