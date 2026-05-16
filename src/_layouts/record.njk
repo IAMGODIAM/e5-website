@@ -3,16 +3,29 @@ layout: base
 ---
 {%- set paper = papers | byKey('slug', slug) -%}
 <header class="vc-page-head reveal">
-  <div class="vc-page-eyebrow">№ {{ paper.numeral }} · {{ paper.kind }}</div>
+  <div class="vc-page-eyebrow">No. {{ paper.numeral }} · {{ paper.kind }}</div>
   <h1 class="vc-page-h">{{ paper.title }}</h1>
   <p class="vc-page-deck">{{ paper.lede }}</p>
 </header>
 <article class="vc-prose reveal">
 {{ content | safe }}
 <hr/>
-<p style="font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-muted); margin-top:48px;">Read the full document</p>
-<p>
-  <a class="vc-cta-primary" href="{{ paper.external }}" target="_blank" rel="noopener">Open <em>{{ paper.title }}</em> <span aria-hidden="true">→</span></a>
-</p>
-<p style="font-family:var(--vc-display); font-style:italic; font-size:14px; color:var(--vc-muted); margin-top:24px;">External link · published on the E5 base44 reading surface · opens in a new tab.</p>
+
+<div style="margin-top:48px; padding:32px 0; border-top:1.5px solid var(--vc-ink);">
+  <p style="font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-muted); margin-bottom:16px;">Cite this record</p>
+  <div style="background:var(--vc-bone-2); border:1px solid var(--vc-rule-2); padding:20px 24px; margin-bottom:20px; font-family:monospace; font-size:13px; color:var(--vc-ink-3); line-height:1.6; user-select:all;" id="citation-block">
+    {{ paper.citations.apa }}
+  </div>
+  <p style="font-family:var(--vc-display); font-size:14px; color:var(--vc-muted); line-height:1.6;">
+    Published by <strong style="color:var(--vc-ink);">E5 Enclave Incorporated</strong> &mdash; EIN 99-3822441 &mdash; Liberty City, Miami, Florida.<br/>
+    Available at <a href="https://e5enclave.com{{ page.url }}" style="color:var(--vc-oxblood);">e5enclave.com{{ page.url }}</a> &mdash; Open Record &mdash; free to cite, quote, and republish with attribution.
+  </p>
+</div>
+
+<div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:8px;">
+  <a href="/record/" class="vc-cta-link">Back to The Record &rarr;</a>
+  <a href="/donate/" class="vc-cta-link" style="color:var(--vc-oxblood);">Support this work &rarr;</a>
+  <a href="/coalition/apply/" class="vc-cta-link">Join the Coalition &rarr;</a>
+</div>
+
 </article>
