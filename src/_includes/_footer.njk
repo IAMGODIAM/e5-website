@@ -1,5 +1,20 @@
 <footer class="vc-foot">
   {% include "_seal.njk" %}
+
+  {# Newsletter band above footer grid #}
+  <div style="border-top:1.5px solid var(--vc-ink); border-bottom:1px solid var(--vc-rule-2); padding:40px 56px; display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap; background:var(--vc-bone-2);">
+    <div style="flex:1; min-width:240px;">
+      <div style="font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-oxblood); font-weight:600; margin-bottom:8px;">Dispatches from the Coalition</div>
+      <p style="font-family:var(--vc-display); font-size:18px; color:var(--vc-ink); margin:0; line-height:1.4;">Stay in the record.</p>
+      <p style="font-family:var(--vc-display); font-size:15px; color:var(--vc-ink-3); margin:6px 0 0; line-height:1.5;">Research, program updates, and board intelligence. No noise — twice a month at most.</p>
+    </div>
+    <form style="display:flex; gap:10px; flex:1; min-width:260px; max-width:440px;" data-vc-form data-subject="newsletter-signup-footer" data-endpoint="/api/contact" novalidate>
+      <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email for newsletter"
+        style="flex:1; padding:12px 16px; border:1px solid var(--vc-rule); background:var(--vc-bone); font-family:var(--vc-display); font-size:15px; color:var(--vc-ink);"/>
+      <button type="submit" class="vc-cta-primary" style="white-space:nowrap; padding:12px 20px;">Subscribe →</button>
+    </form>
+  </div>
+
   <div class="vc-foot-grid">
     <div class="colophon">
       <strong>Colophon</strong>
@@ -44,15 +59,27 @@
         <li><a href="/contact/">Contact</a></li>
       </ul>
     </div>
+    <div>
+      <h4>Institutional</h4>
+      <ul>
+        <li><a href="/contracts-grants/">Contracts &amp; Grants</a></li>
+        <li><a href="/contracts-grants/#federal">Federal: UEI H8NGXEYE2HH8</a></li>
+        <li><a href="/contracts-grants/#federal">CAGE: 07E88</a></li>
+        <li><a href="/governance/">Governance</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+      </ul>
+    </div>
   </div>
   <div class="vc-foot-fine">
     <span>© MMXXVI <em>{{ site.fullName }}</em></span>
     <span>Founded {{ site.established.date }} · {{ site.established.city }}</span>
+    <span>EIN 99-3822441 · 501(c)(3)</span>
     <span>For the next thousand years</span>
   </div>
   <div class="vc-foot-fine" style="border-top:0; padding-top:8px;">
     <span><a href="/faq/">FAQ</a></span>
     <span><a href="/privacy-policy/">Privacy</a></span>
     <span><a href="/terms-of-service/">Terms</a></span>
+    <span><a href="/contracts-grants/">Federal Procurement</a></span>
   </div>
 </footer>
