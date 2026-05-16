@@ -1,0 +1,55 @@
+[build]
+  command = "npm run build"
+  publish = "docs"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Redirect /api/* → Netlify Functions (zero frontend code changes needed)
+[[redirects]]
+  from = "/api/contact"
+  to = "/.netlify/functions/contact"
+  status = 200
+
+[[redirects]]
+  from = "/api/create-checkout"
+  to = "/.netlify/functions/create-checkout"
+  status = 200
+
+[[redirects]]
+  from = "/api/newsletter"
+  to = "/.netlify/functions/newsletter"
+  status = 200
+
+[[redirects]]
+  from = "/api/printful-webhook"
+  to = "/.netlify/functions/printful-webhook"
+  status = 200
+
+[[redirects]]
+  from = "/api/shipping-rates"
+  to = "/.netlify/functions/shipping-rates"
+  status = 200
+
+[[redirects]]
+  from = "/api/snipcart-webhook"
+  to = "/.netlify/functions/snipcart-webhook"
+  status = 200
+
+# SPA-style fallback for all unmatched routes
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 404
+
+[functions]
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
