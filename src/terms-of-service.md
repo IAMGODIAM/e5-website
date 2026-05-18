@@ -75,7 +75,7 @@ If you have questions about these Terms of Service:
 
 > **E5 Enclave Incorporated**
 > 820 NW 64th St, Miami, FL 33150
-> [contact@e5enclave.com](mailto:contact@e5enclave.com)
+> [accounts@e5enclave.com](mailto:accounts@e5enclave.com)
 > (833) 241-7356
 > EIN: 99-3822441
 
