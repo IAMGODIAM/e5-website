@@ -6,50 +6,610 @@ description: "The Coalition of the Willing — E5 Enclave's founding members, pa
 breadcrumbs:
   - { label: "Coalition" }
 ---
-<header class="vc-page-head reveal">
-  <div class="vc-page-eyebrow">— A Coalition of the Willing —</div>
-  <h1 class="vc-page-h">A masthead of <em>builders, stewards, and elders.</em></h1>
-  <p class="vc-page-deck">The founding Coalition of E5 Enclave. Black-led organizations, individual builders, partner institutions, and the elders we honor.</p>
-</header>
 
-<section class="vc-contrib" style="background: var(--vc-bone); padding-top:24px;">
-  <div class="vc-contrib-grid reveal">
-    {% for col in contributors.columns %}
-    <div class="vc-contrib-col">
-      <h2 class="contrib-col-h" style="font-size: 9.5px; letter-spacing: 0.42em; text-transform: uppercase; color: var(--vc-oxblood); margin: 0 0 10px; font-weight: 600; padding-bottom: 8px; border-bottom: 1px solid var(--vc-rule-2);">{{ col.title }}</h2>
-      <ul>
-        {% for m in col.members %}<li>{{ m.name }}<small>{{ m.role }}</small></li>{% endfor %}
-      </ul>
-    </div>
-    {% endfor %}
+<style>
+/* ── PAGE HERO ── */
+.coal-hero {
+  padding: 96px 0 80px;
+  border-bottom: 1px solid var(--vc-rule, #d4c5a0);
+  background: var(--vc-bone, #fdfaf4);
+}
+.coal-hero-eyebrow {
+  font-family: var(--sans, sans-serif);
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--vc-oxblood, #8b1a1a);
+  margin-bottom: 20px;
+}
+.coal-hero-h {
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 880px;
+  margin: 0 0 28px;
+  color: var(--vc-ink, #1a1614);
+}
+.coal-hero-deck {
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.65;
+  max-width: 680px;
+  color: var(--vc-muted, #7a6a50);
+  margin: 0;
+}
+
+/* ── STATS BAND ── */
+.coal-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--vc-rule, #d4c5a0);
+}
+.coal-stat {
+  padding: 40px 32px;
+  border-right: 1px solid var(--vc-rule, #d4c5a0);
+}
+.coal-stat:last-child { border-right: none; }
+.coal-stat-num {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 52px;
+  font-weight: 400;
+  color: var(--vc-oxblood, #8b1a1a);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.coal-stat-label {
+  font-family: var(--sans, sans-serif);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--vc-muted, #7a6a50);
+}
+
+/* ── MODEL SECTION ── */
+.coal-model {
+  padding: 96px 0;
+  border-bottom: 1px solid var(--vc-rule, #d4c5a0);
+}
+.coal-model-rubric {
+  font-family: var(--sans, sans-serif);
+  font-size: 10px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--vc-oxblood, #8b1a1a);
+  margin-bottom: 20px;
+}
+.coal-model-h {
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 400;
+  line-height: 1.15;
+  max-width: 720px;
+  margin: 0 0 64px;
+  color: var(--vc-ink, #1a1614);
+}
+.coal-model-h em { color: var(--vc-oxblood, #8b1a1a); font-style: italic; }
+.coal-model-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  border: 1px solid var(--vc-rule, #d4c5a0);
+}
+.coal-model-col {
+  padding: 40px 36px;
+  background: var(--vc-bone, #fdfaf4);
+  border-right: 1px solid var(--vc-rule, #d4c5a0);
+}
+.coal-model-col:last-child { border-right: none; }
+.coal-model-num {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 56px;
+  font-weight: 400;
+  color: var(--vc-oxblood, #8b1a1a);
+  line-height: 1;
+  margin-bottom: 4px;
+  font-style: italic;
+}
+.coal-model-pct {
+  font-family: var(--sans, sans-serif);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--vc-muted, #7a6a50);
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--vc-rule-2, #e8dfc8);
+  padding-bottom: 16px;
+}
+.coal-model-col h3 {
+  font-family: var(--sans, sans-serif);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vc-ink, #1a1614);
+  margin: 0 0 12px;
+}
+.coal-model-col p {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--vc-muted, #7a6a50);
+  margin: 0;
+}
+.coal-model-col p em { color: var(--vc-ink, #1a1614); font-style: italic; }
+
+/* ── MEMBER DIRECTORY ── */
+.coal-directory {
+  padding: 96px 0;
+  border-bottom: 1px solid var(--vc-rule, #d4c5a0);
+}
+.coal-dir-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 40px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--vc-oxblood, #8b1a1a);
+}
+.coal-dir-title {
+  font-family: var(--sans, sans-serif);
+  font-size: 10px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--vc-oxblood, #8b1a1a);
+}
+.coal-dir-meta {
+  font-family: var(--sans, sans-serif);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--vc-muted, #7a6a50);
+}
+.coal-dir-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.coal-dir-cell {
+  border: 1px solid var(--vc-oxblood, #8b1a1a);
+  padding: 28px 24px;
+  display: flex; flex-direction: column; gap: 8px;
+  text-decoration: none; color: inherit;
+  transition: transform .2s, box-shadow .2s;
+  min-height: 150px;
+}
+.coal-dir-cell:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(139,26,26,0.12);
+}
+.coal-dir-cell.filled {
+  background: var(--vc-oxblood, #8b1a1a);
+  color: #fff7e5;
+}
+.coal-dir-cell.filled:hover { background: #6e1515; }
+.coal-dir-mark {
+  font-family: var(--serif, Georgia, serif);
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1;
+  color: #d4a84b;
+}
+.coal-dir-cell.filled .coal-dir-mark { color: rgba(255,247,229,0.6); }
+.coal-dir-name {
+  font-family: var(--sans, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.coal-dir-mission {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(255,247,229,0.75);
+  margin-top: auto;
+}
+.coal-dir-cell:not(.filled) .coal-dir-mission { color: var(--vc-muted, #7a6a50); }
+.coal-dir-cell.open {
+  border-style: dashed;
+  background: transparent;
+}
+.coal-dir-plus {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 32px;
+  color: var(--vc-oxblood, #8b1a1a);
+  line-height: 1;
+}
+.coal-dir-cell.open .coal-dir-name { color: var(--vc-oxblood, #8b1a1a); }
+
+/* ── CONTRIBUTORS ── */
+.coal-contrib {
+  padding: 80px 0;
+  background: var(--vc-parchment, #f5ede0);
+  border-bottom: 1px solid var(--vc-rule, #d4c5a0);
+}
+.coal-contrib-rubric {
+  font-family: var(--sans, sans-serif);
+  font-size: 10px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--vc-oxblood, #8b1a1a);
+  margin-bottom: 40px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--vc-rule, #d4c5a0);
+}
+.coal-contrib-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+.coal-contrib-col h2 {
+  font-family: var(--sans, sans-serif);
+  font-size: 9.5px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--vc-oxblood, #8b1a1a);
+  margin: 0 0 16px;
+  font-weight: 600;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--vc-rule-2, #e8dfc8);
+}
+.coal-contrib-col ul {
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.coal-contrib-col li {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 15px;
+  color: var(--vc-ink, #1a1614);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--vc-rule-2, #e8dfc8);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.coal-contrib-col li small {
+  font-family: var(--sans, sans-serif);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--vc-muted, #7a6a50);
+}
+
+/* ── PRINCIPLES STRIP ── */
+.coal-principles {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--vc-rule, #d4c5a0);
+}
+.coal-principles-h {
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 400;
+  max-width: 680px;
+  margin: 0 0 56px;
+  line-height: 1.25;
+  color: var(--vc-ink, #1a1614);
+}
+.coal-principles-h em { color: var(--vc-oxblood, #8b1a1a); font-style: italic; }
+.coal-principles-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border: 1px solid var(--vc-rule, #d4c5a0);
+}
+.coal-principle {
+  padding: 36px 40px;
+  border-right: 1px solid var(--vc-rule, #d4c5a0);
+  border-bottom: 1px solid var(--vc-rule, #d4c5a0);
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+.coal-principle:nth-child(even) { border-right: none; }
+.coal-principle:nth-last-child(-n+2) { border-bottom: none; }
+.coal-principle-n {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 32px;
+  font-style: italic;
+  color: var(--vc-oxblood, #8b1a1a);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 32px;
+}
+.coal-principle-body h3 {
+  font-family: var(--sans, sans-serif);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+  color: var(--vc-ink, #1a1614);
+}
+.coal-principle-body p {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--vc-muted, #7a6a50);
+  margin: 0;
+}
+
+/* ── JOIN CTA ── */
+.coal-join {
+  padding: 112px 0;
+  text-align: center;
+  background: var(--vc-oxblood, #8b1a1a);
+}
+.coal-join-rubric {
+  font-family: var(--sans, sans-serif);
+  font-size: 10px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: rgba(255,247,229,0.6);
+  margin-bottom: 20px;
+}
+.coal-join-h {
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 400;
+  color: #fff7e5;
+  margin: 0 0 20px;
+  line-height: 1.1;
+}
+.coal-join-h em { color: #d4a84b; font-style: italic; }
+.coal-join-deck {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 18px;
+  line-height: 1.65;
+  color: rgba(255,247,229,0.8);
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+.coal-join-cta {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.coal-cta-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 16px 36px;
+  background: #d4a84b;
+  color: #1a1614;
+  font-family: var(--sans, sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background .2s;
+}
+.coal-cta-primary:hover { background: #c49a3a; }
+.coal-cta-link {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 16px;
+  font-style: italic;
+  color: rgba(255,247,229,0.75);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color .2s;
+}
+.coal-cta-link:hover { color: #fff7e5; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .coal-stats { grid-template-columns: repeat(2, 1fr); }
+  .coal-stat:nth-child(2) { border-right: none; }
+  .coal-model-grid { grid-template-columns: 1fr; }
+  .coal-model-col { border-right: none; border-bottom: 1px solid var(--vc-rule, #d4c5a0); }
+  .coal-dir-grid { grid-template-columns: repeat(2, 1fr); }
+  .coal-contrib-grid { grid-template-columns: 1fr; gap: 32px; }
+  .coal-principles-list { grid-template-columns: 1fr; }
+  .coal-principle:nth-child(even) { border-right: 1px solid var(--vc-rule,#d4c5a0); }
+  .coal-principle { border-bottom: 1px solid var(--vc-rule,#d4c5a0) !important; border-right: none !important; }
+}
+@media (max-width: 600px) {
+  .coal-stats { grid-template-columns: 1fr 1fr; }
+  .coal-stat { padding: 28px 20px; border: none; border-bottom: 1px solid var(--vc-rule,#d4c5a0); }
+  .coal-dir-grid { grid-template-columns: 1fr; }
+  .coal-hero { padding: 64px 0 56px; }
+}
+</style>
+
+{# ── HERO ── #}
+<section class="coal-hero">
+  <div class="container">
+    <div class="coal-hero-eyebrow reveal">Coalition of the Willing</div>
+    <h1 class="coal-hero-h reveal">A network, <em>not a hierarchy.</em></h1>
+    <p class="coal-hero-deck reveal">E5 is the protocol. The Coalition is the network of sovereign nodes — organizations, builders, educators, farmers, technologists, advocates, and community leaders working in alignment. Each node keeps its name, its mission, and its leadership. The value emerges from the connections.</p>
   </div>
 </section>
 
-<section class="vc-feat">
-  <div class="vc-feat-rubric reveal">How the Coalition works</div>
-  <h2 class="vc-feat-h reveal">Sovereign organizations, <em>coordinated work.</em></h2>
-  <div class="vc-feat-cols reveal">
-    <div class="vc-feat-col">
-      <h3><span class="roman">I.</span>33 / 17 / 50</h3>
-      <p class="drop">Coalition seats follow a 33/17/50 model: <em>33% institutional members</em> (Black-led organizations), <em>17% individual builders</em>, <em>50% reserved seats</em> for partner institutions and aligned coalitions. The model is published, audited, and rebalanced annually.</p>
+{# ── STATS BAND ── #}
+<div class="coal-stats reveal">
+  <div class="coal-stat">
+    <div class="coal-stat-num">8</div>
+    <div class="coal-stat-label">Active member organizations</div>
+  </div>
+  <div class="coal-stat">
+    <div class="coal-stat-num">8</div>
+    <div class="coal-stat-label">Open coalition seats</div>
+  </div>
+  <div class="coal-stat">
+    <div class="coal-stat-num">33/17</div>
+    <div class="coal-stat-label">Institutional / builder split</div>
+  </div>
+  <div class="coal-stat">
+    <div class="coal-stat-num">2026</div>
+    <div class="coal-stat-label">Founding year — Liberty City</div>
+  </div>
+</div>
+
+{# ── MEMBER DIRECTORY ── #}
+<section class="coal-directory">
+  <div class="container">
+    <div class="coal-dir-head reveal">
+      <span class="coal-dir-title">Member Directory</span>
+      <span class="coal-dir-meta">Updated as agreements close</span>
     </div>
-    <div class="vc-feat-col">
-      <h3><span class="roman">II.</span>Sovereign capacity</h3>
-      <p class="drop">Member organizations remain <em>sovereign</em>. The Enclave coordinates; it does not absorb. Member data, leadership, and futures stay with their organizations.</p>
-    </div>
-    <div class="vc-feat-col">
-      <h3><span class="roman">III.</span>Open record</h3>
-      <p class="drop">Coalition membership is published openly. Conflicts of interest are declared. The list above is the <em>founding masthead</em> — the Coalition expands by application.</p>
+    <div class="coal-dir-grid reveal">
+      <a class="coal-dir-cell filled" href="#">
+        <div class="coal-dir-mark">MA</div>
+        <div class="coal-dir-name">McCartney Academy</div>
+        <div class="coal-dir-mission">Lineage-centered private education</div>
+      </a>
+      <a class="coal-dir-cell filled" href="#">
+        <div class="coal-dir-mark">LF</div>
+        <div class="coal-dir-name">Lineage Farms</div>
+        <div class="coal-dir-mission">Commercial farming at scale</div>
+      </a>
+      <a class="coal-dir-cell filled" href="/farmblock/" target="_blank" rel="noopener">
+        <div class="coal-dir-mark">FB</div>
+        <div class="coal-dir-name">FarmBlock</div>
+        <div class="coal-dir-mission">Liberty City urban-agriculture pilot</div>
+      </a>
+      <a class="coal-dir-cell filled" href="/restitution-246/">
+        <div class="coal-dir-mark">R246</div>
+        <div class="coal-dir-name">Restitution 246</div>
+        <div class="coal-dir-mission">Wage-loss &amp; opportunity-loss campaign</div>
+      </a>
+      <a class="coal-dir-cell filled" href="#">
+        <div class="coal-dir-mark">IAM</div>
+        <div class="coal-dir-name">IAMGODIAM</div>
+        <div class="coal-dir-mission">Agentic platform &amp; BDI infrastructure</div>
+      </a>
+      <a class="coal-dir-cell filled" href="/black-dragons-initiative/">
+        <div class="coal-dir-mark">BDI</div>
+        <div class="coal-dir-name">Black Dragons Initiative</div>
+        <div class="coal-dir-mission">Community defense &amp; stewardship</div>
+      </a>
+      <a class="coal-dir-cell filled" href="#">
+        <div class="coal-dir-mark">LFTT</div>
+        <div class="coal-dir-name">Lineage Foundation Think Tank</div>
+        <div class="coal-dir-mission">Research &amp; civic intelligence</div>
+      </a>
+      <a class="coal-dir-cell filled" href="#">
+        <div class="coal-dir-mark">B2B</div>
+        <div class="coal-dir-name">Block to the Boardroom</div>
+        <div class="coal-dir-mission">Civic education &amp; mobilization</div>
+      </a>
+      <a class="coal-dir-cell open" href="/coalition/apply/">
+        <div class="coal-dir-plus">+</div>
+        <div class="coal-dir-name">Apply to Join</div>
+        <div class="coal-dir-mission">Open seat — sovereign partner</div>
+      </a>
+      <a class="coal-dir-cell open" href="/coalition/apply/">
+        <div class="coal-dir-plus">+</div>
+        <div class="coal-dir-name">Apply to Join</div>
+        <div class="coal-dir-mission">Open seat — sovereign partner</div>
+      </a>
+      <a class="coal-dir-cell open" href="/coalition/apply/">
+        <div class="coal-dir-plus">+</div>
+        <div class="coal-dir-name">Apply to Join</div>
+        <div class="coal-dir-mission">Open seat — sovereign partner</div>
+      </a>
+      <a class="coal-dir-cell open" href="/coalition/apply/">
+        <div class="coal-dir-plus">+</div>
+        <div class="coal-dir-name">Apply to Join</div>
+        <div class="coal-dir-mission">Open seat — sovereign partner</div>
+      </a>
     </div>
   </div>
 </section>
 
-<section class="vc-join" id="apply">
-  <div class="vc-join-rubric">Coalition seats are open</div>
-  <h2 class="vc-join-h">Apply to <em>the Coalition.</em></h2>
-  <p class="vc-join-deck">Black-led organizations, individual builders, funders, and partner institutions: submit your interest. A member of the Council will respond.</p>
-  <div class="vc-join-cta">
-    <a href="/coalition/apply/" class="vc-cta-primary">Open the application <span aria-hidden="true">→</span></a>
-    <a href="mailto:{{ site.contact.primary }}" class="vc-cta-link">or, <em>email the Council</em></a>
+{# ── 33/17/50 MODEL ── #}
+<section class="coal-model">
+  <div class="container">
+    <div class="coal-model-rubric reveal">The Coalition Model</div>
+    <h2 class="coal-model-h reveal">How sovereign organizations <em>coordinate.</em></h2>
+    <div class="coal-model-grid reveal">
+      <div class="coal-model-col">
+        <div class="coal-model-num">33</div>
+        <div class="coal-model-pct">% Institutional seats</div>
+        <h3>Black-Led Organizations</h3>
+        <p>Autonomous Black-led nonprofits, cooperatives, and community institutions. They join the Coalition as <em>equals</em>, not as subsidiaries.</p>
+      </div>
+      <div class="coal-model-col">
+        <div class="coal-model-num">17</div>
+        <div class="coal-model-pct">% Individual builders</div>
+        <h3>Individual Builders</h3>
+        <p>Technologists, educators, researchers, designers, and strategists who contribute their expertise directly to the network's <em>collective capacity</em>.</p>
+      </div>
+      <div class="coal-model-col">
+        <div class="coal-model-num">50</div>
+        <div class="coal-model-pct">% Reserved seats</div>
+        <h3>Partner Institutions</h3>
+        <p>Aligned coalitions, partner institutions, and community organizations whose missions <em>reinforce</em> — but do not duplicate — the Coalition's work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── PRINCIPLES ── #}
+<section class="coal-principles">
+  <div class="container">
+    <h2 class="coal-principles-h reveal">The Coalition operates on <em>four principles.</em></h2>
+    <div class="coal-principles-list reveal">
+      <div class="coal-principle">
+        <div class="coal-principle-n">I.</div>
+        <div class="coal-principle-body">
+          <h3>Sovereignty</h3>
+          <p>Member organizations remain sovereign. The Enclave coordinates; it does not absorb. Member data, leadership, and futures stay with their organizations.</p>
+        </div>
+      </div>
+      <div class="coal-principle">
+        <div class="coal-principle-n">II.</div>
+        <div class="coal-principle-body">
+          <h3>Open Record</h3>
+          <p>Coalition membership is published openly. Conflicts of interest are declared. The founding masthead above expands only by formal application and agreement.</p>
+        </div>
+      </div>
+      <div class="coal-principle">
+        <div class="coal-principle-n">III.</div>
+        <div class="coal-principle-body">
+          <h3>Coordination, Not Competition</h3>
+          <p>If you are doing this work in Liberty City or anywhere in the diaspora, we are not competing with you. We are in coordination — or we should be.</p>
+        </div>
+      </div>
+      <div class="coal-principle">
+        <div class="coal-principle-n">IV.</div>
+        <div class="coal-principle-body">
+          <h3>Annual Audit</h3>
+          <p>The 33/17/50 model is published, audited, and rebalanced every year. Coalition membership is not a permanent seat — it is a renewed commitment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── CONTRIBUTORS MASTHEAD ── #}
+<section class="coal-contrib">
+  <div class="container">
+    <div class="coal-contrib-rubric reveal">Contributors to the Founding</div>
+    <div class="coal-contrib-grid reveal">
+      {% for col in contributors.columns %}
+      <div class="coal-contrib-col">
+        <h2>{{ col.title }}</h2>
+        <ul>
+          {% for m in col.members %}<li>{{ m.name }}<small>{{ m.role }}</small></li>{% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ── JOIN CTA ── #}
+<section class="coal-join" id="apply">
+  <div class="container">
+    <div class="coal-join-rubric">Coalition seats are open</div>
+    <h2 class="coal-join-h">Apply to <em>the Coalition.</em></h2>
+    <p class="coal-join-deck">Black-led organizations, individual builders, funders, and partner institutions: submit your interest. A member of the Council will respond.</p>
+    <div class="coal-join-cta">
+      <a href="/coalition/apply/" class="coal-cta-primary">Open the application <span aria-hidden="true">→</span></a>
+      <a href="mailto:israel@e5enclave.com" class="coal-cta-link">or, <em>email the Council</em></a>
+    </div>
   </div>
 </section>
