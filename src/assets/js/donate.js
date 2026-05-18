@@ -4,7 +4,7 @@
 
 (function () {
   // ── Config ─────────────────────────────────────────────────────────
-  var STRIPE_PK = 'pk_live_51R8xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'; // REPLACE with live pk_live_ key
+  var STRIPE_PK = 'pk_live_51T9t1BReplmGVgme5m2Af07kmAba66EEl9FGREKgfRth1wIPO1eeOVpKVKGG91ROAXwJt9c5yKHA6eKFwa4TXMXu00RKGoIhe9';
   var PI_ENDPOINT = '/.netlify/functions/create-payment-intent';
   var SUB_ENDPOINT = '/.netlify/functions/confirm-subscription';
 
