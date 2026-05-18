@@ -6,6 +6,7 @@ eyebrow: "Contributors to the Founding"
 deck: "Editorial direction, programs, campaigns, and the elders we honor."
 description: "The masthead of E5 Enclave — contributors to the founding edition."
 noindex: true
+eleventyExcludeFromCollections: true
 breadcrumbs:
   - { label: "Masthead" }
 ---
