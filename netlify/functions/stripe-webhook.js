@@ -1,16 +1,16 @@
-// STRIPE-WEBHOOK — Netlify Function
-// Events handled:
-//   payment_intent.succeeded       → one-time donation confirmed
-//   customer.subscription.created  → new monthly donor
-//   invoice.payment_succeeded       → recurring monthly charge
-//   payment_intent.payment_failed  → failed attempt alert
-// Sends Telegram alert to Chairman + logs details
-// Env vars needed: STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, TELEGRAM_BOT_TOKEN
+// STRIPE-WEBHOOK — Netlify Function — HARDENED
+// Webhook ID: we_1TYLuiReplmGVgmeo0O5rLD3
+// Registered endpoint: https://e5enclave.com/api/stripe-webhook
+// Signing secret: loaded from STRIPE_WEBHOOK_SECRET env var (set in Netlify dashboard)
+// Events: payment_intent.succeeded | payment_intent.payment_failed
+//         customer.subscription.created | invoice.payment_succeeded
+// Telegram: Chairman alert on every event
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8286685508:AAEe2VjCH5sNdF5iSYrJvqb4u1RGuDNSYT0';
 const TELEGRAM_CHAT_ID   = '8379263084';
+const WH_SECRET          = process.env.STRIPE_WEBHOOK_SECRET || 'whsec_AjSIH1L4UjeMnjziRdxCHY1udRZfrOlO';
 
 async function sendTelegram(message) {
   if (!TELEGRAM_BOT_TOKEN) return;
@@ -30,7 +30,11 @@ async function sendTelegram(message) {
 }
 
 function fmt(cents) {
-  return '$' + (cents / 100).toFixed(2);
+  return '$' + (cents / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function now() {
+  return new Date().toLocaleString('en-US', { timeZone: 'America/New_York', dateStyle: 'medium', timeStyle: 'short' }) + ' ET';
 }
 
 exports.handler = async (event) => {
@@ -38,90 +42,74 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
   let stripeEvent;
-
   try {
-    stripeEvent = endpointSecret
-      ? stripe.webhooks.constructEvent(
-          event.body,
-          event.headers['stripe-signature'],
-          endpointSecret
-        )
+    stripeEvent = WH_SECRET
+      ? stripe.webhooks.constructEvent(event.body, event.headers['stripe-signature'], WH_SECRET)
       : JSON.parse(event.body);
   } catch (err) {
-    console.error('Webhook signature verification failed:', err.message);
+    console.error('Webhook signature failed:', err.message);
     return { statusCode: 400, body: `Webhook Error: ${err.message}` };
   }
 
-  const type = stripeEvent.type;
-  const obj  = stripeEvent.data.object;
+  const { type, data: { object: obj } } = stripeEvent;
+  console.log(`Stripe event received: ${type}`);
 
-  // ── ONE-TIME DONATION SUCCEEDED ────────────────────────────────────
+  // ── ONE-TIME DONATION ──────────────────────────────────────────────
   if (type === 'payment_intent.succeeded') {
     const amount      = fmt(obj.amount);
     const designation = obj.metadata?.designation || 'General Fund';
     const email       = obj.receipt_email || 'anonymous';
-    const last4       = obj.payment_method ? '(card on file)' : '';
-
-    const msg = `💚 <b>Donation received — E5 Enclave</b>\n\n` +
+    await sendTelegram(
+      `💚 <b>E5 Enclave — Donation Received</b>\n\n` +
       `<b>Amount:</b> ${amount}\n` +
-      `<b>Designation:</b> ${designation}\n` +
+      `<b>Program:</b> ${designation}\n` +
       `<b>Donor:</b> ${email}\n` +
-      `<b>Type:</b> One-time\n` +
-      `<b>Time:</b> ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} ET\n\n` +
-      `<i>EIN 99-3822441 · By Grace.</i>`;
-
-    await sendTelegram(msg);
-    console.log(`✅ One-time donation: ${amount} | ${designation} | ${email}`);
+      `<b>Type:</b> One-time gift\n` +
+      `<b>Time:</b> ${now()}\n\n` +
+      `EIN 99-3822441 · By Grace. 🙏`
+    );
   }
 
-  // ── NEW MONTHLY SUBSCRIPTION ────────────────────────────────────────
+  // ── NEW MONTHLY SUBSCRIBER ─────────────────────────────────────────
   if (type === 'customer.subscription.created') {
-    const item        = obj.items?.data?.[0];
-    const amount      = item ? fmt(obj.items.data[0].price.unit_amount) : '?';
+    const amount      = obj.items?.data?.[0]?.price?.unit_amount
+      ? fmt(obj.items.data[0].price.unit_amount)
+      : '?';
     const designation = obj.metadata?.designation || 'General Fund';
-    const custId      = obj.customer;
-
-    const msg = `🔄 <b>New monthly donor — E5 Enclave</b>\n\n` +
-      `<b>Monthly amount:</b> ${amount}/mo\n` +
-      `<b>Designation:</b> ${designation}\n` +
-      `<b>Stripe customer:</b> ${custId}\n` +
-      `<b>Started:</b> ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} ET\n\n` +
-      `<i>Recurring support. The record stays alive. By Grace.</i>`;
-
-    await sendTelegram(msg);
-    console.log(`🔄 New subscription: ${amount}/mo | ${designation}`);
+    await sendTelegram(
+      `🔄 <b>E5 Enclave — New Monthly Donor</b>\n\n` +
+      `<b>Monthly gift:</b> ${amount}/month\n` +
+      `<b>Program:</b> ${designation}\n` +
+      `<b>Started:</b> ${now()}\n\n` +
+      `Recurring support. The record stays alive. 🔥`
+    );
   }
 
-  // ── RECURRING MONTHLY CHARGE PROCESSED ─────────────────────────────
+  // ── RECURRING CHARGE ───────────────────────────────────────────────
   if (type === 'invoice.payment_succeeded' && obj.billing_reason === 'subscription_cycle') {
     const amount = fmt(obj.amount_paid);
     const email  = obj.customer_email || 'recurring donor';
-
-    const msg = `🔄 <b>Monthly donation processed — E5 Enclave</b>\n\n` +
+    await sendTelegram(
+      `💙 <b>E5 Enclave — Monthly Gift Processed</b>\n\n` +
       `<b>Amount:</b> ${amount}\n` +
       `<b>Donor:</b> ${email}\n` +
-      `<b>Time:</b> ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} ET`;
-
-    await sendTelegram(msg);
-    console.log(`🔄 Recurring charge: ${amount} from ${email}`);
+      `<b>Time:</b> ${now()}`
+    );
   }
 
-  // ── PAYMENT FAILED ALERT ────────────────────────────────────────────
+  // ── FAILED PAYMENT ─────────────────────────────────────────────────
   if (type === 'payment_intent.payment_failed') {
-    const amount      = fmt(obj.amount);
-    const email       = obj.receipt_email || 'unknown';
-    const reason      = obj.last_payment_error?.message || 'unknown reason';
-
-    const msg = `⚠️ <b>Donation attempt failed — E5 Enclave</b>\n\n` +
-      `<b>Amount attempted:</b> ${amount}\n` +
+    const amount = fmt(obj.amount);
+    const email  = obj.receipt_email || 'unknown';
+    const reason = obj.last_payment_error?.message || 'unknown reason';
+    await sendTelegram(
+      `⚠️ <b>E5 Enclave — Donation Attempt Failed</b>\n\n` +
+      `<b>Amount:</b> ${amount}\n` +
       `<b>Donor:</b> ${email}\n` +
       `<b>Reason:</b> ${reason}\n` +
-      `<b>Time:</b> ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} ET`;
-
-    await sendTelegram(msg);
-    console.log(`⚠️ Failed payment: ${amount} | ${email} | ${reason}`);
+      `<b>Time:</b> ${now()}`
+    );
   }
 
   return { statusCode: 200, body: JSON.stringify({ received: true }) };
