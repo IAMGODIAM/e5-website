@@ -1,14 +1,6 @@
 {
   "columns": [
     {
-      "title": "Editorial",
-      "members": [
-        { "name": "Israel Lee", "role": "Chairman & Founder" },
-        { "name": "The Enclave", "role": "Editorial direction" },
-        { "name": "Hermie", "role": "Visionary intelligence layer" }
-      ]
-    },
-    {
       "title": "Programs",
       "members": [
         { "name": "McCartney Academy", "role": "Educational pillar" },
@@ -28,8 +20,7 @@
       "title": "In Memoriam",
       "members": [
         { "name": "Ralph McCartney", "role": "Community elder · Liberty City" },
-        { "name": "The Lineage", "role": "Past, present, and future" },
-        { "name": "The Coalition", "role": "Of the Willing" }
+        { "name": "The Lineage", "role": "Past, present, and future" }
       ]
     }
   ]
