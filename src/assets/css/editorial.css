@@ -978,3 +978,23 @@ html[data-palette="original"] .vc-palette-toggle .sw-orig { transform: scale(1.1
   .vc-prose p.first::first-letter, .vc-letter-body p.first::first-letter, .vc-feat-col p.drop::first-letter { font-size: 72px; }
   .vc-join { padding: 64px 24px; }
 }
+
+/* Nav CTA — Donate button */
+.vc-nav .vc-nav-cta {
+  background: var(--vc-oxblood);
+  color: var(--vc-bone) !important;
+  padding: 5px 14px;
+  border-radius: 3px;
+  margin-left: 8px;
+  border-bottom: none !important;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.vc-nav .vc-nav-cta:hover {
+  background: var(--vc-ink);
+  color: var(--vc-gold-2) !important;
+  opacity: 1 !important;
+}
+
