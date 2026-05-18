@@ -7,14 +7,17 @@
     "dev": "eleventy --serve --port=8080",
     "build": "eleventy",
     "clean": "rimraf _site",
-    "lint:html": "html-validate \"_site/**/*.html\""
+    "lint:html": "html-validate \"_site/**/*.html\"",
+    "deploy": "npm run build && wrangler deploy",
+    "preview": "npm run build && wrangler dev"
   },
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
     "@types/node": "^22.0.0",
     "html-validate": "^8.18.0",
-    "rimraf": "^5.0.5"
+    "rimraf": "^5.0.5",
+    "wrangler": "^4.92.0"
   },
   "dependencies": {
     "stripe": "^14.0.0"
