@@ -1,5 +1,6 @@
 ---
 layout: page
+eleventyExcludeFromCollections: true
 permalink: /founding-address/
 title: "The Founding Address"
 eyebrow: "From the Chairman · MMXXVI"
