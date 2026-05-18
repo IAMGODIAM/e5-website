@@ -71,7 +71,7 @@ Submitted via e5enclave.com
             message: {
               subject: \`[E5 Site] \${subjectLine}\`,
               body: { contentType: 'Text', content: emailBody },
-              toRecipients: [{ emailAddress: { address: 'contact@e5enclave.com' } }],
+              toRecipients: [{ emailAddress: { address: 'accounts@e5enclave.com' } }],
               replyTo: email ? [{ emailAddress: { address: email, name: name || email } }] : []
             },
             saveToSentItems: false
