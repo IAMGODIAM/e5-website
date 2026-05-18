@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en" data-palette="editorial">
 <head>
+<script>/* Gospel subdomain rewrite */(function(){if(window.location.hostname==='gospel.e5enclave.com'){var p=window.location.pathname,q=window.location.search||'',h=window.location.hash||'';if(p==='/'){window.location.replace('/gospel/'+q+h);}else if(!p.startsWith('/gospel')){window.location.replace('/gospel'+p+q+h);}}})();</script>
 {# FOUC guard — set palette from localStorage before first paint #}
 <script>(function(){try{var p=localStorage.getItem('e5-palette');if(p==='original'||p==='editorial'){document.documentElement.setAttribute('data-palette',p);}}catch(_){}})();</script>
 {% include "_head.njk" %}
