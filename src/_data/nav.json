@@ -5,36 +5,24 @@
       "url": "/programs/"
     },
     {
-      "label": "Doctrine",
-      "url": "/doctrine/"
-    },
-    {
-      "label": "Pillars",
-      "url": "/pillars/"
+      "label": "Coalition",
+      "url": "/coalition/"
     },
     {
       "label": "BDI",
       "url": "/black-dragons-initiative/"
     },
     {
+      "label": "Dispatches",
+      "url": "/blog/"
+    },
+    {
       "label": "The Record",
       "url": "/record/"
     },
     {
-      "label": "Artifacts",
-      "url": "/artifacts/"
-    },
-    {
-      "label": "Coalition",
-      "url": "/coalition/"
-    },
-    {
-      "label": "Grants",
-      "url": "/contracts-grants/"
-    },
-    {
-      "label": "Libations",
-      "url": "/libations/"
+      "label": "Doctrine",
+      "url": "/doctrine/"
     },
     {
       "label": "Donate",
