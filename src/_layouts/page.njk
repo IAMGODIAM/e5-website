@@ -7,7 +7,7 @@ layout: base
   {% if deck %}<p class="vc-page-deck">{{ deck | safe }}</p>{% endif %}
 </header>
 {% if showProse | default(true) %}
-<article class="vc-prose reveal">
+<article class="vc-prose">
 {{ content | safe }}
 </article>
 {% else %}
