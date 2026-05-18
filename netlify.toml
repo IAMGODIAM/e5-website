@@ -37,6 +37,17 @@
   to = "/.netlify/functions/snipcart-webhook"
   status = 200
 
+
+[[redirects]]
+  from = "/api/create-payment-intent"
+  to = "/.netlify/functions/create-payment-intent"
+  status = 200
+
+[[redirects]]
+  from = "/api/confirm-subscription"
+  to = "/.netlify/functions/confirm-subscription"
+  status = 200
+
 # SPA-style fallback for all unmatched routes
 
 # ── Legacy URL 301 Redirects (SEO — platform migration) ─────────────
