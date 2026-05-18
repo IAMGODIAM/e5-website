@@ -1,5 +1,4 @@
 ---
----
 layout: page
 permalink: /black-dragons-initiative/
 title: "Black Distress Index (BDI) | 50-City Data on Structural Inequality | E5 Enclave"
