@@ -31,7 +31,7 @@
         .catch(function () {
           if (success) {
             success.classList.add('show');
-            success.innerHTML = 'Could not reach the relay. Please email <a href="mailto:contact@e5enclave.com">contact@e5enclave.com</a> directly — we will respond promptly.';
+            success.innerHTML = 'Could not reach the relay. Please email <a href="mailto:accounts@e5enclave.com">accounts@e5enclave.com</a> directly — we will respond promptly.';
           }
         })
         .finally(function () {
