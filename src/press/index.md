@@ -13,7 +13,7 @@ breadcrumbs:
 
 For interview requests, citations, and coverage:
 
-> [press@e5enclave.com](mailto:press@e5enclave.com)
+> [israel@e5enclave.com](mailto:israel@e5enclave.com)
 >
 > Liberty City, Florida · United States
 
@@ -41,7 +41,7 @@ Example:
 
 ## Founder
 
-> **Israel Lee** — Chairman & Founder, E5 Enclave Incorporated. Available for interviews on Restitution 246, Coalition strategy, agentic-first nonprofit operations, and the doctrinal framework. Booking via [press@e5enclave.com](mailto:press@e5enclave.com).
+> **Israel Lee** — Chairman & Founder, E5 Enclave Incorporated. Available for interviews on Restitution 246, Coalition strategy, agentic-first nonprofit operations, and the doctrinal framework. Booking via [israel@e5enclave.com](mailto:israel@e5enclave.com).
 
 ## Brand assets
 
@@ -60,4 +60,4 @@ The Enclave maintains a standing offer to make subject-matter experts available 
 
 Reach out and we will route you to the right voice.
 
-[Email the press desk →](mailto:press@e5enclave.com)
+[Email the press desk →](mailto:israel@e5enclave.com)
