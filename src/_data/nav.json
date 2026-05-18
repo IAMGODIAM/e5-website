@@ -1,12 +1,8 @@
 {
   "primary": [
+    { "label": "Home", "url": "/" },
     {
-      "label": "Home",
-      "url": "/"
-    },
-    {
-      "label": "About",
-      "url": "/about/",
+      "label": "About", "url": "/about/",
       "children": [
         { "label": "Our Mission", "url": "/#mission" },
         { "label": "Pillars", "url": "/#pillars" },
@@ -15,8 +11,7 @@
       ]
     },
     {
-      "label": "Programs",
-      "url": "/programs/",
+      "label": "Programs", "url": "/programs/",
       "children": [
         { "label": "McCartney Academy", "url": "/programs/" },
         { "label": "FarmBlock", "url": "/farmblock/" },
@@ -24,18 +19,9 @@
         { "label": "Restitution 246", "url": "/restitution-246/" }
       ]
     },
-    {
-      "label": "Coalition",
-      "url": "/coalition/"
-    },
-    {
-      "label": "Dispatches",
-      "url": "/blog/"
-    },
-    {
-      "label": "Donate",
-      "url": "/donate/",
-      "cta": true
-    }
+    { "label": "Coalition", "url": "/coalition/" },
+    { "label": "Dispatches", "url": "/blog/" },
+    { "label": "Store", "url": "/store/" },
+    { "label": "Donate", "url": "/donate/", "cta": true }
   ]
 }
