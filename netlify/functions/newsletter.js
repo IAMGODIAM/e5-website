@@ -42,7 +42,7 @@ exports.handler = async (event) => {
             message: {
               subject: \`[E5 Newsletter] New signup: \${email}\`,
               body: { contentType: 'Text', content: \`New newsletter signup\nEmail: \${email}\nName: \${name || '—'}\nSource: \${source || 'site'}\` },
-              toRecipients: [{ emailAddress: { address: 'contact@e5enclave.com' } }]
+              toRecipients: [{ emailAddress: { address: 'accounts@e5enclave.com' } }]
             },
             saveToSentItems: false
           })
