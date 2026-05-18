@@ -169,14 +169,14 @@ footer a:hover{color:var(--gold)}
 
   <nav class="paper-nav reveal" aria-label="Paper navigation">
     {% if paper.prev != null %}
-    <a href="/gospel/paper-{{ paper.prev }}/" class="nav-prev">
+    <a href="../paper-{{ paper.prev }}/" class="nav-prev">
       <span class="nav-dir">← Previous</span>
       <span class="nav-title">{% if paper.prev == 0 %}Foreword{% else %}Paper {{ paper.prev }} — {{ gospel_papers[paper.prev].title }}{% endif %}</span>
     </a>
     {% else %}<div></div>{% endif %}
 
     {% if paper.next != null %}
-    <a href="/gospel/paper-{{ paper.next }}/" class="nav-next">
+    <a href="../paper-{{ paper.next }}/" class="nav-next">
       <span class="nav-dir">Next →</span>
       <span class="nav-title">Paper {{ paper.next }} — {{ gospel_papers[paper.next].title }}</span>
     </a>

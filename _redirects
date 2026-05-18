@@ -1,2 +1,5 @@
-# Gospel subdomain — redirect all traffic to Base44 Gospel of Love app
-https://gospel.e5enclave.com/*  https://sue-app-e73f9f1e.base44.app/GospelOfLove  302
+# Gospel subdomain — redirect to the standalone gospel Pages project
+https://gospel.e5enclave.com/*  https://gospel-of-love.pages.dev/:splat  301
+
+# Legacy gospel path redirect
+/gospel-of-love/  /gospel/  301
