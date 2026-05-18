@@ -1,7 +1,11 @@
 <nav class="vc-nav" aria-label="Primary">
   {% for item in nav.primary -%}
-    <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
-    {% if not loop.last %}<span class="sep" aria-hidden="true"></span>{% endif %}
+    {% if item.cta %}
+      <a href="{{ item.url }}" class="vc-nav-cta"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+    {% else %}
+      <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+      {% if not loop.last %}<span class="sep" aria-hidden="true"></span>{% endif %}
+    {% endif %}
   {%- endfor %}
   {% include "_palette-toggle.njk" %}
 </nav>
