@@ -38,6 +38,161 @@
   status = 200
 
 # SPA-style fallback for all unmatched routes
+
+# ── Legacy URL 301 Redirects (SEO — platform migration) ─────────────
+# Old Wix/platform URLs → canonical Netlify equivalents
+
+[[redirects]]
+  from = "/contact-us"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/contact-us/"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/about-e5"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/about-e5/"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/black-dragons-initiative-1"
+  to = "/black-dragons-initiative/"
+  status = 301
+
+[[redirects]]
+  from = "/black-dragons-initiative-1/"
+  to = "/black-dragons-initiative/"
+  status = 301
+
+[[redirects]]
+  from = "/black-dragon-gear"
+  to = "/store/"
+  status = 301
+
+[[redirects]]
+  from = "/black-dragon-gear/"
+  to = "/store/"
+  status = 301
+
+[[redirects]]
+  from = "/love-offerings"
+  to = "/donate/"
+  status = 301
+
+[[redirects]]
+  from = "/love-offerings/"
+  to = "/donate/"
+  status = 301
+
+[[redirects]]
+  from = "/m/login"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/m/login/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/m/create-account"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/m/create-account/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/gospel-of-love-/our-blogs"
+  to = "/blog/"
+  status = 301
+
+[[redirects]]
+  from = "/gospel-of-love-/our-blogs/"
+  to = "/blog/"
+  status = 301
+
+[[redirects]]
+  from = "/gospel-of-love"
+  to = "/blog/"
+  status = 301
+
+[[redirects]]
+  from = "/gospel-of-love/"
+  to = "/blog/"
+  status = 301
+
+[[redirects]]
+  from = "/f/the-right-to-self-determination-understanding-black-liberation*"
+  to = "/blog/"
+  status = 301
+
+[[redirects]]
+  from = "/f/black-dragons*"
+  to = "/black-dragons-initiative/"
+  status = 301
+
+[[redirects]]
+  from = "/f/*"
+  to = "/blog/"
+  status = 301
+
+[[redirects]]
+  from = "/e5-blog/*"
+  to = "/blog/"
+  status = 301
+
+[[redirects]]
+  from = "/gospel-of-love/*"
+  to = "/blog/"
+  status = 301
+
+[[redirects]]
+  from = "/pillars/economic"
+  to = "/pillars/economic/"
+  status = 301
+
+[[redirects]]
+  from = "/donate"
+  to = "/donate/"
+  status = 301
+
+[[redirects]]
+  from = "/farmblock"
+  to = "/farmblock/"
+  status = 301
+
+[[redirects]]
+  from = "/faq"
+  to = "/faq/"
+  status = 301
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog/"
+  status = 301
+
+[[redirects]]
+  from = "/ols/all"
+  to = "/store/"
+  status = 301
+
+[[redirects]]
+  from = "/support"
+  to = "/donate/"
+  status = 301
+
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
