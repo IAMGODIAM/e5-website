@@ -1,11 +1,186 @@
-<nav class="vc-nav" aria-label="Primary">
-  {% for item in nav.primary -%}
-    {% if item.cta %}
-      <a href="{{ item.url }}" class="vc-nav-cta"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
-    {% else %}
-      <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
-      {% if not loop.last %}<span class="sep" aria-hidden="true"></span>{% endif %}
-    {% endif %}
-  {%- endfor %}
-  {% include "_palette-toggle.njk" %}
+<nav class="vc-nav" aria-label="Primary" id="vc-nav">
+  <button class="vc-nav-hamburger" id="vc-nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="vc-nav-menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="vc-nav-menu" id="vc-nav-menu">
+    {% for item in nav.primary -%}
+      {% if item.cta %}
+        <a href="{{ item.url }}" class="vc-nav-cta"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+      {% elif item.children %}
+        <div class="vc-nav-dropdown" data-dropdown>
+          <button class="vc-nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+            {{ item.label }}<svg class="vc-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="vc-dropdown-panel" role="menu">
+            {% for child in item.children %}
+            <li><a href="{{ child.url }}" role="menuitem">{{ child.label }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% else %}
+        <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+        {% if not loop.last %}<span class="sep" aria-hidden="true"></span>{% endif %}
+      {% endif %}
+    {%- endfor %}
+    {% include "_palette-toggle.njk" %}
+  </div>
 </nav>
+
+<style>
+/* ── Dropdown ── */
+.vc-nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+.vc-nav-dropdown-btn {
+  background: none; border: none; cursor: pointer;
+  font-family: var(--sans); font-size: inherit;
+  color: var(--vc-text, #1a1614);
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 0; letter-spacing: 0.06em; text-transform: uppercase;
+  font-size: 11px; font-weight: 600;
+  transition: color .2s;
+}
+.vc-nav-dropdown-btn:hover { color: var(--vc-oxblood, #8b1a1a); }
+.vc-chevron { transition: transform .25s ease; flex-shrink: 0; }
+.vc-nav-dropdown-btn[aria-expanded="true"] .vc-chevron { transform: rotate(180deg); }
+
+.vc-dropdown-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--vc-bone, #fdfaf4);
+  border: 1px solid var(--vc-rule, #d4c5a0);
+  border-top: 2px solid var(--vc-oxblood, #8b1a1a);
+  min-width: 200px;
+  list-style: none;
+  margin: 0; padding: 8px 0;
+  z-index: 100;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+.vc-dropdown-panel.open { display: block; }
+.vc-dropdown-panel li a {
+  display: block;
+  padding: 10px 20px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--vc-text, #1a1614);
+  text-decoration: none;
+  transition: background .15s, color .15s;
+}
+.vc-dropdown-panel li a:hover {
+  background: var(--vc-oxblood, #8b1a1a);
+  color: #fff;
+}
+
+/* ── Hamburger (mobile) ── */
+.vc-nav-hamburger {
+  display: none;
+  flex-direction: column; gap: 5px; justify-content: center; align-items: center;
+  width: 36px; height: 36px;
+  background: none; border: 1px solid var(--vc-rule, #d4c5a0);
+  cursor: pointer; padding: 6px;
+}
+.vc-nav-hamburger span {
+  display: block; width: 18px; height: 1.5px;
+  background: var(--vc-text, #1a1614);
+  transition: transform .25s, opacity .25s;
+}
+.vc-nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.vc-nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.vc-nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── Mobile drawer ── */
+@media (max-width: 860px) {
+  .vc-nav-hamburger { display: flex; }
+  .vc-nav-menu {
+    display: none;
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    width: min(320px, 85vw);
+    background: var(--vc-bone, #fdfaf4);
+    border-left: 1px solid var(--vc-rule, #d4c5a0);
+    flex-direction: column;
+    padding: 72px 28px 40px;
+    gap: 0;
+    overflow-y: auto;
+    z-index: 200;
+    box-shadow: -8px 0 32px rgba(0,0,0,0.15);
+  }
+  .vc-nav-menu.open { display: flex; }
+  .vc-nav-menu a, .vc-nav-dropdown-btn {
+    display: block; padding: 14px 0;
+    font-size: 13px; letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--vc-rule-2, #e8dfc8);
+    width: 100%;
+  }
+  .vc-nav-menu .sep { display: none; }
+  .vc-nav-cta {
+    display: block !important;
+    margin-top: 20px;
+    padding: 14px 24px !important;
+    text-align: center;
+  }
+  .vc-dropdown-panel {
+    position: static;
+    transform: none;
+    border: none;
+    border-top: none;
+    border-left: 2px solid var(--vc-oxblood, #8b1a1a);
+    box-shadow: none;
+    padding: 0 0 0 16px;
+    background: transparent;
+  }
+  .vc-dropdown-panel li a {
+    font-size: 11px;
+    padding: 9px 12px;
+    text-transform: uppercase;
+    color: var(--vc-muted, #7a6a50);
+    border-bottom: 1px solid var(--vc-rule-2, #e8dfc8);
+  }
+  .vc-dropdown-panel li a:hover { background: transparent; color: var(--vc-oxblood,#8b1a1a); }
+  .vc-nav-dropdown { display: block; width: 100%; }
+}
+</style>
+
+<script>
+(function() {
+  /* Dropdown toggles */
+  document.querySelectorAll('[data-dropdown]').forEach(function(dd) {
+    var btn = dd.querySelector('.vc-nav-dropdown-btn');
+    var panel = dd.querySelector('.vc-dropdown-panel');
+    if (!btn || !panel) return;
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      /* close all others */
+      document.querySelectorAll('[data-dropdown] .vc-nav-dropdown-btn').forEach(function(b){
+        b.setAttribute('aria-expanded','false');
+        b.parentElement.querySelector('.vc-dropdown-panel').classList.remove('open');
+      });
+      if (!open) {
+        btn.setAttribute('aria-expanded','true');
+        panel.classList.add('open');
+      }
+    });
+  });
+  document.addEventListener('click', function() {
+    document.querySelectorAll('[data-dropdown] .vc-nav-dropdown-btn').forEach(function(b){
+      b.setAttribute('aria-expanded','false');
+      b.parentElement.querySelector('.vc-dropdown-panel').classList.remove('open');
+    });
+  });
+
+  /* Mobile hamburger */
+  var toggle = document.getElementById('vc-nav-toggle');
+  var menu   = document.getElementById('vc-nav-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', function() {
+      var open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      menu.classList.toggle('open', !open);
+    });
+  }
+})();
+</script>
