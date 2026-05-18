@@ -18,6 +18,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget('src/assets/js/');
 
   // Filters
+  // Markdown filter — renders markdown strings inside .njk templates
+  const md = require('markdown-it')({ html: true, linkify: true, typographer: true });
+  eleventyConfig.addFilter("markdown", (content) => {
+    if (!content) return '';
+    return md.render(String(content));
+  });
+
   eleventyConfig.addFilter('isoDate', (d) => new Date(d).toISOString());
   eleventyConfig.addFilter('longDate', (d) =>
     new Date(d).toLocaleDateString('en-US', {
