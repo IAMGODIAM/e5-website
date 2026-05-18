@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="en" data-palette="editorial">
 <head>
+<script>
+// Gospel subdomain transparent rewrite
+if(window.location.hostname==='gospel.e5enclave.com'){
+  var p=window.location.pathname;
+  var q=window.location.search;
+  // If we are at root or not already under /gospel/, rewrite to gospel content
+  if(!p.startsWith('/gospel/')){
+    window.location.replace('/gospel/' + (p==='/'?'':p.replace(/^\//,'')) + q);
+  }
+}
+</script>
 
 <script>(function(){try{var p=localStorage.getItem('e5-palette');if(p==='original'||p==='editorial'){document.documentElement.setAttribute('data-palette',p);}}catch(_){}})();</script>
 <meta charset="utf-8"/>
