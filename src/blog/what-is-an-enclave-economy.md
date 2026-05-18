@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "What Is an Enclave Economy? The E5 Framework"
 description: "An enclave economy is a geographically concentrated community that builds economic systems serving its own members first. This is the E5 framework — built from Liberty City, Miami."
 date: 2026-05-16
@@ -6,9 +7,10 @@ author: Israel Lee Armstead
 authorRole: President & Chief Visionary Officer, E5 Enclave Incorporated
 category: Dispatch
 readTime: 8 min read
-tags: ["post"]
+tags: [post]
 feature_image: /assets/img/og/editorial.png
 keywords: ["enclave economy", "Black economic sovereignty", "cooperative economics", "community development", "Liberty City", "enclave economies"]
+permalink: /blog/what-is-an-enclave-economy/
 ---
 
 <p class="first">An enclave economy is not a euphemism for poverty. It is not a consolation prize for communities locked out of mainstream markets. It is a deliberate architecture — a geographically rooted economic system designed to circulate wealth, ownership, and institutional power within a specific community first, before exporting value outward.</p>

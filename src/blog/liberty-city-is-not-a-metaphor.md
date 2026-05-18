@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Liberty City Is Not a Metaphor"
 description: "820 NW 64th Street is a real address. The condition of the neighborhood around it is a real condition. The decision to build there anyway is the entire premise of E5 Enclave."
 date: 2026-05-13
@@ -6,8 +7,9 @@ author: Israel Lee Armstead
 authorRole: President & CVO, E5 Enclave Inc.
 category: Dispatch
 readTime: 7 min read
-tags: ["post"]
+tags: [post]
 feature_image: /assets/img/og/editorial.png
+permalink: /blog/liberty-city-is-not-a-metaphor/
 ---
 
 <p class="first">820 NW 64th Street is a real address. The neighborhood around it — Liberty City, Miami — is a real place with a real history, real data, and real people making decisions about what gets built there and who it belongs to. E5 Enclave exists because the people closest to that address decided the answer was theirs to build.</p>

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "The Agentic Nonprofit: How AI Is Rebuilding Back-Office Operations From the Ground Up"
 description: "E5 Enclave does not use AI. E5 Enclave runs on it. Here is what that actually means for a 501(c)(3) operating in Liberty City."
 date: 2026-05-13
@@ -6,7 +7,8 @@ author: Israel Lee Armstead
 authorRole: President & CVO, E5 Enclave Inc.
 category: Dispatch
 readTime: 6 min read
-tags: ["post"]
+tags: [post]
+permalink: /blog/agentic-nonprofit-ai-operations/
 ---
 
 <p class="first">Every week another nonprofit publishes a blog post about how they are "exploring AI tools" to improve efficiency. We are not doing that. E5 Enclave does not use AI as a tool the way you use a spreadsheet or a project management app. E5 Enclave runs on an agentic operating system — a permanent, structured board of AI agents that handle research, drafting, data analysis, grant discovery, financial modeling, and communications as standing operational functions. This is not a pilot. It is the architecture.</p>
