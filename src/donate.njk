@@ -2,148 +2,318 @@
 layout: base
 permalink: /donate/
 title: "Donate to E5 Enclave — Support Black Community Development"
-description: "Donate to E5 Enclave, a 501(c)(3) nonprofit. Every dollar funds Black community development in Liberty City — programs, research, education, and food sovereignty. EIN: 99-3822441."
+description: "Make a tax-deductible donation to E5 Enclave Incorporated, a 501(c)(3) nonprofit. Fund Black community development in Liberty City — BDI research, Lineage Farms, McCartney Academy, and the Executive Order Initiative. EIN: 99-3822441."
 extraJs:
   - /assets/js/donate.js
 breadcrumbs:
   - { label: "Donate" }
 schemaType: "donate"
 ---
-<header class="vc-page-head reveal">
+
+<link rel="stylesheet" href="/assets/css/editorial.css"/>
+
+<style>
+/* ── Donate page — Payment Element skin ───────────────────────────── */
+.donate-wrap { max-width: 920px; margin: 0 auto; padding: 48px 56px 80px; }
+
+.vc-fieldset-label {
+  font-family: var(--vc-text);
+  font-size: 9px; letter-spacing: .38em; text-transform: uppercase;
+  color: var(--vc-oxblood); font-weight: 600; margin-bottom: 14px; display: block;
+}
+
+/* Amount grid */
+.amount-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+.amount-btn {
+  padding: 22px 12px; border: 1px solid var(--vc-rule-2);
+  background: var(--vc-bone-2); cursor: pointer;
+  transition: border-color .18s, background .18s; text-align: center;
+  border-radius: 2px;
+}
+.amount-btn:hover { border-color: var(--vc-oxblood); background: rgba(139,26,26,.04); }
+.amount-btn.selected { border-color: var(--vc-oxblood); background: rgba(139,26,26,.07); }
+.amount-btn .amt-figure { font-family: var(--vc-display); font-size: 34px; line-height: 1; color: var(--vc-ink); }
+.amount-btn .amt-label  { display: block; margin-top: 6px; font-family: var(--vc-text);
+  font-size: 8.5px; letter-spacing: .38em; text-transform: uppercase; color: var(--vc-muted); font-weight: 600; }
+
+/* Freq buttons */
+.freq-btn {
+  padding: 10px 22px; border: 1px solid var(--vc-rule-2);
+  background: transparent; cursor: pointer; border-radius: 2px;
+  font-family: var(--vc-display); font-size: 15px;
+  transition: border-color .15s, background .15s, color .15s;
+}
+.freq-btn:hover { border-color: var(--vc-oxblood); }
+.freq-btn.selected { border-color: var(--vc-oxblood); background: rgba(139,26,26,.07); color: var(--vc-ink); }
+
+/* Custom amount */
+.custom-input {
+  width: 100%; padding: 12px 14px; border: 1px solid var(--vc-rule-2);
+  background: var(--vc-bone-2); font-family: var(--vc-display); font-size: 18px;
+  color: var(--vc-ink); border-radius: 2px; box-sizing: border-box;
+  transition: border-color .15s;
+}
+.custom-input:focus { outline: none; border-color: var(--vc-oxblood); box-shadow: 0 0 0 2px rgba(139,26,26,.1); }
+
+/* Designation select */
+.desig-select {
+  width: 100%; padding: 12px 14px; border: 1px solid var(--vc-rule-2);
+  background: var(--vc-bone-2); font-family: var(--vc-text); font-size: 14px;
+  color: var(--vc-ink); border-radius: 2px; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B1A1A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center; cursor: pointer;
+  transition: border-color .15s;
+}
+.desig-select:focus { outline: none; border-color: var(--vc-oxblood); box-shadow: 0 0 0 2px rgba(139,26,26,.1); }
+
+/* Stripe mount */
+#stripe-payment-element { min-height: 160px; }
+#stripe-loading {
+  display: none; align-items: center; gap: 10px; padding: 24px 0;
+  font-family: var(--vc-text); font-size: 12px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--vc-muted);
+}
+.stripe-spinner {
+  width: 18px; height: 18px; border: 2px solid #d4cfc5;
+  border-top-color: var(--vc-oxblood); border-radius: 50%;
+  animation: spin .7s linear infinite; flex-shrink: 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Submit */
+#donate-submit {
+  width: 100%; padding: 16px; background: var(--vc-oxblood); color: var(--vc-bone);
+  border: none; cursor: pointer; font-family: var(--vc-display); font-size: 17px;
+  letter-spacing: .06em; border-radius: 2px; margin-top: 24px;
+  transition: background .18s, opacity .18s;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+#donate-submit:hover:not(:disabled) { background: #6e1414; }
+#donate-submit:disabled { opacity: .65; cursor: not-allowed; }
+.btn-spinner {
+  display: none; width: 18px; height: 18px; border: 2px solid rgba(232,213,163,.4);
+  border-top-color: var(--vc-bone); border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+
+/* Error / success */
+#donate-error {
+  display: none; padding: 12px 16px; background: #fef1f1;
+  border: 1px solid #e8a0a0; border-radius: 2px; color: #8b1414;
+  font-family: var(--vc-text); font-size: 13px; line-height: 1.55; margin-top: 16px;
+}
+#donate-success {
+  display: none; padding: 48px 56px; text-align: center;
+  background: #f5f2eb; border-top: 4px solid var(--vc-oxblood);
+}
+.success-seal {
+  width: 56px; height: 56px; background: var(--vc-oxblood); border-radius: 50%;
+  margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+}
+
+/* Impact sidebar */
+.impact-bar { background: var(--vc-ink); padding: 36px 40px; border-radius: 2px; margin-bottom: 36px; }
+.impact-item { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+.impact-item:last-child { margin-bottom: 0; }
+.impact-amount { font-family: var(--vc-display); font-size: 28px; color: var(--vc-gold-2); line-height: 1; min-width: 68px; }
+.impact-desc { font-family: var(--vc-text); font-size: 13px; color: rgba(250,248,243,.7); line-height: 1.6; }
+
+/* Trust badges */
+.trust-row { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 28px; }
+.trust-badge {
+  display: flex; align-items: center; gap: 7px;
+  font-family: var(--vc-text); font-size: 10px; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--vc-muted);
+}
+.trust-badge svg { color: var(--vc-oxblood); }
+
+/* Layout */
+.donate-layout { display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: start; }
+@media (max-width: 820px) {
+  .donate-layout { grid-template-columns: 1fr; }
+  .donate-wrap { padding: 40px 20px 60px; }
+  .amount-grid { grid-template-columns: repeat(2,1fr); }
+}
+</style>
+
+<!-- HERO -->
+<header class="vc-page-head reveal" style="padding-bottom:48px;">
   <div class="vc-page-eyebrow">Sustain the Record · 501(c)(3) · EIN 99-3822441</div>
   <h1 class="vc-page-h">Your investment in <em>coordinated lineage power.</em></h1>
-  <p class="vc-page-deck">E5 Enclave Incorporated is a Florida 501(c)(3) public charitable organization. Donations are generally tax-deductible to the extent permitted by law.</p>
+  <p class="vc-page-deck">E5 Enclave Incorporated is a Florida 501(c)(3) public charitable organization. Donations are tax-deductible to the extent permitted by law.</p>
 </header>
 
-<section style="max-width:880px; margin:0 auto; padding:32px 56px 64px;" class="reveal">
-  <form id="checkout-form" data-vc-form-donate novalidate>
-    <fieldset style="border:0; padding:0; margin:0 0 32px;">
-      <legend style="font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-oxblood); font-weight:600; margin-bottom:18px;">Frequency</legend>
-      <div style="display:flex; gap:12px;">
-        <button type="button" class="freq-btn selected vc-cta-link" data-freq="one-time" aria-pressed="true">One-Time</button>
-        <button type="button" class="freq-btn vc-cta-link" data-freq="monthly" aria-pressed="false">Monthly</button>
+<div class="donate-wrap reveal">
+  <div class="donate-layout">
+
+    <!-- LEFT COLUMN: Form -->
+    <div>
+      <form id="checkout-form" novalidate autocomplete="off">
+
+        <!-- FREQUENCY -->
+        <fieldset style="border:0;padding:0;margin:0 0 28px;">
+          <span class="vc-fieldset-label">How often?</span>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button type="button" class="freq-btn selected" data-freq="one-time" aria-pressed="true">Give Once</button>
+            <button type="button" class="freq-btn" data-freq="monthly" aria-pressed="false">Give Monthly</button>
+          </div>
+        </fieldset>
+
+        <!-- AMOUNT -->
+        <fieldset style="border:0;padding:0;margin:0 0 20px;">
+          <span class="vc-fieldset-label">Choose an amount</span>
+          <div class="amount-grid">
+            {% set amounts = [
+              {v:25,  l:'Sustain'},
+              {v:50,  l:'Build'},
+              {v:100, l:'Anchor'},
+              {v:250, l:'Steward'},
+              {v:500, l:'Transform'},
+              {v:1000,l:'Patron'}
+            ] %}
+            {% for a in amounts %}
+            <button type="button" class="amount-btn{% if a.v == 100 %} selected{% endif %}"
+              data-amount="{{ a.v }}" aria-pressed="{{ 'true' if a.v == 100 else 'false' }}">
+              <span class="amt-figure">${{ a.v }}</span>
+              <span class="amt-label">{{ a.l }}</span>
+            </button>
+            {% endfor %}
+          </div>
+        </fieldset>
+
+        <!-- CUSTOM AMOUNT -->
+        <div style="margin-bottom:24px;">
+          <label for="customAmount" class="vc-fieldset-label">Or enter a custom amount</label>
+          <div style="position:relative;">
+            <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-family:var(--vc-display);font-size:16px;color:var(--vc-muted);">$</span>
+            <input type="number" id="customAmount" name="customAmount" class="custom-input"
+              style="padding-left:28px;" placeholder="0.00" min="1" max="100000" step="1" />
+          </div>
+        </div>
+
+        <!-- DESIGNATION -->
+        <div style="margin-bottom:24px;">
+          <label for="designation" class="vc-fieldset-label">Designate your gift</label>
+          <select id="designation" name="designation" class="desig-select">
+            <option value="General Fund">General Fund — Where needed most</option>
+            <option value="BDI Research">BDI Research — Black Distress Index data</option>
+            <option value="Lineage Farms">Lineage Farms — Food sovereignty &amp; land</option>
+            <option value="McCartney Academy">McCartney Academy — Liberty City youth</option>
+            <option value="Executive Order Initiative">Executive Order Initiative — Policy advocacy</option>
+            <option value="FarmBlock">FarmBlock — Agricultural data infrastructure</option>
+          </select>
+        </div>
+
+        <!-- EMAIL (shown always for receipt; required for monthly) -->
+        <div id="email-row" style="margin-bottom:28px;">
+          <label for="donorEmail" class="vc-fieldset-label">Email <span id="email-monthly-note" style="display:none;color:var(--vc-muted);font-size:8px;">(required for monthly giving)</span></label>
+          <input type="email" id="donorEmail" name="email" class="custom-input"
+            placeholder="your@email.com" style="font-size:15px;" />
+        </div>
+
+        <!-- STRIPE PAYMENT ELEMENT MOUNT ── the magic ── -->
+        <div id="stripe-form-section">
+          <span class="vc-fieldset-label" style="margin-bottom:16px;display:block;">Payment</span>
+
+          <div id="stripe-loading" style="display:none;">
+            <div class="stripe-spinner"></div>
+            <span>Loading secure payment form…</span>
+          </div>
+
+          <div id="stripe-payment-element"></div>
+
+          <div id="donate-error"></div>
+
+          <button type="submit" id="donate-submit">
+            <span class="btn-label">Complete Donation →</span>
+            <div class="btn-spinner"></div>
+          </button>
+
+          <p style="font-family:var(--vc-text);font-size:11px;color:var(--vc-muted);margin-top:14px;line-height:1.6;text-align:center;">
+            🔒 Secured by Stripe · PCI DSS Level 1 · E5 Enclave Incorporated (EIN 99-3822441)<br>
+            Donations are tax-deductible to the extent permitted by law.
+          </p>
+        </div>
+
+        <!-- SUCCESS STATE -->
+        <div id="donate-success">
+          <div class="success-seal">✓</div>
+          <h2 class="success-heading" style="font-family:var(--vc-display);font-size:28px;color:var(--vc-ink);margin:0 0 12px;">Your donation is confirmed. Thank you.</h2>
+          <p class="success-body" style="font-family:var(--vc-text);font-size:15px;color:#3a3a38;line-height:1.7;max-width:520px;margin:0 auto 24px;">A receipt is on its way to your email. Your investment in coordinated lineage power matters. By Grace.</p>
+          <a href="/programs/" class="vc-cta-primary" style="background:var(--vc-oxblood);padding:12px 28px;">See what you're funding →</a>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- RIGHT COLUMN: Impact + trust -->
+    <div>
+      <div class="impact-bar">
+        <div style="font-family:var(--vc-text);font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:rgba(250,248,243,.35);margin-bottom:20px;">Your gift funds</div>
+        <div class="impact-item">
+          <div class="impact-amount">$25</div>
+          <div class="impact-desc">Supports one data query in the Black Distress Index — mapping distress in a Liberty City block</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-amount">$100</div>
+          <div class="impact-desc">Funds one month of Lineage Farms outreach — connecting displaced landowners to restoration resources</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-amount">$250</div>
+          <div class="impact-desc">Covers policy research for one section of the proposed Executive Order on Black American Lineage Prosperity</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-amount">$1K</div>
+          <div class="impact-desc">Seeds one McCartney Academy cohort session — programming for youth in the exact Liberty City corridor Israel walked</div>
+        </div>
       </div>
-    </fieldset>
 
-    <fieldset style="border:0; padding:0; margin:0 0 32px;">
-      <legend style="font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-oxblood); font-weight:600; margin-bottom:18px;">Choose an amount</legend>
-      <div class="amount-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px;">
-        {% for amt in [25, 50, 100, 250, 500, 1000] %}
-        <button type="button" class="amount-btn{% if amt == 100 %} selected{% endif %}" data-amount="{{ amt }}" aria-pressed="{% if amt == 100 %}true{% else %}false{% endif %}"
-          style="padding:24px; border:1px solid var(--vc-rule-2); background:var(--vc-bone-2); cursor:pointer; transition: border-color .2s ease, background .2s ease; text-align:center;">
-          <span style="display:block; font-family:var(--vc-display); font-size:36px; line-height:1; color:var(--vc-ink);">${{ amt }}</span>
-          {% set labels = { '25': 'Sustain', '50': 'Build', '100': 'Anchor', '250': 'Steward', '500': 'Transform', '1000': 'Patron' } %}
-          <span style="display:block; margin-top:8px; font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-muted); font-weight:600;">{{ labels[amt|string] }}</span>
-        </button>
-        {% endfor %}
+      <!-- Trust signals -->
+      <div style="padding:24px 28px;border:1px solid var(--vc-rule-2);border-radius:2px;background:var(--vc-bone-2);">
+        <div style="font-family:var(--vc-text);font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--vc-oxblood);margin-bottom:16px;">Verified organization</div>
+        <div style="display:grid;gap:10px;">
+          <div class="trust-badge">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 1l1.5 4H13l-3.5 2.5 1.5 4L7 9l-4 2.5 1.5-4L1 5h4.5z"/></svg>
+            <span>501(c)(3) Public Charity</span>
+          </div>
+          <div class="trust-badge">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="12" height="9" rx="1"/><path d="M4 4V3a3 3 0 016 0v1"/></svg>
+            <span>EIN 99-3822441</span>
+          </div>
+          <div class="trust-badge">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="6"/><path d="M7 4v3l2 2"/></svg>
+            <span>SAM.gov UEI H8NGXEYE2HH8</span>
+          </div>
+          <div class="trust-badge">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11l3-6 2 4 2-2 3 4"/></svg>
+            <span>Federal Contractor CAGE 07E88</span>
+          </div>
+        </div>
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--vc-rule-2);">
+          <p style="font-family:var(--vc-text);font-size:12px;color:var(--vc-muted);line-height:1.65;margin:0;">Questions? Email <a href="mailto:accounts@e5enclave.com" style="color:var(--vc-oxblood);">accounts@e5enclave.com</a><br>Or call <a href="tel:+13059670200" style="color:var(--vc-oxblood);">(305) 967-0200</a></p>
+        </div>
       </div>
-    </fieldset>
 
-    <div class="row" style="display:flex; flex-direction:column; gap:6px; margin-bottom:32px;">
-      <label for="customAmount" style="font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-oxblood); font-weight:600;">Or enter a custom amount</label>
-      <input id="customAmount" name="amount" type="number" min="1" step="1" placeholder="$ Enter amount"
-        style="font-family:var(--vc-display); font-size:24px; color:var(--vc-ink); background:transparent; border:0; border-bottom:1px solid var(--vc-rule-2); padding:8px 0; outline:0; width:100%;"/>
+      <!-- Zeffy alternative -->
+      <div style="margin-top:20px;padding:18px 20px;border:1px solid var(--vc-rule-2);border-radius:2px;background:#fff;text-align:center;">
+        <div style="font-family:var(--vc-text);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--vc-muted);margin-bottom:8px;">Prefer 0% fee giving?</div>
+        <a href="https://www.zeffy.com/en-US/donation-form/e5-enclave" target="_blank" rel="noopener"
+          style="font-family:var(--vc-display);font-size:15px;color:var(--vc-oxblood);text-decoration:none;border-bottom:1px solid rgba(139,26,26,.3);">
+          Give via Zeffy (100% goes to E5) →
+        </a>
+        <p style="font-family:var(--vc-text);font-size:11px;color:var(--vc-muted);margin:6px 0 0;line-height:1.5;">Zeffy charges 0% platform fees. Stripe processes a small card fee (~2.9%+30¢).</p>
+      </div>
     </div>
 
-    <div style="display:flex; gap:24px; align-items:center; padding-top:24px; border-top:1px solid var(--vc-rule-2);">
-      <button type="submit" id="donate-submit" class="vc-cta-primary" data-label="Continue to checkout">Continue to checkout <span aria-hidden="true">→</span></button>
-      <span style="font-family:var(--vc-display); font-style:italic; font-size:14px; color:var(--vc-muted);">Secure checkout · 501(c)(3) · receipts issued.</span>
-    </div>
-  </form>
-</section>
+  </div>
+</div>
 
-<section class="vc-feat" style="padding-top:64px;">
-  <div class="vc-feat-rubric reveal">Where the dollar goes</div>
-  <h2 class="vc-feat-h reveal">Every dollar is <em>budgeted publicly.</em></h2>
-  <div class="vc-feat-cols reveal">
-    <div class="vc-feat-col">
-      <h3><span class="roman">I.</span>Programs</h3>
-      <p class="drop">Direct funding for the three flagship programs — <em>McCartney Academy</em>, <em>Lineage Farms · FarmBlock</em>, and <em>Block to the Boardroom</em> — and the founding fund that capitalizes them.</p>
-    </div>
-    <div class="vc-feat-col">
-      <h3><span class="roman">II.</span>The Record</h3>
-      <p class="drop">Research, methodology, and publication. The dispatches, the foundational records, and the campaign frameworks live and breathe because they are <em>funded as a publication of record.</em></p>
-    </div>
-    <div class="vc-feat-col">
-      <h3><span class="roman">III.</span>Operations</h3>
-      <p class="drop">A deliberately lean, agentic-first operating team. Audited annually. Published in the open. <em>What is measured cannot be dismissed.</em></p>
-    </div>
+<!-- MISSION BOTTOM BAND -->
+<section style="background:var(--vc-ink);padding:56px;margin-top:0;">
+  <div style="max-width:760px;margin:0 auto;text-align:center;">
+    <div style="font-family:var(--vc-text);font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:rgba(250,248,243,.35);margin-bottom:16px;">The reason this matters</div>
+    <p style="font-family:var(--vc-display);font-size:clamp(20px,2.5vw,28px);color:var(--vc-bone);line-height:1.5;margin:0 0 24px;">Between 1863 and 1870, the federal government made — and broke — four specific promises to formerly enslaved people. We are building the infrastructure to complete them.</p>
+    <a href="/executive-order/" style="font-family:var(--vc-display);font-size:14px;color:rgba(232,213,163,.7);text-decoration:none;border-bottom:1px solid rgba(232,213,163,.25);padding-bottom:2px;">Read the Executive Order Initiative →</a>
   </div>
 </section>
-
-<section class="vc-feat" style="padding-top:0; padding-bottom:80px;">
-  <div class="vc-feat-rubric reveal">What your gift funds</div>
-  <h2 class="vc-feat-h reveal">Every tier is a <em>named act.</em></h2>
-  <article class="vc-prose reveal" style="max-width:780px; margin:0 auto;">
-
-<p class="drop"><strong>$25 — Sustain.</strong> One month of research database access for the BDI Sovereign Dataset. The record stays open because it is funded. Your $25 keeps one data pipeline lit.</p>
-
-<p><strong>$50 — Build.</strong> One week of curriculum development materials for McCartney Academy's founding cohort. The school is being built now. Every piece of material is funded here, before a single student enrolls, because that is when it matters.</p>
-
-<p><strong>$100 — Anchor.</strong> One month of operational infrastructure for a FarmBlock cooperative pilot site — soil testing, tool maintenance, cooperative meeting space. Phase I is live in 2026. These dollars are what Phase I runs on.</p>
-
-<p><strong>$250 — Steward.</strong> A full quarterly data verification cycle for one BDI Dataset pillar. The record is only sovereign if the data is accurate. Stewards fund the verification pass that makes it defensible in court, in Congress, and in the community that depends on it.</p>
-
-<p><strong>$500 — Transform.</strong> One full scholarship unit toward the Block to the Boardroom leadership pipeline — covering materials, civic access events, and mentorship programming for one participant moving from neighborhood organizing to policy authorship.</p>
-
-<p><strong>$1,000 — Patron.</strong> A named Patron contribution to the McCartney Academy Founding Fund. Patron-level gifts are tracked publicly. The founding generation of the Academy is the people who funded it before it existed. That record is permanent.</p>
-
-  </article>
-</section>
-
-<section class="vc-feat" style="background:var(--vc-bone); padding:64px 0;">
-  <div class="vc-feat-rubric reveal">Common questions</div>
-  <h2 class="vc-feat-h reveal">About giving to <em>E5 Enclave.</em></h2>
-  <article class="vc-prose reveal" style="max-width:780px; margin:0 auto;">
-
-<h3>Is my donation tax-deductible?</h3>
-<p>E5 Enclave Incorporated is a recognized 501(c)(3) public charitable organization (EIN: 99-3822441). Donations are generally tax-deductible to the extent permitted by law. We issue tax receipts for every contribution. Consult your tax advisor for guidance specific to your situation.</p>
-
-<h3>Where are E5 Enclave's financials published?</h3>
-<p>E5 Enclave files Form 990 annually with the IRS. Our commitment is to publish summary financials openly — on this site and in the annual report. The operating doctrine: <em>what is measured cannot be dismissed.</em> That applies to our own books as much as to any dataset we produce.</p>
-
-<h3>Can I designate my gift to a specific program?</h3>
-<p>Yes. In the checkout notes field, designate your gift to McCartney Academy, Lineage Farms · FarmBlock, Block to the Boardroom, or The Record (research and publication). Undesignated gifts go to the area of greatest need as determined by the Council.</p>
-
-<h3>How does monthly giving work?</h3>
-<p>Monthly donors are the backbone of a publication of record. Select "Monthly" above. Your card is charged on the same date each month. You can pause or cancel at any time — no penalty, no questions. Monthly donors receive our annual report and program updates by email.</p>
-
-<h3>Is there another way to give?</h3>
-<p>Stock, DAF (donor-advised fund), wire, and institutional gift inquiries: write <a href="mailto:accounts@e5enclave.com">accounts@e5enclave.com</a> with "Gift" in the subject line. We respond within two business days.</p>
-
-  </article>
-</section>
-
-<section class="vc-feat" style="padding:64px 0 80px;">
-  <div class="vc-feat-rubric reveal">Trust · Transparency</div>
-  <h2 class="vc-feat-h reveal">The record is <em>open.</em></h2>
-  <article class="vc-prose reveal" style="max-width:780px; margin:0 auto; text-align:center;">
-    <p style="font-family:var(--vc-display); font-style:italic; font-size:1.25rem; line-height:1.6;">E5 Enclave Incorporated · Florida 501(c)(3) · EIN 99-3822441<br/>820 NW 64th Street · Miami, FL 33150 · Liberty City</p>
-    <p>Incorporated June 2, 2024. Audited annually. Financials published in the open. The Coalition of the Willing governs the institution — donors are part of the record.</p>
-    <a href="/coalition/apply/" class="vc-cta-link" style="margin-top:24px; display:inline-block;">Apply to the Coalition →</a>
-  </article>
-</section>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "DonateAction",
-  "name": "Donate to E5 Enclave Incorporated",
-  "description": "Support Black community development, food sovereignty, education, and research in Liberty City, Miami.",
-  "recipient": {
-    "@type": "NGO",
-    "name": "E5 Enclave Incorporated",
-    "url": "https://e5enclave.com",
-    "taxID": "99-3822441",
-    "nonprofitStatus": "Nonprofit501c3",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "820 NW 64th Street",
-      "addressLocality": "Miami",
-      "addressRegion": "FL",
-      "postalCode": "33150",
-      "addressCountry": "US"
-    }
-  }
-}
-</script>
