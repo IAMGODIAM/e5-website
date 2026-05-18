@@ -72,7 +72,7 @@ You have the right to:
 - Request deletion of your personal information (subject to legal retention requirements)
 - Opt out of marketing communications at any time
 
-To exercise these rights, contact [contact@e5enclave.com](mailto:contact@e5enclave.com).
+To exercise these rights, contact [accounts@e5enclave.com](mailto:accounts@e5enclave.com).
 
 ## 9. Changes to This Policy
 
@@ -84,7 +84,7 @@ If you have questions about this Privacy Policy or how we handle your informatio
 
 > **E5 Enclave Incorporated**
 > 820 NW 64th St, Miami, FL 33150
-> [contact@e5enclave.com](mailto:contact@e5enclave.com)
+> [accounts@e5enclave.com](mailto:accounts@e5enclave.com)
 > (833) 241-7356
 > EIN: 99-3822441
 
