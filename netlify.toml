@@ -7,6 +7,22 @@
   NODE_VERSION = "20"
 
 # Redirect /api/* → Netlify Functions (zero frontend code changes needed)
+
+# ── Subdomain routing ──────────────────────────────────────────────
+# gospel.e5enclave.com serves the Gospel of Love subsite
+[[redirects]]
+  from = "https://gospel.e5enclave.com/"
+  to = "/gospel/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://gospel.e5enclave.com/*"
+  to = "/gospel/:splat"
+  status = 200
+  force = true
+
+
 [[redirects]]
   from = "/api/contact"
   to = "/.netlify/functions/contact"
@@ -131,22 +147,22 @@
 
 [[redirects]]
   from = "/gospel-of-love-/our-blogs"
-  to = "/blog/"
+  to = "/gospel/"
   status = 301
 
 [[redirects]]
   from = "/gospel-of-love-/our-blogs/"
-  to = "/blog/"
+  to = "/gospel/"
   status = 301
 
 [[redirects]]
   from = "/gospel-of-love"
-  to = "/blog/"
+  to = "/gospel/"
   status = 301
 
 [[redirects]]
   from = "/gospel-of-love/"
-  to = "/blog/"
+  to = "/gospel/"
   status = 301
 
 [[redirects]]
