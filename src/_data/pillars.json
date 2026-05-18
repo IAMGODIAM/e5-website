@@ -1,0 +1,47 @@
+[
+  {
+    "order": 1,
+    "numeral": "i",
+    "slug": "environmental",
+    "name": "Environmental",
+    "body": "Food sovereignty, land stewardship, agriculture, and anti-food-apartheid infrastructure.",
+    "flagLabel": "Flagship",
+    "flagName": "Lineage Farms · FarmBlock"
+  },
+  {
+    "order": 2,
+    "numeral": "ii",
+    "slug": "economic",
+    "name": "Economic",
+    "body": "Business formation, government contracting, cooperative ownership, and circular economics.",
+    "flagLabel": "Doctrine",
+    "flagName": "From survival to power"
+  },
+  {
+    "order": 3,
+    "numeral": "iii",
+    "slug": "educational",
+    "name": "Educational",
+    "body": "Private education, STEM, emerging technologies, leadership, and lineage-centered curriculum.",
+    "flagLabel": "Flagship",
+    "flagName": "McCartney Academy"
+  },
+  {
+    "order": 4,
+    "numeral": "iv",
+    "slug": "engagement",
+    "name": "Engagement",
+    "body": "Civic education, public policy literacy, media, storytelling, and mobilization.",
+    "flagLabel": "Flagship",
+    "flagName": "Block to the Boardroom"
+  },
+  {
+    "order": 5,
+    "numeral": "v",
+    "slug": "emancipated",
+    "name": "Emancipated",
+    "body": "The unfinished obligations of freedom. Documented obligations become policy.",
+    "flagLabel": "Campaign",
+    "flagName": "Restitution 246"
+  }
+]

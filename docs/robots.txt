@@ -1,0 +1,7 @@
+
+User-agent: *
+Allow: /
+Disallow: /masthead/
+Disallow: /founding-address/
+
+Sitemap: https://e5enclave.com/sitemap.xml

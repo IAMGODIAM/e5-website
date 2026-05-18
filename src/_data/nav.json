@@ -1,0 +1,27 @@
+{
+  "primary": [
+    { "label": "Home", "url": "/" },
+    {
+      "label": "About", "url": "/about/",
+      "children": [
+        { "label": "Our Mission", "url": "/#mission" },
+        { "label": "Pillars", "url": "/#pillars" },
+        { "label": "Doctrine", "url": "/doctrine/" },
+        { "label": "Governance", "url": "/governance/" }
+      ]
+    },
+    {
+      "label": "Programs", "url": "/programs/",
+      "children": [
+        { "label": "McCartney Academy", "url": "/programs/" },
+        { "label": "FarmBlock", "url": "/farmblock/" },
+        { "label": "Black Dragons Initiative", "url": "/black-dragons-initiative/" },
+        { "label": "Restitution 246", "url": "/restitution-246/" }
+      ]
+    },
+    { "label": "Coalition", "url": "/coalition/" },
+    { "label": "Dispatches", "url": "/blog/" },
+    { "label": "Store", "url": "/store/" },
+    { "label": "Donate", "url": "/donate/", "cta": true }
+  ]
+}

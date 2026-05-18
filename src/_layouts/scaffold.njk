@@ -1,0 +1,19 @@
+---
+layout: base
+---
+<header class="vc-page-head reveal">
+  {% if eyebrow %}<div class="vc-page-eyebrow">{{ eyebrow }}</div>{% endif %}
+  <h1 class="vc-page-h">{{ title | safe }}</h1>
+  {% if deck %}<p class="vc-page-deck">{{ deck | safe }}</p>{% endif %}
+</header>
+<article class="vc-prose reveal">
+{{ content | safe }}
+</article>
+<section class="vc-join">
+  <div class="vc-join-rubric">Continue</div>
+  <h2 class="vc-join-h">Return to <em>The Record.</em></h2>
+  <div class="vc-join-cta">
+    <a href="/" class="vc-cta-primary">Home <span aria-hidden="true">→</span></a>
+    <a href="/record/" class="vc-cta-link">or, <em>read the dispatches</em></a>
+  </div>
+</section>

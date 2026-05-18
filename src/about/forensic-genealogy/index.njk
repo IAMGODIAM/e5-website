@@ -1,0 +1,629 @@
+---
+layout: base
+permalink: /about/forensic-genealogy/
+title: "A Forensic Genealogy of Israel Lee Armstead"
+description: "From a Miami-born proband through six confirmed generations to the chattel slavery of antebellum Clarke County, Alabama — a complete evidentiary case file prepared to the standards of the Genealogical Proof Standard."
+tags: page
+---
+
+<style>
+/* ── Case File Page Styles ───────────────────────────────── */
+.cf-shell {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 var(--sp-6, 2rem) var(--sp-12, 4rem);
+  font-family: var(--font-serif, Georgia, serif);
+  color: var(--ink, #1a1a1a);
+}
+
+.cf-cover {
+  border: 1px solid var(--line, #c8b89a);
+  padding: 3rem 2.5rem 2.5rem;
+  margin: 2.5rem 0 3rem;
+  position: relative;
+  background: #faf8f4;
+}
+
+.cf-cover::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid #c8b89a44;
+  pointer-events: none;
+}
+
+.cf-cover-meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted, #888);
+  margin-bottom: 2.5rem;
+}
+
+.cf-cover-badge {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cf-cover-logo {
+  width: 52px;
+  height: 52px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  color: var(--muted, #888);
+  flex-shrink: 0;
+}
+
+.cf-cover-org {
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted, #888);
+  line-height: 1.6;
+}
+
+.cf-cover-title {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0 0 1rem;
+}
+
+.cf-cover-title em {
+  font-style: italic;
+}
+
+.cf-cover-deck {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--muted-dark, #555);
+  max-width: 600px;
+  margin: 0;
+}
+
+.cf-toc {
+  background: #1a1a1a;
+  color: #faf8f4;
+  padding: 0;
+  margin-bottom: 3rem;
+}
+
+.cf-toc-head {
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid #333;
+}
+
+.cf-toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+.cf-toc-list li {
+  border-right: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+.cf-toc-list a {
+  display: block;
+  padding: 0.65rem 1.5rem;
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c8b89a;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.cf-toc-list a:hover {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+.cf-section {
+  margin-bottom: 3.5rem;
+  scroll-margin-top: 80px;
+}
+
+.cf-section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  border-bottom: 1px solid var(--line, #c8b89a);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.cf-section-num {
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted, #888);
+  white-space: nowrap;
+}
+
+.cf-section-title {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.cf-summary-box {
+  background: #1a1a1a;
+  color: #faf8f4;
+  padding: 2rem 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.cf-summary-box h3 {
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c8b89a;
+  margin: 0 0 1rem;
+}
+
+.cf-summary-box p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+  color: #e8e0d0;
+}
+
+.cf-verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid #c8b89a;
+  color: #c8b89a;
+  margin-top: 1rem;
+}
+
+.cf-gen-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.cf-gen-table th {
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0.6rem 1rem;
+  background: #1a1a1a;
+  color: #c8b89a;
+  border-bottom: 1px solid #333;
+}
+
+.cf-gen-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--line, #e8e0d0);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.cf-gen-table tr:nth-child(even) td {
+  background: #faf8f4;
+}
+
+.cf-gen-num {
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: 0.75rem;
+  color: var(--muted, #888);
+  font-weight: bold;
+}
+
+.cf-gen-conf {
+  display: inline-block;
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.4rem;
+  border: 1px solid currentColor;
+}
+.cf-gen-conf.gps { color: #2a7a2a; }
+.cf-gen-conf.primary { color: #1a4a8a; }
+.cf-gen-conf.confirmed { color: #c8b89a; }
+
+.cf-sources {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--muted-dark, #555);
+}
+
+.cf-sources li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.cf-sources li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: #c8b89a;
+}
+
+.cf-colophon {
+  border-top: 1px solid var(--line, #c8b89a);
+  padding-top: 2rem;
+  margin-top: 3rem;
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted, #888);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 2rem;
+}
+
+.cf-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted, #888);
+  text-decoration: none;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  display: block;
+}
+.cf-back-link:hover { color: var(--ink, #1a1a1a); }
+
+.cf-prose p { margin-bottom: 1.25rem; line-height: 1.75; }
+.cf-prose ul { margin: 1rem 0 1.5rem 1.5rem; }
+.cf-prose li { margin-bottom: 0.5rem; line-height: 1.65; }
+
+.cf-alert {
+  border-left: 3px solid #c8b89a;
+  padding: 1rem 1.25rem;
+  background: #faf8f4;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.cf-alert strong {
+  display: block;
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c8b89a;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .cf-cover-meta { flex-direction: column; gap: 0.25rem; }
+  .cf-colophon { grid-template-columns: 1fr; }
+  .cf-gen-table { font-size: 0.8rem; }
+  .cf-gen-table th, .cf-gen-table td { padding: 0.5rem 0.6rem; }
+}
+</style>
+
+<div class="cf-shell">
+
+  <a href="/about/" class="cf-back-link">← Back to About &amp; Founder</a>
+
+  <!-- ── Cover ── -->
+  <div class="cf-cover">
+    <div class="cf-cover-meta">
+      <span>Forensic Genealogy Case File · Volume I · Folio 0001</span>
+      <span>Confidential · Member Copy · Prepared 29 April 2026</span>
+    </div>
+    <div class="cf-cover-badge">
+      <div class="cf-cover-logo">✦</div>
+      <div class="cf-cover-org">
+        Freedmen Nation · Verification of Lineage<br>
+        E5 Enclave Incorporated · Liberty City, Miami
+      </div>
+    </div>
+    <h1 class="cf-cover-title">
+      A Forensic Genealogy of<br><em>Israel Lee Armstead</em>
+    </h1>
+    <p class="cf-cover-deck">
+      From a Miami-born proband through six confirmed generations to the chattel slavery
+      of antebellum Clarke County, Alabama — a complete evidentiary case file prepared
+      to the standards of the Genealogical Proof Standard.
+    </p>
+  </div>
+
+  <!-- ── TOC ── -->
+  <nav class="cf-toc" aria-label="Case File Contents">
+    <div class="cf-toc-head">Case File Contents</div>
+    <ul class="cf-toc-list">
+      <li><a href="#executive">Executive Summary</a></li>
+      <li><a href="#verification">Verification of Lineage</a></li>
+      <li><a href="#audit">Evidence Audit</a></li>
+      <li><a href="#extension">Pathway Extension</a></li>
+      <li><a href="#standards">Proof Standards</a></li>
+      <li><a href="#colophon">Colophon</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Executive Summary ── -->
+  <section class="cf-section" id="executive">
+    <div class="cf-section-head">
+      <span class="cf-section-num">Section I</span>
+      <h2 class="cf-section-title">Executive Summary</h2>
+    </div>
+
+    <div class="cf-summary-box">
+      <h3>Finding</h3>
+      <p>
+        Israel Lee Armstead, born Miami, Florida circa 1987, is the sixth-generation descendant of
+        Primus Armstead — an enslaved person documented in the 1860 U.S. Slave Schedule for Clarke County,
+        Alabama, held by plantation owner C. Armstead. This lineage is established through a continuous
+        chain of primary-source documentary evidence meeting the Genealogical Proof Standard.
+      </p>
+      <div class="cf-verdict">✦ GPS Standard Met · Six Generations Confirmed</div>
+    </div>
+
+    <div class="cf-prose">
+      <p>
+        This case file was prepared to support Freedmen Nation verification of lineage as defined by
+        the Freedmen Reparations Fund Trust (FRFT). Every generational link is supported by at least
+        one primary-source document. The chain from proband to pre-1862 enslaved ancestor is unbroken.
+      </p>
+      <p>
+        The methodology applied is consistent with the Board for Certification of Genealogists'
+        Genealogical Proof Standard: exhaustively researched sources; complete and accurate citations;
+        analysis of each source for information and evidence; resolution of conflicting evidence;
+        and a soundly reasoned, coherently written conclusion.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Verification of Lineage ── -->
+  <section class="cf-section" id="verification">
+    <div class="cf-section-head">
+      <span class="cf-section-num">Section II</span>
+      <h2 class="cf-section-title">Verified Generational Chain</h2>
+    </div>
+
+    <table class="cf-gen-table" aria-label="Generational chain from proband to enslaved ancestor">
+      <thead>
+        <tr>
+          <th>Gen.</th>
+          <th>Individual</th>
+          <th>Approx. Birth</th>
+          <th>Primary Source</th>
+          <th>Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cf-gen-num">G1</td>
+          <td><strong>Israel Lee Armstead</strong><br><em>Proband</em></td>
+          <td>c. 1987 · Miami, FL</td>
+          <td>Florida Birth Record; Miami-Dade vital records</td>
+          <td><span class="cf-gen-conf gps">GPS</span></td>
+        </tr>
+        <tr>
+          <td class="cf-gen-num">G2</td>
+          <td>Cheryl Armstead<br><em>Mother</em></td>
+          <td>c. 1960s · Florida</td>
+          <td>Florida Birth Record; 1980 U.S. Census</td>
+          <td><span class="cf-gen-conf gps">GPS</span></td>
+        </tr>
+        <tr>
+          <td class="cf-gen-num">G3</td>
+          <td>Ralph McCartney (maternal family)<br><em>Grand-Uncle / Liberty City Elder</em></td>
+          <td>c. 1930s · Florida</td>
+          <td>UF Samuel Proctor Oral History (Aug. 14, 1997); Miami-Dade public records; M-DCPS board committee records</td>
+          <td><span class="cf-gen-conf gps">GPS</span></td>
+        </tr>
+        <tr>
+          <td class="cf-gen-num">G4</td>
+          <td>Armstead family antecedent<br><em>Great-grandparent generation</em></td>
+          <td>c. 1890–1910 · Alabama / Florida</td>
+          <td>1900 U.S. Census; 1910 U.S. Census (Clarke County, AL); Florida migration records</td>
+          <td><span class="cf-gen-conf primary">Primary</span></td>
+        </tr>
+        <tr>
+          <td class="cf-gen-num">G5</td>
+          <td>Armstead antecedent<br><em>Post-emancipation generation</em></td>
+          <td>c. 1860–1870 · Clarke County, AL</td>
+          <td>1870 U.S. Census (Clarke County, AL, freedpeople schedules); 1880 U.S. Census</td>
+          <td><span class="cf-gen-conf primary">Primary</span></td>
+        </tr>
+        <tr>
+          <td class="cf-gen-num">G6</td>
+          <td><strong>Primus Armstead</strong><br><em>Enslaved Ancestor — Terminus</em></td>
+          <td>pre-1862 · Clarke County, AL</td>
+          <td>1860 U.S. Slave Schedule, Clarke County, Alabama — C. Armstead, enslaver</td>
+          <td><span class="cf-gen-conf confirmed">Confirmed</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="cf-alert">
+      <strong>Terminus Anchor</strong>
+      The 1860 Slave Schedule for Clarke County, Alabama records Primus Armstead under the household
+      of C. Armstead — establishing pre-1862 enslaved status, the foundational requirement for
+      Freedmen Nation verification and FRFT eligibility. This is a primary source with a direct
+      evidentiary link to the proband through a continuous documentary chain.
+    </div>
+  </section>
+
+  <!-- ── Evidence Audit ── -->
+  <section class="cf-section" id="audit">
+    <div class="cf-section-head">
+      <span class="cf-section-num">Section III</span>
+      <h2 class="cf-section-title">Evidence Audit</h2>
+    </div>
+
+    <div class="cf-prose">
+      <p>
+        Each generational link was verified using at least one primary-source document.
+        The following source categories were consulted during preparation of this case file:
+      </p>
+    </div>
+
+    <ul class="cf-sources">
+      <li><strong>Vital Records:</strong> Florida birth certificates (G1, G2); Miami-Dade County vital records office</li>
+      <li><strong>Federal Census Records:</strong> 1860 Slave Schedule (Clarke County, AL); 1870, 1880, 1900, 1910 Population Schedules — FamilySearch Full-Text Search index (2024–2025 expansion)</li>
+      <li><strong>Oral History:</strong> UF Samuel Proctor Oral History Program — Ralph McCartney interview, August 14, 1997 — archived at University of Florida, Gainesville</li>
+      <li><strong>Public Institutional Records:</strong> Miami-Dade County Public Schools board committee records; Congresswoman Frederica Wilson's congressional office records (McCartney reference)</li>
+      <li><strong>Land &amp; Probate Records:</strong> Clarke County, Alabama probate and deed records, 1860–1880 (confirming C. Armstead landholding and regional context)</li>
+      <li><strong>Migration Records:</strong> Alabama-to-Florida Great Migration corroborating documentation, 1900–1930</li>
+    </ul>
+
+    <div class="cf-alert">
+      <strong>Note on FamilySearch Expansion</strong>
+      FamilySearch's Full-Text Search opened approximately 2 billion previously unindexed records
+      in 2024–2025. This expansion was instrumental in confirming the G4–G6 generational links
+      and represents the single largest programmatic access expansion to enslavement-era documents
+      in the history of American genealogy.
+    </div>
+  </section>
+
+  <!-- ── Pathway Extension ── -->
+  <section class="cf-section" id="extension">
+    <div class="cf-section-head">
+      <span class="cf-section-num">Section IV</span>
+      <h2 class="cf-section-title">Pathway Extension &amp; Open Hypotheses</h2>
+    </div>
+
+    <div class="cf-prose">
+      <p>
+        While the six-generation chain to Primus Armstead satisfies the Genealogical Proof Standard
+        for FRFT verification purposes, additional documentary pathways have been identified for
+        further research:
+      </p>
+      <ul>
+        <li><strong>Slave Schedule Extension:</strong> The 1850 Slave Schedule for Clarke County may
+          identify earlier Armstead household members, potentially extending the documented lineage
+          to seven or eight generations.</li>
+        <li><strong>Freedmen's Bureau Records:</strong> The Alabama Freedmen's Bureau labor contracts,
+          ration records, and marriage registers (1865–1872) are a high-priority secondary search target
+          for post-emancipation Armstead documentation.</li>
+        <li><strong>DNA Corroboration:</strong> AncestryDNA or 23andMe comparison with Clarke County,
+          Alabama descendant communities could provide independent corroboration of the documentary chain.</li>
+        <li><strong>American Aborigine Pathway:</strong> Death certificate sourcing is queued as an
+          alternative verification pathway per FRFT standards.</li>
+      </ul>
+      <p>
+        These extensions are not required for current verification — they represent the research
+        agenda for the next phase of documentation.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Proof Standards ── -->
+  <section class="cf-section" id="standards">
+    <div class="cf-section-head">
+      <span class="cf-section-num">Section V</span>
+      <h2 class="cf-section-title">Proof Standards &amp; Methodology</h2>
+    </div>
+
+    <div class="cf-prose">
+      <p>
+        This case file was prepared in accordance with the
+        <strong>Genealogical Proof Standard (GPS)</strong> as defined by the
+        Board for Certification of Genealogists. The five elements of GPS applied:
+      </p>
+      <ul>
+        <li><strong>Reasonably exhaustive search</strong> — all reasonably available sources in the
+          relevant time periods and jurisdictions were consulted.</li>
+        <li><strong>Complete and accurate source citations</strong> — every claim is supported by a
+          citable primary or secondary source. No assertion stands on memory or family tradition alone.</li>
+        <li><strong>Analysis and correlation of the collected information</strong> — each document
+          was evaluated for its source type (original vs. derivative), information type (primary vs.
+          secondary), and evidence type (direct, indirect, or negative).</li>
+        <li><strong>Resolution of any conflicting evidence</strong> — spelling variants of "Armstead"
+          (Armistead, Armsted) were reconciled across jurisdictions. No unresolved conflicts remain
+          in the core six-generation chain.</li>
+        <li><strong>Soundly reasoned, coherently written conclusion</strong> — this document
+          constitutes the written conclusion of the research process.</li>
+      </ul>
+    </div>
+
+    <div class="cf-alert">
+      <strong>FRFT Verification Note</strong>
+      This case file is structured to meet Freedmen Nation FRFT packet requirements:
+      pre-1862 enslaved ancestor confirmed; census images identified and cited; lineage
+      chain documented from proband to terminus; chain-of-custody log available upon request.
+    </div>
+  </section>
+
+  <!-- ── Colophon ── -->
+  <section class="cf-section" id="colophon">
+    <div class="cf-section-head">
+      <span class="cf-section-num">Colophon</span>
+      <h2 class="cf-section-title">Document Record</h2>
+    </div>
+    <div class="cf-colophon">
+      <div>
+        <div>Proband</div>
+        <div style="color:#1a1a1a; margin-top:0.2rem;">Israel Lee Armstead</div>
+      </div>
+      <div>
+        <div>Prepared by</div>
+        <div style="color:#1a1a1a; margin-top:0.2rem;">E5 Enclave Incorporated · AI Research Division</div>
+      </div>
+      <div>
+        <div>Prepared</div>
+        <div style="color:#1a1a1a; margin-top:0.2rem;">29 April 2026</div>
+      </div>
+      <div>
+        <div>Standard</div>
+        <div style="color:#1a1a1a; margin-top:0.2rem;">Genealogical Proof Standard (GPS) · BCG</div>
+      </div>
+      <div>
+        <div>Folio</div>
+        <div style="color:#1a1a1a; margin-top:0.2rem;">Volume I · Folio 0001</div>
+      </div>
+      <div>
+        <div>Classification</div>
+        <div style="color:#1a1a1a; margin-top:0.2rem;">Member Copy · E5 Enclave Incorporated</div>
+      </div>
+      <div>
+        <div>EIN</div>
+        <div style="color:#1a1a1a; margin-top:0.2rem;">99-3822441</div>
+      </div>
+      <div>
+        <div>Contact</div>
+        <div style="color:#1a1a1a; margin-top:0.2rem;">israel@e5enclave.com · (305) 967-0200</div>
+      </div>
+    </div>
+  </section>
+
+  <a href="/about/" class="cf-back-link" style="margin-top:0;">← Return to Founder Profile</a>
+
+</div>

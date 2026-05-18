@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" data-palette="editorial">
+<head>
+<script>/* Gospel subdomain rewrite */(function(){if(window.location.hostname==='gospel.e5enclave.com'){var p=window.location.pathname,q=window.location.search||'',h=window.location.hash||'';if(p==='/'){window.location.replace('/gospel/'+q+h);}else if(!p.startsWith('/gospel')){window.location.replace('/gospel'+p+q+h);}}})();</script>
+{# FOUC guard — set palette from localStorage before first paint #}
+<script>(function(){try{var p=localStorage.getItem('e5-palette');if(p==='original'||p==='editorial'){document.documentElement.setAttribute('data-palette',p);}}catch(_){}})();</script>
+{% include "_head.njk" %}
+
+{%- if page.url != "/" %}<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://e5enclave.com/"},{"@type":"ListItem","position":2,"name":{{ title | default("Page") | dump | safe }},"item":"{{ site.url }}{{ page.url }}"}]}</script>{%- endif %}
+</head>
+<body class="{{ bodyClass or '' }}">
+  {%- if site.gtmId %}
+  <!-- Google Tag Manager (noscript) GT-5TG37D4M -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtmId }}"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  {%- endif %}
+  {%- if site.gtm2Id %}
+  <!-- Google Tag Manager 2 (noscript) GT-TW5MMTD8 -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm2Id }}"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  {%- endif %}
+{% include "_skiplink.njk" %}
+{% if isHome %}
+  {% include "_masthead.njk" %}
+{% else %}
+  {% include "_sub-masthead.njk" %}
+{% endif %}
+{% include "_nav.njk" %}
+{% if breadcrumbs and not isHome %}{% include "_breadcrumb.njk" %}{% endif %}
+<main id="main">
+{{ content | safe }}
+</main>
+{% include "_footer.njk" %}
+<script src="/assets/js/editorial.js" defer></script>
+<script src="/assets/js/conversions.js" defer></script>
+{% if extraJs %}{% for src in extraJs %}<script src="{{ src }}" defer></script>{% endfor %}{% endif %}
+
+<div class="vc-palette-switcher" role="region" aria-label="Color palette">
+  <span>Theme</span>
+  <button class="vc-palette-swatch" data-p="editorial" title="Editorial (cream)" aria-label="Editorial palette"></button>
+  <button class="vc-palette-swatch" data-p="original"  title="Original (parchment)" aria-label="Original palette"></button>
+  <button class="vc-palette-swatch" data-p="midnight"  title="Midnight (dark)" aria-label="Midnight palette"></button>
+</div>
+<script>
+(function(){
+  var swatches = document.querySelectorAll('.vc-palette-swatch');
+  var html = document.documentElement;
+  function setActive(p) {
+    swatches.forEach(function(s){ s.classList.toggle('active', s.dataset.p === p); });
+  }
+  var saved = localStorage.getItem('e5-palette') || 'editorial';
+  html.setAttribute('data-palette', saved);
+  setActive(saved);
+  swatches.forEach(function(s){
+    s.addEventListener('click', function(){
+      var p = s.dataset.p;
+      html.setAttribute('data-palette', p);
+      localStorage.setItem('e5-palette', p);
+      setActive(p);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

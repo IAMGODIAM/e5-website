@@ -1,0 +1,6 @@
+# Gospel subdomain — transparent rewrite to /gospel/ path (200 = proxy, no redirect)
+https://gospel.e5enclave.com/  /gospel/  200
+https://gospel.e5enclave.com/*  /gospel/:splat  200
+
+# Legacy gospel path redirect
+/gospel-of-love/  /gospel/  301

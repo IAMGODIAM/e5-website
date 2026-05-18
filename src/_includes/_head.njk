@@ -1,0 +1,162 @@
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>{% if title %}{{ title }} — {{ site.name }}{% else %}{{ site.name }} — {{ site.tagline }}{% endif %}</title>
+<meta name="description" content="{{ description or site.description or (site.name + ' — ' + site.tagline) }}"/>
+<link rel="canonical" href="{{ site.url }}{{ page.url }}"/>
+<meta name="theme-color" content="{{ site.themeColor }}"/>
+
+{# Google Search Console Verification #}
+{% if site.googleVerification %}<meta name="google-site-verification" content="{{ site.googleVerification }}"/>{% endif %}
+
+{# Open Graph / Twitter #}
+<meta property="og:type" content="{{ ogType or 'website' }}"/>
+<meta property="og:site_name" content="{{ site.name }}"/>
+<meta property="og:title" content="{{ title or (site.name + ' — ' + site.tagline) }}"/>
+<meta property="og:description" content="{{ description or site.description or (site.name + ' — ' + site.tagline) }}"/>
+<meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:image" content="{{ site.url }}{{ ogImage or site.ogImage }}"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="{{ title or (site.name + ' — ' + site.tagline) }}"/>
+<meta name="twitter:description" content="{{ description or site.description or (site.name + ' — ' + site.tagline) }}"/>
+<meta name="twitter:image" content="{{ site.url }}{{ ogImage or site.ogImage }}"/>
+
+{# Favicons #}
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="icon" type="image/svg+xml" href="/assets/img/favicon/favicon.svg"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png"/>
+
+{# Fonts #}
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap"/>
+
+{# Styles #}
+<link rel="stylesheet" href="/assets/css/editorial.css"/>
+{% if extraCss %}{% for href in extraCss %}<link rel="stylesheet" href="{{ href }}"/>{% endfor %}{% endif %}
+{% if layout == 'dispatch' or page.url and '/record/' in page.url and page.url != '/record/' %}<link rel="stylesheet" href="/assets/css/dispatch.css"/>{% endif %}
+
+{# ── Analytics Suite — GA4 + GTM + Google Ads — installed 2026-05-13 ── #}
+
+{# GA4 Global Site Tag (gtag.js) — G-05PYDYP5S0 #}
+{% if site.ga4Id %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4Id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ site.ga4Id }}', { anonymize_ip: true });
+  {% if site.gadsId %}gtag('config', '{{ site.gadsId }}');{% endif %}
+</script>
+{% endif %}
+
+{# Google Tag Manager — GT-5TG37D4M #}
+{% if site.gtmId %}
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","{{ site.gtmId }}");</script>
+{% endif %}
+
+{# Google Tag Manager 2 — GT-TW5MMTD8 #}
+{% if site.gtm2Id %}
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","{{ site.gtm2Id }}");</script>
+{% endif %}
+
+{# ── TASK 8: Organization Schema (homepage only) ── #}
+{% if page.url == "/" or isHome %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  "name": "E5 Enclave Incorporated",
+  "alternateName": ["E5 Enclave", "E5"],
+  "url": "https://e5enclave.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://e5enclave.com/assets/img/og/editorial.png",
+    "width": 1200,
+    "height": 630
+  },
+  "foundingDate": "2024-06-30",
+  "description": "E5 Enclave Incorporated is a 501(c)(3) lineage-led think tank building Black economic sovereignty, food justice, education, and community power from Liberty City, Miami.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "820 NW 64th Street",
+    "addressLocality": "Miami",
+    "addressRegion": "FL",
+    "postalCode": "33150",
+    "addressCountry": "US"
+  },
+  "telephone": "+18332417356",
+  "email": "accounts@e5enclave.com",
+  "taxID": "99-3822441",
+  "nonprofitStatus": "Nonprofit501c3",
+  "legalName": "E5 Enclave Incorporated",
+  "areaServed": {
+    "@type": "Place",
+    "name": "Liberty City, Miami, Florida"
+  },
+  "knowsAbout": [
+    "Black economic sovereignty",
+    "Cooperative economics",
+    "Food sovereignty",
+    "Reparations",
+    "Enclave economy",
+    "Community development",
+    "Agentic AI for nonprofits"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Israel Lee Armstead",
+    "jobTitle": "President & Chief Visionary Officer",
+    "url": "https://www.linkedin.com/in/israel-lee-armstead-a262b3244"
+  },
+  "employee": {
+    "@type": "Person",
+    "name": "Israel Lee Armstead",
+    "jobTitle": "President & Chief Visionary Officer"
+  },
+  "sameAs": [
+    "https://twitter.com/wearegodweare",
+    "https://www.tiktok.com/@e5blackdragons",
+    "https://www.linkedin.com/in/israel-lee-armstead-a262b3244",
+        "https://sam.gov/entity/H8NGXEYE2HH8"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "E5 Enclave",
+  "url": "https://e5enclave.com",
+  "description": "E5 Enclave Incorporated — a lineage-led think tank building Black economic sovereignty from Liberty City, Miami.",
+  "publisher": {
+    "@type": "NGO",
+    "name": "E5 Enclave Incorporated"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://e5enclave.com/blog/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+{% endif %}
+
+{# ── TASK 8: BreadcrumbList Schema (interior pages) ── #}
+{% if page.url != "/" and not isHome %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/"},
+    {"@type": "ListItem", "position": 2, "name": "{{ title or site.name }}", "item": "{{ site.url }}{{ page.url }}"}
+  ]
+}
+</script>
+{% endif %}

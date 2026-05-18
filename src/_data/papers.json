@@ -1,0 +1,36 @@
+[
+  {
+    "order": 1,
+    "numeral": "I",
+    "slug": "parallel-negros",
+    "title": "Parallel Negros",
+    "kind": "Think Tank Dispatch",
+    "lede": "A foundational comparative dispatch from the E5 think tank \u2014 examining the parallel architectures that shape the lineage's path through American history, and the institutional remedies they require.",
+    "deck": "A foundational comparative dispatch from the E5 think tank \u2014 examining the parallel architectures that shape the lineage's path through American history.",
+    "external": "https://e5enclave.com/record/parallel-negros/",
+    "status": "Open Record",
+    "lead": true
+  },
+  {
+    "order": 2,
+    "numeral": "II",
+    "slug": "measure-the-wound",
+    "title": "Measure the Wound",
+    "kind": "Foundational Record",
+    "lede": "Documentation of the harms we repair. What is measured cannot be dismissed \u2014 the evidentiary foundation against which every E5 program is built.",
+    "deck": "Documentation of the harms we repair. What is measured cannot be dismissed.",
+    "external": "https://e5enclave.com/record/measure-the-wound/",
+    "status": "Open Record"
+  },
+  {
+    "order": 3,
+    "numeral": "III",
+    "slug": "restitution-246",
+    "title": "Restitution 246",
+    "kind": "Campaign Framework",
+    "lede": "The Lloyd Kelly framework \u2014 a disciplined wage-loss and opportunity-loss mechanism for the 246 years of stolen labor, anchored to the Craemer (2015) wage-hour methodology.",
+    "deck": "A framework in five questions. The Lloyd Kelly accounting model paired with the Craemer (2015) wage-hour methodology.",
+    "external": "https://e5enclave.com/record/restitution-246/",
+    "status": "Open Record"
+  }
+]

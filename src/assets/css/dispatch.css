@@ -1,0 +1,712 @@
+/* ============================================================
+   E5 Enclave — Dispatch reader chrome
+   Loaded only on /record/{slug}/ pages via dispatch.njk.
+   Inherits --vc-* tokens from editorial.css; palette toggle works.
+   ============================================================ */
+
+/* ===== PLATE — full-bleed cover masthead ===== */
+.vc-disp-plate {
+  background: var(--vc-bone);
+  border-bottom: 1.5px solid var(--vc-ink);
+  padding: 64px 56px 48px;
+  text-align: center;
+}
+.vc-disp-plate .numeral {
+  font-family: var(--vc-display); font-style: italic;
+  font-size: clamp(48px, 6vw, 88px); color: var(--vc-oxblood);
+  line-height: 1; letter-spacing: -0.02em; margin-bottom: 12px;
+}
+.vc-disp-plate .kind {
+  font-family: var(--vc-text); font-size: 9.5px;
+  letter-spacing: 0.5em; text-transform: uppercase;
+  color: var(--vc-muted); font-weight: 600; margin-bottom: 24px;
+}
+.vc-disp-plate h1 {
+  font-family: var(--vc-display); font-weight: 400;
+  font-size: clamp(48px, 6.4vw, 104px); line-height: 0.96;
+  letter-spacing: -0.026em; margin: 0 auto 22px;
+  color: var(--vc-ink); max-width: 22ch;
+  text-wrap: balance;
+}
+.vc-disp-plate h1 em { font-style: italic; color: var(--vc-oxblood); }
+.vc-disp-plate .deck {
+  font-family: var(--vc-display); font-style: italic;
+  font-size: clamp(19px, 1.7vw, 24px); line-height: 1.45;
+  color: var(--vc-ink-2); max-width: 56ch;
+  margin: 0 auto 28px;
+}
+.vc-disp-plate .meta {
+  display: inline-flex; gap: 24px; flex-wrap: wrap; justify-content: center;
+  padding-top: 22px; border-top: 1px solid var(--vc-rule-2);
+  font-family: var(--vc-text); font-size: 9.5px; letter-spacing: 0.36em;
+  text-transform: uppercase; color: var(--vc-muted);
+}
+.vc-disp-plate .meta em {
+  display: block; font-family: var(--vc-display); font-style: italic;
+  font-size: 15px; color: var(--vc-ink); letter-spacing: 0.01em;
+  text-transform: none; margin-top: 4px;
+}
+
+/* ===== READER LAYOUT — apparatus rail + body ===== */
+.vc-disp-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 56px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 56px 56px 96px;
+}
+
+.vc-disp-rail {
+  position: sticky; top: 88px;
+  align-self: start;
+  border-left: 1px solid var(--vc-rule-2);
+  padding-left: 22px;
+  font-family: var(--vc-text);
+  font-size: 11px; letter-spacing: 0.32em;
+  text-transform: uppercase; color: var(--vc-muted);
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+.vc-disp-rail .rail-h {
+  font-size: 9px; letter-spacing: 0.5em; color: var(--vc-oxblood);
+  font-weight: 600; margin-bottom: 14px;
+}
+.vc-disp-rail ol {
+  list-style: none; padding: 0; margin: 0 0 24px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.vc-disp-rail ol li {
+  display: flex; gap: 10px; align-items: baseline; line-height: 1.4;
+}
+.vc-disp-rail ol li .n {
+  font-family: var(--vc-display); font-style: italic; font-size: 13px;
+  color: var(--vc-oxblood); letter-spacing: 0; min-width: 14px; text-transform: lowercase;
+}
+.vc-disp-rail ol li a {
+  font-family: var(--vc-display); font-style: italic;
+  font-size: 14px; letter-spacing: 0.01em; text-transform: none;
+  color: var(--vc-ink); line-height: 1.35;
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s ease;
+}
+.vc-disp-rail ol li a:hover { border-bottom-color: var(--vc-oxblood); }
+.vc-disp-rail .progress {
+  height: 1px; background: var(--vc-rule-2); margin: 18px 0;
+  position: relative; overflow: hidden;
+}
+.vc-disp-rail .progress .thread {
+  position: absolute; left: 0; top: 0; height: 100%;
+  background: var(--vc-oxblood); width: 0%;
+  transition: width .15s ease;
+}
+.vc-disp-rail .actions {
+  display: flex; flex-direction: column; gap: 8px; margin-top: 18px;
+}
+.vc-disp-rail .actions button {
+  background: transparent; border: 1px solid var(--vc-rule-2);
+  padding: 8px 12px; cursor: pointer;
+  font-family: var(--vc-text); font-size: 9px; letter-spacing: 0.42em;
+  text-transform: uppercase; font-weight: 600; color: var(--vc-ink);
+  transition: border-color .2s ease, color .2s ease;
+}
+.vc-disp-rail .actions button:hover { border-color: var(--vc-oxblood); color: var(--vc-oxblood); }
+
+/* ===== BODY — long-form prose with drop-cap, marginalia, etc. ===== */
+.vc-disp-body {
+  font-family: var(--vc-display);
+  font-size: 19px; line-height: 1.7; color: var(--vc-ink);
+  max-width: 64ch;
+}
+.vc-disp-body p { margin: 0 0 22px; }
+.vc-disp-body p em { color: var(--vc-oxblood); font-style: italic; }
+.vc-disp-body p strong { font-weight: 600; }
+.vc-disp-body p:first-of-type::first-letter,
+.vc-disp-body p.drop::first-letter {
+  font-family: var(--vc-display); font-style: italic; font-weight: 400;
+  font-size: 96px; float: left; line-height: 0.78;
+  padding: 10px 14px 0 0; color: var(--vc-oxblood);
+}
+.vc-disp-body h2 {
+  font-family: var(--vc-display); font-weight: 400;
+  font-size: clamp(28px, 3vw, 40px); line-height: 1.05; letter-spacing: -0.02em;
+  margin: 64px 0 18px; color: var(--vc-ink);
+  text-wrap: balance;
+}
+.vc-disp-body h2 em { font-style: italic; color: var(--vc-oxblood); }
+.vc-disp-body h3 {
+  font-family: var(--vc-display); font-weight: 500;
+  font-size: 22px; line-height: 1.2; margin: 36px 0 12px;
+  color: var(--vc-ink);
+}
+.vc-disp-body ul, .vc-disp-body ol { margin: 0 0 22px; padding-left: 22px; }
+.vc-disp-body li { margin-bottom: 8px; }
+.vc-disp-body a { color: var(--vc-oxblood); border-bottom: 1px solid var(--vc-rule-2); }
+.vc-disp-body a:hover { border-color: var(--vc-oxblood); }
+.vc-disp-body hr { border: 0; border-top: 1px solid var(--vc-rule-2); margin: 48px 0; }
+
+/* ===== PULL QUOTE (in-body) ===== */
+.vc-disp-pull {
+  margin: 40px 0;
+  padding: 24px 0;
+  border-top: 1px solid var(--vc-rule-2);
+  border-bottom: 1px solid var(--vc-rule-2);
+  font-family: var(--vc-display); font-style: italic;
+  font-size: clamp(22px, 2.4vw, 30px); line-height: 1.32;
+  color: var(--vc-ink); text-align: center;
+}
+.vc-disp-pull .mark {
+  display: block; color: var(--vc-oxblood);
+  font-size: 22px; line-height: 1; margin-bottom: 14px;
+  font-style: italic;
+}
+.vc-disp-pull em { color: var(--vc-oxblood); font-style: italic; }
+
+/* ===== Q-CARD (Restitution 246 questions) ===== */
+.vc-disp-q-card {
+  margin: 48px 0;
+  padding: 36px 32px;
+  background: var(--vc-bone-2);
+  border-left: 3px solid var(--vc-oxblood);
+}
+.vc-disp-q-card .q-eyebrow {
+  font-family: var(--vc-text); font-size: 9px; letter-spacing: 0.5em;
+  text-transform: uppercase; color: var(--vc-oxblood);
+  font-weight: 600; margin-bottom: 12px;
+}
+.vc-disp-q-card .q-num {
+  font-family: var(--vc-display); font-style: italic;
+  font-size: 56px; line-height: 0.9; color: var(--vc-oxblood);
+  margin-bottom: 12px;
+}
+.vc-disp-q-card .q-title {
+  font-family: var(--vc-display); font-weight: 400;
+  font-size: clamp(24px, 2.4vw, 32px); line-height: 1.15;
+  margin: 0 0 18px; color: var(--vc-ink);
+  text-wrap: balance;
+}
+.vc-disp-q-card .q-title em { font-style: italic; color: var(--vc-oxblood); }
+.vc-disp-q-card .q-body p {
+  font-family: var(--vc-display); font-size: 17px; line-height: 1.65;
+  color: var(--vc-ink); margin: 0 0 14px;
+}
+.vc-disp-q-card .q-body p:last-child { margin-bottom: 0; }
+.vc-disp-q-card .q-body em { color: var(--vc-oxblood); font-style: italic; }
+
+/* ===== WITNESS (Measure of the Wound boxed insert) ===== */
+.vc-disp-witness {
+  margin: 48px 0;
+  padding: 28px 32px;
+  background: var(--vc-ink); color: var(--vc-bone);
+  border-left: 3px solid var(--vc-gold-2);
+}
+.vc-disp-witness .w-lbl {
+  font-family: var(--vc-text); font-size: 9px; letter-spacing: 0.5em;
+  text-transform: uppercase; color: var(--vc-gold-2);
+  font-weight: 600; margin-bottom: 12px;
+}
+.vc-disp-witness .w-title {
+  font-family: var(--vc-display); font-style: italic; font-weight: 400;
+  font-size: clamp(20px, 2vw, 26px); line-height: 1.2;
+  margin: 0 0 16px; color: var(--vc-bone);
+}
+.vc-disp-witness .w-body p {
+  font-family: var(--vc-display); font-size: 16px; line-height: 1.6;
+  color: rgba(var(--vc-bone-rgb),0.86); margin: 0 0 12px;
+}
+.vc-disp-witness .w-body em { color: var(--vc-gold-2); font-style: italic; }
+.vc-disp-witness .w-source {
+  margin-top: 14px; padding-top: 12px;
+  border-top: 1px solid rgba(var(--vc-bone-rgb),0.2);
+  font-family: var(--vc-text); font-size: 9.5px;
+  letter-spacing: 0.36em; text-transform: uppercase;
+  color: rgba(var(--vc-bone-rgb),0.55);
+}
+
+/* ===== STAT RIBBON ===== */
+.vc-disp-stat-ribbon {
+  margin: 48px 0;
+  padding: 28px 0;
+  border-top: 2px solid var(--vc-oxblood);
+  border-bottom: 1px solid var(--vc-rule-2);
+  display: grid; grid-template-columns: auto 1fr; gap: 32px;
+  align-items: baseline;
+}
+.vc-disp-stat-ribbon .s-num {
+  font-family: var(--vc-display); font-weight: 400;
+  font-size: clamp(64px, 8vw, 120px); line-height: 0.9;
+  color: var(--vc-ink); letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.vc-disp-stat-ribbon .s-num em { color: var(--vc-oxblood); font-style: italic; }
+.vc-disp-stat-ribbon .s-content .s-lbl {
+  font-family: var(--vc-text); font-size: 9.5px; letter-spacing: 0.42em;
+  text-transform: uppercase; color: var(--vc-oxblood);
+  font-weight: 600; margin-bottom: 10px;
+}
+.vc-disp-stat-ribbon .s-content p {
+  font-family: var(--vc-display); font-size: 17px; line-height: 1.55;
+  color: var(--vc-ink-2); margin: 0;
+}
+@media (max-width: 720px) {
+  .vc-disp-stat-ribbon { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* ===== MARGINALIA ===== */
+.vc-disp-marg {
+  margin: 24px 0; padding: 16px 18px;
+  background: var(--vc-bone-2);
+  border-left: 2px solid var(--vc-rule-2);
+  font-family: var(--vc-display); font-style: italic;
+  font-size: 14px; line-height: 1.5; color: var(--vc-ink-3);
+}
+.vc-disp-marg .m-lbl {
+  display: block; font-family: var(--vc-text); font-style: normal;
+  font-size: 8.5px; letter-spacing: 0.42em; text-transform: uppercase;
+  color: var(--vc-oxblood); font-weight: 600; margin-bottom: 6px;
+}
+
+/* ===== ORNAMENT (section break) ===== */
+.vc-disp-ornament {
+  text-align: center; margin: 48px 0;
+  font-family: var(--vc-display); font-style: italic;
+  color: var(--vc-oxblood); font-size: 22px; line-height: 1;
+}
+
+/* ===== ENDMATTER ===== */
+.vc-disp-endmatter {
+  margin-top: 80px; padding-top: 48px;
+  border-top: 1.5px solid var(--vc-ink);
+}
+.vc-disp-endmatter h3 {
+  font-family: var(--vc-text); font-size: 9.5px; letter-spacing: 0.5em;
+  text-transform: uppercase; color: var(--vc-oxblood);
+  font-weight: 600; margin: 32px 0 14px;
+}
+.vc-disp-endmatter h3:first-child { margin-top: 0; }
+.vc-disp-endmatter ul {
+  list-style: none; padding: 0; margin: 0 0 24px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.vc-disp-endmatter li {
+  font-family: var(--vc-display); font-style: italic;
+  font-size: 15px; line-height: 1.5; color: var(--vc-ink-2);
+}
+.vc-disp-endmatter .methodology p {
+  font-family: var(--vc-display); font-size: 15px; line-height: 1.6;
+  color: var(--vc-ink-2); margin: 0 0 12px;
+}
+
+/* ===== CITATION TABS ===== */
+.vc-disp-citation { margin: 24px 0; }
+.vc-disp-citation .tabs {
+  display: flex; gap: 4px; border-bottom: 1px solid var(--vc-rule-2);
+  margin-bottom: 14px;
+}
+.vc-disp-citation .tabs button {
+  background: transparent; border: 0;
+  padding: 8px 14px; cursor: pointer;
+  font-family: var(--vc-text); font-size: 9.5px; letter-spacing: 0.42em;
+  text-transform: uppercase; font-weight: 600; color: var(--vc-muted);
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+  transition: color .2s ease, border-color .2s ease;
+}
+.vc-disp-citation .tabs button.active,
+.vc-disp-citation .tabs button:hover { color: var(--vc-oxblood); border-bottom-color: var(--vc-oxblood); }
+.vc-disp-citation pre {
+  background: var(--vc-bone-2); padding: 16px 20px; margin: 0 0 12px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 12.5px; line-height: 1.55; color: var(--vc-ink);
+  white-space: pre-wrap; word-break: break-word;
+  border-left: 2px solid var(--vc-oxblood);
+}
+.vc-disp-citation .copy-btn {
+  background: transparent; border: 1px solid var(--vc-rule-2);
+  padding: 6px 12px; cursor: pointer;
+  font-family: var(--vc-text); font-size: 9px; letter-spacing: 0.42em;
+  text-transform: uppercase; font-weight: 600; color: var(--vc-ink);
+  margin-right: 8px;
+}
+.vc-disp-citation .copy-btn:hover { border-color: var(--vc-oxblood); color: var(--vc-oxblood); }
+.vc-disp-citation .copy-btn.copied { color: var(--vc-oxblood); border-color: var(--vc-oxblood); }
+
+/* ===== COLOPHON ===== */
+.vc-disp-colophon {
+  margin: 64px 0 32px;
+  text-align: center;
+  font-family: var(--vc-display); font-style: italic;
+  font-size: 14px; color: var(--vc-muted); letter-spacing: 0.02em;
+}
+
+/* ===== CROSS-LINKS ===== */
+.vc-disp-crosslinks {
+  margin-top: 48px; padding-top: 32px;
+  border-top: 1px solid var(--vc-rule-2);
+}
+.vc-disp-crosslinks h3 {
+  font-family: var(--vc-text); font-size: 9.5px; letter-spacing: 0.5em;
+  text-transform: uppercase; color: var(--vc-oxblood);
+  font-weight: 600; margin: 0 0 18px; text-align: center;
+}
+.vc-disp-crosslinks-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+}
+.vc-disp-crosslinks-grid a {
+  padding: 22px 24px;
+  background: var(--vc-bone-2);
+  border: 1px solid var(--vc-rule-2);
+  display: flex; flex-direction: column; gap: 8px;
+  transition: border-color .2s ease, background .2s ease;
+}
+.vc-disp-crosslinks-grid a:hover { border-color: var(--vc-oxblood); background: var(--vc-bone); }
+.vc-disp-crosslinks-grid .cl-kind {
+  font-family: var(--vc-text); font-size: 9px; letter-spacing: 0.42em;
+  text-transform: uppercase; color: var(--vc-muted); font-weight: 600;
+}
+.vc-disp-crosslinks-grid .cl-title {
+  font-family: var(--vc-display); font-size: 22px; line-height: 1.15;
+  color: var(--vc-ink);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .vc-disp-layout { grid-template-columns: 1fr; gap: 32px; padding: 40px 32px 64px; }
+  .vc-disp-rail { position: static; max-height: none; border-left: 0;
+    border-top: 1px solid var(--vc-rule-2); padding: 22px 0 0; }
+  .vc-disp-crosslinks-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .vc-disp-plate { padding: 48px 24px 36px; }
+  .vc-disp-layout { padding: 32px 24px 56px; }
+  .vc-disp-body { font-size: 17px; }
+  .vc-disp-body p:first-of-type::first-letter,
+  .vc-disp-body p.drop::first-letter { font-size: 72px; }
+  .vc-disp-q-card { padding: 24px 20px; }
+  .vc-disp-witness { padding: 22px 20px; }
+}
+
+/* ===== ARCHIVAL PRINT MODE ===== */
+@media print {
+  @page {
+    size: letter; margin: 1in;
+    @top-center { content: "E5 Enclave · The Record"; font-family: serif; font-size: 9pt; color: #555; }
+    @bottom-right { content: counter(page); font-family: serif; font-size: 9pt; color: #555; }
+  }
+  .vc-disp-rail, .vc-disp-crosslinks { display: none !important; }
+  .vc-disp-layout { display: block; padding: 0; max-width: none; }
+  .vc-disp-plate { background: #fff !important; border-bottom: 1px solid #000 !important; padding: 0 0 24pt; text-align: left; }
+  .vc-disp-plate .numeral, .vc-disp-plate .kind, .vc-disp-plate h1,
+  .vc-disp-plate .deck, .vc-disp-plate .meta { color: #000 !important; }
+  .vc-disp-plate h1 em { color: #333 !important; }
+  .vc-disp-body { color: #000 !important; max-width: none; font-size: 11pt; line-height: 1.55; }
+  .vc-disp-body p em, .vc-disp-body h2 em { color: #444 !important; }
+  .vc-disp-q-card, .vc-disp-stat-ribbon, .vc-disp-witness, .vc-disp-marg, .vc-disp-pull {
+    page-break-inside: avoid; background: #fff !important;
+    border-color: #000 !important; color: #000 !important;
+  }
+  .vc-disp-q-card *, .vc-disp-witness *, .vc-disp-marg *, .vc-disp-pull *,
+  .vc-disp-stat-ribbon * { color: #000 !important; }
+  .vc-disp-citation, .vc-disp-citation .tabs { display: none !important; }
+  .vc-disp-endmatter { border-top: 1px solid #000 !important; }
+  .vc-disp-endmatter h3 { color: #000 !important; }
+  a { color: #000 !important; text-decoration: underline; }
+}
+
+/* ============================================================
+   E5 Enclave — Dispatch Magazine Upgrade
+   Transforms dispatch plate into full ENCLAVE magazine cover.
+   Appended to dispatch.css — all tokens inherit from editorial.css
+   ============================================================ */
+
+/* ===== MAGAZINE COVER PLATE — replaces .vc-disp-plate ===== */
+
+.vc-disp-plate {
+  position: relative;
+  background: #0a0908;
+  color: var(--vc-bone);
+  border-bottom: 0;
+  padding: 0;
+  text-align: left;
+  overflow: hidden;
+  min-height: 88vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+/* Cover image — full bleed with overlay */
+.vc-disp-plate .cover-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.vc-disp-plate .cover-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: brightness(0.42) contrast(1.08) saturate(0.85);
+}
+.vc-disp-plate .cover-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom,
+      rgba(10,9,8,0.72) 0%,
+      rgba(10,9,8,0.18) 30%,
+      rgba(10,9,8,0.10) 55%,
+      rgba(10,9,8,0.75) 80%,
+      rgba(10,9,8,0.96) 100%
+    );
+}
+
+.vc-disp-plate .cover-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 88vh;
+}
+
+/* ── TOP RAIL ── */
+.vc-disp-plate .cover-top-rail {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 16px clamp(24px, 4vw, 56px);
+  border-bottom: 1px solid rgba(244,238,226,0.15);
+  font-family: var(--vc-text);
+  font-size: 9.5px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: rgba(244,238,226,0.45);
+}
+.vc-disp-plate .cover-top-rail .ctr { text-align: center; color: rgba(244,238,226,0.32); }
+.vc-disp-plate .cover-top-rail .rgt { text-align: right; }
+
+/* ── MASTHEAD — ENCLAVE wordmark ── */
+.vc-disp-plate .cover-masthead {
+  padding: 0 clamp(24px, 4vw, 56px);
+  border-bottom: 2px solid rgba(244,238,226,0.18);
+}
+.vc-disp-plate .cover-pub-name {
+  font-family: var(--vc-text);
+  font-size: 9px;
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: rgba(244,238,226,0.4);
+  text-align: center;
+  padding: 10px 0 2px;
+}
+.vc-disp-plate .cover-wordmark {
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  font-weight: 700;
+  font-size: clamp(72px, 16vw, 180px);
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+  color: var(--vc-gold);
+  text-align: center;
+  display: block;
+  padding: 4px 0 4px;
+  text-shadow:
+    0 1px 0 rgba(196,164,104,0.35),
+    0 2px 12px rgba(0,0,0,0.5),
+    0 0 60px rgba(196,164,104,0.06);
+}
+.vc-disp-plate .cover-issue-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px clamp(2px, 1vw, 12px) 12px;
+  border-top: 1px solid rgba(244,238,226,0.13);
+  font-family: var(--vc-text);
+  font-size: 9px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: rgba(244,238,226,0.38);
+}
+.vc-disp-plate .cover-issue-line .seal-badge {
+  width: 44px; height: 44px; flex-shrink: 0;
+}
+
+/* ── HERO BODY ── */
+.vc-disp-plate .cover-hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: end;
+  padding: clamp(28px, 5vw, 60px) clamp(24px, 4vw, 56px);
+}
+@media (max-width: 740px) {
+  .vc-disp-plate .cover-hero { grid-template-columns: 1fr; }
+  .vc-disp-plate .cover-hero-right { display: none; }
+}
+
+.vc-disp-plate .cover-kicker {
+  font-family: var(--vc-text);
+  font-size: 9.5px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--vc-gold-2);
+  margin: 0 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.vc-disp-plate .cover-kicker::after {
+  content: "";
+  flex: 0 0 40px;
+  height: 1px;
+  background: var(--vc-gold-2);
+  opacity: 0.45;
+}
+
+.vc-disp-plate h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: clamp(52px, 9vw, 130px);
+  line-height: 0.91;
+  letter-spacing: -0.025em;
+  margin: 0 0 20px;
+  color: var(--vc-bone);
+  text-shadow: 0 2px 24px rgba(0,0,0,0.4);
+  text-wrap: balance;
+  max-width: 18ch;
+}
+.vc-disp-plate h1 em {
+  font-style: italic;
+  color: var(--vc-gold-2);
+}
+
+.vc-disp-plate .cover-deck {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: clamp(16px, 1.8vw, 22px);
+  line-height: 1.45;
+  color: rgba(244,238,226,0.72);
+  max-width: 48ch;
+  margin: 0 0 24px;
+  font-weight: 400;
+}
+
+/* ── COLOPHON ── */
+.vc-disp-plate .cover-colophon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 28px;
+  align-items: center;
+  padding: 16px 0 0;
+  border-top: 1px solid rgba(244,238,226,0.15);
+  font-family: var(--vc-text);
+  font-size: 9px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: rgba(244,238,226,0.38);
+}
+.vc-disp-plate .cover-colophon em {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: rgba(244,238,226,0.78);
+  margin-top: 3px;
+}
+
+/* ── RIGHT SIDEBAR — evidence tags ── */
+.vc-disp-plate .cover-hero-right {
+  min-width: 180px;
+  max-width: 200px;
+  border-left: 1px solid rgba(244,238,226,0.12);
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-self: center;
+}
+.vc-disp-plate .cover-tag-group {
+  font-family: var(--vc-text);
+  font-size: 9px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: rgba(244,238,226,0.35);
+  line-height: 1.9;
+}
+.vc-disp-plate .cover-tag-group .tg-label {
+  color: var(--vc-gold-2);
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+  font-size: 8.5px;
+  letter-spacing: 0.48em;
+}
+
+/* ── FOOTER STRIP ── */
+.vc-disp-plate .cover-footer {
+  border-top: 1px solid rgba(244,238,226,0.15);
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 20px;
+  align-items: center;
+  padding: 14px clamp(24px, 4vw, 56px);
+  font-family: var(--vc-text);
+  font-size: 8.5px;
+  letter-spacing: 0.44em;
+  text-transform: uppercase;
+  color: rgba(244,238,226,0.32);
+  background: rgba(10,9,8,0.5);
+}
+.vc-disp-plate .cover-footer .cf-pub { color: rgba(244,238,226,0.52); font-weight: 600; }
+.vc-disp-plate .cover-footer .cf-note { color: rgba(196,164,104,0.52); }
+@media (max-width: 600px) {
+  .vc-disp-plate .cover-footer { grid-template-columns: 1fr 1fr; gap: 8px 14px; }
+}
+
+/* ===== TRANSITION into body ===== */
+.vc-disp-plate + .vc-disp-layout { padding-top: 72px; }
+
+/* ===== ORNAMENT RULE — diamond separator ===== */
+.vc-disp-orn-rule {
+  display: flex; align-items: center; gap: 16px;
+  margin: 48px 0; color: var(--vc-rule-2);
+}
+.vc-disp-orn-rule::before,
+.vc-disp-orn-rule::after {
+  content: ""; flex: 1; height: 1px; background: currentColor;
+}
+.vc-disp-orn-rule .mk {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic; font-size: 20px;
+  color: var(--vc-oxblood); line-height: 1;
+}
+
+/* ===== RECORD CARD UPGRADES ===== */
+.vc-record-card {
+  border: 1px solid var(--vc-rule);
+  padding: 32px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.vc-record-card:hover {
+  border-color: var(--vc-oxblood);
+  box-shadow: 0 2px 24px rgba(109,31,32,0.08);
+}
+.vc-record-card .kind {
+  font-family: var(--vc-text);
+  font-size: 9px; letter-spacing: 0.44em;
+  text-transform: uppercase; color: var(--vc-oxblood);
+  margin-bottom: 14px;
+}
+.vc-record-card .title {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400; font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.0; letter-spacing: -0.02em;
+  margin: 0 0 16px; color: var(--vc-ink);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .vc-disp-plate { min-height: 100svh; }
+  .vc-disp-plate .cover-top-rail .ctr { display: none; }
+}

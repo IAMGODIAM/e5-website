@@ -1,0 +1,27 @@
+{
+  "columns": [
+    {
+      "title": "Programs",
+      "members": [
+        { "name": "McCartney Academy", "role": "Educational pillar" },
+        { "name": "Lineage Farms · FarmBlock", "role": "Environmental pillar" },
+        { "name": "Block to the Boardroom", "role": "Engagement pillar" }
+      ]
+    },
+    {
+      "title": "Campaigns",
+      "members": [
+        { "name": "Restitution 246", "role": "Lloyd Kelly · Framework" },
+        { "name": "Craemer (2015)", "role": "Wage-hour methodology" },
+        { "name": "The Five Questions", "role": "Doctrinal anchor" }
+      ]
+    },
+    {
+      "title": "In Memoriam",
+      "members": [
+        { "name": "Ralph McCartney", "role": "Community elder · Liberty City" },
+        { "name": "The Lineage", "role": "Past, present, and future" }
+      ]
+    }
+  ]
+}

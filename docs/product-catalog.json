@@ -1,0 +1,493 @@
+{
+  "catalog_meta": {
+    "version": "1.0.0",
+    "organization": "E5 Enclave Inc",
+    "org_type": "501c3",
+    "brand": "Black Dragon",
+    "fulfillment_provider": "Printful",
+    "ecommerce_provider": "Snipcart",
+    "payment_processor": "Stripe (Nonprofit Rate)",
+    "currency": "USD",
+    "last_updated": "2026-04-02",
+    "design_theme": "Photorealistic black dragons with gold accents"
+  },
+  "transaction_fees": {
+    "snipcart_percent": 2.0,
+    "stripe_percent": 2.2,
+    "stripe_fixed": 0.30,
+    "combined_percent": 4.2,
+    "combined_fixed": 0.30,
+    "note": "Stripe nonprofit rate applied"
+  },
+  "printful_blanks": {
+    "tee": "Bella+Canvas 3001",
+    "hoodie": "Bella+Canvas 3719",
+    "hat": "Yupoong 6245CM"
+  },
+  "products": [
+    {
+      "id": "bdi-black-dragon-tee",
+      "snipcart_id": "bdi-black-dragon-tee",
+      "printful_sync_product_id": "PRINTFUL_SYNC_ID_001",
+      "printful_sync_variants": {
+        "S": "PRINTFUL_VARIANT_001_S",
+        "M": "PRINTFUL_VARIANT_001_M",
+        "L": "PRINTFUL_VARIANT_001_L",
+        "XL": "PRINTFUL_VARIANT_001_XL",
+        "2XL": "PRINTFUL_VARIANT_001_2XL"
+      },
+      "name": "Black Dragon Tee",
+      "description": "Premium unisex tee featuring a photorealistic black dragon with gold accents. Bella+Canvas 3001, 100% combed ring-spun cotton.",
+      "category": "apparel",
+      "subcategory": "t-shirts",
+      "printful_blank": "Bella+Canvas 3001",
+      "retail_price": 35.00,
+      "cost_price": 12.95,
+      "gross_margin": 22.05,
+      "transaction_fee_estimate": 1.77,
+      "net_margin": 20.28,
+      "net_margin_percent": 57.9,
+      "available_sizes": ["S", "M", "L", "XL", "2XL"],
+      "available_colors": ["Black"],
+      "weight_oz": 6.0,
+      "is_physical": true,
+      "is_digital": false,
+      "requires_shipping": true,
+      "taxable": true,
+      "images": {
+        "primary": "/assets/images/products/black-dragon-tee-front.webp",
+        "secondary": "/assets/images/products/black-dragon-tee-back.webp",
+        "gallery": [
+          "/assets/images/products/black-dragon-tee-front.webp",
+          "/assets/images/products/black-dragon-tee-back.webp",
+          "/assets/images/products/black-dragon-tee-detail.webp",
+          "/assets/images/products/black-dragon-tee-lifestyle.webp"
+        ],
+        "thumbnail": "/assets/images/products/thumbs/black-dragon-tee-thumb.webp"
+      },
+      "seo": {
+        "slug": "black-dragon-tee",
+        "meta_title": "Black Dragon Tee | E5 Enclave Merch",
+        "meta_description": "Premium black dragon tee with gold accents. Bella+Canvas 3001 unisex fit. Support E5 Enclave Inc nonprofit."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "bdi-premium-hoodie",
+      "snipcart_id": "bdi-premium-hoodie",
+      "printful_sync_product_id": "PRINTFUL_SYNC_ID_002",
+      "printful_sync_variants": {
+        "S": "PRINTFUL_VARIANT_002_S",
+        "M": "PRINTFUL_VARIANT_002_M",
+        "L": "PRINTFUL_VARIANT_002_L",
+        "XL": "PRINTFUL_VARIANT_002_XL",
+        "2XL": "PRINTFUL_VARIANT_002_2XL"
+      },
+      "name": "Premium Hoodie",
+      "description": "Premium unisex hoodie featuring a photorealistic black dragon with gold accents. Bella+Canvas 3719, sponge fleece pullover.",
+      "category": "apparel",
+      "subcategory": "hoodies",
+      "printful_blank": "Bella+Canvas 3719",
+      "retail_price": 65.00,
+      "cost_price": 29.50,
+      "gross_margin": 35.50,
+      "transaction_fee_estimate": 3.03,
+      "net_margin": 32.47,
+      "net_margin_percent": 49.9,
+      "available_sizes": ["S", "M", "L", "XL", "2XL"],
+      "available_colors": ["Black"],
+      "weight_oz": 16.0,
+      "is_physical": true,
+      "is_digital": false,
+      "requires_shipping": true,
+      "taxable": true,
+      "images": {
+        "primary": "/assets/images/products/premium-hoodie-front.webp",
+        "secondary": "/assets/images/products/premium-hoodie-back.webp",
+        "gallery": [
+          "/assets/images/products/premium-hoodie-front.webp",
+          "/assets/images/products/premium-hoodie-back.webp",
+          "/assets/images/products/premium-hoodie-detail.webp",
+          "/assets/images/products/premium-hoodie-lifestyle.webp"
+        ],
+        "thumbnail": "/assets/images/products/thumbs/premium-hoodie-thumb.webp"
+      },
+      "seo": {
+        "slug": "premium-hoodie",
+        "meta_title": "Premium Black Dragon Hoodie | E5 Enclave Merch",
+        "meta_description": "Premium black dragon hoodie with gold accents. Bella+Canvas 3719 sponge fleece. Support E5 Enclave Inc nonprofit."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "bdi-dad-hat",
+      "snipcart_id": "bdi-dad-hat",
+      "printful_sync_product_id": "PRINTFUL_SYNC_ID_003",
+      "printful_sync_variants": {
+        "ONE_SIZE": "PRINTFUL_VARIANT_003_OS"
+      },
+      "name": "Dad Hat",
+      "description": "Low-profile unstructured dad hat with embroidered black dragon logo and gold accents. Yupoong 6245CM, adjustable strap.",
+      "category": "accessories",
+      "subcategory": "hats",
+      "printful_blank": "Yupoong 6245CM",
+      "retail_price": 32.00,
+      "cost_price": 17.50,
+      "gross_margin": 14.50,
+      "transaction_fee_estimate": 1.64,
+      "net_margin": 12.86,
+      "net_margin_percent": 40.2,
+      "available_sizes": ["One Size"],
+      "available_colors": ["Black"],
+      "weight_oz": 3.5,
+      "is_physical": true,
+      "is_digital": false,
+      "requires_shipping": true,
+      "taxable": true,
+      "images": {
+        "primary": "/assets/images/products/dad-hat-front.webp",
+        "secondary": "/assets/images/products/dad-hat-side.webp",
+        "gallery": [
+          "/assets/images/products/dad-hat-front.webp",
+          "/assets/images/products/dad-hat-side.webp",
+          "/assets/images/products/dad-hat-back.webp",
+          "/assets/images/products/dad-hat-lifestyle.webp"
+        ],
+        "thumbnail": "/assets/images/products/thumbs/dad-hat-thumb.webp"
+      },
+      "seo": {
+        "slug": "dad-hat",
+        "meta_title": "Black Dragon Dad Hat | E5 Enclave Merch",
+        "meta_description": "Low-profile dad hat with embroidered black dragon logo. Yupoong 6245CM. Support E5 Enclave Inc nonprofit."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "bdi-poster-18x24",
+      "snipcart_id": "bdi-poster-18x24",
+      "printful_sync_product_id": "PRINTFUL_SYNC_ID_004",
+      "printful_sync_variants": {
+        "18x24": "PRINTFUL_VARIANT_004_18X24"
+      },
+      "name": "Poster 18x24",
+      "description": "Museum-quality 18x24 inch poster featuring photorealistic black dragon art with gold accents. Printed on premium matte paper.",
+      "category": "art-prints",
+      "subcategory": "posters",
+      "printful_blank": "Enhanced Matte Paper Poster",
+      "retail_price": 25.00,
+      "cost_price": 8.50,
+      "gross_margin": 16.50,
+      "transaction_fee_estimate": 1.35,
+      "net_margin": 15.15,
+      "net_margin_percent": 60.6,
+      "available_sizes": ["18x24"],
+      "available_colors": [],
+      "weight_oz": 4.0,
+      "is_physical": true,
+      "is_digital": false,
+      "requires_shipping": true,
+      "taxable": true,
+      "images": {
+        "primary": "/assets/images/products/poster-18x24-main.webp",
+        "gallery": [
+          "/assets/images/products/poster-18x24-main.webp",
+          "/assets/images/products/poster-18x24-detail.webp",
+          "/assets/images/products/poster-18x24-room-mockup.webp"
+        ],
+        "thumbnail": "/assets/images/products/thumbs/poster-18x24-thumb.webp"
+      },
+      "seo": {
+        "slug": "poster-18x24",
+        "meta_title": "Black Dragon Poster 18x24 | E5 Enclave Merch",
+        "meta_description": "Museum-quality 18x24 black dragon poster with gold accents. Support E5 Enclave Inc nonprofit."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "bdi-ceramic-mug-11oz",
+      "snipcart_id": "bdi-ceramic-mug-11oz",
+      "printful_sync_product_id": "PRINTFUL_SYNC_ID_005",
+      "printful_sync_variants": {
+        "11oz": "PRINTFUL_VARIANT_005_11OZ"
+      },
+      "name": "Ceramic Mug 11oz",
+      "description": "Premium 11oz white ceramic mug with wraparound black dragon art and gold accents. Dishwasher and microwave safe.",
+      "category": "accessories",
+      "subcategory": "drinkware",
+      "printful_blank": "White Glossy Mug 11oz",
+      "retail_price": 18.00,
+      "cost_price": 7.00,
+      "gross_margin": 11.00,
+      "transaction_fee_estimate": 1.06,
+      "net_margin": 9.94,
+      "net_margin_percent": 55.2,
+      "available_sizes": ["11oz"],
+      "available_colors": ["White (with print)"],
+      "weight_oz": 12.0,
+      "is_physical": true,
+      "is_digital": false,
+      "requires_shipping": true,
+      "taxable": true,
+      "images": {
+        "primary": "/assets/images/products/ceramic-mug-front.webp",
+        "secondary": "/assets/images/products/ceramic-mug-handle.webp",
+        "gallery": [
+          "/assets/images/products/ceramic-mug-front.webp",
+          "/assets/images/products/ceramic-mug-handle.webp",
+          "/assets/images/products/ceramic-mug-wraparound.webp"
+        ],
+        "thumbnail": "/assets/images/products/thumbs/ceramic-mug-thumb.webp"
+      },
+      "seo": {
+        "slug": "ceramic-mug-11oz",
+        "meta_title": "Black Dragon Ceramic Mug 11oz | E5 Enclave Merch",
+        "meta_description": "Premium 11oz ceramic mug with black dragon art. Dishwasher safe. Support E5 Enclave Inc nonprofit."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "bdi-phone-case",
+      "snipcart_id": "bdi-phone-case",
+      "printful_sync_product_id": "PRINTFUL_SYNC_ID_006",
+      "printful_sync_variants": {
+        "iPhone_15": "PRINTFUL_VARIANT_006_IP15",
+        "iPhone_16": "PRINTFUL_VARIANT_006_IP16",
+        "Samsung_S24": "PRINTFUL_VARIANT_006_SS24"
+      },
+      "name": "Phone Case",
+      "description": "Tough snap-on phone case featuring photorealistic black dragon with gold accents. Impact-resistant polycarbonate shell.",
+      "category": "accessories",
+      "subcategory": "phone-cases",
+      "printful_blank": "Tough Case",
+      "retail_price": 25.00,
+      "cost_price": 13.00,
+      "gross_margin": 12.00,
+      "transaction_fee_estimate": 1.35,
+      "net_margin": 10.65,
+      "net_margin_percent": 42.6,
+      "available_sizes": ["iPhone 15", "iPhone 16", "Samsung S24"],
+      "available_colors": [],
+      "weight_oz": 2.0,
+      "is_physical": true,
+      "is_digital": false,
+      "requires_shipping": true,
+      "taxable": true,
+      "images": {
+        "primary": "/assets/images/products/phone-case-iphone15.webp",
+        "gallery": [
+          "/assets/images/products/phone-case-iphone15.webp",
+          "/assets/images/products/phone-case-iphone16.webp",
+          "/assets/images/products/phone-case-samsung-s24.webp",
+          "/assets/images/products/phone-case-detail.webp"
+        ],
+        "thumbnail": "/assets/images/products/thumbs/phone-case-thumb.webp"
+      },
+      "seo": {
+        "slug": "phone-case",
+        "meta_title": "Black Dragon Phone Case | E5 Enclave Merch",
+        "meta_description": "Tough phone case with black dragon art. iPhone 15/16 & Samsung S24. Support E5 Enclave Inc nonprofit."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "bdi-sticker-pack",
+      "snipcart_id": "bdi-sticker-pack",
+      "printful_sync_product_id": "PRINTFUL_SYNC_ID_007",
+      "printful_sync_variants": {
+        "standard": "PRINTFUL_VARIANT_007_STD"
+      },
+      "name": "Sticker Pack",
+      "description": "High-quality vinyl sticker pack featuring black dragon designs with gold accents. Waterproof, UV-resistant, perfect for laptops and water bottles.",
+      "category": "accessories",
+      "subcategory": "stickers",
+      "printful_blank": "Kiss-Cut Vinyl Stickers",
+      "retail_price": 5.00,
+      "cost_price": 2.00,
+      "gross_margin": 3.00,
+      "transaction_fee_estimate": 0.51,
+      "net_margin": 2.49,
+      "net_margin_percent": 49.8,
+      "available_sizes": ["Standard"],
+      "available_colors": [],
+      "weight_oz": 0.5,
+      "is_physical": true,
+      "is_digital": false,
+      "requires_shipping": true,
+      "taxable": true,
+      "images": {
+        "primary": "/assets/images/products/sticker-pack-layout.webp",
+        "gallery": [
+          "/assets/images/products/sticker-pack-layout.webp",
+          "/assets/images/products/sticker-pack-detail.webp",
+          "/assets/images/products/sticker-pack-applied.webp"
+        ],
+        "thumbnail": "/assets/images/products/thumbs/sticker-pack-thumb.webp"
+      },
+      "seo": {
+        "slug": "sticker-pack",
+        "meta_title": "Black Dragon Sticker Pack | E5 Enclave Merch",
+        "meta_description": "Waterproof vinyl sticker pack with black dragon designs. Support E5 Enclave Inc nonprofit."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "bdi-tote-bag",
+      "snipcart_id": "bdi-tote-bag",
+      "printful_sync_product_id": "PRINTFUL_SYNC_ID_008",
+      "printful_sync_variants": {
+        "standard": "PRINTFUL_VARIANT_008_STD"
+      },
+      "name": "Tote Bag",
+      "description": "Durable canvas tote bag with all-over black dragon print and gold accents. Perfect for everyday carry.",
+      "category": "accessories",
+      "subcategory": "bags",
+      "printful_blank": "AOP Tote Bag",
+      "retail_price": 25.00,
+      "cost_price": 12.00,
+      "gross_margin": 13.00,
+      "transaction_fee_estimate": 1.35,
+      "net_margin": 11.65,
+      "net_margin_percent": 46.6,
+      "available_sizes": ["Standard"],
+      "available_colors": [],
+      "weight_oz": 8.0,
+      "is_physical": true,
+      "is_digital": false,
+      "requires_shipping": true,
+      "taxable": true,
+      "images": {
+        "primary": "/assets/images/products/tote-bag-front.webp",
+        "secondary": "/assets/images/products/tote-bag-back.webp",
+        "gallery": [
+          "/assets/images/products/tote-bag-front.webp",
+          "/assets/images/products/tote-bag-back.webp",
+          "/assets/images/products/tote-bag-lifestyle.webp"
+        ],
+        "thumbnail": "/assets/images/products/thumbs/tote-bag-thumb.webp"
+      },
+      "seo": {
+        "slug": "tote-bag",
+        "meta_title": "Black Dragon Tote Bag | E5 Enclave Merch",
+        "meta_description": "Durable canvas tote with black dragon all-over print. Support E5 Enclave Inc nonprofit."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "bdi-ebook-digital",
+      "snipcart_id": "bdi-ebook-digital",
+      "printful_sync_product_id": null,
+      "printful_sync_variants": null,
+      "name": "BDI eBook Digital",
+      "description": "Digital eBook from Black Dragon Initiative. Downloadable PDF format with exclusive dragon artwork and content.",
+      "category": "digital",
+      "subcategory": "ebooks",
+      "printful_blank": null,
+      "retail_price": 12.99,
+      "cost_price": 0.00,
+      "gross_margin": 12.99,
+      "transaction_fee_estimate": 0.85,
+      "net_margin": 12.14,
+      "net_margin_percent": 93.5,
+      "available_sizes": [],
+      "available_colors": [],
+      "weight_oz": 0,
+      "is_physical": false,
+      "is_digital": true,
+      "requires_shipping": false,
+      "taxable": false,
+      "digital_delivery": {
+        "format": "PDF",
+        "file_path": "/assets/digital/bdi-ebook.pdf",
+        "download_limit": 3,
+        "expiry_hours": 72
+      },
+      "images": {
+        "primary": "/assets/images/products/bdi-ebook-cover.webp",
+        "gallery": [
+          "/assets/images/products/bdi-ebook-cover.webp",
+          "/assets/images/products/bdi-ebook-preview-1.webp",
+          "/assets/images/products/bdi-ebook-preview-2.webp"
+        ],
+        "thumbnail": "/assets/images/products/thumbs/bdi-ebook-thumb.webp"
+      },
+      "seo": {
+        "slug": "bdi-ebook",
+        "meta_title": "BDI eBook | E5 Enclave Digital",
+        "meta_description": "Digital eBook from Black Dragon Initiative. Exclusive content and artwork. Support E5 Enclave Inc nonprofit."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "bdi-dragon-art-print-pack",
+      "snipcart_id": "bdi-dragon-art-print-pack",
+      "printful_sync_product_id": null,
+      "printful_sync_variants": null,
+      "name": "Dragon Art Print Pack Digital",
+      "description": "Digital art print pack featuring high-resolution black dragon artwork with gold accents. Printable at home up to 24x36 inches.",
+      "category": "digital",
+      "subcategory": "art-prints",
+      "printful_blank": null,
+      "retail_price": 9.99,
+      "cost_price": 0.00,
+      "gross_margin": 9.99,
+      "transaction_fee_estimate": 0.72,
+      "net_margin": 9.27,
+      "net_margin_percent": 92.8,
+      "available_sizes": [],
+      "available_colors": [],
+      "weight_oz": 0,
+      "is_physical": false,
+      "is_digital": true,
+      "requires_shipping": false,
+      "taxable": false,
+      "digital_delivery": {
+        "format": "ZIP (PNG + PDF)",
+        "file_path": "/assets/digital/dragon-art-print-pack.zip",
+        "download_limit": 3,
+        "expiry_hours": 72
+      },
+      "images": {
+        "primary": "/assets/images/products/dragon-art-pack-cover.webp",
+        "gallery": [
+          "/assets/images/products/dragon-art-pack-cover.webp",
+          "/assets/images/products/dragon-art-pack-preview-1.webp",
+          "/assets/images/products/dragon-art-pack-preview-2.webp",
+          "/assets/images/products/dragon-art-pack-preview-3.webp"
+        ],
+        "thumbnail": "/assets/images/products/thumbs/dragon-art-pack-thumb.webp"
+      },
+      "seo": {
+        "slug": "dragon-art-print-pack",
+        "meta_title": "Dragon Art Print Pack | E5 Enclave Digital",
+        "meta_description": "High-res digital art prints featuring black dragons with gold accents. Support E5 Enclave Inc nonprofit."
+      },
+      "status": "draft"
+    }
+  ],
+  "categories": [
+    {
+      "id": "apparel",
+      "name": "Apparel",
+      "slug": "apparel",
+      "description": "Black Dragon branded clothing"
+    },
+    {
+      "id": "accessories",
+      "name": "Accessories",
+      "slug": "accessories",
+      "description": "Black Dragon branded accessories"
+    },
+    {
+      "id": "art-prints",
+      "name": "Art Prints",
+      "slug": "art-prints",
+      "description": "Black Dragon wall art and posters"
+    },
+    {
+      "id": "digital",
+      "name": "Digital Products",
+      "slug": "digital",
+      "description": "Downloadable digital products"
+    }
+  ]
+}

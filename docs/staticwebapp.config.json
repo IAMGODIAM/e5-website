@@ -1,0 +1,23 @@
+{
+  "routes": [
+    { "route": "/black-dragons-initiative-1", "redirect": "/black-dragons-initiative/", "statusCode": 301 },
+    { "route": "/black-dragons-initiative-1/*", "redirect": "/black-dragons-initiative/", "statusCode": 301 },
+    { "route": "/BDI", "redirect": "/black-dragons-initiative/", "statusCode": 301 },
+    { "route": "/bdi", "redirect": "/black-dragons-initiative/", "statusCode": 301 },
+    { "route": "/contact-us", "redirect": "/contact/", "statusCode": 301 },
+    { "route": "/contact-us/*", "redirect": "/contact/", "statusCode": 301 },
+    { "route": "/gospel-of-love", "redirect": "/blog/", "statusCode": 301 },
+    { "route": "/gospel-of-love/*", "redirect": "/blog/", "statusCode": 301 },
+    { "route": "/gospel-of-love-%2Four-blogs", "redirect": "/blog/", "statusCode": 301 },
+    { "route": "/black-dragon-gear", "redirect": "/store/", "statusCode": 301 },
+    { "route": "/black-dragon-gear/*", "redirect": "/store/", "statusCode": 301 },
+    { "route": "/about-e5", "redirect": "/about/", "statusCode": 301 },
+    { "route": "/about-e5/*", "redirect": "/about/", "statusCode": 301 },
+    { "route": "/f/*", "redirect": "/blog/", "statusCode": 301 },
+    { "route": "/e5-blog/*", "redirect": "/blog/", "statusCode": 301 }
+  ],
+  "navigationFallback": {
+    "rewrite": "/404.html",
+    "exclude": ["/assets/*", "/*.{css,js,png,jpg,svg,ico,html,xml,json,txt}"]
+  }
+}

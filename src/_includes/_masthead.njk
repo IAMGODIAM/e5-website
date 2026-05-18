@@ -1,0 +1,26 @@
+<header class="vc-masthead">
+  <div class="vc-masthead-rule" aria-hidden="true"><span class="mk">✦</span></div>
+  <div class="vc-masthead-eyebrow">{{ site.established.city }} · Established MMXXIV</div>
+  <div class="vc-foundation">
+    <h1 class="vc-wordmark" aria-label="{{ site.name }}">
+      <span class="em5" aria-hidden="true">E5</span>
+      <span class="word">Enclave</span>
+    </h1>
+    <p class="vc-tagline">A <span class="ll">lineage-led think tank</span> comprised of a <span class="cw">Coalition of the Willing</span>.</p>
+    <div class="vc-dates" role="list">
+      <div class="vc-date" role="listitem">
+        <span class="lbl">{{ site.established.label }}</span>
+        <span class="val"><em>{{ site.established.date }}</em></span>
+      </div>
+      <div class="vc-date" role="listitem">
+        <span class="lbl">{{ site.publicAnnouncement.label }}</span>
+        <span class="val">{{ site.publicAnnouncement.date | safe }}</span>
+      </div>
+      <div class="vc-date" role="listitem">
+        <span class="lbl">{{ site.edenLaunch.label }}</span>
+        <span class="val">{{ site.edenLaunch.date | safe }}</span>
+      </div>
+    </div>
+    <p class="vc-foundation-colophon">{{ site.colophon | safe }}</p>
+  </div>
+</header>

@@ -1,0 +1,751 @@
+---
+layout: base
+permalink: /store/
+title: "E5 Enclave Store — Wear the Work. Fund the Future."
+description: "Six sovereign collections — Restitution 246, House of Clubs, House of Spades, Celestial Court, Five-Gallon Sovereignty, Sovereign Menagerie. Every purchase funds Black community development in Liberty City, Miami."
+breadcrumbs:
+  - { label: "Store" }
+extraJs:
+  - "/assets/js/store.js"
+---
+
+<style>
+/* ── STORE BASE ── */
+.store-hero {
+  padding: 80px 0 64px;
+  border-bottom: 1px solid var(--vc-rule, #d4c5a0);
+  background: var(--vc-bone, #fdfaf4);
+}
+.store-hero-eyebrow {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--vc-oxblood, #8b1a1a); margin-bottom: 16px;
+}
+.store-hero-h {
+  font-family: var(--serif); font-size: clamp(34px, 5vw, 62px);
+  font-weight: 400; line-height: 1.1; letter-spacing: -0.02em;
+  max-width: 820px; margin: 0 0 20px; color: var(--vc-ink, #1a1614);
+}
+.store-hero-h em { font-style: italic; color: var(--vc-oxblood, #8b1a1a); }
+.store-hero-deck {
+  font-family: var(--serif); font-size: 18px; line-height: 1.65;
+  max-width: 600px; color: var(--vc-muted, #7a6a50); margin: 0;
+}
+.store-hero-meta {
+  display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap;
+}
+.store-hero-stat {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--vc-muted, #7a6a50);
+}
+.store-hero-stat strong { display: block; font-family: var(--serif); font-size: 22px; color: var(--vc-oxblood,#8b1a1a); font-weight: 400; margin-bottom: 2px; }
+
+/* ── COLLECTION NAV ── */
+.store-collection-nav {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(253,250,244,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--vc-rule, #d4c5a0);
+  padding: 0;
+}
+.store-collection-nav-inner {
+  display: flex; gap: 0; overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.store-collection-nav-inner::-webkit-scrollbar { display: none; }
+.col-nav-btn {
+  flex-shrink: 0;
+  background: none; border: none;
+  padding: 18px 24px;
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  font-weight: 600; color: var(--vc-muted, #7a6a50);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  white-space: nowrap;
+}
+.col-nav-btn:hover { color: var(--vc-ink,#1a1614); }
+.col-nav-btn.active {
+  color: var(--vc-oxblood, #8b1a1a);
+  border-bottom-color: var(--vc-oxblood, #8b1a1a);
+}
+.col-nav-btn[data-col="all"].active {
+  color: var(--vc-ink,#1a1614);
+  border-bottom-color: var(--vc-ink,#1a1614);
+}
+
+/* ── COLLECTION SECTION ── */
+.store-collection {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--vc-rule, #d4c5a0);
+}
+.store-col-head {
+  margin-bottom: 48px;
+}
+.store-col-eyebrow {
+  font-family: var(--sans); font-size: 9.5px;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--vc-oxblood, #8b1a1a); margin-bottom: 12px;
+}
+.store-col-h {
+  font-family: var(--serif); font-size: clamp(28px, 4vw, 48px);
+  font-weight: 400; line-height: 1.1; margin: 0 0 12px;
+  color: var(--vc-ink,#1a1614);
+}
+.store-col-h em { font-style: italic; color: var(--vc-oxblood,#8b1a1a); }
+.store-col-tagline {
+  font-family: var(--serif); font-size: 15px; font-style: italic;
+  color: var(--vc-muted,#7a6a50); margin: 0;
+}
+.store-col-campaign {
+  display: inline-block; margin-top: 10px;
+  font-family: var(--sans); font-size: 9px;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--vc-oxblood,#8b1a1a);
+  padding: 4px 10px; border: 1px solid var(--vc-oxblood,#8b1a1a);
+}
+
+/* ── PRODUCT GRID ── */
+.store-products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.product-card {
+  display: flex; flex-direction: column;
+  background: var(--vc-bone, #fdfaf4);
+  border: 1px solid var(--vc-rule, #d4c5a0);
+  transition: transform .2s, box-shadow .2s;
+  text-decoration: none; color: inherit;
+}
+.product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+.product-img-wrap {
+  aspect-ratio: 1;
+  background: #111;
+  overflow: hidden;
+  position: relative;
+}
+.product-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .4s ease;
+}
+.product-card:hover .product-img-wrap img { transform: scale(1.04); }
+.product-img-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-style: italic;
+  color: rgba(255,255,255,0.3); font-size: 14px;
+  text-align: center; padding: 20px;
+  background: linear-gradient(160deg, #0e0e0e 0%, #1a1410 100%);
+}
+.product-badge {
+  position: absolute; top: 12px; left: 12px;
+  font-family: var(--sans); font-size: 8.5px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 3px 8px;
+  background: var(--vc-oxblood,#8b1a1a); color: #fff7e5;
+  font-weight: 600;
+}
+.product-badge.limited { background: #d4a84b; color: #1a1407; }
+.product-body {
+  padding: 20px;
+  display: flex; flex-direction: column; gap: 6px;
+  flex: 1;
+}
+.product-cat {
+  font-family: var(--sans); font-size: 9px;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--vc-muted,#7a6a50);
+}
+.product-name {
+  font-family: var(--serif); font-size: 17px; font-weight: 400;
+  line-height: 1.2; color: var(--vc-ink,#1a1614); margin: 0;
+}
+.product-price {
+  font-family: var(--sans); font-size: 14px; font-weight: 600;
+  color: var(--vc-oxblood,#8b1a1a); margin-top: 2px;
+}
+.product-impact {
+  font-family: var(--serif); font-size: 12px; font-style: italic;
+  color: var(--vc-muted,#7a6a50); margin-top: 2px;
+}
+.product-add {
+  margin: 12px 20px 20px;
+  display: block;
+  padding: 12px 0;
+  background: var(--vc-oxblood,#8b1a1a);
+  color: #fff7e5;
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 600; text-align: center;
+  border: none; cursor: pointer;
+  transition: background .2s;
+  text-decoration: none;
+}
+.product-add:hover { background: #6e1515; }
+.product-add.coming-soon {
+  background: transparent;
+  color: var(--vc-muted,#7a6a50);
+  border: 1px solid var(--vc-rule,#d4c5a0);
+  cursor: default;
+}
+
+/* ── VENDOR STRIP ── */
+.store-vendor-strip {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--vc-rule,#d4c5a0);
+  background: var(--vc-parchment, #f5ede0);
+}
+.store-vendor-rubric {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: 0.36em; text-transform: uppercase;
+  color: var(--vc-oxblood,#8b1a1a); margin-bottom: 28px;
+}
+.store-vendor-grid {
+  display: flex; gap: 0; flex-wrap: wrap;
+}
+.store-vendor-item {
+  flex: 1; min-width: 160px;
+  padding: 20px 28px;
+  border-right: 1px solid var(--vc-rule,#d4c5a0);
+}
+.store-vendor-item:last-child { border-right: none; }
+.store-vendor-name {
+  font-family: var(--sans); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--vc-ink,#1a1614); margin-bottom: 4px;
+}
+.store-vendor-role {
+  font-family: var(--serif); font-size: 13px; font-style: italic;
+  color: var(--vc-muted,#7a6a50);
+}
+
+/* ── CART DRAWER ── */
+.store-cart-toggle {
+  position: fixed; bottom: 28px; right: 28px; z-index: 90;
+  background: var(--vc-oxblood,#8b1a1a);
+  color: #fff7e5;
+  border: none; cursor: pointer;
+  width: 56px; height: 56px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(139,26,26,0.4);
+  transition: background .2s, transform .2s;
+}
+.store-cart-toggle:hover { background: #6e1515; transform: scale(1.05); }
+.store-cart-badge {
+  position: absolute; top: -4px; right: -4px;
+  width: 20px; height: 20px;
+  background: #d4a84b; color: #1a1407;
+  border-radius: 50%;
+  font-family: var(--sans); font-size: 10px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.store-cart-drawer {
+  position: fixed; top: 0; right: -420px; bottom: 0;
+  width: 420px; max-width: 100vw;
+  background: var(--vc-bone,#fdfaf4);
+  border-left: 1px solid var(--vc-rule,#d4c5a0);
+  z-index: 200;
+  display: flex; flex-direction: column;
+  transition: right .3s ease;
+  box-shadow: -8px 0 40px rgba(0,0,0,0.15);
+}
+.store-cart-drawer.open { right: 0; }
+.cart-drawer-head {
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--vc-rule,#d4c5a0);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.cart-drawer-title {
+  font-family: var(--serif); font-size: 22px; font-weight: 400;
+  color: var(--vc-ink,#1a1614);
+}
+.cart-drawer-close {
+  background: none; border: none; cursor: pointer;
+  font-size: 22px; color: var(--vc-muted,#7a6a50);
+  line-height: 1; padding: 0;
+}
+.cart-drawer-items {
+  flex: 1; overflow-y: auto;
+  padding: 20px 28px;
+}
+.cart-empty {
+  font-family: var(--serif); font-size: 16px; font-style: italic;
+  color: var(--vc-muted,#7a6a50); text-align: center;
+  padding: 60px 0;
+}
+.cart-item {
+  display: flex; gap: 16px; padding: 16px 0;
+  border-bottom: 1px solid var(--vc-rule-2,#e8dfc8);
+}
+.cart-item-thumb {
+  width: 64px; height: 64px; flex-shrink: 0;
+  background: #111; object-fit: cover;
+}
+.cart-item-info { flex: 1; }
+.cart-item-name {
+  font-family: var(--serif); font-size: 14px; font-weight: 400;
+  color: var(--vc-ink,#1a1614); margin-bottom: 4px;
+}
+.cart-item-price {
+  font-family: var(--sans); font-size: 12px; font-weight: 600;
+  color: var(--vc-oxblood,#8b1a1a);
+}
+.cart-item-remove {
+  background: none; border: none; cursor: pointer;
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--vc-muted,#7a6a50); margin-top: 6px;
+  padding: 0;
+}
+.cart-drawer-foot {
+  padding: 20px 28px;
+  border-top: 1px solid var(--vc-rule,#d4c5a0);
+}
+.cart-subtotal {
+  display: flex; justify-content: space-between;
+  margin-bottom: 16px;
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--vc-ink,#1a1614);
+}
+.cart-subtotal strong { font-size: 15px; }
+.cart-checkout-btn {
+  display: block; width: 100%;
+  padding: 16px; text-align: center;
+  background: var(--vc-oxblood,#8b1a1a); color: #fff7e5;
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700;
+  border: none; cursor: pointer; text-decoration: none;
+  transition: background .2s;
+}
+.cart-checkout-btn:hover { background: #6e1515; }
+.cart-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 199;
+  display: none;
+}
+.cart-overlay.open { display: block; }
+
+/* Responsive */
+@media (max-width: 1100px) { .store-products-grid { grid-template-columns: repeat(3,1fr); } }
+@media (max-width: 800px) { .store-products-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 500px) { .store-products-grid { grid-template-columns: 1fr; } .store-cart-drawer { width: 100vw; } }
+</style>
+
+{# ── HERO ── #}
+<section class="store-hero">
+  <div class="container">
+    <div class="store-hero-eyebrow reveal">E5 Enclave Store</div>
+    <h1 class="store-hero-h reveal">Wear it. <em>Fund the work.</em></h1>
+    <p class="store-hero-deck reveal">Six sovereign collections. Every purchase routes revenue directly to founding programs — McCartney Academy, FarmBlock, Restitution 246, and the Black Dragons Initiative.</p>
+    <div class="store-hero-meta reveal">
+      <div class="store-hero-stat"><strong>6</strong>Collections</div>
+      <div class="store-hero-stat"><strong>30+</strong>Items at launch</div>
+      <div class="store-hero-stat"><strong>POD</strong>Ships to your door</div>
+      <div class="store-hero-stat"><strong>~10%</strong>Revenue to programs</div>
+    </div>
+  </div>
+</section>
+
+{# ── COLLECTION NAV ── #}
+<nav class="store-collection-nav" aria-label="Collections">
+  <div class="container store-collection-nav-inner">
+    <button class="col-nav-btn active" data-col="all">All Collections</button>
+    <button class="col-nav-btn" data-col="restitution-246">Restitution 246</button>
+    <button class="col-nav-btn" data-col="house-of-clubs">House of Clubs</button>
+    <button class="col-nav-btn" data-col="house-of-spades">House of Spades</button>
+    <button class="col-nav-btn" data-col="celestial-court">Celestial Court</button>
+    <button class="col-nav-btn" data-col="farmblock">Five-Gallon Sovereignty</button>
+    <button class="col-nav-btn" data-col="menagerie">Sovereign Menagerie</button>
+  </div>
+</nav>
+
+{# ── COLLECTION 1: RESTITUTION 246 ── #}
+<section class="store-collection" data-collection="restitution-246" id="restitution-246">
+  <div class="container">
+    <div class="store-col-head reveal">
+      <div class="store-col-eyebrow">Collection I — Restitution 246</div>
+      <h2 class="store-col-h">The Restoration <em>Doctrine Capsule</em></h2>
+      <p class="store-col-tagline">"Restoration is not a gesture. It is a settlement."</p>
+      <span class="store-col-campaign">Record · Restore · Reckon</span>
+    </div>
+    <div class="store-products-grid" id="products-restitution-246">
+      {% set r246 = [
+        { slug: 'restoration-hoodie', name: 'Restoration Standard Hoodie', price: 95, cat: 'Apparel', badge: '', impact: '~$10 funds R246 legal research', img: '' },
+        { slug: 'settlement-crew', name: 'Settlement Crew', price: 85, cat: 'Apparel', badge: '', impact: '~$9 funds R246 legal research', img: '' },
+        { slug: 'ledger-tee', name: 'Ledger Tee', price: 55, cat: 'Apparel', badge: '', impact: '~$6 funds R246 legal research', img: '' },
+        { slug: 'archive-tote', name: 'Archive Tote', price: 65, cat: 'Accessories', badge: '', impact: '~$7 funds R246 legal research', img: '' },
+        { slug: 'doctrine-cap', name: 'Doctrine Cap', price: 45, cat: 'Accessories', badge: '', impact: '~$5 funds R246 legal research', img: '' }
+      ] %}
+      {% for p in r246 %}
+      <article class="product-card reveal" data-product="{{ p.slug }}">
+        <div class="product-img-wrap">
+          {% if p.img %}<img src="{{ p.img }}" alt="{{ p.name }}" loading="lazy">{% else %}
+          <div class="product-img-placeholder">{{ p.name }}</div>{% endif %}
+          {% if p.badge %}<span class="product-badge {% if p.badge == 'Limited' %}limited{% endif %}">{{ p.badge }}</span>{% endif %}
+        </div>
+        <div class="product-body">
+          <span class="product-cat">{{ p.cat }}</span>
+          <h3 class="product-name">{{ p.name }}</h3>
+          <div class="product-price">${{ p.price }}</div>
+          <span class="product-impact">{{ p.impact }}</span>
+        </div>
+        <button class="product-add" data-product-id="{{ p.slug }}" data-product-name="{{ p.name }}" data-product-price="{{ p.price }}">Add to Cart →</button>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ── COLLECTION 2: HOUSE OF CLUBS ── #}
+<section class="store-collection" data-collection="house-of-clubs" id="house-of-clubs">
+  <div class="container">
+    <div class="store-col-head reveal">
+      <div class="store-col-eyebrow">Collection II — E5 Card Set</div>
+      <h2 class="store-col-h">House of <em>Clubs</em></h2>
+      <p class="store-col-tagline">"Power. Wisdom. Legacy."</p>
+      <span class="store-col-campaign">Sovereign Line · Clubs Suit</span>
+    </div>
+    <div class="store-products-grid">
+      {% set clubs = [
+        { slug: 'clubs-hoodie', name: 'Oversized Heavyweight Hoodie', price: 120, cat: 'Apparel', badge: '', impact: '~$12 funds E5 programs', img: '' },
+        { slug: 'clubs-tee', name: 'Graphic Tee', price: 65, cat: 'Apparel', badge: '', impact: '~$7 funds E5 programs', img: '' },
+        { slug: 'clubs-bomber', name: 'Satin Bomber Jacket', price: 185, cat: 'Outerwear', badge: '', impact: '~$19 funds E5 programs', img: '' },
+        { slug: 'clubs-scarf', name: 'Silk Scarf', price: 95, cat: 'Accessories', badge: 'Luxury', impact: '~$10 funds E5 programs', img: '' },
+        { slug: 'clubs-tote', name: 'Archive Tote — Embossed', price: 85, cat: 'Accessories', badge: '', impact: '~$9 funds E5 programs', img: '' },
+        { slug: 'clubs-deck', name: 'Collector Deck — Foil Box', price: 55, cat: 'Art', badge: '', impact: '~$6 funds E5 programs', img: '' }
+      ] %}
+      {% for p in clubs %}
+      <article class="product-card reveal" data-product="{{ p.slug }}">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder">{{ p.name }}</div>
+          {% if p.badge %}<span class="product-badge {% if p.badge == 'Limited' or p.badge == 'Luxury' %}limited{% endif %}">{{ p.badge }}</span>{% endif %}
+        </div>
+        <div class="product-body">
+          <span class="product-cat">{{ p.cat }}</span>
+          <h3 class="product-name">{{ p.name }}</h3>
+          <div class="product-price">${{ p.price }}</div>
+          <span class="product-impact">{{ p.impact }}</span>
+        </div>
+        <button class="product-add coming-soon" disabled>Coming Soon</button>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ── COLLECTION 3: HOUSE OF SPADES ── #}
+<section class="store-collection" data-collection="house-of-spades" id="house-of-spades">
+  <div class="container">
+    <div class="store-col-head reveal">
+      <div class="store-col-eyebrow">Collection III — E5 Sovereign Couture</div>
+      <h2 class="store-col-h">House of <em>Spades</em></h2>
+      <p class="store-col-tagline">"Power. Poise. Heritage."</p>
+      <span class="store-col-campaign">Black American Sovereign Luxury</span>
+    </div>
+    <div class="store-products-grid">
+      {% set spades = [
+        { slug: 'spades-hoodie', name: 'Signature Hoodie', price: 110, cat: 'Apparel', badge: '', img: '' },
+        { slug: 'spades-bomber', name: 'Sovereign Bomber', price: 195, cat: 'Outerwear', badge: '', img: '' },
+        { slug: 'spades-tee', name: 'Crest Tee', price: 60, cat: 'Apparel', badge: '', img: '' },
+        { slug: 'spades-outerwear', name: 'Royal Outerwear', price: 245, cat: 'Outerwear', badge: '', img: '' },
+        { slug: 'spades-cap', name: 'Crown Cap', price: 50, cat: 'Accessories', badge: '', img: '' },
+        { slug: 'spades-tote', name: 'Legacy Tote', price: 75, cat: 'Accessories', badge: '', img: '' },
+        { slug: 'spades-print', name: 'Celestial Print 18×24"', price: 85, cat: 'Art & Prints', badge: '', img: '' },
+        { slug: 'spades-earrings', name: 'House Earrings', price: 65, cat: 'Jewelry', badge: 'Luxury', img: '' }
+      ] %}
+      {% for p in spades %}
+      <article class="product-card reveal" data-product="{{ p.slug }}">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder">{{ p.name }}</div>
+          {% if p.badge %}<span class="product-badge limited">{{ p.badge }}</span>{% endif %}
+        </div>
+        <div class="product-body">
+          <span class="product-cat">{{ p.cat }}</span>
+          <h3 class="product-name">{{ p.name }}</h3>
+          <div class="product-price">${{ p.price }}</div>
+          <span class="product-impact">~${{ (p.price * 0.1) | round }}  funds E5 programs</span>
+        </div>
+        <button class="product-add coming-soon" disabled>Coming Soon</button>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ── COLLECTION 4: CELESTIAL COURT ── #}
+<section class="store-collection" data-collection="celestial-court" id="celestial-court">
+  <div class="container">
+    <div class="store-col-head reveal">
+      <div class="store-col-eyebrow">Collection IV — Donor Edition</div>
+      <h2 class="store-col-h"><em>Celestial Court</em></h2>
+      <p class="store-col-tagline">"A throne above. A court beyond. Power written in the stars."</p>
+      <span class="store-col-campaign">Designed for Donors · Crafted for Legacy</span>
+    </div>
+    <div class="store-products-grid">
+      {% set celestial = [
+        { slug: 'celestial-bomber', name: 'Celestial Crown Bomber', price: 295, cat: 'Outerwear', badge: 'Numbered', img: '' },
+        { slug: 'celestial-hoodie', name: 'Star Regalia Hoodie', price: 145, cat: 'Apparel', badge: 'Limited', img: '' },
+        { slug: 'celestial-tee', name: 'Cosmic Queen Tee', price: 75, cat: 'Apparel', badge: 'Numbered', img: '' },
+        { slug: 'celestial-scarf', name: 'Celestial Silk Scarf', price: 165, cat: 'Accessories', badge: 'Luxury', img: '' },
+        { slug: 'celestial-deck', name: 'Premium Collector Deck', price: 125, cat: 'Collector', badge: 'Numbered', img: '' }
+      ] %}
+      {% for p in celestial %}
+      <article class="product-card reveal" data-product="{{ p.slug }}">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder">{{ p.name }}</div>
+          {% if p.badge %}<span class="product-badge limited">{{ p.badge }}</span>{% endif %}
+        </div>
+        <div class="product-body">
+          <span class="product-cat">{{ p.cat }}</span>
+          <h3 class="product-name">{{ p.name }}</h3>
+          <div class="product-price">${{ p.price }}</div>
+          <span class="product-impact">Donor gift — E5 founding tier</span>
+        </div>
+        <button class="product-add coming-soon" disabled>Coming Soon</button>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ── COLLECTION 5: FARMBLOCK ── #}
+<section class="store-collection" data-collection="farmblock" id="farmblock">
+  <div class="container">
+    <div class="store-col-head reveal">
+      <div class="store-col-eyebrow">Collection V — FarmBlock</div>
+      <h2 class="store-col-h">Five-Gallon <em>Sovereignty</em></h2>
+      <p class="store-col-tagline">"A bucket can become a food system."</p>
+      <span class="store-col-campaign">Food · Shade · Medicine · Memory</span>
+    </div>
+    <div class="store-products-grid">
+      {% set farmblock = [
+        { slug: 'fb-jacket', name: 'Garden Is Infrastructure Chore Jacket', price: 115, cat: 'Apparel', badge: '', img: '' },
+        { slug: 'fb-hoodie', name: 'Grow the Table Hoodie', price: 95, cat: 'Apparel', badge: '', img: '' },
+        { slug: 'fb-tee', name: 'Five-Gallon Sovereignty Tee', price: 55, cat: 'Apparel', badge: '', img: '' },
+        { slug: 'fb-cap', name: 'FarmBlock Field Cap', price: 45, cat: 'Accessories', badge: '', img: '' },
+        { slug: 'fb-tote', name: 'Plant the Perimeter Tote', price: 38, cat: 'Accessories', badge: '', img: '' },
+        { slug: 'fb-poster', name: 'Plant the Perimeter Poster 18×24"', price: 32, cat: 'Art & Prints', badge: '', img: '' },
+        { slug: 'fb-guide', name: 'Seed / Field-Guide Insert', price: 12, cat: 'Print', badge: '', img: '' }
+      ] %}
+      {% for p in farmblock %}
+      <article class="product-card reveal" data-product="{{ p.slug }}">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder">{{ p.name }}</div>
+          {% if p.badge %}<span class="product-badge">{{ p.badge }}</span>{% endif %}
+        </div>
+        <div class="product-body">
+          <span class="product-cat">{{ p.cat }}</span>
+          <h3 class="product-name">{{ p.name }}</h3>
+          <div class="product-price">${{ p.price }}</div>
+          <span class="product-impact">~${{ (p.price * 0.1) | round }} funds FarmBlock</span>
+        </div>
+        <button class="product-add coming-soon" disabled>Coming Soon</button>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ── COLLECTION 6: SOVEREIGN MENAGERIE ── #}
+<section class="store-collection" data-collection="menagerie" id="menagerie">
+  <div class="container">
+    <div class="store-col-head reveal">
+      <div class="store-col-eyebrow">Collection VI — E5 Sovereign Couture · Drop 002</div>
+      <h2 class="store-col-h">The Sovereign <em>Menagerie</em></h2>
+      <p class="store-col-tagline">"Instinct. Memory. Sovereignty."</p>
+      <span class="store-col-campaign">Drop 002</span>
+    </div>
+    <div class="store-products-grid">
+      {% set menagerie = [
+        { slug: 'sm-eagle', name: 'Storm Eagle Hoodie', price: 110, cat: 'Apparel', badge: '', img: '' },
+        { slug: 'sm-peacock', name: 'Midnight Peacock Bomber', price: 185, cat: 'Outerwear', badge: '', img: '' },
+        { slug: 'sm-lioness', name: 'Lioness Oracle Tee', price: 65, cat: 'Apparel', badge: '', img: '' },
+        { slug: 'sm-bear', name: 'Astronaut Bear Hoodie', price: 110, cat: 'Apparel', badge: '', img: '' },
+        { slug: 'sm-giraffe', name: 'Aviator Giraffe Tee', price: 65, cat: 'Apparel', badge: '', img: '' },
+        { slug: 'sm-llama', name: 'Sentinel Llama Hoodie', price: 110, cat: 'Apparel', badge: '', img: '' }
+      ] %}
+      {% for p in menagerie %}
+      <article class="product-card reveal" data-product="{{ p.slug }}">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder">{{ p.name }}</div>
+        </div>
+        <div class="product-body">
+          <span class="product-cat">{{ p.cat }}</span>
+          <h3 class="product-name">{{ p.name }}</h3>
+          <div class="product-price">${{ p.price }}</div>
+          <span class="product-impact">~${{ (p.price * 0.1) | round }} funds BDI</span>
+        </div>
+        <button class="product-add coming-soon" disabled>Coming Soon</button>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ── VENDOR TRANSPARENCY STRIP ── #}
+<section class="store-vendor-strip">
+  <div class="container">
+    <div class="store-vendor-rubric reveal">Production Partners</div>
+    <div class="store-vendor-grid reveal">
+      <div class="store-vendor-item">
+        <div class="store-vendor-name">Apliiq</div>
+        <div class="store-vendor-role">Made in USA · Woven labels · Premium apparel</div>
+      </div>
+      <div class="store-vendor-item">
+        <div class="store-vendor-name">Contrado</div>
+        <div class="store-vendor-role">Silk · Velvet · Leather · True luxury fabrics</div>
+      </div>
+      <div class="store-vendor-item">
+        <div class="store-vendor-name">Gelato</div>
+        <div class="store-vendor-role">130+ global partners · Standard apparel</div>
+      </div>
+      <div class="store-vendor-item">
+        <div class="store-vendor-name">Prodigi</div>
+        <div class="store-vendor-role">Fine art · Posters · Atlases · Editorial print</div>
+      </div>
+      <div class="store-vendor-item">
+        <div class="store-vendor-name">Sensaria</div>
+        <div class="store-vendor-role">Canvas · Framed prints · Wall art</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── CART DRAWER ── #}
+<div class="cart-overlay" id="cart-overlay"></div>
+<aside class="store-cart-drawer" id="cart-drawer" aria-label="Shopping cart">
+  <div class="cart-drawer-head">
+    <span class="cart-drawer-title">Your Cart</span>
+    <button class="cart-drawer-close" id="cart-close" aria-label="Close cart">×</button>
+  </div>
+  <div class="cart-drawer-items" id="cart-items">
+    <div class="cart-empty" id="cart-empty">Your cart is empty.</div>
+  </div>
+  <div class="cart-drawer-foot">
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <strong id="cart-subtotal">$0</strong>
+    </div>
+    <a href="#" class="cart-checkout-btn" id="cart-checkout">Proceed to Checkout →</a>
+  </div>
+</aside>
+
+<button class="store-cart-toggle" id="cart-toggle" aria-label="Open cart">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+  </svg>
+  <span class="store-cart-badge" id="cart-count" hidden>0</span>
+</button>
+
+<script>
+/* ── Store JS — Cart + Collection Nav ── */
+(function() {
+  var cart = JSON.parse(localStorage.getItem('e5-cart') || '[]');
+
+  function saveCart() { localStorage.setItem('e5-cart', JSON.stringify(cart)); }
+
+  function renderCart() {
+    var items = document.getElementById('cart-items');
+    var empty = document.getElementById('cart-empty');
+    var subtotal = document.getElementById('cart-subtotal');
+    var count = document.getElementById('cart-count');
+    var checkout = document.getElementById('cart-checkout');
+    if (!items) return;
+
+    var html = '';
+    var total = 0;
+    cart.forEach(function(item, i) {
+      total += item.price;
+      html += '<div class="cart-item">' +
+        '<div class="cart-item-thumb" style="background:#111;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.2);font-size:11px;padding:8px;text-align:center;">' + item.name.split(' ').slice(0,2).join(' ') + '</div>' +
+        '<div class="cart-item-info">' +
+          '<div class="cart-item-name">' + item.name + '</div>' +
+          '<div class="cart-item-price">$' + item.price + '</div>' +
+          '<button class="cart-item-remove" data-idx="' + i + '">Remove</button>' +
+        '</div>' +
+        '</div>';
+    });
+
+    if (cart.length === 0) {
+      empty && (empty.style.display = 'block');
+      items.innerHTML = '<div class="cart-empty">Your cart is empty.</div>';
+    } else {
+      items.innerHTML = html;
+      /* remove handlers */
+      items.querySelectorAll('.cart-item-remove').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          cart.splice(parseInt(btn.dataset.idx), 1);
+          saveCart(); renderCart();
+        });
+      });
+    }
+    subtotal && (subtotal.textContent = '$' + total);
+    if (count) {
+      count.textContent = cart.length;
+      count.hidden = cart.length === 0;
+    }
+    /* Shopify checkout URL will be wired once Storefront API token is live */
+    /* checkout && (checkout.href = cartCheckoutUrl); */
+  }
+
+  /* Add to cart */
+  document.querySelectorAll('.product-add:not(.coming-soon)').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      cart.push({
+        id: btn.dataset.productId,
+        name: btn.dataset.productName,
+        price: parseFloat(btn.dataset.productPrice)
+      });
+      saveCart(); renderCart();
+      openCart();
+    });
+  });
+
+  /* Cart toggle */
+  function openCart() {
+    document.getElementById('cart-drawer').classList.add('open');
+    document.getElementById('cart-overlay').classList.add('open');
+  }
+  function closeCart() {
+    document.getElementById('cart-drawer').classList.remove('open');
+    document.getElementById('cart-overlay').classList.remove('open');
+  }
+  document.getElementById('cart-toggle').addEventListener('click', openCart);
+  document.getElementById('cart-close').addEventListener('click', closeCart);
+  document.getElementById('cart-overlay').addEventListener('click', closeCart);
+
+  /* Collection filter nav */
+  var navBtns = document.querySelectorAll('.col-nav-btn');
+  var sections = document.querySelectorAll('.store-collection');
+  navBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      navBtns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var col = btn.dataset.col;
+      sections.forEach(function(s) {
+        if (col === 'all' || s.dataset.collection === col) {
+          s.style.display = '';
+        } else {
+          s.style.display = 'none';
+        }
+      });
+      if (col !== 'all') {
+        var target = document.getElementById(col);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  renderCart();
+})();
+</script>
