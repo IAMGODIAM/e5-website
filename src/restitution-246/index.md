@@ -72,7 +72,7 @@ For the full methodology, the dual-source verifications, and the changelog of re
 <div style="display:flex; gap:24px; flex-wrap:wrap; padding:32px 0; border-top:1px solid var(--vc-rule-2); border-bottom:1px solid var(--vc-rule-2); margin:48px 0;">
 <a class="vc-cta-primary" href="/record/restitution-246/" >Read the full campaign <span aria-hidden="true">→</span></a>
 <a class="vc-cta-link" href="/coalition/apply/">Join the campaign coalition <em>→</em></a>
-<a class="vc-cta-link" href="mailto:contact@e5enclave.com">Email the campaign desk <em>→</em></a>
+<a class="vc-cta-link" href="mailto:accounts@e5enclave.com">Email the campaign desk <em>→</em></a>
 </div>
 
 The center holds. The work begins.
