@@ -79,7 +79,7 @@
         }
       })
       .catch(function () {
-        alert('We could not start the checkout. Please email contact@e5enclave.com and we will route you manually.');
+        alert('We could not start the checkout. Please email accounts@e5enclave.com and we will route you manually.');
         if (submit) { submit.disabled = false; submit.firstChild.nodeValue = 'Continue to checkout '; }
       });
   });
