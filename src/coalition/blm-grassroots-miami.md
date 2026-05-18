@@ -95,7 +95,7 @@ breadcrumbs:
     <div style="margin-top:48px; padding:28px 32px; background:var(--vc-bone-2); border:1.5px solid var(--vc-ink); display:flex; gap:16px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
       <div>
         <div style="font-family:var(--vc-text); font-size:9.5px; letter-spacing:0.42em; text-transform:uppercase; color:var(--vc-oxblood); font-weight:600; margin-bottom:8px;">Contact E5 Enclave</div>
-        <p style="font-family:var(--vc-display); font-size:16px; color:var(--vc-ink); margin:0;">coalition@e5enclave.com · (305) 967-0200</p>
+        <p style="font-family:var(--vc-display); font-size:16px; color:var(--vc-ink); margin:0;">accounts@e5enclave.com · (305) 967-0200</p>
         <p style="font-family:var(--vc-display); font-size:14px; color:var(--vc-ink-3); margin:4px 0 0;">820 NW 64th St · Liberty City · Miami, FL 33150</p>
       </div>
       <div style="display:flex; gap:12px; flex-wrap:wrap;">
