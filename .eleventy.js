@@ -11,6 +11,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('CNAME');
   eleventyConfig.addPassthroughCopy('.nojekyll');
   eleventyConfig.addPassthroughCopy('_redirects');
+  eleventyConfig.addPassthroughCopy('_headers');
   eleventyConfig.addPassthroughCopy({ 'images': 'images' });
 
   // Watch targets

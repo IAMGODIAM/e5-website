@@ -8,9 +8,9 @@
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '***REDACTED***';
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID   = '8379263084';
-const WH_SECRET          = process.env.STRIPE_WEBHOOK_SECRET || 'whsec_AjSIH1L4UjeMnjziRdxCHY1udRZfrOlO';
+const WH_SECRET          = process.env.STRIPE_WEBHOOK_SECRET;
 
 async function sendTelegram(message) {
   if (!TELEGRAM_BOT_TOKEN) return;
