@@ -5,7 +5,7 @@
 
 import Stripe from 'stripe';
 
-const TELEGRAM_BOT_TOKEN = '8286685508:AAEe2VjCH5sNdF5iSYrJvqb4u1RGuDNSYT0';
+const TELEGRAM_BOT_TOKEN = env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = '8379263084';
 
 async function sendTelegram(message) {
@@ -30,7 +30,12 @@ function now() {
 
 export async function onRequestPost(context) {
   const { request, env } = context;
-  const WH_SECRET = env.STRIPE_WEBHOOK_SECRET || 'whsec_AjSIH1L4UjeMnjziRdxCHY1udRZfrOlO';
+  const WH_SECRET = env.STRIPE_WEBHOOK_SECRET;
+
+  if (!WH_SECRET) {
+    console.error('STRIPE_WEBHOOK_SECRET not configured');
+    return new Response('Webhook not configured', { status: 503 });
+  }
 
   const body = await request.text();
   const sig = request.headers.get('stripe-signature');

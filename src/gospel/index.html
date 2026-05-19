@@ -666,7 +666,7 @@ for (let n = 120; n <= 196; n++) {
   a.className = `paper-cell part4${n >= 120 ? ' gospel' : ''}`;
   a.href = `paper-${n}/`;
   a.target = '_blank';
-  a.innerHTML = `<div class="pnum">Paper ${n}${hasEntry ? ' ✦' : ''}</div><div class="ptitle">${p4titles[n]||'—'}</div>`;
+  a.innerHTML = `<div class="pnum">Paper ${n}${hasEntry ? ' <span aria-hidden="true">✦</span>' : ''}</div><div class="ptitle">${p4titles[n]||'—'}</div>`;
   p4g.appendChild(a);
 }
 
