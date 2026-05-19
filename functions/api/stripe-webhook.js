@@ -5,12 +5,11 @@
 
 import Stripe from 'stripe';
 
-const TELEGRAM_BOT_TOKEN = env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = '8379263084';
 
-async function sendTelegram(message) {
+async function sendTelegram(token, message) {
   try {
-    await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message, parse_mode: 'HTML' }),
@@ -31,6 +30,7 @@ function now() {
 export async function onRequestPost(context) {
   const { request, env } = context;
   const WH_SECRET = env.STRIPE_WEBHOOK_SECRET;
+  const TELEGRAM_BOT_TOKEN = env.TELEGRAM_BOT_TOKEN;
 
   if (!WH_SECRET) {
     console.error('STRIPE_WEBHOOK_SECRET not configured');
@@ -54,44 +54,33 @@ export async function onRequestPost(context) {
   console.log(`Stripe event: ${type}`);
 
   if (type === 'payment_intent.succeeded') {
-    await sendTelegram(
+    await sendTelegram(TELEGRAM_BOT_TOKEN,
       `💚 <b>E5 Enclave — Donation Received</b>\n\n` +
       `<b>Amount:</b> ${fmt(obj.amount)}\n` +
       `<b>Program:</b> ${obj.metadata?.designation || 'General Fund'}\n` +
-      `<b>Donor:</b> ${obj.receipt_email || 'anonymous'}\n` +
-      `<b>Type:</b> One-time gift\n` +
-      `<b>Time:</b> ${now()}\n\nEIN 99-3822441 · By Grace. 🙏`
-    );
-  }
-
-  if (type === 'customer.subscription.created') {
-    const amount = obj.items?.data?.[0]?.price?.unit_amount ? fmt(obj.items.data[0].price.unit_amount) : '?';
-    await sendTelegram(
-      `🔄 <b>E5 Enclave — New Monthly Donor</b>\n\n` +
-      `<b>Monthly gift:</b> ${amount}/month\n` +
-      `<b>Program:</b> ${obj.metadata?.designation || 'General Fund'}\n` +
-      `<b>Started:</b> ${now()}\n\nRecurring support. The record stays alive. 🔥`
-    );
-  }
-
-  if (type === 'invoice.payment_succeeded' && obj.billing_reason === 'subscription_cycle') {
-    await sendTelegram(
-      `💙 <b>E5 Enclave — Monthly Gift Processed</b>\n\n` +
-      `<b>Amount:</b> ${fmt(obj.amount_paid)}\n` +
-      `<b>Donor:</b> ${obj.customer_email || 'recurring donor'}\n` +
       `<b>Time:</b> ${now()}`
     );
-  }
-
-  if (type === 'payment_intent.payment_failed') {
-    await sendTelegram(
-      `⚠️ <b>E5 Enclave — Donation Attempt Failed</b>\n\n` +
+  } else if (type === 'payment_intent.payment_failed') {
+    await sendTelegram(TELEGRAM_BOT_TOKEN,
+      `🔴 <b>E5 Enclave — Payment Failed</b>\n\n` +
       `<b>Amount:</b> ${fmt(obj.amount)}\n` +
-      `<b>Donor:</b> ${obj.receipt_email || 'unknown'}\n` +
-      `<b>Reason:</b> ${obj.last_payment_error?.message || 'unknown reason'}\n` +
+      `<b>Reason:</b> ${obj.last_payment_error?.message || 'Unknown'}\n` +
+      `<b>Time:</b> ${now()}`
+    );
+  } else if (type === 'customer.subscription.created') {
+    await sendTelegram(TELEGRAM_BOT_TOKEN,
+      `🔔 <b>E5 Enclave — New Subscription</b>\n\n` +
+      `<b>Plan:</b> ${obj.items?.data[0]?.price?.nickname || obj.id}\n` +
+      `<b>Status:</b> ${obj.status}\n` +
+      `<b>Time:</b> ${now()}`
+    );
+  } else if (type === 'invoice.payment_succeeded') {
+    await sendTelegram(TELEGRAM_BOT_TOKEN,
+      `✅ <b>E5 Enclave — Invoice Paid</b>\n\n` +
+      `<b>Amount:</b> ${fmt(obj.amount_paid)}\n` +
       `<b>Time:</b> ${now()}`
     );
   }
 
-  return new Response(JSON.stringify({ received: true }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+  return new Response('OK', { status: 200 });
 }
