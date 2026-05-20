@@ -3,10 +3,10 @@
  * Endpoint: POST /api/innovation/photo-analyze
  * Body: { imageBase64: string, mimeType: string }
  * Routes through Base44 proxy → Cohere Command A+ Vision
- * DAG: innovation-lab-photo-worker-2026-0520-v2
+ * DAG: innovation-lab-photo-worker-2026-0520-v3
  */
 
-const PROXY_URL = 'https://sue-app-e73f9f1e.base44.app/api/functions/innovationPhotoProxy';
+const PROXY_URL = 'https://base44.app/api/apps/69d7dd5e015cd1aa45c3e283/functions/innovationPhotoProxy';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': 'https://e5enclave.com',
@@ -20,7 +20,7 @@ export async function onRequestOptions() {
 }
 
 export async function onRequestPost(context) {
-  const { request } = context;
+  const { request, env } = context;
 
   try {
     const { imageBase64, mimeType } = await request.json();
@@ -32,15 +32,17 @@ export async function onRequestPost(context) {
       );
     }
 
-    // Forward to Base44 proxy which holds the Cohere key securely
+    // Forward to Base44 proxy — holds Cohere API key securely
     const proxyRes = await fetch(PROXY_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${env.BASE44_SERVICE_TOKEN}`,
+      },
       body: JSON.stringify({ imageBase64, mimeType }),
     });
 
     const data = await proxyRes.json();
-
     return new Response(JSON.stringify(data), {
       status: proxyRes.status,
       headers: corsHeaders,
