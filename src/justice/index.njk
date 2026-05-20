@@ -1,0 +1,971 @@
+---
+layout: base
+permalink: /justice/
+title: "Justice Support — E5 Enclave | Court · Bail · Jail · Holistic Community Care"
+description: "E5 Enclave's Justice Support vertical provides court presence, bail assistance, jail support, financial aid, and holistic community care for those who have been targeted, prosecuted, or imprisoned unjustly. Karmelo Anthony is our first case."
+---
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"/>
+
+<style>
+  /* ── JUSTICE SUPPORT — DESIGN SYSTEM ── */
+  /* Palette: sovereign black · signal red · liberation gold · sentinel white */
+  :root {
+    --js-black: #0a0a0a;
+    --js-black-2: #111110;
+    --js-black-3: #1a1918;
+    --js-white: #f6f3ec;
+    --js-white-dim: #c9c4b8;
+    --js-white-ghost: rgba(246,243,236,0.12);
+    --js-gold: #f5c518;
+    --js-gold-dim: rgba(245,197,24,0.35);
+    --js-red: #c8342a;
+    --js-red-dim: rgba(200,52,42,0.18);
+    --js-green: #1d8a47;
+    --js-border: rgba(246,243,236,0.08);
+    --js-font-head: 'Oswald', Impact, sans-serif;
+    --js-font-body: 'Spectral', Georgia, serif;
+  }
+
+  .js-page { background: var(--js-black); color: var(--js-white); min-height: 100vh; }
+  .js-wrap { width: min(1180px, 92vw); margin: 0 auto; }
+
+  /* Tricolor stripe */
+  .js-stripe { display:flex; width:100%; height:5px; }
+  .js-stripe .y { flex:1; background:var(--js-gold); }
+  .js-stripe .r { flex:1; background:var(--js-red); }
+  .js-stripe .g { flex:1; background:var(--js-green); }
+  .js-stripe.short { width:96px; }
+  .js-stripe.med { width:160px; }
+
+  /* ── HERO ── */
+  .js-hero {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: clamp(60px,10vw,140px) 0 clamp(60px,8vw,110px);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .js-hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0805 45%, #0f0a08 100%);
+    z-index: -1;
+  }
+  .js-hero::after {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(200,52,42,0.07), transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 70%, rgba(245,197,24,0.04), transparent 60%);
+    z-index: -1;
+  }
+  .js-hero-eyebrow {
+    font-family: var(--js-font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    font-size: 11px;
+    color: var(--js-gold);
+    margin-bottom: 24px;
+  }
+  .js-hero-title {
+    font-family: var(--js-font-head);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: clamp(64px, 13vw, 190px);
+    line-height: 0.87;
+    letter-spacing: -0.01em;
+    color: var(--js-white);
+    margin: 0 0 28px;
+  }
+  .js-hero-title .red { color: var(--js-red); }
+  .js-hero-deck {
+    font-family: var(--js-font-body);
+    font-size: clamp(18px, 1.8vw, 24px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--js-white-dim);
+    max-width: 56ch;
+    line-height: 1.55;
+    margin: 0 0 36px;
+  }
+  .js-hero-deck strong { font-style: normal; color: var(--js-white); font-weight: 400; }
+  .js-hero-creed {
+    font-family: var(--js-font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 11px;
+    color: rgba(246,243,236,0.35);
+    margin-top: 20px;
+  }
+
+  /* ── DOCTRINE BAND ── */
+  .js-doctrine {
+    background: var(--js-black-2);
+    border-top: 1px solid var(--js-border);
+    border-bottom: 1px solid var(--js-border);
+    padding: clamp(48px,6vw,88px) 0;
+  }
+  .js-doctrine-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+  @media(max-width:860px){ .js-doctrine-grid { grid-template-columns: 1fr 1fr; } }
+  @media(max-width:520px){ .js-doctrine-grid { grid-template-columns: 1fr; } }
+  .js-pillar {
+    padding: clamp(24px,3vw,40px);
+    background: var(--js-black-3);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border-left: 3px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .js-pillar:hover { border-left-color: var(--js-gold); }
+  .js-pillar-num {
+    font-family: var(--js-font-head);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--js-gold);
+  }
+  .js-pillar-name {
+    font-family: var(--js-font-head);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: clamp(20px, 2.2vw, 28px);
+    line-height: 0.95;
+    color: var(--js-white);
+  }
+  .js-pillar-desc {
+    font-family: var(--js-font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--js-white-dim);
+    font-weight: 300;
+  }
+  .js-pillar-accent {
+    width: 32px; height: 2px;
+    margin-top: auto;
+  }
+  .js-pillar-accent.gold { background: var(--js-gold); }
+  .js-pillar-accent.red  { background: var(--js-red); }
+  .js-pillar-accent.green { background: var(--js-green); }
+  .js-pillar-accent.white { background: rgba(246,243,236,0.4); }
+
+  /* ── MISSION STATEMENT ── */
+  .js-mission {
+    padding: clamp(72px,10vw,130px) 0;
+  }
+  .js-mission-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: clamp(40px,6vw,100px);
+    align-items: start;
+  }
+  @media(max-width:720px){ .js-mission-inner { grid-template-columns: 1fr; } }
+  .js-mission-label {
+    font-family: var(--js-font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 11px;
+    color: var(--js-gold);
+    margin-bottom: 16px;
+  }
+  .js-mission-title {
+    font-family: var(--js-font-head);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: clamp(32px,4.5vw,56px);
+    line-height: 0.93;
+    color: var(--js-white);
+    position: sticky;
+    top: 24px;
+  }
+  .js-mission-body {
+    font-family: var(--js-font-body);
+    font-size: clamp(17px,1.6vw,21px);
+    line-height: 1.7;
+    color: var(--js-white-dim);
+    font-weight: 300;
+  }
+  .js-mission-body p { margin: 0 0 1.4em; }
+  .js-mission-body p:last-child { margin: 0; }
+  .js-mission-body strong { color: var(--js-white); font-weight: 400; }
+  .js-mission-body em { font-style: italic; color: var(--js-gold); }
+
+  /* ── HOW WE SHOW UP ── */
+  .js-how {
+    background: var(--js-black-2);
+    border-top: 1px solid var(--js-border);
+    padding: clamp(72px,9vw,120px) 0;
+  }
+  .js-how-header {
+    margin-bottom: clamp(48px,6vw,80px);
+  }
+  .js-how-eyebrow {
+    font-family: var(--js-font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 11px;
+    color: var(--js-gold);
+    margin-bottom: 14px;
+  }
+  .js-how-title {
+    font-family: var(--js-font-head);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: clamp(36px,5vw,72px);
+    line-height: 0.92;
+    color: var(--js-white);
+    max-width: 18ch;
+  }
+  .js-how-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2px;
+  }
+  @media(max-width:860px){ .js-how-grid { grid-template-columns: 1fr 1fr; } }
+  @media(max-width:520px){ .js-how-grid { grid-template-columns: 1fr; } }
+  .js-how-card {
+    background: var(--js-black-3);
+    padding: clamp(28px,3.5vw,48px);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-height: 280px;
+  }
+  .js-how-card-num {
+    font-family: var(--js-font-head);
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(246,243,236,0.07);
+    letter-spacing: -0.02em;
+  }
+  .js-how-card-name {
+    font-family: var(--js-font-head);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: clamp(18px,2vw,24px);
+    line-height: 1;
+    color: var(--js-white);
+    letter-spacing: 0.04em;
+  }
+  .js-how-card-desc {
+    font-family: var(--js-font-body);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--js-white-dim);
+    font-weight: 300;
+    flex: 1;
+  }
+  .js-how-card-tag {
+    font-family: var(--js-font-head);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--js-gold);
+    padding-top: 12px;
+    border-top: 1px solid var(--js-border);
+  }
+
+  /* ── ACTIVE CASES SECTION ── */
+  .js-cases {
+    padding: clamp(72px,9vw,120px) 0;
+  }
+  .js-cases-header {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: clamp(48px,6vw,80px);
+  }
+  .js-cases-eyebrow {
+    font-family: var(--js-font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 11px;
+    color: var(--js-gold);
+  }
+  .js-cases-title {
+    font-family: var(--js-font-head);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: clamp(36px,5vw,72px);
+    line-height: 0.92;
+    color: var(--js-white);
+  }
+
+  /* Case card — featured (large) */
+  .js-case-featured {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 520px;
+    overflow: hidden;
+    background: var(--js-black-3);
+    border: 1px solid var(--js-border);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.25s;
+    margin-bottom: 2px;
+  }
+  .js-case-featured:hover { border-color: rgba(200,52,42,0.5); }
+  @media(max-width:860px){ .js-case-featured { grid-template-columns: 1fr; } }
+
+  .js-case-featured-img {
+    position: relative;
+    overflow: hidden;
+    background: #1a1208;
+    min-height: 360px;
+  }
+  .js-case-featured-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.7) brightness(0.85);
+    transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.3s;
+  }
+  .js-case-featured:hover .js-case-featured-img img {
+    transform: scale(1.04);
+    filter: saturate(0.85) brightness(0.9);
+  }
+  .js-case-featured-img-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent 60%, var(--js-black-3) 100%);
+  }
+  @media(max-width:860px){
+    .js-case-featured-img-overlay {
+      background: linear-gradient(180deg, transparent 50%, var(--js-black-3) 100%);
+    }
+  }
+
+  .js-case-featured-body {
+    padding: clamp(36px,4vw,60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+  .js-case-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--js-font-head);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: var(--js-gold);
+  }
+  .js-case-status .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--js-red);
+    animation: blink 1.8s infinite;
+  }
+  @keyframes blink {
+    0%,100% { opacity:1; }
+    50% { opacity:0.3; }
+  }
+  .js-stripe.short { width:96px; }
+  .js-case-name {
+    font-family: var(--js-font-head);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: clamp(36px,5vw,72px);
+    line-height: 0.9;
+    color: var(--js-white);
+    letter-spacing: -0.01em;
+  }
+  .js-case-role {
+    font-family: var(--js-font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 11px;
+    color: var(--js-white-dim);
+  }
+  .js-case-excerpt {
+    font-family: var(--js-font-body);
+    font-size: clamp(15px,1.4vw,18px);
+    line-height: 1.65;
+    color: var(--js-white-dim);
+    font-weight: 300;
+    font-style: italic;
+    max-width: 42ch;
+  }
+  .js-case-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 20px;
+    border-top: 1px solid var(--js-border);
+  }
+  .js-case-meta-row {
+    display: flex;
+    gap: 16px;
+    font-family: var(--js-font-head);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  .js-case-meta-row .k { color: rgba(246,243,236,0.3); }
+  .js-case-meta-row .v { color: var(--js-white); }
+  .js-case-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--js-font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 11px;
+    color: var(--js-gold);
+    padding: 12px 0;
+    border-bottom: 1px solid var(--js-gold-dim);
+    width: fit-content;
+    transition: border-color 0.2s, gap 0.2s;
+  }
+  .js-case-featured:hover .js-case-cta { gap: 16px; border-color: var(--js-gold); }
+
+  /* Placeholder card */
+  .js-case-placeholder {
+    background: var(--js-black-3);
+    border: 1px dashed rgba(246,243,236,0.08);
+    padding: clamp(40px,5vw,72px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    min-height: 240px;
+    text-align: center;
+  }
+  .js-case-placeholder .ph-num {
+    font-family: var(--js-font-head);
+    font-size: 64px;
+    font-weight: 700;
+    color: rgba(246,243,236,0.05);
+    line-height: 1;
+  }
+  .js-case-placeholder .ph-label {
+    font-family: var(--js-font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 10px;
+    color: rgba(246,243,236,0.2);
+  }
+  .js-case-placeholder .ph-sub {
+    font-family: var(--js-font-body);
+    font-size: 14px;
+    color: rgba(246,243,236,0.15);
+    font-style: italic;
+    max-width: 30ch;
+  }
+
+  .js-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2px;
+    margin-top: 2px;
+  }
+  @media(max-width:860px){ .js-cases-grid { grid-template-columns: 1fr; } }
+
+  /* ── HOW TO GET HELP ── */
+  .js-gethelp {
+    background: var(--js-red);
+    padding: clamp(56px,7vw,100px) 0;
+  }
+  .js-gethelp-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(40px,6vw,80px);
+    align-items: center;
+  }
+  @media(max-width:720px){ .js-gethelp-inner { grid-template-columns: 1fr; } }
+  .js-gethelp-label {
+    font-family: var(--js-font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 11px;
+    color: rgba(246,243,236,0.6);
+    margin-bottom: 16px;
+  }
+  .js-gethelp-title {
+    font-family: var(--js-font-head);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: clamp(36px,5vw,68px);
+    line-height: 0.92;
+    color: var(--js-white);
+  }
+  .js-gethelp-body {
+    font-family: var(--js-font-body);
+    font-size: clamp(16px,1.5vw,20px);
+    line-height: 1.65;
+    color: rgba(246,243,236,0.85);
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+  .js-gethelp-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .js-gethelp-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .js-step-num {
+    font-family: var(--js-font-head);
+    font-weight: 700;
+    font-size: 28px;
+    color: rgba(246,243,236,0.25);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 36px;
+  }
+  .js-step-text {
+    font-family: var(--js-font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(246,243,236,0.85);
+    padding-top: 4px;
+  }
+  .js-step-text strong { color: var(--js-white); }
+  .js-gethelp-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--js-white);
+    color: var(--js-red);
+    font-family: var(--js-font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 16px 28px;
+    text-decoration: none;
+    transition: background 0.2s, gap 0.2s;
+    margin-top: 32px;
+    display: inline-block;
+  }
+  .js-gethelp-cta:hover { background: var(--js-gold); }
+
+  /* ── PROTECTION DOCTRINE ── */
+  .js-protection {
+    padding: clamp(72px,9vw,120px) 0;
+    border-top: 1px solid var(--js-border);
+  }
+  .js-protection-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px,6vw,80px);
+  }
+  @media(max-width:720px){ .js-protection-inner { grid-template-columns: 1fr; } }
+  .js-protection-label {
+    font-family: var(--js-font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 11px;
+    color: var(--js-gold);
+    margin-bottom: 16px;
+  }
+  .js-protection-title {
+    font-family: var(--js-font-head);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: clamp(32px,4.5vw,56px);
+    line-height: 0.93;
+    color: var(--js-white);
+    margin-bottom: 32px;
+  }
+  .js-protection-body {
+    font-family: var(--js-font-body);
+    font-size: clamp(16px,1.5vw,19px);
+    line-height: 1.72;
+    color: var(--js-white-dim);
+    font-weight: 300;
+  }
+  .js-protection-body p { margin: 0 0 1.3em; }
+  .js-protection-body em { font-style: italic; }
+  .js-protection-body strong { color: var(--js-white); font-weight: 400; }
+  .js-protection-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .js-protection-item {
+    background: var(--js-black-3);
+    padding: 24px 28px;
+    border-left: 3px solid var(--js-red);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .js-protection-item-label {
+    font-family: var(--js-font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 10px;
+    color: var(--js-red);
+  }
+  .js-protection-item-title {
+    font-family: var(--js-font-head);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: clamp(16px,1.8vw,20px);
+    color: var(--js-white);
+    letter-spacing: 0.04em;
+  }
+  .js-protection-item-desc {
+    font-family: var(--js-font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--js-white-dim);
+    font-weight: 300;
+  }
+
+  /* ── CREED ── */
+  .js-creed {
+    background: var(--js-black-2);
+    border-top: 1px solid var(--js-border);
+    padding: clamp(72px,10vw,130px) 0;
+    text-align: center;
+  }
+  .js-creed blockquote {
+    font-family: var(--js-font-head);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: clamp(26px,4vw,52px);
+    line-height: 0.97;
+    color: var(--js-white);
+    max-width: 20ch;
+    margin: 0 auto 24px;
+  }
+  .js-creed blockquote .dim { color: rgba(246,243,236,0.3); }
+  .js-creed cite {
+    font-family: var(--js-font-body);
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(246,243,236,0.4);
+  }
+
+  /* ── FOOTER BAND ── */
+  .js-foot {
+    background: var(--js-black-2);
+    border-top: 3px solid var(--js-red);
+    padding: clamp(36px,5vw,64px) 0;
+  }
+  .js-foot-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .js-foot-label {
+    font-family: var(--js-font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 10px;
+    color: rgba(246,243,236,0.3);
+    margin-bottom: 6px;
+  }
+  .js-foot-name {
+    font-family: var(--js-font-head);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--js-white);
+  }
+  .js-foot-link {
+    font-family: var(--js-font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 11px;
+    color: var(--js-gold);
+    border-bottom: 1px solid var(--js-gold-dim);
+    padding-bottom: 2px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .js-foot-link:hover { border-color: var(--js-gold); }
+</style>
+
+<div class="js-page">
+  <div class="js-stripe"></div>
+
+  <!-- ══ HERO ══ -->
+  <header class="js-hero">
+    <div class="js-wrap">
+      <div class="js-hero-eyebrow">E5 Enclave · Justice Vertical · BDI</div>
+      <h1 class="js-hero-title">Justice<br/><span class="red">Support.</span></h1>
+      <p class="js-hero-deck">
+        When the system comes for one of ours — <strong>we show up.</strong>
+        Court presence, bail, jail support, legal advocacy, financial relief, and holistic community care.
+        Not someday. <strong>Now.</strong>
+      </p>
+      <div class="js-stripe med"></div>
+      <div class="js-hero-creed" style="margin-top:20px;">Court · Bail · Jail · Financial Relief · Holistic Care · Protection</div>
+    </div>
+  </header>
+
+  <!-- ══ FOUR PILLARS ══ -->
+  <section class="js-doctrine">
+    <div class="js-wrap">
+      <div class="js-doctrine-grid">
+        <div class="js-pillar">
+          <div class="js-pillar-num">Pillar I</div>
+          <div class="js-pillar-name">Court Presence</div>
+          <div class="js-pillar-desc">Organized, peaceful, sustained physical presence at trial. Institutions move differently when they are watched by the community.</div>
+          <div class="js-pillar-accent gold"></div>
+        </div>
+        <div class="js-pillar">
+          <div class="js-pillar-num">Pillar II</div>
+          <div class="js-pillar-name">Bail & Bond Relief</div>
+          <div class="js-pillar-desc">Emergency bail fund coordination, bond reduction advocacy, and direct financial assistance for families navigating the pretrial system.</div>
+          <div class="js-pillar-accent red"></div>
+        </div>
+        <div class="js-pillar">
+          <div class="js-pillar-num">Pillar III</div>
+          <div class="js-pillar-name">Holistic Care</div>
+          <div class="js-pillar-desc">Mental health support, family care coordination, meal trains, housing stability, and the full network of community love — before, during, and after trial.</div>
+          <div class="js-pillar-accent green"></div>
+        </div>
+        <div class="js-pillar">
+          <div class="js-pillar-num">Pillar IV</div>
+          <div class="js-pillar-name">Protection</div>
+          <div class="js-pillar-desc">Coordinated response to harassment, doxxing, and threats against families and their legal advocates. No one stands alone.</div>
+          <div class="js-pillar-accent white"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MISSION ══ -->
+  <section class="js-mission">
+    <div class="js-wrap">
+      <div class="js-mission-inner">
+        <div>
+          <div class="js-mission-label">Our Doctrine</div>
+          <div class="js-mission-title">Why We Show Up</div>
+        </div>
+        <div class="js-mission-body">
+          <p>The legal system is not neutral. It never has been. For Black Americans, the courthouse has too often been a place where innocence is irrelevant, where wealth determines freedom, where the community watches from the outside while one of their own is processed inside.</p>
+          <p><strong>E5 Enclave's Justice Support vertical exists to change that equation.</strong> We believe that every person who has been wrongly targeted, unjustly prosecuted, or unfairly imprisoned deserves more than a lawyer. They deserve a community that shows up — in the gallery, at the bond hearing, at the front door.</p>
+          <p>We provide <em>court presence</em> — organized, peaceful, sustained community witness that reminds judges, prosecutors, and juries that someone is watching and that someone cares.</p>
+          <p>We provide <em>bail and bond relief</em> — direct financial assistance and advocacy to keep innocent people out of pretrial detention while their cases proceed.</p>
+          <p>We provide <em>holistic care</em> — because the person on trial is not alone in their suffering. Their family suffers. Their children suffer. Their community suffers. We meet all of it.</p>
+          <p>And we provide <em>protection</em> — because harassment, doxxing, and intimidation of families and their advocates has become a tool of suppression. We do not allow our people to face that alone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ HOW WE SHOW UP ══ -->
+  <section class="js-how">
+    <div class="js-wrap">
+      <div class="js-how-header">
+        <div class="js-how-eyebrow">The Work</div>
+        <h2 class="js-how-title">How We Show Up</h2>
+      </div>
+      <div class="js-how-grid">
+        <div class="js-how-card">
+          <div class="js-how-card-num">01</div>
+          <div class="js-how-card-name">Courthouse Witness</div>
+          <div class="js-how-card-desc">We organize coordinated, peaceful, lawful presence in the gallery during trial. Travel coordination, lodging, daily witness rotations. We fill the room.</div>
+          <div class="js-how-card-tag">Court Support</div>
+        </div>
+        <div class="js-how-card">
+          <div class="js-how-card-num">02</div>
+          <div class="js-how-card-name">Emergency Bail Fund</div>
+          <div class="js-how-card-desc">When bond is set at a level designed to imprison rather than ensure appearance, we mobilize. Direct financial assistance. Bond reduction advocacy. Attorney referrals.</div>
+          <div class="js-how-card-tag">Bail Relief</div>
+        </div>
+        <div class="js-how-card">
+          <div class="js-how-card-num">03</div>
+          <div class="js-how-card-name">Jail Support</div>
+          <div class="js-how-card-desc">For those who remain incarcerated pretrial: commissary, correspondence, family communication, mental health resources, and regular check-ins. No one disappears.</div>
+          <div class="js-how-card-tag">Incarceration Support</div>
+        </div>
+        <div class="js-how-card">
+          <div class="js-how-card-num">04</div>
+          <div class="js-how-card-name">Family Care</div>
+          <div class="js-how-card-desc">Meal coordination, childcare networks, housing stability support, financial relief for families who have lost a provider to pretrial detention. Whole-family care.</div>
+          <div class="js-how-card-tag">Holistic Support</div>
+        </div>
+        <div class="js-how-card">
+          <div class="js-how-card-num">05</div>
+          <div class="js-how-card-name">Legal Network</div>
+          <div class="js-how-card-desc">Warm referrals to civil rights attorneys, public defenders, and pro bono legal advocates. We do not practice law — we connect families to those who do.</div>
+          <div class="js-how-card-tag">Legal Advocacy</div>
+        </div>
+        <div class="js-how-card">
+          <div class="js-how-card-num">06</div>
+          <div class="js-how-card-name">Protection Protocol</div>
+          <div class="js-how-card-desc">Coordinated response to doxxing, harassment, and death threats targeting families and advocates. Documentation, safety planning, and community shield formation.</div>
+          <div class="js-how-card-tag">Protection</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ACTIVE CASES ══ -->
+  <section class="js-cases">
+    <div class="js-wrap">
+      <div class="js-cases-header">
+        <div class="js-cases-eyebrow">Active Cases</div>
+        <h2 class="js-cases-title">Those We Are<br/>Standing With Now</h2>
+      </div>
+
+      <!-- CASE 001 — KARMELO ANTHONY -->
+      <a href="/justice/karmelo-anthony/" class="js-case-featured">
+        <div class="js-case-featured-img">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a0d05 0%,#2a1508 50%,#1a0d05 100%);display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:'Oswald',sans-serif;font-size:clamp(80px,14vw,180px);font-weight:700;color:rgba(245,197,24,0.08);text-transform:uppercase;letter-spacing:-0.02em;line-height:1;text-align:center;padding:20px;">K·A</span>
+          </div>
+          <div class="js-case-featured-img-overlay"></div>
+        </div>
+        <div class="js-case-featured-body">
+          <div class="js-case-status"><span class="dot"></span> Active · Trial Begins June 1</div>
+          <div class="js-stripe short"></div>
+          <div class="js-case-name">Karmelo<br/>Anthony</div>
+          <div class="js-case-role">Case No. 001 · Frisco, Texas · Self-Defense</div>
+          <p class="js-case-excerpt">A 17-year-old honor student, team captain, and two-job worker who defended himself in the rain at a track meet — and has been charged with first-degree murder for it. Trial begins June 1, 2026.</p>
+          <div class="js-case-meta">
+            <div class="js-case-meta-row"><span class="k">Trial Date</span><span class="v">June 1–5, 2026</span></div>
+            <div class="js-case-meta-row"><span class="k">Venue</span><span class="v">296th District · Collin County, TX</span></div>
+            <div class="js-case-meta-row"><span class="k">Support Need</span><span class="v">Court Presence · Financial · Legal</span></div>
+          </div>
+          <div class="js-case-cta">Read the Case · Sign Court Support →</div>
+        </div>
+      </a>
+
+      <!-- PLACEHOLDER CASES -->
+      <div class="js-cases-grid">
+        <div class="js-case-placeholder">
+          <div class="ph-num">002</div>
+          <div class="ph-label">Next Case</div>
+          <div class="ph-sub">The next person who needs the community to show up.</div>
+        </div>
+        <div class="js-case-placeholder">
+          <div class="ph-num">003</div>
+          <div class="ph-label">Standing By</div>
+          <div class="ph-sub">Justice support infrastructure is built and ready.</div>
+        </div>
+        <div class="js-case-placeholder">
+          <div class="ph-num">004</div>
+          <div class="ph-label">Standing By</div>
+          <div class="ph-sub">Every case is a person. Every person deserves a community.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ GET HELP ══ -->
+  <section class="js-gethelp" id="get-help">
+    <div class="js-wrap">
+      <div class="js-gethelp-inner">
+        <div>
+          <div class="js-gethelp-label">Need Support?</div>
+          <h2 class="js-gethelp-title">We Are<br/>Here.</h2>
+        </div>
+        <div>
+          <p class="js-gethelp-body">If you or someone you know is facing unjust prosecution, pretrial detention, or a justice crisis — reach out. We will connect you with the right support, legal networks, and community resources. No case is too small. No family is too far gone.</p>
+          <div class="js-gethelp-steps">
+            <div class="js-gethelp-step">
+              <div class="js-step-num">01</div>
+              <div class="js-step-text"><strong>Contact us</strong> — email or call. Tell us what is happening. We listen first.</div>
+            </div>
+            <div class="js-gethelp-step">
+              <div class="js-step-num">02</div>
+              <div class="js-step-text"><strong>We assess the situation</strong> — court support need, bail status, family care, legal referral, or protection.</div>
+            </div>
+            <div class="js-gethelp-step">
+              <div class="js-step-num">03</div>
+              <div class="js-step-text"><strong>We mobilize</strong> — the right people, the right resources, the right response. Community care is not a checklist. It is a commitment.</div>
+            </div>
+          </div>
+          <a href="mailto:israel@e5enclave.com?subject=Justice Support Request" class="js-gethelp-cta">Contact Justice Support →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PROTECTION DOCTRINE ══ -->
+  <section class="js-protection">
+    <div class="js-wrap">
+      <div class="js-protection-inner">
+        <div>
+          <div class="js-protection-label">Protection Protocol</div>
+          <h2 class="js-protection-title">No One<br/>Stands Alone.</h2>
+          <div class="js-protection-body">
+            <p>Harassment, doxxing, and death threats have become tools wielded against families who seek justice and against the advocates who stand beside them. <em>This is not acceptable. And it will not be unanswered.</em></p>
+            <p>E5 Enclave operates a coordinated <strong>Protection Protocol</strong> for families and advocates under threat. We document. We respond. We do not allow our people to absorb targeted intimidation alone.</p>
+          </div>
+        </div>
+        <div class="js-protection-list">
+          <div class="js-protection-item">
+            <div class="js-protection-item-label">Response 01</div>
+            <div class="js-protection-item-title">Threat Documentation</div>
+            <div class="js-protection-item-desc">Systematic documentation of harassment, doxxing, and threats for legal and law enforcement use.</div>
+          </div>
+          <div class="js-protection-item">
+            <div class="js-protection-item-label">Response 02</div>
+            <div class="js-protection-item-title">Safety Planning</div>
+            <div class="js-protection-item-desc">Coordinating secure relocation, communication security, and day-to-day safety logistics for families under threat.</div>
+          </div>
+          <div class="js-protection-item">
+            <div class="js-protection-item-label">Response 03</div>
+            <div class="js-protection-item-title">Community Shield</div>
+            <div class="js-protection-item-desc">Organizing peaceful protective community presence around families, hearings, and public appearances. Numbers matter.</div>
+          </div>
+          <div class="js-protection-item">
+            <div class="js-protection-item-label">Response 04</div>
+            <div class="js-protection-item-title">Legal Referral</div>
+            <div class="js-protection-item-desc">Connecting families to civil rights attorneys to pursue legal remedies against those who threaten and intimidate.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CREED ══ -->
+  <section class="js-creed">
+    <div class="js-wrap">
+      <blockquote>
+        "The community<br/>
+        <span class="dim">is the</span><br/>
+        first line of<br/>
+        defense."
+      </blockquote>
+      <cite>— E5 Enclave · Justice Support Doctrine</cite>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER BAND ══ -->
+  <div class="js-foot">
+    <div class="js-wrap">
+      <div class="js-foot-inner">
+        <div>
+          <div class="js-foot-label">Justice Support Vertical</div>
+          <div class="js-foot-name">E5 Enclave Incorporated · BDI</div>
+        </div>
+        <div>
+          <div class="js-foot-label">Active Case</div>
+          <div class="js-foot-name">Karmelo Anthony · Trial Begins June 1</div>
+        </div>
+        <a href="/justice/karmelo-anthony/" class="js-foot-link">Sign Court Support →</a>
+        <a href="mailto:israel@e5enclave.com?subject=Justice Support Request" class="js-foot-link">Get Help →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="js-stripe"></div>
+</div>
