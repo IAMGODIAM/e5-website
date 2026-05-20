@@ -674,6 +674,7 @@ footer.foot .fine {
     </div>
     <nav>
       <a href="#tribute">Tribute</a>
+      <a href="#gallery">Gallery</a>
       <a href="#timeline">Timeline</a>
       <a href="#family">Family</a>
       <a href="#carry">Carry the Work</a>
@@ -827,6 +828,595 @@ footer.foot .fine {
     </div>
   </div>
 </section>
+
+
+<!-- ============================================================
+     PHOTO GALLERY — Agentic-Native Luxury Carousel
+     Injected: 2026-05-20 | DAG: carousel-andrew-jr-2026-0520
+     Swiper v11 · View Transitions API · Scroll-Driven Parallax
+     Design tokens: --bg #0a0a0a · --gold #f5c518 · --red #c8342a
+     ============================================================ -->
+
+<!-- Swiper v11 CDN — production-stable, gzip ~24KB -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<style>
+/* ===================== GALLERY SECTION ===================== */
+.gallery-section {
+  padding: 96px 0 112px;
+  background: #050505;
+  position: relative;
+  overflow: hidden;
+}
+.gallery-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(245,197,24,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(200,52,42,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.gallery-section .wrap { position: relative; z-index: 1; }
+
+/* Header */
+.gallery-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+.gallery-header .left .eyebrow { margin-bottom: 12px; display: block; }
+.gallery-header h2 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  margin: 0;
+  color: var(--ink);
+}
+.gallery-header .caption-note {
+  font-family: 'Spectral', Georgia, serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-3);
+  max-width: 280px;
+  text-align: right;
+  line-height: 1.5;
+}
+
+/* ---- Swiper wrapper ---- */
+.aj-swiper {
+  width: 100%;
+  padding-bottom: 56px !important; /* space for pagination */
+}
+
+/* Slide structure */
+.aj-swiper .swiper-slide {
+  width: auto;
+  max-width: 720px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #0d0d0b;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+  will-change: transform;
+}
+.aj-swiper .swiper-slide:hover { transform: translateY(-4px); }
+.aj-swiper .swiper-slide:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+/* Images */
+.aj-swiper .swiper-slide img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  loading: lazy;
+  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+  filter: contrast(1.03) saturate(0.92);
+}
+@media (max-width: 640px) {
+  .aj-swiper .swiper-slide img { height: 300px; }
+  .aj-swiper .swiper-slide { max-width: 85vw; }
+}
+
+.aj-swiper .swiper-slide:hover img { transform: scale(1.03); }
+
+/* Caption bar */
+.aj-swiper .slide-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 40px 20px 18px;
+  background: linear-gradient(to top, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.7) 60%, transparent 100%);
+  transform: translateY(100%);
+  transition: transform 0.38s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.aj-swiper .swiper-slide:hover .slide-caption,
+.aj-swiper .swiper-slide:focus-within .slide-caption { transform: translateY(0); }
+.aj-swiper .slide-caption .cap-text {
+  font-family: 'Spectral', Georgia, serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.5;
+  margin: 0;
+}
+.aj-swiper .slide-caption .cap-stripe {
+  display: flex; gap: 3px; margin-bottom: 10px;
+}
+.aj-swiper .slide-caption .cap-stripe span {
+  display: block; height: 2px; flex: 1;
+  max-width: 40px;
+}
+.aj-swiper .slide-caption .cs-y { background: var(--gold); }
+.aj-swiper .slide-caption .cs-r { background: var(--red); }
+.aj-swiper .slide-caption .cs-g { background: var(--green); }
+
+/* Pagination bullets — gold */
+.aj-swiper .swiper-pagination-bullet {
+  background: var(--ink-3);
+  opacity: 1;
+  width: 6px; height: 6px;
+  transition: background 0.25s, transform 0.25s;
+}
+.aj-swiper .swiper-pagination-bullet-active {
+  background: var(--gold);
+  transform: scale(1.5);
+}
+
+/* Navigation arrows */
+.gallery-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  justify-content: flex-end;
+}
+.gallery-controls .ctrl-btn {
+  width: 48px; height: 48px;
+  border: 1px solid rgba(246,243,236,0.15);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.25s, background 0.25s, color 0.25s;
+  font-size: 18px;
+  line-height: 1;
+}
+.gallery-controls .ctrl-btn:hover {
+  border-color: var(--gold);
+  background: rgba(245,197,24,0.08);
+  color: var(--gold);
+}
+.gallery-controls .ctrl-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.gallery-controls .slide-counter {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  font-size: 13px;
+  color: var(--ink-3);
+  min-width: 60px;
+  text-align: center;
+}
+
+/* ===================== LIGHTBOX ===================== */
+#aj-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(5,5,5,0.97);
+  backdrop-filter: blur(12px) saturate(0.4);
+  -webkit-backdrop-filter: blur(12px) saturate(0.4);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#aj-lightbox.open { display: flex; }
+#aj-lightbox .lb-img-wrap {
+  position: relative;
+  max-width: min(90vw, 1100px);
+  max-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#aj-lightbox img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 2px;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.8);
+}
+#aj-lightbox .lb-caption {
+  margin-top: 18px;
+  font-family: 'Spectral', Georgia, serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-2);
+  text-align: center;
+  max-width: 600px;
+  padding: 0 20px;
+}
+#aj-lightbox .lb-close {
+  position: fixed;
+  top: 24px; right: 28px;
+  width: 44px; height: 44px;
+  border: 1px solid rgba(246,243,236,0.2);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.2s, color 0.2s;
+}
+#aj-lightbox .lb-close:hover { border-color: var(--gold); color: var(--gold); }
+#aj-lightbox .lb-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px; height: 44px;
+  border: 1px solid rgba(246,243,236,0.15);
+  border-radius: 50%;
+  background: rgba(5,5,5,0.7);
+  color: var(--ink);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+#aj-lightbox .lb-nav:hover { border-color: var(--gold); color: var(--gold); background: rgba(245,197,24,0.1); }
+#aj-lightbox .lb-prev { left: 20px; }
+#aj-lightbox .lb-next { right: 20px; }
+#aj-lightbox .lb-counter {
+  position: fixed;
+  top: 28px; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  color: var(--ink-3);
+}
+
+/* View Transition for lightbox */
+@keyframes lb-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes lb-out {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.96); }
+}
+#aj-lightbox.open img { animation: lb-in 0.28s cubic-bezier(0.25,0.46,0.45,0.94) both; }
+
+/* Gold rule separator above gallery */
+.gallery-top-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 20%, rgba(245,197,24,0.3) 80%, transparent 100%);
+  margin-bottom: 0;
+  opacity: 0.6;
+}
+</style>
+
+<div class="gallery-top-rule"></div>
+
+<section id="gallery" class="gallery-section" data-screen-label="06b Photo Gallery">
+  <div class="wrap">
+
+    <!-- Header -->
+    <div class="gallery-header">
+      <div class="left">
+        <span class="eyebrow">In His Own Life</span>
+        <h2>A Life<br/>Fully Lived.</h2>
+      </div>
+      <p class="caption-note">From the streets, the courtrooms, the press conferences, and the family. Every photo a chapter.</p>
+    </div>
+
+    <!-- Swiper -->
+    <div class="swiper aj-swiper" id="ajSwiper" role="region" aria-label="Andrew Joseph Jr. photo gallery">
+      <div class="swiper-wrapper">
+
+        <!-- Slide 1 — smiling at mic (portrait) -->
+        <div class="swiper-slide" tabindex="0" role="button" aria-label="Open photo 1 in full view"
+             data-img="/assets/libations/andrew-jr-memorial/andrew-smiling-mic.png"
+             data-cap="Andrew Joseph Jr. at a speaking engagement — always at the microphone, always centering the families.">
+          <img src="/assets/libations/andrew-jr-memorial/andrew-smiling-mic.png"
+               alt="Andrew Joseph Jr. smiling at a podium, wearing a Black Lives Matter Grassroots shirt."
+               loading="lazy" width="720" height="480" />
+          <div class="slide-caption">
+            <div class="cap-stripe"><span class="cs-y"></span><span class="cs-r"></span><span class="cs-g"></span></div>
+            <p class="cap-text">At the microphone — always centering the families.</p>
+          </div>
+        </div>
+
+        <!-- Slide 2 — fist raised (portrait) -->
+        <div class="swiper-slide" tabindex="0" role="button" aria-label="Open photo 2 in full view"
+             data-img="/assets/libations/andrew-jr-memorial/andrew-fist-raised.png"
+             data-cap="Fist raised — the posture he held for two decades on behalf of families who could not raise their own.">
+          <img src="/assets/libations/andrew-jr-memorial/andrew-fist-raised.png"
+               alt="Andrew Joseph Jr. with fist raised in solidarity at a demonstration."
+               loading="lazy" width="720" height="480" />
+          <div class="slide-caption">
+            <div class="cap-stripe"><span class="cs-y"></span><span class="cs-r"></span><span class="cs-g"></span></div>
+            <p class="cap-text">Fist raised — the posture he held for two decades of struggle.</p>
+          </div>
+        </div>
+
+        <!-- Slide 3 — BLM banner (landscape/wide) -->
+        <div class="swiper-slide" tabindex="0" role="button" aria-label="Open photo 3 in full view"
+             data-img="/assets/libations/andrew-jr-memorial/andrew-blm-banner.png"
+             data-cap="Outside the courthouse — Black Lives Matter Grassroots, boots on the ground.">
+          <img src="/assets/libations/andrew-jr-memorial/andrew-blm-banner.png"
+               alt="Andrew Joseph Jr. holding a Black Lives Matter banner outside a courthouse."
+               loading="lazy" width="720" height="480" />
+          <div class="slide-caption">
+            <div class="cap-stripe"><span class="cs-y"></span><span class="cs-r"></span><span class="cs-g"></span></div>
+            <p class="cap-text">Outside the courthouse — boots on the ground.</p>
+          </div>
+        </div>
+
+        <!-- Slide 4 — portrait close-up -->
+        <div class="swiper-slide" tabindex="0" role="button" aria-label="Open photo 4 in full view"
+             data-img="/assets/libations/andrew-jr-memorial/andrew-portrait.png"
+             data-cap="Andrew Joseph Jr. — Rapid Response Coordinator, Black Lives Matter Grassroots. Father. Educator. Advocate.">
+          <img src="/assets/libations/andrew-jr-memorial/andrew-portrait.png"
+               alt="Andrew Joseph Jr. portrait, smiling, wearing a Black Lives Matter Grassroots shirt."
+               loading="lazy" width="720" height="480" />
+          <div class="slide-caption">
+            <div class="cap-stripe"><span class="cs-y"></span><span class="cs-r"></span><span class="cs-g"></span></div>
+            <p class="cap-text">Rapid Response Coordinator · Father · Educator · Advocate.</p>
+          </div>
+        </div>
+
+        <!-- Slide 5 — family courthouse -->
+        <div class="swiper-slide" tabindex="0" role="button" aria-label="Open photo 5 in full view"
+             data-img="/assets/libations/andrew-jr-memorial/family-courthouse.png"
+             data-cap="The Joseph family outside the federal courthouse in Tampa — September 22, 2022. $15 million verdict. Justice for AJ III.">
+          <img src="/assets/libations/andrew-jr-memorial/family-courthouse.png"
+               alt="The Joseph family outside the federal courthouse after the $15 million verdict on September 22, 2022."
+               loading="lazy" width="720" height="480" />
+          <div class="slide-caption">
+            <div class="cap-stripe"><span class="cs-y"></span><span class="cs-r"></span><span class="cs-g"></span></div>
+            <p class="cap-text">Sept 22, 2022 — Federal courthouse. $15 million. Justice for AJ III.</p>
+          </div>
+        </div>
+
+        <!-- Slide 6 — family tribute -->
+        <div class="swiper-slide" tabindex="0" role="button" aria-label="Open photo 6 in full view"
+             data-img="/assets/libations/andrew-jr-memorial/family-tribute.png"
+             data-cap="The Joseph family — Deanna, Deja, and Andrew. A family that turned grief into a movement.">
+          <img src="/assets/libations/andrew-jr-memorial/family-tribute.png"
+               alt="The Joseph family together in a tribute photo."
+               loading="lazy" width="720" height="480" />
+          <div class="slide-caption">
+            <div class="cap-stripe"><span class="cs-y"></span><span class="cs-r"></span><span class="cs-g"></span></div>
+            <p class="cap-text">The Joseph family — Deanna, Deja, and Andrew. Grief turned into movement.</p>
+          </div>
+        </div>
+
+        <!-- Slide 7 — in loving memory -->
+        <div class="swiper-slide" tabindex="0" role="button" aria-label="Open photo 7 in full view"
+             data-img="/assets/libations/andrew-jr-memorial/in-loving-memory.png"
+             data-cap="In Loving Memory — a tribute image circulated by the movement community after his transition on May 16, 2026.">
+          <img src="/assets/libations/andrew-jr-memorial/in-loving-memory.png"
+               alt="In loving memory tribute graphic for Andrew Joseph Jr."
+               loading="lazy" width="720" height="480" />
+          <div class="slide-caption">
+            <div class="cap-stripe"><span class="cs-y"></span><span class="cs-r"></span><span class="cs-g"></span></div>
+            <p class="cap-text">In Loving Memory — from the movement community, May 16, 2026.</p>
+          </div>
+        </div>
+
+        <!-- Slide 8 — carry the work -->
+        <div class="swiper-slide" tabindex="0" role="button" aria-label="Open photo 8 in full view"
+             data-img="/assets/libations/andrew-jr-memorial/carry-the-work.png"
+             data-cap="&ldquo;Carry the Work&rdquo; — the call he left the movement with. Boots stay on the ground.">
+          <img src="/assets/libations/andrew-jr-memorial/carry-the-work.png"
+               alt="Carry the Work tribute image honoring Andrew Joseph Jr."
+               loading="lazy" width="720" height="480" />
+          <div class="slide-caption">
+            <div class="cap-stripe"><span class="cs-y"></span><span class="cs-r"></span><span class="cs-g"></span></div>
+            <p class="cap-text">&ldquo;Carry the Work.&rdquo; The call he left the movement with.</p>
+          </div>
+        </div>
+
+        <!-- Slide 9 — quote boots -->
+        <div class="swiper-slide" tabindex="0" role="button" aria-label="Open photo 9 in full view"
+             data-img="/assets/libations/andrew-jr-memorial/quote-boots.png"
+             data-cap="&ldquo;We&rsquo;ve been boots on the ground since day one.&rdquo; — Andrew Joseph Jr., February 2024.">
+          <img src="/assets/libations/andrew-jr-memorial/quote-boots.png"
+               alt="Quote card: We've been boots on the ground since day one."
+               loading="lazy" width="720" height="480" />
+          <div class="slide-caption">
+            <div class="cap-stripe"><span class="cs-y"></span><span class="cs-r"></span><span class="cs-g"></span></div>
+            <p class="cap-text">&ldquo;Boots on the ground since day one.&rdquo; — February 2024.</p>
+          </div>
+        </div>
+
+      </div><!-- /swiper-wrapper -->
+
+      <!-- Pagination -->
+      <div class="swiper-pagination"></div>
+    </div><!-- /swiper -->
+
+    <!-- Custom controls -->
+    <div class="gallery-controls">
+      <span class="slide-counter" id="slideCounter" aria-live="polite">1 / 9</span>
+      <button class="ctrl-btn" id="ajPrev" aria-label="Previous photo">&#8592;</button>
+      <button class="ctrl-btn" id="ajNext" aria-label="Next photo">&#8594;</button>
+    </div>
+
+  </div><!-- /wrap -->
+</section>
+
+<!-- ===================== LIGHTBOX ===================== -->
+<div id="aj-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="lb-counter" id="lbCounter" aria-live="polite"></div>
+  <button class="lb-close" id="lbClose" aria-label="Close photo viewer">&#x2715;</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous photo">&#8592;</button>
+  <div class="lb-img-wrap">
+    <img id="lbImg" src="" alt="" />
+  </div>
+  <p class="lb-caption" id="lbCaption"></p>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next photo">&#8594;</button>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+(function() {
+  'use strict';
+
+  // ── Slide data ──────────────────────────────────────────────
+  const slides = Array.from(document.querySelectorAll('#ajSwiper .swiper-slide'));
+  const totalSlides = slides.length;
+
+  // ── Swiper init ─────────────────────────────────────────────
+  const swiper = new Swiper('#ajSwiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 18,
+    centeredSlides: true,
+    loop: true,
+    grabCursor: true,
+    keyboard: { enabled: true },
+    a11y: {
+      prevSlideMessage: 'Previous photo',
+      nextSlideMessage: 'Next photo',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      0:   { spaceBetween: 10 },
+      640: { spaceBetween: 18 },
+    },
+    on: {
+      slideChange: updateCounter,
+      init: updateCounter,
+    },
+  });
+
+  // Counter
+  const counterEl = document.getElementById('slideCounter');
+  function updateCounter() {
+    const real = swiper.realIndex + 1;
+    counterEl.textContent = real + ' / ' + totalSlides;
+  }
+
+  // Custom nav buttons
+  document.getElementById('ajPrev').addEventListener('click', () => swiper.slidePrev());
+  document.getElementById('ajNext').addEventListener('click', () => swiper.slideNext());
+
+  // ── Lightbox ────────────────────────────────────────────────
+  const lb        = document.getElementById('aj-lightbox');
+  const lbImg     = document.getElementById('lbImg');
+  const lbCaption = document.getElementById('lbCaption');
+  const lbCounter = document.getElementById('lbCounter');
+  const lbClose   = document.getElementById('lbClose');
+  const lbPrev    = document.getElementById('lbPrev');
+  const lbNext    = document.getElementById('lbNext');
+
+  let lbIndex = 0;
+
+  // Build flat array of real (non-duplicate) slide data
+  // Swiper loop duplicates slides; use original slides array for data
+  const originalSlides = document.querySelectorAll('#ajSwiper .swiper-slide:not(.swiper-slide-duplicate)');
+  const photoData = Array.from(originalSlides).map(s => ({
+    img: s.dataset.img,
+    cap: s.dataset.cap || '',
+    alt: s.querySelector('img')?.alt || '',
+  }));
+
+  function openLightbox(index) {
+    lbIndex = ((index % photoData.length) + photoData.length) % photoData.length;
+    renderLightbox();
+    lb.classList.add('open');
+    lb.focus();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function renderLightbox() {
+    const d = photoData[lbIndex];
+    // Use View Transitions API if available
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        lbImg.src = d.img;
+        lbImg.alt = d.alt;
+        lbCaption.innerHTML = d.cap;
+        lbCounter.textContent = (lbIndex + 1) + ' / ' + photoData.length;
+      });
+    } else {
+      lbImg.src = d.img;
+      lbImg.alt = d.alt;
+      lbCaption.innerHTML = d.cap;
+      lbCounter.textContent = (lbIndex + 1) + ' / ' + photoData.length;
+    }
+  }
+
+  // Open on slide click or Enter key
+  slides.forEach((slide, i) => {
+    slide.addEventListener('click', () => {
+      // Map loop slide index back to real index
+      openLightbox(swiper.realIndex);
+    });
+    slide.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(swiper.realIndex); }
+    });
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', () => { lbIndex = (lbIndex - 1 + photoData.length) % photoData.length; renderLightbox(); });
+  lbNext.addEventListener('click', () => { lbIndex = (lbIndex + 1) % photoData.length; renderLightbox(); });
+
+  // Keyboard nav in lightbox
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft')  { lbIndex = (lbIndex - 1 + photoData.length) % photoData.length; renderLightbox(); }
+    if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % photoData.length; renderLightbox(); }
+  });
+
+  // Click backdrop to close
+  lb.addEventListener('click', (e) => {
+    if (e.target === lb) closeLightbox();
+  });
+
+  // ── Touch swipe in lightbox ─────────────────────────────────
+  let touchStartX = 0;
+  lb.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+  lb.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(dx) < 40) return;
+    if (dx < 0) { lbIndex = (lbIndex + 1) % photoData.length; }
+    else        { lbIndex = (lbIndex - 1 + photoData.length) % photoData.length; }
+    renderLightbox();
+  }, { passive: true });
+
+})();
+</script>
+
 
 <!-- ============== TIMELINE ============== -->
 <section id="timeline" data-screen-label="07 Timeline">
