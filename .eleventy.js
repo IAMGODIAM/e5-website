@@ -13,6 +13,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('_redirects');
   eleventyConfig.addPassthroughCopy('_headers');
   eleventyConfig.addPassthroughCopy({ 'images': 'images' });
+  eleventyConfig.addPassthroughCopy({ 'src/libations/andrew-joseph-jr/memorial-program/memorial.html': 'libations/andrew-joseph-jr/memorial-program/index.html' });
+  eleventyConfig.ignores.add('src/libations/andrew-joseph-jr/memorial-program/index.njk');
 
   // Watch targets
   eleventyConfig.addWatchTarget('src/assets/css/');
