@@ -1,1217 +1,1116 @@
 ---
-layout: base.njk
-title: "Andrew Joseph Jr. — In Memoriam | E5 Enclave Libations"
-description: "A tribute to Andrew Joseph Jr. — Rapid Response Coordinator, Black Lives Matter Grassroots. Father, educator, organizer. Born New Orleans. Transitioned May 16, 2026. Survived by Deanna and Deja."
+layout: base
+permalink: /libations/andrew-joseph-jr/
+title: "Andrew Joseph Jr. — In Memoriam · E5 Enclave Libations"
+description: "A tribute to Andrew Joseph Jr. — Rapid Response Coordinator, Black Lives Matter Grassroots. Father, educator, advocate, organizer. Rest well, champion."
 ---
+{# Andrew Joseph Jr. Memorial — from GDrive draft, deployed 2026-05-20 #}
 
 <style>
-  /* ─── LIBATION PAGE — ANDREW JOSEPH JR. ─── */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ============================================================
+   Andrew Joseph Jr. — Memorial
+   Visual system rooted in BLM Grassroots tributes:
+   deep black ground, pan-african accents, condensed display type.
+   ============================================================ */
 
-  :root {
-    --black:    #0a0a0a;
-    --offblack: #111111;
-    --panel:    #161616;
-    --border:   #2a2a2a;
-    --gold:     #c9a84c;
-    --gold-lt:  #e2c97e;
-    --white:    #f5f0e8;
-    --muted:    #888;
-    --red:      #8b1a1a;
-    --serif:    'Georgia', 'Times New Roman', serif;
-    --sans:     'Helvetica Neue', Arial, sans-serif;
-    --mono:     'Courier New', monospace;
-    --max:      1200px;
-  }
+:root {
+  --bg: #0a0a0a;
+  --bg-2: #131312;
+  --ink: #f6f3ec;
+  --ink-2: #c9c4b8;
+  --ink-3: #8a857a;
+  --gold: #f5c518;
+  --gold-soft: #d9aa10;
+  --red: #c8342a;
+  --green: #1d8a47;
+  --rule: rgba(246, 243, 236, 0.12);
+}
 
-  body { background: var(--black); color: var(--white); font-family: var(--serif); }
+*, *::before, *::after { box-sizing: border-box; }
 
-  /* ─── NAV STRIPE ─── */
-  .tribute-nav {
-    background: var(--offblack);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-  .tribute-nav .nav-left {
-    font-family: var(--sans);
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .tribute-nav .nav-left a { color: var(--gold); text-decoration: none; }
-  .tribute-nav .nav-left a:hover { text-decoration: underline; }
-  .tribute-nav .nav-left span { color: var(--border); }
-  .tribute-nav .nav-right {
-    font-family: var(--sans);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
 
-  /* ─── HERO ─── */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    overflow: hidden;
-  }
-  .hero-image-col {
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-image-col img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    filter: grayscale(15%) contrast(1.05);
-  }
-  .hero-image-col::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, transparent 60%, var(--black) 100%);
-  }
-  .hero-text-col {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px 60px 80px 50px;
-    position: relative;
-    z-index: 1;
-  }
-  .hero-badge {
-    font-family: var(--sans);
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 28px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .hero-badge::before {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 1px;
-    background: var(--gold);
-  }
-  .hero-name {
-    font-family: var(--serif);
-    font-size: clamp(42px, 5vw, 72px);
-    font-weight: 400;
-    line-height: 1.05;
-    color: var(--white);
-    margin-bottom: 12px;
-    letter-spacing: -0.01em;
-  }
-  .hero-role {
-    font-family: var(--sans);
-    font-size: 13px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 36px;
-  }
-  .hero-quote {
-    font-family: var(--serif);
-    font-size: clamp(18px, 2.2vw, 24px);
-    font-style: italic;
-    line-height: 1.6;
-    color: var(--white);
-    opacity: 0.9;
-    border-left: 2px solid var(--gold);
-    padding-left: 24px;
-    margin-bottom: 48px;
-    max-width: 420px;
-  }
-  .hero-facts {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px 32px;
-    border-top: 1px solid var(--border);
-    padding-top: 32px;
-    max-width: 420px;
-  }
-  .hero-fact-label {
-    font-family: var(--sans);
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 4px;
-  }
-  .hero-fact-value {
-    font-family: var(--serif);
-    font-size: 15px;
-    color: var(--white);
-  }
-  @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-image-col { height: 60vw; max-height: 480px; }
-    .hero-image-col::after { background: linear-gradient(to bottom, transparent 50%, var(--black) 100%); }
-    .hero-text-col { padding: 48px 24px; }
-    .hero-facts { max-width: 100%; }
-  }
+img { display: block; max-width: 100%; }
 
-  /* ─── PULL QUOTE BAND ─── */
-  .pq-band {
-    background: var(--panel);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 60px 40px;
-    text-align: center;
-  }
-  .pq-band blockquote {
-    font-family: var(--serif);
-    font-size: clamp(22px, 3vw, 36px);
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--white);
-    max-width: 820px;
-    margin: 0 auto 20px;
-  }
-  .pq-band cite {
-    font-family: var(--sans);
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-style: normal;
-  }
+a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(245, 197, 24, 0.35); }
+a:hover { border-bottom-color: var(--gold); }
 
-  /* ─── SECTION COMMON ─── */
-  .section {
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 80px 40px;
-  }
-  .section-eyebrow {
-    font-family: var(--sans);
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .section-eyebrow::before {
-    content: '';
-    display: inline-block;
-    width: 20px;
-    height: 1px;
-    background: var(--gold);
-  }
-  .section-headline {
-    font-family: var(--serif);
-    font-size: clamp(32px, 4vw, 54px);
-    font-weight: 400;
-    line-height: 1.1;
-    color: var(--white);
-    margin-bottom: 32px;
-    letter-spacing: -0.01em;
-  }
-  .body-lede {
-    font-family: var(--serif);
-    font-size: clamp(17px, 1.8vw, 20px);
-    font-style: italic;
-    line-height: 1.75;
-    color: var(--white);
-    margin-bottom: 28px;
-    max-width: 760px;
-  }
-  .body-para {
-    font-family: var(--serif);
-    font-size: clamp(15px, 1.5vw, 17px);
-    line-height: 1.85;
-    color: #ccc;
-    margin-bottom: 22px;
-    max-width: 760px;
-  }
-  .body-para strong { color: var(--white); }
-  .img-caption {
-    font-family: var(--sans);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 10px;
-    text-align: center;
-  }
+/* -------------------- Typography ---------------------- */
 
-  /* ─── TWO-COLUMN READING LAYOUT ─── */
-  .reading-grid {
-    display: grid;
-    grid-template-columns: 1fr 400px;
-    gap: 80px;
-    align-items: start;
-  }
-  .reading-grid .photo-col img {
-    width: 100%;
-    display: block;
-    filter: grayscale(8%) contrast(1.05);
-  }
-  @media (max-width: 960px) {
-    .reading-grid { grid-template-columns: 1fr; gap: 40px; }
-  }
+.display, h1, h2 {
+  font-family: 'Oswald', 'Barlow Condensed', 'Anton', Impact, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.005em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  margin: 0;
+}
 
-  /* ─── VERDICT SECTION ─── */
-  .verdict-section {
-    background: var(--panel);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .verdict-inner {
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 80px 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-  .verdict-stat {
-    text-align: center;
-    padding: 48px;
-    border: 1px solid var(--border);
-    background: var(--offblack);
-  }
-  .verdict-number {
-    font-family: var(--serif);
-    font-size: clamp(64px, 8vw, 120px);
-    font-weight: 400;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .verdict-label {
-    font-family: var(--sans);
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    max-width: 240px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-  .verdict-quote {
-    font-family: var(--serif);
-    font-size: clamp(18px, 2vw, 24px);
-    font-style: italic;
-    line-height: 1.65;
-    color: var(--white);
-    border-left: 2px solid var(--gold);
-    padding-left: 28px;
-    margin-top: 32px;
-  }
-  .verdict-quote cite {
-    display: block;
-    font-family: var(--sans);
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-style: normal;
-    margin-top: 16px;
-  }
-  @media (max-width: 900px) {
-    .verdict-inner { grid-template-columns: 1fr; gap: 40px; }
-  }
+.eyebrow {
+  font-family: 'Oswald', 'Barlow Condensed', Impact, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--gold);
+}
 
-  /* ─── FAMILY SECTION ─── */
-  .family-section {
-    background: var(--offblack);
-    border-top: 1px solid var(--border);
-  }
-  .survivors-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    margin-top: 48px;
-    border: 1px solid var(--border);
-  }
-  .survivor-card {
-    background: var(--panel);
-    padding: 32px;
-    text-align: center;
-  }
-  .survivor-role {
-    font-family: var(--sans);
-    font-size: 9px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 10px;
-  }
-  .survivor-name {
-    font-family: var(--serif);
-    font-size: 20px;
-    color: var(--white);
-  }
-  .survivor-note {
-    font-family: var(--sans);
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 6px;
-    font-style: italic;
-  }
-  @media (max-width: 700px) {
-    .survivors-grid { grid-template-columns: 1fr; }
-  }
+.serif {
+  font-family: 'Spectral', 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+}
 
-  /* ─── TIMELINE ─── */
-  .timeline-section {
-    background: var(--black);
-    border-top: 1px solid var(--border);
-  }
-  .timeline {
-    position: relative;
-    margin-top: 56px;
-  }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 120px;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: var(--border);
-  }
-  .tl-entry {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 0 40px;
-    padding: 0 0 48px 0;
-    position: relative;
-  }
-  .tl-entry.major .tl-dot { background: var(--gold); }
-  .tl-date {
-    font-family: var(--sans);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-align: right;
-    padding-top: 4px;
-    line-height: 1.4;
-  }
-  .tl-dot {
-    position: absolute;
-    left: 115px;
-    top: 6px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--border);
-    border: 1px solid var(--muted);
-    z-index: 1;
-  }
-  .tl-content { padding-left: 24px; }
-  .tl-headline {
-    font-family: var(--serif);
-    font-size: 17px;
-    color: var(--white);
-    margin-bottom: 6px;
-    line-height: 1.3;
-  }
-  .tl-entry.major .tl-headline { color: var(--gold); }
-  .tl-body {
-    font-family: var(--serif);
-    font-size: 14px;
-    line-height: 1.75;
-    color: #999;
-    max-width: 620px;
-  }
-  @media (max-width: 700px) {
-    .timeline::before { left: 0; }
-    .tl-entry { grid-template-columns: 1fr; gap: 4px; }
-    .tl-date { text-align: left; padding-left: 20px; }
-    .tl-dot { left: -5px; }
-    .tl-content { padding-left: 20px; }
-  }
+.kicker {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  color: var(--ink-3);
+}
 
-  /* ─── PHOTO GALLERY SECTION ─── */
-  .gallery-section {
-    background: var(--offblack);
-    border-top: 1px solid var(--border);
-  }
-  .photo-masonry {
-    columns: 3;
-    column-gap: 8px;
-    margin-top: 48px;
-  }
-  .photo-masonry .p-item {
-    break-inside: avoid;
-    margin-bottom: 8px;
-    overflow: hidden;
-    position: relative;
-    background: var(--panel);
-  }
-  .photo-masonry .p-item img {
-    width: 100%;
-    display: block;
-    transition: transform 0.4s ease, filter 0.4s ease;
-    filter: grayscale(10%) contrast(1.05);
-  }
-  .photo-masonry .p-item:hover img {
-    transform: scale(1.03);
-    filter: grayscale(0%) contrast(1.1);
-  }
-  @media (max-width: 900px) { .photo-masonry { columns: 2; } }
-  @media (max-width: 600px) { .photo-masonry { columns: 1; } }
+/* -------------------- Pan-African stripe ---------------------- */
 
-  /* ─── VIDEO SECTION ─── */
-  .video-section {
-    background: var(--black);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .video-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-top: 48px;
-  }
-  .video-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    overflow: hidden;
-  }
-  .video-card video,
-  .video-card iframe {
-    width: 100%;
-    display: block;
-    aspect-ratio: 16/9;
-    background: #000;
-    border: none;
-  }
-  .video-card .video-caption {
-    padding: 16px 20px;
-    font-family: var(--sans);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    border-top: 1px solid var(--border);
-  }
-  @media (max-width: 800px) {
-    .video-grid { grid-template-columns: 1fr; }
-  }
+.stripe {
+  display: flex;
+  width: 100%;
+  height: 6px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.stripe > span { display: block; flex: 1; }
+.stripe .y { background: var(--gold); }
+.stripe .r { background: var(--red); }
+.stripe .g { background: var(--green); }
 
-  /* ─── GRAPHICS / MOVEMENT MOURNS ─── */
-  .graphics-section {
-    background: var(--panel);
-    border-top: 1px solid var(--border);
-  }
-  .graphics-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-top: 48px;
-  }
-  .graphics-grid img {
-    width: 100%;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    display: block;
-    filter: grayscale(8%);
-    transition: filter 0.3s ease, transform 0.3s ease;
-  }
-  .graphics-grid img:hover { filter: grayscale(0%); transform: scale(1.02); }
-  .memorial-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-top: 8px;
-  }
-  .memorial-grid img {
-    width: 100%;
-    display: block;
-    object-fit: cover;
-    filter: grayscale(5%);
-    transition: filter 0.3s ease;
-  }
-  .memorial-grid img:hover { filter: grayscale(0%); }
-  @media (max-width: 800px) {
-    .graphics-grid { grid-template-columns: repeat(2, 1fr); }
-    .memorial-grid { grid-template-columns: 1fr; }
-  }
+.stripe.thin { height: 3px; }
+.stripe.short { width: 96px; }
+.stripe.medium { width: 160px; }
 
-  /* ─── AJ3 SON SECTION ─── */
-  .son-section {
-    background: var(--offblack);
-    border-top: 1px solid var(--border);
-  }
-  .son-inner {
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 80px 40px;
-    display: grid;
-    grid-template-columns: 1fr 440px;
-    gap: 80px;
-    align-items: center;
-  }
-  .son-photo img {
-    width: 100%;
-    display: block;
-    filter: sepia(10%) contrast(1.05);
-  }
-  @media (max-width: 960px) {
-    .son-inner { grid-template-columns: 1fr; gap: 40px; }
-  }
+/* Raised fist glyph used as inline mark */
+.fist {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.18em;
+  background: var(--gold);
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M7 2h2v3H7zM10 2h2v3h-2zM13 2h2v3h-2zM7 6h8v3H7zM6 9h10v4c0 2-1 3-3 3h-1v6H8v-6c-1 0-2-1-2-3V9zm10 1h2c1 0 2 1 2 2v4h-4v-6z'/></svg>") center / contain no-repeat;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M7 2h2v3H7zM10 2h2v3h-2zM13 2h2v3h-2zM7 6h8v3H7zM6 9h10v4c0 2-1 3-3 3h-1v6H8v-6c-1 0-2-1-2-3V9zm10 1h2c1 0 2 1 2 2v4h-4v-6z'/></svg>") center / contain no-repeat;
+}
 
-  /* ─── ACTION CARDS ─── */
-  .action-section {
-    background: var(--black);
-    border-top: 1px solid var(--border);
-  }
-  .action-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    margin-top: 48px;
-    border: 1px solid var(--border);
-  }
-  .action-card {
-    background: var(--panel);
-    padding: 40px 32px;
-    display: flex;
-    flex-direction: column;
-  }
-  .action-card .ac-num {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--gold);
-    letter-spacing: 0.1em;
-    margin-bottom: 20px;
-  }
-  .action-card h3 {
-    font-family: var(--serif);
-    font-size: 22px;
-    font-weight: 400;
-    color: var(--white);
-    margin-bottom: 16px;
-    line-height: 1.25;
-  }
-  .action-card p {
-    font-family: var(--serif);
-    font-size: 14px;
-    line-height: 1.75;
-    color: #999;
-    flex: 1;
-    margin-bottom: 28px;
-  }
-  .action-link {
-    display: inline-block;
-    font-family: var(--sans);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    text-decoration: none;
-    border: 1px solid var(--gold);
-    padding: 10px 20px;
-    transition: background 0.2s, color 0.2s;
-    align-self: flex-start;
-  }
-  .action-link:hover { background: var(--gold); color: var(--black); }
-  @media (max-width: 900px) {
-    .action-grid { grid-template-columns: 1fr; }
-  }
+/* -------------------- Layout ---------------------- */
 
-  /* ─── LINEAGE FUND ─── */
-  .fund-section {
-    background: var(--offblack);
-    border-top: 1px solid var(--border);
-  }
-  .fund-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    margin-top: 48px;
-  }
-  .fund-panel {
-    border: 1px solid var(--border);
-    background: var(--panel);
-    padding: 40px;
-  }
-  .fund-panel h3 {
-    font-family: var(--serif);
-    font-size: 24px;
-    font-weight: 400;
-    color: var(--white);
-    margin-bottom: 8px;
-  }
-  .fund-panel .fund-sub {
-    font-family: var(--sans);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 20px;
-  }
-  .fund-panel p {
-    font-family: var(--serif);
-    font-size: 14px;
-    line-height: 1.75;
-    color: #999;
-    margin-bottom: 28px;
-  }
-  .fund-embed {
-    margin-top: 16px;
-    border: 1px solid var(--border);
-    background: #fff;
-    min-height: 200px;
-    overflow: hidden;
-  }
-  .fund-embed iframe {
-    width: 100%;
-    min-height: 400px;
-    border: none;
-    display: block;
-  }
-  @media (max-width: 800px) {
-    .fund-grid { grid-template-columns: 1fr; }
-  }
+.wrap {
+  width: min(1200px, 92vw);
+  margin: 0 auto;
+}
 
-  /* ─── CLOSING POUR ─── */
-  .closing {
-    background: var(--black);
-    border-top: 1px solid var(--border);
-    text-align: center;
-    padding: 100px 40px;
-  }
-  .closing .pour-line {
-    font-family: var(--sans);
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 32px;
-  }
-  .closing .pour-text {
-    font-family: var(--serif);
-    font-size: clamp(22px, 3vw, 36px);
-    font-style: italic;
-    color: var(--white);
-    max-width: 720px;
-    margin: 0 auto 24px;
-    line-height: 1.6;
-  }
-  .closing .ase {
-    font-family: var(--serif);
-    font-size: clamp(28px, 4vw, 48px);
-    color: var(--gold);
-    letter-spacing: 0.2em;
-    margin-top: 32px;
-  }
-  .closing .record-note {
-    font-family: var(--sans);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: var(--muted);
-    margin-top: 40px;
-    text-transform: uppercase;
-  }
-  .closing .record-note span { color: var(--gold); }
+section {
+  padding: clamp(64px, 9vw, 140px) 0;
+  position: relative;
+}
 
-  /* ─── DIVIDER ─── */
-  .pan-bar {
-    height: 3px;
-    background: linear-gradient(to right, #006400, #000, #FF0000);
-    width: 100%;
-  }
+section + section { border-top: 1px solid var(--rule); }
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: clamp(36px, 5vw, 64px);
+}
+
+.section-header h2 {
+  font-size: clamp(40px, 6vw, 84px);
+}
+
+.lede {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: clamp(20px, 1.8vw, 26px);
+  line-height: 1.45;
+  color: var(--ink);
+  max-width: 56ch;
+  font-weight: 300;
+}
+
+/* -------------------- Top bar ---------------------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 10, 10, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 0;
+}
+.topbar .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  color: var(--ink-2);
+}
+.topbar .brand .stripe { width: 38px; height: 4px; }
+.topbar nav { display: flex; gap: 28px; }
+.topbar nav a {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  color: var(--ink-2);
+  border: none;
+}
+.topbar nav a:hover { color: var(--gold); }
+@media (max-width: 720px) { .topbar nav { display: none; } }
+
+/* -------------------- Hero ---------------------- */
+
+.hero {
+  position: relative;
+  min-height: 92vh;
+  padding: 0;
+  overflow: hidden;
+  isolation: isolate;
+  border-top: none;
+}
+.hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("images/andrew-fist-raised.png");
+  background-size: cover;
+  background-position: center 30%;
+  filter: saturate(0.85) contrast(1.05);
+  z-index: -2;
+}
+.hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.2) 30%, rgba(10,10,10,0.85) 80%, var(--bg) 100%),
+    linear-gradient(90deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.0) 100%);
+  z-index: -1;
+}
+.hero-inner {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(28px, 5vh, 64px) 0;
+}
+.hero-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-name {
+  font-size: clamp(72px, 13.5vw, 220px);
+  line-height: 0.85;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+}
+.hero-role {
+  display: inline-block;
+  margin-top: 18px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  font-size: clamp(14px, 1.4vw, 18px);
+}
+.hero-quote {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: clamp(20px, 1.9vw, 26px);
+  font-style: italic;
+  color: var(--ink);
+  max-width: 30ch;
+  margin: 28px 0 0;
+  line-height: 1.4;
+  font-weight: 300;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px 56px;
+  margin-top: 24px;
+  align-items: flex-end;
+}
+.hero-meta .item .kicker { color: var(--ink-3); }
+.hero-meta .item .value {
+  display: block;
+  margin-top: 6px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* -------------------- Pull quote band ---------------------- */
+
+.pullband {
+  padding: clamp(80px, 12vw, 180px) 0;
+  background: linear-gradient(180deg, var(--bg) 0%, #0f0f0e 100%);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+.pullband blockquote {
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(40px, 6.6vw, 110px);
+  line-height: 0.95;
+  color: var(--ink);
+  max-width: 14ch;
+}
+.pullband cite {
+  display: block;
+  margin-top: 32px;
+  font-style: normal;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: var(--gold);
+}
+
+/* -------------------- Two-column feature ---------------------- */
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+@media (max-width: 880px) { .two-col { grid-template-columns: 1fr; } }
+
+.two-col.flip > :first-child { order: 2; }
+@media (max-width: 880px) { .two-col.flip > :first-child { order: 0; } }
+
+.figure {
+  position: relative;
+  border: 1px solid var(--rule);
+  background: #000;
+  overflow: hidden;
+}
+.figure img { width: 100%; height: 100%; object-fit: cover; }
+.figure .cap {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 14px 18px;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.85));
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: var(--ink-2);
+}
+
+.prose p { margin: 0 0 1.1em; color: var(--ink-2); font-family: 'Spectral', Georgia, serif; font-size: 19px; line-height: 1.65; }
+.prose p:first-child::first-line { color: var(--ink); }
+.prose strong { color: var(--ink); font-weight: 600; }
+
+/* -------------------- Timeline ---------------------- */
+
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  border-top: 1px solid var(--rule);
+}
+.tl-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: clamp(24px, 4vw, 56px);
+  padding: 28px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: baseline;
+}
+.tl-row .when {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 14px;
+  color: var(--gold);
+}
+.tl-row .what h3 {
+  margin: 0 0 6px;
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.tl-row .what p {
+  margin: 0;
+  color: var(--ink-2);
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 64ch;
+}
+.tl-row.major .when { color: var(--ink); }
+.tl-row.major { background: linear-gradient(90deg, rgba(245,197,24,0.06), transparent 60%); }
+.tl-row.major .what h3 { color: var(--gold); }
+
+@media (max-width: 680px) {
+  .tl-row { grid-template-columns: 1fr; gap: 8px; }
+}
+
+/* -------------------- Carry the work cards ---------------------- */
+
+.carry {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 32px;
+}
+@media (max-width: 880px) { .carry { grid-template-columns: 1fr; } }
+
+.carry .card {
+  position: relative;
+  padding: 36px 32px 32px;
+  background: linear-gradient(180deg, #141413, #0d0d0c);
+  border: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 280px;
+}
+.carry .card .num {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--gold);
+}
+.carry .card h3 {
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 24px;
+  line-height: 1.1;
+}
+.carry .card p {
+  margin: 0;
+  color: var(--ink-2);
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+.carry .card .go {
+  margin-top: auto;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 12px;
+  color: var(--gold);
+  border: none;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.carry .card .go::after { content: "→"; }
+
+/* -------------------- Quote feature ---------------------- */
+
+.quote-feature {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: stretch;
+}
+@media (max-width: 880px) { .quote-feature { grid-template-columns: 1fr; } }
+
+.quote-feature .figure { min-height: 420px; }
+.quote-feature blockquote {
+  margin: 0;
+  font-family: 'Spectral', Georgia, serif;
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.3;
+  font-style: italic;
+  color: var(--ink);
+  max-width: 22ch;
+  font-weight: 300;
+}
+.quote-feature cite {
+  display: block;
+  margin-top: 36px;
+  font-style: normal;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: var(--gold);
+}
+.quote-feature .when {
+  display: block;
+  margin-top: 8px;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+/* -------------------- Family band ---------------------- */
+
+.survivors {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 32px;
+}
+@media (max-width: 720px) { .survivors { grid-template-columns: repeat(2, 1fr); } }
+
+.survivors .who {
+  padding: 24px 22px;
+  border: 1px solid var(--rule);
+  background: #0d0d0c;
+}
+.survivors .who .role {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.survivors .who .name {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-size: 22px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+/* -------------------- Closing band ---------------------- */
+
+.closing {
+  text-align: center;
+  padding: clamp(100px, 14vw, 200px) 0;
+  background:
+    radial-gradient(circle at center top, rgba(245,197,24,0.08), transparent 60%),
+    var(--bg);
+}
+.closing .stripe { margin: 0 auto 36px; }
+.closing .restwell {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: clamp(36px, 6vw, 80px);
+  line-height: 1;
+  letter-spacing: 0.005em;
+}
+.closing .restwell .gold { color: var(--gold); }
+.closing .tag {
+  margin-top: 22px;
+  font-family: 'Spectral', Georgia, serif;
+  font-style: italic;
+  color: var(--ink-2);
+  font-size: clamp(18px, 1.6vw, 22px);
+}
+.closing .fist-big {
+  width: 56px;
+  height: 56px;
+  margin: 36px auto 0;
+}
+
+/* -------------------- Memorial wall ---------------------- */
+
+.wall {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.wall .form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding: 28px;
+  border: 1px solid var(--rule);
+  background: #0d0d0c;
+}
+@media (max-width: 720px) { .wall .form { grid-template-columns: 1fr; } }
+.wall .form .full { grid-column: 1 / -1; }
+.wall .form label {
+  display: block;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  color: var(--ink-3);
+  margin-bottom: 8px;
+}
+.wall .form input, .wall .form textarea {
+  width: 100%;
+  background: #050505;
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 17px;
+  padding: 12px 14px;
+  border-radius: 2px;
+  resize: vertical;
+}
+.wall .form input:focus, .wall .form textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.wall .form button {
+  justify-self: start;
+  background: var(--gold);
+  color: #0a0a0a;
+  border: 0;
+  padding: 14px 22px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.wall .form button:hover { background: #fcd534; }
+
+.wall .entries {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (max-width: 720px) { .wall .entries { grid-template-columns: 1fr; } }
+
+.wall .entry {
+  padding: 24px;
+  border: 1px solid var(--rule);
+  background: #111110;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.wall .entry .msg {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.wall .entry .byline {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  color: var(--gold);
+}
+.wall .entry .byline .when { color: var(--ink-3); margin-left: 10px; }
+
+/* -------------------- Footer ---------------------- */
+
+footer.foot {
+  padding: 56px 0 80px;
+  background: #050505;
+  border-top: 1px solid var(--rule);
+}
+footer.foot .row {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px;
+}
+footer.foot .row .brand {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 12px;
+  color: var(--ink-2);
+}
+footer.foot .row .links { display: flex; gap: 24px; }
+footer.foot .row .links a {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  color: var(--ink-2);
+  border: none;
+}
+footer.foot .row .links a:hover { color: var(--gold); }
+footer.foot .fine {
+  margin-top: 32px;
+  font-size: 13px;
+  color: var(--ink-3);
+  font-family: 'Spectral', Georgia, serif;
+  font-style: italic;
+}
+
+
+/* E5 site nav override — push content below site header */
+.topbar { position: sticky; top: 0; z-index: 200; }
 </style>
 
-<!-- NAV STRIPE -->
-<nav class="tribute-nav">
-  <div class="nav-left">
-    <a href="/">E5 Enclave</a>
-    <span>/</span>
-    <a href="/libations/">Libations</a>
-    <span>/</span>
-    Andrew Joseph Jr.
-  </div>
-  <div class="nav-right">In Memoriam · Inaugural Libation</div>
-</nav>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@400;500;600&display=swap" />
 
-<div class="pan-bar"></div>
-
-<!-- ─── HERO ─── -->
-<section class="hero">
-  <div class="hero-image-col">
-    <img
-      src="/assets/img/libations/andrew/a10_rally_mic.jpg"
-      alt="Andrew Joseph Jr. at a rally, microphone in hand"
-      loading="eager"
-    />
+<!-- ============== TOP BAR ============== -->
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="brand">
+      <span class="stripe"><span class="y"></span><span class="r"></span><span class="g"></span></span>
+      <span>Black Lives Matter Grassroots&nbsp;·&nbsp;In Memoriam</span>
+    </div>
+    <nav>
+      <a href="#tribute">Tribute</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#family">Family</a>
+      <a href="#carry">Carry the Work</a>
+      <a href="#memorial">Leave a Memory</a>
+    </nav>
   </div>
-  <div class="hero-text-col">
-    <div class="hero-badge">In Loving Memory · Inaugural Libation</div>
-    <h1 class="hero-name">Andrew<br>Joseph Jr.</h1>
-    <div class="hero-role">Rapid Response Coordinator · Black Lives Matter Grassroots</div>
-    <blockquote class="hero-quote">
-      "We've been boots on the ground since day one."
+</header>
+
+<!-- ============== HERO ============== -->
+<section class="hero" data-screen-label="01 Hero">
+  <div class="wrap hero-inner">
+    <div class="hero-top">
+      <span class="stripe medium"><span class="y"></span><span class="r"></span><span class="g"></span></span>
+      <span class="eyebrow" style="color: var(--ink-2)">In Loving Memory</span>
+    </div>
+
+    <div>
+      <h1 class="hero-name">Andrew<br/>Joseph&nbsp;Jr.</h1>
+      <span class="hero-role">Rapid Response Coordinator&nbsp;·&nbsp;Black Lives Matter Grassroots</span>
+      <p class="hero-quote">&ldquo;We&rsquo;ve been boots on the ground since day one.&rdquo;</p>
+    </div>
+
+    <div class="hero-meta">
+      <div class="item">
+        <span class="kicker">Born</span>
+        <span class="value">New Orleans, Louisiana</span>
+      </div>
+      <div class="item">
+        <span class="kicker">Transitioned</span>
+        <span class="value">May 16, 2026</span>
+      </div>
+      <div class="item">
+        <span class="kicker">Survived by</span>
+        <span class="value">Deanna · Deja · Lyric</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PULL QUOTE BAND ============== -->
+<section class="pullband" data-screen-label="02 Pull quote">
+  <div class="wrap">
+    <span class="stripe short" style="margin-bottom: 36px; display:block;"><span class="y"></span><span class="r"></span><span class="g"></span></span>
+    <blockquote>
+      He had the only credential that matters in this work. He knew.
     </blockquote>
-    <div class="hero-facts">
-      <div>
-        <div class="hero-fact-label">Born</div>
-        <div class="hero-fact-value">New Orleans, Louisiana</div>
+    <cite>— Black Lives Matter Grassroots</cite>
+  </div>
+</section>
+
+<!-- ============== TRIBUTE / WHO HE WAS ============== -->
+<section id="tribute" data-screen-label="03 Tribute">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="eyebrow">A Tribute</span>
+      <h2>Rest Well,<br/>Champion.</h2>
+      <p class="lede">The first thing you need to know about Andrew Joseph&nbsp;Jr. is that he had already done enough. Two decades in classrooms and juvenile justice courtrooms across southern Louisiana. A family raised. A hurricane survived. The kind of life of service that most people, by any measure, would call a career.</p>
+    </div>
+
+    <div class="two-col">
+      <div class="prose">
+        <p>And then, on February&nbsp;7, 2014, the system he had spent his life fighting against killed his only son.</p>
+        <p>Andrew Joseph&nbsp;III was fourteen years old. He had gone to Student Day at the Florida State Fair with friends. The Hillsborough County Sheriff&rsquo;s Office decided that night to eject nearly 100 children from the fairgrounds. AJ&nbsp;III was one of them. He was detained without cause, transported away from where his ride was waiting, abandoned near Interstate&nbsp;4, and &mdash; according to the family&rsquo;s federal case &mdash; directed by a deputy to cross that highway to get home. He was struck and killed by an SUV. No one ever called his parents.</p>
+        <p><strong>Most people would have broken. Andrew Joseph&nbsp;Jr. did not break.</strong> He and his wife Deanna built something instead, and they invited a movement in to build it with them.</p>
+        <p>He was raised in New Orleans, shaped by the family, faith, and traditions of southern Louisiana, and built the foundation of his life&rsquo;s work at Grambling State University, where he earned both a Bachelor&rsquo;s and a Master&rsquo;s in Criminal Justice. Long before the world would learn his name, he was already in classrooms and courtrooms doing the kind of work that rarely makes the news: walking alongside adjudicated young people, mentoring children others had given up on.</p>
+        <p>When Hurricane Katrina forced his family from New Orleans in 2005, he carried that calling to Tampa. He did not start over; he expanded.</p>
       </div>
-      <div>
-        <div class="hero-fact-label">Transitioned</div>
-        <div class="hero-fact-value">May 16, 2026</div>
-      </div>
-      <div>
-        <div class="hero-fact-label">Education</div>
-        <div class="hero-fact-value">Grambling State University</div>
-      </div>
-      <div>
-        <div class="hero-fact-label">Survived by</div>
-        <div class="hero-fact-value">Deanna · Deja</div>
+
+      <div class="figure" style="aspect-ratio: 4/5;">
+        <img src="/assets/libations/andrew-jr-memorial/andrew-smiling-mic.png" alt="Andrew Joseph Jr. smiling at a podium with a microphone, wearing a Black Lives Matter Grassroots shirt." />
+        <div class="cap">Photo · Black Lives Matter Grassroots</div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="pan-bar"></div>
-
-<!-- ─── PULL QUOTE BAND ─── -->
-<div class="pq-band">
-  <blockquote>
-    He had the only credential that matters in this work. He knew.
-  </blockquote>
-  <cite>— Black Lives Matter Grassroots</cite>
-</div>
-
-<!-- ─── REST WELL, CHAMPION ─── -->
-<section class="section">
-  <div class="reading-grid">
-    <div class="text-col">
-      <div class="section-eyebrow">A Tribute</div>
-      <h2 class="section-headline">Rest Well, Champion.</h2>
-      <p class="body-lede">
-        The first thing you need to know about Andrew Joseph Jr. is that he had already done enough. Two decades in classrooms and juvenile justice courtrooms across southern Louisiana. A family raised. A hurricane survived. The kind of life of service that most people, by any measure, would call a career.
-      </p>
-      <p class="body-para">And then, on February 7, 2014, the system he had spent his life fighting against killed his only son.</p>
-      <p class="body-para">Andrew Joseph III was fourteen years old. He had gone to Student Day at the Florida State Fair with friends. The Hillsborough County Sheriff's Office decided that night to eject nearly 100 children from the fairgrounds. AJ III was one of them. He was detained without cause, transported away from where his ride was waiting, and — according to the family's federal case — directed by a deputy to cross Interstate 4 to get home. He was struck and killed by an SUV. No one ever called his parents.</p>
-      <p class="body-para"><strong>Most people would have broken. Andrew Joseph Jr. did not break.</strong> He and his wife Deanna built something instead, and they invited a movement in to build it with them.</p>
-      <p class="body-para">He was raised in New Orleans, shaped by the family, faith, and traditions of southern Louisiana, and built the foundation of his life's work at Grambling State University, where he earned both a Bachelor's and a Master's in Criminal Justice. Long before the world would learn his name, he was already in classrooms and courtrooms doing the kind of work that rarely makes the news: walking alongside adjudicated young people, mentoring children others had given up on.</p>
-      <p class="body-para">When Hurricane Katrina forced his family from New Orleans in 2005, he carried that calling to Tampa. He did not start over. He expanded.</p>
+<!-- ============== THE VERDICT — feature quote ============== -->
+<section data-screen-label="04 The Verdict">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="eyebrow">September 22, 2022</span>
+      <h2>The Verdict.</h2>
     </div>
-    <div class="photo-col">
-      <img src="/assets/img/libations/andrew/a06_formal_couple.jpg" alt="Andrew Joseph Jr. and Deanna at a gala" />
-      <p class="img-caption">Andrew Joseph Jr. and Deanna · Photo · Black Lives Matter Grassroots</p>
-    </div>
-  </div>
-</section>
 
-<!-- ─── THE VERDICT ─── -->
-<div class="verdict-section">
-  <div class="verdict-inner">
-    <div>
-      <div class="section-eyebrow">September 22, 2022</div>
-      <h2 class="section-headline">The Verdict.</h2>
-      <p class="body-para">After more than six years of litigation, the Joseph family's federal civil rights case went to trial in Tampa. On the witness stand, Andrew said of his son, simply: <em>"He was my best friend."</em></p>
-      <p class="body-para">On September 22, 2022, a 10-person federal jury found the Hillsborough County Sheriff's Office 90% responsible for AJ III's death.</p>
-      <blockquote class="verdict-quote">
-        "Today we got vindication. Today we cleared his name. It ain't gonna never bring him back. But it's gonna send a message wide across this world."
-        <cite>— Andrew Joseph Jr. · After the federal jury verdict · September 22, 2022</cite>
-      </blockquote>
-    </div>
-    <div>
-      <div class="verdict-stat">
-        <div class="verdict-number">$15M</div>
-        <div class="verdict-label">Awarded to the Joseph family by the federal jury. HCSO found 90% responsible.</div>
+    <div class="quote-feature">
+      <div class="figure" style="min-height: 480px;">
+        <img src="/assets/libations/andrew-jr-memorial/andrew-blm-banner.png" alt="Andrew Joseph Jr. holding a Black Lives Matter banner outside a courthouse." />
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- ─── RAPID RESPONSE ─── -->
-<section class="section">
-  <div class="reading-grid">
-    <div class="text-col">
-      <div class="section-eyebrow">The Work</div>
-      <h2 class="section-headline">Rapid Response, the way he did it.</h2>
-      <p class="body-lede">The title was bureaucratic. The work was not. Rapid response, the way Andrew did it, meant being on the next plane.</p>
-      <p class="body-para">It meant getting to Gulfport, Mississippi, where the family of 15-year-old Jaheim McMillan was reeling from his October 2022 killing by Gulfport Police. It meant being in Minneapolis, in the Twin Cities, at the Justice Studio with the comrades.</p>
-      <p class="body-para">It meant taking a bereaved mother's hand at the press conference and not letting go. It meant calling her the next week, and the week after, and the week after that. It meant being the person on the other end of the phone for parents who had just joined the worst club in America and had not yet figured out the language to describe what had happened to them.</p>
-      <p class="body-para"><strong>He could do this because he was already in the club.</strong> He had the only credential that matters in this work: he knew. And he had decided, somewhere along the way, that knowing was a responsibility — not just a wound.</p>
-    </div>
-    <div class="photo-col">
-      <img src="/assets/img/libations/andrew/a15_portrait_warm.jpg" alt="Andrew Joseph Jr." />
-      <p class="img-caption">"Boots on the ground since day one."</p>
-    </div>
-  </div>
-</section>
-
-<!-- ─── AJ III — THE SON ─── -->
-<div class="son-section">
-  <div class="son-inner">
-    <div>
-      <div class="section-eyebrow">February 7, 2014</div>
-      <h2 class="section-headline">Andrew Joseph III.<br><em style="font-size:0.65em;color:var(--muted);">Fourteen years old. His best friend.</em></h2>
-      <p class="body-para">AJ III had gone to Student Day at the Florida State Fair with friends. The Hillsborough County Sheriff's Office ejected him and nearly 100 other minors from the fairgrounds that night. He was detained, transported away from the main gate, and — according to the family's federal lawsuit — directed by a deputy to cross Interstate 4 to reach his ride. He was struck and killed. His parents were never called.</p>
-      <p class="body-para">His death launched the Andrew Joseph Foundation, changed Florida State Fair policy, triggered one of the most significant qualified immunity cases in the country, and turned a father's grief into a national rapid response infrastructure for Black families.</p>
-      <p class="body-para">Andrew Jr. carried that name everywhere he went. It was the credential. It was the calling. It was the reason he answered every call.</p>
-    </div>
-    <div class="son-photo">
-      <img src="/assets/img/libations/andrew/a16_memorial_pedestal.jpg" alt="AJ III memorial pedestal on the Tampa Riverwalk" />
-      <p class="img-caption">Andrew Joseph III memorial · Tampa Riverwalk · Unveiled July 12, 2020</p>
-    </div>
-  </div>
-</div>
-
-<!-- ─── BELOVED HUSBAND, DEVOTED FATHER ─── -->
-<section class="family-section">
-  <div class="section">
-    <div class="section-eyebrow">Family · Legacy · Love</div>
-    <h2 class="section-headline">Beloved Husband.<br>Devoted Father.</h2>
-    <p class="body-lede">His love at home powered his service in the movement.</p>
-    <p class="body-para">Andrew Joseph Jr. was a husband to Deanna — the woman who, by every account, walked every step of this fight beside him. He was a father to Andrew Joseph III and to Deja. He was a son of New Orleans, a son of Grambling, an uncle, a cousin, a friend, a mentor, a comrade.</p>
-    <p class="body-para">He carried more grief than any one human being should ever have to carry, and he turned that grief into a shield for other people's children. He turned a name into a movement. He turned a tragedy into a turning point — the very phrase his foundation uses to describe its own beginning.</p>
-    <p class="body-para">He is preceded in death by his son and namesake, Andrew Joseph III, whom he can now finally see again.</p>
-
-    <div class="survivors-grid">
-      <div class="survivor-card">
-        <div class="survivor-role">Wife</div>
-        <div class="survivor-name">Deanna Joseph</div>
-      </div>
-      <div class="survivor-card">
-        <div class="survivor-role">Daughter</div>
-        <div class="survivor-name">Deja Joseph</div>
-      </div>
-      <div class="survivor-card">
-        <div class="survivor-role">Son · Preceded him in death</div>
-        <div class="survivor-name">Andrew Joseph III</div>
-        <div class="survivor-note">February 7, 2014 · Age 14</div>
+      <div style="display:flex; flex-direction:column; justify-content:center;">
+        <p class="lede" style="font-size: clamp(18px, 1.6vw, 22px); color: var(--ink-2); margin-bottom: 28px;">After more than six years of litigation, the Joseph family&rsquo;s federal civil rights case went to trial in Tampa. On the witness stand, Andrew &mdash; a grown man, a national organizer who had stood in front of every kind of camera &mdash; said of his son, simply: <em>&ldquo;He was my best friend.&rdquo;</em></p>
+        <p class="lede" style="font-size: clamp(18px, 1.6vw, 22px); color: var(--ink-2); margin-bottom: 36px;">On September&nbsp;22, 2022, a 10-person federal jury found the Hillsborough County Sheriff&rsquo;s Office <strong style="color: var(--gold)">90&#37; responsible</strong> for AJ&nbsp;III&rsquo;s death and awarded the family <strong style="color: var(--gold)">$15&nbsp;million</strong>.</p>
+        <blockquote>
+          &ldquo;Today we got vindication. Today we cleared his name. It ain&rsquo;t gonna never bring him back. But it&rsquo;s gonna send a message wide across this world.&rdquo;
+        </blockquote>
+        <cite>— Andrew Joseph Jr.</cite>
+        <span class="when">After the federal jury verdict · Sept&nbsp;22, 2022</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── PHOTO GALLERY: IN HIS OWN LIFE ─── -->
-<section class="gallery-section">
-  <div class="section">
-    <div class="section-eyebrow">Photographs</div>
-    <h2 class="section-headline">In His Own Life.</h2>
-    <p class="body-para" style="margin-bottom:0;">Real photos. Real moments. The man as he lived.</p>
-
-    <div class="photo-masonry">
-      <div class="p-item"><img src="/assets/img/libations/andrew/a03_group_outdoor.jpg" alt="Andrew Joseph Jr. with comrades at an outdoor event" loading="lazy" /></div>
-      <div class="p-item"><img src="/assets/img/libations/andrew/a04_gala.jpg" alt="Andrew Joseph Jr. at a formal gala event" loading="lazy" /></div>
-      <div class="p-item"><img src="/assets/img/libations/andrew/a01_family_selfie.jpg" alt="Andrew Joseph Jr. family moment" loading="lazy" /></div>
-      <div class="p-item"><img src="/assets/img/libations/andrew/a12_group2.jpg" alt="Andrew Joseph Jr. with movement community" loading="lazy" /></div>
-      <div class="p-item"><img src="/assets/img/libations/andrew/a07_outdoor.jpg" alt="Andrew Joseph Jr. outdoors" loading="lazy" /></div>
-      <div class="p-item"><img src="/assets/img/libations/andrew/a09_candid.jpg" alt="Andrew Joseph Jr. candid portrait" loading="lazy" /></div>
-      <div class="p-item"><img src="/assets/img/libations/andrew/a05_event.jpg" alt="Andrew Joseph Jr. at a movement event" loading="lazy" /></div>
-      <div class="p-item"><img src="/assets/img/libations/andrew/a11_action.jpg" alt="Andrew Joseph Jr. in action" loading="lazy" /></div>
-      <div class="p-item"><img src="/assets/img/libations/andrew/a17_square.jpg" alt="Andrew Joseph Jr. portrait" loading="lazy" /></div>
-      <div class="p-item"><img src="/assets/img/libations/andrew/a08_event2.jpg" alt="Andrew Joseph Jr. at an event" loading="lazy" /></div>
-      <div class="p-item"><img src="/assets/img/libations/andrew/a13_candid2.jpg" alt="Andrew Joseph Jr. candid" loading="lazy" /></div>
-      <div class="p-item"><img src="/assets/img/libations/andrew/a02_landscape.jpg" alt="Andrew Joseph Jr." loading="lazy" /></div>
-      <div class="p-item"><img src="/assets/img/libations/andrew/a14_outdoor2.jpg" alt="Andrew Joseph Jr. outdoors" loading="lazy" /></div>
-      <div class="p-item"><img src="/assets/img/libations/andrew/a19_wide_crowd.jpg" alt="Andrew Joseph Jr. with a crowd" loading="lazy" /></div>
-      <div class="p-item"><img src="/assets/img/libations/andrew/a20_movement.jpg" alt="Andrew Joseph Jr. movement photo" loading="lazy" /></div>
+<!-- ============== RAPID RESPONSE ============== -->
+<section data-screen-label="05 Rapid Response">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="eyebrow">The Work</span>
+      <h2>Rapid Response,<br/>the way he did&nbsp;it.</h2>
+      <p class="lede">The title was bureaucratic. The work was not. Rapid response, the way Andrew did it, meant being on the next plane.</p>
     </div>
-  </div>
-</section>
 
-<!-- ─── VIDEO SECTION ─── -->
-<section class="video-section">
-  <div class="section">
-    <div class="section-eyebrow">Family Footage</div>
-    <h2 class="section-headline">In His Own Voice.</h2>
-    <p class="body-para" style="margin-bottom:0;">Video from the family archive. The man as he moved through the world.</p>
-
-    <div class="video-grid">
-      <div class="video-card">
-        <video controls preload="metadata" poster="/assets/img/libations/andrew/a10_rally_mic.jpg">
-          <source src="https://base44.app/api/apps/69d7dd5e015cd1aa45c3e283/files/mp/public/69d7dd5e015cd1aa45c3e283/13d66bf4e_andrew_video_1.mov" type="video/quicktime" />
-          <source src="https://base44.app/api/apps/69d7dd5e015cd1aa45c3e283/files/mp/public/69d7dd5e015cd1aa45c3e283/13d66bf4e_andrew_video_1.mov" type="video/mp4" />
-          Your browser does not support video playback.
-        </video>
-        <div class="video-caption">Family Archive · Video I</div>
+    <div class="two-col flip">
+      <div class="prose">
+        <p>It meant getting to Gulfport, Mississippi, where the family of 15-year-old Jaheim McMillan was reeling from his October&nbsp;2022 killing by Gulfport Police. It meant being in Minneapolis, in the Twin Cities, at the Justice Studio with the comrades. It meant being at Delta State University in Cleveland, Mississippi, with the banner unfurled in front of the campus sign because the banner had to be unfurled there too.</p>
+        <p>It meant taking a bereaved mother&rsquo;s hand at the press conference and not letting go. It meant calling her the next week, and the week after, and the week after that. It meant being the person on the other end of the phone for parents who had just joined the worst club in America and had not yet figured out the language to describe what had happened to them.</p>
+        <p><strong>He could do this because he was already in the club.</strong> He had the only credential that matters in this work: he knew. And he had decided, somewhere along the way, that knowing was a responsibility, not just a wound.</p>
       </div>
-      <div class="video-card">
-        <iframe
-          src="https://drive.google.com/file/d/1ithudYNEIUM2khYReZu7HX3pGeh8By3A/preview"
-          allow="autoplay"
-          allowfullscreen
-          title="Andrew Joseph Jr. — Family Archive Video II"
-        ></iframe>
-        <div class="video-caption">Family Archive · Video II</div>
+
+      <div class="figure" style="aspect-ratio: 4/5;">
+        <img src="/assets/libations/andrew-jr-memorial/andrew-portrait.png" alt="Andrew Joseph Jr. portrait, smiling, wearing a Black Lives Matter Grassroots shirt." />
+        <div class="cap">&ldquo;Boots on the ground since day one.&rdquo;</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── TIMELINE ─── -->
-<section class="timeline-section">
-  <div class="section">
-    <div class="section-eyebrow">A Life of Service</div>
-    <h2 class="section-headline">Defining Moments.</h2>
+<!-- ============== FAMILY ============== -->
+<section id="family" data-screen-label="06 Family">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="eyebrow">Family · Legacy · Love</span>
+      <h2>Beloved Husband.<br/>Devoted Father.</h2>
+      <p class="lede">His love at home powered his service in the movement.</p>
+    </div>
+
+    <div class="two-col">
+      <div class="figure" style="aspect-ratio: 1/1;">
+        <img src="/assets/libations/andrew-jr-memorial/family-courthouse.png" alt="The Joseph family standing together at the Tampa courthouse." />
+      </div>
+      <div class="prose">
+        <p>Andrew Joseph&nbsp;Jr. was a husband to Deanna &mdash; the woman who, by every account, walked every step of this fight beside him. He was a father to Andrew Joseph&nbsp;III, to Deja, and to Lyric. He was a son of New Orleans, a son of Grambling, an uncle, a cousin, a friend, a mentor, a comrade.</p>
+        <p>He carried more grief than any one human being should ever have to carry, and he turned that grief into a shield for other people&rsquo;s children. He turned a name into a movement. He turned a tragedy into a turning point &mdash; the very phrase his foundation uses to describe its own beginning.</p>
+        <p>He is preceded in death by his son and namesake, Andrew Joseph&nbsp;III, who he can now finally see again.</p>
+      </div>
+    </div>
+
+    <div class="survivors">
+      <div class="who"><div class="role">Wife</div><div class="name">Deanna Joseph</div></div>
+      <div class="who"><div class="role">Daughter</div><div class="name">Deja Joseph</div></div>
+      <div class="who"><div class="role">Daughter</div><div class="name">Lyric Joseph</div></div>
+      <div class="who"><div class="role">Son · Preceded him</div><div class="name">Andrew&nbsp;III</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== TIMELINE ============== -->
+<section id="timeline" data-screen-label="07 Timeline">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="eyebrow">A Life of Service</span>
+      <h2>Defining<br/>Moments.</h2>
+    </div>
 
     <div class="timeline">
-
-      <div class="tl-entry">
-        <div class="tl-date">New Orleans</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-headline">Born & raised in southern Louisiana.</div>
-          <div class="tl-body">Shaped by the family, faith, and cultural traditions of his hometown.</div>
+      <div class="tl-row">
+        <div class="when">New Orleans</div>
+        <div class="what">
+          <h3>Born &amp; raised in southern Louisiana.</h3>
+          <p>Shaped by the family, faith, and cultural traditions of his hometown.</p>
         </div>
       </div>
-
-      <div class="tl-entry">
-        <div class="tl-date">Grambling State</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-headline">Bachelor's & Master's in Criminal Justice.</div>
-          <div class="tl-body">Begins career interning with legal groups supporting youth and families in rural Louisiana.</div>
+      <div class="tl-row">
+        <div class="when">Grambling State</div>
+        <div class="what">
+          <h3>Bachelor&rsquo;s &amp; Master&rsquo;s in Criminal Justice.</h3>
+          <p>Begins career interning with legal groups at law firms and judicial arenas supporting youth and families in rural Louisiana.</p>
         </div>
       </div>
-
-      <div class="tl-entry">
-        <div class="tl-date">Late 1990s–mid 2000s</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-headline">Lead Assistant Principal, alternative learning environments.</div>
-          <div class="tl-body">Works with adjudicated youth across southern Louisiana. Earns recognition among educators and juvenile justice departments.</div>
+      <div class="tl-row">
+        <div class="when">Late 1990s &ndash; mid-2000s</div>
+        <div class="what">
+          <h3>Lead Assistant Principal, alternative learning environments.</h3>
+          <p>Works with adjudicated youth across the southern Louisiana region. Earns recognition among educators and juvenile justice departments.</p>
         </div>
       </div>
-
-      <div class="tl-entry">
-        <div class="tl-date">2005</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-headline">Hurricane Katrina forces the family to Tampa.</div>
-          <div class="tl-body">The Josephs settle in the Tampa Bay area. Andrew III begins playing youth football at Riverview Raiders Field in Brandon.</div>
+      <div class="tl-row">
+        <div class="when">2005</div>
+        <div class="what">
+          <h3>Hurricane Katrina forces the family to Tampa.</h3>
+          <p>The Josephs settle in the Tampa Bay area. Andrew&nbsp;III begins playing youth football at Riverview Raiders Field in Brandon.</p>
         </div>
       </div>
-
-      <div class="tl-entry major">
-        <div class="tl-date">Feb 7, 2014</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-headline">★ Andrew Joseph III, 14, is killed near the Florida State Fair.</div>
-          <div class="tl-body">AJ III and ~100 other minors are ejected by Hillsborough County Sheriff's deputies. He is detained, transported away from the main gate, directed across Interstate 4 to reach his ride, and struck and killed. His parents are never called.</div>
+      <div class="tl-row major">
+        <div class="when">Feb 7, 2014</div>
+        <div class="what">
+          <h3>Andrew Joseph&nbsp;III, 14, is killed near the Florida State Fair.</h3>
+          <p>Student Day at the fair. AJ&nbsp;III and ~100 other minors are ejected by Hillsborough County Sheriff&rsquo;s deputies. He is detained, transported away from the main gate, and &mdash; per the family&rsquo;s case &mdash; directed across Interstate&nbsp;4 to reach his ride. He is struck and killed. His parents are never called.</p>
         </div>
       </div>
-
-      <div class="tl-entry">
-        <div class="tl-date">2014–2015</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-headline">The Andrew Joseph Foundation is born.</div>
-          <div class="tl-body">A 501(c)(3) dedicated to children's rights, child safety, conflict resolution education, and family support. Out of grief, Andrew and Deanna build something.</div>
+      <div class="tl-row">
+        <div class="when">Feb 8, 2014</div>
+        <div class="what">
+          <h3>Confirmation day.</h3>
+          <p>AJ&nbsp;III was scheduled to be confirmed the morning after his death. The family attends; a seat is saved for him and covered in roses.</p>
         </div>
       </div>
-
-      <div class="tl-entry">
-        <div class="tl-date">2015</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-headline">Black Lives Matter Grassroots stands with the Joseph family.</div>
-          <div class="tl-body">Under the leadership of co-founder Dr. Melina Abdullah. The family begins standing with the movement right back.</div>
+      <div class="tl-row major">
+        <div class="when">2014 &ndash; 2015</div>
+        <div class="what">
+          <h3>The Andrew Joseph Foundation &mdash; &ldquo;AJ Soars&rdquo; &mdash; is born.</h3>
+          <p>A 501(c)(3) dedicated to children&rsquo;s rights, child safety, conflict resolution education, and family support. Out of grief, Andrew and Deanna build something.</p>
         </div>
       </div>
-
-      <div class="tl-entry">
-        <div class="tl-date">2016</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-headline">Federal wrongful death lawsuit filed.</div>
-          <div class="tl-body">Against the Hillsborough County Sheriff's Office, the Florida State Fair Authority, and the Hillsborough County School District.</div>
+      <div class="tl-row">
+        <div class="when">2015</div>
+        <div class="what">
+          <h3>Black Lives Matter Grassroots begins standing with the Joseph family.</h3>
+          <p>Under the leadership of co-founder Dr.&nbsp;Melina Abdullah. The family begins standing with the movement right back.</p>
         </div>
       </div>
-
-      <div class="tl-entry">
-        <div class="tl-date">2016–2023</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-headline">Florida State Fair safety reforms.</div>
-          <div class="tl-body">Minors under 17 must be accompanied by an adult 21+ after 6 p.m. Ejected minors held in supervised waiting areas. Parents notified when minors are ejected. Additional cameras, deputies, and lighting installed.</div>
+      <div class="tl-row">
+        <div class="when">2016</div>
+        <div class="what">
+          <h3>Federal wrongful death lawsuit filed.</h3>
+          <p>Against the Hillsborough County Sheriff&rsquo;s Office, the Florida State Fair Authority, and the Hillsborough County School District.</p>
         </div>
       </div>
-
-      <div class="tl-entry">
-        <div class="tl-date">July 12, 2020</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-headline">Riverwalk paver unveiled.</div>
-          <div class="tl-body">The Andrew Joseph Foundation and the Restorative Justice Coalition unveil a granite paver on the Tampa Riverwalk honoring AJ III's life.</div>
+      <div class="tl-row">
+        <div class="when">2016 &ndash; 2023</div>
+        <div class="what">
+          <h3>Florida State Fair safety reforms.</h3>
+          <p>Driven by the Joseph family&rsquo;s advocacy: minors under 17 must be accompanied by an adult 21+ after 6&nbsp;p.m.; ejected minors are held in a supervised waiting area until a parent or guardian arrives; parents are notified when minors are ejected; additional security cameras, deputies, and lighting.</p>
         </div>
       </div>
-
-      <div class="tl-entry">
-        <div class="tl-date">c. 2020–2026</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-headline">Rapid Response Coordinator, Black Lives Matter Grassroots.</div>
-          <div class="tl-body">Travels nationally to be on-the-ground with families harmed by police violence. Speaks at Netroots Nation. Partners with the Love Not Blood Campaign. Gulfport. Minneapolis. Tampa. The Twin Cities. Wherever a family needed him, he was on the next flight.</div>
+      <div class="tl-row">
+        <div class="when">July 12, 2020</div>
+        <div class="what">
+          <h3>Riverwalk paver unveiled.</h3>
+          <p>The Andrew Joseph Foundation and the Restorative Justice Coalition unveil a granite paver on the Tampa Riverwalk honoring AJ&nbsp;III&rsquo;s life.</p>
         </div>
       </div>
-
-      <div class="tl-entry major">
-        <div class="tl-date">Sept 22, 2022</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-headline">★ Federal jury verdict — $15 million.</div>
-          <div class="tl-body">A 10-person federal jury finds HCSO 90% responsible for AJ III's death and awards the family $15 million. Five days later, BLM Grassroots and 12 Justice families issue a national call to pass the Ending Qualified Immunity Act.</div>
+      <div class="tl-row">
+        <div class="when">c. 2020 &ndash; 2026</div>
+        <div class="what">
+          <h3>Rapid Response Coordinator, Black Lives Matter Grassroots.</h3>
+          <p>Travels nationally to be on-the-ground with families harmed by police violence. Speaks at Netroots Nation. Partners with the Love Not Blood Campaign.</p>
         </div>
       </div>
-
-      <div class="tl-entry">
-        <div class="tl-date">Feb 2024</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-headline">Ten years since AJ III's death.</div>
-          <div class="tl-body">Family holds a candlelight vigil at Partico Café in downtown Tampa. Andrew recommits publicly: "We've been boots on the ground since day one."</div>
+      <div class="tl-row major">
+        <div class="when">Sept 22, 2022</div>
+        <div class="what">
+          <h3>Federal jury verdict.</h3>
+          <p>A 10-person federal jury finds HCSO 90&#37; responsible for AJ&nbsp;III&rsquo;s death. The jury awards Andrew and Deanna $7.5&nbsp;million each &mdash; $15&nbsp;million total. Five days later, BLM Grassroots and 12 Justice families issue a national call to pass the Ending Qualified Immunity Act.</p>
         </div>
       </div>
-
-      <div class="tl-entry major">
-        <div class="tl-date">May 16, 2026</div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-headline">★ Andrew Joseph Jr. transitions.</div>
-          <div class="tl-body">Survived by his wife Deanna, his daughter Deja, and an extended movement family of comrades, Justice families, and chapter leaders across the country. Preceded in death by his son and namesake, Andrew Joseph III, whom he can now finally see again.</div>
+      <div class="tl-row">
+        <div class="when">Oct 2022 &rarr;</div>
+        <div class="what">
+          <h3>Justice for Jaheim McMillan &mdash; and every family after.</h3>
+          <p>Travels to Gulfport, Mississippi to stand with the family of 15-year-old Jaheim McMillan. Continues showing up in person for Justice families across the country.</p>
         </div>
       </div>
-
+      <div class="tl-row">
+        <div class="when">Feb 2024</div>
+        <div class="what">
+          <h3>Ten years since AJ&nbsp;III&rsquo;s death.</h3>
+          <p>Family holds a candlelight vigil at the Partico Café in downtown Tampa. Andrew recommits: &ldquo;We&rsquo;ve been boots on the ground since day one.&rdquo;</p>
+        </div>
+      </div>
+      <div class="tl-row major">
+        <div class="when">May 16, 2026</div>
+        <div class="what">
+          <h3>Andrew Joseph&nbsp;Jr. transitions.</h3>
+          <p>Survived by his wife Deanna, his daughters Deja and Lyric, and an extended movement family of comrades, Justice families, and chapter leaders across the country. Preceded in death by his son and namesake, Andrew Joseph&nbsp;III, who he can now finally see again.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ─── THE MOVEMENT MOURNS — CREATIVE GRAPHICS ─── -->
-<section class="graphics-section">
-  <div class="section">
-    <div class="section-eyebrow">The Movement Mourns</div>
-    <h2 class="section-headline">How the Community Responded.</h2>
-    <p class="body-para" style="margin-bottom:0;">Graphics made in his honor by the movement he helped build.</p>
-
-    <div class="graphics-grid">
-      <img src="/assets/img/libations/andrew/cg01.jpg" alt="Andrew Joseph Jr. tribute graphic" loading="lazy" />
-      <img src="/assets/img/libations/andrew/cg02.jpg" alt="Andrew Joseph Jr. tribute graphic" loading="lazy" />
-      <img src="/assets/img/libations/andrew/cg03.jpg" alt="Andrew Joseph Jr. tribute graphic" loading="lazy" />
-      <img src="/assets/img/libations/andrew/cg04.jpg" alt="Andrew Joseph Jr. tribute graphic" loading="lazy" />
-      <img src="/assets/img/libations/andrew/cg05.jpg" alt="Andrew Joseph Jr. tribute graphic" loading="lazy" />
-      <img src="/assets/img/libations/andrew/cg07.jpg" alt="Andrew Joseph Jr. tribute graphic" loading="lazy" />
-      <img src="/assets/img/libations/andrew/cg08.jpg" alt="Andrew Joseph Jr. tribute graphic" loading="lazy" />
-      <img src="/assets/img/libations/andrew/cg06.jpg" alt="Andrew Joseph Jr. tribute graphic" loading="lazy" />
-      <img src="/assets/img/libations/andrew/cg09.jpg" alt="Andrew Joseph Jr. tribute graphic" loading="lazy" />
+<!-- ============== CARRY THE WORK FORWARD ============== -->
+<section id="carry" data-screen-label="08 Carry the Work">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="eyebrow">Honor him in action</span>
+      <h2>Carry the<br/>Work Forward.</h2>
+      <p class="lede">There are 26 chartered chapters globally. There are Justice families in every region. There are children in fairgrounds and schools and patrol cars right now who need what Andrew Joseph&nbsp;Jr. gave. The boots stay on the ground because he showed us how to keep them there.</p>
     </div>
-    <div class="memorial-grid" style="margin-top:8px;">
-      <img src="/assets/img/libations/andrew/memorial_a.jpg" alt="Andrew Joseph Jr. memorial graphic" loading="lazy" />
-      <img src="/assets/img/libations/andrew/memorial_b.jpg" alt="Andrew Joseph Jr. memorial graphic" loading="lazy" />
-      <img src="/assets/img/libations/andrew/memorial_c.jpg" alt="Andrew Joseph Jr. memorial graphic" loading="lazy" />
-    </div>
-  </div>
-</section>
 
-<!-- ─── CARRY THE WORK FORWARD ─── -->
-<section class="action-section">
-  <div class="section">
-    <div class="section-eyebrow">Honor Him in Action</div>
-    <h2 class="section-headline">Carry the Work Forward.</h2>
-    <p class="body-lede">There are 26 chartered chapters globally. There are Justice families in every region. There are children who need what Andrew Joseph Jr. gave. The boots stay on the ground because he showed us how to keep them there.</p>
-
-    <div class="action-grid">
-      <div class="action-card">
-        <div class="ac-num">01</div>
+    <div class="carry">
+      <article class="card">
+        <div class="num">01</div>
         <h3>Support the Andrew Joseph Foundation</h3>
         <p>Child safety. Conflict resolution. Family support. The 501(c)(3) Andrew and Deanna built out of their grief, so no other parent would get the call they got.</p>
-        <a class="action-link" href="https://andrewjosephfoundation.com/" target="_blank" rel="noopener">andrewjosephfoundation.com →</a>
-      </div>
-      <div class="action-card">
-        <div class="ac-num">02</div>
-        <h3>Give Directly to the Foundation</h3>
-        <p>Direct donation to the Andrew Joseph Foundation through their official giving portal. Every dollar goes to the mission Andrew and Deanna built together.</p>
-        <a class="action-link" href="https://secure.qgiv.com/for/ajf/" target="_blank" rel="noopener">Donate Now →</a>
-      </div>
-      <div class="action-card">
-        <div class="ac-num">03</div>
-        <h3>End Qualified Immunity</h3>
-        <p>Pass the Ending Qualified Immunity Act — the legal doctrine that shielded AJ III's killers from accountability for nearly a decade. That fight is unfinished.</p>
-        <a class="action-link" href="https://blmgrassroots.org" target="_blank" rel="noopener">BLM Grassroots →</a>
+        <a class="go" href="https://andrewjosephfoundation.com" target="_blank" rel="noopener">andrewjosephfoundation.com</a>
+      </article>
+      <article class="card">
+        <div class="num">02</div>
+        <h3>Support BLM Grassroots</h3>
+        <p>Sustain the rapid response work he gave his life to. The next family is going to need someone on the next flight.</p>
+        <a class="go" href="https://blmgrassroots.org" target="_blank" rel="noopener">blmgrassroots.org</a>
+      </article>
+      <article class="card">
+        <div class="num">03</div>
+        <h3>Demand justice everywhere</h3>
+        <p>Pass the Ending Qualified Immunity Act &mdash; the legal doctrine that shielded AJ&nbsp;III&rsquo;s killers from accountability for nearly a decade. That fight is unfinished.</p>
+        <a class="go" href="https://blmgrassroots.org" target="_blank" rel="noopener">End qualified immunity</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== MEMORIAL WALL ============== -->
+<section id="memorial" data-screen-label="09 Memorial Wall">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="eyebrow">From the movement family</span>
+      <h2>Leave a Memory.</h2>
+      <p class="lede">If Andrew showed up for you, if he picked up the phone, if he stood next to you on a corner outside a fairground in the rain — share it here. Stories stay on this device unless your family chooses to publish them.</p>
+    </div>
+
+    <div class="wall">
+      <form class="form" id="memoryForm">
+        <div>
+          <label for="m-name">Your name</label>
+          <input id="m-name" name="name" type="text" required maxlength="80" />
+        </div>
+        <div>
+          <label for="m-where">Where you knew him from</label>
+          <input id="m-where" name="where" type="text" placeholder="e.g. Tampa · BLM Grassroots · family" maxlength="80" />
+        </div>
+        <div class="full">
+          <label for="m-msg">Your memory</label>
+          <textarea id="m-msg" name="msg" rows="5" required maxlength="2000" placeholder="What did Andrew mean to you?"></textarea>
+        </div>
+        <div class="full">
+          <button type="submit">Leave Memory</button>
+        </div>
+      </form>
+
+      <div class="entries" id="entries">
+        <article class="entry">
+          <div class="msg">Andrew showed up. That&rsquo;s the whole sentence. He showed up. When my world fell apart, he was on the next flight and he didn&rsquo;t leave my side until I could stand on my own again.</div>
+          <div class="byline">A Justice Mother · Mississippi <span class="when">May 2026</span></div>
+        </article>
+        <article class="entry">
+          <div class="msg">A champion. The only word for him. Rest well, brother.</div>
+          <div class="byline">Comrade · BLM Grassroots <span class="when">May 2026</span></div>
+        </article>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── LINEAGE FUND ─── -->
-<section class="fund-section">
-  <div class="section">
-    <div class="section-eyebrow">The Lineage Fund</div>
-    <h2 class="section-headline">Give in Andrew's Honor.</h2>
-    <p class="body-lede">E5 Enclave hosts a lineage fund for every name on this wall. Zero platform fees. The record stays. The name does not disappear when the campaign ends.</p>
+<!-- ============== CLOSING ============== -->
+<section class="closing" data-screen-label="10 Rest well">
+  <div class="wrap">
+    <span class="stripe medium"><span class="y"></span><span class="r"></span><span class="g"></span></span>
+    <div class="restwell">
+      Rest well, <span class="gold">champion</span>.<br/>
+      The boots stay on the ground.
+    </div>
+    <p class="tag">&mdash; A movement family that loved him</p>
+    <span class="fist fist-big" aria-hidden="true"></span>
+  </div>
+</section>
 
-    <div class="fund-grid">
-      <div class="fund-panel">
-        <h3>E5 Enclave Lineage Fund</h3>
-        <div class="fund-sub">In Honor of Andrew Joseph Jr. · 0% Platform Fee</div>
-        <p>Every dollar designated in Andrew's honor. Administered by E5 Enclave Incorporated, 501(c)(3), EIN 99-3822441. E5 takes nothing. The movement gets everything.</p>
-        <div class="fund-embed">
-          <iframe
-            src="https://www.zeffy.com/en-US/donation-form/e4c55f8e-fec6-4012-b2db-e94fd7e49e24"
-            title="Give in Honor of Andrew Joseph Jr."
-            loading="lazy"
-          ></iframe>
-        </div>
+<!-- ============== FOOTER ============== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="row">
+      <div class="brand">
+        <span class="stripe" style="display:inline-flex; width: 38px; height: 4px; vertical-align: middle; margin-right: 12px;"><span class="y"></span><span class="r"></span><span class="g"></span></span>
+        Andrew Joseph Jr. · In Memoriam · 2026
       </div>
-      <div class="fund-panel">
-        <h3>The Andrew Joseph Foundation</h3>
-        <div class="fund-sub">Direct to the Family's Organization</div>
-        <p>Andrew and Deanna's own 501(c)(3). Child safety. Conflict resolution. Family support. Give directly — no intermediary, no cut, no middleman. We surface it. We don't take a thing.</p>
-        <a class="action-link" href="https://secure.qgiv.com/for/ajf/" target="_blank" rel="noopener" style="display:block;text-align:center;padding:16px;margin-top:16px;">
-          Donate to AJ Foundation →
-        </a>
-        <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border);">
-          <div class="hero-fact-label">Foundation Homepage</div>
-          <a href="https://andrewjosephfoundation.com/" target="_blank" rel="noopener" style="color:var(--gold);font-family:var(--sans);font-size:12px;letter-spacing:0.1em;">
-            andrewjosephfoundation.com →
-          </a>
-        </div>
-        <div style="margin-top:20px;">
-          <div class="hero-fact-label">Contact Deanna Joseph</div>
-          <p style="font-family:var(--sans);font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:0;">To reach the family directly, visit the foundation homepage or contact E5 Enclave at <a href="mailto:accounts@e5enclave.com" style="color:var(--gold);">accounts@e5enclave.com</a>. We will connect you.</p>
-        </div>
+      <div class="links">
+        <a href="https://andrewjosephfoundation.com" target="_blank" rel="noopener">AJ Foundation</a>
+        <a href="https://blmgrassroots.org" target="_blank" rel="noopener">BLM Grassroots</a>
+        <a href="#tribute">Top</a>
       </div>
     </div>
+    <p class="fine">Built with love by friends. To add or correct details, dates, or photos &mdash; or to publish memories shared here &mdash; please reach the family through the Andrew Joseph Foundation.</p>
   </div>
-</section>
+</footer>
 
-<!-- ─── CLOSING POUR ─── -->
-<section class="closing">
-  <div class="pour-line">The Pour</div>
-  <p class="pour-text">
-    For Andrew Joseph Jr. — son of New Orleans, son of Grambling, husband to Deanna, father to Deja, father to Andrew III who went home first. For the parents who got the worst call. For the families whose names he carried on every flight. We pour.
-  </p>
-  <div class="ase">Asé.</div>
-  <div class="record-note">
-    Filed by <span>E5 Enclave Incorporated</span> · Libations Department · May 2026<br>
-    Record status: <span>Open</span> · This page is permanent.
-  </div>
-</section>
+<script>
+  // Memorial wall — localStorage-backed so the family can collect memories
+  // over time without needing a server. Entries are scoped per-device.
+  (function () {
+    const KEY = 'aj-memories-v1';
+    const form = document.getElementById('memoryForm');
+    const list = document.getElementById('entries');
 
-<div class="pan-bar"></div>
+    function load() {
+      try { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
+      catch (e) { return []; }
+    }
+    function save(arr) {
+      localStorage.setItem(KEY, JSON.stringify(arr));
+    }
+    function escapeHTML(s) {
+      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+    function render() {
+      const arr = load();
+      // Keep the two seeded entries in the DOM; prepend user entries above them.
+      const seeded = list.querySelectorAll('.entry.seeded');
+      list.innerHTML = '';
+      arr.slice().reverse().forEach(item => {
+        const el = document.createElement('article');
+        el.className = 'entry';
+        el.innerHTML =
+          '<div class="msg">' + escapeHTML(item.msg) + '</div>' +
+          '<div class="byline">' + escapeHTML(item.name) +
+            (item.where ? ' · ' + escapeHTML(item.where) : '') +
+            ' <span class="when">' + escapeHTML(item.when) + '</span></div>';
+        list.appendChild(el);
+      });
+      seeded.forEach(n => list.appendChild(n));
+    }
+
+    // Mark the existing entries as seeded so we keep them on render.
+    list.querySelectorAll('.entry').forEach(n => n.classList.add('seeded'));
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = form.name.value.trim();
+      const where = form.where.value.trim();
+      const msg = form.msg.value.trim();
+      if (!name || !msg) return;
+      const arr = load();
+      const when = new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+      arr.push({ name, where, msg, when });
+      save(arr);
+      form.reset();
+      render();
+    });
+
+    render();
+  })();
+</script>
