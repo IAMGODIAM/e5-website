@@ -1,0 +1,165 @@
+---
+layout: base
+title: "Innovation Lab — E5 Enclave"
+description: "E5 Enclave Innovation Lab: agentic AI experiments, tools, and live demos built on the EDEN infrastructure. Powered by Cohere Command A+."
+permalink: /innovation-lab/
+bodyClass: innovation-lab
+breadcrumbs:
+  - { label: "Innovation Lab" }
+extraJs:
+  - /assets/js/innovation-lab.js
+---
+
+<header class="vc-page-head reveal">
+  <div class="vc-page-eyebrow">— Innovation Lab · Live Experiments —</div>
+  <h1 class="vc-page-h">The Lab.</h1>
+  <p class="vc-page-deck">Agentic tools and live AI experiments built on the EDEN infrastructure. Real systems. No demos.</p>
+</header>
+
+{# ── LAB BAND ────────────────────────────────────────────────── #}
+<section class="lab-engine-band reveal" aria-label="Engine">
+  <div class="lab-engine-inner">
+    <span class="lab-engine-eyebrow">Running on</span>
+    <span class="lab-engine-name">Cohere Command A+</span>
+    <span class="lab-engine-spec">command-a-plus-05-2026 · 218B MoE · 128K context · Apache 2.0</span>
+    <span class="lab-engine-dot" aria-hidden="true"></span>
+    <span class="lab-engine-live">Live</span>
+  </div>
+</section>
+
+{# ── PHOTO STUDIO ────────────────────────────────────────────── #}
+<section class="lab-section reveal" id="photo-studio" aria-labelledby="ps-heading">
+  <div class="lab-section-inner">
+
+    <header class="lab-tool-header">
+      <div class="lab-tool-number">01</div>
+      <div>
+        <div class="lab-tool-eyebrow">Agentic Photo Studio</div>
+        <h2 class="lab-tool-h" id="ps-heading">Photo intelligence,<br/><em>agent-first.</em></h2>
+        <p class="lab-tool-desc">Drop in a photo. Cohere Command A+ reads the image, identifies subjects, mood, context, and lineage signals — then generates a caption, alt text, and collection placement suggestion. Every output is structured JSON, ready for the gallery pipeline.</p>
+      </div>
+    </header>
+
+    <div class="lab-studio-grid">
+
+      {# Upload zone #}
+      <div class="lab-upload-zone" id="labDropZone" role="button" tabindex="0"
+           aria-label="Drop a photo or click to upload">
+        <div class="lab-upload-icon" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+        </div>
+        <p class="lab-upload-label">Drop a photo here</p>
+        <p class="lab-upload-sub">or <button class="lab-upload-browse" id="labBrowseBtn" type="button">browse files</button></p>
+        <p class="lab-upload-hint">JPG, PNG, WEBP · Max 10 MB</p>
+        <input type="file" id="labFileInput" accept="image/jpeg,image/png,image/webp,image/gif" hidden aria-hidden="true"/>
+      </div>
+
+      {# Preview + output #}
+      <div class="lab-output-panel" id="labOutputPanel" aria-live="polite" aria-label="Analysis output">
+
+        {# idle state #}
+        <div class="lab-output-idle" id="labIdle">
+          <p>Analysis will appear here after you upload a photo.</p>
+        </div>
+
+        {# preview + loading #}
+        <div class="lab-output-preview" id="labPreview" hidden>
+          <div class="lab-preview-img-wrap">
+            <img id="labPreviewImg" src="" alt="Uploaded preview" class="lab-preview-img"/>
+            <div class="lab-preview-overlay" id="labOverlay" hidden aria-hidden="true">
+              <div class="lab-spinner"></div>
+              <span>Command A+ analyzing&hellip;</span>
+            </div>
+          </div>
+        </div>
+
+        {# result #}
+        <div class="lab-result" id="labResult" hidden>
+          <div class="lab-result-model">
+            <span class="lab-result-model-badge">Command A+</span>
+            <span class="lab-result-model-ts" id="labResultTs"></span>
+          </div>
+          <div class="lab-result-grid">
+            <div class="lab-result-block">
+              <div class="lab-result-label">Caption</div>
+              <div class="lab-result-val" id="labCaption"></div>
+            </div>
+            <div class="lab-result-block">
+              <div class="lab-result-label">Alt Text</div>
+              <div class="lab-result-val" id="labAlt"></div>
+            </div>
+            <div class="lab-result-block">
+              <div class="lab-result-label">Mood</div>
+              <div class="lab-result-val" id="labMood"></div>
+            </div>
+            <div class="lab-result-block">
+              <div class="lab-result-label">Suggested Theme</div>
+              <div class="lab-result-val" id="labTheme"></div>
+            </div>
+            <div class="lab-result-block lab-result-full">
+              <div class="lab-result-label">Lineage Signals</div>
+              <div class="lab-result-val" id="labLineage"></div>
+            </div>
+            <div class="lab-result-block lab-result-full">
+              <div class="lab-result-label">Context</div>
+              <div class="lab-result-val" id="labContext"></div>
+            </div>
+          </div>
+          <div class="lab-result-actions">
+            <button class="lab-btn-secondary" id="labReset" type="button">Analyze another →</button>
+            <button class="lab-btn-copy" id="labCopyJson" type="button">Copy JSON</button>
+          </div>
+          <details class="lab-json-details">
+            <summary>Raw JSON output</summary>
+            <pre id="labRawJson" class="lab-json-pre"></pre>
+          </details>
+        </div>
+
+        {# error #}
+        <div class="lab-error" id="labError" hidden role="alert">
+          <strong>Analysis failed.</strong>
+          <span id="labErrorMsg"></span>
+          <button class="lab-btn-secondary" id="labErrorReset" type="button">Try again →</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lab-tool-footer">
+      <span class="lab-tool-badge">Vision · Captioning · Theme Detection · Lineage Analysis</span>
+      <a href="https://github.com/IAMGODIAM/agentic-photo-studio" class="lab-tool-source" target="_blank" rel="noopener">View source →</a>
+    </div>
+
+  </div>
+</section>
+
+{# ── MORE TOOLS COMING ────────────────────────────────────────── #}
+<section class="lab-coming-soon reveal" aria-label="Coming soon">
+  <div class="lab-cs-inner">
+    <div class="lab-cs-eyebrow">More tools in development</div>
+    <div class="lab-cs-grid">
+      <div class="lab-cs-card">
+        <div class="lab-cs-num">02</div>
+        <div class="lab-cs-title">Grant Writer</div>
+        <div class="lab-cs-desc">Percy — LOI and full proposal drafting powered by Command A+. Feed it a funder profile, get a board-reviewed draft in seconds.</div>
+        <div class="lab-cs-status">In development</div>
+      </div>
+      <div class="lab-cs-card">
+        <div class="lab-cs-num">03</div>
+        <div class="lab-cs-title">Case Analyzer</div>
+        <div class="lab-cs-desc">Upload a court document or incident report. Command A+ extracts charges, precedents, and recommended legal strategy aligned with E5 Justice doctrine.</div>
+        <div class="lab-cs-status">In development</div>
+      </div>
+      <div class="lab-cs-card">
+        <div class="lab-cs-num">04</div>
+        <div class="lab-cs-title">FarmBlock Intelligence</div>
+        <div class="lab-cs-desc">Feed satellite or ground-level farm imagery. Get soil quality signals, crop identification, yield estimates, and FarmBlock cooperative placement scoring.</div>
+        <div class="lab-cs-status">In development</div>
+      </div>
+    </div>
+  </div>
+</section>
