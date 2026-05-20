@@ -830,6 +830,7 @@ footer.foot .fine {
 </section>
 
 
+
 <!-- ============================================================
      PHOTO GALLERY — Agentic-Native Luxury Carousel
      Injected: 2026-05-20 | DAG: carousel-andrew-jr-2026-0520
@@ -841,6 +842,8 @@ footer.foot .fine {
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 <style>
+{%- raw %}
+
 /* ===================== GALLERY SECTION ===================== */
 .gallery-section {
   padding: 96px 0 112px;
@@ -1112,6 +1115,8 @@ footer.foot .fine {
   margin-bottom: 0;
   opacity: 0.6;
 }
+
+{%- endraw %}
 </style>
 
 <div class="gallery-top-rule"></div>
@@ -1278,8 +1283,14 @@ footer.foot .fine {
 </div>
 
 <!-- ===================== SCRIPTS ===================== -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js">
+{%- raw %}
+
+{%- endraw %}
+</script>
 <script>
+{%- raw %}
+
 (function() {
   'use strict';
 
@@ -1415,7 +1426,10 @@ footer.foot .fine {
   }, { passive: true });
 
 })();
+
+{%- endraw %}
 </script>
+
 
 
 <!-- ============== TIMELINE ============== -->
