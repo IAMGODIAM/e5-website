@@ -1,0 +1,1786 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>In Loving Memory — Andrew Joseph Jr.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0A0705" />
+<meta name="description" content="A Celebration of Life — Andrew Joseph Jr. Rapid Response Coordinator, Black Lives Matter Grassroots." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,300;1,6..72,400;1,6..72,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  /* ==========================================================
+     TOKENS
+     The palette, hairlines, and the "paper" envelope.
+     Spacing tokens are fluid: they shrink on phones, settle on
+     desktop. The page dimensions only assert themselves when
+     a real page can fit (≥ 760px).
+  ========================================================== */
+  :root {
+    --paper:        #110D0A;
+    --paper-deep:   #1A1410;
+    --paper-elev:   #221A14;
+    --ink:          #ECE0C7;
+    --ink-soft:     #A89A7E;
+    --ink-faint:    #6E624B;
+    --rule:         #5A4B33;
+    --gold:         #B68B4E;
+    --gold-deep:    #8C6633;
+    --oxblood:      #9B2A22;
+    --oxblood-deep: #5F1812;
+    --hairline:        rgba(236, 224, 199, 0.14);
+    --hairline-strong: rgba(236, 224, 199, 0.24);
+
+    /* Page geometry */
+    --page-w:    8.5in;
+    --page-h:    11in;
+
+    /* Fluid margins — phone → print */
+    --margin-x:  clamp(20px, 6vw, 0.85in);
+    --margin-y:  clamp(28px, 7vw, 0.85in);
+
+    /* Fluid type — a single curve we can tune from here */
+    --t-cover-first:  clamp(20px, 5.5vw, 28pt);
+    --t-cover-last:   clamp(44px, 12vw, 56pt);
+    --t-cover-suffix: clamp(20px, 5vw, 26pt);
+    --t-page-title:   clamp(28px, 7vw, 38pt);
+    --t-h2:           clamp(22px, 5.2vw, 21pt);
+    --t-h3:           clamp(18px, 4.4vw, 19pt);
+    --t-big-quote:    clamp(22px, 5.8vw, 26pt);
+    --t-script-h2:    clamp(28px, 7.4vw, 36pt);
+    --t-reflect:      clamp(18px, 4.6vw, 19pt);
+    --t-lead:         clamp(15px, 3.6vw, 13pt);
+    --t-body:         clamp(14.5px, 3.3vw, 11.5pt);
+    --t-body-sm:      clamp(14px, 3.1vw, 11pt);
+    --t-eyebrow:      clamp(10.5px, 2.4vw, 9.5pt);
+    --t-eyebrow-sm:   clamp(10px, 2.2vw, 8.5pt);
+    --t-folio:        clamp(10px, 2.1vw, 8pt);
+    --t-caption:      clamp(10.5px, 2.3vw, 8pt);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body { background: #050402; }
+  body {
+    margin: 0;
+    font-family: "Newsreader", Georgia, serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    padding: clamp(0px, 3vw, 36px) 0;
+    background:
+      radial-gradient(1200px 800px at 50% -10%, #0c0a08 0%, #050402 60%, #000 100%);
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; display: block; }
+
+  /* ==========================================================
+     DOCUMENT FRAME
+     Stack of "pages." On phones, full-width with breathing
+     room. On desktop, the 8.5×11 envelope returns with shadow.
+  ========================================================== */
+  .doc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(12px, 3vw, 28px);
+  }
+
+  .page {
+    width: 100%;
+    max-width: var(--page-w);
+    background: linear-gradient(180deg, #131009 0%, #100B07 100%);
+    position: relative;
+    overflow: hidden;
+    padding: var(--margin-y) var(--margin-x);
+    color: var(--ink);
+  }
+
+  @media (min-width: 760px) {
+    .page {
+      min-height: var(--page-h);
+      box-shadow:
+        0 24px 80px rgba(0,0,0,0.7),
+        0 0 0 1px rgba(255,255,255,0.025);
+    }
+  }
+
+  /* Film grain — gravitas, at every size */
+  .page::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(rgba(255, 240, 210, 0.025) 1px, transparent 1px),
+      radial-gradient(rgba(255, 240, 210, 0.018) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 2px;
+    pointer-events: none;
+    opacity: 0.9;
+  }
+  /* Deckle vignette */
+  .page::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(0,0,0,0.45) 100%);
+    pointer-events: none;
+  }
+  .page > * { position: relative; z-index: 1; }
+
+  /* ==========================================================
+     SHARED TYPE PRIMITIVES
+  ========================================================== */
+  .eyebrow {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .hairline-rule { height: 1px; background: var(--hairline); border: 0; margin: 0; }
+  .gold-rule    { height: 1px; background: var(--gold); border: 0; opacity: 0.85; }
+
+  .body-prose p {
+    font-size: var(--t-body);
+    line-height: 1.65;
+    margin: 0 0 0.85em;
+    color: var(--ink-soft);
+    text-wrap: pretty;
+  }
+  .body-prose p.lead {
+    font-size: var(--t-lead);
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .body-prose strong { color: var(--ink); font-weight: 600; }
+  .body-prose .dropcap::first-letter {
+    font-family: "Newsreader", serif;
+    font-weight: 500;
+    font-style: italic;
+    initial-letter: 3 2;
+    -webkit-initial-letter: 3 2;
+    color: var(--oxblood);
+    margin-right: 0.12em;
+    line-height: 0.9;
+  }
+
+  /* ==========================================================
+     PAGE HEADER (used by Pages 2–10)
+  ========================================================== */
+  .page-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 14px;
+    margin-bottom: clamp(24px, 5vw, 38px);
+  }
+  .page-header .marque {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  @media (max-width: 480px) {
+    .page-header .marque:first-child {
+      flex: 1 1 auto;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  .page-title {
+    font-family: "Newsreader", serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: var(--t-page-title);
+    color: var(--ink);
+    margin: 0;
+    letter-spacing: -0.005em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+  .page-title em { color: var(--oxblood); font-weight: 400; }
+  .page-title .ornament {
+    color: var(--oxblood);
+    font-style: normal;
+    margin: 0 0.25em;
+    font-size: 0.55em;
+    vertical-align: 0.35em;
+  }
+  .subhed {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 8px;
+    text-wrap: balance;
+  }
+
+  /* ==========================================================
+     FOLIO (footer)
+     Mobile: static, at the bottom of the section.
+     Desktop: absolute, anchored to the printed-page bottom.
+  ========================================================== */
+  .folio {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-folio);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: clamp(32px, 6vw, 56px);
+    padding-top: 14px;
+    border-top: 1px solid var(--hairline);
+  }
+  .folio .ornament { color: var(--oxblood); letter-spacing: 0.4em; }
+
+  @media (min-width: 760px) {
+    .folio {
+      position: absolute;
+      bottom: 0.45in;
+      left: var(--margin-x);
+      right: var(--margin-x);
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+  }
+
+  /* ==========================================================
+     PAGE 1 — COVER
+     Mobile: photo stacks on top, text below.
+     Desktop: classic two-column editorial cover.
+  ========================================================== */
+  .cover {
+    padding: 0;
+    background: #0A0705;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 760px) {
+    .cover { grid-template-columns: 1.05fr 1fr; }
+  }
+
+  .cover .photo {
+    position: relative;
+    background: #0c0a07;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    min-height: 320px;
+  }
+  @media (min-width: 760px) {
+    .cover .photo { aspect-ratio: auto; min-height: 0; }
+  }
+  .cover .photo img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: 50% 22%;
+    filter: contrast(1.04) saturate(0.78) brightness(0.95);
+  }
+  .cover .photo::after {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.55) 100%),
+      linear-gradient(180deg, rgba(95,24,18,0.08), rgba(0,0,0,0) 40%);
+  }
+  @media (min-width: 760px) {
+    /* Restore the right-side fade for the desktop two-column composition */
+    .cover .photo::after {
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.55) 100%),
+        linear-gradient(90deg, rgba(0,0,0,0) 70%, rgba(10,7,5,0.92) 100%),
+        linear-gradient(180deg, rgba(95,24,18,0.08), rgba(0,0,0,0) 40%);
+    }
+  }
+  .cover .photo-caption {
+    position: absolute;
+    bottom: clamp(14px, 3vw, 24px);
+    left: clamp(16px, 4vw, 26px);
+    right: clamp(16px, 4vw, 26px);
+    color: rgba(236, 224, 199, 0.75);
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-caption);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    z-index: 2;
+    text-wrap: balance;
+  }
+
+  .cover .text-pane {
+    padding: clamp(28px, 7vw, 0.95in) clamp(22px, 6vw, 0.7in) clamp(28px, 7vw, 0.7in);
+    display: flex; flex-direction: column;
+    position: relative;
+    background: linear-gradient(180deg, #120E0A 0%, #0C0805 100%);
+  }
+
+  .crest-mark {
+    width: 26px; height: 26px;
+    border: 1px solid var(--oxblood);
+    transform: rotate(45deg);
+    margin-bottom: 22px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .crest-mark::after {
+    content: ""; position: absolute; inset: 5px;
+    background: var(--oxblood);
+  }
+
+  .cover .in-memoriam {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    font-size: clamp(11px, 2.6vw, 10pt);
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: clamp(32px, 8vw, 0.65in);
+  }
+
+  .cover h1 {
+    font-family: "Newsreader", serif;
+    font-weight: 400;
+    font-size: var(--t-cover-last);
+    line-height: 0.95;
+    margin: 0;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .cover h1 .first {
+    display: block;
+    font-style: italic;
+    font-weight: 300;
+    font-size: var(--t-cover-first);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.18em;
+  }
+  .cover h1 .last   { display: block; font-weight: 500; color: var(--ink); }
+  .cover h1 .suffix {
+    display: block;
+    font-weight: 300;
+    font-style: italic;
+    font-size: var(--t-cover-suffix);
+    color: var(--oxblood);
+    margin-top: 0.16em;
+    letter-spacing: 0.02em;
+  }
+
+  .cover .dates {
+    margin-top: clamp(28px, 7vw, 0.55in);
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(13px, 3.1vw, 13pt);
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+  .cover .dates .em { color: var(--oxblood); margin: 0 0.45em; }
+
+  .cover .quote {
+    margin-top: clamp(32px, 7vw, auto);
+    border-top: 1px solid var(--hairline-strong);
+    padding-top: 18px;
+    font-style: italic;
+    font-size: clamp(14px, 3.4vw, 13pt);
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  @media (min-width: 760px) {
+    .cover .quote { margin-top: auto; }
+  }
+  .cover .quote .attrib {
+    display: block;
+    margin-top: 10px;
+    font-style: normal;
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow-sm);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .cover .imprint {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-top: clamp(24px, 5vw, 36px);
+    padding-top: 14px;
+    border-top: 1px solid var(--hairline);
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-caption);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  @media (min-width: 760px) {
+    .cover .imprint {
+      position: absolute;
+      bottom: 0.5in;
+      left: 0.7in;
+      right: 0.7in;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+  }
+
+  /* ==========================================================
+     PAGE 2 — ORDER OF SERVICE
+     Mobile: each row stacks (order eyebrow → item → by).
+     Desktop: 3-column row with dotted leader.
+  ========================================================== */
+  .service-grid {
+    margin-top: clamp(20px, 4vw, 28px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .service-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px dotted var(--hairline);
+  }
+  @media (min-width: 600px) {
+    .service-row {
+      grid-template-columns: 2.6in 1fr auto;
+      gap: 12px;
+      padding: 12px 0;
+    }
+  }
+  .service-row .order {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow-sm);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-feature-settings: "tnum";
+  }
+  .service-row .item {
+    font-family: "Newsreader", serif;
+    font-size: var(--t-lead);
+    color: var(--ink);
+  }
+  .service-row .item .note {
+    color: var(--ink-soft);
+    font-style: italic;
+    font-size: 0.86em;
+    margin-left: 8px;
+  }
+  .service-row .by {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: var(--t-body-sm);
+    color: var(--ink-soft);
+  }
+  @media (min-width: 600px) {
+    .service-row .by { text-align: right; }
+  }
+  .service-row .by.placeholder { color: var(--gold); opacity: 0.55; }
+  .service-row .by:empty { display: none; }
+  @media (min-width: 600px) {
+    .service-row .by:empty { display: block; }
+  }
+
+  .service-foot {
+    margin-top: clamp(28px, 5vw, 38px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 600px) {
+    .service-foot { grid-template-columns: 1fr 1fr; gap: 36px; }
+  }
+  .service-foot h4 {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow-sm);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 8px;
+  }
+  .service-foot p {
+    font-family: "Newsreader", serif;
+    font-size: var(--t-body);
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0;
+  }
+  .service-foot .placeholder { color: var(--ink-faint); font-style: italic; }
+
+  /* ==========================================================
+     PAGE 3 — OBITUARY
+     Mobile: photo, caption, photo, caption — then prose.
+     Desktop: portrait column + main column.
+  ========================================================== */
+  .obit-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(22px, 4vw, 36px);
+    margin-top: clamp(22px, 4vw, 32px);
+  }
+  @media (min-width: 760px) {
+    .obit-grid {
+      grid-template-columns: 2.8in 1fr;
+    }
+  }
+  .obit-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+  @media (min-width: 760px) {
+    .obit-side {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+  }
+
+  .portrait {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background-color: #1b150c;
+    filter: contrast(1.04) saturate(0.78);
+    position: relative;
+    overflow: hidden;
+  }
+  .portrait img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .portrait::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.45) 100%);
+  }
+  .portrait.fist img   { object-position: 50% 25%; }
+  .portrait.banner img { object-position: 50% 28%; }
+  .portrait.paver img  { object-position: 50% 20%; }
+  .portrait.rally img  { object-position: 50% 30%; }
+  .portrait.family { aspect-ratio: 4/3; }
+  .portrait.family img { object-position: 50% 30%; }
+
+  .obit-side .caption-pair {
+    grid-column: span 1;
+  }
+  .obit-side .caption-pair .caption { margin-top: 8px; }
+  @media (min-width: 760px) {
+    .obit-side .caption-pair { grid-column: auto; }
+  }
+
+  .caption {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-caption);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    line-height: 1.5;
+  }
+  .caption .num {
+    color: var(--oxblood);
+    font-weight: 600;
+    margin-right: 0.6em;
+  }
+
+  .obit-main { padding-top: 4px; }
+  .obit-main h2 {
+    font-family: "Newsreader", serif;
+    font-weight: 500;
+    font-size: var(--t-h2);
+    line-height: 1.15;
+    margin: 0 0 18px;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  .obit-main h2 em { color: var(--oxblood); font-weight: 400; font-style: italic; }
+
+  /* Pullquote */
+  .pull {
+    margin: clamp(18px, 3.5vw, 22px) 0;
+    padding: clamp(14px, 3vw, 18px) clamp(16px, 4vw, 22px);
+    border-left: 2px solid var(--oxblood);
+    background:
+      linear-gradient(180deg, rgba(155,42,34,0.06) 0%, rgba(0,0,0,0) 100%),
+      var(--paper-deep);
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: clamp(15px, 3.6vw, 14pt);
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .pull cite {
+    display: block;
+    margin-top: 10px;
+    font-style: normal;
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow-sm);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ==========================================================
+     PAGES 4 & 5 — TRIBUTE SPREADS
+  ========================================================== */
+  .tribute-hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(22px, 4vw, 36px);
+    align-items: start;
+    margin-top: clamp(22px, 4vw, 28px);
+  }
+  @media (min-width: 760px) {
+    .tribute-hero { grid-template-columns: 1fr 1.4fr; }
+  }
+  .tribute-hero .big-quote {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: var(--t-big-quote);
+    line-height: 1.15;
+    color: var(--ink);
+    margin: 0;
+    text-wrap: balance;
+  }
+  .tribute-hero .big-quote .accent { color: var(--oxblood); }
+
+  .columns-2 {
+    column-count: 1;
+    margin-top: clamp(22px, 4vw, 30px);
+  }
+  @media (min-width: 760px) {
+    .columns-2 {
+      column-count: 2;
+      column-gap: 0.5in;
+      column-rule: 1px solid var(--hairline);
+    }
+  }
+  .columns-2 p {
+    font-size: var(--t-body-sm);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0 0 0.8em;
+    text-wrap: pretty;
+  }
+  .columns-2 p.lead { font-size: var(--t-lead); color: var(--ink); }
+  .columns-2 .section {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow-sm);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 1em 0 0.4em;
+    break-after: avoid;
+  }
+  .columns-2 .dropcap::first-letter {
+    font-family: "Newsreader", serif;
+    font-weight: 500;
+    color: var(--oxblood);
+    initial-letter: 3;
+    -webkit-initial-letter: 3;
+    margin-right: 0.12em;
+    line-height: 0.9;
+  }
+
+  .tribute-final {
+    margin-top: clamp(22px, 4vw, 28px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(22px, 4vw, 36px);
+  }
+  @media (min-width: 760px) {
+    .tribute-final { grid-template-columns: 1fr 1fr; }
+  }
+  .tribute-final .col-img {
+    aspect-ratio: 4/5;
+    filter: contrast(1.04) saturate(0.78);
+    position: relative;
+    overflow: hidden;
+    background-color: #1b150c;
+  }
+  .tribute-final .col-img img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: 50% 20%;
+  }
+  .tribute-final .col-img::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 100%);
+  }
+  .tribute-final h3 {
+    font-family: "Newsreader", serif;
+    font-weight: 500;
+    font-size: var(--t-h3);
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  .tribute-final p {
+    font-family: "Newsreader", serif;
+    font-size: var(--t-body-sm);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0 0 0.8em;
+    text-wrap: pretty;
+  }
+  .tribute-final .section-label {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow-sm);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 22px 0 8px;
+  }
+  .tribute-final .closing-note {
+    font-family: "Newsreader", serif;
+    font-size: var(--t-body-sm);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  /* ==========================================================
+     PAGE 6 — TIMELINE
+     Mobile: each entry stacks (gold year eyebrow → event).
+     Desktop: 1.4in fixed left rail with a central hairline + diamond marker.
+  ========================================================== */
+  .timeline {
+    margin-top: clamp(24px, 5vw, 30px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    position: relative;
+  }
+  @media (min-width: 760px) {
+    .timeline {
+      grid-template-columns: 1.4in 1fr;
+      gap: 0 24px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 8px; bottom: 8px;
+      left: 1.4in; width: 1px;
+      background: var(--hairline);
+    }
+  }
+  .tl-year {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-top: 18px;
+    padding-bottom: 4px;
+    border-top: 1px solid var(--hairline);
+  }
+  @media (min-width: 760px) {
+    .tl-year {
+      padding: 14px 24px 14px 0;
+      text-align: right;
+      position: relative;
+    }
+    .tl-year:first-child, .tl-year + .tl-year { border-top-color: transparent; }
+  }
+
+  .tl-event {
+    padding-top: 6px;
+    padding-bottom: 18px;
+    position: relative;
+  }
+  @media (min-width: 760px) {
+    .tl-event {
+      padding-top: 14px;
+      padding-bottom: 14px;
+      border-top: 1px solid var(--hairline);
+    }
+    .tl-event::before {
+      content: "";
+      position: absolute;
+      left: -28px; top: 22px;
+      width: 9px; height: 9px;
+      background: var(--oxblood);
+      transform: rotate(45deg);
+      box-shadow: 0 0 0 2px #0e0a07;
+    }
+  }
+  .tl-event h3 {
+    font-family: "Newsreader", serif;
+    font-weight: 500;
+    font-size: var(--t-lead);
+    color: var(--ink);
+    margin: 0 0 4px;
+    line-height: 1.25;
+  }
+  .tl-event p {
+    font-family: "Newsreader", serif;
+    font-size: var(--t-body-sm);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* ==========================================================
+     PAGE 7 — SCRIPTURE
+     Mobile: flex column, centered, generous padding.
+     Desktop: absolutely centered inside the page envelope.
+  ========================================================== */
+  .scripture {
+    padding: clamp(40px, 9vw, 1.2in) clamp(22px, 6vw, 1.4in);
+    background: radial-gradient(80% 60% at 50% 40%, #1A130C 0%, #0A0705 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  .scripture .ornament-top {
+    color: var(--oxblood);
+    letter-spacing: 1em;
+    font-size: clamp(11px, 2.6vw, 11pt);
+    margin-bottom: clamp(20px, 4vw, 30px);
+  }
+  .scripture .label {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .scripture h2 {
+    font-family: "Newsreader", serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: var(--t-script-h2);
+    color: var(--ink);
+    margin: 0 0 6px;
+    text-wrap: balance;
+    line-height: 1.05;
+  }
+  .scripture .citation {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: var(--t-body-sm);
+    color: var(--ink-soft);
+    margin-bottom: clamp(24px, 5vw, 36px);
+  }
+  .scripture .verse {
+    font-family: "Newsreader", serif;
+    font-size: clamp(15px, 3.6vw, 14pt);
+    line-height: 1.7;
+    color: var(--ink);
+    max-width: 4.6in;
+    text-wrap: pretty;
+  }
+  .scripture .verse .stanza { margin-bottom: 1em; }
+  .scripture .colophon {
+    margin-top: clamp(28px, 5vw, 38px);
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-folio);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ==========================================================
+     PAGE 8 — REFLECTIONS
+     Mobile: roman numeral becomes a smaller gold marker above each.
+     Desktop: numeral sits in its own 0.55in left column.
+  ========================================================== */
+  .reflections-stack {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(28px, 5vw, 36px);
+    margin-top: clamp(28px, 5vw, 38px);
+  }
+  .reflect {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    align-items: start;
+  }
+  @media (min-width: 600px) {
+    .reflect {
+      grid-template-columns: 0.55in 1fr;
+      gap: 24px;
+    }
+  }
+  .reflect .num {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(28px, 6.5vw, 36pt);
+    color: var(--oxblood);
+    line-height: 0.9;
+    padding-top: 4px;
+  }
+  @media (min-width: 600px) {
+    .reflect .num { text-align: right; }
+  }
+  .reflect .body blockquote {
+    font-family: "Newsreader", serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: var(--t-reflect);
+    line-height: 1.35;
+    color: var(--ink);
+    margin: 0;
+    text-wrap: pretty;
+  }
+  .reflect .body .attrib {
+    margin-top: 12px;
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow-sm);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    line-height: 1.55;
+  }
+  .reflect .body .attrib .when { color: var(--gold); }
+
+  /* ==========================================================
+     PAGE 9 — ACKNOWLEDGEMENTS / CLOSING
+  ========================================================== */
+  .ack-grid {
+    margin-top: clamp(22px, 4vw, 28px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 5vw, 36px);
+  }
+  @media (min-width: 760px) {
+    .ack-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .ack-block h3 {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .ack-block p {
+    font-family: "Newsreader", serif;
+    font-size: var(--t-body-sm);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 8px;
+    text-wrap: pretty;
+  }
+  .pallbearers {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+  }
+  @media (min-width: 480px) {
+    .pallbearers { grid-template-columns: 1fr 1fr; gap: 4px 22px; }
+  }
+  .pallbearers li {
+    list-style: none;
+    font-family: "Newsreader", serif;
+    font-size: var(--t-body);
+    color: var(--ink);
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--hairline);
+  }
+  .placeholder-name { color: var(--ink-faint); font-style: italic; }
+  .honorary { margin: 0; padding: 0; list-style: none; }
+  .honorary li {
+    font-family: "Newsreader", serif;
+    font-size: var(--t-body-sm);
+    color: var(--ink);
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--hairline);
+  }
+
+  .closing {
+    margin-top: clamp(28px, 5vw, 36px);
+    text-align: center;
+    padding: clamp(24px, 5vw, 30px) 0 0;
+    border-top: 1px solid var(--oxblood);
+  }
+  .closing .crest {
+    width: 24px; height: 24px;
+    border: 1px solid var(--oxblood);
+    transform: rotate(45deg);
+    margin: 0 auto 18px;
+    position: relative;
+  }
+  .closing .crest::after {
+    content: ""; position: absolute; inset: 4px;
+    background: var(--oxblood);
+  }
+  .closing p.benediction {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: clamp(17px, 4.2vw, 17pt);
+    line-height: 1.35;
+    color: var(--ink);
+    margin: 0;
+    text-wrap: pretty;
+  }
+  .closing p.signoff {
+    margin-top: 18px;
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ==========================================================
+     PAGE 10 — COLOPHON / ARRANGEMENTS
+     Refactored out of inline styles for the team.
+  ========================================================== */
+  .colophon-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 5vw, 48px);
+    margin-top: clamp(22px, 4vw, 28px);
+  }
+  @media (min-width: 760px) {
+    .colophon-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .colophon-title {
+    font-size: clamp(26px, 6vw, 30pt);
+  }
+  .colophon-lede {
+    font-family: "Newsreader", serif;
+    font-size: var(--t-lead);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-top: 16px;
+    text-wrap: pretty;
+  }
+  .colophon-section {
+    margin-top: clamp(24px, 4.5vw, 30px);
+  }
+  .colophon-eyebrow {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow-sm);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .colophon-org-name {
+    font-family: "Newsreader", serif;
+    font-size: var(--t-lead);
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0 0 0.4em;
+  }
+  .colophon-org-url {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-body-sm);
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    letter-spacing: 0.06em;
+  }
+  .colophon-call {
+    margin-top: clamp(24px, 4.5vw, 30px);
+    padding: 18px 22px;
+    border-left: 2px solid var(--oxblood);
+    background:
+      linear-gradient(180deg, rgba(155,42,34,0.08), rgba(0,0,0,0)),
+      var(--paper-deep);
+  }
+  .colophon-call .lede {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: clamp(15px, 3.7vw, 14pt);
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 8px 0 0;
+  }
+  .colophon-call .lede strong { font-style: normal; }
+
+  .colophon-funeral {
+    font-family: "Newsreader", serif;
+    font-size: var(--t-lead);
+    color: var(--ink);
+    margin: 0;
+    font-style: italic;
+    opacity: 0.7;
+  }
+
+  .colophon-foot {
+    text-align: center;
+    padding-top: clamp(24px, 5vw, 28px);
+    margin-top: clamp(28px, 5vw, 32px);
+    border-top: 1px solid var(--gold);
+  }
+  .colophon-foot .epitaph {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(20px, 5.2vw, 22pt);
+    color: var(--ink);
+    margin: 0;
+    text-wrap: balance;
+  }
+  .colophon-foot .epitaph-sub {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 14px 0 0;
+  }
+
+  /* ==========================================================
+     PRINT
+     The whole point: this still prints as a real program.
+     8.5×11, no shadows, one section per page.
+  ========================================================== */
+  @page { size: Letter portrait; margin: 0; }
+  @media print {
+    html, body { background: #fff; padding: 0; }
+    body { padding: 0; }
+    .doc { gap: 0; }
+    .page {
+      box-shadow: none;
+      page-break-after: always;
+      min-height: var(--page-h);
+      width: var(--page-w);
+      max-width: none;
+      padding: 0.85in;
+    }
+    .page:last-child { page-break-after: auto; }
+    .folio {
+      position: absolute;
+      bottom: 0.45in;
+      left: 0.85in;
+      right: 0.85in;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+    .cover .imprint {
+      position: absolute;
+      bottom: 0.5in;
+      left: 0.7in;
+      right: 0.7in;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+<!-- ====================================================== -->
+<!-- PAGE 1 — COVER                                          -->
+<!-- ====================================================== -->
+<section class="page cover" data-screen-label="01 Cover">
+  <div class="photo">
+    <img src="https://base44.app/api/apps/69d7dd5e015cd1aa45c3e283/files/mp/public/69d7dd5e015cd1aa45c3e283/63afb5266_aj_cover_mic.jpg" alt="Andrew Joseph Jr. addressing a rally" loading="eager" />
+    <div class="photo-caption">Andrew Joseph Jr. · Rapid Response Coordinator · Black Lives Matter Grassroots</div>
+  </div>
+  <div class="text-pane">
+    <div class="crest-mark" aria-hidden="true"></div>
+    <div class="in-memoriam">In Loving Memory</div>
+
+    <h1>
+      <span class="first">Andrew</span>
+      <span class="last">Joseph</span>
+      <span class="suffix">Jr.</span>
+    </h1>
+
+    <div class="dates">
+      <span class="dob">[Date of Birth]</span>
+      <span class="em">—</span>
+      <span class="dod">[Date of Passing]</span>
+    </div>
+
+    <div class="quote">
+      “Boots on the ground since day one.”
+      <span class="attrib">— His own words for his own work</span>
+    </div>
+
+    <div class="imprint">
+      <span>A Celebration of Life</span>
+      <span>Rise In Power</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- PAGE 2 — ORDER OF SERVICE                               -->
+<!-- ====================================================== -->
+<section class="page" data-screen-label="02 Order of Service">
+  <div class="page-header">
+    <div class="marque">A Celebration of Life · Andrew Joseph Jr.</div>
+    <div class="marque" style="color:var(--oxblood);">II</div>
+  </div>
+
+  <h2 class="page-title">Order of <em>Service</em></h2>
+  <div class="subhed">[Day, Month Date, Year] · [Time] · [Venue]</div>
+
+  <div class="service-grid">
+    <div class="service-row">
+      <div class="order">i · Processional</div>
+      <div class="item">Procession of Family &amp; Clergy</div>
+      <div class="by"></div>
+    </div>
+    <div class="service-row">
+      <div class="order">ii · Opening Hymn</div>
+      <div class="item placeholder"><span class="placeholder-name">[Selection]</span></div>
+      <div class="by"></div>
+    </div>
+    <div class="service-row">
+      <div class="order">iii · Invocation</div>
+      <div class="item">A Prayer of Gathering</div>
+      <div class="by placeholder">[Name of Clergy]</div>
+    </div>
+    <div class="service-row">
+      <div class="order">iv · Old Testament</div>
+      <div class="item">Scripture Reading <span class="note">Psalm 23</span></div>
+      <div class="by placeholder">[Reader]</div>
+    </div>
+    <div class="service-row">
+      <div class="order">v · New Testament</div>
+      <div class="item">Scripture Reading <span class="note">[Passage]</span></div>
+      <div class="by placeholder">[Reader]</div>
+    </div>
+    <div class="service-row">
+      <div class="order">vi · Prayer of Comfort</div>
+      <div class="item">For the Family</div>
+      <div class="by placeholder">[Name]</div>
+    </div>
+    <div class="service-row">
+      <div class="order">vii · Musical Selection</div>
+      <div class="item placeholder"><span class="placeholder-name">[Selection]</span></div>
+      <div class="by placeholder">[Performer]</div>
+    </div>
+    <div class="service-row">
+      <div class="order">viii · Obituary</div>
+      <div class="item">Reading of the Obituary <span class="note">read silently</span></div>
+      <div class="by"></div>
+    </div>
+    <div class="service-row">
+      <div class="order">ix · Acknowledgements</div>
+      <div class="item">&amp; Resolutions</div>
+      <div class="by placeholder">[Name]</div>
+    </div>
+    <div class="service-row">
+      <div class="order">x · Reflections</div>
+      <div class="item">From Friends, Family &amp; Comrades <span class="note">two minutes, please</span></div>
+      <div class="by"></div>
+    </div>
+    <div class="service-row">
+      <div class="order">xi · From the Movement</div>
+      <div class="item">Black Lives Matter Grassroots</div>
+      <div class="by"></div>
+    </div>
+    <div class="service-row">
+      <div class="order">xii · From the Foundation</div>
+      <div class="item">The Andrew Joseph Foundation</div>
+      <div class="by"></div>
+    </div>
+    <div class="service-row">
+      <div class="order">xiii · Musical Selection</div>
+      <div class="item placeholder"><span class="placeholder-name">[Selection]</span></div>
+      <div class="by placeholder">[Performer]</div>
+    </div>
+    <div class="service-row">
+      <div class="order">xiv · Eulogy</div>
+      <div class="item">A Word of Witness</div>
+      <div class="by placeholder">[Eulogist]</div>
+    </div>
+    <div class="service-row">
+      <div class="order">xv · Final Viewing</div>
+      <div class="item">&amp; Recessional</div>
+      <div class="by"></div>
+    </div>
+  </div>
+
+  <div class="service-foot">
+    <div>
+      <h4>Interment</h4>
+      <p class="placeholder">[Name of Cemetery]<br/>[City, State]</p>
+    </div>
+    <div>
+      <h4>Repast</h4>
+      <p class="placeholder">[Location]<br/>Immediately following the interment</p>
+    </div>
+  </div>
+
+  <div class="folio">
+    <span>Andrew Joseph Jr. · A Celebration of Life</span>
+    <span class="ornament">◆</span>
+    <span>II</span>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- PAGE 3 — OBITUARY                                       -->
+<!-- ====================================================== -->
+<section class="page" data-screen-label="03 Obituary">
+  <div class="page-header">
+    <div class="marque">A Celebration of Life · Andrew Joseph Jr.</div>
+    <div class="marque" style="color:var(--oxblood);">III</div>
+  </div>
+
+  <h2 class="page-title">Obituary <span class="ornament">◆</span></h2>
+  <div class="subhed">A Life of Service · 1970s — 2020s</div>
+
+  <div class="obit-grid">
+    <aside class="obit-side">
+      <div class="caption-pair">
+        <div class="portrait fist"><img src="https://base44.app/api/apps/69d7dd5e015cd1aa45c3e283/files/mp/public/69d7dd5e015cd1aa45c3e283/f6ca053b7_aj_fist.jpg" alt="At the Justice Studio" loading="lazy" /></div>
+        <div class="caption"><span class="num">01.</span> At the Justice Studio, on a night like every night since his son was taken — the fist held up first, the voice carrying everyone in the room.</div>
+      </div>
+      <div class="caption-pair">
+        <div class="portrait banner"><img src="https://base44.app/api/apps/69d7dd5e015cd1aa45c3e283/files/mp/public/69d7dd5e015cd1aa45c3e283/9b36b9eb3_aj_banner.jpg" alt="On the steps of a courthouse" loading="lazy" /></div>
+        <div class="caption"><span class="num">02.</span> On the steps of a courthouse, holding the banner that has become, in his hands, a kind of family heirloom.</div>
+      </div>
+    </aside>
+
+    <article class="obit-main body-prose">
+      <h2>A son of <em>New Orleans</em>. A father of the movement. A man who refused to let any child be invisible.</h2>
+      <p class="lead dropcap"><strong>Andrew Joseph Jr.</strong> was born in New Orleans, Louisiana, a proud son of the Crescent City raised in the Catholic faith and shaped by the close family bonds and rich cultural traditions of southern Louisiana.</p>
+      <p>He earned his Bachelor’s and Master’s degrees in Criminal Justice from Grambling State University. For more than two decades he devoted his career to youth advocacy and community organizing — serving as a lead assistant principal in alternative learning environments for adjudicated young people across the Southern Louisiana region. He was the kind of educator who walked alongside the children others had given up on, holding the line on their dignity and demanding that systems treat them like human beings.</p>
+      <p>After Hurricane Katrina, Andrew and his family relocated to Tampa, Florida, where he continued the work. He did not start over. He expanded.</p>
+
+      <div class="pull">
+        On February 7, 2014, he and his wife Deanna lost their only son, Andrew Joseph III, at the Florida State Fair.
+        <cite>The day a father became a movement.</cite>
+      </div>
+
+      <p>Out of that loss, Andrew and Deanna founded the <strong>Andrew Joseph Foundation — “AJ Soars”</strong> — a 501(c)(3) dedicated to children’s rights, child safety, and non-violent conflict resolution. He went on to serve as <strong>Rapid Response Coordinator for Black Lives Matter Grassroots</strong>, traveling across the country to stand with families harmed by police misconduct. In September 2022, a federal jury in the Middle District of Florida found the Hillsborough County Sheriff’s Office overwhelmingly responsible for AJ III’s death and awarded the family $15 million — a verdict that became a touchstone in the national fight to end qualified immunity.</p>
+      <p>He leaves to cherish his memory his devoted wife, <strong>Deanna Joseph</strong>; his beloved daughters, <strong>Deja Joseph</strong> and <strong>Lyric</strong>; and a host of family members, friends, comrades, and movement family. He was preceded in death by his son and namesake, Andrew Joseph III — whom he can now, finally, see again.</p>
+    </article>
+  </div>
+
+  <div class="folio">
+    <span>Obituary</span>
+    <span class="ornament">◆</span>
+    <span>III</span>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- PAGE 4 — TRIBUTE I                                      -->
+<!-- ====================================================== -->
+<section class="page" data-screen-label="04 Tribute I">
+  <div class="page-header">
+    <div class="marque">From Black Lives Matter Grassroots</div>
+    <div class="marque" style="color:var(--oxblood);">IV</div>
+  </div>
+
+  <h2 class="page-title">Rest Well, <em>Champion</em></h2>
+  <div class="subhed">A Tribute · Rapid Response Coordinator, BLM Grassroots</div>
+
+  <div class="tribute-hero">
+    <div>
+      <p class="big-quote">
+        The first thing you need to know about Andrew Joseph Jr. is that he had already
+        <span class="accent">done enough.</span>
+      </p>
+    </div>
+    <div class="body-prose">
+      <p class="dropcap">He had spent two decades in classrooms and juvenile justice courtrooms across Southern Louisiana. He had raised a family. He had survived a hurricane that took the city of New Orleans and pushed him to Tampa. He had given the kind of life of service that most people, by any measure, would call a career.</p>
+      <p>And then, on February 7, 2014, the system he had spent his life fighting against killed his only son.</p>
+    </div>
+  </div>
+
+  <div class="columns-2">
+    <div class="section">The decision to stay in the fight</div>
+    <p>Andrew Joseph III was fourteen years old. He had gone to Student Day at the Florida State Fair with friends. The Hillsborough County Sheriff’s Office decided that night to eject nearly 100 children from the fairgrounds. AJ III was one of them. He was detained without cause, transported away from where his ride was waiting, abandoned near Interstate 4, and — according to the family’s federal case — directed by a deputy to cross that highway to get home. He was struck and killed. No one ever called his parents.</p>
+    <p>Most people would have broken. Andrew Joseph Jr. did not break. He and Deanna built something instead, and they invited a movement in to build it with them.</p>
+    <p>It would have been understandable, even reasonable, for Andrew to walk away from the system after that. He had given the system his career, his discipline, his belief, and the system had taken his son. He did not walk away.</p>
+
+    <div class="section">Rapid response, the way he did it</div>
+    <p>In time, Andrew became Rapid Response Coordinator for BLM Grassroots. The title is bureaucratic. The work was not. Rapid response, the way Andrew did it, meant being on the next plane. It meant getting to Gulfport, Mississippi, where the family of fifteen-year-old Jaheim McMillan was reeling. It meant being in Minneapolis, at the Justice Studio with the comrades. It meant being at Delta State University with the banner unfurled because the banner had to be unfurled there too.</p>
+    <p>It meant taking a bereaved mother’s hand at the press conference and not letting go. It meant calling her the next week, and the week after, and the week after that. It meant being the person on the other end of the phone for parents who had just joined the worst club in America and had not yet figured out the language to describe what had happened to them.</p>
+    <p>He could do this because he was already in the club. He had the only credential that matters in this work: he knew. And he had decided, somewhere along the way, that knowing was a responsibility, not just a wound.</p>
+  </div>
+
+  <div class="folio">
+    <span>Rest Well, Champion · A Tribute</span>
+    <span class="ornament">◆</span>
+    <span>IV</span>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- PAGE 5 — TRIBUTE II                                     -->
+<!-- ====================================================== -->
+<section class="page" data-screen-label="05 Tribute II">
+  <div class="page-header">
+    <div class="marque">A Tribute · Continued</div>
+    <div class="marque" style="color:var(--oxblood);">V</div>
+  </div>
+
+  <h2 class="page-title">The <em>Verdict</em>, and what came after</h2>
+  <div class="subhed">September 22, 2022 · U.S. District Court, Middle District of Florida</div>
+
+  <div class="tribute-final">
+    <div>
+      <h3>“He was my best friend.”</h3>
+      <div class="body-prose">
+        <p>In September 2022, after more than six years of litigation, the Joseph family’s federal civil rights case finally went to trial in Tampa. On the witness stand, Andrew Joseph Jr. — a grown man, a national organizer who had stood in front of every kind of camera — said of his son, simply: <em>He was my best friend.</em></p>
+        <p>On September 22, 2022, a 10-person federal jury found the Hillsborough County Sheriff’s Office 90% responsible for AJ III’s death and awarded the family $15 million. Five days later, Black Lives Matter Grassroots, alongside 12 Justice families, issued a national call: pass the Ending Qualified Immunity Act, end the legal doctrine that had shielded AJ III’s killers from accountability for nearly a decade.</p>
+        <p>That fight is unfinished. So the boots stay on the ground.</p>
+      </div>
+
+      <div class="pull">
+        “Today we got vindication. Today we cleared his name. It ain’t gonna never bring him back. But it’s gonna send a message wide across this world.”
+        <cite>— Andrew Joseph Jr., the night of the verdict</cite>
+      </div>
+    </div>
+
+    <div>
+      <div class="col-img"><img src="https://base44.app/api/apps/69d7dd5e015cd1aa45c3e283/files/mp/public/69d7dd5e015cd1aa45c3e283/f27b7580e_aj_rally.jpg" alt="On the corner outside the fairgrounds" loading="lazy" /></div>
+      <div class="caption" style="margin-top:10px;"><span class="num">03.</span> On the corner outside the fairgrounds. Every year, in rain, cold, and the Florida heat. The Josephs never missed a year.</div>
+
+      <div class="section-label">What we lost. What we did not lose.</div>
+      <p class="closing-note">
+        What Black Lives Matter Grassroots lost is a champion. What BLM Grassroots did not lose is the work. There are children in fairgrounds and schools and patrol cars right now who need what Andrew Joseph Jr. gave. The boots stay on the ground because he showed us how to keep them there.
+      </p>
+    </div>
+  </div>
+
+  <div class="folio">
+    <span>The Verdict · A Tribute</span>
+    <span class="ornament">◆</span>
+    <span>V</span>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- PAGE 6 — TIMELINE                                       -->
+<!-- ====================================================== -->
+<section class="page" data-screen-label="06 Timeline">
+  <div class="page-header">
+    <div class="marque">A Life In Service</div>
+    <div class="marque" style="color:var(--oxblood);">VI</div>
+  </div>
+
+  <h2 class="page-title">A <em>Timeline</em></h2>
+  <div class="subhed">From the Crescent City to the corner outside the fairgrounds</div>
+
+  <div class="timeline">
+    <div class="tl-year">New Orleans</div>
+    <div class="tl-event">
+      <h3>Born in the Crescent City</h3>
+      <p>A native of New Orleans, raised in the family, faith, and cultural traditions of southern Louisiana.</p>
+    </div>
+
+    <div class="tl-year">Grambling</div>
+    <div class="tl-event">
+      <h3>Bachelor’s &amp; Master’s in Criminal Justice</h3>
+      <p>Grambling State University. Begins interning with legal groups serving youth and families in rural Louisiana.</p>
+    </div>
+
+    <div class="tl-year">Late ’90s—’00s</div>
+    <div class="tl-event">
+      <h3>Lead Assistant Principal · Alternative Schools</h3>
+      <p>Works with adjudicated youth across the Southern Louisiana region. Becomes a trusted voice on safe, conducive learning environments.</p>
+    </div>
+
+    <div class="tl-year">2005</div>
+    <div class="tl-event">
+      <h3>Katrina · Relocation to Tampa</h3>
+      <p>The Josephs leave New Orleans and settle in the Tampa Bay area. Andrew III plays football at Riverview Raiders Field in Brandon.</p>
+    </div>
+
+    <div class="tl-year">Feb. 7, 2014</div>
+    <div class="tl-event">
+      <h3>The Florida State Fair</h3>
+      <p>Andrew Joseph III, 14, is among nearly 100 minors ejected by Hillsborough County deputies. Directed across Interstate 4, he is struck and killed. His parents are never called.</p>
+    </div>
+
+    <div class="tl-year">2014–2015</div>
+    <div class="tl-event">
+      <h3>The Andrew Joseph Foundation · “AJ Soars”</h3>
+      <p>Andrew and Deanna found a 501(c)(3) dedicated to children’s rights, child safety, conflict resolution, and family support.</p>
+    </div>
+
+    <div class="tl-year">2015</div>
+    <div class="tl-event">
+      <h3>BLM Grassroots stands with the family</h3>
+      <p>Under the leadership of Dr. Melina Abdullah, the movement family begins walking with the Josephs.</p>
+    </div>
+
+    <div class="tl-year">2016</div>
+    <div class="tl-event">
+      <h3>Federal lawsuit filed</h3>
+      <p><em>Joseph v. Hillsborough County Sheriff’s Office</em>, with policy reforms following at the Fair, the Sheriff’s Office, and the school district.</p>
+    </div>
+
+    <div class="tl-year">July 12, 2020</div>
+    <div class="tl-event">
+      <h3>Riverwalk paver unveiled</h3>
+      <p>A 12″ × 12″ granite paver honoring AJ III is set on the Tampa Riverwalk.</p>
+    </div>
+
+    <div class="tl-year">Sept. 22, 2022</div>
+    <div class="tl-event">
+      <h3>The Verdict · $15 million</h3>
+      <p>A federal jury finds HCSO 90% responsible for AJ III’s death. Five days later, BLM Grassroots issues a national call to end qualified immunity.</p>
+    </div>
+
+    <div class="tl-year">Feb. 2024</div>
+    <div class="tl-event">
+      <h3>Ten years · The candlelight vigil</h3>
+      <p>At Partico Café in downtown Tampa, Andrew recommits: “We’ve been boots on the ground since day one.”</p>
+    </div>
+
+    <div class="tl-year">[Date]</div>
+    <div class="tl-event">
+      <h3>Rise In Power</h3>
+      <p>Andrew Joseph Jr. transitions, survived by his wife Deanna, his daughters Deja and Lyric, and an extended family of comrades and Justice families. He can finally see his son again.</p>
+    </div>
+  </div>
+
+  <div class="folio">
+    <span>A Timeline · A Life In Service</span>
+    <span class="ornament">◆</span>
+    <span>VI</span>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- PAGE 7 — SCRIPTURE                                      -->
+<!-- ====================================================== -->
+<section class="page scripture" data-screen-label="07 Scripture">
+  <div class="ornament-top">◆ ◆ ◆</div>
+  <div class="label">A Reading</div>
+  <h2>The Twenty-Third Psalm</h2>
+  <div class="citation">Psalm 23 · King James Version</div>
+
+  <div class="verse">
+    <div class="stanza">
+      The Lord is my shepherd; I shall not want.<br/>
+      He maketh me to lie down in green pastures:<br/>
+      he leadeth me beside the still waters.
+    </div>
+    <div class="stanza">
+      He restoreth my soul: he leadeth me<br/>
+      in the paths of righteousness for his name’s sake.
+    </div>
+    <div class="stanza">
+      Yea, though I walk through the valley of the shadow of death,<br/>
+      I will fear no evil: for thou art with me;<br/>
+      thy rod and thy staff they comfort me.
+    </div>
+    <div class="stanza">
+      Thou preparest a table before me<br/>
+      in the presence of mine enemies:<br/>
+      thou anointest my head with oil; my cup runneth over.
+    </div>
+    <div class="stanza">
+      Surely goodness and mercy shall follow me<br/>
+      all the days of my life:<br/>
+      and I will dwell in the house of the Lord for ever.
+    </div>
+  </div>
+
+  <div class="colophon">Amen</div>
+
+  <div class="folio">
+    <span>Scripture</span>
+    <span class="ornament">◆</span>
+    <span>VII</span>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- PAGE 8 — REFLECTIONS                                    -->
+<!-- ====================================================== -->
+<section class="page" data-screen-label="08 Reflections">
+  <div class="page-header">
+    <div class="marque">In His Own Words</div>
+    <div class="marque" style="color:var(--oxblood);">VIII</div>
+  </div>
+
+  <h2 class="page-title">Reflections <span class="ornament">◆</span></h2>
+  <div class="subhed">Four lines, in his voice, to carry forward</div>
+
+  <div class="reflections-stack">
+    <div class="reflect">
+      <div class="num">i.</div>
+      <div class="body">
+        <blockquote>“He was my best friend.”</blockquote>
+        <div class="attrib">Andrew Joseph Jr., of his son <span class="when">· Federal court, September 19, 2022</span></div>
+      </div>
+    </div>
+
+    <div class="reflect">
+      <div class="num">ii.</div>
+      <div class="body">
+        <blockquote>“We’ve been boots on the ground since day one.”</blockquote>
+        <div class="attrib">A rallying line, lived literally <span class="when">· From Tampa to Gulfport to the Twin Cities</span></div>
+      </div>
+    </div>
+
+    <div class="reflect">
+      <div class="num">iii.</div>
+      <div class="body">
+        <blockquote>“We’re building his legacy, one brick at a time.”</blockquote>
+        <div class="attrib">On the Andrew Joseph Foundation <span class="when">· “AJ Soars”</span></div>
+      </div>
+    </div>
+
+    <div class="reflect">
+      <div class="num">iv.</div>
+      <div class="body">
+        <blockquote>“Today we got vindication. Today we cleared his name. It ain’t gonna never bring him back. But it’s gonna send a message wide across this world.”</blockquote>
+        <div class="attrib">After the federal jury verdict <span class="when">· September 22, 2022</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="folio">
+    <span>Reflections · In His Own Words</span>
+    <span class="ornament">◆</span>
+    <span>VIII</span>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- PAGE 9 — ACKNOWLEDGEMENTS & CLOSING                     -->
+<!-- ====================================================== -->
+<section class="page" data-screen-label="09 Acknowledgements">
+  <div class="page-header">
+    <div class="marque">With Gratitude</div>
+    <div class="marque" style="color:var(--oxblood);">IX</div>
+  </div>
+
+  <h2 class="page-title">Acknowledgements <em>&amp; Honors</em></h2>
+  <div class="subhed">From the family of Andrew Joseph Jr.</div>
+
+  <div class="ack-grid">
+    <div class="ack-block">
+      <h3>A Word of Thanks</h3>
+      <p>The family of Andrew Joseph Jr. gratefully acknowledges every act of kindness shown during this time of bereavement. To the comrades of Black Lives Matter Grassroots, to the Justice families across this country, to the supporters of the Andrew Joseph Foundation, and to the friends, neighbors, and strangers who have called, prayed, fed, driven, sat with, and stood with this family — thank you.</p>
+      <p style="margin-top:14px;"><em>Your love is the proof of his work.</em></p>
+    </div>
+
+    <div class="ack-block">
+      <h3>Pallbearers</h3>
+      <ul class="pallbearers">
+        <li class="placeholder-name">[Name]</li>
+        <li class="placeholder-name">[Name]</li>
+        <li class="placeholder-name">[Name]</li>
+        <li class="placeholder-name">[Name]</li>
+        <li class="placeholder-name">[Name]</li>
+        <li class="placeholder-name">[Name]</li>
+      </ul>
+
+      <h3 style="margin-top:24px;">Honorary Pallbearers</h3>
+      <ul class="honorary">
+        <li>The Justice Families</li>
+        <li>BLM Grassroots · Rapid Response Team</li>
+        <li>The Andrew Joseph Foundation · Board &amp; Volunteers</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="closing">
+    <div class="crest" aria-hidden="true"></div>
+    <p class="benediction">
+      He cleared his son’s name. He moved the system.<br/>
+      He stood with the families. And he walked, every step, with Deanna by his side.
+    </p>
+    <p class="signoff">Rest well, champion · The boots stay on the ground</p>
+  </div>
+
+  <div class="folio">
+    <span>Acknowledgements · A Celebration of Life</span>
+    <span class="ornament">◆</span>
+    <span>IX</span>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- PAGE 10 — COLOPHON / ARRANGEMENTS                       -->
+<!-- ====================================================== -->
+<section class="page" data-screen-label="10 Colophon">
+  <div class="page-header">
+    <div class="marque">Arrangements &amp; Onward</div>
+    <div class="marque" style="color:var(--oxblood);">X</div>
+  </div>
+
+  <div class="colophon-grid">
+    <div>
+      <h2 class="page-title colophon-title">Carry the work <em>forward</em></h2>
+      <p class="colophon-lede">
+        The most fitting tribute to Andrew Joseph Jr. is the one he gave his life for: that no other child be made invisible, that no other parent receive the call he received, and that no badge in this country be shielded from the consequences of what it does.
+      </p>
+
+      <div class="colophon-section">
+        <div class="colophon-eyebrow">In his honor, support</div>
+        <p class="colophon-org-name">The Andrew Joseph Foundation</p>
+        <p class="colophon-org-url">andrewjosephfoundation.com</p>
+        <p class="colophon-org-name">Black Lives Matter Grassroots</p>
+        <p class="colophon-org-url">blmgrassroots.org</p>
+      </div>
+
+      <div class="colophon-call">
+        <div class="colophon-eyebrow">A Final Call</div>
+        <p class="lede">
+          Demand the passage of the<br/>
+          <strong>Ending Qualified Immunity Act.</strong>
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <div class="portrait paver" style="aspect-ratio: 3/4;"><img src="https://base44.app/api/apps/69d7dd5e015cd1aa45c3e283/files/mp/public/69d7dd5e015cd1aa45c3e283/a16ba1f1c_aj_paver.jpg" alt="Beside his son’s memorial paver" loading="lazy" /></div>
+      <div class="caption" style="margin-top:10px;"><span class="num">04.</span> Beside his son’s memorial — a name written, by his own hand, into a city that had to be made to remember.</div>
+
+      <div class="colophon-section">
+        <div class="colophon-eyebrow">Arrangements Entrusted To</div>
+        <p class="colophon-funeral">[Name of Funeral Home]<br/>[Address] · [City, State]<br/>[Phone]</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="colophon-foot">
+    <p class="epitaph">Rise In Power, Andrew.</p>
+    <p class="epitaph-sub">The boots stay on the ground</p>
+  </div>
+
+  <div class="folio">
+    <span>Arrangements · Onward</span>
+    <span class="ornament">◆</span>
+    <span>X</span>
+  </div>
+</section>
+
+</div>
+</body>
+</html>
