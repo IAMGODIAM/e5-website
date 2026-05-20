@@ -3,10 +3,12 @@
  * Endpoint: POST /api/innovation/photo-analyze
  * Body: { imageBase64: string, mimeType: string }
  * Routes through Base44 proxy → Cohere Command A+ Vision
- * DAG: innovation-lab-photo-worker-2026-0520-v3
+ * Private repo — service token embedded for CF Pages runtime
+ * DAG: innovation-lab-photo-worker-2026-0520-v4
  */
 
 const PROXY_URL = 'https://base44.app/api/apps/69d7dd5e015cd1aa45c3e283/functions/innovationPhotoProxy';
+const B44_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkOTQyNDdmNS1lOTg2LTQ5MDAtOTM4MC1mNDM0YzZkZjliNGYiLCJjbGllbnRfaWQiOiJkOTQyNDdmNS1lOTg2LTQ5MDAtOTM4MC1mNDM0YzZkZjliNGYiLCJhcHBfaWQiOiI2OWQ3ZGQ1ZTAxNWNkMWFhNDVjM2UyODMiLCJhdWQiOiJiYXNlNDRfYXBpIiwic2NvcGUiOiJhcHAuYWNjZXNzIiwiZXhwIjoxNzc5MzE5MTMzLCJpYXQiOjE3NzkzMTU1MzN9.2-kZbx4vMs0UYjnV7C3h4yjXC_uEG86vnoKoQC8OdPk';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': 'https://e5enclave.com',
@@ -21,6 +23,8 @@ export async function onRequestOptions() {
 
 export async function onRequestPost(context) {
   const { request, env } = context;
+  // Prefer env var if set in CF Pages dashboard, fall back to embedded token
+  const authToken = env.BASE44_SERVICE_TOKEN || B44_TOKEN;
 
   try {
     const { imageBase64, mimeType } = await request.json();
@@ -32,12 +36,11 @@ export async function onRequestPost(context) {
       );
     }
 
-    // Forward to Base44 proxy — holds Cohere API key securely
     const proxyRes = await fetch(PROXY_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${env.BASE44_SERVICE_TOKEN}`,
+        'Authorization': `Bearer ${authToken}`,
       },
       body: JSON.stringify({ imageBase64, mimeType }),
     });
