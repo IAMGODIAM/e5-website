@@ -1,36 +1,70 @@
 ---
-layout: memorial
+layout: null
 permalink: /libations/andrew-joseph-jr/memorial-program/
-title: "In Loving Memory — Andrew Joseph Jr."
-description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response Coordinator, Black Lives Matter Grassroots. Father. Educator. Advocate. Organizer."
 ---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>In Loving Memory — Andrew Joseph Jr.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0A0705" />
+<meta name="description" content="A Celebration of Life — Andrew Joseph Jr. Rapid Response Coordinator, Black Lives Matter Grassroots." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,300;1,6..72,400;1,6..72,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
 <style>
-:root {
-    /* warm near-black paper, ivory ink, burnished gold rules, restrained oxblood accent */
-    --paper:       #110D0A;
-    --paper-deep:  #1A1410;
-    --paper-elev:  #221A14;
-    --ink:         #ECE0C7;
-    --ink-soft:    #A89A7E;
-    --ink-faint:   #6E624B;
-    --rule:        #5A4B33;
-    --gold:        #B68B4E;   /* burnished, never bright */
-    --gold-deep:   #8C6633;
-    --oxblood:     #9B2A22;   /* his red — muted, present */
-    --oxblood-deep:#5F1812;
-    --hairline:    rgba(236, 224, 199, 0.14);
+  /* ==========================================================
+     TOKENS
+     The palette, hairlines, and the "paper" envelope.
+     Spacing tokens are fluid: they shrink on phones, settle on
+     desktop. The page dimensions only assert themselves when
+     a real page can fit (≥ 760px).
+  ========================================================== */
+  :root {
+    --paper:        #110D0A;
+    --paper-deep:   #1A1410;
+    --paper-elev:   #221A14;
+    --ink:          #ECE0C7;
+    --ink-soft:     #A89A7E;
+    --ink-faint:    #6E624B;
+    --rule:         #5A4B33;
+    --gold:         #B68B4E;
+    --gold-deep:    #8C6633;
+    --oxblood:      #9B2A22;
+    --oxblood-deep: #5F1812;
+    --hairline:        rgba(236, 224, 199, 0.14);
     --hairline-strong: rgba(236, 224, 199, 0.24);
-    --page-w:      8.5in;
-    --page-h:      11in;
-    --margin-x:    0.85in;
-    --margin-y:    0.85in;
+
+    /* Page geometry */
+    --page-w:    8.5in;
+    --page-h:    11in;
+
+    /* Fluid margins — phone → print */
+    --margin-x:  clamp(20px, 6vw, 0.85in);
+    --margin-y:  clamp(28px, 7vw, 0.85in);
+
+    /* Fluid type — a single curve we can tune from here */
+    --t-cover-first:  clamp(20px, 5.5vw, 28pt);
+    --t-cover-last:   clamp(44px, 12vw, 56pt);
+    --t-cover-suffix: clamp(20px, 5vw, 26pt);
+    --t-page-title:   clamp(28px, 7vw, 38pt);
+    --t-h2:           clamp(22px, 5.2vw, 21pt);
+    --t-h3:           clamp(18px, 4.4vw, 19pt);
+    --t-big-quote:    clamp(22px, 5.8vw, 26pt);
+    --t-script-h2:    clamp(28px, 7.4vw, 36pt);
+    --t-reflect:      clamp(18px, 4.6vw, 19pt);
+    --t-lead:         clamp(15px, 3.6vw, 13pt);
+    --t-body:         clamp(14.5px, 3.3vw, 11.5pt);
+    --t-body-sm:      clamp(14px, 3.1vw, 11pt);
+    --t-eyebrow:      clamp(10.5px, 2.4vw, 9.5pt);
+    --t-eyebrow-sm:   clamp(10px, 2.2vw, 8.5pt);
+    --t-folio:        clamp(10px, 2.1vw, 8pt);
+    --t-caption:      clamp(10.5px, 2.3vw, 8pt);
   }
 
-  * { box-sizing: border-box; }
+  *, *::before, *::after { box-sizing: border-box; }
+
   html, body { background: #050402; }
   body {
     margin: 0;
@@ -38,31 +72,46 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    padding: 36px 0;
+    padding: clamp(0px, 3vw, 36px) 0;
     background:
       radial-gradient(1200px 800px at 50% -10%, #0c0a08 0%, #050402 60%, #000 100%);
+    overflow-x: hidden;
   }
 
+  img { max-width: 100%; display: block; }
+
+  /* ==========================================================
+     DOCUMENT FRAME
+     Stack of "pages." On phones, full-width with breathing
+     room. On desktop, the 8.5×11 envelope returns with shadow.
+  ========================================================== */
   .doc {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 28px;
+    gap: clamp(12px, 3vw, 28px);
   }
 
   .page {
-    width: var(--page-w);
-    height: var(--page-h);
-    background:
-      linear-gradient(180deg, #131009 0%, #100B07 100%);
+    width: 100%;
+    max-width: var(--page-w);
+    background: linear-gradient(180deg, #131009 0%, #100B07 100%);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 24px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.025);
     padding: var(--margin-y) var(--margin-x);
     color: var(--ink);
   }
 
-  /* film grain — restrained, adds gravitas */
+  @media (min-width: 760px) {
+    .page {
+      min-height: var(--page-h);
+      box-shadow:
+        0 24px 80px rgba(0,0,0,0.7),
+        0 0 0 1px rgba(255,255,255,0.025);
+    }
+  }
+
+  /* Film grain — gravitas, at every size */
   .page::before {
     content: "";
     position: absolute; inset: 0;
@@ -74,7 +123,7 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
     pointer-events: none;
     opacity: 0.9;
   }
-  /* deckle/vignette */
+  /* Deckle vignette */
   .page::after {
     content: "";
     position: absolute; inset: 0;
@@ -83,36 +132,33 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
   }
   .page > * { position: relative; z-index: 1; }
 
-  /* Common type */
+  /* ==========================================================
+     SHARED TYPE PRIMITIVES
+  ========================================================== */
   .eyebrow {
     font-family: "DM Sans", sans-serif;
     font-weight: 500;
-    font-size: 9.5pt;
+    font-size: var(--t-eyebrow);
     letter-spacing: 0.32em;
     text-transform: uppercase;
     color: var(--gold);
   }
-  .folio {
-    position: absolute;
-    bottom: 0.45in;
-    left: var(--margin-x);
-    right: var(--margin-x);
-    display: flex;
-    justify-content: space-between;
-    font-family: "DM Sans", sans-serif;
-    font-size: 8pt;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
-  .folio .ornament { color: var(--oxblood); letter-spacing: 0.4em; }
 
   .hairline-rule { height: 1px; background: var(--hairline); border: 0; margin: 0; }
-  .gold-rule { height: 1px; background: var(--gold); border: 0; opacity: 0.85; }
+  .gold-rule    { height: 1px; background: var(--gold); border: 0; opacity: 0.85; }
 
-  /* drop cap */
-  .body-prose p { font-size: 11.5pt; line-height: 1.65; margin: 0 0 0.85em; color: var(--ink-soft); text-wrap: pretty; }
-  .body-prose p.lead { font-size: 13pt; line-height: 1.55; color: var(--ink); }
+  .body-prose p {
+    font-size: var(--t-body);
+    line-height: 1.65;
+    margin: 0 0 0.85em;
+    color: var(--ink-soft);
+    text-wrap: pretty;
+  }
+  .body-prose p.lead {
+    font-size: var(--t-lead);
+    line-height: 1.55;
+    color: var(--ink);
+  }
   .body-prose strong { color: var(--ink); font-weight: 600; }
   .body-prose .dropcap::first-letter {
     font-family: "Newsreader", serif;
@@ -125,17 +171,119 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
     line-height: 0.9;
   }
 
-  /* ========== Page 1 — Cover ========== */
+  /* ==========================================================
+     PAGE HEADER (used by Pages 2–10)
+  ========================================================== */
+  .page-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 14px;
+    margin-bottom: clamp(24px, 5vw, 38px);
+  }
+  .page-header .marque {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  @media (max-width: 480px) {
+    .page-header .marque:first-child {
+      flex: 1 1 auto;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  .page-title {
+    font-family: "Newsreader", serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: var(--t-page-title);
+    color: var(--ink);
+    margin: 0;
+    letter-spacing: -0.005em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+  .page-title em { color: var(--oxblood); font-weight: 400; }
+  .page-title .ornament {
+    color: var(--oxblood);
+    font-style: normal;
+    margin: 0 0.25em;
+    font-size: 0.55em;
+    vertical-align: 0.35em;
+  }
+  .subhed {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 8px;
+    text-wrap: balance;
+  }
+
+  /* ==========================================================
+     FOLIO (footer)
+     Mobile: static, at the bottom of the section.
+     Desktop: absolute, anchored to the printed-page bottom.
+  ========================================================== */
+  .folio {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-folio);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: clamp(32px, 6vw, 56px);
+    padding-top: 14px;
+    border-top: 1px solid var(--hairline);
+  }
+  .folio .ornament { color: var(--oxblood); letter-spacing: 0.4em; }
+
+  @media (min-width: 760px) {
+    .folio {
+      position: absolute;
+      bottom: 0.45in;
+      left: var(--margin-x);
+      right: var(--margin-x);
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+  }
+
+  /* ==========================================================
+     PAGE 1 — COVER
+     Mobile: photo stacks on top, text below.
+     Desktop: classic two-column editorial cover.
+  ========================================================== */
   .cover {
     padding: 0;
     background: #0A0705;
     display: grid;
-    grid-template-columns: 1.05fr 1fr;
+    grid-template-columns: 1fr;
   }
+  @media (min-width: 760px) {
+    .cover { grid-template-columns: 1.05fr 1fr; }
+  }
+
   .cover .photo {
     position: relative;
     background: #0c0a07;
     overflow: hidden;
+    aspect-ratio: 4 / 5;
+    min-height: 320px;
+  }
+  @media (min-width: 760px) {
+    .cover .photo { aspect-ratio: auto; min-height: 0; }
   }
   .cover .photo img {
     position: absolute; inset: 0;
@@ -149,154 +297,180 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
     position: absolute; inset: 0;
     background:
       linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.55) 100%),
-      linear-gradient(90deg, rgba(0,0,0,0) 70%, rgba(10,7,5,0.92) 100%),
       linear-gradient(180deg, rgba(95,24,18,0.08), rgba(0,0,0,0) 40%);
+  }
+  @media (min-width: 760px) {
+    /* Restore the right-side fade for the desktop two-column composition */
+    .cover .photo::after {
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.55) 100%),
+        linear-gradient(90deg, rgba(0,0,0,0) 70%, rgba(10,7,5,0.92) 100%),
+        linear-gradient(180deg, rgba(95,24,18,0.08), rgba(0,0,0,0) 40%);
+    }
   }
   .cover .photo-caption {
     position: absolute;
-    bottom: 24px; left: 26px; right: 26px;
-    color: rgba(236, 224, 199, 0.7);
+    bottom: clamp(14px, 3vw, 24px);
+    left: clamp(16px, 4vw, 26px);
+    right: clamp(16px, 4vw, 26px);
+    color: rgba(236, 224, 199, 0.75);
     font-family: "DM Sans", sans-serif;
-    font-size: 7.5pt;
+    font-size: var(--t-caption);
     letter-spacing: 0.22em;
     text-transform: uppercase;
+    z-index: 2;
+    text-wrap: balance;
   }
+
   .cover .text-pane {
-    padding: 0.95in 0.7in 0.7in;
+    padding: clamp(28px, 7vw, 0.95in) clamp(22px, 6vw, 0.7in) clamp(28px, 7vw, 0.7in);
     display: flex; flex-direction: column;
     position: relative;
     background: linear-gradient(180deg, #120E0A 0%, #0C0805 100%);
   }
-  .cover .crest {
+
+  .crest-mark {
     width: 26px; height: 26px;
     border: 1px solid var(--oxblood);
     transform: rotate(45deg);
     margin-bottom: 22px;
     position: relative;
+    flex-shrink: 0;
   }
-  .cover .crest::after {
+  .crest-mark::after {
     content: ""; position: absolute; inset: 5px;
     background: var(--oxblood);
   }
+
   .cover .in-memoriam {
     font-family: "DM Sans", sans-serif;
     font-weight: 500;
-    font-size: 10pt;
+    font-size: clamp(11px, 2.6vw, 10pt);
     letter-spacing: 0.5em;
     text-transform: uppercase;
     color: var(--gold);
-    margin-bottom: 0.65in;
+    margin-bottom: clamp(32px, 8vw, 0.65in);
   }
+
   .cover h1 {
     font-family: "Newsreader", serif;
     font-weight: 400;
-    font-size: 56pt;
+    font-size: var(--t-cover-last);
     line-height: 0.95;
     margin: 0;
     letter-spacing: -0.01em;
     color: var(--ink);
   }
-  .cover h1 .first { display: block; font-style: italic; font-weight: 300; font-size: 28pt; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.18em;}
-  .cover h1 .last  { display: block; font-weight: 500; color: var(--ink); }
-  .cover h1 .suffix { display: block; font-weight: 300; font-style: italic; font-size: 26pt; color: var(--oxblood); margin-top: 0.16em; letter-spacing: 0.02em;}
+  .cover h1 .first {
+    display: block;
+    font-style: italic;
+    font-weight: 300;
+    font-size: var(--t-cover-first);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.18em;
+  }
+  .cover h1 .last   { display: block; font-weight: 500; color: var(--ink); }
+  .cover h1 .suffix {
+    display: block;
+    font-weight: 300;
+    font-style: italic;
+    font-size: var(--t-cover-suffix);
+    color: var(--oxblood);
+    margin-top: 0.16em;
+    letter-spacing: 0.02em;
+  }
 
   .cover .dates {
-    margin-top: 0.55in;
+    margin-top: clamp(28px, 7vw, 0.55in);
     font-family: "Newsreader", serif;
     font-style: italic;
     font-weight: 300;
-    font-size: 13pt;
+    font-size: clamp(13px, 3.1vw, 13pt);
     color: var(--ink-soft);
     letter-spacing: 0.02em;
   }
   .cover .dates .em { color: var(--oxblood); margin: 0 0.45em; }
 
   .cover .quote {
-    margin-top: auto;
+    margin-top: clamp(32px, 7vw, auto);
     border-top: 1px solid var(--hairline-strong);
     padding-top: 18px;
     font-style: italic;
-    font-size: 13pt;
+    font-size: clamp(14px, 3.4vw, 13pt);
     line-height: 1.45;
     color: var(--ink);
+  }
+  @media (min-width: 760px) {
+    .cover .quote { margin-top: auto; }
   }
   .cover .quote .attrib {
     display: block;
     margin-top: 10px;
     font-style: normal;
     font-family: "DM Sans", sans-serif;
-    font-size: 8.5pt;
+    font-size: var(--t-eyebrow-sm);
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--ink-faint);
   }
+
   .cover .imprint {
-    position: absolute;
-    bottom: 0.5in; left: 0.7in; right: 0.7in;
-    display: flex; justify-content: space-between; align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-top: clamp(24px, 5vw, 36px);
+    padding-top: 14px;
+    border-top: 1px solid var(--hairline);
     font-family: "DM Sans", sans-serif;
-    font-size: 7.5pt;
+    font-size: var(--t-caption);
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--ink-faint);
   }
-
-  /* ========== Page 2 — Order of Service ========== */
-  .page-header {
-    display: flex; align-items: baseline; justify-content: space-between;
-    border-bottom: 1px solid var(--hairline);
-    padding-bottom: 14px;
-    margin-bottom: 38px;
-  }
-  .page-header .marque {
-    font-family: "DM Sans", sans-serif;
-    font-size: 9pt;
-    letter-spacing: 0.36em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
-  .page-title {
-    font-family: "Newsreader", serif;
-    font-weight: 400;
-    font-style: italic;
-    font-size: 38pt;
-    color: var(--ink);
-    margin: 0;
-    letter-spacing: -0.005em;
-  }
-  .page-title em { color: var(--oxblood); font-weight: 400; }
-  .page-title .ornament {
-    color: var(--oxblood);
-    font-style: normal;
-    margin: 0 0.25em;
-    font-size: 0.55em;
-    vertical-align: 0.35em;
-  }
-  .subhed {
-    font-family: "DM Sans", sans-serif;
-    font-size: 9pt;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-top: 6px;
+  @media (min-width: 760px) {
+    .cover .imprint {
+      position: absolute;
+      bottom: 0.5in;
+      left: 0.7in;
+      right: 0.7in;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
   }
 
+  /* ==========================================================
+     PAGE 2 — ORDER OF SERVICE
+     Mobile: each row stacks (order eyebrow → item → by).
+     Desktop: 3-column row with dotted leader.
+  ========================================================== */
   .service-grid {
-    margin-top: 28px;
+    margin-top: clamp(20px, 4vw, 28px);
     display: grid;
     grid-template-columns: 1fr;
     gap: 0;
   }
   .service-row {
     display: grid;
-    grid-template-columns: 2.6in 1fr auto;
+    grid-template-columns: 1fr;
+    gap: 4px;
     align-items: baseline;
-    padding: 12px 0;
+    padding: 14px 0;
     border-bottom: 1px dotted var(--hairline);
+  }
+  @media (min-width: 600px) {
+    .service-row {
+      grid-template-columns: 2.6in 1fr auto;
+      gap: 12px;
+      padding: 12px 0;
+    }
   }
   .service-row .order {
     font-family: "DM Sans", sans-serif;
-    font-size: 7.5pt;
+    font-size: var(--t-eyebrow-sm);
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--gold);
@@ -304,27 +478,42 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
   }
   .service-row .item {
     font-family: "Newsreader", serif;
-    font-size: 13pt;
+    font-size: var(--t-lead);
     color: var(--ink);
   }
-  .service-row .item .note { color: var(--ink-soft); font-style: italic; font-size: 11pt; margin-left: 8px; }
+  .service-row .item .note {
+    color: var(--ink-soft);
+    font-style: italic;
+    font-size: 0.86em;
+    margin-left: 8px;
+  }
   .service-row .by {
     font-family: "Newsreader", serif;
     font-style: italic;
-    font-size: 11pt;
+    font-size: var(--t-body-sm);
     color: var(--ink-soft);
-    text-align: right;
+  }
+  @media (min-width: 600px) {
+    .service-row .by { text-align: right; }
   }
   .service-row .by.placeholder { color: var(--gold); opacity: 0.55; }
+  .service-row .by:empty { display: none; }
+  @media (min-width: 600px) {
+    .service-row .by:empty { display: block; }
+  }
 
   .service-foot {
-    margin-top: 38px;
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 36px;
+    margin-top: clamp(28px, 5vw, 38px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 600px) {
+    .service-foot { grid-template-columns: 1fr 1fr; gap: 36px; }
   }
   .service-foot h4 {
     font-family: "DM Sans", sans-serif;
-    font-size: 8.5pt;
+    font-size: var(--t-eyebrow-sm);
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--gold);
@@ -332,25 +521,43 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
   }
   .service-foot p {
     font-family: "Newsreader", serif;
-    font-size: 12pt;
+    font-size: var(--t-body);
     line-height: 1.5;
     color: var(--ink);
     margin: 0;
   }
   .service-foot .placeholder { color: var(--ink-faint); font-style: italic; }
 
-  /* ========== Page 3 — Obituary ========== */
+  /* ==========================================================
+     PAGE 3 — OBITUARY
+     Mobile: photo, caption, photo, caption — then prose.
+     Desktop: portrait column + main column.
+  ========================================================== */
   .obit-grid {
     display: grid;
-    grid-template-columns: 2.8in 1fr;
-    gap: 36px;
-    margin-top: 32px;
-    height: calc(100% - 1.4in);
+    grid-template-columns: 1fr;
+    gap: clamp(22px, 4vw, 36px);
+    margin-top: clamp(22px, 4vw, 32px);
+  }
+  @media (min-width: 760px) {
+    .obit-grid {
+      grid-template-columns: 2.8in 1fr;
+    }
   }
   .obit-side {
-    display: flex; flex-direction: column;
-    gap: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    align-items: start;
   }
+  @media (min-width: 760px) {
+    .obit-side {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+  }
+
   .portrait {
     width: 100%;
     aspect-ratio: 3 / 4;
@@ -367,18 +574,26 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
   .portrait::after {
     content: "";
     position: absolute; inset: 0;
-    background:
-      linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.45) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.45) 100%);
   }
-  .portrait.fist img { object-position: 50% 25%; }
+  .portrait.fist img   { object-position: 50% 25%; }
   .portrait.banner img { object-position: 50% 28%; }
-  .portrait.paver img { object-position: 50% 20%; }
-  .portrait.rally img { object-position: 50% 30%; }
+  .portrait.paver img  { object-position: 50% 20%; }
+  .portrait.rally img  { object-position: 50% 30%; }
   .portrait.family { aspect-ratio: 4/3; }
   .portrait.family img { object-position: 50% 30%; }
+
+  .obit-side .caption-pair {
+    grid-column: span 1;
+  }
+  .obit-side .caption-pair .caption { margin-top: 8px; }
+  @media (min-width: 760px) {
+    .obit-side .caption-pair { grid-column: auto; }
+  }
+
   .caption {
     font-family: "DM Sans", sans-serif;
-    font-size: 8pt;
+    font-size: var(--t-caption);
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--ink-faint);
@@ -394,24 +609,25 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
   .obit-main h2 {
     font-family: "Newsreader", serif;
     font-weight: 500;
-    font-size: 21pt;
-    line-height: 1.1;
+    font-size: var(--t-h2);
+    line-height: 1.15;
     margin: 0 0 18px;
     color: var(--ink);
+    text-wrap: balance;
   }
   .obit-main h2 em { color: var(--oxblood); font-weight: 400; font-style: italic; }
 
   /* Pullquote */
   .pull {
-    margin: 20px 0;
-    padding: 18px 22px;
+    margin: clamp(18px, 3.5vw, 22px) 0;
+    padding: clamp(14px, 3vw, 18px) clamp(16px, 4vw, 22px);
     border-left: 2px solid var(--oxblood);
     background:
       linear-gradient(180deg, rgba(155,42,34,0.06) 0%, rgba(0,0,0,0) 100%),
       var(--paper-deep);
     font-family: "Newsreader", serif;
     font-style: italic;
-    font-size: 14pt;
+    font-size: clamp(15px, 3.6vw, 14pt);
     line-height: 1.45;
     color: var(--ink);
   }
@@ -420,42 +636,59 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
     margin-top: 10px;
     font-style: normal;
     font-family: "DM Sans", sans-serif;
-    font-size: 8.5pt;
+    font-size: var(--t-eyebrow-sm);
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--gold);
   }
 
-  /* ========== Tribute spreads ========== */
+  /* ==========================================================
+     PAGES 4 & 5 — TRIBUTE SPREADS
+  ========================================================== */
   .tribute-hero {
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 36px;
+    grid-template-columns: 1fr;
+    gap: clamp(22px, 4vw, 36px);
     align-items: start;
-    margin-top: 28px;
+    margin-top: clamp(22px, 4vw, 28px);
+  }
+  @media (min-width: 760px) {
+    .tribute-hero { grid-template-columns: 1fr 1.4fr; }
   }
   .tribute-hero .big-quote {
     font-family: "Newsreader", serif;
     font-style: italic;
     font-weight: 300;
-    font-size: 26pt;
+    font-size: var(--t-big-quote);
     line-height: 1.15;
     color: var(--ink);
     margin: 0;
+    text-wrap: balance;
   }
   .tribute-hero .big-quote .accent { color: var(--oxblood); }
 
   .columns-2 {
-    column-count: 2;
-    column-gap: 0.5in;
-    column-rule: 1px solid var(--hairline);
-    margin-top: 30px;
+    column-count: 1;
+    margin-top: clamp(22px, 4vw, 30px);
   }
-  .columns-2 p { font-size: 11pt; line-height: 1.6; color: var(--ink-soft); margin: 0 0 0.8em; text-wrap: pretty; }
-  .columns-2 p.lead { font-size: 12.5pt; color: var(--ink); }
+  @media (min-width: 760px) {
+    .columns-2 {
+      column-count: 2;
+      column-gap: 0.5in;
+      column-rule: 1px solid var(--hairline);
+    }
+  }
+  .columns-2 p {
+    font-size: var(--t-body-sm);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0 0 0.8em;
+    text-wrap: pretty;
+  }
+  .columns-2 p.lead { font-size: var(--t-lead); color: var(--ink); }
   .columns-2 .section {
     font-family: "DM Sans", sans-serif;
-    font-size: 8.5pt;
+    font-size: var(--t-eyebrow-sm);
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--gold);
@@ -472,88 +705,172 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
     line-height: 0.9;
   }
 
-  /* ========== Timeline page ========== */
-  .timeline {
-    margin-top: 30px;
+  .tribute-final {
+    margin-top: clamp(22px, 4vw, 28px);
     display: grid;
-    grid-template-columns: 1.4in 1fr;
-    gap: 0 24px;
+    grid-template-columns: 1fr;
+    gap: clamp(22px, 4vw, 36px);
+  }
+  @media (min-width: 760px) {
+    .tribute-final { grid-template-columns: 1fr 1fr; }
+  }
+  .tribute-final .col-img {
+    aspect-ratio: 4/5;
+    filter: contrast(1.04) saturate(0.78);
+    position: relative;
+    overflow: hidden;
+    background-color: #1b150c;
+  }
+  .tribute-final .col-img img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: 50% 20%;
+  }
+  .tribute-final .col-img::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 100%);
+  }
+  .tribute-final h3 {
+    font-family: "Newsreader", serif;
+    font-weight: 500;
+    font-size: var(--t-h3);
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  .tribute-final p {
+    font-family: "Newsreader", serif;
+    font-size: var(--t-body-sm);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0 0 0.8em;
+    text-wrap: pretty;
+  }
+  .tribute-final .section-label {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow-sm);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 22px 0 8px;
+  }
+  .tribute-final .closing-note {
+    font-family: "Newsreader", serif;
+    font-size: var(--t-body-sm);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  /* ==========================================================
+     PAGE 6 — TIMELINE
+     Mobile: each entry stacks (gold year eyebrow → event).
+     Desktop: 1.4in fixed left rail with a central hairline + diamond marker.
+  ========================================================== */
+  .timeline {
+    margin-top: clamp(24px, 5vw, 30px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
     position: relative;
   }
-  .timeline::before {
-    content: ""; position: absolute;
-    top: 8px; bottom: 8px;
-    left: 1.4in; width: 1px;
-    background: var(--hairline);
+  @media (min-width: 760px) {
+    .timeline {
+      grid-template-columns: 1.4in 1fr;
+      gap: 0 24px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 8px; bottom: 8px;
+      left: 1.4in; width: 1px;
+      background: var(--hairline);
+    }
   }
   .tl-year {
     font-family: "DM Sans", sans-serif;
     font-weight: 600;
-    font-size: 9pt;
+    font-size: var(--t-eyebrow);
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--gold);
-    padding-top: 14px;
-    padding-bottom: 14px;
-    text-align: right;
-    padding-right: 24px;
-    position: relative;
+    padding-top: 18px;
+    padding-bottom: 4px;
     border-top: 1px solid var(--hairline);
   }
-  .tl-year:first-child, .tl-year + .tl-year { border-top-color: transparent; }
+  @media (min-width: 760px) {
+    .tl-year {
+      padding: 14px 24px 14px 0;
+      text-align: right;
+      position: relative;
+    }
+    .tl-year:first-child, .tl-year + .tl-year { border-top-color: transparent; }
+  }
+
   .tl-event {
-    padding-top: 14px;
-    padding-bottom: 14px;
-    border-top: 1px solid var(--hairline);
+    padding-top: 6px;
+    padding-bottom: 18px;
     position: relative;
   }
-  .tl-event::before {
-    content: ""; position: absolute;
-    left: -28px; top: 22px;
-    width: 9px; height: 9px;
-    background: var(--oxblood);
-    transform: rotate(45deg);
-    box-shadow: 0 0 0 2px #0e0a07;
+  @media (min-width: 760px) {
+    .tl-event {
+      padding-top: 14px;
+      padding-bottom: 14px;
+      border-top: 1px solid var(--hairline);
+    }
+    .tl-event::before {
+      content: "";
+      position: absolute;
+      left: -28px; top: 22px;
+      width: 9px; height: 9px;
+      background: var(--oxblood);
+      transform: rotate(45deg);
+      box-shadow: 0 0 0 2px #0e0a07;
+    }
   }
   .tl-event h3 {
     font-family: "Newsreader", serif;
     font-weight: 500;
-    font-size: 13pt;
+    font-size: var(--t-lead);
     color: var(--ink);
     margin: 0 0 4px;
     line-height: 1.25;
   }
   .tl-event p {
     font-family: "Newsreader", serif;
-    font-size: 10.5pt;
+    font-size: var(--t-body-sm);
     line-height: 1.5;
     color: var(--ink-soft);
     margin: 0;
   }
 
-  /* ========== Scripture page ========== */
+  /* ==========================================================
+     PAGE 7 — SCRIPTURE
+     Mobile: flex column, centered, generous padding.
+     Desktop: absolutely centered inside the page envelope.
+  ========================================================== */
   .scripture {
-    padding: 0;
-    background:
-      radial-gradient(80% 60% at 50% 40%, #1A130C 0%, #0A0705 100%);
-    position: relative;
-  }
-  .scripture .center {
-    position: absolute; inset: 0;
-    padding: 1.2in 1.4in;
-    display: flex; flex-direction: column;
-    align-items: center; text-align: center;
+    padding: clamp(40px, 9vw, 1.2in) clamp(22px, 6vw, 1.4in);
+    background: radial-gradient(80% 60% at 50% 40%, #1A130C 0%, #0A0705 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     justify-content: center;
   }
   .scripture .ornament-top {
     color: var(--oxblood);
     letter-spacing: 1em;
-    font-size: 11pt;
-    margin-bottom: 30px;
+    font-size: clamp(11px, 2.6vw, 11pt);
+    margin-bottom: clamp(20px, 4vw, 30px);
   }
   .scripture .label {
     font-family: "DM Sans", sans-serif;
-    font-size: 9pt;
+    font-size: var(--t-eyebrow);
     letter-spacing: 0.4em;
     text-transform: uppercase;
     color: var(--gold);
@@ -563,61 +880,77 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
     font-family: "Newsreader", serif;
     font-weight: 400;
     font-style: italic;
-    font-size: 36pt;
+    font-size: var(--t-script-h2);
     color: var(--ink);
     margin: 0 0 6px;
+    text-wrap: balance;
+    line-height: 1.05;
   }
   .scripture .citation {
     font-family: "Newsreader", serif;
     font-style: italic;
-    font-size: 11pt;
+    font-size: var(--t-body-sm);
     color: var(--ink-soft);
-    margin-bottom: 36px;
+    margin-bottom: clamp(24px, 5vw, 36px);
   }
   .scripture .verse {
     font-family: "Newsreader", serif;
-    font-size: 14pt;
+    font-size: clamp(15px, 3.6vw, 14pt);
     line-height: 1.7;
     color: var(--ink);
     max-width: 4.6in;
+    text-wrap: pretty;
   }
   .scripture .verse .stanza { margin-bottom: 1em; }
   .scripture .colophon {
-    margin-top: 38px;
+    margin-top: clamp(28px, 5vw, 38px);
     font-family: "DM Sans", sans-serif;
-    font-size: 8pt;
+    font-size: var(--t-folio);
     letter-spacing: 0.4em;
     text-transform: uppercase;
     color: var(--gold);
   }
 
-  /* ========== Reflections page ========== */
+  /* ==========================================================
+     PAGE 8 — REFLECTIONS
+     Mobile: roman numeral becomes a smaller gold marker above each.
+     Desktop: numeral sits in its own 0.55in left column.
+  ========================================================== */
   .reflections-stack {
-    display: flex; flex-direction: column;
-    gap: 36px;
-    margin-top: 38px;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(28px, 5vw, 36px);
+    margin-top: clamp(28px, 5vw, 38px);
   }
   .reflect {
     display: grid;
-    grid-template-columns: 0.55in 1fr;
-    gap: 24px;
+    grid-template-columns: 1fr;
+    gap: 6px;
     align-items: start;
+  }
+  @media (min-width: 600px) {
+    .reflect {
+      grid-template-columns: 0.55in 1fr;
+      gap: 24px;
+    }
   }
   .reflect .num {
     font-family: "Newsreader", serif;
     font-style: italic;
     font-weight: 300;
-    font-size: 36pt;
+    font-size: clamp(28px, 6.5vw, 36pt);
     color: var(--oxblood);
     line-height: 0.9;
-    text-align: right;
     padding-top: 4px;
+  }
+  @media (min-width: 600px) {
+    .reflect .num { text-align: right; }
   }
   .reflect .body blockquote {
     font-family: "Newsreader", serif;
     font-weight: 400;
     font-style: italic;
-    font-size: 19pt;
+    font-size: var(--t-reflect);
     line-height: 1.35;
     color: var(--ink);
     margin: 0;
@@ -626,23 +959,29 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
   .reflect .body .attrib {
     margin-top: 12px;
     font-family: "DM Sans", sans-serif;
-    font-size: 8.5pt;
+    font-size: var(--t-eyebrow-sm);
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--ink-faint);
+    line-height: 1.55;
   }
   .reflect .body .attrib .when { color: var(--gold); }
 
-  /* ========== Acknowledgements / Closing ========== */
+  /* ==========================================================
+     PAGE 9 — ACKNOWLEDGEMENTS / CLOSING
+  ========================================================== */
   .ack-grid {
-    margin-top: 28px;
+    margin-top: clamp(22px, 4vw, 28px);
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 36px;
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 5vw, 36px);
+  }
+  @media (min-width: 760px) {
+    .ack-grid { grid-template-columns: 1fr 1fr; }
   }
   .ack-block h3 {
     font-family: "DM Sans", sans-serif;
-    font-size: 9pt;
+    font-size: var(--t-eyebrow);
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--gold);
@@ -650,33 +989,46 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
     padding-bottom: 8px;
     border-bottom: 1px solid var(--hairline);
   }
-  .ack-block p { font-family: "Newsreader", serif; font-size: 11pt; line-height: 1.55; color: var(--ink-soft); margin: 0 0 8px; text-wrap: pretty; }
-  .pallbearers { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+  .ack-block p {
+    font-family: "Newsreader", serif;
+    font-size: var(--t-body-sm);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 8px;
+    text-wrap: pretty;
+  }
+  .pallbearers {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+  }
+  @media (min-width: 480px) {
+    .pallbearers { grid-template-columns: 1fr 1fr; gap: 4px 22px; }
+  }
   .pallbearers li {
     list-style: none;
     font-family: "Newsreader", serif;
-    font-size: 12pt;
+    font-size: var(--t-body);
     color: var(--ink);
-    padding: 6px 0;
+    padding: 8px 0;
     border-bottom: 1px dotted var(--hairline);
   }
-  .pallbearers { padding: 0; margin: 0; }
   .placeholder-name { color: var(--ink-faint); font-style: italic; }
-  .honorary {
-    margin: 0; padding: 0; list-style: none;
-  }
+  .honorary { margin: 0; padding: 0; list-style: none; }
   .honorary li {
     font-family: "Newsreader", serif;
-    font-size: 11.5pt;
+    font-size: var(--t-body-sm);
     color: var(--ink);
-    padding: 6px 0;
+    padding: 8px 0;
     border-bottom: 1px dotted var(--hairline);
   }
 
   .closing {
-    margin-top: 36px;
+    margin-top: clamp(28px, 5vw, 36px);
     text-align: center;
-    padding: 30px 0 0;
+    padding: clamp(24px, 5vw, 30px) 0 0;
     border-top: 1px solid var(--oxblood);
   }
   .closing .crest {
@@ -693,7 +1045,7 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
   .closing p.benediction {
     font-family: "Newsreader", serif;
     font-style: italic;
-    font-size: 17pt;
+    font-size: clamp(17px, 4.2vw, 17pt);
     line-height: 1.35;
     color: var(--ink);
     margin: 0;
@@ -702,130 +1054,153 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
   .closing p.signoff {
     margin-top: 18px;
     font-family: "DM Sans", sans-serif;
-    font-size: 9pt;
+    font-size: var(--t-eyebrow);
     letter-spacing: 0.4em;
     text-transform: uppercase;
     color: var(--gold);
   }
 
-  /* ========== Tribute page 2 — quotebox + image ========== */
-  .tribute-final {
-    margin-top: 28px;
+  /* ==========================================================
+     PAGE 10 — COLOPHON / ARRANGEMENTS
+     Refactored out of inline styles for the team.
+  ========================================================== */
+  .colophon-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 36px;
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 5vw, 48px);
+    margin-top: clamp(22px, 4vw, 28px);
   }
-  .tribute-final .col-img {
-    aspect-ratio: 4/5;
-    filter: contrast(1.04) saturate(0.78);
-    position: relative;
-    overflow: hidden;
+  @media (min-width: 760px) {
+    .colophon-grid { grid-template-columns: 1fr 1fr; }
   }
-  .tribute-final .col-img img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: 50% 20%;
+  .colophon-title {
+    font-size: clamp(26px, 6vw, 30pt);
   }
-  .tribute-final .col-img::after {
-    content: "";
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 100%);
-  }
-  .tribute-final h3 {
+  .colophon-lede {
     font-family: "Newsreader", serif;
-    font-weight: 500;
-    font-size: 19pt;
-    line-height: 1.2;
-    color: var(--ink);
-    margin: 0 0 14px;
-  }
-  .tribute-final p {
-    font-family: "Newsreader", serif;
-    font-size: 11pt;
+    font-size: var(--t-lead);
     line-height: 1.6;
     color: var(--ink-soft);
-    margin: 0 0 0.8em;
+    margin-top: 16px;
     text-wrap: pretty;
   }
+  .colophon-section {
+    margin-top: clamp(24px, 4.5vw, 30px);
+  }
+  .colophon-eyebrow {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow-sm);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .colophon-org-name {
+    font-family: "Newsreader", serif;
+    font-size: var(--t-lead);
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0 0 0.4em;
+  }
+  .colophon-org-url {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-body-sm);
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    letter-spacing: 0.06em;
+  }
+  .colophon-call {
+    margin-top: clamp(24px, 4.5vw, 30px);
+    padding: 18px 22px;
+    border-left: 2px solid var(--oxblood);
+    background:
+      linear-gradient(180deg, rgba(155,42,34,0.08), rgba(0,0,0,0)),
+      var(--paper-deep);
+  }
+  .colophon-call .lede {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: clamp(15px, 3.7vw, 14pt);
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 8px 0 0;
+  }
+  .colophon-call .lede strong { font-style: normal; }
 
-  /* ===== print ===== */
+  .colophon-funeral {
+    font-family: "Newsreader", serif;
+    font-size: var(--t-lead);
+    color: var(--ink);
+    margin: 0;
+    font-style: italic;
+    opacity: 0.7;
+  }
+
+  .colophon-foot {
+    text-align: center;
+    padding-top: clamp(24px, 5vw, 28px);
+    margin-top: clamp(28px, 5vw, 32px);
+    border-top: 1px solid var(--gold);
+  }
+  .colophon-foot .epitaph {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(20px, 5.2vw, 22pt);
+    color: var(--ink);
+    margin: 0;
+    text-wrap: balance;
+  }
+  .colophon-foot .epitaph-sub {
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 14px 0 0;
+  }
+
+  /* ==========================================================
+     PRINT
+     The whole point: this still prints as a real program.
+     8.5×11, no shadows, one section per page.
+  ========================================================== */
   @page { size: Letter portrait; margin: 0; }
   @media print {
     html, body { background: #fff; padding: 0; }
+    body { padding: 0; }
     .doc { gap: 0; }
-    .page { box-shadow: none; page-break-after: always; }
+    .page {
+      box-shadow: none;
+      page-break-after: always;
+      min-height: var(--page-h);
+      width: var(--page-w);
+      max-width: none;
+      padding: 0.85in;
+    }
     .page:last-child { page-break-after: auto; }
+    .folio {
+      position: absolute;
+      bottom: 0.45in;
+      left: 0.85in;
+      right: 0.85in;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+    .cover .imprint {
+      position: absolute;
+      bottom: 0.5in;
+      left: 0.7in;
+      right: 0.7in;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
   }
-
-/* ── Print mode ── */
-@media print {
-  html, body { background: white !important; padding: 0 !important; }
-  .doc { gap: 0 !important; }
-  .page {
-    width: 8.5in !important; height: 11in !important;
-    page-break-after: always !important;
-    box-shadow: none !important; margin: 0 !important;
-  }
-  .page:last-child { page-break-after: auto !important; }
-  .prog-nav, .prog-actions { display: none !important; }
-}
-
-/* ── Utility nav & print button ── */
-.prog-nav {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 20px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  color: rgba(236,224,199,0.4);
-}
-.prog-nav a {
-  color: #B68B4E;
-  text-decoration: none;
-  transition: opacity 0.15s;
-}
-.prog-nav a:hover { opacity: 0.7; text-decoration: underline; }
-.prog-actions {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin: 0 0 36px;
-}
-.prog-btn {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #B68B4E;
-  background: transparent;
-  border: 1px solid rgba(182,139,78,0.45);
-  padding: 10px 26px;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  transition: background 0.15s;
-}
-.prog-btn:hover { background: rgba(182,139,78,0.1); }
 </style>
-
-<div class="prog-nav">
-  <a href="/libations/andrew-joseph-jr/">← Back to tribute page</a>
-  <span>·</span>
-  <span>Andrew Joseph Jr. &middot; A Celebration of Life &middot; 10 Pages</span>
-  <span>·</span>
-  <a href="/libations/">All Libations</a>
-</div>
-<div class="prog-actions">
-  <button class="prog-btn" onclick="window.print()">&#128438; Print / Save as PDF</button>
-  <a class="prog-btn" href="/libations/andrew-joseph-jr/">View Tribute Page</a>
-</div>
-
+</head>
+<body>
 <div class="doc">
 
 <!-- ====================================================== -->
@@ -833,11 +1208,11 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
 <!-- ====================================================== -->
 <section class="page cover" data-screen-label="01 Cover">
   <div class="photo">
-    <img src="/assets/libations/andrew-jr-memorial/andrew-smiling-mic.png" alt="Andrew Joseph Jr. addressing a rally" />
+    <img src="https://base44.app/api/apps/69d7dd5e015cd1aa45c3e283/files/mp/public/69d7dd5e015cd1aa45c3e283/63afb5266_aj_cover_mic.jpg" alt="Andrew Joseph Jr. addressing a rally" loading="eager" />
     <div class="photo-caption">Andrew Joseph Jr. · Rapid Response Coordinator · Black Lives Matter Grassroots</div>
   </div>
   <div class="text-pane">
-    <div class="crest" aria-hidden="true"></div>
+    <div class="crest-mark" aria-hidden="true"></div>
     <div class="in-memoriam">In Loving Memory</div>
 
     <h1>
@@ -986,10 +1361,14 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
 
   <div class="obit-grid">
     <aside class="obit-side">
-      <div class="portrait fist"><img src="/assets/libations/andrew-jr-memorial/andrew-fist-raised.png" alt="At the Justice Studio" /></div>
-      <div class="caption"><span class="num">01.</span> At the Justice Studio, on a night like every night since his son was taken — the fist held up first, the voice carrying everyone in the room.</div>
-      <div class="portrait banner"><img src="/assets/libations/andrew-jr-memorial/andrew-blm-banner.png" alt="On the steps of a courthouse" /></div>
-      <div class="caption"><span class="num">02.</span> On the steps of a courthouse, holding the banner that has become, in his hands, a kind of family heirloom.</div>
+      <div class="caption-pair">
+        <div class="portrait fist"><img src="https://base44.app/api/apps/69d7dd5e015cd1aa45c3e283/files/mp/public/69d7dd5e015cd1aa45c3e283/f6ca053b7_aj_fist.jpg" alt="At the Justice Studio" loading="lazy" /></div>
+        <div class="caption"><span class="num">01.</span> At the Justice Studio, on a night like every night since his son was taken — the fist held up first, the voice carrying everyone in the room.</div>
+      </div>
+      <div class="caption-pair">
+        <div class="portrait banner"><img src="https://base44.app/api/apps/69d7dd5e015cd1aa45c3e283/files/mp/public/69d7dd5e015cd1aa45c3e283/9b36b9eb3_aj_banner.jpg" alt="On the steps of a courthouse" loading="lazy" /></div>
+        <div class="caption"><span class="num">02.</span> On the steps of a courthouse, holding the banner that has become, in his hands, a kind of family heirloom.</div>
+      </div>
     </aside>
 
     <article class="obit-main body-prose">
@@ -1004,7 +1383,7 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
       </div>
 
       <p>Out of that loss, Andrew and Deanna founded the <strong>Andrew Joseph Foundation — “AJ Soars”</strong> — a 501(c)(3) dedicated to children’s rights, child safety, and non-violent conflict resolution. He went on to serve as <strong>Rapid Response Coordinator for Black Lives Matter Grassroots</strong>, traveling across the country to stand with families harmed by police misconduct. In September 2022, a federal jury in the Middle District of Florida found the Hillsborough County Sheriff’s Office overwhelmingly responsible for AJ III’s death and awarded the family $15 million — a verdict that became a touchstone in the national fight to end qualified immunity.</p>
-      <p>He leaves to cherish his memory his devoted wife, <strong>Deanna Joseph</strong>; his beloved daughter, <strong>Deja Joseph</strong>; and a host of family members, friends, comrades, and movement family. He was preceded in death by his son and namesake, Andrew Joseph III — whom he can now, finally, see again.</p>
+      <p>He leaves to cherish his memory his devoted wife, <strong>Deanna Joseph</strong>; his beloved daughters, <strong>Deja Joseph</strong> and <strong>Lyric</strong>; and a host of family members, friends, comrades, and movement family. He was preceded in death by his son and namesake, Andrew Joseph III — whom he can now, finally, see again.</p>
     </article>
   </div>
 
@@ -1087,15 +1466,13 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
     </div>
 
     <div>
-      <div class="col-img"><img src="/assets/libations/andrew-jr-memorial/andrew-smiling-mic.png" alt="On the corner outside the fairgrounds" /></div>
+      <div class="col-img"><img src="https://base44.app/api/apps/69d7dd5e015cd1aa45c3e283/files/mp/public/69d7dd5e015cd1aa45c3e283/f27b7580e_aj_rally.jpg" alt="On the corner outside the fairgrounds" loading="lazy" /></div>
       <div class="caption" style="margin-top:10px;"><span class="num">03.</span> On the corner outside the fairgrounds. Every year, in rain, cold, and the Florida heat. The Josephs never missed a year.</div>
 
-      <div style="margin-top:22px;">
-        <div class="section" style="font-family:'DM Sans';font-size:8.5pt;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">What we lost. What we did not lose.</div>
-        <p style="font-family:Newsreader; font-size:11pt; line-height:1.6; color:var(--ink-soft); margin:0; text-wrap:pretty;">
-          What Black Lives Matter Grassroots lost is a champion. What BLM Grassroots did not lose is the work. There are children in fairgrounds and schools and patrol cars right now who need what Andrew Joseph Jr. gave. The boots stay on the ground because he showed us how to keep them there.
-        </p>
-      </div>
+      <div class="section-label">What we lost. What we did not lose.</div>
+      <p class="closing-note">
+        What Black Lives Matter Grassroots lost is a champion. What BLM Grassroots did not lose is the work. There are children in fairgrounds and schools and patrol cars right now who need what Andrew Joseph Jr. gave. The boots stay on the ground because he showed us how to keep them there.
+      </p>
     </div>
   </div>
 
@@ -1188,7 +1565,7 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
     <div class="tl-year">[Date]</div>
     <div class="tl-event">
       <h3>Rise In Power</h3>
-      <p>Andrew Joseph Jr. transitions, survived by his wife Deanna, his daughter Deja, and an extended family of comrades and Justice families. He can finally see his son again.</p>
+      <p>Andrew Joseph Jr. transitions, survived by his wife Deanna, his daughters Deja and Lyric, and an extended family of comrades and Justice families. He can finally see his son again.</p>
     </div>
   </div>
 
@@ -1203,41 +1580,39 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
 <!-- PAGE 7 — SCRIPTURE                                      -->
 <!-- ====================================================== -->
 <section class="page scripture" data-screen-label="07 Scripture">
-  <div class="center">
-    <div class="ornament-top">◆ ◆ ◆</div>
-    <div class="label">A Reading</div>
-    <h2>The Twenty-Third Psalm</h2>
-    <div class="citation">Psalm 23 · King James Version</div>
+  <div class="ornament-top">◆ ◆ ◆</div>
+  <div class="label">A Reading</div>
+  <h2>The Twenty-Third Psalm</h2>
+  <div class="citation">Psalm 23 · King James Version</div>
 
-    <div class="verse">
-      <div class="stanza">
-        The Lord is my shepherd; I shall not want.<br/>
-        He maketh me to lie down in green pastures:<br/>
-        he leadeth me beside the still waters.
-      </div>
-      <div class="stanza">
-        He restoreth my soul: he leadeth me<br/>
-        in the paths of righteousness for his name’s sake.
-      </div>
-      <div class="stanza">
-        Yea, though I walk through the valley of the shadow of death,<br/>
-        I will fear no evil: for thou art with me;<br/>
-        thy rod and thy staff they comfort me.
-      </div>
-      <div class="stanza">
-        Thou preparest a table before me<br/>
-        in the presence of mine enemies:<br/>
-        thou anointest my head with oil; my cup runneth over.
-      </div>
-      <div class="stanza">
-        Surely goodness and mercy shall follow me<br/>
-        all the days of my life:<br/>
-        and I will dwell in the house of the Lord for ever.
-      </div>
+  <div class="verse">
+    <div class="stanza">
+      The Lord is my shepherd; I shall not want.<br/>
+      He maketh me to lie down in green pastures:<br/>
+      he leadeth me beside the still waters.
     </div>
-
-    <div class="colophon">Amen</div>
+    <div class="stanza">
+      He restoreth my soul: he leadeth me<br/>
+      in the paths of righteousness for his name’s sake.
+    </div>
+    <div class="stanza">
+      Yea, though I walk through the valley of the shadow of death,<br/>
+      I will fear no evil: for thou art with me;<br/>
+      thy rod and thy staff they comfort me.
+    </div>
+    <div class="stanza">
+      Thou preparest a table before me<br/>
+      in the presence of mine enemies:<br/>
+      thou anointest my head with oil; my cup runneth over.
+    </div>
+    <div class="stanza">
+      Surely goodness and mercy shall follow me<br/>
+      all the days of my life:<br/>
+      and I will dwell in the house of the Lord for ever.
+    </div>
   </div>
+
+  <div class="colophon">Amen</div>
 
   <div class="folio">
     <span>Scripture</span>
@@ -1358,55 +1733,49 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
 <!-- PAGE 10 — COLOPHON / ARRANGEMENTS                       -->
 <!-- ====================================================== -->
 <section class="page" data-screen-label="10 Colophon">
-  <div style="height:100%; display:flex; flex-direction:column;">
-    <div class="page-header">
-      <div class="marque">Arrangements &amp; Onward</div>
-      <div class="marque" style="color:var(--oxblood);">X</div>
-    </div>
+  <div class="page-header">
+    <div class="marque">Arrangements &amp; Onward</div>
+    <div class="marque" style="color:var(--oxblood);">X</div>
+  </div>
 
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 28px;">
-      <div>
-        <h2 class="page-title" style="font-size:30pt;">Carry the work <em>forward</em></h2>
-        <p style="font-family: Newsreader; font-size:12pt; line-height:1.6; color:var(--ink-soft); margin-top:16px; text-wrap:pretty;">
-          The most fitting tribute to Andrew Joseph Jr. is the one he gave his life for: that no other child be made invisible, that no other parent receive the call he received, and that no badge in this country be shielded from the consequences of what it does.
+  <div class="colophon-grid">
+    <div>
+      <h2 class="page-title colophon-title">Carry the work <em>forward</em></h2>
+      <p class="colophon-lede">
+        The most fitting tribute to Andrew Joseph Jr. is the one he gave his life for: that no other child be made invisible, that no other parent receive the call he received, and that no badge in this country be shielded from the consequences of what it does.
+      </p>
+
+      <div class="colophon-section">
+        <div class="colophon-eyebrow">In his honor, support</div>
+        <p class="colophon-org-name">The Andrew Joseph Foundation</p>
+        <p class="colophon-org-url">andrewjosephfoundation.com</p>
+        <p class="colophon-org-name">Black Lives Matter Grassroots</p>
+        <p class="colophon-org-url">blmgrassroots.org</p>
+      </div>
+
+      <div class="colophon-call">
+        <div class="colophon-eyebrow">A Final Call</div>
+        <p class="lede">
+          Demand the passage of the<br/>
+          <strong>Ending Qualified Immunity Act.</strong>
         </p>
-
-        <div style="margin-top:30px;">
-          <div style="font-family:'DM Sans'; font-size:8.5pt; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">In his honor, support</div>
-          <p style="font-family: Newsreader; font-size:13pt; line-height:1.45; color:var(--ink); margin: 0 0 0.4em;">The Andrew Joseph Foundation</p>
-          <p style="font-family: 'DM Sans'; font-size:10pt; color:var(--ink-soft); margin: 0 0 1em; letter-spacing: 0.06em;">andrewjosephfoundation.com</p>
-          <p style="font-family: Newsreader; font-size:13pt; line-height:1.45; color:var(--ink); margin: 0 0 0.4em;">Black Lives Matter Grassroots</p>
-          <p style="font-family: 'DM Sans'; font-size:10pt; color:var(--ink-soft); margin: 0; letter-spacing: 0.06em;">blmgrassroots.org</p>
-        </div>
-
-        <div style="margin-top:30px; padding: 18px 22px; border-left: 2px solid var(--oxblood); background: linear-gradient(180deg, rgba(155,42,34,0.08), rgba(0,0,0,0)), var(--paper-deep);">
-          <div style="font-family:'DM Sans'; font-size:8.5pt; letter-spacing:.28em; text-transform:uppercase; color:var(--gold);">A Final Call</div>
-          <p style="font-family: Newsreader; font-style:italic; font-size:14pt; line-height:1.4; color:var(--ink); margin: 8px 0 0;">
-            Demand the passage of the<br/>
-            <strong style="font-style:normal;">Ending Qualified Immunity Act.</strong>
-          </p>
-        </div>
-      </div>
-
-      <div>
-        <div class="portrait paver" style="aspect-ratio: 3/4;"><img src="/assets/libations/andrew-jr-memorial/family-courthouse.png" alt="Beside his son’s memorial paver" /></div>
-        <div class="caption" style="margin-top:10px;"><span class="num">04.</span> Beside his son’s memorial — a name written, by his own hand, into a city that had to be made to remember.</div>
-
-        <div style="margin-top:30px;">
-          <div style="font-family:'DM Sans'; font-size:8.5pt; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Arrangements Entrusted To</div>
-          <p style="font-family: Newsreader; font-size:13pt; color:var(--ink); margin: 0; font-style: italic; opacity: 0.7;">[Name of Funeral Home]<br/>[Address] · [City, State]<br/>[Phone]</p>
-        </div>
       </div>
     </div>
 
-    <div style="margin-top:auto; text-align:center; padding-top: 28px; border-top: 1px solid var(--gold);">
-      <p style="font-family: Newsreader; font-style: italic; font-weight: 300; font-size: 22pt; color: var(--ink); margin: 0;">
-        Rise In Power, Andrew.
-      </p>
-      <p style="font-family:'DM Sans'; font-size:9pt; letter-spacing:.4em; text-transform:uppercase; color:var(--gold); margin: 14px 0 0;">
-        The boots stay on the ground
-      </p>
+    <div>
+      <div class="portrait paver" style="aspect-ratio: 3/4;"><img src="https://base44.app/api/apps/69d7dd5e015cd1aa45c3e283/files/mp/public/69d7dd5e015cd1aa45c3e283/a16ba1f1c_aj_paver.jpg" alt="Beside his son’s memorial paver" loading="lazy" /></div>
+      <div class="caption" style="margin-top:10px;"><span class="num">04.</span> Beside his son’s memorial — a name written, by his own hand, into a city that had to be made to remember.</div>
+
+      <div class="colophon-section">
+        <div class="colophon-eyebrow">Arrangements Entrusted To</div>
+        <p class="colophon-funeral">[Name of Funeral Home]<br/>[Address] · [City, State]<br/>[Phone]</p>
+      </div>
     </div>
+  </div>
+
+  <div class="colophon-foot">
+    <p class="epitaph">Rise In Power, Andrew.</p>
+    <p class="epitaph-sub">The boots stay on the ground</p>
   </div>
 
   <div class="folio">
@@ -1417,9 +1786,5 @@ description: "A Celebration of the Life of Andrew Joseph Jr. — Rapid Response 
 </section>
 
 </div>
-
-<div class="prog-nav" style="margin-top:32px; padding-bottom:32px;">
-  <a href="/libations/andrew-joseph-jr/">← Back to tribute page</a>
-  <span>&middot;</span>
-  <a href="/libations/">All Libations</a>
-</div>
+</body>
+</html>
