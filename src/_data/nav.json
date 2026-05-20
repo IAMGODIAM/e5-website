@@ -1,35 +1,91 @@
 {
   "primary": [
-    { "label": "Home", "url": "/" },
     {
-      "label": "About", "url": "/about/",
+      "label": "Home",
+      "url": "/"
+    },
+    {
+      "label": "About",
+      "url": "/about/",
       "children": [
-        { "label": "Our Mission", "url": "/#mission" },
-        { "label": "Pillars", "url": "/#pillars" },
-        { "label": "Doctrine", "url": "/doctrine/" },
-        { "label": "Governance", "url": "/governance/" }
+        {
+          "label": "Our Mission",
+          "url": "/#mission"
+        },
+        {
+          "label": "Pillars",
+          "url": "/#pillars"
+        },
+        {
+          "label": "Doctrine",
+          "url": "/doctrine/"
+        },
+        {
+          "label": "Governance",
+          "url": "/governance/"
+        }
       ]
     },
     {
-      "label": "Programs", "url": "/programs/",
+      "label": "Programs",
+      "url": "/programs/",
       "children": [
-        { "label": "McCartney Academy", "url": "/programs/" },
-        { "label": "FarmBlock", "url": "/farmblock/" },
-        { "label": "Black Dragons Initiative", "url": "/black-dragons-initiative/" },
-        { "label": "Restitution 246", "url": "/restitution-246/" }
+        {
+          "label": "McCartney Academy",
+          "url": "/programs/"
+        },
+        {
+          "label": "FarmBlock",
+          "url": "/farmblock/"
+        },
+        {
+          "label": "Black Dragons Initiative",
+          "url": "/black-dragons-initiative/"
+        },
+        {
+          "label": "Restitution 246",
+          "url": "/restitution-246/"
+        }
       ]
     },
-    { "label": "Coalition", "url": "/coalition/" },
     {
-      "label": "Justice", "url": "/justice/",
+      "label": "Coalition",
+      "url": "/coalition/"
+    },
+    {
+      "label": "Justice",
+      "url": "/justice/",
       "children": [
-        { "label": "Justice Support", "url": "/justice/" },
-        { "label": "Karmelo Anthony", "url": "/justice/karmelo-anthony/" },
-        { "label": "Libations", "url": "/libations/" }
+        {
+          "label": "Justice Support",
+          "url": "/justice/"
+        },
+        {
+          "label": "Karmelo Anthony",
+          "url": "/justice/karmelo-anthony/"
+        },
+        {
+          "label": "Libations",
+          "url": "/libations/"
+        }
       ]
     },
-    { "label": "Dispatches", "url": "/blog/" },
-    { "label": "Store", "url": "/store/" },
-    { "label": "Donate", "url": "/donate/", "cta": true }
+    {
+      "label": "Dispatches",
+      "url": "/blog/"
+    },
+    {
+      "label": "Lab",
+      "url": "/innovation-lab/"
+    },
+    {
+      "label": "Store",
+      "url": "/store/"
+    },
+    {
+      "label": "Donate",
+      "url": "/donate/",
+      "cta": true
+    }
   ]
 }
