@@ -1316,6 +1316,16 @@ description: "Karmelo Anthony is a 17-year-old honor student who defended himsel
           </div>
 
           <div class="field full">
+            <label class="f-label" for="needs_lodging">Do you require lodging support? <span class="hint">(optional)</span></label>
+            <div class="segmented" id="lodging_seg">
+              <input type="hidden" id="needs_lodging" value="No" />
+              <div class="opt active" data-value="No" data-seg="lodging">No — I have lodging</div>
+              <div class="opt" data-value="Yes — I need lodging" data-seg="lodging">Yes — I need lodging</div>
+              <div class="opt" data-value="I can offer lodging" data-seg="lodging">I can host others</div>
+            </div>
+          </div>
+
+          <div class="field full">
             <label class="f-label" for="skills_to_offer">Skills or Resources You Can Offer <span class="hint">(optional)</span></label>
             <input class="f-input" type="text" id="skills_to_offer" name="skills_to_offer" placeholder="Legal background, media, organizing, transportation, prayer, food…" />
           </div>
@@ -1412,6 +1422,19 @@ description: "Karmelo Anthony is a 17-year-old honor student who defended himsel
   })();
 
   (function(){
+    const seg=document.getElementById('lodging_seg');
+    const hidden=document.getElementById('needs_lodging');
+    if(!seg||!hidden)return;
+    seg.querySelectorAll('.opt').forEach(opt=>{
+      opt.addEventListener('click',()=>{
+        seg.querySelectorAll('.opt').forEach(o=>o.classList.remove('active'));
+        opt.classList.add('active');
+        hidden.value=opt.dataset.value;
+      });
+    });
+  })();
+
+  (function(){
     const ENDPOINT='https://sue-app-e73f9f1e.base44.app/functions/karmeloSignup';
     const form=document.getElementById('signupForm');
     const btn=document.getElementById('submitBtn');
@@ -1430,7 +1453,7 @@ description: "Karmelo Anthony is a 17-year-old honor student who defended himsel
         phone:v('phone'),city:v('city'),state:v('state').toUpperCase(),
         zip:'',commitment_type:v('commitment_type'),availability:v('availability'),
         can_travel:document.getElementById('can_travel').checked,
-        skills_to_offer:v('skills_to_offer'),message:v('message'),
+        needs_lodging:v('needs_lodging'),skills_to_offer:v('skills_to_offer'),message:v('message'),
         source:'e5enclave-justice-karmelo'
       };
       try{
