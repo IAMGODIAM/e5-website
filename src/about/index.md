@@ -63,11 +63,15 @@ The structure of the harm is the structure of the remedy.
 
 ## Our Founder
 
-**Israel Lee Armstead** — Chairman & Founder, E5 Enclave Incorporated.
+**[Israel Lee Armstead →](/about/israel/)** — President & Founder, E5 Enclave Incorporated.
 
-Born and raised in Liberty City, Miami. Graduate of Charles R. Drew K-8 (2001) and Miami Northwestern Senior High (2005). Former General Councilor and Candidacy Member, Urantia Book Fellowship. Executive Director, E5 Enclave Incorporated.
+Born and raised in Liberty City, Miami. Graduate of Charles R. Drew K-8 (2001) and Miami Northwestern Senior High (2005). Twenty years of executive leadership across luxury automotive sales, hospitality management, commercial insurance underwriting, and national presidential campaign finance — before founding the institution the lineage has always needed and never had.
+
+Former elected General Councilor and current Candidacy Member, Urantia Book Fellowship. National Director of Finance, West | Abdullah 2024 Independent Presidential Campaign. Founder and President, E5 Enclave Incorporated (EIN 99-3822441).
 
 The McCartney Academy at Charles R. Drew is named in honor of Ralph McCartney — Israel's grand-uncle, a Liberty City elder who served on the Miami-Dade County Public Schools board committee and worked as a security guard at Charles R. Drew K-8 during Israel's years there. The Enclave carries that lineage forward.
+
+**[Read the Full Founder Biography →](/about/israel/)**
 
 **[View the Founder's Forensic Genealogy Case File →](/about/forensic-genealogy/)**
 
