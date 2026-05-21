@@ -20,6 +20,12 @@ schema:
   programType: Private Academy
 ---
 
+<div class="tldr-block" style="background:rgba(201,168,76,0.08);border-left:3px solid #c9a84c;padding:14px 20px;margin:0 0 24px;font-family:Georgia,serif;font-size:14px;line-height:1.7;color:#f0ece0;">
+  <strong style="font-family:monospace;font-size:10px;letter-spacing:2px;color:#8a6f30;display:block;margin-bottom:6px;">SUMMARY</strong>
+  The McCartney Academy is E5 Enclave's Black-centered K-12 education initiative in Liberty City, Miami — honoring the legacy of Ralph McCartney with rigorous academics, cultural grounding, and pathways from the neighborhood to the boardroom.
+</div>
+
+
 <p class="first">McCartney Academy is the long horizon of the Enclave's Educational work — a lineage-centered private K–12 institution named in honor of Ralph McCartney, a Liberty City community elder, oral historian, and veteran of decades of displacement resistance whose life of service was honored on the floor of the United States Congress by Congresswoman Carrie Meek. The Academy is the long horizon by design. Schools are not built in budget cycles. They are built in <em>generations.</em></p>
 
 ---
