@@ -62,6 +62,10 @@
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","{{ site.gtm2Id }}");</script>
 {% endif %}
 
+{# ── Plausible Analytics — privacy-first, alongside GA4 + Ad Grant (zero conflict) ── #}
+{# GA4/GTM handle Ad Grant conversions. Plausible handles clean traffic intelligence.  #}
+<script defer data-domain="e5enclave.com" src="https://plausible.io/js/script.js"></script>
+
 {# ── TASK 8: Organization Schema (homepage only) ── #}
 {% if page.url == "/" or isHome %}
 <script type="application/ld+json">
