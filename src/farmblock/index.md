@@ -17,6 +17,12 @@ schema:
   programPrerequisites: Liberty City residents and Coalition members eligible; no prior experience required
 ---
 
+<div class="tldr-block" style="background:rgba(201,168,76,0.08);border-left:3px solid #c9a84c;padding:14px 20px;margin:0 0 24px;font-family:Georgia,serif;font-size:14px;line-height:1.7;color:#f0ece0;">
+  <strong style="font-family:monospace;font-size:10px;letter-spacing:2px;color:#8a6f30;display:block;margin-bottom:6px;">SUMMARY</strong>
+  FarmBlock is E5 Enclave's urban agriculture and food sovereignty program in Liberty City, Miami — combining cooperative farming, USDA-aligned workforce development, and the FDI food desert dataset to build Black land stewardship and economic self-determination.
+</div>
+
+
 <p class="first">FarmBlock is E5 Enclave's flagship Environmental program — a cooperative urban farming platform combining food production, workforce training, and agricultural technology in Liberty City, Miami. FarmBlock turns vacant land into sovereign food infrastructure. It turns food deserts into food systems. It turns community members into farmers, technologists, and cooperative owners.</p>
 
 ---
