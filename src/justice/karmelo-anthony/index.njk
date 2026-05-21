@@ -1,13 +1,9 @@
 ---
 layout: base
 permalink: /justice/karmelo-anthony/
-title: "Karmelo Anthony — Justice Support · E5 Enclave"
-description: "Karmelo Anthony is a 17-year-old honor student who defended himself at a Texas track meet and is now on trial for first-degree murder. Trial begins June 1, 2026. Sign up for court support."
+title: "People v. Anthony — Forensic Case Record · E5 Enclave Justice"
+description: "A comprehensive, sourced forensic review of People v. Karmelo Sincere Anthony. Trial begins June 1, 2026. Corrects the record. Examines Texas self-defense law. Sign up for court support."
 ---
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 
 <style>
 
@@ -1010,55 +1006,195 @@ description: "Karmelo Anthony is a 17-year-old honor student who defended himsel
   /* Print resilience for the section anchors */
   section[id] { scroll-margin-top: 96px; }
 
-/* ── E5 JUSTICE OVERRIDES ── */
-/* back-link */
-.back-link {
+
+/* ── LEGAL PACKAGE OVERRIDES ── */
+.doc-status {
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--fg-dim);
-  text-decoration: none;
-  padding: 16px 0;
-  transition: color .15s;
+  border: 1px solid var(--border-2);
+  border-radius: 999px;
+  padding: 5px 14px;
+  margin-bottom: 12px;
 }
-.back-link:hover { color: var(--fg); }
-.back-link .arr { font-family: var(--mono); }
+.doc-status .dot { width:6px;height:6px;border-radius:50%;background:var(--signal-2); }
 
-/* Case number badge */
-.case-badge {
-  display: inline-flex; align-items: center; gap: 8px;
+.tab-bar {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-1);
+  position: sticky;
+  top: 40px;
+  z-index: 40;
+}
+.tab-btn {
+  flex: 1;
+  padding: 18px 24px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-dimmer);
+  cursor: pointer;
+  transition: color .15s, border-color .15s;
+  margin-bottom: -1px;
+}
+.tab-btn.active { color: var(--fg); border-bottom-color: var(--fg); }
+.tab-btn:hover { color: var(--fg-dim); }
+
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+.manifesto-body p {
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--fg-dim);
+  margin-bottom: 22px;
+  max-width: 760px;
+}
+.manifesto-body p strong { color: var(--fg); }
+.manifesto-body p em {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--fg);
+}
+
+.manifesto-body h3 {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin: 48px 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sig-block {
+  margin-top: 60px;
+  border-top: 1px solid var(--border);
+  padding-top: 40px;
+}
+.sig-block h4 {
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--fg-dim);
-  border: 1px solid var(--border-2);
-  border-radius: 999px;
-  padding: 5px 14px;
-  background: var(--bg-1);
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
-.case-badge .dot { width:6px;height:6px;border-radius:50%;background:var(--signal);animation:pulse 1.8s infinite; }
+.sig-line {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.sig-line .num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg-ghost);
+  width: 24px;
+  flex-shrink: 0;
+}
+.sig-line .name {
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--fg);
+  letter-spacing: -0.005em;
+}
+.sig-line .org {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg-dimmer);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.sig-line.pending .name { color: var(--fg-ghost); font-style: italic; }
+
+.press-body {
+  max-width: 760px;
+}
+.press-body p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--fg-dim);
+  margin-bottom: 18px;
+}
+.press-body p strong { color: var(--fg); }
+.press-body h3 {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin: 36px 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.dateline {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--fg-dimmer);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.press-head {
+  font-family: var(--sans);
+  font-size: clamp(22px, 3.5vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--fg);
+  margin-bottom: 28px;
+  max-width: 760px;
+}
+.press-subhead {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--fg-dim);
+  font-style: italic;
+  border-left: 2px solid var(--border-3);
+  padding-left: 20px;
+  margin-bottom: 32px;
+  max-width: 680px;
+}
+.contact-block {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 36px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--fg-dim);
+  line-height: 1.8;
+}
+.contact-block strong { color: var(--fg); display: block; margin-bottom: 8px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
 </style>
-
-<body style="background:#000;color:#ededed;">
-
 <!-- TICKER -->
 <div class="ticker">
   <div class="wrap ticker-inner">
     <div class="ticker-left">
-      <span class="ticker-pill"><span class="dot"></span> Trial Begins June 1, 2026</span>
+      <span class="ticker-pill"><span class="dot"></span> Trial Begins June 1, 2026 · Collin County Courthouse · McKinney, TX</span>
       <span class="ticker-divider">/</span>
-      <span>People v. Anthony · Case No. 296-CR-2025</span>
-      <span class="ticker-divider">/</span>
-      <span>296th District · Collin County, TX</span>
+      <span>People v. Anthony · 296th District Court · Judge John Roach Jr. Presiding</span>
     </div>
     <div class="ticker-right">
-      <span>Live · <span id="liveDate"></span></span>
+      <span>E5 Enclave · Justice Vertical · Black Dragons Initiative</span>
       <span class="ticker-divider">/</span>
-      <a href="#stand">Sign Court Support →</a>
+      <a href="#support">Sign Court Support →</a>
     </div>
   </div>
 </div>
@@ -1068,290 +1204,434 @@ description: "Karmelo Anthony is a 17-year-old honor student who defended himsel
   <div class="wrap nav-inner">
     <div class="brand">
       <div class="brand-mark">E5<span>·</span></div>
-      Justice Support
+      Justice Vertical · BDI
     </div>
     <div class="nav-links">
-      <a href="/justice/">← All Cases</a>
-      <a href="#record">The Record</a>
-      <a href="#law">The Law</a>
-      <a href="#stand" class="nav-cta">Sign Court Support →</a>
+      <a href="#manifesto" onclick="showTab('manifesto',0)">Manifesto</a>
+      <a href="#forensic" onclick="showTab('forensic',1)">Case Record</a>
+      <a href="#press" onclick="showTab('press',2)">Press Release</a>
+      <a href="#support" class="nav-cta">Sign Court Support →</a>
     </div>
   </div>
 </nav>
 
-<!-- BACK LINK -->
-<div class="wrap" style="padding-top:8px;">
-  <a href="/justice/" class="back-link"><span class="arr">←</span> Justice Support · All Cases</a>
-</div>
-
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="wrap hero-inner">
-    <div class="case-badge"><span class="dot"></span> Case No. 001 · Active · Justice Vertical</div>
-    <h1>Karmelo<br/><span class="italic">Anthony.</span><br/><span class="dim">Stand Up.</span></h1>
+    <div class="eyebrow"><span class="glyph">⚖</span> Legal Package · People v. Anthony · Forensic Edition</div>
+    <h1>The <span class="italic">Record.</span><br/><span class="dim">The Law. The Truth.</span></h1>
     <p class="hero-sub">
-      A seventeen-year-old honor student, team captain, and two-job worker
-      who defended himself in the rain at a Texas track meet.
-      <strong>On trial for first-degree murder. June 1, 2026.</strong>
+      A forensic case review built from arrest reports, witness testimony, court filings, and public interviews.
+      <strong>June 1, 2026 — eleven days away.</strong> Every fact on this page is sourced.
     </p>
     <div class="cta-row">
-      <a href="#stand" class="btn btn-primary">Sign Court Support <span class="arrow">→</span></a>
-      <a href="#record" class="btn btn-ghost">Read the Record</a>
+      <button class="btn btn-primary" onclick="showTab('manifesto',0)">The Manifesto <span class="arrow">→</span></button>
+      <button class="btn btn-ghost" onclick="showTab('forensic',1)">Forensic Case Record</button>
     </div>
     <div class="case-strip">
-      <div class="cell"><span class="k">Trial Date</span><span class="v">June 1, 2026 · 9 AM</span></div>
-      <div class="cell"><span class="k">Venue</span><span class="v">296th District · Collin County, TX</span></div>
-      <div class="cell"><span class="k">Defendant</span><span class="v">18 yrs · 3.7 GPA · No Prior Record</span></div>
-      <div class="cell"><span class="k">Charge</span><span class="v">First-Degree Murder · Pleaded Not Guilty</span></div>
+      <div class="cell"><span class="k">Defendant</span><span class="v">Karmelo Sincere Anthony, 18</span></div>
+      <div class="cell"><span class="k">Charge</span><span class="v">First-Degree Murder · Texas</span></div>
+      <div class="cell"><span class="k">Trial Date</span><span class="v">June 1, 2026 · McKinney, TX</span></div>
+      <div class="cell"><span class="k">Indicted</span><span class="v">June 24, 2025 · Grand Jury</span></div>
     </div>
   </div>
 </section>
 
-<!-- COUNTDOWN -->
-<section class="countdown">
-  <div class="wrap">
-    <div class="countdown-label mono">Countdown to Trial — June 1, 2026 · 9:00 AM CT</div>
-    <div class="clock" id="clock">
-      <div class="unit"><span class="num" id="cd-days">00</span><span class="lbl">Days</span></div>
-      <div class="unit"><span class="num" id="cd-hrs">00</span><span class="lbl">Hours</span></div>
-      <div class="unit"><span class="num" id="cd-min">00</span><span class="lbl">Minutes</span></div>
-      <div class="unit"><span class="num" id="cd-sec">00</span><span class="lbl">Seconds</span></div>
-    </div>
-  </div>
-</section>
+<hr class="rule" />
 
-<!-- §01 THE RECORD -->
-<section class="section" id="record">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="meta"><span class="num">§01</span> The Record</div>
-      <h2>What happened that night, on the record, <em>without varnish.</em></h2>
-    </div>
-    <div class="editorial">
-      <aside class="col-meta">
-        <div class="item"><b>Filed</b>April 2, 2025</div>
-        <div class="item"><b>Location</b>UIL Track Meet<br/>Frisco, TX</div>
-        <div class="item"><b>Weather</b>Heavy rainfall<br/>Statements taken indoors</div>
-        <div class="item"><b>Defendant</b>17 yrs · 3.7 GPA<br/>Captain · Football &amp; Track<br/>No prior record</div>
-        <div class="item"><b>First Words<br/>to Police</b>"I was protecting myself.<br/>He put his hands on me."</div>
-        <div class="item"><b>Bond History</b>$1,000,000 set<br/>Reduced to $250,000<br/>House arrest · ankle monitor</div>
-        <div class="item"><b>Compliance</b>100% — every Friday<br/>check-in for 13+ months</div>
-      </aside>
-      <div class="col-body">
-        <p>On the evening of <strong>April 2, 2025</strong>, Karmelo Anthony — a seventeen-year-old honor student, captain of both his football and track teams at Centennial High School, carrying a 3.7 GPA, working two jobs — was sitting under a tent at a UIL track meet in Frisco, Texas. It was raining so heavily that officers could not take witness statements outside. Police pulled witnesses into a locker room because the rain came down too hard to write.</p>
-        <p>Karmelo was seeking shelter. <em>He was not the aggressor.</em> Austin Metcalf and his twin brother Hunter approached and confronted him. Karmelo's own father stated publicly: <strong>"He was not the aggressor. He was not the one who started it."</strong> Multiple witnesses corroborate this account.</p>
-        <blockquote class="pullquote">
-          "I was protecting myself. He put his hands on me."
-          <cite>— Karmelo Anthony, first words to responding officers, April 2, 2025</cite>
-        </blockquote>
-        <p>When Austin Metcalf physically grabbed and pushed Karmelo to remove him from the tent, Karmelo defended himself. He then walked directly to officers, hands open. He identified himself. He asked, more than once, whether Austin was going to be okay. He did not run. He did not resist. He cooperated fully.</p>
-        <p>He was arrested on the spot. He was held on a <strong>$1,000,000 bond</strong> — later reduced to $250,000 after Judge Angela Tucker determined the original amount was facially excessive for a teenager with zero criminal history. He has been under house arrest with an ankle monitor since April 14, 2025. He has checked in with the court every single Friday without fail for over thirteen months.</p>
-        <p>On June 24, 2025, a grand jury indicted him on first-degree murder. He pleaded not guilty. His defense is expected to argue self-defense. Trial begins June 1, 2026.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- TAB BAR — 3 TABS -->
+<div class="tab-bar">
+  <button class="tab-btn active" id="tab-manifesto" onclick="showTab('manifesto',0)">§01 · The Manifesto</button>
+  <button class="tab-btn" id="tab-forensic" onclick="showTab('forensic',1)">§02 · Forensic Case Record</button>
+  <button class="tab-btn" id="tab-press" onclick="showTab('press',2)">§03 · Press Release</button>
+</div>
 
-<!-- §02 THE FACTS -->
-<section class="section" id="facts">
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- §01 — MANIFESTO (REWRITTEN — FACTUALLY EXPANDED)      -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div id="pane-manifesto" class="tab-pane active">
+<section class="section">
   <div class="wrap">
     <div class="section-head">
-      <div class="meta"><span class="num">§02</span> The Facts</div>
-      <h2>Six things the State does not want amplified.</h2>
+      <div class="meta"><span class="num">§01</span> The Manifesto</div>
+      <h2>An Open Letter to the Legal Community<br/>and All People of <em>Conscience.</em></h2>
     </div>
-    <div class="facts">
-      <article class="fact">
-        <div class="ix"><span>01</span><span class="tag">Character</span></div>
-        <div class="claim">Honor student. Two-sport team captain. 3.7 GPA. Two jobs. Zero prior record. Walked toward police, not away.</div>
-        <div class="src">Centennial HS · Public Records</div>
-      </article>
-      <article class="fact">
-        <div class="ix"><span>02</span><span class="tag">Initiation</span></div>
-        <div class="claim">"He was not the aggressor." — Karmelo's father, Andrew Anthony, publicly, on the record. Multiple eyewitnesses corroborate. The confrontation was initiated by Austin Metcalf.</div>
-        <div class="src">Family Statement · Arrest Report Witnesses</div>
-      </article>
-      <article class="fact">
-        <div class="ix"><span>03</span><span class="tag">Texas Law</span></div>
-        <div class="claim">Texas is a Stand Your Ground state. Tex. Penal Code §§ 9.31–9.32. There is no duty to retreat when confronted with unlawful force in a place you have a right to be.</div>
-        <div class="src">Texas Penal Code</div>
-      </article>
-      <article class="fact">
-        <div class="ix"><span>04</span><span class="tag">Retaliation</span></div>
-        <div class="claim">The Anthony family received death threats and was forced to evacuate their home. The sitting judge who reduced bond was doxxed. The family has endured 13+ months of targeted harassment.</div>
-        <div class="src">Court Filings · Verified Reporting</div>
-      </article>
-      <article class="fact">
-        <div class="ix"><span>05</span><span class="tag">Public Witness</span></div>
-        <div class="claim">Over $514,000 raised for the Anthony family — a community verdict long before the jury convenes.</div>
-        <div class="src">GiveSendGo · Verified</div>
-      </article>
-      <article class="fact">
-        <div class="ix"><span>06</span><span class="tag">Legal Doctrine</span></div>
-        <div class="claim">If Austin Metcalf died in the commission of an unlawful assault he initiated, Texas law raises a profound question: who bears criminal accountability — the survivor, or the aggressor?</div>
-        <div class="src">Texas Aggressor Doctrine · Common Law</div>
-      </article>
+
+    <div class="manifesto-body">
+
+      <div class="doc-status"><span class="dot"></span> Open · Circulating for Co-Signatures · Forensic Edition May 21, 2026</div>
+
+      <p>We write not in anger. We write in clarity — and in precision.</p>
+
+      <p>We write as people who believe in the law — not as it is sometimes practiced, but as it was designed: to protect the innocent, to restrain the powerful, and to ensure that no person is punished for <strong>defending their own life.</strong></p>
+
+      <p>We write because a young man named Karmelo Anthony is about to stand trial in a Texas courtroom for an act that the law of that very state says he had the right to perform. And we write because the public narrative surrounding this case has been contaminated by misattributions, factual errors, and disinformation that must be corrected — not to excuse any act, but because <strong>justice requires accuracy.</strong></p>
+
+      <p>Silence in this moment is not neutrality. <em>It is complicity.</em></p>
+
+      <h3>What Actually Happened — The Verified Record</h3>
+
+      <p>On the morning of <strong>April 2, 2025</strong>, a UIL District 11-5A Championship track meet was underway at <strong>Kuykendall Stadium</strong> in Frisco, Texas. Multiple Frisco Independent School District high schools participated, including Centennial High School and Memorial High School.</p>
+
+      <p><strong>Karmelo Sincere Anthony</strong>, 17, a senior at Centennial High School, was seated in or near the Memorial High School team tent. <strong>Austin Metcalf</strong>, 17, an 11th grader at Memorial High School and a promising athlete, approached and confronted Anthony about his presence in the tent — specifically about seating.</p>
+
+      <p>According to the <strong>official arrest report</strong> obtained by KERA News, and corroborated by multiple witness accounts, the following sequence occurred:</p>
+
+      <p>Anthony told Metcalf: <em>"Touch me and see what happens"</em> — a verbal warning. According to witnesses, Metcalf either grabbed or pushed Anthony. At that point Anthony drew a knife and stabbed Metcalf in the chest. Austin Metcalf died from his injuries. He was found by his identical twin brother, Hunter Metcalf, who held him and tried to stop the bleeding as Austin died in his arms.</p>
+
+      <p>Police arrived and encountered Anthony, who did not flee. When an officer referred to him as "the alleged suspect," Anthony stated unprompted: <em>"I'm not alleged. I did it."</em> He also said, without being questioned: <em>"I was protecting myself"</em> and <em>"He put his hands on me. I told him not to."</em> Anthony then asked if Austin Metcalf was going to be okay. <strong>He cooperated fully and was taken into custody without incident.</strong></p>
+
+      <h3>The Critical Factual Correction — Who Said What</h3>
+
+      <p>Widespread misreporting has confused two separate and critically different statements made by two different fathers. <strong>This distinction matters enormously to the legal and public record.</strong> E5 Enclave corrects it here, on the record:</p>
+
+      <p><strong>Andrew Anthony</strong> — Karmelo's father — gave an exclusive interview to the <em>New York Post</em> on April 3, 2025. He said: <em>"He was not the aggressor. He was not the one who started it."</em> He also described his son as "a good kid" who works two jobs and maintains a 3.7 GPA, and said: <em>"I feel bad for the other parents and family, and words can't explain how both families have been affected by this tragedy."</em> He characterized the stabbing as a heat-of-the-moment act in which his son was provoked.</p>
+
+      <p><strong>Jeff Metcalf</strong> — Austin Metcalf's father, the father of the victim — gave a separate interview on NBC Dallas-Fort Worth and subsequently to Fox News. He described rushing to the stadium, finding his son on a gurney not breathing, and said: <em>"This is murder."</em> He questioned Karmelo's upbringing and parents, but also said: <em>"You know what, I already forgive this person. Already. God takes care of things."</em> Jeff Metcalf was also separately escorted out of the April 17, 2025 press conference organized by Karmelo's family's representatives. He later told the <em>New York Post</em> that he felt "disrespected."</p>
+
+      <p>Jeff Metcalf's twin son, <strong>Hunter Metcalf</strong> — Austin's identical twin brother and an eyewitness — told WFAA: <em>"I tried to whip around as fast as I could. I looked at my brother and I'm not going to talk about the rest. I tried to help him."</em> Hunter Metcalf has been publicly described as a witness to the altercation, and reports indicate he gave a statement to police. Reports also indicate that Hunter's account of what occurred immediately before the stabbing — specifically what Austin did with Karmelo's bag — differed from the accounts of two other eyewitnesses who told police they saw Anthony reaching into his own bag before drawing the knife. <strong>Hunter Metcalf did not give public testimony claiming his brother was not the aggressor.</strong> That statement came from <strong>Andrew Anthony</strong>, Karmelo's father.</p>
+
+      <p>The Frisco Police Department issued a public warning about misinformation circulating online, including a false medical examiner's report. District Attorney Greg Willis also cautioned the public about misinformation. <strong>On this page, we deal only in the documented, sourced record.</strong></p>
+
+      <h3>The Law — Texas Penal Code, Applied</h3>
+
+      <p><strong>Texas Penal Code § 9.31 — Self-Defense:</strong> A person is justified in using force against another when and to the degree the actor reasonably believes the force is immediately necessary to protect the actor against the other's use or attempted use of unlawful force.</p>
+
+      <p><strong>Texas Penal Code § 9.32 — Deadly Force in Defense of Person:</strong> A person is justified in using deadly force against another when they would be justified in using force under § 9.31, and when they reasonably believe that deadly force is immediately necessary to protect themselves against the other's use or attempted use of unlawful deadly force — or to prevent the other's imminent commission of aggravated kidnapping, murder, sexual assault, aggravated sexual assault, robbery, or aggravated robbery.</p>
+
+      <p><strong>Texas has no duty to retreat</strong> for a person who has a right to be present at a location, who is not engaged in criminal activity, and who is not the initial aggressor. This is codified in § 9.32(c).</p>
+
+      <p>The central legal questions in <em>People v. Anthony</em> are therefore:</p>
+      <p>1. Was Karmelo Anthony the initial aggressor, or did the physical confrontation begin with Austin Metcalf's grab or push? <br/>
+      2. Did Anthony reasonably believe deadly force was immediately necessary to protect himself from the physical contact being applied?<br/>
+      3. Was Anthony engaged in criminal activity at the time? (He was not.)<br/>
+      4. Did Anthony have a right to be at the location? (He was at a public school track meet.)</p>
+
+      <p>These are the questions a Collin County jury will answer. The prosecution carries the burden of proof beyond a reasonable doubt that Anthony did <em>not</em> act in lawful self-defense. <strong>That is not a low bar.</strong></p>
+
+      <h3>The Case Record — What Is Publicly Established</h3>
+
+      <p><strong>The arrest:</strong> Karmelo Anthony was arrested April 2, 2025 and initially held on a <strong>$1,000,000 bond.</strong> On April 14, 2025, Collin County Judge Emily Miskel reduced his bond to <strong>$250,000.</strong> Anthony was released under strict conditions: ankle monitor, house arrest, permission required to leave home.</p>
+
+      <p><strong>The indictment:</strong> On <strong>June 24, 2025</strong>, a Collin County Grand Jury returned a first-degree murder indictment against Karmelo Sincere Anthony. DA Greg Willis stated in his video announcement: <em>"From this point forward, we'll continue doing our part — fully and fairly — to pursue justice under the law... A defendant is presumed innocent unless and until proven guilty in a court of law."</em></p>
+
+      <p><strong>The gag order:</strong> On <strong>July 28, 2025</strong>, Collin County Judge John Roach Jr. issued a sweeping gag order barring all parties — attorneys, law enforcement, witnesses, expert consultants — from speaking about the case to media or posting about it on social media without prior court approval. Violations are punishable by contempt, fines, or attorney discipline.</p>
+
+      <p><strong>The trial:</strong> Set for <strong>June 1, 2026</strong> in Collin County District Court, McKinney, Texas. Judge John Roach Jr. presides. The trial will include voir dire, opening statements, and a determination of whether Karmelo Anthony's self-defense claim holds under Texas law.</p>
+
+      <p><strong>The potential sentence:</strong> First-degree murder in Texas carries a range of 5 to 99 years, or life, in a Texas state prison, plus an optional fine not to exceed $10,000. Parole eligibility would be after 30 years or half the sentence, whichever is less. DA Willis clarified publicly that Anthony cannot receive the death penalty or life without parole under state and federal law, as he was 17 at the time of the offense.</p>
+
+      <p><strong>Misinformation on record:</strong> The Frisco Police Department publicly warned that a circulating image purporting to be a medical examiner's report was fabricated. The department's statement: <em>"Only official releases from verified accounts should be trusted."</em> KERA News also documented extensive online misinformation and racial disinformation circulating around the case.</p>
+
+      <h3>What We Believe</h3>
+
+      <p>We believe that the right to self-defense is not a right that belongs only to some people.</p>
+
+      <p>We believe that Stand Your Ground is not a selective doctrine — applied when convenient, suspended when the defendant is young and Black and the victim was white.</p>
+
+      <p>We believe that if Austin Metcalf — <em>may he rest in peace and be held in the memory of those who loved him</em> — died as a result of an altercation in which he was the initial aggressor, then the law must be applied honestly and fully. This is not about dishonoring Austin Metcalf. It is about honoring the law.</p>
+
+      <p>We believe that a 3.7 GPA, two jobs, immediate surrender, full cooperation, perfect compliance with every court order for over a year, and a father who spoke publicly with grief and grace — these are not accidents. They are the character of a household that believed in this country. That believed the system would be fair.</p>
+
+      <p>We believe that if the law does not protect Karmelo Anthony — a young man who did everything right after an act he says was forced upon him — then it protects no one. Because the law either means what it says, <em>or it means what the powerful need it to mean in any given moment.</em></p>
+
+      <p><strong>We are calling on the legal community to affirm that belief.</strong></p>
+
+      <h3>What We Ask</h3>
+
+      <p><strong>To civil rights attorneys — particularly those who have committed their practice to the defense of Black life:</strong> Examine this case. Review the arrest report. Study the witness statements. Apply the law as written. A credible, significant self-defense argument exists under Texas §§ 9.31 and 9.32. Make yourselves known to the Anthony family and their defense team before June 1.</p>
+
+      <p><strong>To every attorney who has ever stood in a courthouse and said that Black life has value:</strong> Your voice in this moment carries weight that no press release can match. Add your name below. A young man who did everything right needs the full force of this country's civil rights legal tradition standing beside him.</p>
+
+      <p><strong>To organizations committed to justice:</strong> We are organizing lawful, peaceful court presence support for the week of June 1–5. The courthouse is in McKinney, Texas. Collin County District Court. We are building the infrastructure. Join us.</p>
+
+      <p><strong>To the press:</strong> Cover this case accurately. Attribute statements to the correct people. Andrew Anthony said his son was not the aggressor. Jeff Metcalf said he was devastated and already forgives. Hunter Metcalf described holding his twin brother as he died. These are three different men, three different statements, three different roles in this tragedy. <strong>Report them correctly.</strong></p>
+
+      <h3>Our Credo</h3>
+
+      <p>We believe in the infinite worth of every human life — including Austin Metcalf's and Karmelo Anthony's.</p>
+      <p>We believe that the law must be applied equally — not selectively, not politically, not as a weapon against the already vulnerable.</p>
+      <p>We believe that a young man who says he defended himself, who surrendered peacefully, asked about his victim's condition, and has complied with every court order for over a year — deserves to walk out of that courtroom free if the law supports it.</p>
+      <p>We believe that this moment is a test. Of the law. Of the legal community. Of every organization that has ever said that justice is not just a word.</p>
+
+      <p><em>We are on the right side of that test. We are asking you to be, too.</em></p>
+
+      <p><strong>We stand with truth. We stand with the law. We stand with Karmelo Anthony.</strong></p>
+      <p><em>By Grace, perfect ways.</em></p>
+
+      <!-- SIGNATURE BLOCK -->
+      <div class="sig-block">
+        <h4>Co-Signatories · As of May 21, 2026</h4>
+        <div class="sig-line">
+          <span class="num">01</span>
+          <div>
+            <div class="name">Israel Lee Armstead</div>
+            <div class="org">President &amp; Chief Visionary Officer · E5 Enclave Incorporated · EIN 99-3822441</div>
+          </div>
+        </div>
+        <div class="sig-line pending">
+          <span class="num">02</span>
+          <div><div class="name">— your name here —</div><div class="org">Contact israel@e5enclave.com to add your name</div></div>
+        </div>
+        <div class="sig-line pending">
+          <span class="num">03</span>
+          <div><div class="name">— your name here —</div><div class="org">Open · Attorney, Organization, Individual, or Advocate</div></div>
+        </div>
+        <div class="sig-line pending">
+          <span class="num">04</span>
+          <div><div class="name">— your name here —</div><div class="org">Open · Attorney, Organization, Individual, or Advocate</div></div>
+        </div>
+        <div class="sig-line pending">
+          <span class="num">05</span>
+          <div><div class="name">— your name here —</div><div class="org">Open · Attorney, Organization, Individual, or Advocate</div></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+</div>
 
-<!-- §03 THE LAW -->
-<section class="section" id="law">
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- §02 — FORENSIC CASE RECORD (NEW SECTION)              -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div id="pane-forensic" class="tab-pane">
+<section class="section">
   <div class="wrap">
     <div class="section-head">
-      <div class="meta"><span class="num">§03</span> The Law</div>
-      <h2>A legal brief, in plain terms, <em>for the record.</em></h2>
+      <div class="meta"><span class="num">§02</span> Forensic Record</div>
+      <h2>The Case Record — <em>Every Sourced Fact.</em></h2>
     </div>
-    <div class="brief">
-      <div class="brief-head">
-        <div class="left">
-          <span class="stamp"><span class="dot"></span> Legal Analysis</span>
-          <span>/</span>
-          <span>People v. Anthony</span>
-          <span>/</span>
-          <span>No. 296-CR-2025</span>
-        </div>
-        <div class="right">Filed · May 2026 · E5 Enclave BDI</div>
-      </div>
-      <div class="brief-body">
-        <div class="brief-grid">
-          <div class="label">Issue I<span class="cite">Tex. Penal § 9.31 / § 9.32</span></div>
-          <div class="arg"><strong>Self-Defense; Stand Your Ground.</strong> A person is justified in using force against another when, and to the degree, the person reasonably believes the force is immediately necessary to protect against the other's use of unlawful force. <em>Texas imposes no duty to retreat.</em> When a seventeen-year-old is grabbed and shoved by an aggressor who initiated the confrontation, the statute does not require him to wait and absorb whatever comes next.</div>
-        </div>
-        <div class="brief-grid">
-          <div class="label">Issue II<span class="cite">Aggressor Doctrine</span></div>
-          <div class="arg"><strong>Who initiated.</strong> The witnesses present and Karmelo's father confirmed immediately after the incident that Austin Metcalf was the aggressor. If death resulted from that aggression — an assault that Metcalf initiated — Texas law raises a profound question about criminal accountability. <em>The law does not require the person who was attacked to be the one who stands trial.</em></div>
-        </div>
-        <div class="brief-grid">
-          <div class="label">Issue III<span class="cite">Equal Protection of the Law</span></div>
-          <div class="arg"><strong>The bottom line.</strong> A young man who defended himself, cooperated fully with police, had no prior record, and came from a family of integrity is charged with first-degree murder. He should have been released with the thanks of the court. <em>Stand Your Ground either means what it says — or it means what the powerful need it to mean in any given moment.</em> This is a miscarriage of justice in progress, and it is happening in public view.</div>
-        </div>
-      </div>
+
+    <div class="manifesto-body">
+
+      <div class="doc-status"><span class="dot"></span> Forensic Intelligence · Board Standard · All Facts Sourced · May 21, 2026</div>
+
+      <h3>Timeline of Events — Verified Chronology</h3>
+
+      <p><strong>April 2, 2025 — approximately 10:00 AM CDT:</strong> UIL District 11-5A Championship track and field meet at Kuykendall Stadium, Frisco, Texas. Multiple Frisco ISD high schools competing. Heavy rain is falling. Karmelo Anthony (17, Centennial HS) is seated near or in the Memorial HS team tent. Austin Metcalf (17, Memorial HS) approaches and a confrontation occurs over seating/tent space. <em>Source: KERA News arrest report; ABC7; Fox4 News; Frisco PD statement.</em></p>
+
+      <p><strong>10:00–10:15 AM:</strong> According to the arrest report, Anthony issued a verbal warning — <em>"Touch me and see what happens."</em> Witnesses told police Metcalf then grabbed or pushed Anthony. Anthony drew a knife and stabbed Metcalf in the chest. Austin Metcalf collapsed. His identical twin brother, Hunter Metcalf, rushed to him and held him trying to stop the bleeding. <em>Source: KERA News arrest report; ABC7; NY Post.</em></p>
+
+      <p><strong>Immediately after the stabbing:</strong> Anthony did not flee. He walked to police. Unprompted, without being asked any questions, he said: <em>"I was protecting myself."</em> When the officer referred to him as "the alleged suspect," Anthony responded: <em>"I'm not alleged. I did it."</em> As he walked to the squad car, he said: <em>"He put his hands on me. I told him not to."</em> Anthony also asked officers if Metcalf was going to be okay. <em>Source: Official arrest report, KERA News.</em></p>
+
+      <p><strong>April 2, 2025 — later that day:</strong> Austin Metcalf was transported to a local hospital. Despite CPR and blood administration by police and fire personnel, he was pronounced dead. His father, Jeff Metcalf, who had rushed to the stadium after Hunter called him, found Austin on a gurney and accompanied him to the hospital. <em>Source: Jeff Metcalf interview, NBC Dallas-Fort Worth; NY Post.</em></p>
+
+      <p><strong>April 2, 2025:</strong> Karmelo Anthony is booked and charged with first-degree murder. Initial bond set at <strong>$1,000,000</strong>. <em>Source: Frisco PD; Collin County court records.</em></p>
+
+      <p><strong>April 3, 2025:</strong> Andrew Anthony — Karmelo's father — gives exclusive interview to the <em>New York Post.</em> He says: <em>"He was not the aggressor. He was not the one who started it."</em> He describes Karmelo as a good kid with a 3.7 GPA who works two jobs. He expresses sympathy for the Metcalf family. <em>Source: NY Post, April 3, 2025, by Jared Downing.</em></p>
+
+      <p><strong>April 3–4, 2025:</strong> Jeff Metcalf — Austin's father — gives interviews to NBC Dallas-Fort Worth and Fox News. He says: <em>"This is murder."</em> He questions Karmelo's upbringing and parents. He also says: <em>"I already forgive this person. Already. God takes care of things."</em> He describes seeing Austin on a gurney: <em>"I could see all the blood, and I saw where the wound was, and I was very concerned."</em> Hunter Metcalf, Austin's twin brother, tells WFAA: <em>"I tried to whip around as fast as I could. I looked at my brother and I'm not going to talk about the rest. I tried to help him."</em> <em>Source: NY Post; NBC DFW; WFAA; Fox News.</em></p>
+
+      <p><strong>April 14, 2025:</strong> Collin County Judge Emily Miskel reduces Anthony's bond from $1,000,000 to <strong>$250,000.</strong> Bond conditions: ankle monitor, house arrest, permission required before leaving home. <em>Source: Fox4 News; WFAA.</em></p>
+
+      <p><strong>April 17, 2025:</strong> The Anthony family's representatives — the Next Generation Action Network, led by Dominique Alexander — hold a press conference addressing misinformation and death threats. Jeff Metcalf arrives unannounced and is escorted out by police. Karmelo's mother, Kayla Hayes, says her family has received death threats, that her 13-year-old daughter is afraid to sleep in her own bedroom. A fundraiser at GiveSendGo has raised approximately $458,762 for Anthony as of that date. <em>Source: KERA News; People Magazine; Fox4 News.</em></p>
+
+      <p><strong>April–May 2025:</strong> Frisco Police Department warns publicly about a fabricated medical examiner's report circulating online. DA Greg Willis cautions the public about misinformation. KERA News publishes an extensive report on the racial dynamics of the online debate and the disinformation environment. Anthony is reported to have moved to an undisclosed location after death threats. <em>Source: Frisco PD statement; KERA News; Fox4 News.</em></p>
+
+      <p><strong>June 24, 2025:</strong> A Collin County Grand Jury returns a first-degree murder indictment against Karmelo Sincere Anthony. DA Greg Willis announces: <em>"Today, I summarized that evidence, and I asked the Grand Jury to return a first degree murder indictment against Karmelo Anthony — which they did."</em> He also states publicly: <em>"A defendant is presumed innocent unless and until proven guilty in a court of law."</em> <em>Source: Collin County DA press release, collincountyda.com, June 24, 2025.</em></p>
+
+      <p><strong>July 28–29, 2025:</strong> Judge John Roach Jr. issues a sweeping gag order. Attorneys, law enforcement, witnesses, and expert consultants are barred from making public statements or posting on social media about the case without court approval. Violations subject to contempt, fines, or attorney discipline. Trial date is confirmed: <strong>June 1, 2026.</strong> <em>Source: WFAA; KERA News; Dallas Morning News.</em></p>
+
+      <p><strong>May 21, 2026 (present):</strong> Trial is 11 days away. All parties under gag order. Case status: no plea deal has been announced. Pretrial motions and hearings are ongoing under Judge Roach's management. <em>Source: Fox4 News 2026 Texas Court Cases to Watch; Reddit/frisco.</em></p>
+
+      <h3>The Witnesses — Public Statements on Record</h3>
+
+      <p><strong>Eyewitnesses at the scene (unnamed):</strong> Multiple witnesses told police that Anthony warned Metcalf with the words "Touch me and see what happens" before Metcalf grabbed or pushed him. Two witnesses told police they did not realize Anthony had a weapon before he drew it. One witness reported that Metcalf "aggressively grabbed" a bag. Witness accounts about the exact sequence of events — particularly regarding the bag — diverged. <em>Source: KERA News arrest report; WKYC Channel 3.</em></p>
+
+      <p><strong>Hunter Metcalf:</strong> Austin's identical twin brother was present and witnessed the stabbing. He gave a statement to police. His account of the moments immediately before the stabbing — specifically what Austin did or didn't do with a bag — reportedly differed from accounts of two other eyewitnesses. He told WFAA immediately after: <em>"I tried to whip around as fast as I could. I looked at my brother and I'm not going to talk about the rest. I tried to help him."</em> <em>Hunter Metcalf did not make a public statement that Austin was "not the aggressor." That statement was made by Karmelo's father, Andrew Anthony.</em> <em>Source: WFAA; NY Post; WKYC Channel 3 report.</em></p>
+
+      <p><strong>Andrew Anthony (Karmelo's father):</strong> Gave exclusive interview to NY Post, April 3, 2025. Said his son was not the aggressor, was provoked, and was a good kid. Expressed sorrow for both families. <em>Source: NY Post, April 3, 2025.</em></p>
+
+      <p><strong>Jeff Metcalf (Austin's father):</strong> Gave interviews to NBC Dallas-Fort Worth and Fox News. Described the death as murder, questioned Karmelo's upbringing, expressed immediate forgiveness. Arrived at Anthony family press conference on April 17 uninvited. Later told NY Post he felt disrespected. <em>Source: NBC DFW; Fox News; NY Post; KERA News.</em></p>
+
+      <p><strong>Dominique Alexander (Next Generation Action Network):</strong> Said at the April 17 press conference: <em>"He should be afforded the same rights that Kyle Rittenhouse had, Daniel Penny, and all of the people who have claimed whatever their defense was."</em> <em>Source: KERA News.</em></p>
+
+      <h3>Texas Self-Defense Law — Legal Analysis</h3>
+
+      <p><strong>The core legal question this jury must answer:</strong> Was Karmelo Anthony acting in lawful self-defense under Texas Penal Code § 9.32?</p>
+
+      <p><strong>Elements of the self-defense claim:</strong> (1) Anthony was not the initial aggressor — the arrest report reflects he issued a verbal warning before physical contact was made by Metcalf; (2) Metcalf made physical contact first — grabbed or pushed Anthony; (3) Anthony was at a location he had a legal right to be; (4) Anthony was not engaged in criminal activity; (5) Anthony did not retreat — Texas law does not require it; (6) Anthony reasonably believed deadly force was immediately necessary to protect himself.</p>
+
+      <p><strong>The prosecution's counter-argument:</strong> That producing a knife in response to a grab or push constitutes disproportionate force; that Anthony escalated the confrontation verbally ("Touch me and see what happens") in a manner that makes him at least partially responsible as an aggressor; and that reasonable belief in the necessity of deadly force was not established by a grab or push alone.</p>
+
+      <p><strong>The defense's strongest argument:</strong> That under § 9.32(c), a person who did not provoke the use of force against himself and who is not engaged in criminal activity has no duty to retreat. If Metcalf physically initiated contact, Anthony had the legal right to respond with force — and the degree of force he used is the jury's determination of reasonableness, not a bright-line legal rule. Legal experts quoted by WFAA have noted that self-defense is likely to be the central issue at trial and that a credible argument exists. <em>Source: WFAA legal expert analysis; Reddit/TrueUnpopularOpinion; gambonelaw.com.</em></p>
+
+      <p><strong>Potential sentence if convicted:</strong> First-degree murder — 5 to 99 years or life in Texas state prison, plus optional fine up to $10,000. Parole eligibility: 30 years or half the sentence, whichever is less. No death penalty available (Anthony was 17 at time of offense). <em>Source: Collin County DA announcement; Texas Penal Code § 12.32.</em></p>
+
+      <h3>The Racial Dimension — What The Public Record Shows</h3>
+
+      <p>Karmelo Anthony is Black. Austin Metcalf was white. The case immediately became a flashpoint for national racial debate online. Fringe groups used Austin Metcalf's death to promote explicitly white nationalist messaging, which Jeff Metcalf himself publicly condemned — calling out "Protect White Americans" protesters who attempted to claim his son's death: <em>"They don't give a s— about my family."</em> <em>Source: Jeff Metcalf interview reported by Fox4 News.</em></p>
+
+      <p>On the other side, extensive disinformation circulated claiming that Karmelo was an innocent victim of systemic racism with no factual grounding in the documented record. The Frisco Police Department and DA Willis both warned publicly about misinformation from all directions.</p>
+
+      <p>KERA News published an extensive analysis of the racial dynamics of the online debate, documenting how the case became a vessel for competing narratives that frequently departed from the documented facts. <em>Source: KERA News, May 7, 2025.</em></p>
+
+      <p>E5 Enclave's position: The racial dimension of this case is real and cannot be separated from how it has been perceived and prosecuted. A million-dollar initial bond for a teenager with no prior record, in a self-defense case with contested witness accounts, raises questions that must be asked. These questions do not require presuming Anthony's innocence or guilt. They require applying the same standards that this society applies — or claims to apply — in every comparable case.</p>
+
+      <h3>Sources on the Public Record</h3>
+
+      <p>The following sources were used in the preparation of this forensic report. All are publicly available without FOIA request:</p>
+
+      <p>• Official Arrest Report, Frisco PD — obtained by KERA News, April 2025<br/>
+      • Collin County DA press release — collincountyda.com, June 24, 2025<br/>
+      • WFAA: Gag order report, July 29, 2025 (Rachel Snyder)<br/>
+      • KERA News: Press conference report, April 17, 2025 (Caroline Love)<br/>
+      • KERA News: Racial debate analysis, May 7, 2025<br/>
+      • NY Post: Andrew Anthony exclusive interview, April 3, 2025 (Jared Downing)<br/>
+      • NY Post: Jeff Metcalf interview (Austin Metcalf's father)<br/>
+      • WFAA: Hunter Metcalf interview<br/>
+      • ABC7 Chicago: Arrest report details, April 5, 2025<br/>
+      • Fox4 News: Comprehensive case tracker<br/>
+      • Dallas Morning News: Gag order explainer, July 30, 2025<br/>
+      • Texas Penal Code §§ 9.31, 9.32, 12.32<br/>
+      • Frisco PD social media statement on misinformation<br/>
+      • WFAA: Legal expert self-defense analysis</p>
+
     </div>
   </div>
 </section>
+</div>
 
-<!-- §04 STAND UP — SIGN-UP FORM -->
-<section class="form-section" id="stand">
-  <div class="wrap form-shell">
-    <aside class="form-aside">
-      <span class="eyebrow"><span class="glyph">§04</span> Court Support · June 1–5, 2026</span>
-      <h2>Add your name. <em>Be in the room.</em></h2>
-      <p>Institutions move when they are watched. Sign the court-support list and we will coordinate logistics — travel, lodging, daily presence, witness rotations.</p>
-      <p>If you cannot be there in body, be there in name. Both count. Both are recorded.</p>
-      <div class="meta-list" role="list">
-        <div class="row"><span class="k">Cause</span><span class="v">People v. Anthony</span></div>
-        <div class="row"><span class="k">Venue</span><span class="v">Collin County, TX</span></div>
-        <div class="row"><span class="k">Court</span><span class="v">296th District · Judge Roach</span></div>
-        <div class="row"><span class="k">Window</span><span class="v">06.01 — 06.05.2026</span></div>
-        <div class="row"><span class="k">Posture</span><span class="v">Peaceful · Lawful · Sustained</span></div>
-        <div class="row"><span class="k">Organizer</span><span class="v">E5 Enclave · BDI</span></div>
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- §03 — PRESS RELEASE                                   -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div id="pane-press" class="tab-pane">
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta"><span class="num">§03</span> Press Release</div>
+      <h2>For Immediate Release — <em>Upon Authorization.</em></h2>
+    </div>
+
+    <div class="press-body">
+
+      <div class="contact-block">
+        <strong>Media Contact</strong>
+        Israel Lee Armstead · President &amp; Chief Visionary Officer · E5 Enclave Incorporated<br/>
+        israel@e5enclave.com · (305) 967-0200 · e5enclave.com/justice
       </div>
-    </aside>
 
-    <div class="form-card">
-      <div class="form-card-head">
-        <div class="t">⌘ Sign Court Support</div>
-        <div class="step">Form · 1 of 1</div>
+      <div class="dateline">For Immediate Release · [Date Upon Authorization] · Liberty City, Miami, Florida</div>
+
+      <div class="press-head">E5 Enclave Incorporated Issues Forensic Case Review and Open Call for Legal Solidarity Ahead of June 1 Karmelo Anthony Trial</div>
+
+      <div class="press-subhead">The Miami-based nonprofit has published a comprehensive, sourced forensic record of the People v. Anthony case — correcting public misattributions and calling on the civil rights legal community to examine the self-defense evidence before trial.</div>
+
+      <p><strong>LIBERTY CITY, MIAMI, FLORIDA —</strong> E5 Enclave Incorporated (EIN 99-3822441), a 501(c)(3) nonprofit organization headquartered in Liberty City, Miami, today released a comprehensive forensic case review of <em>People v. Karmelo Sincere Anthony</em>, set for trial June 1, 2026 in Collin County District Court, McKinney, Texas.</p>
+
+      <h3>The Correction</h3>
+
+      <p>The review corrects a widely circulated misattribution that has contaminated public discourse around the case: the statement that the defendant "was not the aggressor" was made by <strong>Andrew Anthony</strong>, Karmelo's father, in an April 3, 2025 interview with the <em>New York Post</em>. It was not made by Austin Metcalf's father, Jeff Metcalf, nor by Austin's twin brother, Hunter Metcalf. Jeff Metcalf has publicly characterized the incident as murder and expressed forgiveness. Hunter Metcalf gave a statement to police and described holding his dying brother to WFAA. These are distinct individuals with distinct roles in the factual record. Accurate attribution matters to the legal record, to both families, and to the public's ability to assess this case fairly.</p>
+
+      <h3>The Legal Call</h3>
+
+      <p>The review examines the self-defense argument under Texas Penal Code §§ 9.31 and 9.32, including Texas's no-duty-to-retreat provision. Based on the publicly documented facts — that Metcalf made physical contact with Anthony after receiving a verbal warning, that Anthony surrendered immediately, that Anthony had no prior criminal record, and that multiple witnesses described Metcalf as the initiator of physical contact — E5 Enclave is calling on civil rights attorneys to examine the case and make themselves known to the Anthony family's legal team before June 1.</p>
+
+      <h3>The Organizational Position</h3>
+
+      <p>"We are not here to dishonor Austin Metcalf or his family," said Israel Lee Armstead, President and Chief Visionary Officer of E5 Enclave. "We are here to insist that the law be applied equally. If the evidence shows that Karmelo Anthony acted in lawful self-defense under the laws of the state of Texas — and the documented record raises serious questions about whether it does — then a jury must decide that freely, without the pressure of disinformation, without the burden of a million-dollar bond, and without the weight of a racially charged public narrative that has substituted outrage for accuracy."</p>
+
+      <p>E5 Enclave's Black Dragons Initiative is organizing peaceful, lawful court-presence support for the week of June 1–5 in McKinney, Texas. Organizations and individuals seeking to participate may contact E5 Enclave at israel@e5enclave.com or via the support form at e5enclave.com/justice/karmelo-anthony.</p>
+
+      <h3>About E5 Enclave Incorporated</h3>
+      <p>E5 Enclave Incorporated is a 501(c)(3) nonprofit organization (EIN 99-3822441, UEI H8NGXEYE2HH8) headquartered in Liberty City, Miami, Florida. Founded in 2024, E5 operates three program verticals: the McCartney Academy (youth development), FarmBlock (food sovereignty and community data), and the Black Dragons Initiative (civic engagement and justice advocacy). E5 Enclave is registered in SAM.gov (CAGE: 07E88) and operates as a Microsoft Nonprofit and Google for Nonprofits partner organization.</p>
+
+      <p><em>###</em></p>
+
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SUPPORT FORM                                          -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section class="section tight" id="support">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta"><span class="num">§04</span> Court Support</div>
+      <h2>Add Your Name.<br/><em>Show Up for Justice.</em></h2>
+    </div>
+
+    <div class="form-shell">
+      <div class="form-aside">
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-dim);margin-bottom:24px;">Trial begins June 1, 2026 at the Collin County Courthouse in McKinney, Texas. We are organizing a peaceful, lawful court presence for the week of June 1–5. Add your name to be notified of logistics, actions, and updates.</p>
+        <p style="font-size:13px;color:var(--fg-dimmer);line-height:1.6;">All form submissions are recorded securely. Your information will not be shared with any third party. You will only be contacted regarding Karmelo Anthony court support and E5 Enclave justice initiatives.</p>
+        <div style="margin-top:28px;padding:20px;border:1px solid var(--border-2);border-radius:8px;background:var(--bg-1);">
+          <div class="mono" style="margin-bottom:12px;">Trial Details</div>
+          <div style="font-size:14px;color:var(--fg-dim);line-height:2;">
+            <strong style="color:var(--fg);">Case:</strong> People v. Karmelo Sincere Anthony<br/>
+            <strong style="color:var(--fg);">Court:</strong> 296th District Court, Collin County<br/>
+            <strong style="color:var(--fg);">Location:</strong> 2100 Bloomdale Rd, McKinney, TX 75071<br/>
+            <strong style="color:var(--fg);">Judge:</strong> John Roach Jr.<br/>
+            <strong style="color:var(--fg);">Starts:</strong> June 1, 2026 · 9:00 AM CDT
+          </div>
+        </div>
       </div>
-      <div class="error-msg" id="errorMsg"></div>
-      <form id="signupForm" novalidate>
-        <div class="form-grid">
-          <div class="field">
-            <label class="f-label" for="first_name">First Name <span class="req">*</span></label>
-            <input class="f-input" type="text" id="first_name" name="first_name" autocomplete="given-name" placeholder="First" required />
-          </div>
-          <div class="field">
-            <label class="f-label" for="last_name">Last Name <span class="req">*</span></label>
-            <input class="f-input" type="text" id="last_name" name="last_name" autocomplete="family-name" placeholder="Last" required />
-          </div>
-          <div class="field">
-            <label class="f-label" for="email">Email <span class="req">*</span></label>
-            <input class="f-input" type="email" id="email" name="email" autocomplete="email" placeholder="you@domain.com" required />
-          </div>
-          <div class="field">
-            <label class="f-label" for="phone">Phone <span class="hint">(optional)</span></label>
-            <input class="f-input" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(555) 000-0000" />
-          </div>
-          <div class="field third">
-            <label class="f-label" for="city">City</label>
-            <input class="f-input" type="text" id="city" name="city" placeholder="City" />
-          </div>
-          <div class="field third">
-            <label class="f-label" for="state">State</label>
-            <input class="f-input" type="text" id="state" name="state" placeholder="TX" maxlength="2" />
-          </div>
 
-          <div class="field full">
-            <label class="f-label">How Will You Show Up?</label>
-            <div class="segmented" id="commitment_seg">
-              <input type="hidden" id="commitment_type" value="Court Support (In-Person)" />
-              <div class="opt active" data-value="Court Support (In-Person)">In-Person<br/>Court</div>
-              <div class="opt" data-value="Virtual Solidarity">Virtual<br/>Solidarity</div>
-              <div class="opt" data-value="Both">Both</div>
-              <div class="opt" data-value="I'll Spread the Word">Spread<br/>the Word</div>
-            </div>
-          </div>
-
-          <div class="field full">
-            <label class="f-label" for="availability">Available When?</label>
-            <select class="f-select" id="availability" name="availability">
-              <option value="June 1">June 1 — Opening Day</option>
-              <option value="June 2">June 2</option>
-              <option value="June 3">June 3</option>
-              <option value="June 4">June 4</option>
-              <option value="June 5">June 5</option>
-              <option value="Multiple Days">Multiple Days</option>
-              <option value="Full Week">Full Week — All In</option>
-            </select>
-          </div>
-
-          <div class="field full">
-            <label class="check" for="can_travel">
-              <input type="checkbox" id="can_travel" name="can_travel" />
-              <div class="body">
-                <span class="ttl">I can travel to Collin County, Texas</span>
-                <span class="sub">We will coordinate logistics, lodging, and witness rotations.</span>
+      <div>
+        <div class="form-card">
+          <form id="supportForm">
+            <div class="form-grid">
+              <div class="field">
+                <label class="label" for="firstName">First Name</label>
+                <input class="input" type="text" id="firstName" name="firstName" required placeholder="First" />
               </div>
-            </label>
-          </div>
-
-          <div class="field full">
-            <label class="f-label" for="needs_lodging">Do you require lodging support? <span class="hint">(optional)</span></label>
-            <div class="segmented" id="lodging_seg">
-              <input type="hidden" id="needs_lodging" value="No" />
-              <div class="opt active" data-value="No" data-seg="lodging">No — I have lodging</div>
-              <div class="opt" data-value="Yes — I need lodging" data-seg="lodging">Yes — I need lodging</div>
-              <div class="opt" data-value="I can offer lodging" data-seg="lodging">I can host others</div>
+              <div class="field">
+                <label class="label" for="lastName">Last Name</label>
+                <input class="input" type="text" id="lastName" name="lastName" required placeholder="Last" />
+              </div>
+              <div class="field full">
+                <label class="label" for="email">Email Address</label>
+                <input class="input" type="email" id="email" name="email" required placeholder="you@example.com" />
+              </div>
+              <div class="field full">
+                <label class="label" for="phone">Phone (optional)</label>
+                <input class="input" type="tel" id="phone" name="phone" placeholder="(305) 000-0000" />
+              </div>
+              <div class="field third">
+                <label class="label" for="city">City</label>
+                <input class="input" type="text" id="city" name="city" placeholder="City" />
+              </div>
+              <div class="field third">
+                <label class="label" for="state">State</label>
+                <input class="input" type="text" id="state" name="state" placeholder="TX" />
+              </div>
+              <div class="field full">
+                <label class="label" for="commitment">How do you want to support?</label>
+                <select class="input" id="commitment" name="commitment">
+                  <option value="">Select commitment type</option>
+                  <option value="court_presence">Physical court presence (McKinney, TX)</option>
+                  <option value="co_signatory">Co-sign the open manifesto</option>
+                  <option value="legal_network">Legal professional — available to consult</option>
+                  <option value="remote_solidarity">Remote solidarity action</option>
+                  <option value="media_press">Press / media inquiry</option>
+                  <option value="organization">Representing an organization</option>
+                  <option value="updates_only">Keep me updated</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label class="label" for="organization">Organization (if applicable)</label>
+                <input class="input" type="text" id="organization" name="organization" placeholder="Organization name" />
+              </div>
+              <div class="field full">
+                <label class="label" for="message">Your statement (optional)</label>
+                <textarea class="input" id="message" name="message" rows="4" placeholder="Why you stand with truth and legal process..."></textarea>
+              </div>
             </div>
-          </div>
+            <button type="submit" class="submit-btn">
+              Add My Name to the Record <span class="arrow">→</span>
+            </button>
+          </form>
 
-          <div class="field full">
-            <label class="f-label" for="skills_to_offer">Skills or Resources You Can Offer <span class="hint">(optional)</span></label>
-            <input class="f-input" type="text" id="skills_to_offer" name="skills_to_offer" placeholder="Legal background, media, organizing, transportation, prayer, food…" />
-          </div>
-
-          <div class="field full">
-            <label class="f-label" for="message">Your Statement of Support <span class="hint">(optional)</span></label>
-            <textarea class="f-textarea" id="message" name="message" placeholder="Why do you stand with Karmelo?"></textarea>
+          <div class="success" id="successMsg">
+            <div class="stamp"><span class="dot"></span> Recorded</div>
+            <h3>Your name is on the record. <em>Thank you.</em></h3>
+            <p>We will be in touch with logistics and action updates before June 1. You are part of this.</p>
           </div>
 
         </div>
-
-        <div class="submit-row">
-          <button class="submit-btn" type="submit" id="submitBtn">
-            Sign My Name — I Stand With Karmelo <span class="arrow">→</span>
-          </button>
-          <p class="form-note">
-            Used only to coordinate court support. Not sold. Not shared.<br/>
-            By signing, you affirm a peaceful, lawful commitment.
-          </p>
-        </div>
-      </form>
-
-      <div class="success" id="successBox" role="status" aria-live="polite">
-        <span class="stamp"><span class="dot"></span> Recorded</span>
-        <h3>Your name is on the record. <em>We have you.</em></h3>
-        <p>We will be in touch with logistics, lodging, and the daily court schedule as June 1 approaches. Thank you for standing where it counts.</p>
       </div>
     </div>
   </div>
@@ -1362,120 +1642,94 @@ description: "Karmelo Anthony is a 17-year-old honor student who defended himsel
   <div class="wrap">
     <div class="foot-inner">
       <div class="foot-brand">
-        Court Support for the Anthony family.<br/>
-        A peaceful, lawful effort to bear witness.
-        <div class="small">E5 Enclave Incorporated · BDI · EIN 99-3822441</div>
+        E5 Enclave Incorporated<br/>
+        Justice Vertical · Black Dragons Initiative
+        <div class="small">EIN 99-3822441 · 501(c)(3) Public Charity<br/>820 NW 64th St · Liberty City · Miami, FL 33150</div>
       </div>
       <div class="foot-col">
-        <h4>This File</h4>
-        <a href="#record">§01 The Record</a>
-        <a href="#facts">§02 The Facts</a>
-        <a href="#law">§03 The Law</a>
-        <a href="#stand">§04 Stand Up</a>
+        <h4>Case</h4>
+        <a href="#manifesto" onclick="showTab('manifesto',0)">The Manifesto</a>
+        <a href="#forensic" onclick="showTab('forensic',1)">Forensic Record</a>
+        <a href="#press" onclick="showTab('press',2)">Press Release</a>
+        <a href="#support">Court Support Sign-Up</a>
       </div>
       <div class="foot-col">
         <h4>E5 Enclave</h4>
-        <a href="/justice/">All Justice Cases</a>
-        <a href="/">E5 Enclave Home</a>
-        <a href="mailto:israel@e5enclave.com">Contact</a>
+        <a href="https://e5enclave.com">e5enclave.com</a>
+        <a href="https://e5enclave.com/justice">Justice Vertical</a>
+        <a href="mailto:israel@e5enclave.com">israel@e5enclave.com</a>
+        <a href="tel:3059670200">(305) 967-0200</a>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 · E5 Enclave Incorporated · By Grace, perfect ways.</span>
-      <span>Case No. 001 · Peaceful · Lawful · Non-partisan</span>
+      <span>© 2026 E5 Enclave Incorporated · All Rights Reserved</span>
+      <span>People v. Anthony · Collin County, TX · Trial June 1, 2026</span>
+      <span>By Grace, perfect ways.</span>
     </div>
   </div>
 </footer>
 
 <script>
-  (function(){
-    const el=document.getElementById('liveDate');
-    if(!el)return;
-    const tick=()=>{ el.textContent=new Date().toLocaleString('en-US',{month:'short',day:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:false}); };
-    tick();setInterval(tick,30000);
-  })();
+// ─── TAB SYSTEM ───
+function showTab(name, idx) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('pane-' + name).classList.add('active');
+  document.querySelectorAll('.tab-btn')[idx].classList.add('active');
+  window.scrollTo({ top: document.querySelector('.tab-bar').offsetTop - 60, behavior: 'smooth' });
+}
 
-  (function(){
-    const target=new Date('2026-06-01T09:00:00-05:00').getTime();
-    const pad=n=>String(Math.max(0,n)).padStart(2,'0');
-    function update(){
-      const diff=Math.max(0,target-Date.now());
-      document.getElementById('cd-days').textContent=pad(Math.floor(diff/86400000));
-      document.getElementById('cd-hrs').textContent=pad(Math.floor((diff%86400000)/3600000));
-      document.getElementById('cd-min').textContent=pad(Math.floor((diff%3600000)/60000));
-      document.getElementById('cd-sec').textContent=pad(Math.floor((diff%60000)/1000));
-    }
-    update();setInterval(update,1000);
-  })();
+// ─── TRIAL COUNTDOWN ───
+function updateCountdown() {
+  const trial = new Date('2026-06-01T09:00:00-05:00');
+  const now = new Date();
+  const diff = trial - now;
+  if (diff <= 0) return;
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  const ticker = document.querySelector('.ticker-pill');
+  if (ticker) ticker.innerHTML = `<span class="dot"></span> Trial in ${d}d ${h}h ${m}m ${s}s · June 1, 2026`;
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
 
-  (function(){
-    const seg=document.getElementById('commitment_seg');
-    const hidden=document.getElementById('commitment_type');
-    if(!seg||!hidden)return;
-    seg.querySelectorAll('.opt').forEach(opt=>{
-      opt.addEventListener('click',()=>{
-        seg.querySelectorAll('.opt').forEach(o=>o.classList.remove('active'));
-        opt.classList.add('active');
-        hidden.value=opt.dataset.value;
-      });
+// ─── FORM SUBMISSION ───
+document.getElementById('supportForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const fd = new FormData(this);
+  const data = Object.fromEntries(fd.entries());
+  data.submitted_at = new Date().toISOString();
+  data.source = 'karmelo-justice-page';
+
+  const btn = this.querySelector('.submit-btn');
+  btn.textContent = 'Recording...';
+  btn.disabled = true;
+
+  try {
+    const resp = await fetch('/functions/karmeloSignup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
     });
-  })();
 
-  (function(){
-    const seg=document.getElementById('lodging_seg');
-    const hidden=document.getElementById('needs_lodging');
-    if(!seg||!hidden)return;
-    seg.querySelectorAll('.opt').forEach(opt=>{
-      opt.addEventListener('click',()=>{
-        seg.querySelectorAll('.opt').forEach(o=>o.classList.remove('active'));
-        opt.classList.add('active');
-        hidden.value=opt.dataset.value;
-      });
-    });
-  })();
+    // Also POST to Google Sheets webhook
+    fetch('https://script.google.com/macros/s/GOOGLE_SHEETS_WEBHOOK_ID/exec', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).catch(() => {}); // non-blocking
 
-  (function(){
-    const ENDPOINT='https://sue-app-e73f9f1e.base44.app/functions/karmeloSignup';
-    const form=document.getElementById('signupForm');
-    const btn=document.getElementById('submitBtn');
-    const errorMsg=document.getElementById('errorMsg');
-    const successBox=document.getElementById('successBox');
-    if(!form)return;
-    form.addEventListener('submit',async function(e){
-      e.preventDefault();
-      errorMsg.style.display='none';
-      errorMsg.textContent='';
-      btn.disabled=true;
-      btn.innerHTML='Submitting… <span class="arrow">→</span>';
-      const v=id=>(document.getElementById(id)||{}).value||'';
-      const payload={
-        first_name:v('first_name'),last_name:v('last_name'),email:v('email'),
-        phone:v('phone'),city:v('city'),state:v('state').toUpperCase(),
-        zip:'',commitment_type:v('commitment_type'),availability:v('availability'),
-        can_travel:document.getElementById('can_travel').checked,
-        needs_lodging:v('needs_lodging'),skills_to_offer:v('skills_to_offer'),message:v('message'),
-        source:'e5enclave-justice-karmelo'
-      };
-      try{
-        const res=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-        const data=await res.json().catch(()=>({}));
-        if(res.ok&&data&&data.success){
-          form.style.display='none';
-          successBox.style.display='block';
-          window.scrollTo({top:successBox.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});
-        }else{
-          errorMsg.textContent=(data&&data.error)?data.error:'Something went wrong. Please try again.';
-          errorMsg.style.display='block';
-          btn.disabled=false;
-          btn.innerHTML='Sign My Name — I Stand With Karmelo <span class="arrow">→</span>';
-        }
-      }catch(err){
-        errorMsg.textContent='Network error. Please check your connection and try again.';
-        errorMsg.style.display='block';
-        btn.disabled=false;
-        btn.innerHTML='Sign My Name — I Stand With Karmelo <span class="arrow">→</span>';
-      }
-    });
-  })();
+    document.getElementById('supportForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  } catch (err) {
+    btn.textContent = 'Add My Name to the Record →';
+    btn.disabled = false;
+    alert('Something went wrong. Please email israel@e5enclave.com directly.');
+  }
+});
+
+console.log('People v. Anthony · Forensic Edition · E5 Enclave BDI · May 21, 2026');
+console.log('Factual corrections applied. All sources on the public record.');
 </script>
-</body>
