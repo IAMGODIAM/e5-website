@@ -1700,7 +1700,6 @@ document.getElementById('supportForm').addEventListener('submit', async function
   e.preventDefault();
   const fd = new FormData(this);
   const data = Object.fromEntries(fd.entries());
-  data.submitted_at = new Date().toISOString();
   data.source = 'karmelo-justice-page';
 
   const btn = this.querySelector('.submit-btn');
@@ -1708,25 +1707,35 @@ document.getElementById('supportForm').addEventListener('submit', async function
   btn.disabled = true;
 
   try {
-    const resp = await fetch('/functions/karmeloSignup', {
+    const resp = await fetch('/api/karmelo-signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
 
-    // Also POST to Google Sheets webhook
-    fetch('https://script.google.com/macros/s/GOOGLE_SHEETS_WEBHOOK_ID/exec', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    }).catch(() => {}); // non-blocking
+    const result = await resp.json().catch(() => ({}));
+
+    if (!resp.ok) {
+      throw new Error(result.error || 'Server error ' + resp.status);
+    }
 
     document.getElementById('supportForm').style.display = 'none';
     document.getElementById('successMsg').style.display = 'block';
+
+    // Update supporter count if returned
+    if (result.total_supporters) {
+      const counter = document.getElementById('supporterCount');
+      if (counter) counter.textContent = result.total_supporters;
+    }
   } catch (err) {
+    console.error('[karmelo-signup]', err);
     btn.textContent = 'Add My Name to the Record →';
     btn.disabled = false;
-    alert('Something went wrong. Please email israel@e5enclave.com directly.');
+    const errBox = document.getElementById('formError');
+    if (errBox) {
+      errBox.textContent = err.message || 'Network error. Please try again or email israel@e5enclave.com.';
+      errBox.style.display = 'block';
+    }
   }
 });
 
