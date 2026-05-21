@@ -18,6 +18,12 @@ schema:
   programType: Cooperative Agriculture
 ---
 
+<div class="tldr-block" style="background:rgba(201,168,76,0.08);border-left:3px solid #c9a84c;padding:14px 20px;margin:0 0 24px;font-family:Georgia,serif;font-size:14px;line-height:1.7;color:#f0ece0;">
+  <strong style="font-family:monospace;font-size:10px;letter-spacing:2px;color:#8a6f30;display:block;margin-bottom:6px;">SUMMARY</strong>
+  Lineage Farms is E5 Enclave's flagship regenerative agriculture operation in Liberty City — connecting Black families to land ownership, cooperative farming income, and USDA agri-workforce training through the FarmBlock program.
+</div>
+
+
 <p class="first">Lineage Farms · FarmBlock is the flagship program under the Environmental pillar of E5 Enclave Incorporated — and the most architecturally ambitious of the Enclave's founding programs. It pairs <em>cooperative urban agriculture</em> — the ancient practice — with a <em>blockchain-anchored governance layer</em> — the new tool. Land is community-held. Labor is community-recorded. Distribution is community-governed. Every contribution counts. Every distribution is recorded. The ledger does not forget.</p>
 
 ---
