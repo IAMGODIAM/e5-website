@@ -4,3 +4,15 @@ https://gospel.e5enclave.com/*  /gospel/:splat  200
 
 # Legacy gospel path redirect
 /gospel-of-love/  /gospel/  301
+
+# BDI dead URL fix — ad policy compliance 2026-05-21
+/programs/black-dragons-initiative/  /black-dragons-initiative/  301
+/programs/black-dragons-initiative   /black-dragons-initiative/  301
+
+# Legacy URL 301s — GSC dead URL repair 2026-05-21
+/support/  /contact/  301
+/support   /contact/  301
+/contact-us/  /contact/  301
+/contact-us   /contact/  301
+/m/login  /  301
+/m/create-account  /  301
