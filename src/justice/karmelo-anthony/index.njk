@@ -1182,6 +1182,240 @@ description: "A comprehensive, sourced forensic review of People v. Karmelo Sinc
   line-height: 1.8;
 }
 .contact-block strong { color: var(--fg); display: block; margin-bottom: 8px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
+
+/* ══════════════════════════════════════════
+   ANNOUNCEMENT BANNER
+══════════════════════════════════════════ */
+.court-banner {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 500;
+  background: linear-gradient(90deg, #8b1a1a, #b91c1c);
+  color: #fff;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.4);
+  font-size: 13px;
+}
+.banner-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+.banner-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #fff;
+  animation: pulse 1.5s ease infinite;
+  flex-shrink: 0;
+}
+.banner-sep { opacity: 0.5; }
+.banner-cta {
+  background: #fff;
+  color: #8b1a1a;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background .15s;
+  white-space: nowrap;
+}
+.banner-cta:hover { background: #fff7f7; }
+.banner-close {
+  background: none; border: none; color: rgba(255,255,255,0.7);
+  font-size: 16px; cursor: pointer; padding: 4px 8px;
+  flex-shrink: 0;
+}
+.banner-close:hover { color: #fff; }
+@keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.6; transform:scale(1.3); } }
+
+/* ══════════════════════════════════════════
+   POPUP MODAL
+══════════════════════════════════════════ */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.popup-overlay.open { display: flex; }
+.popup-card {
+  background: #0d0d0d;
+  border: 1px solid #2a2a2a;
+  border-top: 3px solid #8b1a1a;
+  border-radius: 12px;
+  padding: 40px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.popup-close {
+  position: absolute;
+  top: 16px; right: 20px;
+  background: none; border: none;
+  color: #6b6b6b; font-size: 18px;
+  cursor: pointer;
+}
+.popup-close:hover { color: #fff; }
+.popup-eyebrow {
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #8b1a1a; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.dot-live {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #8b1a1a; animation: pulse 1.5s ease infinite;
+  flex-shrink: 0;
+}
+.popup-title {
+  font-size: 1.6rem; font-weight: 800;
+  color: #fff; line-height: 1.2; margin-bottom: 12px;
+}
+.popup-title em { font-style: italic; color: #aaa; }
+.popup-sub {
+  font-size: 14px; color: #7a7a7a; line-height: 1.6; margin-bottom: 24px;
+}
+.popup-form { display: flex; flex-direction: column; gap: 14px; }
+.pf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pf-field { display: flex; flex-direction: column; gap: 6px; }
+.pf-field label { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #6b6b6b; }
+.pf-field input {
+  background: #1a1a1a; border: 1px solid #2a2a2a;
+  color: #ededed; padding: 12px 14px; border-radius: 6px;
+  font-size: 14px; font-family: inherit;
+  transition: border-color .2s;
+}
+.pf-field input:focus { outline: none; border-color: #8b1a1a; }
+.popup-submit {
+  background: #8b1a1a; color: #fff; border: none;
+  padding: 14px 24px; border-radius: 6px;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  letter-spacing: 0.04em; transition: background .2s;
+  width: 100%; margin-top: 4px;
+}
+.popup-submit:hover { background: #a01e1e; }
+.popup-privacy { font-size: 11px; color: #4a4a4a; text-align: center; }
+.popup-success { text-align: center; padding: 20px 0; }
+.success-stamp {
+  font-size: 2rem; margin-bottom: 12px;
+}
+.popup-success p { color: #7a7a7a; font-size: 14px; line-height: 1.6; }
+
+/* ══════════════════════════════════════════
+   LODGING ALERT BOX
+══════════════════════════════════════════ */
+.lodging-alert {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: rgba(139,26,26,0.1);
+  border: 1px solid rgba(139,26,26,0.3);
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 24px;
+}
+.la-icon { font-size: 22px; flex-shrink: 0; }
+.lodging-alert strong { display: block; color: #ededed; font-size: 14px; margin-bottom: 4px; }
+.lodging-alert p { font-size: 13px; color: #7a7a7a; line-height: 1.5; }
+
+/* ══════════════════════════════════════════
+   DATE CHIPS
+══════════════════════════════════════════ */
+.form-section-label {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: #6b6b6b; margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.date-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.date-chip { cursor: pointer; }
+.date-chip input { display: none; }
+.date-chip span {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 2px;
+  border: 1px solid var(--border-2);
+  border-radius: 8px;
+  padding: 14px 10px;
+  text-align: center;
+  font-size: 14px; font-weight: 600; color: var(--fg-dim);
+  transition: all .2s;
+  min-height: 70px;
+}
+.date-chip span small {
+  font-size: 10px; font-weight: 400;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--fg-dimmer);
+}
+.date-chip.full-week span { grid-column: span 3; flex-direction: row; gap: 8px; }
+.date-chip:hover span { border-color: var(--border-3); color: var(--fg); }
+.date-chip input:checked + span {
+  border-color: #8b1a1a;
+  background: rgba(139,26,26,0.12);
+  color: #fff;
+}
+.date-chip input:checked + span small { color: #a87070; }
+.date-chip.full-week { grid-column: span 3; }
+.date-chip.full-week span { justify-content: center; min-height: 50px; }
+
+/* ══════════════════════════════════════════
+   LODGING OPTIONS
+══════════════════════════════════════════ */
+.lodge-cards {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;
+}
+.lodge-option { cursor: pointer; }
+.lodge-option input { display: none; }
+.lodge-option span {
+  display: flex; flex-direction: column; gap: 4px;
+  border: 1px solid var(--border-2);
+  border-radius: 8px; padding: 16px;
+  transition: all .2s;
+}
+.lodge-option span strong { font-size: 13px; color: var(--fg-dim); }
+.lodge-option span small { font-size: 11px; color: var(--fg-dimmer); }
+.lodge-option:hover span { border-color: var(--border-3); }
+.lodge-option input:checked + span {
+  border-color: #8b1a1a;
+  background: rgba(139,26,26,0.12);
+}
+.lodge-option input:checked + span strong { color: #fff; }
+
+/* ══════════════════════════════════════════
+   GROUP TRAVEL SECTION
+══════════════════════════════════════════ */
+.group-travel-section {
+  border: 1px solid rgba(139,26,26,0.2);
+  border-radius: 8px;
+  padding: 20px;
+  background: rgba(139,26,26,0.05);
+  animation: fadeIn .25s ease;
+}
+@keyframes fadeIn { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+
+@media (max-width: 640px) {
+  .date-picker-grid { grid-template-columns: repeat(2,1fr); }
+  .lodge-cards { grid-template-columns: 1fr; }
+  .pf-row { grid-template-columns: 1fr; }
+  .court-banner { font-size: 12px; }
+}
+
 </style>
 <!-- TICKER -->
 <div class="ticker">
@@ -1545,7 +1779,69 @@ description: "A comprehensive, sourced forensic review of People v. Karmelo Sinc
 </div>
 
 <!-- ══════════════════════════════════════════════════════ -->
-<!-- SUPPORT FORM                                          -->
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- ANNOUNCEMENT BANNER                                    -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="court-banner" id="courtBanner">
+  <div class="banner-inner">
+    <span class="banner-dot"></span>
+    <strong>June 1–5 · McKinney, TX</strong>
+    <span class="banner-sep">·</span>
+    Court support organized · Lodging available while occupancy lasts
+    <span class="banner-sep">·</span>
+    <button class="banner-cta" onclick="openSignupPopup()">Add Your Name →</button>
+  </div>
+  <button class="banner-close" onclick="document.getElementById('courtBanner').style.display='none'" aria-label="Close">✕</button>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SIGNUP POPUP MODAL                                     -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="popup-overlay" id="signupPopup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+  <div class="popup-card">
+    <button class="popup-close" onclick="closeSignupPopup()" aria-label="Close">✕</button>
+    <div class="popup-eyebrow"><span class="dot-live"></span> Trial begins June 1 · Collin County TX</div>
+    <h2 class="popup-title" id="popupTitle">Stand With Karmelo.<br/><em>Show Up for Justice.</em></h2>
+    <p class="popup-sub">We are organizing peaceful, lawful court presence June 1–5. Lodging support available while occupancy lasts.</p>
+
+    <form id="popupForm" class="popup-form">
+      <div class="pf-row">
+        <div class="pf-field">
+          <label for="pFirstName">First Name *</label>
+          <input type="text" id="pFirstName" name="firstName" required placeholder="First" />
+        </div>
+        <div class="pf-field">
+          <label for="pLastName">Last Name *</label>
+          <input type="text" id="pLastName" name="lastName" required placeholder="Last" />
+        </div>
+      </div>
+      <div class="pf-field">
+        <label for="pEmail">Email Address *</label>
+        <input type="email" id="pEmail" name="email" required placeholder="you@example.com" />
+      </div>
+      <div class="pf-row">
+        <div class="pf-field">
+          <label for="pPhone">Phone</label>
+          <input type="tel" id="pPhone" name="phone" placeholder="(305) 000-0000" />
+        </div>
+        <div class="pf-field">
+          <label for="pState">State</label>
+          <input type="text" id="pState" name="state" placeholder="TX" maxlength="2" />
+        </div>
+      </div>
+      <button type="submit" class="popup-submit">Add My Name →</button>
+      <p class="popup-privacy">Your info is never shared. E5 Enclave BDI use only.</p>
+    </form>
+    <div class="popup-success" id="popupSuccess" style="display:none;">
+      <div class="success-stamp">✓ Recorded</div>
+      <p>You're on the record. We'll be in touch before June 1.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SUPPORT FORM (FULL)                                   -->
 <!-- ══════════════════════════════════════════════════════ -->
 <section class="section tight" id="support">
   <div class="wrap">
@@ -1556,47 +1852,61 @@ description: "A comprehensive, sourced forensic review of People v. Karmelo Sinc
 
     <div class="form-shell">
       <div class="form-aside">
-        <p style="font-size:17px;line-height:1.7;color:var(--fg-dim);margin-bottom:24px;">Trial begins June 1, 2026 at the Collin County Courthouse in McKinney, Texas. We are organizing a peaceful, lawful court presence for the week of June 1–5. Add your name to be notified of logistics, actions, and updates.</p>
-        <p style="font-size:13px;color:var(--fg-dimmer);line-height:1.6;">All form submissions are recorded securely. Your information will not be shared with any third party. You will only be contacted regarding Karmelo Anthony court support and E5 Enclave justice initiatives.</p>
-        <div style="margin-top:28px;padding:20px;border:1px solid var(--border-2);border-radius:8px;background:var(--bg-1);">
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-dim);margin-bottom:24px;">Trial begins June 1, 2026 at the Collin County Courthouse in McKinney, Texas. We are organizing a peaceful, lawful court presence June 1–5. <strong style="color:var(--fg);">Lodging support is available while occupancy lasts.</strong> Add your name to be notified of logistics and updates.</p>
+
+        <div class="lodging-alert">
+          <div class="la-icon">🏨</div>
+          <div>
+            <strong>Lodging Available</strong>
+            <p>E5 Enclave is coordinating group lodging for court support participants. Indicate below if you need accommodations. First come, first served.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:24px;padding:20px;border:1px solid var(--border-2);border-radius:8px;background:var(--bg-1);">
           <div class="mono" style="margin-bottom:12px;">Trial Details</div>
-          <div style="font-size:14px;color:var(--fg-dim);line-height:2;">
+          <div style="font-size:14px;color:var(--fg-dim);line-height:2.2;">
             <strong style="color:var(--fg);">Case:</strong> People v. Karmelo Sincere Anthony<br/>
             <strong style="color:var(--fg);">Court:</strong> 296th District Court, Collin County<br/>
             <strong style="color:var(--fg);">Location:</strong> 2100 Bloomdale Rd, McKinney, TX 75071<br/>
             <strong style="color:var(--fg);">Judge:</strong> John Roach Jr.<br/>
-            <strong style="color:var(--fg);">Starts:</strong> June 1, 2026 · 9:00 AM CDT
+            <strong style="color:var(--fg);">Starts:</strong> June 1, 2026 · 9:00 AM CDT<br/>
+            <strong style="color:var(--fg);">Week:</strong> June 1 · June 2 · June 3 · June 4 · June 5
           </div>
         </div>
+
+        <p style="font-size:13px;color:var(--fg-dimmer);line-height:1.6;margin-top:20px;">All form submissions are recorded securely. Your information will not be shared with any third party. You will only be contacted regarding Karmelo Anthony court support and E5 Enclave justice initiatives.</p>
       </div>
 
       <div>
         <div class="form-card">
           <form id="supportForm">
+
+            <!-- ── IDENTITY ── -->
+            <div class="form-section-label">Your Information</div>
             <div class="form-grid">
               <div class="field">
-                <label class="label" for="firstName">First Name</label>
+                <label class="label" for="firstName">First Name *</label>
                 <input class="input" type="text" id="firstName" name="firstName" required placeholder="First" />
               </div>
               <div class="field">
-                <label class="label" for="lastName">Last Name</label>
+                <label class="label" for="lastName">Last Name *</label>
                 <input class="input" type="text" id="lastName" name="lastName" required placeholder="Last" />
               </div>
               <div class="field full">
-                <label class="label" for="email">Email Address</label>
+                <label class="label" for="email">Email Address *</label>
                 <input class="input" type="email" id="email" name="email" required placeholder="you@example.com" />
               </div>
-              <div class="field full">
-                <label class="label" for="phone">Phone (optional)</label>
+              <div class="field">
+                <label class="label" for="phone">Phone</label>
                 <input class="input" type="tel" id="phone" name="phone" placeholder="(305) 000-0000" />
               </div>
-              <div class="field third">
+              <div class="field">
                 <label class="label" for="city">City</label>
                 <input class="input" type="text" id="city" name="city" placeholder="City" />
               </div>
               <div class="field third">
                 <label class="label" for="state">State</label>
-                <input class="input" type="text" id="state" name="state" placeholder="TX" />
+                <input class="input" type="text" id="state" name="state" placeholder="TX" maxlength="2" />
               </div>
               <div class="field full">
                 <label class="label" for="commitment">How do you want to support?</label>
@@ -1611,26 +1921,109 @@ description: "A comprehensive, sourced forensic review of People v. Karmelo Sinc
                   <option value="updates_only">Keep me updated</option>
                 </select>
               </div>
+            </div>
+
+            <!-- ── ATTENDANCE DATES ── -->
+            <div class="form-section-label" style="margin-top:28px;">Which days can you attend?</div>
+            <div class="date-picker-grid">
+              <label class="date-chip">
+                <input type="checkbox" name="attendance_dates" value="June 1" />
+                <span>June 1<small>Mon</small></span>
+              </label>
+              <label class="date-chip">
+                <input type="checkbox" name="attendance_dates" value="June 2" />
+                <span>June 2<small>Tue</small></span>
+              </label>
+              <label class="date-chip">
+                <input type="checkbox" name="attendance_dates" value="June 3" />
+                <span>June 3<small>Wed</small></span>
+              </label>
+              <label class="date-chip">
+                <input type="checkbox" name="attendance_dates" value="June 4" />
+                <span>June 4<small>Thu</small></span>
+              </label>
+              <label class="date-chip">
+                <input type="checkbox" name="attendance_dates" value="June 5" />
+                <span>June 5<small>Fri</small></span>
+              </label>
+              <label class="date-chip full-week">
+                <input type="checkbox" name="attendance_dates" value="Full Week" id="fullWeekChk" />
+                <span>Full Week<small>June 1–5</small></span>
+              </label>
+            </div>
+
+            <!-- ── LODGING ── -->
+            <div class="form-section-label" style="margin-top:28px;">Lodging Support</div>
+            <div class="lodge-cards">
+              <label class="lodge-option">
+                <input type="radio" name="needs_lodging" value="No" checked />
+                <span>
+                  <strong>No lodging needed</strong>
+                  <small>I have my own accommodations</small>
+                </span>
+              </label>
+              <label class="lodge-option">
+                <input type="radio" name="needs_lodging" value="Yes - Single" />
+                <span>
+                  <strong>Yes — single room</strong>
+                  <small>Requesting one room</small>
+                </span>
+              </label>
+              <label class="lodge-option">
+                <input type="radio" name="needs_lodging" value="Yes - Group" />
+                <span>
+                  <strong>Yes — group lodging</strong>
+                  <small>Traveling with others</small>
+                </span>
+              </label>
+            </div>
+
+            <!-- ── GROUP TRAVEL ── -->
+            <div class="group-travel-section" id="groupSection" style="display:none;">
+              <div class="form-section-label" style="margin-top:24px;">Group Travel Details</div>
+              <div class="form-grid">
+                <div class="field full">
+                  <label class="label" for="groupSize">Number of people in your group (including you)</label>
+                  <select class="input" id="groupSize" name="group_size">
+                    <option value="">Select group size</option>
+                    <option value="2">2 people</option>
+                    <option value="3">3 people</option>
+                    <option value="4">4 people</option>
+                    <option value="5">5 people</option>
+                    <option value="6+">6 or more</option>
+                  </select>
+                </div>
+                <div class="field full">
+                  <label class="label" for="groupMembers">List your group members (first name + last name, one per line)</label>
+                  <textarea class="input" id="groupMembers" name="group_members" rows="4" placeholder="Jane Smith&#10;Marcus Johnson&#10;Aisha Williams"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- ── STATEMENT + ORG ── -->
+            <div class="form-grid" style="margin-top:24px;">
               <div class="field full">
                 <label class="label" for="organization">Organization (if applicable)</label>
                 <input class="input" type="text" id="organization" name="organization" placeholder="Organization name" />
               </div>
               <div class="field full">
                 <label class="label" for="message">Your statement (optional)</label>
-                <textarea class="input" id="message" name="message" rows="4" placeholder="Why you stand with truth and legal process..."></textarea>
+                <textarea class="input" id="message" name="message" rows="3" placeholder="Why you stand with truth and legal process..."></textarea>
               </div>
             </div>
+
+            <div id="formError" style="display:none;background:#ff4d4d11;border:1px solid #ff4d4d33;color:#ff4d4d;padding:12px 16px;border-radius:6px;font-size:13px;margin-top:16px;"></div>
+
             <button type="submit" class="submit-btn">
               Add My Name to the Record <span class="arrow">→</span>
             </button>
           </form>
 
-          <div class="success" id="successMsg">
+          <div class="success" id="successMsg" style="display:none;">
             <div class="stamp"><span class="dot"></span> Recorded</div>
             <h3>Your name is on the record. <em>Thank you.</em></h3>
             <p>We will be in touch with logistics and action updates before June 1. You are part of this.</p>
           </div>
-
         </div>
       </div>
     </div>
@@ -1695,16 +2088,58 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// ─── FORM SUBMISSION ───
-document.getElementById('supportForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const fd = new FormData(this);
+// ─── POPUP ───────────────────────────────────────────────
+function openSignupPopup() {
+  document.getElementById('signupPopup').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeSignupPopup() {
+  document.getElementById('signupPopup').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('signupPopup').addEventListener('click', function(e) {
+  if (e.target === this) closeSignupPopup();
+});
+
+// Show popup after 8 seconds if not already signed up
+if (!sessionStorage.getItem('karmelo_signed')) {
+  setTimeout(openSignupPopup, 8000);
+}
+
+// ─── LODGING → GROUP SECTION ─────────────────────────────
+document.querySelectorAll('input[name="needs_lodging"]').forEach(function(radio) {
+  radio.addEventListener('change', function() {
+    var section = document.getElementById('groupSection');
+    if (this.value === 'Yes - Group') {
+      section.style.display = 'block';
+    } else {
+      section.style.display = 'none';
+    }
+  });
+});
+
+// ─── FULL WEEK CHECKBOX ──────────────────────────────────
+document.getElementById('fullWeekChk').addEventListener('change', function() {
+  var allChips = document.querySelectorAll('input[name="attendance_dates"]');
+  allChips.forEach(function(chk) {
+    if (chk.value !== 'Full Week') chk.checked = this.checked;
+  }.bind(this));
+});
+
+// ─── SHARED SUBMIT FUNCTION ──────────────────────────────
+async function submitKarmeloForm(formEl, successEl, btnEl) {
+  const fd = new FormData(formEl);
   const data = Object.fromEntries(fd.entries());
+
+  // Collect multi-check dates
+  const dates = Array.from(formEl.querySelectorAll('input[name="attendance_dates"]:checked'))
+    .map(c => c.value).filter(v => v !== 'Full Week');
+  data.availability = dates.join(', ') || 'Not specified';
+  data.can_travel = (data.commitment === 'court_presence' || dates.length > 0) ? 'YES' : 'NO';
   data.source = 'karmelo-justice-page';
 
-  const btn = this.querySelector('.submit-btn');
-  btn.textContent = 'Recording...';
-  btn.disabled = true;
+  btnEl.textContent = 'Recording...';
+  btnEl.disabled = true;
 
   try {
     const resp = await fetch('https://sue-45c3e283.base44.app/functions/karmeloSignup', {
@@ -1712,34 +2147,46 @@ document.getElementById('supportForm').addEventListener('submit', async function
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
-
     const result = await resp.json().catch(() => ({}));
+    if (!resp.ok) throw new Error(result.error || 'Server error ' + resp.status);
 
-    if (!resp.ok) {
-      throw new Error(result.error || 'Server error ' + resp.status);
-    }
+    sessionStorage.setItem('karmelo_signed', '1');
+    formEl.style.display = 'none';
+    successEl.style.display = 'block';
 
-    document.getElementById('supportForm').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
-
-    // Update supporter count if returned
-    if (result.total_supporters) {
-      const counter = document.getElementById('supporterCount');
-      if (counter) counter.textContent = result.total_supporters;
+    // Update any supporter counters
+    if (result.count) {
+      document.querySelectorAll('[data-supporter-count]').forEach(function(el) {
+        el.textContent = result.count;
+      });
     }
   } catch (err) {
     console.error('[karmelo-signup]', err);
-    btn.textContent = 'Add My Name to the Record →';
-    btn.disabled = false;
-    const errBox = document.getElementById('formError');
+    btnEl.textContent = btnEl.dataset.origText || 'Add My Name →';
+    btnEl.disabled = false;
+    const errBox = formEl.querySelector('[id$="Error"]') || formEl.querySelector('.form-error');
     if (errBox) {
-      errBox.textContent = err.message || 'Network error. Please try again or email israel@e5enclave.com.';
+      errBox.textContent = err.message || 'Network error. Please try again.';
       errBox.style.display = 'block';
     }
   }
+}
+
+// ─── MAIN FORM ───────────────────────────────────────────
+document.getElementById('supportForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.submit-btn');
+  btn.dataset.origText = btn.textContent;
+  await submitKarmeloForm(this, document.getElementById('successMsg'), btn);
 });
 
-console.log('People v. Anthony · Forensic Edition · E5 Enclave BDI · May 21, 2026');
-console.log('Factual corrections applied. All sources on the public record.');
+// ─── POPUP FORM ──────────────────────────────────────────
+document.getElementById('popupForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.popup-submit');
+  btn.dataset.origText = btn.textContent;
+  await submitKarmeloForm(this, document.getElementById('popupSuccess'), btn);
+});
+
 </script>
 <!-- CF-REBUILD: 2026-05-24 -->
