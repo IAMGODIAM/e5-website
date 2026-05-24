@@ -1805,38 +1805,10 @@ description: "A comprehensive, sourced forensic review of People v. Karmelo Sinc
     <h2 class="popup-title" id="popupTitle">Stand With Karmelo.<br/><em>Show Up for Justice.</em></h2>
     <p class="popup-sub">We are organizing peaceful, lawful court presence June 1–5. Lodging support available while occupancy lasts.</p>
 
-    <form id="popupForm" class="popup-form">
-      <div class="pf-row">
-        <div class="pf-field">
-          <label for="pFirstName">First Name *</label>
-          <input type="text" id="pFirstName" name="firstName" required placeholder="First" />
-        </div>
-        <div class="pf-field">
-          <label for="pLastName">Last Name *</label>
-          <input type="text" id="pLastName" name="lastName" required placeholder="Last" />
-        </div>
-      </div>
-      <div class="pf-field">
-        <label for="pEmail">Email Address *</label>
-        <input type="email" id="pEmail" name="email" required placeholder="you@example.com" />
-      </div>
-      <div class="pf-row">
-        <div class="pf-field">
-          <label for="pPhone">Phone</label>
-          <input type="tel" id="pPhone" name="phone" placeholder="(305) 000-0000" />
-        </div>
-        <div class="pf-field">
-          <label for="pState">State</label>
-          <input type="text" id="pState" name="state" placeholder="TX" maxlength="2" />
-        </div>
-      </div>
-      <button type="submit" class="popup-submit">Add My Name →</button>
-      <p class="popup-privacy">Your info is never shared. E5 Enclave BDI use only.</p>
-    </form>
-    <div class="popup-success" id="popupSuccess" style="display:none;">
-      <div class="success-stamp">✓ Recorded</div>
-      <p>You're on the record. We'll be in touch before June 1.</p>
-    </div>
+    <a class="popup-submit" href="#support" onclick="closeSignupPopup()">
+      Sign Up Below — Takes 60 Seconds →
+    </a>
+    <p class="popup-privacy">Scroll down to the full form. Choose your dates, lodging needs, and more.</p>
   </div>
 </div>
 
@@ -2103,7 +2075,8 @@ document.getElementById('signupPopup').addEventListener('click', function(e) {
 
 // Show popup after 8 seconds if not already signed up
 if (!sessionStorage.getItem('karmelo_signed')) {
-  setTimeout(openSignupPopup, 8000);
+  var _delay = Math.floor(Math.random() * 15000) + 30000; // 30–45 seconds
+  setTimeout(openSignupPopup, _delay);
 }
 
 // ─── LODGING → GROUP SECTION ─────────────────────────────
@@ -2180,13 +2153,7 @@ document.getElementById('supportForm').addEventListener('submit', async function
   await submitKarmeloForm(this, document.getElementById('successMsg'), btn);
 });
 
-// ─── POPUP FORM ──────────────────────────────────────────
-document.getElementById('popupForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const btn = this.querySelector('.popup-submit');
-  btn.dataset.origText = btn.textContent;
-  await submitKarmeloForm(this, document.getElementById('popupSuccess'), btn);
-});
+// popup redirects to #support — no separate form submission
 
 </script>
 <!-- CF-REBUILD: 2026-05-24 -->
