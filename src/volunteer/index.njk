@@ -107,3 +107,38 @@ breadcrumbs:
   }
 }
 </script>
+
+
+<script>
+// E5 Form Protocol — Volunteer Signup Handler
+// DAG: e5fp-volunteer-2026-0524
+(function() {
+  var form = document.getElementById('volunteer-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('button[type="submit"]');
+    var success = form.parentElement ? form.parentElement.querySelector('.vc-form-success') : null;
+    if (btn) { btn.disabled = true; btn.textContent = 'Submitting...'; }
+    var fd = new FormData(form);
+    var payload = {};
+    fd.forEach(function(v, k) { payload[k] = v; });
+    payload.source = 'volunteer-page';
+    fetch('https://sue-45c3e283.base44.app/functions/volunteerSignup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(r) { if (!r.ok) throw new Error('Error ' + r.status); return r.json(); })
+    .then(function() {
+      if (success) success.classList.add('show');
+      form.reset();
+      form.style.display = 'none';
+    })
+    .catch(function() {
+      if (success) { success.classList.add('show'); success.innerHTML = 'Please email <a href="mailto:accounts@e5enclave.com">accounts@e5enclave.com</a> directly.'; }
+    })
+    .finally(function() { if (btn) { btn.disabled = false; btn.textContent = 'Submit application →'; } });
+  });
+})();
+</script>
