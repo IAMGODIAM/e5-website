@@ -3,7 +3,7 @@
 // Forwards to Base44 karmeloSignup function + writes directly to Google Sheets
 // DAG: karmelo-cf-worker-2026-0521
 
-const BASE44_FUNCTION_URL = 'https://sue-app-e73f9f1e.base44.app/api/apps/69d7dd5e015cd1aa45c3e283/functions/karmeloSignup';
+const BASE44_FUNCTION_URL = 'https://sue-45c3e283.base44.app/api/apps/69d7dd5e015cd1aa45c3e283/functions/karmeloSignup';
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
