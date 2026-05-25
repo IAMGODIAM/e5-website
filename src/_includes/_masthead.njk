@@ -127,7 +127,7 @@
   }
 
   // Try to fetch live dispatches from the board API
-  fetch('https://api.e5enclave.com/dispatches?limit=5')
+  fetch('/api/dispatches.json')
     .then(function(r) { return r.ok ? r.json() : null; })
     .then(function(data) {
       if (data && data.items && data.items.length) {
