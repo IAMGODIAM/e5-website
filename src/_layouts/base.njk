@@ -29,6 +29,7 @@
   {%- endif %}
   {% include "_nav.njk" %}
   {%- if breadcrumbs and not isHome %}{% include "_breadcrumb.njk" %}{% endif %}
+  {%- if not isHome %}{% include "_trust-rail.njk" %}{% endif %}
 {%- endif %}
 <main id="main">
 {{ content | safe }}
