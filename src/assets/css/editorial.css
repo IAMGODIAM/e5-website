@@ -394,27 +394,38 @@ h1.vc-foundation-mark {
   .vc-counter-orn { width: 56px; height: 1px; }
 }
 
-/* ===== PALETTE TOGGLE ===== */
+/* ===== PALETTE TOGGLE — floating fixed bottom-right ===== */
+/* Removed from nav inline. Now a discreet floating pill — Chairman only. */
+.vc-palette-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 900;
+  opacity: 0.35;
+  transition: opacity .2s ease;
+}
+.vc-palette-float:hover { opacity: 1; }
 .vc-palette-toggle {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 4px 6px;
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 10px;
   border: 1px solid var(--vc-rule-2);
   border-radius: 999px;
-  background: transparent;
+  background: var(--vc-bone, #fdfaf4);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
   cursor: pointer;
-  margin-left: 8px;
 }
 .vc-palette-toggle:hover { border-color: var(--vc-ink); }
 .vc-palette-toggle .sw {
-  width: 14px; height: 14px; border-radius: 50%;
-  border: 1px solid rgba(var(--vc-ink-rgb),0.35);
+  width: 12px; height: 12px; border-radius: 50%;
+  border: 1px solid rgba(var(--vc-ink-rgb),0.3);
   transition: transform .2s ease;
 }
 .vc-palette-toggle .sw-edit { background: linear-gradient(135deg, #f4eee2 0 50%, #6d1f20 50% 100%); }
-.vc-palette-toggle .sw-orig { background: linear-gradient(135deg, #e2dbd3 0 50%, #293d1b 50% 100%); }
+.vc-palette-toggle .sw-orig { background: linear-gradient(135deg, #0c0c0e 0 50%, #c9a84c 50% 100%); }
 html[data-palette="editorial"] .vc-palette-toggle .sw-edit,
-html:not([data-palette]) .vc-palette-toggle .sw-edit { transform: scale(1.18); border-color: var(--vc-oxblood); }
-html[data-palette="original"] .vc-palette-toggle .sw-orig { transform: scale(1.18); border-color: var(--vc-oxblood); }
+html:not([data-palette]) .vc-palette-toggle .sw-edit { transform: scale(1.25); border-color: var(--vc-oxblood); }
+html[data-palette="midnight"] .vc-palette-toggle .sw-orig { transform: scale(1.25); border-color: #c9a84c; }
+@media print { .vc-palette-float { display: none; } }
 
 /* ===== NAV ===== */
 .vc-nav { display: flex; gap: 44px; justify-content: center; padding: 18px 56px; flex-wrap: wrap;
