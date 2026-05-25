@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E5 Enclave — Sovereign Email Builder</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+:root{--bg:#070710;--surface:#0d0d1a;--card:#111128;--border:#c9a84c22;--border-a:#c9a84c66;--gold:#c9a84c;--cream:#e8d5a3;--green:#4cc98a;--red:#f72585;--blue:#4cc9f0;--dim:#ffffff22;--text:#e8e8f0;--text2:#8888aa;--text3:#555577}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;font-size:14px}
+.hd{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.hd-l{display:flex;align-items:center;gap:12px}
+.logo{width:36px;height:36px;background:linear-gradient(135deg,var(--gold),var(--cream));border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:var(--bg);font-family:'JetBrains Mono',monospace}
+.hd-title{font-size:16px;font-weight:600;color:var(--cream)}
+.hd-sub{font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace}
+.hd-r{display:flex;align-items:center;gap:10px}
+.btn{background:var(--card);border:1px solid var(--border);color:var(--text2);padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;font-family:'JetBrains Mono',monospace;transition:all .15s}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn-p{background:linear-gradient(135deg,var(--gold),var(--cream));color:var(--bg);border:none;font-weight:600}
+.btn-p:hover{opacity:.9}
+.btn-danger{border-color:var(--red);color:var(--red)}
+.btn-sm{padding:4px 10px;font-size:11px}
+.layout{display:grid;grid-template-columns:220px 1fr 320px;height:calc(100vh - 60px)}
+.sidebar{background:var(--surface);border-right:1px solid var(--border);overflow-y:auto;padding:12px}
+.sidebar-title{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-family:'JetBrains Mono',monospace}
+.block-list{display:flex;flex-direction:column;gap:6px}
+.block-item{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 12px;cursor:grab;transition:all .15s;font-size:12px;display:flex;align-items:center;gap:8px}
+.block-item:hover{border-color:var(--gold)}
+.block-icon{font-size:16px}
+.canvas-area{background:var(--bg);overflow-y:auto;padding:24px;display:flex;justify-content:center}
+.email-canvas{background:#fff;border-radius:12px;width:600px;min-height:800px;box-shadow:0 8px 40px #00000060;overflow:hidden;position:relative}
+.email-canvas.drop-active{outline:3px dashed var(--gold)}
+.email-section{position:relative;border:2px dashed transparent;transition:border-color .15s;min-height:40px}
+.email-section:hover{border-color:#ddd}
+.email-section.selected{border-color:var(--gold)}
+.section-actions{position:absolute;top:4px;right:4px;display:none;gap:4px;z-index:10}
+.email-section:hover .section-actions,.email-section.selected .section-actions{display:flex}
+.sa-btn{width:24px;height:24px;border-radius:4px;border:none;cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center;background:#00000080;color:#fff}
+.sa-btn:hover{background:var(--gold);color:var(--bg)}
+.prop-panel{background:var(--surface);border-left:1px solid var(--border);overflow-y:auto;padding:16px}
+.prop-title{font-size:12px;font-weight:600;color:var(--cream);margin-bottom:12px}
+.fg{margin-bottom:12px}
+.fl{display:block;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;font-family:'JetBrains Mono',monospace}
+.fi,.fta,.fs{width:100%;background:var(--card);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:12px}
+.fi:focus,.fta:focus,.fs:focus{outline:none;border-color:var(--gold)}
+.fta{min-height:60px;resize:vertical}
+.color-row{display:flex;gap:6px;flex-wrap:wrap}
+.color-swatch{width:28px;height:28px;border-radius:6px;cursor:pointer;border:2px solid transparent;transition:border-color .15s}
+.color-swatch:hover,.color-swatch.sel{border-color:var(--gold)}
+.toast{position:fixed;bottom:20px;right:20px;padding:10px 16px;border-radius:6px;font-size:11px;z-index:300;transition:all .3s;transform:translateY(80px);opacity:0}
+.toast.show{transform:translateY(0);opacity:1}
+.toast-ok{background:var(--green);color:var(--bg)}.toast-err{background:var(--red);color:#fff}
+.preview-bar{background:var(--surface);border-top:1px solid var(--border);padding:10px 24px;display:flex;align-items:center;justify-content:space-between}
+.preview-stats{display:flex;gap:16px}
+.ps{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text3)}
+.ps span{color:var(--gold);font-weight:600}
+.hidden{display:none!important}
+@media(max-width:1100px){.layout{grid-template-columns:180px 1fr 260px}}
+@media(max-width:800px){.layout{grid-template-columns:1fr;grid-template-rows:auto 1fr auto}.sidebar,.prop-panel{max-height:200px}}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--text3);border-radius:3px}
+</style>
+</head>
+<body>
+<div class="hd">
+  <div class="hd-l"><div class="logo">E</div><div><div class="hd-title">Sovereign Email Builder</div><div class="hd-sub">E5 Enclave · Replace Mailchimp · v1.0</div></div></div>
+  <div class="hd-r">
+    <button class="btn" onclick="previewEmail()">👁 PREVIEW</button>
+    <button class="btn" onclick="exportHTML()">⬇ EXPORT HTML</button>
+    <button class="btn btn-p" onclick="saveTemplate()">💾 SAVE</button>
+  </div>
+</div>
+<div class="layout">
+  <div class="sidebar">
+    <div class="sidebar-title">◉ BLOCKS</div>
+    <div class="block-list" id="blockList">
+      <div class="block-item" draggable="true" data-type="header"><span class="block-icon">📧</span>Header</div>
+      <div class="block-item" draggable="true" data-type="hero"><span class="block-icon">🖼️</span>Hero Image</div>
+      <div class="block-item" draggable="true" data-type="text"><span class="block-icon">📝</span>Text Block</div>
+      <div class="block-item" draggable="true" data-type="button"><span class="block-icon">🔘</span>CTA Button</div>
+      <div class="block-item" draggable="true" data-type="divider"><span class="block-icon">➖</span>Divider</div>
+      <div class="block-item" draggable="true" data-type="columns"><span class="block-icon">📊</span>2 Columns</div>
+      <div class="block-item" draggable="true" data-type="quote"><span class="block-icon">💬</span>Quote</div>
+      <div class="block-item" draggable="true" data-type="footer"><span class="block-icon">📋</span>Footer</div>
+    </div>
+    <div class="sidebar-title" style="margin-top:16px">◉ TEMPLATES</div>
+    <div class="block-list" id="templateList">
+      <div class="block-item" onclick="loadTemplate('newsletter')"><span class="block-icon">📰</span>Newsletter</div>
+      <div class="block-item" onclick="loadTemplate('announcement')"><span class="block-icon">📢</span>Announcement</div>
+      <div class="block-item" onclick="loadTemplate('grant')"><span class="block-icon">💰</span>Grant LOI</div>
+      <div class="block-item" onclick="launchTemplate('sovereign')"><span class="block-icon">👑</span>Sovereign</div>
+    </div>
+  </div>
+  <div class="canvas-area">
+    <div class="email-canvas" id="emailCanvas" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropBlock(event)">
+      <div style="padding:40px;text-align:center;color:#999;font-size:13px">
+        Drag blocks from the left panel to build your email
+      </div>
+    </div>
+  </div>
+  <div class="prop-panel">
+    <div class="prop-title">◈ PROPERTIES</div>
+    <div id="propContent">
+      <div style="color:var(--text3);font-size:12px;text-align:center;padding:40px 0">Select a block to edit</div>
+    </div>
+    <div style="margin-top:20px">
+      <div class="prop-title">◈ EMAIL SETTINGS</div>
+      <div class="fg"><label class="fl">Subject Line</label><input class="fi" id="emailSubject" placeholder="Email subject..." onchange="updateEmailMeta()"></div>
+      <div class="fg"><label class="fl">Preview Text</label><input class="fi" id="emailPreview" placeholder="Preview text..." onchange="updateEmailMeta()"></div>
+      <div class="fg"><label class="fl">From Name</label><input class="fi" id="emailFrom" placeholder="E5 Enclave" onchange="updateEmailMeta()"></div>
+    </div>
+  </div>
+</div>
+<div class="preview-bar">
+  <div class="preview-stats">
+    <div class="ps">Blocks: <span id="statBlocks">0</span></div>
+    <div class="ps">Est. Size: <span id="statSize">0 KB</span></div>
+    <div class="ps">Score: <span id="statScore">—</span></div>
+  </div>
+  <div>
+    <button class="btn btn-sm" onclick="clearCanvas()">🗑 Clear</button>
+    <button class="btn btn-sm" onclick="undoAction()">↩ Undo</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+let sections = [];
+let history = [];
+let selectedIdx = -1;
+let blockIdCounter = 0;
+let emailMeta = {subject:'',preview:'',from:'E5 Enclave'};
+
+const blockTemplates = {
+  header: () => ({type:'header',html:`<div style="padding:20px 30px;text-align:center;background:#070710">
+    <div style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:4px;color:#c9a84c;text-transform:uppercase;margin-bottom:8px">E5 ENCLAVE</div>
+    <div style="font-size:14px;color:#888">Sovereign Technology Infrastructure</div></div>`}),
+  hero: () => ({type:'hero',html:`<div style="padding:40px 30px;text-align:center;background:linear-gradient(135deg,#070710,#1a1a2e)">
+    <div style="font-size:28px;font-weight:700;color:#e8d5a3;margin-bottom:12px">YOUR HEADLINE HERE</div>
+    <div style="font-size:15px;color:#888;max-width:400px;margin:0 auto">Compelling subheadline that drives action</div></div>`}),
+  text: () => ({type:'text',html:`<div style="padding:24px 30px;color:#333;font-size:15px;line-height:1.7">
+    <p>Your content goes here. Write compelling copy that speaks directly to your audience. Keep paragraphs short and scannable.</p>
+    <p>Use bullet points for key benefits:</p>
+    <ul style="padding-left:20px"><li>Benefit one</li><li>Benefit two</li><li>Benefit three</li></ul></div>`}),
+  button: () => ({type:'button',html:`<div style="padding:20px 30px;text-align:center">
+    <a href="#" style="display:inline-block;padding:14px 32px;background:#c9a84c;color:#070710;text-decoration:none;border-radius:8px;font-weight:600;font-size:15px">CALL TO ACTION →</a></div>`}),
+  divider: () => ({type:'divider',html:`<div style="padding:10px 30px"><div style="height:1px;background:#eee"></div></div>`}),
+  columns: () => ({type:'columns',html:`<div style="padding:24px 30px;display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div><div style="font-weight:600;color:#070710;margin-bottom:6px;font-size:14px">Column One</div><div style="font-size:13px;color:#555;line-height:1.6">Content for column one</div></div>
+    <div><div style="font-weight:600;color:#070710;margin-bottom:6px;font-size:14px">Column Two</div><div style="font-size:13px;color:#555;line-height:1.6">Content for column two</div></div></div>`}),
+  quote: () => ({type:'quote',html:`<div style="padding:24px 30px;text-align:center">
+    <div style="font-size:18px;font-style:italic;color:#070710;line-height:1.6">"The Black community is not a problem to be solved. It is a sovereign people with agency, power, and a 400-year record of resilience."</div>
+    <div style="margin-top:10px;font-size:12px;color:#888;letter-spacing:1px;text-transform:uppercase">— Israel Lee</div></div>`}),
+  footer: () => ({type:'footer',html:`<div style="padding:20px 30px;text-align:center;background:#f5f5f5;font-size:11px;color:#888;line-height:1.8">
+    <div>© 2026 E5 Enclave Inc. · 501(c)(3) Nonprofit</div>
+    <div>Miami, FL · <a href="#" style="color:#c9a84c">Unsubscribe</a> · <a href="#" style="color:#c9a84c">Preferences</a></div>
+    <div style="color:#bbb;font-family:'Courier New',monospace;font-size:9px;letter-spacing:2px;margin-top:6px">GOD BLESS THE CHILD</div></div>`})
+};
+
+const presetTemplates = {
+  newsletter: [
+    blockTemplates.header(),
+    blockTemplates.hero(),
+    blockTemplates.text(),
+    blockTemplates.button(),
+    blockTemplates.footer()
+  ],
+  announcement: [
+    blockTemplates.header(),
+    blockTemplates.hero(),
+    blockTemplates.text(),
+    blockTemplates.text(),
+    blockTemplates.button(),
+    blockTemplates.footer()
+  ],
+  grant: [
+    blockTemplates.header(),
+    {type:'text',html:`<div style="padding:24px 30px;color:#333;font-size:15px;line-height:1.7">
+      <p>Dear [Funder Name],</p>
+      <p>E5 Enclave Inc. is a 501(c)(3) nonprofit building the world's first agentic-first staffed NGO. Our Black Distress Index (BDI) is the largest unified empirical dataset on structural oppression of Black Americans — 8 pillars, 1,855 data points, 1991-2024.</p>
+      <p>We are requesting $[amount] to [purpose]. This is not charity. This is partnership.</p></div>`},
+    blockTemplates.quote(),
+    blockTemplates.button(),
+    blockTemplates.footer()
+  ],
+  sovereign: [
+    blockTemplates.header(),
+    {type:'hero',html:`<div style="padding:50px 30px;text-align:center;background:linear-gradient(135deg,#070710,#0d0d1a)">
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:6px;color:#c9a84c;text-transform:uppercase;margin-bottom:16px">SOVEREIGN KNOWLEDGE MESH</div>
+      <div style="font-size:32px;font-weight:700;color:#e8d5a3;line-height:1.2;margin-bottom:16px">The world's first Black-first, agentic-generated knowledge architecture.</div>
+      <div style="font-size:14px;color:#888;max-width:420px;margin:0 auto">10,000 pages. 20 clusters. Permanently anchored on the Base blockchain. Led by the 42-agent board of IAMGODIAM.</div></div>`},
+    blockTemplates.columns(),
+    blockTemplates.quote(),
+    blockTemplates.button(),
+    blockTemplates.footer()
+  ]
+};
+
+function saveHistory(){history.push(JSON.stringify(sections));if(history.length>50)history.shift()}
+function undoAction(){if(history.length>1){history.pop();sections=JSON.parse(history[history.length-1]);selectedIdx=-1;renderCanvas();renderProps()}}
+
+function dragOver(e){e.preventDefault();document.getElementById('emailCanvas').classList.add('drop-active')}
+function dragLeave(){document.getElementById('emailCanvas').classList.remove('drop-active')}
+function dropBlock(e){
+  e.preventDefault();
+  document.getElementById('emailCanvas').classList.remove('drop-active');
+  const type=e.dataTransfer.getData('text');
+  if(blockTemplates[type]){
+    saveHistory();
+    sections.push({id:'b-'+(++blockIdCounter),...blockTemplates[type]()});
+    renderCanvas();
+    selectSection(sections.length-1);
+  }
+}
+
+function renderCanvas(){
+  const canvas=document.getElementById('emailCanvas');
+  if(!sections.length){
+    canvas.innerHTML='<div style="padding:40px;text-align:center;color:#999;font-size:13px">Drag blocks from the left panel</div>';
+  } else {
+    canvas.innerHTML=sections.map((s,i)=>{
+      const sel=i===selectedIdx?'selected':'';
+      return `<div class="email-section ${sel}" data-idx="${i}" onclick="selectSection(${i})">
+        <div class="section-actions">
+          <button class="sa-btn" onclick="event.stopPropagation();moveSection(${i},-1)" title="Move up">↑</button>
+          <button class="sa-btn" onclick="event.stopPropagation();moveSection(${i},1)" title="Move down">↓</button>
+          <button class="sa-btn" onclick="event.stopPropagation();dupSection(${i})" title="Duplicate">⧉</button>
+          <button class="sa-btn" onclick="event.stopPropagation();delSection(${i})" title="Delete">✕</button>
+        </div>
+        ${s.html}
+      </div>`;
+    }).join('');
+  }
+  updateStats();
+}
+
+function selectSection(i){
+  selectedIdx=i;
+  renderCanvas();
+  renderProps();
+}
+
+function renderProps(){
+  const panel=document.getElementById('propContent');
+  if(selectedIdx<0||selectedIdx>=sections.length){panel.innerHTML='<div style="color:var(--text3);font-size:12px;text-align:center;padding:40px 0">Select a block</div>';return}
+  const s=sections[selectedIdx];
+  const blockTypeLabels={header:'📧 Header',hero:'🖼️ Hero',text:'📝 Text',button:'🔘 Button',divider:'➖ Divider',columns:'📊 Columns',quote:'💬 Quote',footer:'📋 Footer'};
+  panel.innerHTML=`
+    <div style="font-size:11px;color:var(--text3);margin-bottom:8px;font-family:'JetBrains Mono',monospace">${blockTypeLabels[s.type]||s.type}</div>
+    <div class="fg"><label class="fl">HTML Content</label><textarea class="fta" style="font-family:'JetBrains Mono',monospace;font-size:11px;min-height:200px" onchange="updateSectionHTML(this.value)">${s.html.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</textarea></div>
+    <div style="margin-top:8px"><button class="btn btn-sm btn-danger" onclick="delSection(${selectedIdx})">Delete Block</button></div>
+  `;
+}
+
+function updateSectionHTML(html){
+  if(selectedIdx>=0&&selectedIdx<sections.length){
+    saveHistory();
+    sections[selectedIdx].html=html;
+    renderCanvas();
+  }
+}
+function moveSection(i,dir){
+  const ni=i+dir;
+  if(ni<0||ni>=sections.length)return;
+  saveHistory();
+  [sections[i],sections[ni]]=[sections[ni],sections[i]];
+  selectedIdx=ni;
+  renderCanvas();
+}
+function dupSection(i){
+  saveHistory();
+  sections.splice(i+1,0,{...sections[i],id:'b-'+(++blockIdCounter)});
+  selectedIdx=i+1;
+  renderCanvas();
+  selectSection(i+1);
+}
+function delSection(i){
+  saveHistory();
+  sections.splice(i,1);
+  selectedIdx=Math.min(selectedIdx,sections.length-1);
+  renderCanvas();
+  renderProps();
+}
+function clearCanvas(){
+  if(!confirm('Clear all blocks?'))return;
+  saveHistory();
+  sections=[];
+  selectedIdx=-1;
+  renderCanvas();
+  renderProps();
+}
+function updateEmailMeta(){
+  emailMeta.subject=document.getElementById('emailSubject').value;
+  emailMeta.preview=document.getElementById('emailPreview').value;
+  emailMeta.from=document.getElementById('emailFrom').value;
+}
+function updateStats(){
+  document.getElementById('statBlocks').textContent=sections.length;
+  const html=generateEmailHTML();
+  const size=Math.round(html.length/1024*10)/10;
+  document.getElementById('statSize').textContent=size+' KB';
+  const score=evaluateEmail(html);
+  document.getElementById('statScore').textContent=score.toFixed(0);
+}
+
+// Wyrmcore email scoring
+function evaluateEmail(html){
+  let score=50;
+  if(html.includes('<h1')||html.includes('<h2')||html.includes('font-size:2'))score+=10;
+  if(html.includes('<a href'))score+=15;
+  if(html.includes('unsubscribe')||html.includes('Unsubscribe'))score+=10;
+  if(html.length>500&&html.length<100000)score+=10;
+  if(html.includes('background'))score+=5;
+  if(html.includes('linear-gradient'))score+=5;
+  if(html.includes('text-align:center'))score+=5;
+  if(!html.includes('<script'))score+=5;
+  if(html.includes('<img')||html.includes('background:'))score+=5;
+  return Math.min(100,score);
+}
+
+function generateEmailHTML(){
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${emailMeta.subject||'E5 Enclave Email'}</title></head>
+<body style="margin:0;padding:0;background:#f0f0f0;font-family:Arial,sans-serif">
+<table width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;background:#ffffff">
+${sections.map(s=>'  <tr><td>'+s.html+'</td></tr>').join('\n')}
+</table></body></html>`;
+}
+
+function previewEmail(){
+  const html=generateEmailHTML();
+  const w=window.open('','_blank','width=700,height=900');
+  w.document.write(html);
+  w.document.close();
+}
+
+function exportHTML(){
+  const html=generateEmailHTML();
+  const blob=new Blob([html],{type:'text/html'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download='email-template.html';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('HTML exported','ok');
+}
+
+function saveTemplate(){
+  const data={sections,emailMeta,saved:Date.now()};
+  localStorage.setItem('e5_email_builder',JSON.stringify(data));
+  showTemplate('Template saved to browser','ok');
+}
+
+function launchTemplate(name){
+  if(!presetTemplates[name])return;
+  saveHistory();
+  sections=JSON.parse(JSON.stringify(presetTemplates[name]));
+  sections.forEach(s=>s.id='b-'+(++blockIdCounter));
+  selectedIdx=-1;
+  renderCanvas();
+  showTemplate('Template loaded: '+name,'ok');
+}
+
+function showToast(msg,type){
+  const el=document.getElementById('toast');
+  el.textContent=msg;
+  el.className='toast show toast-'+type;
+  setTimeout(()=>el.classList.remove('show'),3000);
+}
+
+// Load saved template on init
+const saved=localStorage.getItem('e5_email_builder');
+if(saved){
+  try{
+    const data=JSON.parse(saved);
+    if(data.sections&&data.sections.length){
+      sections=data.sections;
+      if(data.emailMeta)emailMeta=data.emailMeta;
+      document.getElementById('emailSubject').value=emailMeta.subject||'';
+      document.getElementById('emailPreview').value=emailMeta.preview||'';
+      document.getElementById('emailFrom').value=emailMeta.from||'E5 Enclave';
+    }
+  }catch(e){}
+}
+// Init from blockList drag
+document.querySelectorAll('.block-item[draggable]').forEach(el=>{
+  el.addEventListener('dragstart',e=>e.dataTransfer.setData('text',el.dataset.type));
+});
+renderCanvas();
+</script>
+</body>
+</html>

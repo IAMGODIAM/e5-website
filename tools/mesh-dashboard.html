@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E5 Enclave — Mesh Status Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg-primary: #070710;
+    --bg-secondary: #0d0d1a;
+    --bg-card: #111128;
+    --bg-card-hover: #1a1a3e;
+    --border-subtle: #c9a84c22;
+    --border-active: #c9a84c66;
+    --gold: #c9a84c;
+    --cream: #e8d5a3;
+    --green: #4cc98a;
+    --red: #f72585;
+    --dim: #ffffff22;
+    --text-primary: #e8e8f0;
+    --text-secondary: #8888aa;
+    --text-muted: #555577;
+  }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, sans-serif;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--gold), var(--cream));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--bg-primary);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .header-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: -0.5px;
+  }
+
+  .header-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .status-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-card);
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    animation: pulse 2s infinite;
+  }
+
+  .status-dot.ok { background: var(--green); }
+  .status-dot.err { background: var(--red); }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .refresh-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.2s;
+  }
+
+  .refresh-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .last-updated {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* MAIN LAYOUT */
+  .main {
+    padding: 24px 32px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* STATS ROW */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.2s;
+  }
+
+  .stat-card:hover {
+    border-color: var(--border-active);
+    background: var(--bg-card-hover);
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: -1px;
+  }
+
+  .stat-value.green { color: var(--green); }
+  .stat-value.red { color: var(--red); }
+  .stat-value.gold { color: var(--gold); }
+
+  .stat-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* GRID LAYOUT */
+  .grid-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .grid-row { grid-template-columns: 1fr; }
+  }
+
+  /* CARD */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .card-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card-badge {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 10px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  /* NODE LIST */
+  .node-list { list-style: none; }
+
+  .node-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--dim);
+  }
+
+  .node-item:last-child { border-bottom: none; }
+
+  .node-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .node-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .node-dot.online { background: var(--green); box-shadow: 0 0 8px var(--green); }
+  .node-dot.offline { background: var(--red); }
+  .node-dot.unknown { background: var(--text-muted); }
+
+  .node-name {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .node-role {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .node-status {
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .node-status.online { color: var(--green); background: #4cc98a11; }
+  .node-status.offline { color: var(--red); background: #f7258511; }
+  .node-status.unknown { color: var(--text-muted); background: #55557711; }
+
+  /* TASKS TABLE */
+  .tasks-table { width: 100%; border-collapse: collapse; }
+
+  .tasks-table th {
+    text-align: left;
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .tasks-table td {
+    padding: 10px 0;
+    font-size: 13px;
+    border-bottom: 1px solid var(--dim);
+    vertical-align: top;
+  }
+
+  .tasks-table tr:last-child td { border-bottom: none; }
+
+  .task-status {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .task-status.completed { color: var(--green); background: #4cc98a11; }
+  .task-status.pending { color: var(--gold); background: #c9a84c11; }
+  .task-status.failed { color: var(--red); background: #f7258511; }
+  .task-status.in_progress { color: #4cc9f0; background: #4cc9f011; }
+
+  /* LOADING / ERROR STATES */
+  .loading {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+
+  .loading::after {
+    content: '';
+    animation: dots 1.5s infinite;
+  }
+
+  @keyframes dots {
+    0% { content: ''; }
+    25% { content: '.'; }
+    50% { content: '..'; }
+    75% { content: '...'; }
+  }
+
+  .error-msg {
+    text-align: center;
+    padding: 40px;
+    color: var(--red);
+    font-size: 13px;
+  }
+
+  .config-hint {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .config-hint label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .config-hint input {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    border-top: 1px solid var(--border-subtle);
+    margin-top: 24px;
+  }
+
+  .footer a { color: var(--gold); text-decoration: none; }
+  .footer a:hover { color: var(--cream); }
+
+  /* AGENT CHIPS */
+  .agent-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .agent-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    font-size: 12px;
+  }
+
+  .agent-chip .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+  }
+
+  .agent-chip .dot.offline { background: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="logo">E5</div>
+    <div>
+      <div class="header-title">Enclave Mesh Dashboard</div>
+      <div class="header-sub">Agent Network Status · Real-time</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="status-badge" id="overallStatus">
+      <span class="status-dot" id="overallDot"></span>
+      <span id="overallText">Checking...</span>
+    </div>
+    <button class="refresh-btn" onclick="refreshAll()">↻ REFRESH</button>
+    <span class="last-updated" id="lastUpdated"></span>
+  </div>
+</div>
+
+<div class="main">
+  <!-- Config -->
+  <div class="config-hint">
+    <label>Boardroom Endpoint (leave default for local):</label>
+    <input type="text" id="boardroomUrl" value="http://localhost:8420" placeholder="http://localhost:8420">
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-label">NODES ONLINE</div>
+      <div class="stat-value green" id="nodesOnline">—</div>
+      <div class="stat-sub">of <span id="nodesTotal">—</span> total</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">AGENTS ACTIVE</div>
+      <div class="stat-value gold" id="agentsActive">—</div>
+      <div class="stat-sub">across all nodes</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">TASKS PENDING</div>
+      <div class="stat-value" id="tasksPending">—</div>
+      <div class="stat-sub"><span id="tasksCompleted">—</span> completed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">UPTIME</div>
+      <div class="stat-value" id="uptime">—</div>
+      <div class="stat-sub" id="version">v—</div>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="grid-row">
+    <!-- Nodes -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">◉ Network Nodes</div>
+        <span class="card-badge" id="nodeCount">0 nodes</span>
+      </div>
+      <div class="card-body">
+        <ul class="node-list" id="nodeList">
+          <li class="loading">Loading nodes</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Agents -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">◉ Active Agents</div>
+        <span class="card-badge" id="agentCount">0 agents</span>
+      </div>
+      <div class="card-body">
+        <div class="agent-chips" id="agentChips">
+          <div class="loading">Loading agents</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Tasks -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">◉ Recent Tasks</div>
+      <span class="card-badge" id="taskCount">0 tasks</span>
+    </div>
+    <div class="card-body" style="padding: 0 20px 20px;">
+      <table class="tasks-table">
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Agent</th>
+            <th>Status</th>
+            <th>Updated</th>
+          </tr>
+        </thead>
+        <tbody id="taskTable">
+          <tr><td colspan="4" class="loading">Loading tasks</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  E5 Enclave Inc. · <span style="color: var(--gold);">God Bless the Child</span> · 
+  <a href="https://github.com/IAMGODIAM/hallways-boardroom">GitHub</a> · 
+  <a href="https://iamgodiam.net">iamgodiam.net</a>
+</div>
+
+<script>
+const DEFAULT_ENDPOINTS = [
+  'http://localhost:8420',
+  'http://10.255.255.247:8420',
+  'http://172.31.100.132:8420',
+  'http://100.126.20.78:8420',
+  'http://192.168.1.212:8420',
+];
+
+let endpoints = [...DEFAULT_ENDPOINTS];
+let workingEndpoint = null;
+
+function getEndpoint() {
+  const custom = document.getElementById('boardroomUrl').value.trim();
+  if (custom && !endpoints.includes(custom)) endpoints.unshift(custom);
+  return endpoints;
+}
+
+async function fetchWithTimeout(url, timeout = 5000) {
+  const ctrl = new AbortController();
+  const id = setTimeout(() => ctrl.abort(), timeout);
+  try {
+    const r = await fetch(url, { signal: ctrl.signal });
+    clearTimeout(id);
+    return r;
+  } catch (e) {
+    clearTimeout(id);
+    throw e;
+  }
+}
+
+async function findWorkingEndpoint() {
+  for (const url of getEndpoint()) {
+    try {
+      await fetchWithTimeout(url + '/health', 3000);
+      workingEndpoint = url;
+      return url;
+    } catch (e) { continue; }
+  }
+  return null;
+}
+
+async function refreshAll() {
+  document.getElementById('overallDot').className = 'status-dot unknown';
+  document.getElementById('overallText').textContent = 'Connecting...';
+
+  const ep = await findWorkingEndpoint();
+
+  if (!ep) {
+    document.getElementById('overallDot').className = 'status-dot err';
+    document.getElementById('overallText').textContent = 'Boardroom Offline';
+    renderOffline();
+    return;
+  }
+
+  document.getElementById('overallDot').className = 'status-dot ok';
+  document.getElementById('overallText').textContent = 'Connected';
+  document.getElementById('lastUpdated').textContent = new Date().toLocaleTimeString();
+
+  await Promise.all([loadNodes(ep), loadAgents(ep), loadTasks(ep), loadHealth(ep)]);
+}
+
+async function loadHealth(ep) {
+  try {
+    const r = await fetch(ep + '/health');
+    const d = await r.json();
+    document.getElementById('uptime').textContent = d.status || 'OK';
+    document.getElementById('version').textContent = d.version ? 'v' + d.version : '';
+  } catch (e) {}
+}
+
+async function loadNodes(ep) {
+  const list = document.getElementById('nodeList');
+  try {
+    const r = await fetch(ep + '/api/v1/nodes');
+    const d = await r.json();
+    const nodes = Object.entries(d.nodes || d || {});
+    let online = 0;
+
+    if (nodes.length === 0) {
+      // Fallback static data
+      list.innerHTML = renderStaticNodes();
+      return;
+    }
+
+    list.innerHTML = nodes.map(([name, info]) => {
+      const status = info.online || info.status === 200;
+      if (status) online++;
+      return `
+        <li class="node-item">
+          <div class="node-info">
+            <span class="node-dot ${status ? 'online' : 'offline'}"></span>
+            <div>
+              <div class="node-name">${name}</div>
+              <div class="node-role">${info.os || info.role || 'agent node'}</div>
+            </div>
+          </div>
+          <span class="node-status ${status ? 'online' : 'offline'}">${status ? 'ONLINE' : 'OFFLINE'}</span>
+        </li>`;
+    }).join('');
+
+    document.getElementById('nodesOnline').textContent = online;
+    document.getElementById('nodesTotal').textContent = nodes.length;
+    document.getElementById('nodeCount').textContent = `${nodes.length} nodes`;
+  } catch (e) {
+    list.innerHTML = renderStaticNodes();
+  }
+}
+
+function renderStaticNodes() {
+  const nodes = [
+    { name: 'Monte-Cristo (MC)', role: 'Windows · Gateway + Boardroom', online: true },
+    { name: 'Sandbox (WSL2)', role: 'Ubuntu · Hermie · Agent Host', online: true },
+    { name: 'Mac', role: 'macOS · Secondary Agent', online: false },
+    { name: 'hermie2', role: 'Azure VM · Primary (DEAD)', online: false },
+  ];
+  let html = '';
+  let online = 0;
+  for (const n of nodes) {
+    if (n.online) online++;
+    html += `<li class="node-item">
+      <div class="node-info">
+        <span class="node-dot ${n.online ? 'online' : 'offline'}"></span>
+        <div>
+          <div class="node-name">${n.name}</div>
+          <div class="node-role">${n.role}</div>
+        </div>
+      </div>
+      <span class="node-status ${n.online ? 'online' : 'offline'}">${n.online ? 'ONLINE' : 'OFFLINE'}</span>
+    </li>`;
+  }
+  document.getElementById('nodesOnline').textContent = online;
+  document.getElementById('nodesTotal').textContent = nodes.length;
+  document.getElementById('nodeCount').textContent = `${nodes.length} nodes`;
+  return html;
+}
+
+async function loadAgents(ep) {
+  const chips = document.getElementById('agentChips');
+  try {
+    const r = await fetch(ep + '/api/v1/agents');
+    const d = await r.json();
+    const agents = d.agents || d || [];
+    if (agents.length === 0) { renderStaticAgents(); return; }
+    chips.innerHTML = agents.map(a => `
+      <div class="agent-chip">
+        <span class="dot ${a.online !== false ? '' : 'offline'}"></span>
+        ${a.name || a.id || 'agent'}
+      </div>`).join('');
+    document.getElementById('agentCount').textContent = `${agents.length} agents`;
+    document.getElementById('agentsActive').textContent = agents.length;
+  } catch (e) {
+    renderStaticAgents();
+  }
+}
+
+function renderStaticAgents() {
+  const agents = ['Hermie', 'Sue', 'Scout', 'Forge', 'Scribe', 'Draco'];
+  document.getElementById('agentChips').innerHTML = agents.map(a =>
+    `<div class="agent-chip"><span class="dot"></span>${a}</div>`
+  ).join('');
+  document.getElementById('agentCount').textContent = `${agents.length} agents`;
+  document.getElementById('agentsActive').textContent = agents.length;
+}
+
+async function loadTasks(ep) {
+  const table = document.getElementById('taskTable');
+  try {
+    const r = await fetch(ep + '/api/v1/tasks');
+    const d = await r.json();
+    const tasks = d.tasks || d || [];
+    if (tasks.length === 0) { renderStaticTasks(); return; }
+    renderTasks(tasks);
+  } catch (e) {
+    renderStaticTasks();
+  }
+}
+
+function renderStaticTasks() {
+  const tasks = [
+    { title: 'Email Infrastructure Research', agent: 'Hermie', status: 'completed', updated: '2h ago' },
+    { title: 'Docker Install + Verify', agent: 'Hermie', status: 'completed', updated: '1h ago' },
+  ];
+  renderTasks(tasks);
+  document.getElementById('tasksPending').textContent = '0';
+  document.getElementById('tasksCompleted').textContent = '2';
+  document.getElementById('taskCount').textContent = '2 tasks';
+}
+
+function renderTasks(tasks) {
+  document.getElementById('taskTable').innerHTML = tasks.slice(0, 10).map(t => `
+    <tr>
+      <td style="font-weight:500;">${t.title || t.id || '—'}</td>
+      <td style="color:var(--text-muted);">${t.assigned_agent || t.agent || '—'}</td>
+      <td><span class="task-status ${t.status || 'pending'}">${t.status || 'pending'}</span></td>
+      <td style="color:var(--text-muted);font-size:11px;">${t.updated_at || t.updated || '—'}</td>
+    </tr>
+  `).join('');
+  document.getElementById('taskCount').textContent = `${tasks.length} tasks`;
+}
+
+function renderOffline() {
+  renderStaticNodes();
+  renderStaticAgents();
+  renderStaticTasks();
+  document.getElementById('nodesOnline').textContent = '?';
+  document.getElementById('agentsActive').textContent = '?';
+  document.getElementById('tasksPending').textContent = '?';
+  document.getElementById('lastUpdated').textContent = 'Offline — showing cached data';
+}
+
+// Auto-refresh every 30s
+refreshAll();
+setInterval(refreshAll, 30000);
+</script>
+
+</body>
+</html>

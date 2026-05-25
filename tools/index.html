@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>E5 Enclave — Sovereign Tools</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+:root{--bg:#070710;--surface:#0d0d1a;--card:#111128;--border:#c9a84c22;--gold:#c9a84c;--cream:#e8d5a3;--green:#4cc98a;--red:#f72585;--blue:#4cc9f0;--text:#e8e8f0;--text2:#8888aa;--text3:#555577}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh}
+.hd{text-align:center;padding:40px 24px 20px}
+.logo{width:60px;height:60px;background:linear-gradient(135deg,var(--gold),var(--cream));border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:24px;color:var(--bg);font-family:'JetBrains Mono',monospace;margin:0 auto 16px}
+h1{font-size:32px;font-weight:700;color:var(--cream);margin-bottom:8px}
+.sub{font-size:14px;color:var(--text3);font-family:'JetBrains Mono',monospace}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;padding:32px 24px;max-width:1000px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all .15s;text-decoration:none;color:var(--text);display:block}
+.card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 8px 30px #00000040}
+.card-icon{font-size:28px;margin-bottom:12px}
+.card-title{font-size:16px;font-weight:600;color:var(--cream);margin-bottom:6px}
+.card-desc{font-size:13px;color:var(--text2);line-height:1.5}
+.card-tag{display:inline-block;font-size:9px;padding:2px 8px;border-radius:4px;background:var(--gold);color:var(--bg);font-weight:600;margin-top:8px}
+.ft{text-align:center;padding:20px;color:var(--text3);font-size:11px;font-family:'JetBrains Mono',monospace}
+</style>
+</head>
+<body>
+<div class="hd">
+  <div class="logo">E5</div>
+  <h1>Sovereign Tools</h1>
+  <div class="sub">Browser-based infrastructure · Zero dependencies · $0/month</div>
+</div>
+<div class="grid">
+  <a class="card" href="mesh-dashboard.html">
+    <div class="card-icon">◉</div>
+    <div class="card-title">Mesh Dashboard</div>
+    <div class="card-desc">Real-time agent mesh status. Nodes, agents, tasks, health. Auto-refreshes every 30 seconds.</div>
+    <span class="card-tag">INFRA</span>
+  </a>
+  <a class="card" href="kanban.html">
+    <div class="card-icon">◈</div>
+    <div class="card-title">Sovereign Kanban</div>
+    <div class="card-desc">Full kanban board with Wyrmcore Dragon Protocol. VCG-MIR allocation, φ-balancing, Gini scoring. Replaces Jira/Linear.</div>
+    <span class="card-tag">REPLACE JIRA</span>
+  </a>
+  <a class="card" href="email-builder.html">
+    <div class="card-icon">✉️</div>
+    <div class="card-title">Email Builder</div>
+    <div class="card-desc">Drag-and-drop email campaign builder. 8 block types, 4 templates, export HTML. Replaces Mailchimp.</div>
+    <span class="card-tag">REPLACE MAILCHIMP</span>
+  </a>
+  <a class="card" href="grant-tracker.html">
+    <div class="card-icon">💰</div>
+    <div class="card-title">Grant Tracker</div>
+    <div class="card-desc">Grant pipeline tracker. Kanban + timeline + analytics. $25.9M pipeline pre-loaded. Replaces Salesforce Nonprofit.</div>
+    <span class="card-tag">REPLACE SALESFORCE</span>
+  </a>
+</div>
+<div class="ft">E5 Enclave Inc. · 501(c)(3) · God Bless the Child</div>
+</body>
+</html>

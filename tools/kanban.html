@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E5 Enclave — Sovereign Kanban</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+:root{--bg:#070710;--surface:#0d0d1a;--card:#111128;--border:#c9a84c22;--border-a:#c9a84c66;--gold:#c9a84c;--cream:#e8d5a3;--green:#4cc98a;--red:#f72585;--blue:#4cc9f0;--dim:#ffffff22;--text:#e8e8f0;--text2:#8888aa;--text3:#555577;--phi:1.618033988749895}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;font-size:14px}
+.hd{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.hd-l{display:flex;align-items:center;gap:12px}
+.logo{width:36px;height:36px;background:linear-gradient(135deg,var(--gold),var(--cream));border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:var(--bg);font-family:'JetBrains Mono',monospace}
+.hd-title{font-size:16px;font-weight:600;color:var(--cream)}
+.hd-sub{font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace}
+.hd-r{display:flex;align-items:center;gap:10px}
+.btn{background:var(--card);border:1px solid var(--border);color:var(--text2);padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;font-family:'JetBrains Mono',monospace;transition:all .15s}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn-p{background:linear-gradient(135deg,var(--gold),var(--cream));color:var(--bg);border:none;font-weight:600}
+.btn-p:hover{opacity:.9}
+.stats{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;padding:16px 24px;max-width:1400px;margin:0 auto}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+.stat-l{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;font-family:'JetBrains Mono',monospace}
+.stat-v{font-size:20px;font-weight:700;color:var(--cream)}
+.stat-v.g{color:var(--green)}.stat-v.r{color:var(--red)}.stat-v.b{color:var(--blue)}.stat-v.y{color:var(--gold)}
+.main{padding:0 24px 24px;max-width:1400px;margin:0 auto}
+.board{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:start}
+.col{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;min-height:350px}
+.col-hd{padding:10px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--card)}
+.col-title{font-size:11px;font-weight:600;color:var(--cream);font-family:'JetBrains Mono',monospace}
+.col-cnt{font-size:10px;color:var(--text3);background:var(--surface);padding:1px 7px;border-radius:8px;font-family:'JetBrains Mono',monospace}
+.col-body{padding:8px;display:flex;flex-direction:column;gap:6px;min-height:60px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px;cursor:grab;transition:all .15s}
+.card:hover{border-color:var(--border-a)}
+.card.dragging{opacity:.4}
+.card-title{font-size:12px;font-weight:500;margin-bottom:4px;line-height:1.3}
+.card-meta{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.card-assignee{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text2)}
+.card-avatar{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--bg)}
+.card-priority{font-size:8px;padding:1px 5px;border-radius:3px;font-weight:600;font-family:'JetBrains Mono',monospace}
+.p0{background:var(--red);color:#fff}.p1{background:#ff6b35;color:#fff}.p2{background:var(--gold);color:var(--bg)}.p3{background:var(--green);color:var(--bg)}.p4{background:var(--text3);color:var(--text)}
+.card-tags{display:flex;gap:3px;margin-top:4px;flex-wrap:wrap}
+.card-tag{font-size:8px;padding:1px 5px;border-radius:3px;background:var(--dim);color:var(--text2)}
+.card-dep{font-size:9px;color:var(--gold);margin-top:3px;font-family:'JetBrains Mono',monospace}
+.card-block{font-size:9px;color:var(--red);margin-top:3px;background:#f7258511;padding:3px 5px;border-radius:3px}
+.card-score{font-size:9px;font-family:'JetBrains Mono',monospace;padding:1px 5px;border-radius:3px}
+.cs-hi{color:var(--green);background:#4cc98a11}.cs-lo{color:var(--red);background:#f7258511}.cs-mid{color:var(--gold);background:#c9a84c11}
+.score-panel{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;margin-top:16px}
+.score-title{font-size:11px;font-weight:600;color:var(--gold);margin-bottom:8px;font-family:'JetBrains Mono',monospace}
+.score-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.si{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center}
+.si .sv{font-size:16px;font-weight:700;color:var(--cream)}
+.si .sl{font-size:8px;color:var(--text3);text-transform:uppercase;font-family:'JetBrains Mono',monospace}
+.sb{height:3px;background:var(--dim);border-radius:2px;margin-top:4px;overflow:hidden}
+.sb-fill{height:100%;border-radius:2px;transition:width .5s}
+.sbg{background:var(--green)}.sby{background:var(--gold)}.sbr{background:var(--red)}.sbb{background:var(--blue)}
+.modal-overlay{position:fixed;inset:0;background:#00000080;display:none;align-items:center;justify-content:center;z-index:200}
+.modal-overlay.show{display:flex}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:14px;width:520px;max-height:80vh;overflow-y:auto}
+.modal-hd{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.modal-title{font-size:14px;font-weight:600;color:var(--cream)}
+.modal-close{background:none;border:none;color:var(--text3);font-size:18px;cursor:pointer}
+.modal-body{padding:16px 20px}
+.modal-ft{padding:12px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
+.fg{margin-bottom:12px}
+.fl{display:block;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;font-family:'JetBrains Mono',monospace}
+.fi,.fta,.fs{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:7px 10px;border-radius:6px;font-size:12px}
+.fi:focus,.fta:focus,.fs:focus{outline:none;border-color:var(--gold)}
+.fta{min-height:60px;resize:vertical}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fh{font-size:9px;color:var(--text3);margin-top:3px;font-family:'JetBrains Mono',monospace}
+.profiles{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.pc{padding:3px 8px;border-radius:10px;font-size:10px;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--text2)}
+.pc:hover,.pc.sel{border-color:var(--gold);color:var(--gold)}
+.rec-list{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.ri{display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--surface);border:1px solid var(--border);border-radius:6px}
+.ri-icon{width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px}
+.ri-text{flex:1;font-size:11px}
+.ri-act{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--gold);cursor:pointer}
+.hg{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:6px;margin-top:8px}
+.hi{display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:6px}
+.hd{width:8px;height:8px;border-radius:50%}
+.hd-ok{background:var(--green)}.hd-w{background:var(--gold)}.hd-e{background:var(--red)}.hd-x{background:var(--text3)}
+.hn{font-size:11px;font-weight:500}
+.hd2{font-size:9px;color:var(--text3);font-family:'JetBrains Mono',monospace}
+.toast{position:fixed;bottom:20px;right:20px;padding:10px 16px;border-radius:6px;font-size:11px;z-index:300;transition:all .3s;transform:translateY(80px);opacity:0}
+.toast.show{transform:translateY(0);opacity:1}
+.toast-ok{background:var(--green);color:var(--bg)}.toast-err{background:var(--red);color:#fff}
+.hidden{display:none!important}
+@media(max-width:900px){.board{grid-template-columns:repeat(3,1fr)}.stats{grid-template-columns:repeat(4,1fr)}.score-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.board{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.fr{grid-template-columns:1fr}}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--text3);border-radius:3px}
+</style>
+</head>
+<body>
+<div class="hd">
+  <div class="hd-l"><div class="logo">K</div><div><div class="hd-title">Sovereign Kanban</div><div class="hd-sub">E5 Enclave · Wyrmcore Dragon Protocol · v1.0</div></div></div>
+  <div class="hd-r">
+    <button class="btn btn-p" onclick="openNewTask()">+ NEW TASK</button>
+    <button class="btn" onclick="runDragonProtocol()">◈ RUN DRAGON</button>
+  </div>
+</div>
+<div class="stats">
+  <div class="stat"><div class="stat-l">TOTAL</div><div class="stat-v" id="sTotal">0</div></div>
+  <div class="stat"><div class="stat-l">TO DO</div><div class="stat-v" id="sTodo">0</div></div>
+  <div class="stat"><div class="stat-l">READY</div><div class="stat-v b" id="sReady">0</div></div>
+  <div class="stat"><div class="stat-l">IN PROGRESS</div><div class="stat-v b" id="sProg">0</div></div>
+  <div class="stat"><div class="stat-l">BLOCKED</div><div class="stat-v r" id="sBlock">0</div></div>
+  <div class="stat"><div class="stat-l">DONE</div><div class="stat-v g" id="sDone">0</div></div>
+  <div class="stat"><div class="stat-l">AVG SCORE</div><div class="stat-v y" id="sScore">—</div></div>
+</div>
+<div class="main">
+<div class="board" id="board">
+  <div class="col"><div class="col-hd"><div class="stat-l">◉ TO DO</div><span class="col-cnt" id="cnt-todo">0</span></div><div class="col-body" id="col-todo"></div></div>
+  <div class="col"><div class="col-hd"><div class="stat-l">◉ READY</div><span class="col-cnt" id="cnt-ready">0</span></div><div class="col-body" id="col-ready"></div></div>
+  <div class="col"><div class="col-hd"><div class="stat-l">◉ IN PROGRESS</span></div><span class="col-cnt" id="cnt-in_progress">0</span></div><div class="col-body" id="col-in_progress"></div></div>
+  <div class="col"><div class="col-hd"><div class="stat-l">◉ BLOCKED</div><span class="col-cnt" id="cnt-blocked">0</span></div><div class="col-body" id="col-blocked"></div></div>
+  <div class="col"><div class="col-hd"><div class="stat-l">◉ DONE</div><span class="col-cnt" id="cnt-done">0</span></div><div class="col-body" id="col-done"></div></div>
+</div>
+<div class="score-panel" id="scorePanel">
+  <div class="score-title">◈ WYRMCORE DRAGON PROTOCOL — Task Allocation Intelligence</div>
+  <div class="score-grid">
+    <div class="si"><div class="sv" id="ws-trust">—</div><div class="sl">Avg Trust</div><div class="sb"><div class="sb-fill sbg" id="ws-trust-bar" style="width:0%"></div></div></div>
+    <div class="si"><div class="sv" id="ws-load">—</div><div class="sl">Load (φ)</div><div class="sb"><div class="sb-fill sby" id="ws-load-bar" style="width:0%"></div></div></div>
+    <div class="si"><div class="sv" id="ws-fair">—</div><div class="sl">Gini</div><div class="sb"><div class="sb-fill sbb" id="ws-fair-bar" style="width:0%"></div></div></div>
+    <div class="si"><div class="sv" id="ws-risk">—</div><div class="sl">Cascade Risk</div><div class="sb"><div class="sb-fill sbr" id="ws-risk-bar" style="width:0%"></div></div></div>
+    <div class="si"><div class="sv" id="ws-perc">—</div><div class="sl">Percolation</div><div class="sb"><div class="sb-fill sbg" id="ws-perc-bar" style="width:0%"></div></div></div>
+    <div class="si"><div class="sv" id="ws-shap">—</div><div class="sl">Shapley</div><div class="sb"><div class="sb-fill sby" id="ws-shap-bar" style="width:0%"></div></div></div>
+  </div>
+  <div style="margin-top:10px">
+    <div style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:4px">◈ DRAGON RECOMMENDATIONS</div>
+    <div class="rec-list" id="recommendations"></div>
+  </div>
+</div>
+</div>
+<div class="modal-overlay" id="modal-task">
+  <div class="modal">
+    <div class="modal-hd"><div class="modal-title">+ New Task</div><button class="modal-close" onclick="closeModal('modal-task')">✕</button></div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl">Title</label><input class="fi" id="fTitle" placeholder="What needs to be done?"></div>
+      <div class="fg"><label class="fl">Description</label><textarea class="fta" id="fBody" placeholder="Context, acceptance criteria..."></textarea></div>
+      <div class="fr">
+        <div class="fg"><label class="fl">Priority</label><select class="fs" id="fPriority"><option value="0">P0 — Critical</option><option value="1" selected>P1 — High</option><option value="2">P2 — Normal</option><option value="3">P3 — Low</option><option value="4">P4 — Backlog</option></select></div>
+        <div class="fg"><label class="fl">Column</label><select class="fs" id="fStatus"><option value="todo">To Do</option><option value="ready">Ready</option></select></div>
+      </div>
+      <div class="fg"><label class="fl">Assign to (leave empty for Wyrmcore auto-assign)</label><div class="profiles" id="profileChips"></div></div>
+      <div class="fg"><label class="fl">Depends On (task IDs, comma-separated)</label><input class="fi" id="fParents" placeholder="task-abc, task-def"><div class="fh">Auto-promotes to READY when parents are DONE</div></div>
+      <div class="fg"><label class="fl">Tags</label><input class="fi" id="fTags" placeholder="research, code, grant"></div>
+    </div>
+    <div class="modal-ft"><button class="btn" onclick="closeModal('modal-task')">Cancel</button><button class="btn btn-p" onclick="createTask()">Create</button></div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-detail">
+  <div class="modal">
+    <div class="modal-hd"><div class="modal-title" id="detail-title">Task Detail</div><button class="modal-close" onclick="closeModal('modal-detail')">✕</button></div>
+    <div class="modal-body" id="detail-body"></div>
+    <div class="modal-ft"><button class="btn btn-danger" id="detail-delete" style="display:none">Delete</button><button class="btn" onclick="closeModal('modal-detail')">Close</button></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const PHI=1.618033988749895,FEIGENBAUM_DELTA=4.669201609;
+let tasks=JSON.parse(localStorage.getItem('e5_kanban_tasks')||'[]');
+let profiles=JSON.parse(localStorage.getItem('e5_kanban_profiles')||'[]');
+let selectedProfile='';
+if(!profiles.length){profiles=[{id:'hermie',name:'Hermie',role:'Visionary',color:'#c9a84c',trust:.95,capacity:5,cost:10},{id:'sue',name:'Sue',role:'Chief of Staff',color:'#4cc9f0',trust:.92,capacity:8,cost:8},{id:'scout',name:'Scout',role:'Research',color:'#4cc98a',trust:.88,capacity:6,cost:5},{id:'forge',name:'Forge',role:'Engineering',color:'#ff6b35',trust:.90,capacity:10,cost:7},{id:'scribe',name:'Scribe',role:'Annotation',color:'#7209b7',trust:.85,capacity:8,cost:4},{id:'draco',name:'Draco',role:'DevOps',color:'#f72585',trust:.87,capacity:6,cost:6}];}
+if(!tasks.length){tasks=[{id:'t-001',title:'AWS SES + Listmonk Deploy',body:'Replace HubSpot with self-hosted email.',status:'todo',assignee:'hermie',priority:1,parents:[],tags:['infra','email'],created:Date.now()-172800000,updated:Date.now(),score:0},{id:'t-002',title:'Sovereign Kanban (this app)',body:'HTML/JS kanban with Wyrmcore Dragon Protocol scoring.',status:'done',assignee:'hermie',priority:0,parents:[],tags:['infra','kanban','dragon'],created:Date.now()-86400000,updated:Date.now(),score:95},{id:'t-003',title:'Mesh Dashboard',body:'Pure HTML mesh status dashboard.',status:'done',assignee:'hermie',priority:1,parents:[],tags:['infra'],created:Date.now()-86400000,updated:Date.now(),score:92},{id:'t-004',title:'Dragon Protocol Simulations',body:'Monte Carlo for task allocation optimization.',status:'ready',assignee:'',priority:0,parents:[],tags:['simulation'],created:Date.now(),updated:Date.now(),score:0},{id:'t-005',title:'Browser Email Builder',body:'Replace Mailchimp with HTML email builder.',status:'todo',assignee:'',priority:2,parents:[],tags:['content'],created:Date.now(),updated:Date.now(),score:0},{id:'t-006',title:'Grant Tracker CRM',body:'Replace Salesforce Nonprofit.',status:'todo',assignee:'',priority:2,parents:[],tags:['grants'],created:Date.now(),updated:Date.now(),score:0},{id:'t-007',title:'Profile Discovery Fix',body:'Prevent phantom assigns by validating profile exists.',status:'ready',assignee:'forge',priority:0,parents:[],tags:['bug'],created:Date.now()-43200000,updated:Date.now(),score:0},{id:'t-008',title:'Dependency Validation',body:'Validate parent IDs before linking.',status:'in_progress',assignee:'draco',priority:1,parents:[],tags:['bug'],created:Date.now()-43200000,updated:Date.now(),score:30}];}
+function save(){localStorage.setItem('e5_kanban_tasks',JSON.stringify(tasks));renderAll()}
+function gid(){return 't-'+Math.random().toString(36).slice(2,8)}
+function calcGini(){const l=profiles.map(p=>tasks.filter(t=>t.assignee===p.id&&t.status!=='done').length);const n=l.length;if(!n)return 0;const s=[...l].sort((a,b)=>a-b);const tot=s.reduce((a,b)=>a+b,0);if(!tot)return 0;let num=0;for(let i=0;i<n;i++)num+=(2*(i+1)-n-1)*s[i];return num/(n*tot);}
+function runDragonProtocol(){
+  const t0=Date.now();const N=100000;let vw=0,rw=0,vs=0,rs=0;
+  for(let i=0;i<N;i++){const sc=profiles.map(p=>p.trust*(1+Math.random()*.3)-p.cost*.05);const v=sc.indexOf(Math.max(...sc));const r=Math.floor(Math.random()*profiles.length);const d=.75+Math.random()*.5;
+  if(Math.random()<Math.min(.95,sc[v]*(2-d)))vw++;if(Math.random()<Math.min(.95,sc[r]*(2-d)))rw++;vs+=sc[v];rs+=sc[r];}
+  const vr=vw/N,rr=rw/N;const red=((rr-vr)/rr*100);const elapsed=((Date.now()-t0)/1000).toFixed(2);
+  const trust=(tasks.filter(t=>t.score>0).reduce((s,t)=>s+t.score,0)/(tasks.filter(t=>t.score>0).length||1)/100);
+  const load=Math.max(0,1-(profiles.reduce((s,p)=>{const l=tasks.filter(t=>t.assignee===p.id&&t.status==='in_progress').length;return s+Math.abs(l/(p.capacity||1)-.5);},0)/profiles.length)/PHI);
+  const gini=calcGini();const risk=Math.min(1,Math.abs(gini*PHI-FEIGENBAUM_DELTA)/FEIGENBAUM_DELTA);
+  const perc=profiles.filter(p=>tasks.some(t=>t.assignee===p.id&&t.status!=='done')).length/profiles.length;
+  const shap=1-gini;
+  [{id:'ws-trust',v:trust},{id:'ws-load',v:load},{id:'ws-fair',v:1-gini},{id:'ws-risk',v:1-risk},{id:'ws-perc',v:perc},{id:'ws-shap',v:shap}].forEach(({id,v})=>{
+    const el=document.getElementById(id);if(el)el.textContent=(v*100).toFixed(1);
+    const bar=document.getElementById(id+'-bar');if(bar)bar.style.width=(v*100)+'%';
+  });
+  const recs=[];const un=tasks.filter(t=>!t.assignee&&t.status!=='done'&&t.status!=='blocked');
+  if(un.length){const best=profiles.reduce((b,p)=>{const l=tasks.filter(t=>t.assignee===p.id&&t.status!=='done').length;return l/((p.capacity||1)*PHI)<(b.r||99)?{p,r:l/(p.capacity||1)/PHI}:b;},{});recs.push({icon:'🎯',text:`${un.length} unassigned. Best: ${best.p?best.p.name:'N/A'}.`,action:'autoAssign();'});}
+  const blk=tasks.filter(t=>t.status==='blocked');if(blk.length)recs.push({icon:'⛔',text:`${blk.length} blocked. Review needed.`,action:''});
+  if(gini>.4)recs.push({icon:'⚖️',text:`Imbalance (Gini=${gini.toFixed(2)}). Use φ-balancing.`,action:'balanceLoad();'});
+  if(!recs.length)recs.push({icon:'✅',text:'Systems nominal','action':''});
+  document.getElementById('recommendations').innerHTML=recs.map(r=>`<div class="ri"><div class="ri-icon" style="background:#c9a84c22">${r.icon}</div><div class="ri-text">${r.text}</div>${r.action?`<div class="ri-act" onclick="${r.action}">ACT</div>`:''}</div>`).join('');
+  showToast(`Dragon: ${N.toLocaleString()} runs in ${elapsed}s | VCG-MIR ${red>0?'reduces':'increases'} failures ${Math.abs(red).toFixed(1)}`,'ok');
+}
+function autoAssign(){let n=0;tasks.filter(t=>!t.assignee&&t.status!=='done').forEach(t=>{const best=profiles.reduce((b,p)=>{const l=tasks.filter(x=>x.assignee===p.id&&x.status!=='done').length;return p.trust/(l+.1)>(b.s||0)?{p,s:p.trust/(l+.1)}:b;},{});if(best.p){t.assignee=best.p.id;t.updated=Date.now();n++;}});save();showToast(`Assigned ${n} tasks`,'ok');}
+function balanceLoad(){const avg=tasks.filter(t=>t.status!=='done').length/profiles.length;let m=0;profiles.forEach(p=>{const ex=tasks.filter(t=>t.assignee===p.id&&t.status==='todo');ex.slice(0,Math.max(0,ex.length-Math.round(avg/PHI))).forEach(t=>{const target=profiles.reduce((b,pp)=>tasks.filter(x=>x.assignee===pp.id&&x.status!=='done').length<b.l?{p:pp,l:tasks.filter(x=>x.assignee===pp.id&&x.status!=='done').length}:b,{}).p;if(target){t.assignee=target.id;t.updated=Date.now();m++;}})});save();showToast(`Redistributed ${m}`,'ok');}
+function renderAll(){renderBoard();renderStats();renderProfiles();}
+function renderBoard(){['todo','ready','in_progress','blocked','done'].forEach(s=>{const col=document.getElementById('col-'+s);const f=tasks.filter(t=>t.status===s);document.getElementById('cnt-'+s).textContent=f.length;col.innerHTML=f.map(c=>{const a=profiles.find(x=>x.id===c.assignee);const pri=['P4','P3','P2','P1','P0'][c.priority]||'P2';const sc=c.score>0?`<span class="card-score ${c.score>=80?'cs-hi':c.score>=50?'cs-mid':'cs-lo'}" style="margin-top:4px;display:inline-block">◈ ${c.score.toFixed(0)}</span>`:'';const deps=c.parents&&c.parents.length?`<div class="card-dep">↑ ${c.parents.join(', ')}</div>`:'';const blk=c.status==='blocked'?`<div class="card-block">⚠ BLOCKED</div>`:'';return`<div class="card" draggable="true" data-id="${c.id}" ondragstart="dragS(event)" ondragend="dragE(event)" onclick="openDetail('${c.id}')"><div class="card-title">${c.title}</div>${blk}<div class="card-meta"><div class="card-assignee">${a?`<span class="card-avatar" style="background:${a.color}">${a.name[0]}</span>${a.name}`:'—'}</div><span class="card-priority p${c.priority||2}">${pri}</span></div>${(c.tags||[]).length?`<div class="card-tags">${(c.tags||[]).map(g=>`<span class="card-tag">${g}</span>`).join('')}</div>`:''}${deps}${sc}</div>`;}).join('')||'<div style="color:var(--text3);font-size:10px;text-align:center;padding:12px 0">Empty</div>';col.ondragover=e=>{e.preventDefault();col.style.borderColor='var(--gold)'};col.ondragleave=()=>col.style.borderColor='';col.ondrop=e=>{e.preventDefault();const id=e.dataTransfer.getData('text');if(id)moveTask(id,s)};});}
+function renderStats(){document.getElementById('sTotal').textContent=tasks.length;document.getElementById('sTodo').textContent=tasks.filter(t=>t.status==='todo').length;document.getElementById('sReady').textContent=tasks.filter(t=>t.status==='ready').length;document.getElementById('sProg').textContent=tasks.filter(t=>t.status==='in_progress').length;document.getElementById('sBlock').textContent=tasks.filter(t=>t.status==='blocked').length;document.getElementById('sDone').textContent=tasks.filter(t=>t.status==='done').length;const sc=tasks.filter(t=>t.score>0);document.getElementById('sScore').textContent=sc.length?(sc.reduce((s,t)=>s+t.score,0)/sc.length).toFixed(1):'—';}
+function renderProfiles(){const c=document.getElementById('profileChips');if(!c)return;c.innerHTML=profiles.map(p=>`<div class="pc ${selectedProfile===p.id?'sel':''}" onclick="toggleProf('${p.id}')">${p.name}</div>`).join('');}
+function dragS(e){e.dataTransfer.setData('text',e.target.dataset.id);e.target.classList.add('dragging');}function dragE(e){e.target.classList.remove('dragging');}function moveTask(id,s){const t=tasks.find(x=>x.id===id);if(t){t.status=s;t.updated=Date.now();save();}}
+function openNewTask(){selectedProfile='';document.querySelectorAll('.pc').forEach(e=>e.classList.remove('sel'));document.getElementById('modal-task').classList.add('show');}
+function closeModal(id){document.getElementById(id).classList.remove('show');}
+function toggleProf(id){selectedProfile=selectedProfile===id?'':id;renderProfiles();}
+function createTask(){const t={id:gid(),title:document.getElementById('fTitle').value,body:document.getElementById('fBody').value,status:document.getElementById('fStatus').value,assignee:selectedProfile,priority:parseInt(document.getElementById('fPriority').value)||2,parents:(document.getElementById('fParents').value||'').split(',').map(s=>s.trim()).filter(Boolean),tags:(document.getElementById('fTags').value||'').split(',').map(s=>s.trim()).filter(Boolean),created:Date.now(),updated:Date.now(),score:0};if(!t.title)return showToast('Title required','err');if(t.parents.length){const missing=t.parents.filter(pid=>!tasks.find(x=>x.id===pid));if(missing.length)return showToast(`Parent not found: ${missing.join(', ')}`,'err`);}if(t.assignee&&!profiles.find(p=>p.id===t.assignee))return showToast(`Unknown profile: ${t.assignee}`,'err');tasks.push(t);save();closeModal('modal-task');showToast('Created','ok');document.getElementById('fTitle').value='';document.getElementById('fBody').value='';}
+function openDetail(id){const t=tasks.find(x=>x.id===id);if(!t)return;const a=profiles.find(x=>x.id===t.assignee);document.getElementById('detail-title').textContent=t.title;document.getElementById('detail-body').innerHTML=`<div style="margin-bottom:10px;color:var(--text2);font-size:12px">${t.body||'No description'}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px"><div><div class="fl">Status</div><div style="font-size:12px;padding:4px 0">${t.status}</div></div><div><div class="fl">Assignee</div><div style="font-size:12px;padding:4px 0">${a?a.name:'Unassigned'}</div></div></div><div style="margin-bottom:8px"><div class="fl">Move to</div><div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px">${['todo','ready','in_progress','blocked','done'].map(s=>`<button class="btn btn-sm" onclick="moveTask('${t.id}','${s}');closeModal('modal-detail')">${s}</button>`).join('')}</div></div><div style="margin-bottom:8px"><div class="fl">Block Reason (required)</div><input class="fi" id="blockReason" placeholder="Why blocked?"><button class="btn btn-sm" style="margin-top:4px;border-color:var(--red);color:var(--red)" onclick="blockTask('${id}')">Block</button></div>`;document.getElementById('detail-delete').style.display='';document.getElementById('detail-delete').onclick=()=>{tasks=tasks.filter(x=>x.id!==id);save();closeModal('modal-detail');showToast('Deleted','ok');};document.getElementById('modal-detail').classList.add('show');}
+function blockTask(id){const r=document.getElementById('blockReason').value;if(!r)return showToast('Reason required','err');const t=tasks.find(x=>x.id===id);if(t){t.status='blocked';t.updated=Date.now();save();closeModal('modal-detail');showToast('Blocked','ok');}}
+function showToast(msg,type){const el=document.getElementById('toast');el.textContent=msg;el.className='toast show toast-'+type;setTimeout(()=>el.classList.remove('show'),3000);}
+renderAll();runDragonProtocol();
+</script>
+</body>
+</html>
