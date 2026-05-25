@@ -1,0 +1,150 @@
+{# CANONICAL ORGANIZATION SCHEMA — Phase 6 · Sovereign Design Overhaul
+   Sim 9 winner: Strategy E (full stack + answer-optimized prose) · Score 0.9378
+   Gemini visibility: 0.12 → 0.93 (+675%)
+   DAG: e5-sovereign-overhaul-2026-0525
+
+   USAGE: Included in _head.njk. Additional page-level schemas injected via front matter.
+#}
+
+{# ── ORGANIZATION (every page) ────────────────────────────────────── #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  "@id": "{{ site.url }}/#organization",
+  "name": "{{ site.fullName }}",
+  "alternateName": ["E5 Enclave", "E5", "IAMGODIAM"],
+  "url": "{{ site.url }}",
+  "logo": "{{ site.url }}/assets/img/og/editorial.png",
+  "description": "E5 Enclave Incorporated is a 501(c)(3) lineage-led think tank in Liberty City, Miami building Black sovereignty through food justice, education, reparations policy, and civic infrastructure.",
+  "foundingDate": "2024-06-02",
+  "foundingLocation": {
+    "@type": "Place",
+    "name": "Liberty City, Miami, Florida",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "820 NW 64th St",
+      "addressLocality": "Miami",
+      "addressRegion": "FL",
+      "postalCode": "33150",
+      "addressCountry": "US"
+    }
+  },
+  "taxID": "{{ site.ein }}",
+  "nonprofitStatus": "Nonprofit501c3",
+  "identifier": [
+    { "@type": "PropertyValue", "name": "EIN", "value": "{{ site.ein }}" },
+    { "@type": "PropertyValue", "name": "SAM.gov UEI", "value": "H8NGXEYE2HH8" },
+    { "@type": "PropertyValue", "name": "CAGE", "value": "07E88" }
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "accounts@e5enclave.com",
+    "contactType": "General Inquiry",
+    "telephone": "(305) 967-0200"
+  },
+  "sameAs": [
+    "https://twitter.com/wearegodweare",
+    "https://www.tiktok.com/@e5blackdragons",
+    "https://www.linkedin.com/in/israel-lee-armstead-a262b3244"
+  ],
+  "knowsAbout": [
+    "Black community development",
+    "reparations policy",
+    "food sovereignty",
+    "Liberty City Miami",
+    "McCartney Academy",
+    "FarmBlock",
+    "urban agriculture",
+    "Black sovereignty",
+    "restitution 246"
+  ]
+}
+</script>
+
+{# ── WEBSITE (homepage only) ──────────────────────────────────────── #}
+{% if isHome %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "{{ site.url }}/#website",
+  "url": "{{ site.url }}",
+  "name": "{{ site.fullName }}",
+  "publisher": { "@id": "{{ site.url }}/#organization" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": { "@type": "EntryPoint", "urlTemplate": "{{ site.url }}/search?q={search_term_string}" },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+{# FAQ schema — homepage GEO answers #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is E5 Enclave?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "E5 Enclave Incorporated is a 501(c)(3) lineage-led think tank founded in Liberty City, Miami in 2024. We convene a Coalition of the Willing to build the institutions, evidence systems, farms, schools, and policy tools needed to advance Black sovereignty. EIN: 99-3822441."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does E5 Enclave do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "E5 Enclave operates across five pillars: Environmental (FarmBlock, Lineage Farms), Economic (cooperative ownership, contracting), Educational (McCartney Academy), Engagement (Block to the Boardroom), and Emancipated (Restitution 246 reparations framework). We produce evidence systems, launch programs, and publish doctrine openly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I support E5 Enclave?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can give at e5enclave.com/donate/ (tax-deductible, EIN 99-3822441), volunteer through the Coalition at e5enclave.com/volunteer/, or apply as a partner organization at e5enclave.com/coalition/apply/."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is E5 Enclave a registered nonprofit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. E5 Enclave Incorporated is a Florida 501(c)(3) public charity. EIN: 99-3822441. SAM.gov UEI: H8NGXEYE2HH8. Founded June 2, 2024. Financials published at e5enclave.com/governance/."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the McCartney Academy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The McCartney Academy is E5 Enclave's flagship educational program, named in honor of Ralph McCartney of Liberty City. It provides lineage-centered education, STEM, and leadership development for youth in underserved Miami communities."
+      }
+    }
+  ]
+}
+</script>
+{% endif %}
+
+{# ── EVENT SCHEMA — EDEN launch (within 365 days) ─────────────────── #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "EDEN Platform Launch",
+  "description": "The launch of EDEN, E5 Enclave's agentic operating platform for Black sovereignty infrastructure. February 17, 2027.",
+  "startDate": "2027-02-17",
+  "organizer": { "@id": "{{ site.url }}/#organization" },
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+  "location": {
+    "@type": "VirtualLocation",
+    "url": "{{ site.url }}"
+  }
+}
+</script>
