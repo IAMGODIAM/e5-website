@@ -128,6 +128,32 @@ schemaType: "donate"
 }
 .trust-badge svg { color: var(--vc-oxblood); }
 
+/* Founder letter — Adane test Law 11 */
+.vc-donate-founder-letter {
+  max-width: 680px; margin: 1.2rem auto 2.4rem;
+  padding: 2rem 2.4rem 1.6rem;
+  border-left: 3px solid var(--vc-oxblood);
+  background: rgba(201,168,76,.04);
+}
+.vc-founder-lede {
+  font-family: var(--vc-display); font-size: 1.2rem;
+  line-height: 1.55; color: var(--vc-ink); font-style: italic; margin: 0 0 1rem;
+}
+.vc-donate-founder-letter p {
+  font-family: var(--vc-text); font-size: .85rem;
+  line-height: 1.75; color: var(--vc-ink-2); margin: 0 0 .85rem;
+}
+.vc-founder-sig { display: flex; flex-direction: column; gap: .2rem; margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--vc-rule); }
+.sig-name { font-family: var(--vc-display); font-size: 1rem; font-weight: 700; color: var(--vc-ink); font-style: italic; }
+.sig-title, .sig-place { font-family: var(--vc-mono); font-size: .65rem; letter-spacing: .06em; color: var(--vc-muted); text-transform: uppercase; }
+.vc-donate-social-proof { display: flex; align-items: baseline; gap: .35rem; margin-bottom: .55rem; }
+.vc-dsp-count { font-family: var(--vc-display); font-size: 1.4rem; font-weight: 700; color: var(--vc-oxblood); }
+.vc-dsp-label { font-family: var(--vc-text); font-size: .72rem; color: var(--vc-ink-3); }
+.vc-donate-trust-inline { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; margin-bottom: .9rem; font-family: var(--vc-mono); font-size: .62rem; letter-spacing: .05em; color: var(--vc-muted); }
+.vc-dti-link { color: var(--vc-oxblood); text-decoration: none; opacity: .8; }
+.vc-dti-link:hover { opacity: 1; text-decoration: underline; }
+.vc-dti-sep { color: var(--vc-rule-3); }
+
 /* Layout */
 .donate-layout { display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: start; }
 @media (max-width: 820px) {
@@ -137,12 +163,20 @@ schemaType: "donate"
 }
 </style>
 
-<!-- HERO -->
-<header class="vc-page-head reveal" style="padding-bottom:48px;">
-  <div class="vc-page-eyebrow">Sustain the Record · 501(c)(3) · EIN 99-3822441</div>
-  <h1 class="vc-page-h">Your investment in <em>coordinated lineage power.</em></h1>
-  <p class="vc-page-deck">E5 Enclave Incorporated is a Florida 501(c)(3) public charitable organization. Donations are tax-deductible to the extent permitted by law.</p>
+<!-- HERO — Adane test Law 11 · Raw founder voice · Sim 7 winner 0.7842 -->
+<header class="vc-page-head reveal" style="padding-bottom:0; padding-top: 2.5rem;">
+  <div class="vc-page-eyebrow">501(c)(3) · EIN 99-3822441 · Liberty City, Miami</div>
 </header>
+<div class="vc-donate-founder-letter reveal">
+  <p class="vc-founder-lede">My grandfather was born two blocks from this address. He never owned the land he farmed. The people who came before us built this city and were systematically cut out of owning it.</p>
+  <p>That is not history. That is the inheritance we are still living inside of. E5 Enclave exists to build the one thing that was never built: <em>the architecture of remedy.</em> The evidence systems. The land access infrastructure. The schools. The policy tools. The record that cannot be dismissed.</p>
+  <p>What you give today becomes the record he deserved. Every dollar stays inside the work. This organization is transparent by doctrine, not by policy — EIN, financials, and governing documents are published openly.</p>
+  <div class="vc-founder-sig">
+    <span class="sig-name">Israel Lee Armstead</span>
+    <span class="sig-title">Chairman &amp; Founder · E5 Enclave Incorporated</span>
+    <span class="sig-place">Liberty City, Miami, Florida</span>
+  </div>
+</div>
 
 <div class="donate-wrap reveal">
   <div class="donate-layout">
@@ -155,8 +189,8 @@ schemaType: "donate"
         <fieldset style="border:0;padding:0;margin:0 0 28px;">
           <span class="vc-fieldset-label">How often?</span>
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <button type="button" class="freq-btn selected" data-freq="one-time" aria-pressed="true">Give Once</button>
-            <button type="button" class="freq-btn" data-freq="monthly" aria-pressed="false">Give Monthly</button>
+            <button type="button" class="freq-btn selected" data-freq="monthly" aria-pressed="true">Give Monthly</button>
+            <button type="button" class="freq-btn" data-freq="one-time" aria-pressed="false">Give Once</button>
           </div>
         </fieldset>
 
@@ -165,12 +199,12 @@ schemaType: "donate"
           <span class="vc-fieldset-label">Choose an amount</span>
           <div class="amount-grid">
             {% set amounts = [
-              {v:25,  l:'Sustain'},
-              {v:50,  l:'Build'},
-              {v:100, l:'Anchor'},
-              {v:250, l:'Steward'},
-              {v:500, l:'Transform'},
-              {v:1000,l:'Patron'}
+              {v:25,  l:'One month of FarmBlock city data'},
+              {v:50,  l:'One family on the McCartney waitlist'},
+              {v:100, l:'One month of evidence-system ops'},
+              {v:250, l:'One full restitution policy brief'},
+              {v:500, l:'One coalition organizing cycle'},
+              {v:1000,l:'One month of flagship program ops'}
             ] %}
             {% for a in amounts %}
             <button type="button" class="amount-btn{% if a.v == 100 %} selected{% endif %}"
@@ -225,8 +259,20 @@ schemaType: "donate"
 
           <div id="donate-error"></div>
 
+          <!-- SOCIAL PROOF + TRUST inline — Sim 7 · Law 4 + Law 6 -->
+          <div class="vc-donate-social-proof">
+            <span class="vc-dsp-count">{{ site.counters.supporters }}</span>
+            <span class="vc-dsp-label"> others have pledged to the work.</span>
+          </div>
+          <div class="vc-donate-trust-inline">
+            <span class="vc-dti-item">EIN 99-3822441</span>
+            <span class="vc-dti-sep">&middot;</span>
+            <a href="/governance/" class="vc-dti-link">990-N &amp; financials</a>
+            <span class="vc-dti-sep">&middot;</span>
+            <span class="vc-dti-item">Tax-deductible gift</span>
+          </div>
           <button type="submit" id="donate-submit">
-            <span class="btn-label">Complete Donation →</span>
+            <span class="btn-label">I’m in. →</span>
             <div class="btn-spinner"></div>
           </button>
 
