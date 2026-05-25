@@ -1,12 +1,29 @@
 <header class="vc-masthead">
   <div class="vc-masthead-rule" aria-hidden="true"><span class="mk">✦</span></div>
   <div class="vc-masthead-eyebrow">{{ site.established.city }} · Established <span aria-hidden="true">MMXXIV</span><span class="sr-only">2024</span></div>
+
   <div class="vc-foundation">
     <h1 class="vc-wordmark" aria-label="{{ site.name }}">
       <span class="em5" aria-hidden="true">E5</span>
       <span class="word">Enclave</span>
     </h1>
-    <p class="vc-tagline">A <span class="ll">lineage-led think tank</span> comprised of a <span class="cw">Coalition of the Willing</span>.</p>
+
+    {# KINETIC TAGLINE — cycles through Five Pillars + soul statement #}
+    <p class="vc-tagline vc-tagline--kinetic" aria-live="polite">
+      A <span class="ll">lineage-led think tank</span> building
+      <span class="vc-kinetic-word" aria-label="FarmBlock · McCartney Academy · Block to Boardroom · Restitution 246 · the architecture of remedy">
+        <span class="vc-kw-slot">FarmBlock</span>
+      </span>
+    </p>
+
+    {# LIVE DISPATCH TICKER #}
+    <div class="vc-dispatch-ticker" aria-label="Live board activity" role="complementary">
+      <span class="vc-ticker-label">Board</span>
+      <div class="vc-ticker-track" id="vc-ticker-track">
+        <span class="vc-ticker-item">Loading dispatch&hellip;</span>
+      </div>
+    </div>
+
     <div class="vc-dates" role="list">
       <div class="vc-date" role="listitem">
         <span class="lbl">{{ site.established.label }}</span>
@@ -21,6 +38,107 @@
         <span class="val">{{ site.edenLaunch.date | safe }}</span>
       </div>
     </div>
+
     <p class="vc-foundation-colophon">{{ site.colophon | safe }}</p>
   </div>
 </header>
+
+<script>
+(function(){
+  // ── KINETIC WORD-SWAP ──────────────────────────────────────────
+  var words = [
+    'FarmBlock',
+    'McCartney Academy',
+    'Block to Boardroom',
+    'Restitution 246',
+    'the architecture of remedy'
+  ];
+  var slot = document.querySelector('.vc-kw-slot');
+  if (!slot) return;
+  var idx = 0;
+  function nextWord() {
+    slot.style.opacity = '0';
+    slot.style.transform = 'translateY(6px)';
+    setTimeout(function() {
+      idx = (idx + 1) % words.length;
+      slot.textContent = words[idx];
+      slot.style.opacity = '1';
+      slot.style.transform = 'translateY(0)';
+    }, 280);
+  }
+  slot.style.transition = 'opacity 0.28s ease, transform 0.28s ease';
+  slot.style.display = 'inline-block';
+  slot.style.opacity = '1';
+  slot.style.transform = 'translateY(0)';
+  setInterval(nextWord, 2600);
+
+  // ── LIVE DISPATCH TICKER ───────────────────────────────────────
+  var track = document.getElementById('vc-ticker-track');
+  if (!track) return;
+
+  // Fallback dispatches shown while API loads
+  var fallback = [
+    { text: 'FarmBlock Phase II city survey dispatched', age: '2h ago' },
+    { text: 'McCartney Academy brief published to record', age: '6h ago' },
+    { text: 'Restitution 246 framework updated', age: '1d ago' },
+    { text: 'Coalition application reviewed', age: '2d ago' },
+    { text: 'BDI dataset checkpoint filed', age: '3d ago' }
+  ];
+
+  function renderTicker(items) {
+    track.innerHTML = '';
+    items.forEach(function(item, i) {
+      var span = document.createElement('span');
+      span.className = 'vc-ticker-item';
+      span.textContent = item.text + ' \u00b7 ' + item.age;
+      if (i > 0) span.setAttribute('aria-hidden', 'true');
+      track.appendChild(span);
+    });
+    if (items.length > 1) startScroll();
+  }
+
+  function ageString(isoDate) {
+    var now = Date.now();
+    var then = new Date(isoDate).getTime();
+    var diff = Math.floor((now - then) / 1000);
+    if (diff < 120) return 'just now';
+    if (diff < 3600) return Math.floor(diff/60) + 'm ago';
+    if (diff < 86400) return Math.floor(diff/3600) + 'h ago';
+    return Math.floor(diff/86400) + 'd ago';
+  }
+
+  function startScroll() {
+    var items = track.querySelectorAll('.vc-ticker-item');
+    if (items.length < 2) return;
+    var cur = 0;
+    setInterval(function() {
+      items[cur].style.opacity = '0';
+      cur = (cur + 1) % items.length;
+      items[cur].style.opacity = '1';
+    }, 4000);
+    items.forEach(function(el, i) {
+      el.style.position = 'absolute';
+      el.style.transition = 'opacity 0.4s ease';
+      el.style.opacity = i === 0 ? '1' : '0';
+      el.style.whiteSpace = 'nowrap';
+    });
+    track.style.position = 'relative';
+    track.style.height = '1.4em';
+  }
+
+  // Try to fetch live dispatches from the board API
+  fetch('https://api.e5enclave.com/dispatches?limit=5')
+    .then(function(r) { return r.ok ? r.json() : null; })
+    .then(function(data) {
+      if (data && data.items && data.items.length) {
+        var items = data.items.map(function(d) {
+          return { text: d.summary || d.event_type, age: ageString(d.timestamp) };
+        });
+        renderTicker(items);
+      } else {
+        renderTicker(fallback);
+      }
+    })
+    .catch(function() { renderTicker(fallback); });
+})();
+</script>
