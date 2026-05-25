@@ -1,0 +1,962 @@
+---
+layout: base
+permalink: /justice/dws-accountability/
+title: "Accountability — Debbie Wasserman Schultz FL-20 · E5 Enclave Justice"
+description: "Debbie Wasserman Schultz is running for Florida's 20th Congressional District — a majority-Black seat held by Black representatives since 1993. The Broward Black Caucus asked white Democrats not to run. She ran anyway. This page identifies her launch video endorsers and provides accountability contact information."
+hideGlobalChrome: true
+---
+
+<style>
+  :root {
+    --bg:        #000000;
+    --bg-1:      #0a0a0a;
+    --bg-2:      #111111;
+    --fg:        #ededed;
+    --fg-dim:    #a1a1a1;
+    --fg-dimmer: #6b6b6b;
+    --fg-ghost:  #3a3a3a;
+    --border:    #1c1c1c;
+    --border-2:  #2a2a2a;
+    --border-3:  #3f3f3f;
+    --accent:    #ffffff;
+    --signal:    #ff4d4d;
+    --signal-2:  #ff7a3d;
+    --sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono: 'Geist Mono', ui-monospace, 'SF Mono', 'Menlo', monospace;
+    --serif: 'Instrument Serif', 'Times New Roman', serif;
+    --container: 1280px;
+    --gutter: 32px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    font-feature-settings: "ss01", "ss03", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--fg); color: var(--bg); }
+  a { color: inherit; text-decoration: none; }
+  .wrap {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    position: relative;
+  }
+  .rule { border: 0; border-top: 1px solid var(--border); margin: 0; }
+  .mono {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+  }
+
+  /* ───────── TICKER BAR ───────── */
+  .ticker {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    border-bottom: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--fg-dim);
+  }
+  .ticker-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 40px; gap: 16px; white-space: nowrap; overflow: hidden;
+  }
+  .ticker-left, .ticker-right { display: flex; align-items: center; gap: 18px; min-width: 0; }
+  .ticker-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 2px 0; color: var(--fg);
+  }
+  .ticker-pill .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--signal);
+    box-shadow: 0 0 0 0 rgba(255,77,77,0.55);
+    animation: pulse 1.8s infinite;
+  }
+  .ticker-divider { color: var(--fg-ghost); }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255,77,77,0.6); }
+    70%  { box-shadow: 0 0 0 8px rgba(255,77,77,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,77,77,0); }
+  }
+  @media (max-width: 720px) { .ticker-right { display: none; } }
+
+  /* ───────── NAV ───────── */
+  .nav { border-bottom: 1px solid var(--border); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--fg);
+  }
+  .brand-mark {
+    width: 28px; height: 28px; border: 1px solid var(--border-3);
+    display: grid; place-items: center;
+    font-family: var(--sans); font-weight: 700; font-size: 13px; letter-spacing: -0.02em; color: var(--fg);
+  }
+  .brand-mark span { color: var(--fg-dimmer); }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--fg-dim); transition: color .15s ease;
+  }
+  .nav-links a:hover { color: var(--fg); }
+  .nav-cta {
+    border: 1px solid var(--border-3); padding: 8px 14px; color: var(--fg) !important;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  .nav-cta:hover { background: var(--fg); color: var(--bg) !important; border-color: var(--fg); }
+  @media (max-width: 720px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+  /* ───────── HERO ───────── */
+  .hero { position: relative; padding: 96px 0 64px; overflow: hidden; }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 80px 80px; background-position: center top;
+    mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(60% 60% at 50% 0%, rgba(255,255,255,0.06), transparent 60%),
+      radial-gradient(40% 40% at 80% 20%, rgba(255,77,77,0.05), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--fg-dim);
+    padding: 6px 12px; border: 1px solid var(--border-2); border-radius: 999px; background: var(--bg-1);
+  }
+  .eyebrow .glyph { color: var(--fg); }
+  .hero h1 {
+    font-family: var(--sans); font-weight: 600;
+    font-size: clamp(56px, 11.5vw, 184px);
+    line-height: 0.92; letter-spacing: -0.055em;
+    margin: 28px 0 32px; color: var(--fg);
+  }
+  .hero h1 .italic { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; color: var(--fg); }
+  .hero h1 .dim { color: var(--fg-dimmer); }
+  .hero-sub {
+    max-width: 720px; font-size: clamp(17px, 1.6vw, 21px);
+    line-height: 1.5; color: var(--fg-dim); margin-bottom: 40px;
+  }
+  .hero-sub strong { color: var(--fg); font-weight: 600; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 56px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--sans); font-size: 14px; font-weight: 500;
+    letter-spacing: -0.005em; padding: 13px 20px; border-radius: 8px;
+    border: 1px solid transparent; cursor: pointer;
+    transition: background .15s ease, color .15s ease, border-color .15s ease, transform .1s ease;
+    line-height: 1;
+  }
+  .btn-primary { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .btn-primary:hover { background: #fff; transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: var(--fg); border-color: var(--border-3); }
+  .btn-ghost:hover { border-color: var(--fg); background: var(--bg-1); }
+  .btn .arrow { font-family: var(--mono); font-size: 14px; transform: translateX(0); transition: transform .15s ease; }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  /* hero metadata strip */
+  .case-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .case-strip .cell {
+    padding: 24px 22px; border-right: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 10px; min-height: 110px;
+  }
+  .case-strip .cell:last-child { border-right: 0; }
+  .case-strip .k { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-dimmer); }
+  .case-strip .v { font-family: var(--sans); font-size: 17px; font-weight: 500; color: var(--fg); letter-spacing: -0.01em; line-height: 1.25; }
+  .case-strip .v .sub { display: block; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.04em; color: var(--fg-dim); margin-top: 4px; font-weight: 400; text-transform: none; }
+  @media (max-width: 880px) {
+    .case-strip { grid-template-columns: repeat(2, 1fr); }
+    .case-strip .cell:nth-child(2) { border-right: 0; }
+    .case-strip .cell:nth-child(1), .case-strip .cell:nth-child(2) { border-bottom: 1px solid var(--border); }
+  }
+
+  /* ───────── SECTION ───────── */
+  .section { padding: 96px 0; border-bottom: 1px solid var(--border); position: relative; }
+  .section.tight { padding: 72px 0; }
+  .section-head {
+    display: grid; grid-template-columns: 220px 1fr; gap: 48px; align-items: baseline; margin-bottom: 56px;
+  }
+  .section-head .meta {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--fg-dim); position: sticky; top: 80px;
+  }
+  .section-head .meta .num { color: var(--fg); display: block; margin-bottom: 6px; font-size: 13px; }
+  .section-head h2 {
+    font-family: var(--sans); font-weight: 500;
+    font-size: clamp(32px, 4.6vw, 60px);
+    letter-spacing: -0.04em; line-height: 1.02; color: var(--fg); max-width: 900px;
+  }
+  .section-head h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--fg-dim); }
+  @media (max-width: 880px) { .section-head { grid-template-columns: 1fr; gap: 18px; } .section-head .meta { position: static; } }
+
+  /* ───────── EDITORIAL BODY ───────── */
+  .editorial { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 48px; }
+  .editorial .col-meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dimmer); line-height: 1.7; }
+  .editorial .col-meta .item { margin-bottom: 16px; }
+  .editorial .col-meta .item b { display: block; color: var(--fg-dim); font-weight: 500; margin-bottom: 2px; }
+  .editorial .col-body { max-width: 720px; }
+  .editorial .col-body p { font-size: 18px; line-height: 1.65; color: #cfcfcf; margin-bottom: 22px; letter-spacing: -0.005em; }
+  .editorial .col-body p:first-of-type::first-letter {
+    font-family: var(--serif); font-weight: 400; font-style: normal;
+    font-size: 78px; line-height: 0.85; float: left; padding: 6px 14px 0 0; color: var(--fg);
+  }
+  .editorial .col-body p strong { color: var(--fg); font-weight: 600; }
+  .editorial .col-body p em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--fg); font-size: 1.05em; }
+  .pullquote {
+    border-left: 2px solid var(--fg); margin: 36px 0; padding: 6px 0 6px 24px;
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: 28px; line-height: 1.25; letter-spacing: -0.01em; color: var(--fg);
+  }
+  .pullquote cite {
+    display: block; margin-top: 16px; font-family: var(--mono); font-style: normal;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-dim);
+  }
+  @media (max-width: 880px) { .editorial { grid-template-columns: 1fr; gap: 24px; } .editorial .col-body p:first-of-type::first-letter { font-size: 56px; padding: 4px 10px 0 0; } }
+
+  /* ───────── TARGET CARDS ───────── */
+  .target-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+  @media (max-width: 720px) { .target-grid { grid-template-columns: 1fr; } }
+  .target-card {
+    border: 1px solid var(--border-2); border-radius: 12px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 60%), var(--bg-1);
+    padding: 28px; transition: border-color .2s ease;
+  }
+  .target-card:hover { border-color: var(--border-3); }
+  .target-card .tier {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase; padding: 4px 10px; border-radius: 999px;
+    margin-bottom: 16px; border: 1px solid var(--border-2);
+  }
+  .target-card .tier.t1 { color: var(--signal); border-color: rgba(255,77,77,0.3); background: rgba(255,77,77,0.06); }
+  .target-card .tier.t2 { color: var(--signal-2); border-color: rgba(255,122,61,0.3); background: rgba(255,122,61,0.06); }
+  .target-card .tier.t3 { color: var(--fg-dim); border-color: var(--border-2); }
+  .target-card .name { font-family: var(--sans); font-weight: 600; font-size: 20px; color: var(--fg); margin-bottom: 6px; letter-spacing: -0.015em; }
+  .target-card .role { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-dim); margin-bottom: 14px; }
+  .target-card .handles { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .target-card .handle {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em;
+    padding: 4px 10px; border: 1px solid var(--border-2); border-radius: 6px;
+    color: var(--fg-dim); background: var(--bg);
+  }
+  .target-card .handle.confirmed { color: var(--fg); border-color: var(--border-3); }
+  .target-card .pressure { font-size: 14px; color: #b0b0b0; line-height: 1.55; }
+  .target-card .pressure strong { color: var(--fg); font-weight: 500; }
+
+  /* ───────── FORM ───────── */
+  .form-section { padding: 96px 0 120px; position: relative; }
+  .form-shell { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: start; }
+  .form-aside { position: sticky; top: 80px; }
+  .form-aside .eyebrow { margin-bottom: 22px; }
+  .form-aside h2 {
+    font-family: var(--sans); font-weight: 500;
+    font-size: clamp(36px, 4.4vw, 56px);
+    line-height: 1.0; letter-spacing: -0.045em; color: var(--fg); margin-bottom: 22px;
+  }
+  .form-aside h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--fg-dim); }
+  .form-aside p { font-size: 16px; color: var(--fg-dim); line-height: 1.6; max-width: 420px; margin-bottom: 26px; }
+  .form-aside .meta-list { border-top: 1px solid var(--border); margin-top: 24px; }
+  .form-aside .meta-list .row {
+    display: flex; justify-content: space-between; padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .form-aside .meta-list .row .k { color: var(--fg-dim); }
+  .form-aside .meta-list .row .v { color: var(--fg); }
+  .form-card {
+    border: 1px solid var(--border-2); border-radius: 14px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.018), transparent 50%), var(--bg-1);
+    padding: 36px;
+  }
+  .form-card-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 22px; margin-bottom: 26px; border-bottom: 1px solid var(--border); }
+  .form-card-head .t { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-dim); }
+  .form-card-head .step { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--fg-dimmer); text-transform: uppercase; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .field.full { grid-column: 1 / -1; }
+  label.f-label {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--fg-dim); font-weight: 500; display: flex; justify-content: space-between; align-items: baseline;
+  }
+  label.f-label .req { color: var(--signal); }
+  input.f-input, select.f-select, textarea.f-textarea {
+    background: var(--bg); border: 1px solid var(--border-2); border-radius: 8px;
+    color: var(--fg); font-family: var(--sans); font-size: 15px; padding: 12px 14px;
+    outline: none; transition: border-color .15s ease, background .15s ease, box-shadow .15s ease;
+    -webkit-appearance: none; appearance: none; width: 100%;
+  }
+  input.f-input::placeholder, textarea.f-textarea::placeholder { color: var(--fg-ghost); }
+  input.f-input:focus, select.f-select:focus, textarea.f-textarea:focus {
+    border-color: var(--fg); background: var(--bg-1); box-shadow: 0 0 0 3px rgba(255,255,255,0.06);
+  }
+  textarea.f-textarea { resize: vertical; min-height: 110px; line-height: 1.5; }
+  select.f-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23a1a1a1' d='M5 6 0 0h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer;
+  }
+  select.f-select option { background: #0a0a0a; color: var(--fg); }
+  .submit-row { margin-top: 28px; display: flex; flex-direction: column; gap: 14px; }
+  .submit-btn {
+    width: 100%; padding: 16px 20px; background: var(--fg); color: var(--bg);
+    font-family: var(--sans); font-size: 15px; font-weight: 600; letter-spacing: -0.005em;
+    border: 1px solid var(--fg); border-radius: 8px; cursor: pointer;
+    transition: transform .1s ease, background .15s ease, box-shadow .15s ease;
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .submit-btn:hover { background: #fff; box-shadow: 0 0 0 6px rgba(255,255,255,0.05); }
+  .submit-btn:active { transform: translateY(1px); }
+  .submit-btn:disabled { background: var(--border-2); color: var(--fg-dim); border-color: var(--border-2); cursor: not-allowed; box-shadow: none; }
+  .submit-btn .arrow { font-family: var(--mono); font-weight: 500; }
+  .form-note { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; color: var(--fg-dimmer); text-align: center; line-height: 1.7; text-transform: uppercase; }
+  .form-note a { color: var(--fg-dim); text-decoration: underline; text-underline-offset: 3px; }
+  .error-msg { display: none; background: rgba(255,77,77,0.08); border: 1px solid rgba(255,77,77,0.3); border-radius: 8px; padding: 12px 14px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; color: #ff8585; margin-bottom: 16px; }
+  .success { display: none; border: 1px solid var(--border-2); border-radius: 14px; background: radial-gradient(80% 80% at 50% 0%, rgba(255,255,255,0.05), transparent 70%), var(--bg-1); padding: 56px 36px; text-align: center; }
+  .success .stamp { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg); padding: 6px 12px; border: 1px solid var(--border-3); border-radius: 999px; margin-bottom: 28px; }
+  .success .stamp .dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
+  .success h3 { font-family: var(--sans); font-weight: 500; font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.035em; line-height: 1.1; color: var(--fg); margin-bottom: 14px; }
+  .success h3 em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--fg-dim); }
+  .success p { font-size: 17px; color: var(--fg-dim); max-width: 460px; margin: 0 auto; line-height: 1.6; }
+  @media (max-width: 960px) { .form-shell { grid-template-columns: 1fr; gap: 36px; } .form-aside { position: static; } .form-card { padding: 26px; } .form-grid { grid-template-columns: 1fr; } }
+
+  /* ───────── FOOTER ───────── */
+  footer.foot { padding: 48px 0 56px; border-top: 1px solid var(--border); }
+  .foot-inner { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; align-items: start; }
+  .foot-brand { font-family: var(--sans); font-size: 14px; color: var(--fg); line-height: 1.55; letter-spacing: -0.005em; }
+  .foot-brand .small { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-dim); margin-top: 14px; }
+  .foot-col h4 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-dim); margin-bottom: 14px; font-weight: 500; }
+  .foot-col a { display: block; font-family: var(--sans); font-size: 14px; color: var(--fg); margin-bottom: 8px; transition: color .15s ease; }
+  .foot-col a:hover { color: var(--fg-dim); }
+  .foot-bottom { margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; gap: 16px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-dimmer); flex-wrap: wrap; }
+  @media (max-width: 720px) { .foot-inner { grid-template-columns: 1fr; gap: 32px; } }
+
+  /* ───────── ANNOUNCEMENT BANNER ───────── */
+  .court-banner {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 500;
+    background: linear-gradient(90deg, #8b1a1a, #b91c1c);
+    color: #fff; padding: 14px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.4); font-size: 13px;
+  }
+  .banner-inner { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; flex: 1; }
+  .banner-dot { width: 8px; height: 8px; border-radius: 50%; background: #fff; animation: pulse 1.5s ease infinite; flex-shrink: 0; }
+  .banner-sep { opacity: 0.5; }
+  .banner-cta { background: #fff; color: #8b1a1a; border: none; padding: 6px 16px; border-radius: 4px; font-weight: 700; font-size: 12px; cursor: pointer; letter-spacing: 0.04em; transition: background .15s; white-space: nowrap; }
+  .banner-cta:hover { background: #fff7f7; }
+  .banner-close { background: none; border: none; color: rgba(255,255,255,0.7); font-size: 16px; cursor: pointer; padding: 4px 8px; flex-shrink: 0; }
+  .banner-close:hover { color: #fff; }
+
+  /* ───────── POPUP MODAL ───────── */
+  .popup-overlay { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.75); backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 20px; }
+  .popup-overlay.open { display: flex; }
+  .popup-card { background: #0d0d0d; border: 1px solid #2a2a2a; border-top: 3px solid #8b1a1a; border-radius: 12px; padding: 40px; width: 100%; max-width: 500px; position: relative; max-height: 90vh; overflow-y: auto; }
+  .popup-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: #6b6b6b; font-size: 18px; cursor: pointer; }
+  .popup-close:hover { color: #fff; }
+  .popup-eyebrow { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #8b1a1a; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .dot-live { width: 7px; height: 7px; border-radius: 50%; background: #8b1a1a; animation: pulse 1.5s ease infinite; flex-shrink: 0; }
+  .popup-title { font-size: 1.6rem; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 12px; }
+  .popup-title em { font-style: italic; color: #aaa; }
+  .popup-sub { font-size: 14px; color: #7a7a7a; line-height: 1.6; margin-bottom: 24px; }
+  .popup-submit { display: block; text-align: center; background: #8b1a1a; color: #fff; border: none; padding: 14px 24px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; letter-spacing: 0.04em; transition: background .2s; width: 100%; margin-top: 4px; text-decoration: none; }
+  .popup-submit:hover { background: #a01e1e; }
+  .popup-privacy { font-size: 11px; color: #4a4a4a; text-align: center; margin-top: 12px; }
+
+  section[id] { scroll-margin-top: 96px; }
+</style>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="wrap ticker-inner">
+    <div class="ticker-left">
+      <span class="ticker-pill"><span class="dot"></span> FL-20 Primary · August 18, 2026 · Broward County, FL</span>
+      <span class="ticker-divider">/</span>
+      <span>DWS Launch Video · 15 Supporters Identified · Accountability Dossier</span>
+    </div>
+    <div class="ticker-right">
+      <span>E5 Enclave · Justice Vertical · Black Dragons Initiative</span>
+      <span class="ticker-divider">/</span>
+      <a href="#support">Sign Accountability Pledge →</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">
+      <div class="brand-mark">E5<span>·</span></div>
+      Justice Vertical · BDI
+    </div>
+    <div class="nav-links">
+      <a href="#manifesto" onclick="showTab('manifesto',0)">The Case</a>
+      <a href="#targets" onclick="showTab('targets',1)">Targets</a>
+      <a href="#action" onclick="showTab('action',2)">Action</a>
+      <a href="#support" class="nav-cta">Sign Pledge →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div class="eyebrow"><span class="glyph">⚖</span> Accountability Dossier · DWS FL-20 · Forensic Edition</div>
+    <h1>The <span class="italic">Record.</span><br/><span class="dim">The Targets. The Ask.</span></h1>
+    <p class="hero-sub">
+      Debbie Wasserman Schultz is running for Florida's 20th Congressional District — a majority-Black seat held by Black representatives since <strong>1993</strong>. The Broward County Democratic Black Caucus asked white Democrats not to run. She ran anyway. Her launch video features <strong>15 supporters</strong>. We identified every one.
+    </p>
+    <div class="cta-row">
+      <button class="btn btn-primary" onclick="showTab('manifesto',0)">The Case <span class="arrow">→</span></button>
+      <button class="btn btn-ghost" onclick="showTab('targets',1)">View Targets</button>
+      <button class="btn btn-ghost" onclick="showTab('action',2)">Take Action</button>
+    </div>
+    <div class="case-strip">
+      <div class="cell"><span class="k">District</span><span class="v">FL-20 · Broward County<span class="sub">Majority-Black since 1993</span></span></div>
+      <div class="cell"><span class="k">Seat Held By</span><span class="v">Black Lawmakers<span class="sub">Alcee Hastings → Sheila Cherfilus-McCormick</span></span></div>
+      <div class="cell"><span class="k">Primary Date</span><span class="v">August 18, 2026<span class="sub">Democratic Primary</span></span></div>
+      <div class="cell"><span class="k">Supporters ID'd</span><span class="v">15 of 15<span class="sub">All named in launch video</span></span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- TAB BAR -->
+<div class="tab-bar">
+  <button class="tab-btn active" id="tab-manifesto" onclick="showTab('manifesto',0)">§01 · The Case</button>
+  <button class="tab-btn" id="tab-targets" onclick="showTab('targets',1)">§02 · Targets</button>
+  <button class="tab-btn" id="tab-action" onclick="showTab('action',2)">§03 · Action</button>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- §01 — THE CASE                                        -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div id="pane-manifesto" class="tab-pane active">
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta"><span class="num">§01</span> The Case</div>
+      <h2>What Happened — <em>And Why It Matters.</em></h2>
+    </div>
+
+    <div class="manifesto-body">
+      <div class="doc-status"><span class="dot"></span> Open · Accountability Dossier · Forensic Edition May 25, 2026</div>
+
+      <p>On May 22, 2026, Congresswoman Debbie Wasserman Schultz announced her candidacy for Florida's 20th Congressional District. The announcement was not surprising — she had been redistricted out of her old seat by a DeSantis-backed gerrymander. What was surprising was <strong>where</strong> she chose to run.</p>
+
+      <p>FL-20 is a majority-Black district in Broward County that has been represented by Black lawmakers since <strong>Alcee Hastings</strong> first won the seat in 1993. For 33 years, this district has been a cornerstone of Black political representation in Congress. The winner of the Democratic primary is all but assured of winning the general election.</p>
+
+      <p>Before Wasserman Schultz announced, the <strong>Broward County Democratic Black Caucus</strong> explicitly asked white Democratic representatives — naming Wasserman Schultz directly — not to run in the 20th district. The request was public, clear, and grounded in a principle that should be uncontroversial: <strong>Black districts deserve Black representation.</strong></p>
+
+      <p>Wasserman Schultz ran anyway. And her launch video features 15 community leaders — elected officials, organizational heads, and community figures — endorsing her candidacy on camera.</p>
+
+      <h3>The 15 Supporters — Who They Are</h3>
+
+      <p>We identified every person who appears in the launch video. They fall into three categories:</p>
+
+      <p><strong>Tier 1 — Elected Officials (6):</strong> These are public servants with constituents, public meetings, and social media accounts. They are the highest-value accountability targets because they have the most to lose from being on the wrong side of this issue. They include the mayors of Fort Lauderdale, Coral Springs, and Sunrise; city commissioners in Margate and Plantation; and a former mayor of Fort Lauderdale.</p>
+
+      <p><strong>Tier 2 — Organizational Leaders (3):</strong> The president of the Broward Teachers Union, the president of the Dolphin Democrats (Broward's LGBTQ+ Democratic club), and a Women's March Florida founder. These leaders have platforms, members, and endorsement power.</p>
+
+      <p><strong>Tier 3 — Community Figures (6):</strong> A retired educator, an Air Force veteran, a former union leader, the daughter of former Broward Elections Supervisor Brenda Snipes, an AAPI activist, and an attorney. These individuals were likely used as props without full understanding of the racial dynamics at play.</p>
+
+      <h3>The Principle</h3>
+
+      <p>This is not about Debbie Wasserman Schultz's record. It is not about whether she has done good things for Broward County over her career. It is about a simple principle: <strong>when a community asks you not to take their seat, you don't take it.</strong></p>
+
+      <p>The Broward Black Caucus asked. She ran anyway. And 15 people stood next to her on camera and said it was okay.</p>
+
+      <p>We believe those 15 people should be asked — publicly, respectfully, and persistently — to rescind their endorsements. Not because they are bad people. But because <strong>the principle matters more than any individual campaign.</strong></p>
+
+      <h3>The Ask</h3>
+
+      <p>To the elected officials: Your constituents include Black voters who have been represented by Black lawmakers for 33 years. Rescind your endorsement. Tell DWS you support the Black Caucus's request.</p>
+
+      <p>To the organizational leaders: Your members are watching. The Broward Teachers Union represents a majority-Black school district. The Dolphin Democrats claim to stand for marginalized communities. Act accordingly.</p>
+
+      <p>To the community figures: If you did not understand the racial dynamics of this race when you agreed to appear, you understand now. Withdraw your endorsement publicly.</p>
+
+      <p><strong>We stand with the Broward County Democratic Black Caucus. We stand with 33 years of Black representation in FL-20. We stand with the principle that communities should represent themselves.</strong></p>
+
+      <p><em>By Grace, perfect ways.</em></p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- §02 — TARGETS                                         -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div id="pane-targets" class="tab-pane">
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta"><span class="num">§02</span> Targets</div>
+      <h2>The 15 Supporters — <em>Identified.</em></h2>
+    </div>
+
+    <div class="manifesto-body" style="margin-bottom:48px;">
+      <p>Every person who appears in Debbie Wasserman Schultz's FL-20 launch video. Contact information, social media handles, and pressure points for each target.</p>
+    </div>
+
+    <!-- TIER 1: ELECTED OFFICIALS -->
+    <div class="mono" style="margin-bottom:20px;color:var(--signal);">TIER 1 — Elected Officials (Highest Pressure Value)</div>
+    <div class="target-grid">
+
+      <div class="target-card">
+        <div class="tier t1">Tier 1 · Elected Official</div>
+        <div class="name">Dean J. Trantalis</div>
+        <div class="role">Mayor of Fort Lauderdale (2018–present)</div>
+        <div class="handles">
+          <span class="handle confirmed">@DeanTrantalis — X/Twitter ✅</span>
+          <span class="handle">Facebook: MayorDeanTrantalis</span>
+          <span class="handle">Instagram: @mayordeanftl</span>
+        </div>
+        <div class="pressure"><strong>Pressure points:</strong> City commission meetings (public comment). Active on X — direct tweets get responses. LGBTQ+ community ties — frame as solidarity betrayal. Former Dolphin Democrats member — his own club turned on DWS. Email: dtrantalis@fort Lauderdale.gov · Phone: (954) 828-5314</div>
+      </div>
+
+      <div class="target-card">
+        <div class="tier t1">Tier 1 · Elected Official</div>
+        <div class="name">Scott Brook</div>
+        <div class="role">Mayor of Coral Springs (2019–present)</div>
+        <div class="handles">
+          <span class="handle">Email: sbrook@coralsprings.gov</span>
+          <span class="handle">Campaign: scottbrookformayor.com</span>
+          <span class="handle">Phone: (954) 344-5911</span>
+        </div>
+        <div class="pressure"><strong>Pressure points:</strong> NLC Council Vice-Chair — national profile. City commission meetings. Florida League of Mayors President — peer pressure from other mayors. Mental health advocate — frame as community harm.</div>
+      </div>
+
+      <div class="target-card">
+        <div class="tier t1">Tier 1 · Elected Official</div>
+        <div class="name">Mike Ryan (Michael J. Ryan)</div>
+        <div class="role">Mayor of Sunrise (2010–present)</div>
+        <div class="handles">
+          <span class="handle">Email: mryan@sunrisefl.gov</span>
+          <span class="handle">City site: sunrisefl.gov</span>
+        </div>
+        <div class="pressure"><strong>Pressure points:</strong> Chair of Solid Waste Authority of Broward County — multi-city jurisdiction. City commission meetings. Longest-serving mayor in Sunrise history — legacy consciousness.</div>
+      </div>
+
+      <div class="target-card">
+        <div class="tier t1">Tier 1 · Elected Official</div>
+        <div class="name">Arlene Schwartz</div>
+        <div class="role">Margate City Commissioner, Seat 2 · Former Mayor</div>
+        <div class="handles">
+          <span class="handle">Phone: (954) 972-6454</span>
+          <span class="handle">City site: margatefl.com</span>
+        </div>
+        <div class="pressure"><strong>Pressure points:</strong> Former first female mayor of Margate (1999-2001). Educator who worked with underserved minority populations. City commission meetings (public comment).</div>
+      </div>
+
+      <div class="target-card">
+        <div class="tier t1">Tier 1 · Elected Official</div>
+        <div class="name">Louis Reinstein</div>
+        <div class="role">Plantation City Councilman, Group 5</div>
+        <div class="handles">
+          <span class="handle">Campaign: louisreinstein.com</span>
+          <span class="handle">City site: plantation.org</span>
+        </div>
+        <div class="pressure"><strong>Pressure points:</strong> Jewish community leader — frame as communal responsibility. City council meetings.</div>
+      </div>
+
+      <div class="target-card">
+        <div class="tier t1">Tier 1 · Elected Official</div>
+        <div class="name">Jack Seiler</div>
+        <div class="role">Former Mayor of Fort Lauderdale (2009-2018)</div>
+        <div class="handles">
+          <span class="handle">Wikipedia: Jack Seiler</span>
+          <span class="handle">Law practice: Seiler, Sautter, Zaden & Rimes</span>
+        </div>
+        <div class="pressure"><strong>Pressure points:</strong> Succeeded by Dean Trantalis — his protégé. Still politically connected in Broward Democratic circles. FL House Rep experience (2001-2008) — understands district loyalty.</div>
+      </div>
+
+    </div>
+
+    <!-- TIER 2: ORGANIZATIONAL LEADERS -->
+    <div class="mono" style="margin:48px 0 20px;color:var(--signal-2);">TIER 2 — Organizational Leaders (Platform Pressure)</div>
+    <div class="target-grid">
+
+      <div class="target-card">
+        <div class="tier t2">Tier 2 · Organizational Leader</div>
+        <div class="name">Anna Fusco</div>
+        <div class="role">Broward Teachers Union President</div>
+        <div class="handles">
+          <span class="handle">Email: afusco@btuonline.com</span>
+          <span class="handle">Phone: (954) 415-4464</span>
+          <span class="handle">BTU: btuonline.com</span>
+        </div>
+        <div class="pressure"><strong>Pressure points:</strong> Union members can demand accountability at meetings. Teachers union in a majority-Black school district — this is personal. Political organization with endorsement power.</div>
+      </div>
+
+      <div class="target-card">
+        <div class="tier t2">Tier 2 · Organizational Leader</div>
+        <div class="name">Alfredo Olvera</div>
+        <div class="role">President, Dolphin Democrats (Broward LGBTQ+ Democratic Club)</div>
+        <div class="handles">
+          <span class="handle">Email: alfredo@dolphindems.org</span>
+          <span class="handle">Phone: (954) 557-6037</span>
+          <span class="handle">Dolphin Democrats: dolphindems.org</span>
+        </div>
+        <div class="pressure"><strong>Pressure points:</strong> Dolphin Democrats club members can demand accountability. Broward Democratic Party State Committeeman — party machinery. His own LGBTQ+ community members will ask why he backed DWS over Black candidates. Published op-eds — public intellectual, can be challenged publicly.</div>
+      </div>
+
+      <div class="target-card">
+        <div class="tier t2">Tier 2 · Organizational Leader</div>
+        <div class="name">Emma Collum</div>
+        <div class="role">Attorney · Women's March Florida Founder · Former FL House Candidate</div>
+        <div class="handles">
+          <span class="handle">WSFL TV interview</span>
+          <span class="handle">Run For Something profile</span>
+          <span class="handle">Power in Place: powerinplaceproject.com</span>
+        </div>
+        <div class="pressure"><strong>Pressure points:</strong> Co-founded Women's March on Washington — intersectionality is her brand. Ran for FL House District 93 — progressive base. Can be challenged on: "Is this what intersectional feminism looks like?"</div>
+      </div>
+
+    </div>
+
+    <!-- TIER 3: COMMUNITY FIGURES -->
+    <div class="mono" style="margin:48px 0 20px;color:var(--fg-dim);">TIER 3 — Community Figures (Awareness, Not Direct Pressure)</div>
+    <div class="target-grid">
+
+      <div class="target-card">
+        <div class="tier t3">Tier 3 · Community Figure</div>
+        <div class="name">Billy Kisseadoo</div>
+        <div class="role">Former NATCA Official · Miami Tower</div>
+        <div class="handles"><span class="handle">Low social media profile</span></div>
+        <div class="pressure">Used as "working-class" prop. Pressure is on the elected officials.</div>
+      </div>
+
+      <div class="target-card">
+        <div class="tier t3">Tier 3 · Community Figure</div>
+        <div class="name">Carolyn Eggelletion</div>
+        <div class="role">Retired Educator (55 years) · Former Principal, Winston Park Elementary</div>
+        <div class="handles"><span class="handle">Low social media profile</span></div>
+        <div class="pressure">Sympathetic figure — likely didn't understand the racial dynamics. Honored by Broward County Commission on the Status of Women.</div>
+      </div>
+
+      <div class="target-card">
+        <div class="tier t3">Tier 3 · Community Figure</div>
+        <div class="name">Loretta Young</div>
+        <div class="role">Air Force Veteran · Former American Legion Post 365 Commander</div>
+        <div class="handles"><span class="handle">Low social media profile</span></div>
+        <div class="pressure">Sympathetic figure — veteran loyalty was exploited. Works with Marjory Stoneman Douglas HS JROTC.</div>
+      </div>
+
+      <div class="target-card">
+        <div class="tier t3">Tier 3 · Community Figure</div>
+        <div class="name">Melanie Snipes</div>
+        <div class="role">Daughter of Dr. Brenda Snipes (Deceased) · Attorney in Georgia</div>
+        <div class="handles"><span class="handle">Very low public profile</span></div>
+        <div class="pressure">Deeply ironic — her mother was targeted by Trump/Republicans during 2018 recount. Should be made aware her image was used this way.</div>
+      </div>
+
+      <div class="target-card">
+        <div class="tier t3">Tier 3 · Community Figure</div>
+        <div class="name">Dr. Sajan Kurian</div>
+        <div class="role">AAPI Activist · Democratic Leader · Former FL House Candidate</div>
+        <div class="handles">
+          <span class="handle">Email: sajankurian@yahoo.com</span>
+          <span class="handle">South Asian Democratic Caucus of Florida</span>
+        </div>
+        <div class="pressure">Can be reached through AAPI Democratic networks.</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- §03 — ACTION                                          -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div id="pane-action" class="tab-pane">
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta"><span class="num">§03</span> Action</div>
+      <h2>What To Do — <em>The Playbook.</em></h2>
+    </div>
+
+    <div class="manifesto-body">
+
+      <h3>The Message</h3>
+      <p>Use this core message when contacting any target:</p>
+
+      <div class="pullquote">
+        "You endorsed Debbie Wasserman Schultz for Florida's 20th Congressional District — a majority-Black seat that has been represented by Black lawmakers since 1993. The Broward County Democratic Black Caucus asked white Democrats not to run. By appearing in her launch video, you helped legitimize a white candidate trying to take a Black seat. Will you publicly rescind your endorsement?"
+        <cite>— Core Accountability Message</cite>
+      </div>
+
+      <h3>Phase 1: Direct Contact (Days 1-3)</h3>
+      <p>Email each Tier 1 and Tier 2 target with the accountability message. Post public tweets/X tagging the elected officials. File public comment requests for next city commission meetings.</p>
+
+      <h3>Phase 2: Organizational Pressure (Days 3-7)</h3>
+      <p>Contact Broward Black Democratic Caucus with this dossier. Contact Dolphin Democrats membership about Olvera's endorsement. Contact BTU members about Fusco's endorsement. Contact Women's March Florida members about Collum's endorsement.</p>
+
+      <h3>Phase 3: Public Amplification (Days 7-14)</h3>
+      <p>Publish this dossier publicly. Create social media cards for each elected official. Engage Broward County media (Sun Sentinel, CBS Miami, WLRN).</p>
+
+      <h3>Phase 4: Escalation (Days 14+)</h3>
+      <p>Attend city commission meetings (public comment). Coordinate with Black candidates in the FL-20 race. Engage state-level Democratic Party officials.</p>
+
+      <h3>Sources</h3>
+      <p>• DWS Campaign Site: debbiewassermanschultz.com — launch video supporter list<br/>
+      • WLRN: "Amid backlash from Black candidates, Wasserman Schultz announces reelection bid in FL-20" (May 22, 2026)<br/>
+      • CBS Miami: "Florida Rep. Debbie Wasserman Schultz announces re-election campaign"<br/>
+      • Coral Springs News: "Debbie Wasserman Schultz enters Florida District 20 race"<br/>
+      • Floridian Press: "Wasserman Schultz Runs for Congress in CD 20"<br/>
+      • Ballotpedia: Florida's 20th Congressional District election, 2026</p>
+
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- ANNOUNCEMENT BANNER                                    -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="court-banner" id="courtBanner">
+  <div class="banner-inner">
+    <span class="banner-dot"></span>
+    <strong>FL-20 Primary · August 18, 2026</strong>
+    <span class="banner-sep">·</span>
+    15 supporters identified · Accountability dossier active
+    <span class="banner-sep">·</span>
+    <button class="banner-cta" onclick="openSignupPopup()">Sign the Pledge →</button>
+  </div>
+  <button class="banner-close" onclick="document.getElementById('courtBanner').style.display='none'" aria-label="Close">✕</button>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SIGNUP POPUP MODAL                                     -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="popup-overlay" id="signupPopup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+  <div class="popup-card">
+    <button class="popup-close" onclick="closeSignupPopup()" aria-label="Close">✕</button>
+    <div class="popup-eyebrow"><span class="dot-live"></span> FL-20 Primary · August 18, 2026 · Broward County</div>
+    <h2 class="popup-title" id="popupTitle">Stand With the Black Caucus.<br/><em>Sign the Accountability Pledge.</em></h2>
+    <p class="popup-sub">Add your name to the public accountability pledge. We'll notify you when new targets are identified and when action opportunities arise.</p>
+    <a class="popup-submit" href="#support" onclick="closeSignupPopup()">
+      Sign Below — Takes 60 Seconds →
+    </a>
+    <p class="popup-privacy">Scroll down to the full form. Your information will not be shared.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- SUPPORT FORM                                           -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section class="section tight" id="support">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="meta"><span class="num">§04</span> Pledge</div>
+      <h2>Add Your Name.<br/><em>Stand With the Caucus.</em></h2>
+    </div>
+
+    <div class="form-shell">
+      <div class="form-aside">
+        <p style="font-size:17px;line-height:1.7;color:var(--fg-dim);margin-bottom:24px;">The Broward County Democratic Black Caucus asked white Democrats not to run in FL-20. Debbie Wasserman Schultz ran anyway. <strong style="color:var(--fg);">Add your name to the accountability pledge</strong> and we'll notify you of action opportunities.</p>
+
+        <div style="margin-top:24px;padding:20px;border:1px solid var(--border-2);border-radius:8px;background:var(--bg-1);">
+          <div class="mono" style="margin-bottom:12px;">The Principle</div>
+          <div style="font-size:14px;color:var(--fg-dim);line-height:2.2;">
+            <strong style="color:var(--fg);">33 years:</strong> FL-20 has been held by Black lawmakers since 1993<br/>
+            <strong style="color:var(--fg);">The ask:</strong> Broward Black Caucus asked white Democrats not to run<br/>
+            <strong style="color:var(--fg);">The response:</strong> DWS ran anyway, with 15 public endorsers<br/>
+            <strong style="color:var(--fg);">The ask now:</strong> Those 15 should publicly rescind
+          </div>
+        </div>
+
+        <p style="font-size:13px;color:var(--fg-dimmer);line-height:1.6;margin-top:20px;">All form submissions are recorded securely. Your information will not be shared with any third party. You will only be contacted regarding DWS FL-20 accountability and E5 Enclave justice initiatives.</p>
+      </div>
+
+      <div>
+        <div class="form-card">
+          <form id="supportForm">
+            <div class="form-section-label">Your Information</div>
+            <div class="form-grid">
+              <div class="field">
+                <label class="f-label" for="firstName">First Name <span class="req">*</span></label>
+                <input class="f-input" type="text" id="firstName" name="firstName" required placeholder="First" />
+              </div>
+              <div class="field">
+                <label class="f-label" for="lastName">Last Name <span class="req">*</span></label>
+                <input class="f-input" type="text" id="lastName" name="lastName" required placeholder="Last" />
+              </div>
+              <div class="field full">
+                <label class="f-label" for="email">Email Address <span class="req">*</span></label>
+                <input class="f-input" type="email" id="email" name="email" required placeholder="you@example.com" />
+              </div>
+              <div class="field">
+                <label class="f-label" for="phone">Phone</label>
+                <input class="f-input" type="tel" id="phone" name="phone" placeholder="(305) 000-0000" />
+              </div>
+              <div class="field">
+                <label class="f-label" for="city">City</label>
+                <input class="f-input" type="text" id="city" name="city" placeholder="City" />
+              </div>
+              <div class="field">
+                <label class="f-label" for="state">State</label>
+                <input class="f-input" type="text" id="state" name="state" placeholder="FL" maxlength="2" />
+              </div>
+              <div class="field full">
+                <label class="f-label" for="commitment">How do you want to help?</label>
+                <select class="f-select" id="commitment" name="commitment">
+                  <option value="">Select commitment type</option>
+                  <option value="contact_targets">I'll contact the elected officials directly</option>
+                  <option value="social_media">I'll amplify on social media</option>
+                  <option value="commission_meetings">I'll attend city commission meetings</option>
+                  <option value="media_outreach">I'll contact local media</option>
+                  <option value="legal_professional">Legal professional — available to consult</option>
+                  <option value="organization">Representing an organization</option>
+                  <option value="updates_only">Keep me updated</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label class="f-label" for="message">Your statement (optional)</label>
+                <textarea class="f-textarea" id="message" name="message" rows="3" placeholder="Why Black representation in FL-20 matters to you..."></textarea>
+              </div>
+            </div>
+
+            <div id="formError" class="error-msg"></div>
+
+            <div class="submit-row">
+              <button type="submit" class="submit-btn">
+                Add My Name to the Pledge <span class="arrow">→</span>
+              </button>
+              <p class="form-note">We respond within five business days. <a href="/privacy-policy/">Privacy policy</a>.</p>
+            </div>
+          </form>
+
+          <div class="success" id="successMsg">
+            <div class="stamp"><span class="dot"></span> Recorded</div>
+            <h3>Your name is on the record. <em>Thank you.</em></h3>
+            <p>We will be in touch with action updates before the August 18 primary. You are part of this.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        E5 Enclave Incorporated<br/>
+        Justice Vertical · Black Dragons Initiative
+        <div class="small">EIN 99-3822441 · 501(c)(3) Public Charity<br/>820 NW 64th St · Liberty City · Miami, FL 33150</div>
+      </div>
+      <div class="foot-col">
+        <h4>Dossier</h4>
+        <a href="#manifesto" onclick="showTab('manifesto',0)">The Case</a>
+        <a href="#targets" onclick="showTab('targets',1)">Target List</a>
+        <a href="#action" onclick="showTab('action',2)">Action Playbook</a>
+        <a href="#support">Sign the Pledge</a>
+      </div>
+      <div class="foot-col">
+        <h4>E5 Enclave</h4>
+        <a href="https://e5enclave.com">e5enclave.com</a>
+        <a href="https://e5enclave.com/justice">Justice Vertical</a>
+        <a href="mailto:press@e5enclave.com">press@e5enclave.com</a>
+        <a href="tel:3059670200">(305) 967-0200</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 E5 Enclave Incorporated · All Rights Reserved</span>
+      <span>DWS FL-20 · Broward County · Primary August 18, 2026</span>
+      <span>By Grace, perfect ways.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── TAB SYSTEM ───
+function showTab(name, idx) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('pane-' + name).classList.add('active');
+  document.querySelectorAll('.tab-btn')[idx].classList.add('active');
+  window.scrollTo({ top: document.querySelector('.tab-bar').offsetTop - 60, behavior: 'smooth' });
+}
+
+// ─── POPUP ───
+function openSignupPopup() {
+  document.getElementById('signupPopup').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeSignupPopup() {
+  document.getElementById('signupPopup').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('signupPopup').addEventListener('click', function(e) {
+  if (e.target === this) closeSignupPopup();
+});
+
+// Show popup after 30-45 seconds if not already signed up
+if (!sessionStorage.getItem('dws_signed')) {
+  var _delay = Math.floor(Math.random() * 15000) + 30000;
+  setTimeout(openSignupPopup, _delay);
+}
+
+// ─── FORM SUBMIT ───
+document.getElementById('supportForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.submit-btn');
+  btn.dataset.origText = btn.textContent;
+  btn.textContent = 'Recording...';
+  btn.disabled = true;
+
+  const fd = new FormData(this);
+  const data = Object.fromEntries(fd.entries());
+  data.source = 'dws-accountability-page';
+
+  try {
+    const resp = await fetch('https://sue-45c3e283.base44.app/functions/contactForm', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const result = await resp.json().catch(() => ({}));
+    if (!resp.ok) throw new Error(result.error || 'Server error ' + resp.status);
+
+    sessionStorage.setItem('dws_signed', '1');
+    this.style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  } catch (err) {
+    console.error('[dws-pledge]', err);
+    btn.textContent = btn.dataset.origText || 'Add My Name →';
+    btn.disabled = false;
+    const errBox = document.getElementById('formError');
+    if (errBox) {
+      errBox.textContent = err.message || 'Network error. Please try again or email press@e5enclave.com.';
+      errBox.style.display = 'block';
+    }
+  }
+});
+</script>
