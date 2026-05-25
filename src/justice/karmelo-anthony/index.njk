@@ -121,6 +121,10 @@ hideGlobalChrome: true
   /* ───────── NAV ───────── */
   .nav {
     border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    position: sticky;
+    top: 40px;
+    z-index: 45;
   }
   .nav-inner {
     display: flex;
@@ -1417,6 +1421,76 @@ hideGlobalChrome: true
   .court-banner { font-size: 12px; }
 }
 
+
+  /* ── NEW SECTION BLOCKS ── */
+  .doc-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 48px 0 28px;
+    color: var(--fg-dimmer);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .doc-divider::before, .doc-divider::after {
+    content: '';
+    flex: 1;
+    border-top: 1px solid var(--border-2);
+  }
+  .doc-divider span {
+    color: var(--signal);
+    white-space: nowrap;
+  }
+
+  .finding-block {
+    border-left: 2px solid var(--border-2);
+    padding: 0 0 32px 24px;
+    margin-bottom: 8px;
+  }
+  .finding-block:last-child { border-left-color: var(--signal); }
+
+  .finding-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    margin-bottom: 12px;
+  }
+
+  .finding-text {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.72;
+    color: var(--fg);
+  }
+
+  .statute-quote {
+    border-left: 3px solid var(--signal);
+    padding: 14px 20px;
+    margin: 0 0 14px;
+    background: rgba(255,77,77,0.04);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.72;
+    color: var(--fg);
+  }
+  .statute-quote strong { font-style: normal; color: var(--fg); font-weight: 600; }
+
+  .statute-plain {
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--fg-dim);
+    padding: 10px 14px;
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+
 </style>
 <!-- TICKER -->
 <div class="ticker">
@@ -1444,7 +1518,9 @@ hideGlobalChrome: true
     <div class="nav-links">
       <a href="#manifesto" onclick="showTab('manifesto',0)">Manifesto</a>
       <a href="#forensic" onclick="showTab('forensic',1)">Case Record</a>
-      <!-- Press Release tab: internal only, removed from public render -->
+      <a href="#legal-record" onclick="showTab('forensic',1)">The Law</a>
+      <a href="#who-wasnt-charged" onclick="showTab('forensic',1)">Not Charged</a>
+      <a href="#who-came-to-town" onclick="showTab('forensic',1)">Who Came</a>
       <a href="#support" class="nav-cta">Sign Court Support →</a>
     </div>
   </div>
@@ -1638,7 +1714,95 @@ hideGlobalChrome: true
 
     </div>
   </div>
-</section>
+
+
+      <!-- ══ §02-A · THE LEGAL RECORD ═══════════════════════════════ -->
+      <div class="doc-divider" id="legal-record"><span>§02-A · The Legal Record</span></div>
+
+      <div class="finding-block">
+        <div class="finding-label">Tex. Penal Code § 9.31 — Self-Defense (Force)</div>
+        <blockquote class="statute-quote">
+          "A person is justified in using force against another when and to the degree the actor <strong>reasonably believes the force is immediately necessary</strong> to protect the actor against the other's use or attempted use of unlawful force."
+        </blockquote>
+        <div class="statute-plain">In plain English: If someone is coming at you with force you didn't start, you have the legal right to defend yourself — using as much force as necessary to stop it.</div>
+      </div>
+
+      <div class="finding-block">
+        <div class="finding-label">Tex. Penal Code § 9.32 — Deadly Force in Defense of Person</div>
+        <blockquote class="statute-quote">
+          "A person is justified in using deadly force against another… if the actor <strong>reasonably believes the deadly force is immediately necessary</strong> to protect the actor against the other's use or attempted use of unlawful deadly force."
+        </blockquote>
+        <div class="statute-plain">In plain English: When the threat is serious enough that a reasonable person would fear death or serious bodily injury, deadly force is legally justified.</div>
+      </div>
+
+      <div class="finding-block">
+        <div class="finding-label">Tex. Penal Code § 9.32(c) — No Duty to Retreat</div>
+        <blockquote class="statute-quote">
+          "A person who has a right to be present at the location where the deadly force is used, who has not provoked the person against whom the deadly force is used, and who is not engaged in criminal activity… <strong>has no duty to retreat before using deadly force</strong>."
+        </blockquote>
+        <div class="statute-plain">In plain English: Texas law does not require you to run. If you belong where you are, did not start the confrontation, and were not breaking the law — you may stand your ground. Karmelo was at a public track meet. He was not engaged in criminal activity. He did not start the confrontation. Texas law gave him no obligation to retreat.</div>
+      </div>
+
+      <div class="finding-block">
+        <div class="finding-label">Disparity of Force Doctrine — Established Principle of American Self-Defense Law</div>
+        <div class="finding-text">When an attacker is substantially larger, stronger, more numerous, or physically superior, the defender is legally justified in responding with a higher level of force than the attack itself would imply. Karmelo Anthony: 5'9", 140 lbs. Austin Metcalf: 6'0", 225 lbs. Hunter Metcalf (also present): 6'0", approximately 225 lbs. Combined weight of both Metcalf brothers present at the scene: approximately 450 lbs — more than three times Karmelo's body weight. The doctrine exists precisely for this scenario.</div>
+      </div>
+
+      <div class="finding-block">
+        <div class="finding-label">Environmental Amplifier — The Bleachers</div>
+        <div class="finding-text">The confrontation occurred on rain-soaked concrete and steel bleachers during a torrential downpour. Athletes at this level know what bleachers do to a body. Coaches use bleacher-sprint conditioning drills so physically punishing they are called "suicides." Being thrown or forced down a set of wet concrete bleachers by someone with an 85-pound weight advantage is a potentially fatal scenario — independent of any weapon. The prosecution will ask the jury to evaluate this case as if it happened on a dry gymnasium floor. The defense must not allow it.</div>
+      </div>
+
+      <!-- ══ §02-B · WHO WASN'T CHARGED ═══════════════════════════════ -->
+      <div class="doc-divider" id="who-wasnt-charged"><span>§02-B · Who Wasn't Charged</span></div>
+
+      <div class="finding-block">
+        <div class="finding-label">Hunter Metcalf — Present. Not Charged.</div>
+        <div class="finding-text">Hunter Metcalf is the identical twin brother of Austin Metcalf. Same height: 6'0". Same weight: approximately 225 lbs. He was present at the scene during the altercation. He is not charged with any crime in connection with the incident of April 2, 2025.</div>
+      </div>
+
+      <div class="finding-block">
+        <div class="finding-label">What the Record Shows</div>
+        <div class="finding-text">Multiple family and community accounts describe both Austin and Hunter Metcalf as participants in the confrontation with Karmelo Anthony — attempting to take his bag, breaking his phone, and stomping on it. The arrest report obtained by KERA News lists witnesses who placed the confrontation in the context of physical aggression initiated by the Metcalf brothers. Hunter Metcalf is the prosecution's witness. He is the most biased witness possible — he watched his twin brother die. That is the factual context in which his testimony must be evaluated.</div>
+      </div>
+
+      <div class="finding-block">
+        <div class="finding-label">The Charging Disparity</div>
+        <div class="finding-text">One person at that scene is charged with first-degree murder, held on a $1,000,000 bond. One person at that scene — who witnesses place as present and physically involved — faces no charges. That person is now the prosecution's star witness. The jury will decide this case. They will also see who is sitting at the defendant's table and who is sitting in the witness box.</div>
+      </div>
+
+      <!-- ══ §02-C · WHO CAME TO TOWN ═══════════════════════════════ -->
+      <div class="doc-divider" id="who-came-to-town"><span>§02-C · Who Came to Town</span></div>
+
+      <div class="finding-block">
+        <div class="finding-label">Jake Lang — Background</div>
+        <div class="finding-text">Jake Lang was among the individuals pardoned by President Donald Trump following the January 6, 2021 attack on the U.S. Capitol. He is a Republican candidate for U.S. Senate in Florida. In the weeks following Austin Metcalf's death, Lang traveled to Frisco, Texas, and hosted a rally he named "Protect White Americans" — staged at David Kuykendall Stadium, the exact location where Austin Metcalf died.</div>
+      </div>
+
+      <div class="finding-block">
+        <div class="finding-label">What He Said</div>
+        <div class="finding-text">Lang posted about the case repeatedly on X (formerly Twitter), calling Karmelo Anthony a "black thug" and describing Austin Metcalf as "another victim of Black Violence in America." His posts received thousands of likes and shares. In a video that went viral, Lang publicly chastised Jeff Metcalf — the father of the boy who died.</div>
+      </div>
+
+      <div class="finding-block">
+        <div class="finding-label">What the School District Said</div>
+        <div class="finding-text">Frisco ISD stated that Lang's video was "entirely inaccurate" and filmed from the wrong side of the stadium — not the area where the fatal incident occurred. The district announced it is pursuing trespassing charges against Lang.</div>
+      </div>
+
+      <div class="finding-block">
+        <div class="finding-label">What Jeff Metcalf Said</div>
+        <div class="finding-text">Jeff Metcalf, the father of Austin Metcalf, called Lang and his group "race baiters" who "wanna spew their narrative for their own agenda." Metcalf has stated publicly, multiple times, that his son's death was not about race.</div>
+      </div>
+
+      <div class="finding-block">
+        <div class="finding-label">The Record</div>
+        <div class="finding-text">A Jan. 6 Capitol participant traveled to the site of a Black teenager's self-defense prosecution, held a rally called "Protect White Americans," posted racially inflammatory content about the defendant, filmed inaccurate footage from the wrong location, and was publicly disavowed by the victim's own father. This is not commentary. This is the documented record of who showed up — and why it matters to understanding the environment in which Karmelo Anthony will stand trial.</div>
+      </div>
+
+
+    </section>
+
+
 </div>
 
 <!-- ══════════════════════════════════════════════════════ -->
