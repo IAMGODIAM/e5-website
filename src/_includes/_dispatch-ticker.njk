@@ -1,0 +1,75 @@
+{# LIVE DISPATCH TICKER — Sovereign Design Overhaul
+   Fetches from /api/dispatches (Cloudflare Pages Function).
+   Cycles through board dispatches every 5 seconds.
+   Shows: category · title · read time — links to full post.
+   Falls back to static first dispatch if API unavailable.
+   DAG: e5-sovereign-overhaul-2026-0525 #}
+
+<div class="vc-dispatch-ticker" id="vc-dispatch-ticker" aria-live="polite" aria-label="Live board dispatches">
+  <span class="vc-ticker-label">Board Dispatch</span>
+  <div class="vc-ticker-track">
+    <a class="vc-ticker-item active" href="/blog/agentic-nonprofit-ai-operations/" id="vc-ticker-link">
+      <span class="vc-ticker-cat" id="vc-ticker-cat">Dispatch</span>
+      <span class="vc-ticker-sep" aria-hidden="true">—</span>
+      <span class="vc-ticker-title" id="vc-ticker-title">The Agentic Nonprofit: How AI Is Rebuilding Back-Office Operations From the Ground Up</span>
+      <span class="vc-ticker-rt" id="vc-ticker-rt">6 min read →</span>
+    </a>
+  </div>
+</div>
+
+<script>
+(function () {
+  var dispatches = [];
+  var current = 0;
+  var INTERVAL = 5000;
+
+  var catEl   = document.getElementById('vc-ticker-cat');
+  var titleEl = document.getElementById('vc-ticker-title');
+  var rtEl    = document.getElementById('vc-ticker-rt');
+  var linkEl  = document.getElementById('vc-ticker-link');
+  var ticker  = document.getElementById('vc-dispatch-ticker');
+
+  function show(i) {
+    if (!dispatches.length) return;
+    var d = dispatches[i % dispatches.length];
+    if (!catEl || !titleEl) return;
+
+    // Fade out
+    ticker.classList.add('vc-ticker-fade');
+    setTimeout(function () {
+      catEl.textContent   = d.category || 'Dispatch';
+      titleEl.textContent = d.title;
+      rtEl.textContent    = (d.readTime || '5 min read') + ' →';
+      linkEl.href         = d.permalink;
+      ticker.classList.remove('vc-ticker-fade');
+    }, 280);
+  }
+
+  function start() {
+    if (!dispatches.length) return;
+    show(0);
+    setInterval(function () {
+      current = (current + 1) % dispatches.length;
+      show(current);
+    }, INTERVAL);
+  }
+
+  // Fetch from CF Pages Function
+  fetch('/api/dispatches')
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(function (data) {
+      dispatches = data.dispatches || [];
+      if (dispatches.length) start();
+    })
+    .catch(function () {
+      // Static fallback — default content already in DOM
+      dispatches = [{
+        title: 'The Agentic Nonprofit: How AI Is Rebuilding Back-Office Operations From the Ground Up',
+        category: 'Dispatch',
+        permalink: '/blog/agentic-nonprofit-ai-operations/',
+        readTime: '6 min read'
+      }];
+      start();
+    });
+})();
+</script>
