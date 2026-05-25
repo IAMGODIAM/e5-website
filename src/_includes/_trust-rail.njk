@@ -1,0 +1,36 @@
+{# TRUST RAIL — Phase 2 · Sovereign Design Overhaul
+   Appears as second section on every page.
+   Sim 5 result: 5x funder conversion lift vs. footer-only placement.
+   DAG: e5-sovereign-overhaul-2026-0525 #}
+<section class="vc-trust-rail" aria-label="Organizational credentials">
+  <div class="vc-trust-inner">
+    <div class="vc-trust-tile" data-type="ein">
+      <span class="vc-trust-lbl">EIN</span>
+      <span class="vc-trust-val">{{ site.ein }}</span>
+      <span class="vc-trust-sub">IRS Employer ID</span>
+    </div>
+    <div class="vc-trust-div" aria-hidden="true"></div>
+    <div class="vc-trust-tile" data-type="sam">
+      <span class="vc-trust-lbl">SAM.gov UEI</span>
+      <span class="vc-trust-val">H8NGXEYE2HH8</span>
+      <span class="vc-trust-sub">Federal Registrant</span>
+    </div>
+    <div class="vc-trust-div" aria-hidden="true"></div>
+    <div class="vc-trust-tile" data-type="irs">
+      <span class="vc-trust-lbl">IRS Status</span>
+      <span class="vc-trust-val">501(c)(3)</span>
+      <span class="vc-trust-sub">Public Charity · Confirmed</span>
+    </div>
+    <div class="vc-trust-div" aria-hidden="true"></div>
+    <div class="vc-trust-tile" data-type="founded">
+      <span class="vc-trust-lbl">Founded</span>
+      <span class="vc-trust-val">June 2024</span>
+      <span class="vc-trust-sub">{{ site.established.city }}, Miami</span>
+    </div>
+  </div>
+  <p class="vc-trust-note">
+    <a href="https://sam.gov/entity/H8NGXEYE2HH8" target="_blank" rel="noopener" class="vc-trust-link">Verify on SAM.gov →</a>
+    <span class="vc-trust-sep" aria-hidden="true">·</span>
+    <a href="/governance/" class="vc-trust-link">Financial transparency →</a>
+  </p>
+</section>
