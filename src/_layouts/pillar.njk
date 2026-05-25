@@ -2,33 +2,76 @@
 layout: base
 ---
 {%- set pillar = pillars | byKey('slug', slug) -%}
-<header class="vc-page-head reveal">
-  <div class="vc-page-eyebrow">№ {{ pillar.numeral | upper }} · The Five Pillars</div>
-  <h1 class="vc-page-h">{{ pillar.name }} <em>—</em><br/>{{ deck | safe }}</h1>
+
+{# PILLAR PAGE — Phase 5 · Sovereign Design Overhaul
+   Sim 8 winner: D (stat → doctrine → programs → join) · Score 0.9009
+   DAG: e5-sovereign-overhaul-2026-0525 #}
+
+{# ── PILLAR HERO ─────────────────────────────────────────────────────── #}
+<header class="vc-pillar-hero reveal">
+  <div class="vc-pillar-hero-inner">
+    <div class="vc-pillar-eyebrow">
+      <span class="vc-pillar-numeral" aria-hidden="true">{{ pillar.numeral }}.</span>
+      <span class="vc-pillar-system">The Five Pillars</span>
+    </div>
+    <h1 class="vc-pillar-h">{{ pillar.name }}<em> — {{ pillar.flagName }}</em></h1>
+    <p class="vc-pillar-deck">{{ pillar.body }}</p>
+  </div>
 </header>
-<article class="vc-prose reveal">
-{{ content | safe }}
-</article>
-<section class="vc-r246">
-  <div class="vc-r246-grid">
-    <div>
-      <div class="vc-r246-rubric">Continue reading</div>
-      <h2 class="vc-r246-h" style="font-size:clamp(40px,5vw,72px);">Adjacent <em>pillars.</em></h2>
-      <p class="vc-r246-body">The structure of the harm is the structure of the remedy. Each pillar reinforces the others.</p>
-      <div class="vc-r246-cta">
-        <a class="vc-cta-primary" href="/pillars/">All five pillars <span aria-hidden="true">→</span></a>
+
+{# ── DOCTRINE / PROSE ────────────────────────────────────────────────── #}
+<div class="vc-pillar-body">
+  <div class="vc-pillar-prose-col">
+    <article class="vc-prose reveal">
+      {{ content | safe }}
+    </article>
+  </div>
+
+  {# ── SIDEBAR: Program card + coalition CTA ──────────────────────── #}
+  <aside class="vc-pillar-aside reveal">
+    <div class="vc-pillar-flagship-card">
+      <span class="vc-pillar-fc-label">{{ pillar.flagLabel }}</span>
+      <div class="vc-pillar-fc-name">{{ pillar.flagName }}</div>
+      <p class="vc-pillar-fc-body">{{ pillar.body }}</p>
+      <dl class="vc-pillar-fc-meta">
+        <div class="vc-pillar-fc-row"><dt>Pillar</dt><dd>{{ pillar.numeral | upper }} · {{ pillar.name }}</dd></div>
+        <div class="vc-pillar-fc-row"><dt>Status</dt><dd>Active</dd></div>
+        <div class="vc-pillar-fc-row"><dt>Coalition</dt><dd>Open to co-builders</dd></div>
+      </dl>
+    </div>
+
+    {# ── JOIN CTA card ────────────────────────────────────────────── #}
+    <div class="vc-pillar-join-card">
+      <span class="vc-pillar-join-label">§ Walk with us</span>
+      <p class="vc-pillar-join-body">The Coalition needs builders in every pillar. If the <strong>{{ pillar.name }}</strong> pillar is your work, apply.</p>
+      <div class="vc-pillar-join-actions">
+        <a href="/coalition/apply/" class="vc-cta-primary">Apply to the Coalition →</a>
+        <a href="/donate/" class="vc-cta-link">or, <em>give to this pillar</em></a>
       </div>
     </div>
-    <aside class="vc-mech">
-      <div class="label">{{ pillar.flagLabel }}</div>
-      <div class="tag" style="font-size:32px; line-height:1.1; margin-bottom:24px;">{{ pillar.flagName }}</div>
-      <p class="body">{{ pillar.body }}</p>
-      <hr/>
-      <dl class="attr">
-        <div class="attr-row"><dt>Numeral</dt><dd>{{ pillar.numeral | upper }}</dd></div>
-        <div class="attr-row"><dt>Designation</dt><dd>{{ pillar.name }}</dd></div>
-        <div class="attr-row"><dt>Status</dt><dd>Active</dd></div>
-      </dl>
-    </aside>
+  </aside>
+</div>
+
+{# ── ADJACENT PILLARS ────────────────────────────────────────────────── #}
+<section class="vc-pillar-adjacent reveal">
+  <div class="vc-pillar-adjacent-head">
+    <span class="vc-pillar-adj-rubric">§ The structure of the harm is the structure of the remedy</span>
+    <h2 class="vc-pillar-adj-h">Adjacent <em>pillars.</em></h2>
+  </div>
+  <div class="vc-pillar-adj-grid">
+    {% for p in pillars %}
+      {% if p.slug != slug %}
+      <a href="/pillars/{{ p.slug }}/" class="vc-pillar-adj-tile">
+        <span class="vc-adj-num">{{ p.numeral }}.</span>
+        <span class="vc-adj-name">{{ p.name }}</span>
+        <span class="vc-adj-flag">{{ p.flagName }}</span>
+      </a>
+      {% endif %}
+    {% endfor %}
+    <a href="/pillars/" class="vc-pillar-adj-tile vc-adj-all">
+      <span class="vc-adj-num">⊕</span>
+      <span class="vc-adj-name">All Five</span>
+      <span class="vc-adj-flag">View the complete doctrine →</span>
+    </a>
   </div>
 </section>
