@@ -1594,9 +1594,10 @@ hideGlobalChrome: true
       <p><strong>We stand with truth. We stand with the law. We stand with Karmelo Anthony.</strong></p>
       <p><em>By Grace, perfect ways.</em></p>
 
-      <!-- SIGNATURE BLOCK -->
-      <div class="sig-block">
-        <h4>Co-Signatories · As of May 21, 2026</h4>
+      <!-- SIGNATURE BLOCK — LIVE DYNAMIC ROSTER -->
+      <div class="sig-block" id="cosignatoryBlock">
+        <h4>Co-Signatories · Live · <span id="cosigCount">1</span> and counting</h4>
+        <!-- Israel is always #01 — pinned -->
         <div class="sig-line">
           <span class="num">01</span>
           <div>
@@ -1604,21 +1605,12 @@ hideGlobalChrome: true
             <div class="org">President &amp; Chief Visionary Officer · E5 Enclave Incorporated · EIN 99-3822441</div>
           </div>
         </div>
-        <div class="sig-line pending">
-          <span class="num">02</span>
-          <div><div class="name">— your name here —</div><div class="org">Contact press@e5enclave.com to add your name</div></div>
-        </div>
-        <div class="sig-line pending">
-          <span class="num">03</span>
-          <div><div class="name">— your name here —</div><div class="org">Open · Attorney, Organization, Individual, or Advocate</div></div>
-        </div>
-        <div class="sig-line pending">
-          <span class="num">04</span>
-          <div><div class="name">— your name here —</div><div class="org">Open · Attorney, Organization, Individual, or Advocate</div></div>
-        </div>
-        <div class="sig-line pending">
-          <span class="num">05</span>
-          <div><div class="name">— your name here —</div><div class="org">Open · Attorney, Organization, Individual, or Advocate</div></div>
+        <!-- Dynamic co-signatories load here after Israel -->
+        <div id="liveSignatories"></div>
+        <!-- Open slot CTA -->
+        <div class="sig-line pending" id="openSlotCTA">
+          <span class="num">+</span>
+          <div><div class="name">Add your name</div><div class="org"><a href="#support" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Sign the manifesto below →</a></div></div>
         </div>
       </div>
 
@@ -1896,6 +1888,7 @@ hideGlobalChrome: true
               </div>
             </div>
 
+            <div id="texasLogisticsFields">
             <!-- ── ATTENDANCE DATES ── -->
             <div class="form-section-label" style="margin-top:28px;">Which days can you attend?</div>
             <div class="date-picker-grid">
@@ -1984,6 +1977,8 @@ hideGlobalChrome: true
                 <textarea class="input" id="message" name="message" rows="3" placeholder="Why you stand with truth and legal process..."></textarea>
               </div>
             </div>
+
+            </div><!-- /texasLogisticsFields -->
 
             <div id="formError" style="display:none;background:#ff4d4d11;border:1px solid #ff4d4d33;color:#ff4d4d;padding:12px 16px;border-radius:6px;font-size:13px;margin-top:16px;"></div>
 
@@ -2074,7 +2069,7 @@ document.getElementById('signupPopup').addEventListener('click', function(e) {
   if (e.target === this) closeSignupPopup();
 });
 
-// Show popup after 8 seconds if not already signed up
+// Show popup after 30–45 seconds if not already signed up
 if (!sessionStorage.getItem('karmelo_signed')) {
   var _delay = Math.floor(Math.random() * 15000) + 30000; // 30–45 seconds
   setTimeout(openSignupPopup, _delay);
@@ -2091,6 +2086,66 @@ document.querySelectorAll('input[name="needs_lodging"]').forEach(function(radio)
     }
   });
 });
+
+// ─── COMMITMENT TYPE → SHOW/HIDE TEXAS FIELDS ────────────
+// Co-signatory only = hide travel/lodging/dates (they are remote)
+// Court presence / any in-person = show travel fields
+function updateFieldVisibility() {
+  var commitEl = document.getElementById('commitment');
+  if (!commitEl) return;
+  var val = commitEl.value;
+  var texasFields = document.getElementById('texasLogisticsFields');
+  if (!texasFields) return;
+  var inPersonTypes = ['court_presence', 'organization', 'legal_network'];
+  var showTexas = inPersonTypes.includes(val) || val === '';
+  texasFields.style.display = showTexas ? 'block' : 'none';
+  // Also update form button label
+  var btn = document.querySelector('#supportForm .submit-btn');
+  if (btn) {
+    if (val === 'co_signatory') {
+      btn.textContent = 'Sign the Manifesto →';
+    } else if (val === 'court_presence') {
+      btn.textContent = 'Register for Court →';
+    } else {
+      btn.textContent = 'Add My Name →';
+    }
+    btn.dataset.origText = btn.textContent;
+  }
+}
+var commitSelect = document.getElementById('commitment');
+if (commitSelect) {
+  commitSelect.addEventListener('change', updateFieldVisibility);
+  updateFieldVisibility(); // run on load
+}
+
+// ─── LIVE CO-SIGNATORY LOADER ─────────────────────────────
+// Fetches live co-signatories from the E5FP backend
+// Only shows those who selected co_signatory commitment type
+async function loadLiveSignatories() {
+  try {
+    var resp = await fetch('https://sue-45c3e283.base44.app/functions/karmeloSignup');
+    if (!resp.ok) return;
+    var data = await resp.json();
+    var container = document.getElementById('liveSignatories');
+    var countEl = document.getElementById('cosigCount');
+    if (!container || !data.signatories) return;
+    var sigs = data.signatories;
+    // Update count (Israel + live sigs)
+    if (countEl) countEl.textContent = (1 + sigs.length);
+    // Render each
+    container.innerHTML = sigs.map(function(sig, idx) {
+      var num = String(idx + 2).padStart(2, '0');
+      var org = sig.organization ? ' · ' + sig.organization : (sig.city && sig.state ? sig.city + ', ' + sig.state : '');
+      return '<div class="sig-line"><span class="num">' + num + '</span><div>' +
+        '<div class="name">' + sig.name + '</div>' +
+        '<div class="org">' + org + '</div>' +
+        '</div></div>';
+    }).join('');
+  } catch(e) {
+    // Silent fail — static fallback already visible
+  }
+}
+loadLiveSignatories();
 
 // ─── FULL WEEK CHECKBOX ──────────────────────────────────
 document.getElementById('fullWeekChk').addEventListener('change', function() {
@@ -2116,7 +2171,7 @@ async function submitKarmeloForm(formEl, successEl, btnEl) {
   btnEl.disabled = true;
 
   try {
-    const resp = await fetch('https://api.e5enclave.com/forms/karmelo-signup', {
+    const resp = await fetch('https://sue-45c3e283.base44.app/functions/karmeloSignup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
