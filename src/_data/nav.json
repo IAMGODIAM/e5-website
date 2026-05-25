@@ -1,82 +1,60 @@
 {
   "primary": [
     {
-      "label": "Home",
-      "url": "/"
-    },
-    {
       "label": "About",
       "url": "/about/",
       "children": [
-        {
-          "label": "Our Mission",
-          "url": "/#mission"
-        },
-        {
-          "label": "Pillars",
-          "url": "/#pillars"
-        },
-        {
-          "label": "Doctrine",
-          "url": "/doctrine/"
-        },
-        {
-          "label": "Governance",
-          "url": "/governance/"
-        }
+        { "label": "Our Mission", "url": "/#mission" },
+        { "label": "The Five Pillars", "url": "/pillars/" },
+        { "label": "Doctrine", "url": "/doctrine/" },
+        { "label": "Governance", "url": "/governance/" },
+        { "label": "Founding Address", "url": "/founding-address/" },
+        { "label": "FAQ", "url": "/faq/" }
       ]
     },
     {
       "label": "Programs",
       "url": "/programs/",
       "children": [
-        {
-          "label": "McCartney Academy",
-          "url": "/programs/"
-        },
-        {
-          "label": "FarmBlock",
-          "url": "/farmblock/"
-        },
-        {
-          "label": "Black Dragons Initiative",
-          "url": "/black-dragons-initiative/"
-        },
-        {
-          "label": "Restitution 246",
-          "url": "/restitution-246/"
-        }
+        { "label": "McCartney Academy", "url": "/programs/" },
+        { "label": "FarmBlock", "url": "/farmblock/" },
+        { "label": "Black Dragons Initiative", "url": "/black-dragons-initiative/" },
+        { "label": "Restitution 246", "url": "/restitution-246/" },
+        { "label": "Innovation Lab", "url": "/innovation-lab/" },
+        { "label": "First Offering", "url": "/first-offering/" }
       ]
-    },
-    {
-      "label": "Coalition",
-      "url": "/coalition/"
     },
     {
       "label": "Justice",
       "url": "/justice/",
       "children": [
-        {
-          "label": "Justice Support",
-          "url": "/justice/"
-        },
-        {
-          "label": "Karmelo Anthony",
-          "url": "/justice/karmelo-anthony/"
-        },
-        {
-          "label": "Libations",
-          "url": "/libations/"
-        }
+        { "label": "Justice Support", "url": "/justice/" },
+        { "label": "Karmelo Anthony", "url": "/justice/karmelo-anthony/" },
+        { "label": "Libations", "url": "/libations/" },
+        { "label": "Executive Order Initiative", "url": "/executive-order/" }
       ]
     },
     {
-      "label": "Dispatches",
-      "url": "/blog/"
+      "label": "Record",
+      "url": "/record/",
+      "children": [
+        { "label": "Dispatches", "url": "/blog/" },
+        { "label": "Gospel Research", "url": "/gospel/" },
+        { "label": "The Record", "url": "/record/" },
+        { "label": "Artifacts", "url": "/artifacts/" },
+        { "label": "Press", "url": "/press/" },
+        { "label": "Contracts & Grants", "url": "/contracts-grants/" }
+      ]
     },
     {
-      "label": "Lab",
-      "url": "/innovation-lab/"
+      "label": "Coalition",
+      "url": "/coalition/",
+      "children": [
+        { "label": "Join the Coalition", "url": "/coalition/apply/" },
+        { "label": "Current Members", "url": "/coalition/" },
+        { "label": "Volunteer", "url": "/volunteer/" },
+        { "label": "Contact", "url": "/contact/" }
+      ]
     },
     {
       "label": "Store",
