@@ -1692,3 +1692,35 @@ html[data-palette="original"] .vc-palette-toggle .sw-orig { transform: scale(1.1
 }
 
 .vc-dispatch-ticker:hover .vc-ticker-title { color: var(--vc-ink); }
+
+/* ── SWARM QA MOBILE FIXES — 2026-05-25 ─────────────────────────────── */
+
+/* Hide ticker label text on small screens — keep gold rule separator */
+@media (max-width: 480px) {
+  .vc-ticker-label { display: none; }
+  .vc-dispatch-ticker { gap: .5rem; padding: .45rem 1rem; }
+  .vc-ticker-rt { display: none; }
+}
+
+/* Palette switcher — hidden on mobile (nav toggle handles it) */
+@media (max-width: 768px) {
+  .vc-palette-switcher { display: none; }
+}
+
+/* Nav palette toggle — hide on very small screens to save space */
+@media (max-width: 360px) {
+  .vc-palette-toggle { display: none; }
+}
+
+/* Ensure bento tiles don't overflow on 360px screens */
+@media (max-width: 400px) {
+  .vc-bento-tile { min-height: 100px; }
+  .vc-bento-head { padding: 2rem 1rem 1rem; }
+}
+
+/* Trust rail at very small screen */
+@media (max-width: 360px) {
+  .vc-trust-inner { gap: .4rem; }
+  .vc-trust-lbl, .vc-trust-sub { font-size: .55rem; }
+  .vc-trust-val { font-size: .85rem; }
+}
