@@ -1,4 +1,10 @@
-<button class="vc-palette-toggle" id="vc-palette-toggle" type="button" aria-label="Toggle palette" title="Toggle palette: editorial / original">
-  <span class="sw sw-edit" aria-hidden="true"></span>
-  <span class="sw sw-orig" aria-hidden="true"></span>
-</button>
+{# Palette toggle — floating fixed bottom-right, elegant pill icon
+   Moved out of nav. Now lives at body level via base.njk after footer.
+   Chairman can toggle editorial / midnight palette from any page.
+   DAG: palette-toggle-v2-2026-0525 #}
+<div class="vc-palette-float" id="vc-palette-float" aria-label="Toggle palette" title="Switch palette">
+  <button class="vc-palette-toggle" id="vc-palette-toggle" type="button" aria-label="Toggle palette: editorial / midnight">
+    <span class="sw sw-edit" aria-hidden="true"></span>
+    <span class="sw sw-orig" aria-hidden="true"></span>
+  </button>
+</div>
