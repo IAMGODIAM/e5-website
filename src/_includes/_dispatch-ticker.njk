@@ -55,10 +55,10 @@
   }
 
   // Fetch from CF Pages Function
-  fetch('/api/dispatches')
+  fetch('/api/dispatches.json')
     .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
     .then(function (data) {
-      dispatches = data.dispatches || [];
+      dispatches = Array.isArray(data) ? data : (data.dispatches || []);
       if (dispatches.length) start();
     })
     .catch(function () {
