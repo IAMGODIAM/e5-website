@@ -1011,3 +1011,167 @@ html[data-palette="original"] .vc-palette-toggle .sw-orig { transform: scale(1.1
   white-space: nowrap;
   border-width: 0;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PHASE 2 — SOVEREIGN DESIGN OVERHAUL
+   Kinetic Hero · Live Dispatch Ticker · Trust Rail
+   DAG: e5-sovereign-overhaul-2026-0525 · 2026-05-25
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── KINETIC TAGLINE ─────────────────────────────────────────────────── */
+.vc-tagline--kinetic { display: block; }
+
+.vc-kinetic-word {
+  color: var(--vc-oxblood, #c9a84c);
+  font-style: italic;
+  display: inline-block;
+  min-width: 12ch; /* prevents layout shift during swap */
+  vertical-align: bottom;
+}
+
+/* ── LIVE DISPATCH TICKER ────────────────────────────────────────────── */
+.vc-dispatch-ticker {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin: .9rem 0 1.1rem;
+  padding: .4rem .75rem .4rem .6rem;
+  background: rgba(201,168,76,.06);
+  border: 1px solid rgba(201,168,76,.18);
+  border-radius: 4px;
+  max-width: 540px;
+  overflow: hidden;
+  font-family: var(--vc-mono, 'Courier New', monospace);
+  font-size: .7rem;
+  letter-spacing: .03em;
+}
+
+.vc-ticker-label {
+  flex-shrink: 0;
+  font-size: .65rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--vc-oxblood, #c9a84c);
+  padding-right: .5rem;
+  border-right: 1px solid rgba(201,168,76,.25);
+}
+
+.vc-ticker-track {
+  flex: 1;
+  overflow: hidden;
+  height: 1.4em;
+  position: relative;
+}
+
+.vc-ticker-item {
+  color: var(--vc-ink-2, #d8d2c4);
+  white-space: nowrap;
+  font-size: .7rem;
+  line-height: 1.4em;
+}
+
+/* ── TRUST RAIL ──────────────────────────────────────────────────────── */
+.vc-trust-rail {
+  border-top: 1px solid var(--vc-rule, rgba(240,235,224,.10));
+  border-bottom: 1px solid var(--vc-rule, rgba(240,235,224,.10));
+  padding: 1.4rem var(--page-gutter, 1.5rem);
+  background: rgba(201,168,76,.03);
+}
+
+.vc-trust-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+  max-width: var(--page-max, 1080px);
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.vc-trust-tile {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  padding: .6rem 1.2rem;
+  flex: 1 1 auto;
+  min-width: 140px;
+}
+
+.vc-trust-div {
+  width: 1px;
+  height: 2.4rem;
+  background: var(--vc-rule, rgba(240,235,224,.10));
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.vc-trust-lbl {
+  font-family: var(--vc-mono, 'Courier New', monospace);
+  font-size: .65rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--vc-oxblood, #c9a84c);
+  line-height: 1;
+}
+
+.vc-trust-val {
+  font-family: var(--vc-display, 'Cormorant Garamond', serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--vc-ink, #f0ebe0);
+  line-height: 1.2;
+  letter-spacing: .02em;
+}
+
+.vc-trust-sub {
+  font-family: var(--vc-mono, 'Courier New', monospace);
+  font-size: .6rem;
+  color: var(--vc-ink-3, #b0a898);
+  letter-spacing: .04em;
+}
+
+.vc-trust-note {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  max-width: var(--page-max, 1080px);
+  margin: .75rem auto 0;
+  font-family: var(--vc-mono, 'Courier New', monospace);
+  font-size: .65rem;
+  color: var(--vc-muted, #707070);
+}
+
+.vc-trust-link {
+  color: var(--vc-oxblood, #c9a84c);
+  text-decoration: none;
+  opacity: .75;
+}
+.vc-trust-link:hover { opacity: 1; text-decoration: underline; }
+
+.vc-trust-sep { color: var(--vc-muted, #707070); }
+
+/* ── MOBILE ADJUSTMENTS ──────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .vc-trust-inner { flex-direction: column; align-items: flex-start; gap: .6rem; }
+  .vc-trust-div { display: none; }
+  .vc-trust-tile { padding: .4rem 0; min-width: unset; }
+  .vc-dispatch-ticker { max-width: 100%; }
+  .vc-kinetic-word { min-width: 8ch; }
+}
+
+/* ── GOLD MESH GRADIENT HERO (CSS-first, upgradeable to WebGL by Hermes) */
+.vc-masthead {
+  position: relative;
+  overflow: hidden;
+}
+.vc-masthead::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 15% 85%, rgba(201,168,76,.11), transparent 65%),
+    radial-gradient(ellipse 40% 40% at 85% 20%, rgba(201,168,76,.06), transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+.vc-masthead > * { position: relative; z-index: 1; }
