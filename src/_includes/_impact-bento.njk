@@ -1,0 +1,70 @@
+{# IMPACT BENTO GRID — Phase 3 · Sovereign Design Overhaul
+   6 tiles — live impact counters with human-equivalent sublines.
+   Law 6: Human-impact equivalents on every number.
+   Law 2: Show the mission operating.
+   DAG: e5-sovereign-overhaul-2026-0525 #}
+
+<section class="vc-bento" aria-label="Impact at a glance" id="impact">
+  <div class="vc-bento-head reveal">
+    <span class="vc-bento-rubric">§ The record in numbers</span>
+  </div>
+  <div class="vc-bento-grid reveal">
+
+    <div class="vc-bento-tile vc-bento-tile--large" data-bento="coalition">
+      <span class="vc-bento-num" data-counter-target="{{ site.counters.supporters }}">0</span>
+      <span class="vc-bento-label">Coalition members</span>
+      <span class="vc-bento-sub">Individuals who have pledged time, talent, or treasure to the work.</span>
+    </div>
+
+    <div class="vc-bento-tile" data-bento="pillars">
+      <span class="vc-bento-num">V</span>
+      <span class="vc-bento-label">Pillars in motion</span>
+      <span class="vc-bento-sub">Environmental · Economic · Educational · Engagement · Emancipated</span>
+    </div>
+
+    <div class="vc-bento-tile" data-bento="programs">
+      <span class="vc-bento-num">3</span>
+      <span class="vc-bento-label">Flagship programs</span>
+      <span class="vc-bento-sub">McCartney Academy · FarmBlock · Block to Boardroom</span>
+    </div>
+
+    <div class="vc-bento-tile" data-bento="cities">
+      <span class="vc-bento-num">50<span class="vc-bento-plus">+</span></span>
+      <span class="vc-bento-label">Cities surveyed</span>
+      <span class="vc-bento-sub">FarmBlock Phase II urban agriculture feasibility study.</span>
+    </div>
+
+    <div class="vc-bento-tile" data-bento="founded">
+      <span class="vc-bento-num">2024</span>
+      <span class="vc-bento-label">Year founded</span>
+      <span class="vc-bento-sub">One year building. Designed to outlast cycles.</span>
+    </div>
+
+    <div class="vc-bento-tile vc-bento-tile--eden" data-bento="eden">
+      <span class="vc-bento-label">Next chapter</span>
+      <span class="vc-bento-num vc-bento-eden-date">EDEN</span>
+      <span class="vc-bento-sub">February 17, <em>MMXXVII</em> — the agentic era launches.</span>
+      <span class="vc-bento-countdown" id="vc-eden-countdown" aria-live="polite"></span>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  // EDEN countdown
+  var el = document.getElementById('vc-eden-countdown');
+  if (!el) return;
+  function tick() {
+    var now = Date.now();
+    var eden = new Date('2027-02-17T00:00:00-05:00').getTime();
+    var diff = eden - now;
+    if (diff <= 0) { el.textContent = 'EDEN is live.'; return; }
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    el.textContent = d + ' days ' + h + 'h until launch';
+  }
+  tick();
+  setInterval(tick, 60000);
+})();
+</script>
