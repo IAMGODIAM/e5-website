@@ -1444,7 +1444,7 @@ hideGlobalChrome: true
     <div class="nav-links">
       <a href="#manifesto" onclick="showTab('manifesto',0)">Manifesto</a>
       <a href="#forensic" onclick="showTab('forensic',1)">Case Record</a>
-      <a href="#press" onclick="showTab('press',2)">Press Release</a>
+      <!-- Press Release tab: internal only, removed from public render -->
       <a href="#support" class="nav-cta">Sign Court Support →</a>
     </div>
   </div>
@@ -1606,7 +1606,7 @@ hideGlobalChrome: true
         </div>
         <div class="sig-line pending">
           <span class="num">02</span>
-          <div><div class="name">— your name here —</div><div class="org">Contact israel@e5enclave.com to add your name</div></div>
+          <div><div class="name">— your name here —</div><div class="org">Contact press@e5enclave.com to add your name</div></div>
         </div>
         <div class="sig-line pending">
           <span class="num">03</span>
@@ -1744,7 +1744,7 @@ hideGlobalChrome: true
       <div class="contact-block">
         <strong>Media Contact</strong>
         Israel Lee Armstead · President &amp; Chief Visionary Officer · E5 Enclave Incorporated<br/>
-        israel@e5enclave.com · (305) 967-0200 · e5enclave.com/justice
+        press@e5enclave.com · (305) 967-0200 · e5enclave.com/justice
       </div>
 
       <div class="dateline">For Immediate Release · [Date Upon Authorization] · Liberty City, Miami, Florida</div>
@@ -1767,7 +1767,7 @@ hideGlobalChrome: true
 
       <p>"We are not here to dishonor Austin Metcalf or his family," said Israel Lee Armstead, President and Chief Visionary Officer of E5 Enclave. "We are here to insist that the law be applied equally. If the evidence shows that Karmelo Anthony acted in lawful self-defense under the laws of the state of Texas — and the documented record raises serious questions about whether it does — then a jury must decide that freely, without the pressure of disinformation, without the burden of a million-dollar bond, and without the weight of a racially charged public narrative that has substituted outrage for accuracy."</p>
 
-      <p>E5 Enclave's Black Dragons Initiative is organizing peaceful, lawful court-presence support for the week of June 1–5 in McKinney, Texas. Organizations and individuals seeking to participate may contact E5 Enclave at israel@e5enclave.com or via the support form at e5enclave.com/justice/karmelo-anthony.</p>
+      <p>E5 Enclave's Black Dragons Initiative is organizing peaceful, lawful court-presence support for the week of June 1–5 in McKinney, Texas. Organizations and individuals seeking to participate may contact E5 Enclave at press@e5enclave.com or via the support form at e5enclave.com/justice/karmelo-anthony.</p>
 
       <h3>About E5 Enclave Incorporated</h3>
       <p>E5 Enclave Incorporated is a 501(c)(3) nonprofit organization (EIN 99-3822441, UEI H8NGXEYE2HH8) headquartered in Liberty City, Miami, Florida. Founded in 2024, E5 operates three program verticals: the McCartney Academy (youth development), FarmBlock (food sovereignty and community data), and the Black Dragons Initiative (civic engagement and justice advocacy). E5 Enclave is registered in SAM.gov (CAGE: 07E88) and operates as a Microsoft Nonprofit and Google for Nonprofits partner organization.</p>
@@ -2016,14 +2016,14 @@ hideGlobalChrome: true
         <h4>Case</h4>
         <a href="#manifesto" onclick="showTab('manifesto',0)">The Manifesto</a>
         <a href="#forensic" onclick="showTab('forensic',1)">Forensic Record</a>
-        <a href="#press" onclick="showTab('press',2)">Press Release</a>
+        <!-- Press Release tab: internal only, removed from public render -->
         <a href="#support">Court Support Sign-Up</a>
       </div>
       <div class="foot-col">
         <h4>E5 Enclave</h4>
         <a href="https://e5enclave.com">e5enclave.com</a>
         <a href="https://e5enclave.com/justice">Justice Vertical</a>
-        <a href="mailto:israel@e5enclave.com">israel@e5enclave.com</a>
+        <a href="mailto:press@e5enclave.com">press@e5enclave.com</a>
         <a href="tel:3059670200">(305) 967-0200</a>
       </div>
     </div>
@@ -2116,7 +2116,7 @@ async function submitKarmeloForm(formEl, successEl, btnEl) {
   btnEl.disabled = true;
 
   try {
-    const resp = await fetch('https://sue-45c3e283.base44.app/functions/karmeloSignup', {
+    const resp = await fetch('https://api.e5enclave.com/forms/karmelo-signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
