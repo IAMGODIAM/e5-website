@@ -4,3 +4,11 @@ https://gospel.e5enclave.com/*  /gospel/:splat  200
 
 # Legacy gospel path redirect
 /gospel-of-love/  /gospel/  301
+
+# Short aliases — canonical pages with friendly URLs
+/restitution  /restitution-246/  301
+/restitution/  /restitution-246/  301
+/karmelo  /justice/karmelo-anthony/  301
+/karmelo/  /justice/karmelo-anthony/  301
+/r246  /restitution-246/  301
+/justice/karmelo  /justice/karmelo-anthony/  301
