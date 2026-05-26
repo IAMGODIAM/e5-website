@@ -129,7 +129,23 @@ a { color: inherit; text-decoration: none; }
 .vc-cover-h, .vc-feat-h, .vc-pillars-h, .vc-r246-h, .vc-record-h, .vc-contrib-h,
 .vc-letter-body h2, .vc-foundation-mark, .vc-foundation-credo,
 .vc-pillar .name, .vc-record-card .title, .vc-value-row .name,
-.vc-page-h, .vc-prose h2, .vc-prose h3, .vc-wordmark, .vc-tagline {
+.vc-page-h, .vc-prose h2, .vc-prose h3, .vc-wordmark, 
+/* vc-incorporated — legal name suffix below wordmark */
+.vc-incorporated {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-family: var(--vc-text);
+  font-size: clamp(8px, 1.1vw, 13px);
+  letter-spacing: 0.52em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--vc-oxblood);
+  margin-top: 6px;
+  padding-left: 0.52em; /* optical centering for letter-spacing */
+  opacity: 0.82;
+}
+.vc-tagline {
   text-wrap: balance;
 }
 
@@ -198,6 +214,7 @@ a { color: inherit; text-decoration: none; }
 /* Wordmark — E5 + ENCLAVE composed tight */
 .vc-wordmark {
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: center;
   gap: 0;
@@ -246,6 +263,22 @@ h1.vc-foundation-mark {
 }
 
 /* Tagline — co-equal to the wordmark */
+
+/* vc-incorporated — legal name suffix below wordmark */
+.vc-incorporated {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-family: var(--vc-text);
+  font-size: clamp(8px, 1.1vw, 13px);
+  letter-spacing: 0.52em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--vc-oxblood);
+  margin-top: 6px;
+  padding-left: 0.52em; /* optical centering for letter-spacing */
+  opacity: 0.82;
+}
 .vc-tagline {
   font-family: var(--vc-display);
   font-style: italic;
@@ -920,7 +953,23 @@ html[data-palette="midnight"] .vc-palette-toggle .sw-orig { transform: scale(1.2
   .vc-wordmark .word { -webkit-text-fill-color: #000 !important; color: #000 !important; background: none !important; }
   h1.vc-foundation-mark { -webkit-text-fill-color: #000 !important; color: #000 !important; background: none !important; }
   .vc-tagline, .vc-foundation-colophon, .vc-date .val, .vc-date .lbl { color: #000 !important; }
-  .vc-date .val em, .vc-tagline { color: #333 !important; }
+  .vc-date .val em, 
+/* vc-incorporated — legal name suffix below wordmark */
+.vc-incorporated {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-family: var(--vc-text);
+  font-size: clamp(8px, 1.1vw, 13px);
+  letter-spacing: 0.52em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--vc-oxblood);
+  margin-top: 6px;
+  padding-left: 0.52em; /* optical centering for letter-spacing */
+  opacity: 0.82;
+}
+.vc-tagline { color: #333 !important; }
   .vc-values, .vc-pull, .vc-mech { background: #fff !important; color: #000 !important; border: 1px solid #000 !important; }
   .vc-values *, .vc-pull *, .vc-mech * { color: #000 !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
