@@ -1,8 +1,8 @@
 {
   "name": "E5 Enclave",
   "fullName": "E5 Enclave Incorporated",
-  "tagline": "A lineage-led think tank comprised of a Coalition of the Willing.",
-  "credo": "A lineage-led think tank \u00b7 comprised of a Coalition of the Willing.",
+  "tagline": "Rising from Liberty City. Building what the lineage is owed.",
+  "credo": "Rising from Liberty City · Building what the lineage is owed.",
   "url": "https://e5enclave.com",
   "established": {
     "label": "Founded",
@@ -12,13 +12,13 @@
   },
   "publicAnnouncement": {
     "label": "Public Announcement",
-    "date": "Juneteenth \u00b7 <em>MMXXVI</em>"
+    "date": "Juneteenth · <em>MMXXVI</em>"
   },
   "edenLaunch": {
     "label": "Eden Launch",
-    "date": "17 February \u00b7 <em>MMXXVII</em>"
+    "date": "17 February · <em>MMXXVII</em>"
   },
-  "colophon": "Set against the calendar of the lineage. The dates carry their own genealogy. <span class=\"center\">The center holds.</span>",
+  "colophon": "Not programs. Not charity. Infrastructure. <span class=\"center\">The center holds.</span>",
   "founder": {
     "name": "Israel Lee",
     "title": "Chairman",
@@ -78,5 +78,6 @@
       "Chief of Staff"
     ],
     "rule": "No internal operational data, platform names, contact database references, or internal nomenclature may appear in any public-facing page. All external pages must refer only to E5 Enclave Incorporated, its programs, published doctrine, and public-facing coalition work."
-  }
+  },
+  "description": "E5 Enclave is a 501(c)(3) nonprofit rising from Liberty City, Miami — building permanent infrastructure for Black communities: food sovereignty, reparative economics, education, and civic architecture."
 }
