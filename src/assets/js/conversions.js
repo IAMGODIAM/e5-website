@@ -1,8 +1,8 @@
 /**
- * E5 Enclave — Conversion Tracking v2
+ * E5 Enclave — Conversion Tracking v3
  * GA4 native events + Google Ads conversion fires.
  * GAds: AW-16672489240 | GA4: G-05PYDYP5S0
- * Updated: 2026-05-24 — Added GA4 scroll_depth, form_submit, donate_intent events
+ * Updated: 2026-05-26 — Updated coalition conversion label to AW-16672489240/uHAvCIHUtqwcEJj-h44-
  */
 (function () {
   'use strict';
@@ -11,7 +11,7 @@
   var GA4_ID  = 'G-05PYDYP5S0';
 
   var CONV = {
-    coalition:  '7609362945',
+    coalition:  'uHAvCIHUtqwcEJj-h44-',
     volunteer:  '7609013246',
     contact:    '7609013249',
     donate:     '7608943409',
@@ -120,6 +120,16 @@
         });
       }
     });
+
+    /* ── COALITION PAGE CONVERSION — fire on /coalition/apply/ page load ── */
+    if (window.location.pathname.indexOf('/coalition/apply') === 0) {
+      // Page-load fire for direct thank-you page visits
+      var urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('submitted') === '1' || document.referrer.includes('/coalition/apply')) {
+        fireConversion(CONV.coalition);
+        ga4Event('coalition_applied', { page: window.location.pathname });
+      }
+    }
 
     /* ── STRIPE REFERRAL RECOVERY — detect return from checkout ── */
     if (document.referrer && document.referrer.includes('checkout.stripe.com')) {
