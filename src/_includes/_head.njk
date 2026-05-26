@@ -10,7 +10,7 @@
 
 {# Open Graph / Twitter #}
 <meta property="og:type" content="{{ ogType or 'website' }}"/>
-<meta property="og:site_name" content="{{ site.name }}"/>
+<meta property="og:site_name" content="{{ site.fullName }}"/>
 <meta property="og:title" content="{{ title or (site.name + ' — ' + site.tagline) }}"/>
 <meta property="og:description" content="{{ description or site.description or (site.name + ' — ' + site.tagline) }}"/>
 <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
