@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Privacy Policy" description="E5 Enclave Incorporated privacy policy. How we collect, use, and protect your information.">
+
+  <section class="section">
+    <div class="container container--narrow">
+      <span class="section-header__label">Legal</span>
+      <h1 class="display display--md">Privacy Policy</h1>
+      <p class="body body--sm text-muted">Last updated: May 2026</p>
+
+      <div class="legal-content">
+        <h2>Information We Collect</h2>
+        <p>We collect information you provide directly: name, email address, and payment information when you donate, subscribe to our newsletter, or apply to the Coalition. We use PostHog for analytics — a sovereign, self-hosted platform that does not share your data with third parties.</p>
+
+        <h2>How We Use Your Information</h2>
+        <p>We use your information to: process donations, send newsletters (twice monthly at most), respond to Coalition applications, and improve our website. We do not sell, rent, or share your personal information with third parties.</p>
+
+        <h2>Donor Privacy</h2>
+        <p>Donor names may be published in our annual report or on our website. You may request complete anonymity at any time by contacting accounts@e5enclave.com. Payment data is processed by PCI-compliant Stripe and is never stored on our servers.</p>
+
+        <h2>Cookies</h2>
+        <p>We use essential cookies for site functionality and analytics cookies via PostHog to understand site usage. No advertising cookies are used.</p>
+
+        <h2>Contact</h2>
+        <p>For privacy questions: accounts@e5enclave.com</p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .legal-content {
+      margin-top: var(--s-8);
+    }
+
+    .legal-content h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      margin-top: var(--s-8);
+      margin-bottom: var(--s-3);
+    }
+
+    .legal-content p {
+      color: var(--color-on-surface-secondary);
+      margin-bottom: var(--s-4);
+      line-height: var(--lh-relaxed);
+    }
+  </style>
+</BaseLayout>

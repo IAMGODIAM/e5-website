@@ -1,0 +1,283 @@
+/* ============================================
+   E5 ENCLAVE INCORPORATED — DESIGN TOKENS v2.0
+   Layer 1: Primitive → Layer 2: Semantic → Layer 3: Component
+   Source: Design Bible v2, Part 13
+   ============================================ */
+
+/* === LAYER 1: PRIMITIVE TOKENS === */
+:root {
+  /* --- Color: Gold (Brand Primary) --- */
+  --c-gold-400: #d4b96a;
+  --c-gold-500: #c9a84c;
+  --c-gold-600: #a88a3c;
+  --c-gold-700: #8a7030;
+  --c-gold-muted: rgba(201, 168, 76, 0.15);
+  --c-gold-glow: rgba(201, 168, 76, 0.3);
+
+  /* --- Color: Neutral (Surface) --- */
+  --c-neutral-950: #0a0a0f;
+  --c-neutral-900: #111118;
+  --c-neutral-800: #1a1a20;
+  --c-neutral-700: #22222a;
+  --c-neutral-600: #333340;
+  --c-neutral-500: #555562;
+  --c-neutral-400: #8888a0;
+  --c-neutral-300: #c0c0cc;
+  --c-neutral-200: #e0e0e8;
+  --c-neutral-100: #f0f0f5;
+  --c-neutral-50:  #fafafc;
+
+  /* --- Color: Semantic --- */
+  --c-success: #4caf50;
+  --c-warning: #ff9800;
+  --c-error: #f44336;
+  --c-info: #2196f3;
+  --c-teal: #49c5b6;
+
+  /* --- Typography: Font Families --- */
+  --font-display: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Berkeley Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* --- Typography: Weights --- */
+  --weight-display: 500;
+  --weight-body: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  /* --- Typography: Sizes --- */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.25rem;     /* 20px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 2rem;       /* 32px */
+  --text-4xl: 2.5rem;     /* 40px */
+  --text-5xl: 3.5rem;     /* 56px */
+  --text-6xl: 4.5rem;     /* 72px */
+
+  /* --- Line Height --- */
+  --lh-tight: 0.94;
+  --lh-snug: 1.0;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.6;
+
+  /* --- Letter Spacing --- */
+  --ls-tight: -0.03em;
+  --ls-snug: -0.02em;
+  --ls-normal: 0;
+  --ls-wide: 0.02em;
+  --ls-wider: 0.05em;
+
+  /* --- Spacing (4px grid) --- */
+  --s-1: 0.25rem;   /* 4px */
+  --s-2: 0.5rem;    /* 8px */
+  --s-3: 0.75rem;   /* 12px */
+  --s-4: 1rem;      /* 16px */
+  --s-5: 1.5rem;    /* 24px */
+  --s-6: 2rem;      /* 32px */
+  --s-8: 3rem;      /* 48px */
+  --s-10: 4rem;     /* 64px */
+  --s-12: 6rem;     /* 96px */
+  --s-16: 8rem;     /* 128px */
+
+  /* --- Border Radius --- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
+  --shadow-gold: 0 0 20px rgba(201,168,76,0.15);
+
+  /* --- Transitions --- */
+  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.6, 1);
+  --transition-fast: 150ms var(--ease-out);
+  --transition-base: 250ms var(--ease-out);
+  --transition-slow: 400ms var(--ease-out);
+
+  /* --- Z-Index Scale --- */
+  --z-base: 0;
+  --z-elevated: 10;
+  --z-sticky: 50;
+  --z-overlay: 100;
+  --z-modal: 200;
+
+  /* --- Layout --- */
+  --container-max: 1200px;
+  --container-narrow: 800px;
+  --header-height: 72px;
+  --bento-gap: 16px;
+  --bento-radius: 16px;
+  --bento-padding: 24px;
+}
+
+/* === LAYER 2: SEMANTIC TOKENS === */
+:root {
+  --color-surface: var(--c-neutral-900);
+  --color-surface-elevated: var(--c-neutral-800);
+  --color-surface-overlay: rgba(10, 10, 15, 0.95);
+  --color-on-surface: var(--c-neutral-100);
+  --color-on-surface-secondary: var(--c-neutral-300);
+  --color-on-surface-muted: var(--c-neutral-400);
+  --color-primary: var(--c-gold-500);
+  --color-primary-hover: var(--c-gold-400);
+  --color-primary-active: var(--c-gold-600);
+  --color-primary-contrast: var(--c-neutral-900);
+  --color-border: rgba(255,255,255,0.06);
+  --color-border-hover: rgba(255,255,255,0.12);
+  --color-border-gold: var(--c-gold-glow);
+  --color-accent: var(--c-teal);
+
+  /* --- Gradients --- */
+  --gradient-gold: linear-gradient(135deg, var(--c-gold-500), var(--c-gold-600));
+  --gradient-gold-subtle: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.05));
+  --gradient-dark: linear-gradient(180deg, var(--c-neutral-900), var(--c-neutral-950));
+  --gradient-hero: linear-gradient(135deg, var(--c-neutral-900) 0%, var(--c-neutral-800) 50%, var(--c-gold-muted) 100%);
+}
+
+/* === LIGHT MODE (for future use) === */
+[data-theme="light"] {
+  --color-surface: var(--c-neutral-50);
+  --color-surface-elevated: #ffffff;
+  --color-surface-overlay: rgba(250, 250, 252, 0.95);
+  --color-on-surface: var(--c-neutral-900);
+  --color-on-surface-secondary: var(--c-neutral-600);
+  --color-on-surface-muted: var(--c-neutral-500);
+  --color-border: rgba(0,0,0,0.08);
+  --color-border-hover: rgba(0,0,0,0.12);
+}
+
+/* === SYSTEM RESET === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: var(--weight-body);
+  font-size: var(--text-base);
+  line-height: var(--lh-relaxed);
+  color: var(--color-on-surface);
+  background: var(--color-surface);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img, video { max-width: 100%; height: auto; display: block; }
+a { color: var(--color-primary); text-decoration: none; transition: color var(--transition-fast); }
+a:hover { color: var(--color-primary-hover); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+/* SVG icon defaults */
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* === LAYOUT UTILITIES === */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--s-5);
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+.section {
+  padding: var(--s-16) 0;
+}
+
+.section--compact {
+  padding: var(--s-10) 0;
+}
+
+.section--dark {
+  background: var(--color-surface);
+}
+
+.section--elevated {
+  background: var(--color-surface-elevated);
+}
+
+/* === TYPOGRAPHY === */
+.display {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+}
+
+.display--xl { font-size: var(--text-6xl); }
+.display--lg { font-size: var(--text-5xl); }
+.display--md { font-size: var(--text-4xl); }
+.display--sm { font-size: var(--text-3xl); }
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-snug);
+}
+
+.heading--xl { font-size: var(--text-4xl); }
+.heading--lg { font-size: var(--text-3xl); }
+.heading--md { font-size: var(--text-2xl); }
+.heading--sm { font-size: var(--text-xl); }
+
+.body { font-family: var(--font-body); font-weight: var(--weight-body); line-height: var(--lh-relaxed); }
+.body--lg { font-size: var(--text-lg); }
+.body--sm { font-size: var(--text-sm); color: var(--color-on-surface-secondary); }
+.body--xs { font-size: var(--text-xs); color: var(--color-on-surface-muted); letter-spacing: var(--ls-wide); text-transform: uppercase; }
+
+.mono { font-family: var(--font-mono); font-size: var(--text-sm); }
+
+/* === GOLD ACCENT TEXT === */
+.text-gold { color: var(--color-primary); }
+.text-muted { color: var(--color-on-surface-secondary); }
+
+/* === DIVIDER === */
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--s-8) 0;
+}
+
+.divider--gold {
+  border-color: var(--color-border-gold);
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

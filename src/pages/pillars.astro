@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="The Five Pillars" description="The Five Pillars of E5 Enclave: Environmental, Economic, Educational, Engagement, and Emancipated. The structure of the harm is the structure of the remedy.">
+
+  <section class="section section--compact">
+    <div class="container container--narrow">
+      <span class="section-header__label">Doctrine</span>
+      <h1 class="display display--lg">The Five Pillars.<br/><span class="text-gold">The structure of the remedy.</span></h1>
+      <p class="body body--lg text-muted">Five institutional values. The center holds. Each pillar is a proof point for the doctrine.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="pillars">
+        <!-- Pillar 1 -->
+        <div class="pillar card">
+          <div class="pillar__header">
+            <span class="pillar__num">01</span>
+            <h2 class="pillar__title">Environmental</h2>
+          </div>
+          <p class="pillar__desc">Food sovereignty, land stewardship, agriculture, and anti-food-apartheid infrastructure. Flagship: <strong>Lineage Farms — FarmBlock</strong>. FarmBlock Phase II urban agriculture feasibility study: 50+ cities surveyed.</p>
+          <a href="/pillars/environmental/" class="btn btn--tertiary">Explore this pillar &rarr;</a>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="pillar card">
+          <div class="pillar__header">
+            <span class="pillar__num">02</span>
+            <h2 class="pillar__title">Economic</h2>
+          </div>
+          <p class="pillar__desc">Business formation, government contracting, cooperative ownership, and circular economics. Doctrine: <strong>From survival to power</strong>. Building the economic infrastructure that sustains the lineage.</p>
+          <a href="/pillars/economic/" class="btn btn--tertiary">Explore this pillar &rarr;</a>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="pillar card">
+          <div class="pillar__header">
+            <span class="pillar__num">03</span>
+            <h2 class="pillar__title">Educational</h2>
+          </div>
+          <p class="pillar__desc">Private education, STEM, emerging technologies, leadership, and lineage-centered curriculum. Flagship: <strong>McCartney Academy</strong>. Black-centered K–12 private school. Designed to produce institutional architects.</p>
+          <a href="/pillars/educational/" class="btn btn--tertiary">Explore this pillar &rarr;</a>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="pillar card">
+          <div class="pillar__header">
+            <span class="pillar__num">04</span>
+            <h2 class="pillar__title">Engagement</h2>
+          </div>
+          <p class="pillar__desc">Civic education, public policy literacy, media, storytelling, and mobilization. Flagship: <strong>Block to the Boardroom</strong>. Training community members in governance and institutional management.</p>
+          <a href="/pillars/engagement/" class="btn btn--tertiary">Explore this pillar &rarr;</a>
+        </div>
+
+        <!-- Pillar 5 -->
+        <div class="pillar card">
+          <div class="pillar__header">
+            <span class="pillar__num">05</span>
+            <h2 class="pillar__title">Emancipated</h2>
+          </div>
+          <p class="pillar__desc">The unfinished obligations of freedom. Documented obligations become policy research. Campaign: <strong>Restitution 246 research framework</strong>. 246 years documented. Disciplined methodology. Open record.</p>
+          <a href="/pillars/emancipated/" class="btn btn--tertiary">Explore this pillar &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .pillars {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+    }
+
+    .pillar {
+      padding: var(--s-6);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: var(--s-6);
+      align-items: center;
+    }
+
+    .pillar__num {
+      font-family: var(--font-display);
+      font-size: var(--text-4xl);
+      color: var(--color-primary);
+      font-weight: var(--weight-display);
+    }
+
+    .pillar__title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+    }
+
+    .pillar__desc {
+      color: var(--color-on-surface-secondary);
+      margin-top: var(--s-2);
+      line-height: var(--lh-normal);
+    }
+
+    .pillar .btn {
+      white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+      .pillar {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+  </style>
+</BaseLayout>

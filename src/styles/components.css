@@ -1,0 +1,359 @@
+/* ============================================
+   E5 ENCLAVE — BUTTON SYSTEM
+   Design Bible Part 15
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  height: 48px;
+  padding: 0 1.5rem;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Primary (Gold solid) */
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--primary:hover {
+  background: var(--color-primary-hover);
+  box-shadow: var(--shadow-gold);
+  transform: translateY(-1px);
+}
+
+.btn--primary:active {
+  background: var(--color-primary-active);
+  transform: translateY(0);
+}
+
+/* Secondary (Ghost outline) */
+.btn--secondary {
+  background: transparent;
+  color: var(--color-on-surface);
+  border: 1px solid var(--color-border);
+}
+
+.btn--secondary:hover {
+  background: rgba(255,255,255,0.03);
+  border-color: var(--color-border-hover);
+}
+
+.btn--secondary:focus-visible {
+  border-color: var(--color-primary);
+}
+
+/* Tertiary (Text link) */
+.btn--tertiary {
+  background: transparent;
+  color: var(--color-primary);
+  padding: 0;
+  height: auto;
+  text-transform: none;
+  letter-spacing: var(--ls-normal);
+  font-weight: var(--weight-medium);
+}
+
+.btn--tertiary:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+/* Disabled state */
+.btn--disabled,
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ============================================
+   CARDS
+   Design Bible Part 15
+   ============================================ */
+
+.card {
+  background: var(--card-bg, var(--color-surface-elevated));
+  border: 1px solid var(--card-border, var(--color-border));
+  border-radius: var(--card-radius, var(--radius-lg));
+  padding: var(--card-padding, var(--s-5));
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  border-color: var(--color-border-hover);
+}
+
+.card--gold-left {
+  border-left: 3px solid var(--color-primary);
+}
+
+.card--interactive {
+  cursor: pointer;
+}
+
+.card--interactive:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-display);
+  margin-bottom: var(--s-3);
+}
+
+.card__description {
+  color: var(--color-on-surface-secondary);
+  line-height: var(--lh-normal);
+}
+
+.card__cta {
+  margin-top: var(--s-5);
+}
+
+/* ============================================
+   BENTO GRID
+   Design Bible Part 5, Section 3
+   ============================================ */
+
+.bento {
+  display: grid;
+  gap: var(--bento-gap);
+  padding: var(--s-8) 0;
+}
+
+.bento--5 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.bento--5 .bento__hero {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.bento--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Mobile: stack everything */
+@media (max-width: 768px) {
+  .bento--5,
+  .bento--3 {
+    grid-template-columns: 1fr;
+  }
+  .bento--5 .bento__hero {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
+/* ============================================
+   IMPACT COUNTERS
+   No "0" values — qualitative language until count > 5
+   ============================================ */
+
+.counters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-4);
+  padding: var(--s-10) 0;
+  text-align: center;
+}
+
+.counter__number {
+  font-family: var(--font-display);
+  font-size: var(--text-5xl);
+  font-weight: var(--weight-display);
+  color: var(--color-primary);
+  line-height: var(--lh-snug);
+}
+
+.counter__label {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wider);
+  color: var(--color-on-surface-secondary);
+  margin-top: var(--s-2);
+}
+
+@media (max-width: 768px) {
+  .counters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   NEWSLETTER FORM
+   ============================================ */
+
+.newsletter {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.newsletter__input {
+  width: 100%;
+  height: 48px;
+  padding: 0 var(--s-4);
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  transition: border-color var(--transition-fast);
+}
+
+.newsletter__input::placeholder {
+  color: var(--color-on-surface-muted);
+}
+
+.newsletter__input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--c-gold-muted);
+}
+
+.newsletter__btn {
+  width: 100%;
+  margin-top: var(--s-3);
+}
+
+/* ============================================
+   SECTION HEADERS
+   ============================================ */
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--s-10);
+}
+
+.section-header__label {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wider);
+  color: var(--color-primary);
+  margin-bottom: var(--s-3);
+}
+
+.section-header__title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-display);
+  line-height: var(--lh-snug);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.section-header__subtitle {
+  color: var(--color-on-surface-secondary);
+  font-size: var(--text-lg);
+  max-width: 600px;
+  margin: var(--s-4) auto 0;
+}
+
+/* Separator between sections */
+.section-separator {
+  width: 60px;
+  height: 2px;
+  background: var(--gradient-gold);
+  margin: var(--s-8) auto;
+  border: none;
+}
+
+/* ============================================
+   GLASS SURFACE (Liquid Glass for Variant B)
+   Design Bible Part 14
+   ============================================ */
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+}
+
+.glass--gold {
+  background: rgba(201, 168, 76, 0.08);
+  border-color: rgba(201, 168, 76, 0.15);
+}
+
+.glass-text-safe {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   KINETIC TYPE (Hero rotating words)
+   Hero Specification
+   ============================================ */
+
+.kinetic {
+  display: inline-block;
+  min-width: 12ch;
+}
+
+.kinetic__word {
+  display: none;
+  animation: fadeInWord 0.5s ease forwards;
+}
+
+.kinetic__word.active {
+  display: inline;
+}
+
+@keyframes fadeInWord {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   TRUST BAR
+   ============================================ */
+
+.trust-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--s-5);
+  padding: var(--s-4) 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.trust-bar__item {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: var(--text-xs);
+  color: var(--color-on-surface-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wider);
+}
+
+.trust-bar__icon {
+  color: var(--color-primary);
+  width: 16px;
+  height: 16px;
+}

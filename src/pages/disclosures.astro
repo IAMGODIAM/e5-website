@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Public Disclosures" description="E5 Enclave 501(c)(3) public disclosure documents: Form 990, IRS determination letter, bylaws, and governance records.">
+
+  <section class="section">
+    <div class="container container--narrow">
+      <span class="section-header__label">501(c)(3) Public Disclosures</span>
+      <h1 class="display display--md">Public Disclosures</h1>
+      <p class="body body--sm text-muted">E5 Enclave Incorporated makes all required documents available per IRS regulations.</p>
+    </div>
+  </section>
+
+  <section class="section section--compact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__label">Required Documents</span>
+        <h2 class="heading heading--lg">Available for public inspection per IRS regulations.</h2>
+      </div>
+
+      <div class="doc-list">
+        <div class="doc-item">
+          <div class="doc-item__info">
+            <h3>Form 990 — Annual Return</h3>
+            <p>Annual information return filed with the IRS. Available within 30 days of request if not posted online. <a href="https://apps.irs.gov/app/eos/details/#" target="_blank" rel="noopener">Search on IRS &rarr;</a></p>
+          </div>
+          <span class="doc-item__status">Filed annually</span>
+        </div>
+
+        <div class="doc-item">
+          <div class="doc-item__info">
+            <h3>IRS Determination Letter</h3>
+            <p>Letter from the IRS recognizing E5 Enclave Incorporated as a tax-exempt 501(c)(3) organization. EIN 99-3822441. <a href="https://apps.irs.gov/app/eos/details/#" target="_blank" rel="noopener">Verify on IRS &rarr;</a></p>
+          </div>
+          <span class="doc-item__status">Issued June 2024</span>
+        </div>
+
+        <div class="doc-item">
+          <div class="doc-item__info">
+            <h3>Articles of Incorporation</h3>
+            <p>Founding document filed with the State of Florida. Establishes E5 Enclave Incorporated as a nonprofit corporation.</p>
+          </div>
+          <span class="doc-item__status">Available on request</span>
+        </div>
+
+        <div class="doc-item">
+          <div class="doc-item__info">
+            <h3>Bylaws</h3>
+            <p>Governing bylaws of E5 Enclave Incorporated. Defines board structure, officer roles, meeting procedures, and amendment processes.</p>
+          </div>
+          <span class="doc-item__status">Available on request</span>
+        </div>
+
+        <div class="doc-item">
+          <div class="doc-item__info">
+            <h3>Conflict of Interest Policy</h3>
+            <p>Policy governing board member conflicts of interest. Required for 501(c)(3) organizations. Ensures decisions are made in the organization's best interest.</p>
+          </div>
+          <span class="doc-item__status">Available on request</span>
+        </div>
+      </div>
+
+      <div class="disclosure-note">
+        <h3 class="heading heading--sm">How to Request Documents</h3>
+        <p>Under IRS regulations, E5 must make the above documents available for public inspection upon request. Contact us at <a href="mailto:accounts@e5enclave.com">accounts@e5enclave.com</a>. We respond within 30 days.</p>
+
+        <h3 class="heading heading--sm" style="margin-top: var(--s-5);">SAM.gov Registration</h3>
+        <p>E5 Enclave Incorporated is registered in the System for Award Management (SAM.gov). UEI: H8NGXEYE2HH8. CAGE: 07E888. <a href="https://sam.gov/entity/H8NGXEYE2HH8" target="_blank" rel="noopener">Verify on SAM.gov &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .doc-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-5);
+    }
+
+    .doc-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--s-5);
+      padding: var(--s-5);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+    }
+
+    .doc-item__info h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      margin-bottom: var(--s-2);
+    }
+
+    .doc-item__info p {
+      color: var(--color-on-surface-secondary);
+      font-size: var(--text-sm);
+    }
+
+    .doc-item__status {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: var(--ls-wider);
+      color: var(--color-primary);
+      white-space: nowrap;
+      padding: var(--s-1) var(--s-3);
+      background: var(--c-gold-muted);
+      border-radius: var(--radius-full);
+    }
+
+    .disclosure-note {
+      margin-top: var(--s-10);
+      padding: var(--s-6);
+      background: var(--color-surface-elevated);
+      border-radius: var(--radius-lg);
+    }
+
+    .disclosure-note p {
+      color: var(--color-on-surface-secondary);
+      margin-top: var(--s-3);
+      font-size: var(--text-sm);
+    }
+
+    @media (max-width: 768px) {
+      .doc-item { flex-direction: column; gap: var(--s-3); }
+    }
+  </style>
+</BaseLayout>

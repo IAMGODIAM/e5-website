@@ -1,0 +1,14 @@
+{
+  "name": "e5-enclave-website",
+  "version": "2.0.0",
+  "description": "E5 Enclave Incorporated \u2014 Sovereign Institutional Website",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0 --port 3000",
+    "build": "astro build",
+    "preview": "astro preview --host 0.0.0.0 --port 3000"
+  },
+  "dependencies": {
+    "astro": "^5.0.0"
+  }
+}

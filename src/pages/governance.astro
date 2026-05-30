@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Governance" description="E5 Enclave governance: board, financials, bylaws, Form 990, and public disclosures.">
+
+  <section class="section section--compact">
+    <div class="container container--narrow">
+      <span class="section-header__label">Radical Transparency</span>
+      <h1 class="display display--lg">Full financials. Open bylaws.<br/><span class="text-gold">Published openly.</span></h1>
+    </div>
+  </section>
+
+  <section class="section gov">
+    <div class="container">
+      <div class="gov__grid">
+        <a href="https://sam.gov/entity/H8NGXEYE2HH8" class="gov__card card" target="_blank" rel="noopener">
+          <span class="gov__icon">&#x1F512;</span>
+          <h3>SAM.gov Registration</h3>
+          <p>UEI H8NGXEYE2HH8. Federal registrant. Active status.</p>
+          <span class="btn btn--tertiary">Verify &rarr;</span>
+        </a>
+        <a href="https://apps.irs.gov/app/eos/details/#" class="gov__card card" target="_blank" rel="noopener">
+          <span class="gov__icon">&#x2713;</span>
+          <h3>IRS 501(c)(3)</h3>
+          <p>EIN 99-3822441. Tax-exempt since June 2024.</p>
+          <span class="btn btn--tertiary">Verify &rarr;</span>
+        </a>
+        <a href="/disclosures/" class="gov__card card">
+          <span class="gov__icon">&#x1F4C4;</span>
+          <h3>Form 990</h3>
+          <p>Annual return. Public inspection. Download PDF.</p>
+          <span class="btn btn--tertiary">View &rarr;</span>
+        </a>
+        <a href="/disclosures/" class="gov__card card">
+          <span class="gov__icon">&#x1F4D6;</span>
+          <h3>Bylaws & Charter</h3>
+          <p>Governing documents. Published openly.</p>
+          <span class="btn btn--tertiary">Read &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .gov__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+    }
+
+    .gov__card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-3);
+      padding: var(--s-6);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .gov__card h3 {
+      color: var(--color-on-surface);
+    }
+
+    .gov__card p {
+      color: var(--color-on-surface-secondary);
+    }
+
+    .gov__icon {
+      font-size: var(--text-2xl);
+      color: var(--color-primary);
+    }
+
+    @media (max-width: 768px) {
+      .gov__grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>

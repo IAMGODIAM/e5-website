@@ -1,0 +1,517 @@
+---
+// E5 Enclave — Homepage
+// Design Bible v2 · Cialdini + Pinker frameworks applied
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="E5 Enclave Incorporated"
+  description="Sovereign institutional infrastructure for the Five Dimensions. Not programs. Not charity. Infrastructure. The center holds."
+>
+
+  <!-- ============================================ -->
+  <!-- HERO SECTION (Above fold, 100vh) -->
+  <!-- ============================================ -->
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="container hero__content">
+      <div class="hero__text">
+        <span class="body body--xs hero__label">Liberty City · Established MMXXIV</span>
+        <h1 class="display display--xl hero__title">
+          <span class="kinetic">
+            <span class="kinetic__word active">Sovereign.</span>
+            <span class="kinetic__word">Institutional.</span>
+            <span class="kinetic__word">Unstoppable.</span>
+          </span>
+        </h1>
+        <p class="hero__subhead">
+          E5 Enclave Incorporated. Founded 2024. 501(c)(3).<br />
+          <span class="text-gold">Rising from Liberty City.</span>
+        </p>
+
+        <!-- Live Activity -->
+        <div class="hero__activity" aria-live="polite">
+          <div class="hero__activity-item">
+            <span class="hero__activity-icon" aria-hidden="true">&#x1F916;</span>
+            <span class="hero__activity-num">3</span>
+            <span class="hero__activity-label">agents active</span>
+          </div>
+          <div class="hero__activity-item">
+            <span class="hero__activity-icon" aria-hidden="true">&#x1F4CB;</span>
+            <span class="hero__activity-num">47</span>
+            <span class="hero__activity-label">tasks this week</span>
+          </div>
+          <div class="hero__activity-item">
+            <span class="hero__activity-icon" aria-hidden="true">&#x1F3D7;</span>
+            <span class="hero__activity-num">2</span>
+            <span class="hero__activity-label">programs shipping</span>
+          </div>
+        </div>
+
+        <!-- Trust Bar -->
+        <div class="trust-bar hero__trust">
+          <div class="trust-bar__item">
+            <svg class="trust-bar__icon" viewBox="0 0 20 20"><path fill="currentColor" d="M10 2L3 6v5c0 4.5 3 8.5 7 9.5 4-1 7-5 7-9.5V6l-7-4zm-1 12l-3-3 1.5-1.5L9 11l4.5-4.5L15 8l-6 6z"/></svg>
+            <span>EIN 99-3822441</span>
+          </div>
+          <div class="trust-bar__item">
+            <svg class="trust-bar__icon" viewBox="0 0 20 20"><path fill="currentColor" d="M10 2L3 6v5c0 4.5 3 8.5 7 9.5 4-1 7-5 7-9.5V6l-7-4zm-1 12l-3-3 1.5-1.5L9 11l4.5-4.5L15 8l-6 6z"/></svg>
+            <span>SAM.gov H8NGXEYE2HH8</span>
+          </div>
+          <div class="trust-bar__item">
+            <svg class="trust-bar__icon" viewBox="0 0 20 20"><path fill="currentColor" d="M10 2L3 6v5c0 4.5 3 8.5 7 9.5 4-1 7-5 7-9.5V6l-7-4zm-1 12l-3-3 1.5-1.5L9 11l4.5-4.5L15 8l-6 6z"/></svg>
+            <span>501(c)(3) Verified</span>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="hero__cta">
+          <a href="/coalition/" class="btn btn--primary">Join the Coalition</a>
+          <a href="/mission/" class="btn btn--secondary">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="hero__scroll" aria-hidden="true">
+      <span class="hero__scroll-line"></span>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- THE COVENANT (Cialdini: Unity + Commitment) -->
+  <!-- ============================================ -->
+  <section class="section section--elevated covenant">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__label">The Coalition</span>
+        <h2 class="section-header__title">The Coalition is not an audience.<br/>It is <em class="text-gold">a covenant.</em></h2>
+        <p class="section-header__subtitle">
+          A Coalition of the Willing is exactly what it names. Those who understand walk with us.
+          Those who do not are not pursued.
+        </p>
+      </div>
+
+      <!-- Four Commitment Cards (qualitative, NOT "0") -->
+      <div class="bento bento--4">
+        <div class="card card--gold-left" data-agent-action="give">
+          <div class="card__title">I want to give.</div>
+          <div class="card__description">Your gift funds the evidence systems, the farms, the schools, and the policy tools. $25 keeps FarmBlock running for a month.</div>
+          <a href="/donate/" class="btn btn--tertiary card__cta">Give to the work &rarr;</a>
+        </div>
+        <div class="card card--gold-left">
+          <div class="card__title">I want to show up.</div>
+          <div class="card__description">Bring your skills — legal, technical, research, community. Eight hours of presence is the covenant.</div>
+          <a href="/volunteer/" class="btn btn--tertiary card__cta">Join the Coalition &rarr;</a>
+        </div>
+        <div class="card card--gold-left">
+          <div class="card__title">I represent an institution.</div>
+          <div class="card__description">Full financials, 990-N filings, program evidence, and governing doctrine are published openly.</div>
+          <a href="/governance/" class="btn btn--tertiary card__cta">Review the record &rarr;</a>
+        </div>
+        <div class="card card--gold-left">
+          <div class="card__title">I want to build with you.</div>
+          <div class="card__description">Black-led organizations, co-builders, and aligned institutions apply to the Coalition.</div>
+          <a href="/coalition/apply/" class="btn btn--tertiary card__cta">Apply &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Qualitative counter (NOT "0") -->
+      <div class="covenant__status">
+        <span class="body body--sm text-muted">Founding Cohort &middot; Phase I &middot; By Invitation</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- THE MISSION (Cialdini: Authority) -->
+  <!-- ============================================ -->
+  <section class="section mission">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__label">What E5 Builds</span>
+        <h2 class="section-header__title">Not programs. Not charity.<br/><em class="text-gold">Infrastructure.</em></h2>
+        <p class="section-header__subtitle">
+          E5 builds institutions, evidence systems, collaborative platforms, and community projects.
+          All led by the lineage, for the lineage. The Coalition is the network.
+          The Five Pillars are the doctrine. The projects are the proof.
+        </p>
+      </div>
+
+      <!-- Five Pillars Bento -->
+      <div class="bento bento--5">
+        <div class="bento__hero card card--interactive">
+          <div class="card__title">Environmental</div>
+          <div class="card__description">Food sovereignty, land stewardship, agriculture, and anti-food-apartheid infrastructure.</div>
+          <div class="card__cta"><span class="mono">01</span></div>
+        </div>
+        <div class="card card--interactive">
+          <div class="card__title">Economic</div>
+          <div class="card__description">Business formation, cooperative ownership, and circular economics.</div>
+          <div class="card__cta"><span class="mono">02</span></div>
+        </div>
+        <div class="card card--interactive">
+          <div class="card__title">Educational</div>
+          <div class="card__description">Private education, STEM, emerging technologies, and lineage-centered curriculum.</div>
+          <div class="card__cta"><span class="mono">03</span></div>
+        </div>
+        <div class="card card--interactive">
+          <div class="card__title">Engagement</div>
+          <div class="card__description">Civic education, public policy literacy, media, storytelling, and mobilization.</div>
+          <div class="card__cta"><span class="mono">04</span></div>
+        </div>
+        <div class="card card--interactive">
+          <div class="card__title">Emancipated</div>
+          <div class="card__description">The unfinished obligations of freedom. Documented obligations become policy research.</div>
+          <div class="card__cta"><span class="mono">05</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- RESEARCH FRAMEWORK (Cialdini: Authority) -->
+  <!-- ============================================ -->
+  <section class="section section--elevated research">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__label">Research Framework</span>
+        <h2 class="section-header__title">246 years of documented harm.<br/><em class="text-gold">One disciplined research framework.</em></h2>
+      </div>
+
+      <div class="research__content">
+        <p class="body body--lg research__lead">
+          E5 applies the <strong class="text-gold">Craemer (2015)</strong> wage-hour methodology to calculate wage-loss
+          and opportunity-loss for American chattel slavery. This is one lane of the reparations question &mdash;
+          not the whole road. The research framework is open, auditable, and built to be cited.
+        </p>
+
+        <div class="research__stats">
+          <div class="research__stat">
+            <span class="research__stat-num">246</span>
+            <span class="research__stat-label">years documented</span>
+          </div>
+          <div class="research__stat">
+            <span class="research__stat-num">$120T</span>
+            <span class="research__stat-label">bond framework</span>
+          </div>
+          <div class="research__stat">
+            <span class="research__stat-num">5</span>
+            <span class="research__stat-label">analytical questions</span>
+          </div>
+          <div class="research__stat">
+            <span class="research__stat-num">1</span>
+            <span class="research__stat-label">disciplined methodology</span>
+          </div>
+        </div>
+
+        <a href="/record/" class="btn btn--primary">Read the Research &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- FOUNDER'S LETTER (Cialdini: Liking + Authority) -->
+  <!-- ============================================ -->
+  <section class="section founder">
+    <div class="container container--narrow">
+      <div class="section-header">
+        <span class="section-header__label">From the Founder</span>
+        <h2 class="section-header__title">A note to the lineage.</h2>
+      </div>
+
+      <div class="founder__letter">
+        <p class="body body--lg">
+          This is not a campaign. It is <em>a record being built.</em>
+        </p>
+        <p>
+          For three centuries the obligations of emancipation went unrecorded &mdash; not because they were unknown,
+          but because the architecture of remedy was never built.
+        </p>
+        <p>
+          E5 Enclave is the architecture. The Coalition is the network. The Five Pillars are the doctrine.
+          The projects are the proof.
+        </p>
+        <p>
+          We do not promise a finish line. We promise <strong class="text-gold">discipline of scope</strong> &mdash;
+          naming precisely what we are doing, and what we are not. We promise coordination over competition.
+          We promise that what is measured cannot be dismissed.
+        </p>
+        <p>
+          The center holds. The work begins.
+        </p>
+        <div class="founder__sig">
+          <span class="body body--sm text-gold">Israel Lee</span>
+          <span class="body body--xs text-muted">Chairman, E5 Enclave Incorporated</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- NEWSLETTER (Cialdini: Reciprocity + Commitment) -->
+  <!-- ============================================ -->
+  <section class="section section--elevated newsletter">
+    <div class="container container--narrow">
+      <div class="section-header">
+        <span class="section-header__label">Stay in the Record</span>
+        <h2 class="section-header__title">Dispatches from the Coalition.</h2>
+        <p class="section-header__subtitle">
+          Research, program updates, and coalition intelligence &mdash; twice a month at most.
+        </p>
+      </div>
+
+      <form class="newsletter__form" action="#" method="POST">
+        <input
+          type="email"
+          class="newsletter__input"
+          placeholder="your@email.com"
+          required
+          aria-label="Email address"
+        />
+        <button type="submit" class="btn btn--primary newsletter__btn">Subscribe</button>
+      </form>
+      <p class="body body--xs text-muted newsletter__note">
+        We don't sell data. We don't spam. Twice a month at maximum.
+      </p>
+    </div>
+  </section>
+
+  <style>
+    /* ============================================
+       HERO
+       ============================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--header-height);
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-hero);
+      z-index: 0;
+    }
+
+    .hero__bg::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: linear-gradient(to top, var(--color-surface), transparent);
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      padding: var(--s-16) 0;
+    }
+
+    .hero__text {
+      max-width: 700px;
+    }
+
+    .hero__label {
+      color: var(--color-primary);
+      margin-bottom: var(--s-4);
+      display: block;
+    }
+
+    .hero__title {
+      color: var(--color-on-surface);
+      margin-bottom: var(--s-5);
+    }
+
+    .hero__title .kinetic {
+      color: var(--color-primary);
+    }
+
+    .hero__subhead {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      color: var(--color-on-surface-secondary);
+      line-height: var(--lh-normal);
+      margin-bottom: var(--s-6);
+    }
+
+    .hero__activity {
+      display: flex;
+      gap: var(--s-5);
+      margin-bottom: var(--s-6);
+      flex-wrap: wrap;
+    }
+
+    .hero__activity-item {
+      display: flex;
+      align-items: center;
+      gap: var(--s-1);
+      font-size: var(--text-sm);
+      color: var(--color-on-surface-secondary);
+    }
+
+    .hero__activity-num {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      color: var(--color-primary);
+      font-weight: var(--weight-display);
+    }
+
+    .hero__trust {
+      border: none;
+      justify-content: flex-start;
+      padding: var(--s-4) 0;
+      margin-bottom: var(--s-6);
+    }
+
+    .hero__cta {
+      display: flex;
+      gap: var(--s-4);
+      flex-wrap: wrap;
+    }
+
+    .hero__scroll {
+      position: absolute;
+      bottom: var(--s-8);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .hero__scroll-line {
+      display: block;
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--color-primary), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .hero__title { font-size: var(--text-4xl); }
+      .hero__subhead { font-size: var(--text-lg); }
+      .hero__activity { flex-direction: column; gap: var(--s-3); }
+    }
+
+    /* ============================================
+       COVENANT
+       ============================================ */
+    .covenant__status {
+      text-align: center;
+      margin-top: var(--s-8);
+    }
+
+    .bento--4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 768px) {
+      .bento--4 { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================
+       MISSION
+       ============================================ */
+    .mission .bento__hero {
+      grid-column: span 2;
+    }
+
+    /* ============================================
+       RESEARCH
+       ============================================ */
+    .research__content {
+      text-align: center;
+    }
+
+    .research__lead {
+      max-width: 700px;
+      margin: 0 auto var(--s-8);
+    }
+
+    .research__stats {
+      display: flex;
+      justify-content: center;
+      gap: var(--s-10);
+      margin-bottom: var(--s-8);
+      flex-wrap: wrap;
+    }
+
+    .research__stat-num {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-5xl);
+      font-weight: var(--weight-display);
+      color: var(--color-primary);
+      line-height: var(--lh-snug);
+    }
+
+    .research__stat-label {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: var(--ls-wider);
+      color: var(--color-on-surface-secondary);
+    }
+
+    /* ============================================
+       FOUNDER LETTER
+       ============================================ */
+    .founder__letter {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      line-height: var(--lh-relaxed);
+      color: var(--color-on-surface);
+    }
+
+    .founder__letter p {
+      margin-bottom: var(--s-5);
+    }
+
+    .founder__letter em {
+      font-style: italic;
+      color: var(--color-on-surface);
+    }
+
+    .founder__sig {
+      margin-top: var(--s-8);
+      padding-top: var(--s-5);
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-1);
+    }
+
+    /* ============================================
+       NEWSLETTER
+       ============================================ */
+    .newsletter__form {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .newsletter__note {
+      text-align: center;
+      margin-top: var(--s-3);
+    }
+  </style>
+
+  <script>
+    // Kinetic type rotation
+    const words = document.querySelectorAll('.kinetic__word');
+    let current = 0;
+    if (words.length > 1) {
+      setInterval(() => {
+        words[current].classList.remove('active');
+        current = (current + 1) % words.length;
+        words[current].classList.add('active');
+      }, 4000);
+    }
+  </script>
+</BaseLayout>

@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Accessibility" description="E5 Enclave commitment to web accessibility. WCAG 2.2 AA compliance statement.">
+
+  <section class="section">
+    <div class="container container--narrow">
+      <span class="section-header__label">Accessibility</span>
+      <h1 class="display display--md">Accessibility Statement</h1>
+      <p class="body body--sm text-muted">Last updated: May 2026</p>
+
+      <div class="legal-content">
+        <h2>Our Commitment</h2>
+        <p>E5 Enclave Incorporated is committed to making our website accessible to everyone, including people with disabilities. We strive to meet or exceed WCAG 2.2 Level AA (Web Content Accessibility Guidelines) across all pages.</p>
+
+        <h2>Measures Taken</h2>
+        <ul>
+          <li>Semantic HTML5 structure with proper heading hierarchy (one H1 per page)</li>
+          <li>Alt text on all meaningful images</li>
+          <li>Keyboard navigation support on all interactive elements</li>
+          <li>Focus indicators on all interactive elements (gold outline, 3px)</li>
+          <li>Skip navigation link for screen reader users</li>
+          <li>Color contrast ratios meeting WCAG AA minimums (4.5:1 for body text)</li>
+          <li>ARIA landmarks on all page regions</li>
+          <li>Reduced motion support via prefers-reduced-motion</li>
+          <li>Form labels on all input fields</li>
+          <li>Responsive design for all screen sizes</li>
+        </ul>
+
+        <h2>Known Limitations</h2>
+        <p>Some third-party embedded content may not fully meet accessibility standards. We are working with providers to improve accessibility across all embedded elements.</p>
+
+        <h2>Feedback</h2>
+        <p>We welcome feedback on accessibility. If you encounter any barriers, contact us at <a href="mailto:accounts@e5enclave.com">accounts@e5enclave.com</a>. We respond within 5 business days.</p>
+
+        <h2>Compliance Status</h2>
+        <p>As of May 2026, e5enclave.com is partially conformant with WCAG 2.2 Level AA. We are actively working to achieve full conformance. This statement will be updated as improvements are made.</p>
+
+        <h2>Technical Specifications</h2>
+        <p>Our website relies on the following technologies: HTML5, CSS3, JavaScript (Alpine.js for interactivity), Astro static site generator. These technologies support standard assistive technologies including screen readers, screen magnifiers, and voice control.</p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .legal-content { margin-top: var(--s-8); }
+    .legal-content h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      margin-top: var(--s-8);
+      margin-bottom: var(--s-3);
+    }
+    .legal-content p, .legal-content li {
+      color: var(--color-on-surface-secondary);
+      margin-bottom: var(--s-4);
+      line-height: var(--lh-relaxed);
+    }
+    .legal-content ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .legal-content li {
+      padding-left: var(--s-5);
+      position: relative;
+      margin-bottom: var(--s-2);
+    }
+    .legal-content li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--color-primary);
+    }
+  </style>
+</BaseLayout>
