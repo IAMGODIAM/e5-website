@@ -89,7 +89,7 @@ const siteUrl = 'https://e5enclave.com';
         <a href="/coalition/" class="header__link">Coalition</a>
         <a href="/donate/" class="btn btn--primary btn--sm">Donate</a>
       </nav>
-      <button class="header__menu-toggle" aria-label="Open menu" id="menuToggle">
+      <button class="header__menu-toggle" aria-label="Open menu" aria-expanded="false" id="menuToggle">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -130,7 +130,7 @@ const siteUrl = 'https://e5enclave.com';
         <div class="footer__col">
           <h3 class="body body--xs">About</h3>
           <ul class="footer__list">
-            <li><a href/">Mission</a></li>
+            <li><a href="/mission/">Mission</a></li>
             <li><a href="/governance/">Governance</a></li>
             <li><a href="/faq/">FAQ</a></li>
             <li><a href="/contact/">Contact</a></li>
@@ -235,16 +235,43 @@ const siteUrl = 'https://e5enclave.com';
     .header__menu-toggle {
       display: none;
       flex-direction: column;
-      gap: 5px;
-      padding: var(--s-2);
+      justify-content: center;
+      gap: 6px;
+      width: 44px;
+      height: 44px;
+      padding: 10px;
+      background: transparent;
+      border: 1px solid var(--color-border-gold);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .header__menu-toggle:hover,
+    .header__menu-toggle:focus-visible {
+      border-color: var(--c-gold-500);
+      background: var(--c-gold-muted);
+      outline: none;
     }
 
     .header__menu-toggle span {
       display: block;
-      width: 24px;
+      width: 100%;
       height: 2px;
-      background: var(--color-on-surface);
-      transition: all var(--transition-fast);
+      border-radius: 2px;
+      background: var(--c-gold-500);
+      transition: transform var(--transition-fast), opacity var(--transition-fast);
+    }
+
+    /* Animate to X when menu is open */
+    .header__menu-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .header__menu-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+    .header__menu-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
     }
 
     .header__mobile-nav {
