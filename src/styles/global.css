@@ -281,3 +281,37 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* === SPRINT 4: DARK-MODE CONTRAST HARDENING (2026-05-31) === */
+/* Base palette already passes WCAG AA; these are targeted readability upgrades. */
+
+/* Brighter gold for small uppercase eyebrow/label text (hardest to read at xs sizes) */
+.body--xs.text-gold,
+.eyebrow,
+.trust-bar__item span {
+  color: var(--c-gold-400);
+  letter-spacing: var(--ls-wide);
+}
+
+/* Gold text sitting over the gradient-hero gets a subtle anchor for legibility */
+.hero .text-gold,
+.section--elevated .text-gold {
+  text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+
+/* Trust bar icons + text: ensure gold reads on any hero gradient stop */
+.trust-bar__icon { color: var(--c-gold-400); }
+.trust-bar__item { color: var(--color-on-surface); }
+
+/* Muted text floor — never dimmer than neutral-400 even on elevated surfaces */
+.section--elevated .text-muted,
+.section--elevated .body--sm { color: var(--color-on-surface-secondary); }
+
+/* Focus visibility: gold focus ring across all interactive elements */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--c-gold-400);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
