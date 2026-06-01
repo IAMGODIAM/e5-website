@@ -85,6 +85,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </label>
       </div>
 
+      <!-- $5 one-time quick-give chip (lowest entry, one-time) -->
+      <div class="donate__quickgive">
+        <span class="body body--sm text-muted">New here? Start small:</span>
+        <button type="button" class="btn btn--secondary btn--sm donate__chip" data-amount="5" data-freq="once" aria-label="Give $5 one time">
+          Give $5 once — a seat at the table
+        </button>
+      </div>
+
       <!-- Continue button -->
       <div class="donate__action">
         <button type="button" class="btn btn--primary btn--lg">Continue to Payment</button>
@@ -263,6 +271,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     .donate__freq-option:hover,
     .donate__freq-option:has(input:checked) {
       border-color: var(--color-primary);
+    }
+
+    .donate__quickgive {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: var(--s-3);
+      margin-top: var(--s-6);
+      padding-top: var(--s-5);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .btn--sm {
+      padding: var(--s-2) var(--s-4);
+      font-size: var(--text-sm);
+    }
+
+    .donate__chip {
+      white-space: nowrap;
     }
 
     .donate__action {
