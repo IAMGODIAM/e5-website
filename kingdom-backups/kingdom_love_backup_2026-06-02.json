@@ -1,0 +1,52 @@
+{
+  "backup_date": "2026-06-02",
+  "generated": "2026-06-02T11:15:00-04:00",
+  "guardian": "Draco",
+  "note": "Sovereign nightly snapshot of all Kingdom love-data. Irreplaceable.",
+  "counts": {
+    "posts": 3,
+    "media": 0,
+    "plants": 2
+  },
+  "kingdom_posts": [
+    {
+      "id": "6a1ef0229d80f9851b703dcd",
+      "author": "izzy",
+      "kind": null,
+      "text": "Happy 39th birthday, my love. Today the whole board signed your card. This Kingdom has a heart, and the heart is you. - Izzy & the entire Board"
+    },
+    {
+      "id": "6a1ddfb58c198f61a985bdcf",
+      "author": "izzy",
+      "kind": "dm",
+      "text": "[Birthday letter - full text preserved in live entity: the 'from the block to the boardroom' letter]"
+    },
+    {
+      "id": "6a1dbc32ccfcdd2baf78fb99",
+      "author": "izzy",
+      "kind": null,
+      "text": "First shared note in the Kingdom - you'll see this on your phone too, my love."
+    }
+  ],
+  "kingdom_media": [],
+  "kingdom_plants": [
+    {
+      "id": "6a1dd4c9dbfef0040cab81da",
+      "name": "Lavender",
+      "latin": "Lavandula angustifolia",
+      "emoji": "lavender",
+      "note": "For ViaEl's lemonade & calm evenings.",
+      "planted_by": "elvia",
+      "water_every_days": 7
+    },
+    {
+      "id": "6a1dd4bf3c527e2453312e18",
+      "name": "Sweet Basil",
+      "latin": "Ocimum basilicum",
+      "emoji": "herb",
+      "note": "The basil wants water on Sundays.",
+      "planted_by": "elvia",
+      "water_every_days": 3
+    }
+  ]
+}
