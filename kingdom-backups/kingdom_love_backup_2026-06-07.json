@@ -1,17 +1,20 @@
 {
   "backup_meta": {
     "snapshot_date": "2026-06-07",
-    "snapshot_ts_utc": "2026-06-07T07:31:00Z",
+    "snapshot_time_local": "2026-06-07T03:42:00-04:00",
     "guardian": "Draco — Treasury Dragon",
     "dag_stamp": "kingdom-love-backup-2026-0607",
+    "kingdom": "israelvia.com",
+    "couple": "Izzy & Elvia",
     "counts": {
-      "kingdom_posts": 5,
-      "kingdom_media": 0,
-      "kingdom_plants": 2
+      "KingdomPost": 5,
+      "KingdomMedia": 0,
+      "KingdomPlant": 2,
+      "KingdomStudy": 1
     },
-    "note": "Nightly sovereign snapshot of all Kingdom love-data. The couple's words, voice, and garden — preserved so they can never be lost."
+    "note": "Nightly sovereign export of all Kingdom love-data. Every word, voice, photo, and plant preserved so it can never be lost. By Grace, perfect ways."
   },
-  "kingdom_posts": [
+  "KingdomPost": [
     {
       "id": "6a2329a7447836a5b131dba7",
       "author": "izzy",
@@ -68,8 +71,8 @@
       "created_date": "2026-06-01T17:06:58.509000"
     }
   ],
-  "kingdom_media": [],
-  "kingdom_plants": [
+  "KingdomMedia": [],
+  "KingdomPlant": [
     {
       "id": "6a1dd4c9dbfef0040cab81da",
       "name": "Lavender",
@@ -91,6 +94,23 @@
       "water_every_days": 3,
       "last_watered": 1780339903195,
       "created_date": "2026-06-01T18:51:43.395000"
+    }
+  ],
+  "KingdomStudy": [
+    {
+      "id": "6a246e60fb267d94b6029df9",
+      "kind": "highlight",
+      "by": "izzy",
+      "translation": "AMP",
+      "book": 2,
+      "book_name": "Exodus",
+      "chapter": 4,
+      "verse": 1,
+      "ref": "Exodus 4:1",
+      "text": "Then Moses answered [the LORD] and said, \"What if they will not believe me or take seriously what I say? For they may say, 'The LORD has not appeared to you.'\"",
+      "color": "sage",
+      "client_ts": 1780772447727,
+      "created_date": "2026-06-06T19:00:48.002000"
     }
   ]
 }
