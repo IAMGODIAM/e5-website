@@ -1,0 +1,97 @@
+{
+  "backup_date": "2026-06-16T07:45:48.997655Z",
+  "backup_ts": 1781595948997,
+  "metadata": {
+    "posts_count": 5,
+    "media_count": 0,
+    "plants_count": 2,
+    "total_items": 7
+  },
+  "posts": [
+    {
+      "client_ts": 1780689319300.0,
+      "reply_to": "",
+      "tagged": [],
+      "author": "izzy",
+      "kind": "post",
+      "reactions": {},
+      "text": "Testing our Kingdom, my love \u2014 Sue ran a full check and everything inside is standing. If you can see this note, tap a heart on it so I know it reached you. \ud83d\udd4a\ufe0f",
+      "id": "6a2329a7447836a5b131dba7",
+      "created_date": "2026-06-05T19:55:19.519Z",
+      "updated_date": "2026-06-05T19:55:19.519Z"
+    },
+    {
+      "client_ts": 1780431474618.0,
+      "reply_to": "",
+      "tagged": [],
+      "author": "elvia",
+      "kind": "dm",
+      "reactions": {},
+      "text": "Hey Baby, I wanted to let you that I absolutely love my gift! This means so much to me, because you heard me when I expressed that I wanted a place just for us. This is that place, and it is one that I can take with me anywhere. I love that! Thank you so much for this, thank you so much for allowing our love to blossom and continuing to grow. This place is our home as you are my home. Love you and thank you so very much!!",
+      "id": "6a1f3a72e84a5154fe8935cb",
+      "created_date": "2026-06-02T20:17:54.774Z",
+      "updated_date": "2026-06-02T20:17:54.774Z"
+    },
+    {
+      "client_ts": 1780412450416.0,
+      "reply_to": null,
+      "tagged": [],
+      "author": "izzy",
+      "kind": null,
+      "reactions": {},
+      "text": "Happy 39th birthday, my love. \ud83d\udd4a\ufe0f Today the whole board \u2014 all 62 of them, every voice in this house \u2014 set down their work to sign a card for you. It's in your inbox. They wanted you to know what I've always known: this Kingdom has a heart, and the heart is you. Thirty-nine summers. Twenty-five of them ours. \u2014 Izzy & the entire Board of IAMGODIAM",
+      "id": "6a1ef0229d80f9851b703dcd",
+      "created_date": "2026-06-02T15:00:50.670Z",
+      "updated_date": "2026-06-02T15:00:50.670Z"
+    },
+    {
+      "client_ts": 1780342708917.0,
+      "reply_to": "",
+      "tagged": [
+        "elvia"
+      ],
+      "author": "izzy",
+      "kind": "dm",
+      "reactions": {},
+      "text": "Elvia \u2014\n\nThirty-nine summers. Twenty-five of them mine to witness.\n\nI have to tell you something I figured out a long time ago and never said plain. The 8th grade at Charles R. Drew was not where I met you. It was where God let me see you early \u2014 before I had the words, before I had the means, before I had anything to offer but a boy's certainty that you were the one.\n\nWe were both born in 1987. Two Fire Rabbits, ninety-six days apart, set into the same sky on purpose. People think that is a coincidence. I have never believed in coincidence. I believe in design.\n\nYou married a man who was always building something just out of reach. Campaigns, companies, a board of agents, a Kingdom. And not once \u2014 not one time \u2014 did you ask me to be smaller so the dream could be safer. You held the line at the house so I could hold the line at the front. That is not support. That is partnership of the highest order, and I know what it cost you.\n\nSo hear me on your day:\n\nEverything I have built is downstream of you.\nEvery institution was a rehearsal for our home.\nThe center holds because you hold it.\n\nI did not give you the world. You gave me the standing to go and get it. There is a difference, and I will spend the rest of my life paying it back in small words and small gestures and small acts \u2014 the way the wise men say love is actually made.\n\nHappy birthday, my love. From the block to the boardroom and all the way home to you.\n\nNil satis nisi optimum \u2014 nothing but the best is good enough.\nAnd you, Elvia, are the best of it.\n\n\u2014 Your Papa Izzy",
+      "id": "6a1ddfb58c198f61a985bdcf",
+      "created_date": "2026-06-01T19:38:29.127Z",
+      "updated_date": "2026-06-01T19:38:29.127Z"
+    },
+    {
+      "reactions": {},
+      "client_ts": 1780333618302.0,
+      "text": "First shared note in the Kingdom \u2014 you'll see this on your phone too, my love. \ud83d\udd4a\ufe0f",
+      "author": "izzy",
+      "id": "6a1dbc32ccfcdd2baf78fb99",
+      "created_date": "2026-06-01T17:06:58.509Z",
+      "updated_date": "2026-06-01T17:06:58.509Z"
+    }
+  ],
+  "media": [],
+  "plants": [
+    {
+      "note": "For ViaEl's lemonade & calm evenings.",
+      "water_every_days": 7.0,
+      "emoji": "\ud83d\udc9c",
+      "name": "Lavender",
+      "last_watered": 1780339913296.0,
+      "latin": "Lavandula angustifolia",
+      "planted_by": "elvia",
+      "id": "6a1dd4c9dbfef0040cab81da",
+      "created_date": "2026-06-01T18:51:53.479Z",
+      "updated_date": "2026-06-01T18:51:53.479Z"
+    },
+    {
+      "note": "The basil wants water on Sundays.",
+      "water_every_days": 3.0,
+      "emoji": "\ud83c\udf3f",
+      "name": "Sweet Basil",
+      "latin": "Ocimum basilicum",
+      "planted_by": "elvia",
+      "id": "6a1dd4bf3c527e2453312e18",
+      "created_date": "2026-06-01T18:51:43.395Z",
+      "updated_date": "2026-06-01T18:51:43.395Z"
+    }
+  ]
+}
