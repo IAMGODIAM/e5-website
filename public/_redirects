@@ -1,0 +1,13 @@
+# Legacy Ads-slug reface → canonical (Phase 2b, DAG warroom-website-overhaul-abc-2026-0619)
+/about-e5                     /about/                       301
+/about-us                     /about/                       301
+/contact-us                   /contact/                     301
+/faqs                         /about/                       301
+/e5-blog                      /gospel-of-love/              301
+/vlog                         /gospel-of-love/              301
+/love-offerings               /donate/                      301
+/support                      /support/                     301
+/reconstruction-and-repair    /programs/                    301
+/black-dragons-initiative-1   /black-dragons-initiative/   301
+/gospel-of-love-%2Four-blogs  /gospel-of-love/             301
+/gospel-of-love-/our-blogs    /gospel-of-love/             301
