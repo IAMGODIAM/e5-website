@@ -22,6 +22,15 @@ const siteUrl = 'https://e5enclave.com';
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+  <!-- Global Analytics: GA4 + Google Ads (site-wide tracking) — DAG warroom-karmelo-conversion-fire-2026-0619 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-05PYDYP5S0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-05PYDYP5S0', { anonymize_ip: true });
+    gtag('config', 'AW-16672489240');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
@@ -431,6 +440,26 @@ const siteUrl = 'https://e5enclave.com';
         });
       });
     }
+  </script>
+  <!-- Conversion fires on real CTA clicks (donate/contact) — DAG warroom-karmelo-conversion-fire-2026-0619 -->
+  <script>
+    (function(){
+      function fire(send_to){ try{ if(typeof gtag==='function'){ gtag('event','conversion',{'send_to':send_to}); } }catch(e){} }
+      document.addEventListener('click', function(e){
+        var a = e.target.closest && e.target.closest('a, button');
+        if(!a) return;
+        var href = (a.getAttribute('href')||'').toLowerCase();
+        var txt  = (a.textContent||'').toLowerCase();
+        // Donate intent: any link to /donate or external donate/zeffy/stripe, or a donate-labeled button
+        if(/\/donate\/?$/.test(href) || /zeffy|stripe|checkout|givebutter/.test(href) || (/donate|give/.test(txt) && a.classList.contains('btn--primary'))){
+          fire('AW-16672489240/_T-KCLGGnawcEJj-h44-'); // E5 — Donate Page CTA Click (PURCHASE)
+        }
+        // Contact intent: mailto or email-protection link, or contact-labeled card
+        else if(href.indexOf('mailto:')===0 || href.indexOf('/cdn-cgi/l/email-protection')===0){
+          fire('AW-16672489240/FeLJCIGooawcEJj-h44-'); // E5 — Contact Form Submitted (CONTACT)
+        }
+      }, true);
+    })();
   </script>
 </body>
 </html>
