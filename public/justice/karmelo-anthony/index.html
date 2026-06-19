@@ -1817,6 +1817,55 @@
   </div>
 </section>
 
+<!-- §02b APPEAL WATCH — auto-fed from approved TimelineCandidate items (DAG karmelo-appeal-watch-2026-0618) -->
+<section class="section" id="appeal-watch" style="border-top:1px solid var(--border);">
+  <style>
+    #appeal-watch .aw-wrap{max-width:980px;margin:0 auto;}
+    #appeal-watch .aw-sub{text-align:center;color:var(--js-white-dim,#c9c4b8);font-size:15px;line-height:1.65;max-width:600px;margin:0 auto 6px;font-family:var(--js-font-body,'Spectral',serif);}
+    #appeal-watch .aw-count{text-align:center;font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:0.08em;color:var(--js-white-dim,#c9c4b8);margin-bottom:26px;}
+    #appeal-watch .aw-feed{display:flex;flex-direction:column;gap:14px;}
+    #appeal-watch .aw-item{background:rgba(10,10,10,0.55);border:1px solid var(--border,#1c1c1c);border-left:3px solid var(--js-gold,#f5c518);border-radius:12px;padding:18px 22px;}
+    #appeal-watch .aw-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+    #appeal-watch .aw-date{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.06em;color:var(--js-gold,#f5c518);}
+    #appeal-watch .aw-tier{font-family:var(--js-font-head,'Oswald',sans-serif);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--js-white-dim,#c9c4b8);border:1px solid var(--border);border-radius:5px;padding:2px 7px;}
+    #appeal-watch .aw-head{font-family:var(--js-font-head,'Oswald',sans-serif);font-size:18px;line-height:1.25;color:var(--js-white,#f6f3ec);margin:0 0 6px;}
+    #appeal-watch .aw-body{font-family:var(--js-font-body,'Spectral',serif);font-size:15px;line-height:1.6;color:var(--js-white-dim,#c9c4b8);margin:0 0 8px;}
+    #appeal-watch .aw-src{font-size:12.5px;color:var(--js-white-dim,#c9c4b8);}
+    #appeal-watch .aw-src a{color:var(--js-gold,#f5c518);text-decoration:none;border-bottom:1px solid var(--js-gold-dim,rgba(245,197,24,0.4));}
+    #appeal-watch .aw-empty{text-align:center;color:var(--js-white-dim,#c9c4b8);font-family:var(--js-font-body,'Spectral',serif);padding:30px;}
+  </style>
+  <div class="wrap"><div class="aw-wrap">
+    <div class="section-head" style="text-align:center;">
+      <div class="meta"><span class="num">§02b</span> Appeal Watch</div>
+      <h2>The fight didn't end at the verdict. <em>It moved to the appeal.</em></h2>
+    </div>
+    <p class="aw-sub">Verified, Tier-A-sourced developments in the appeal — jury composition, reviewable legal error, and the documented record. Updated as the case moves.</p>
+    <div class="aw-count" id="awCount">Loading developments…</div>
+    <div class="aw-feed" id="awFeed"></div>
+  </div></div>
+  <script>
+  (function(){
+    var FN="https://sue-45c3e283.base44.app/functions/karmeloTimelineFeed?mode=feed";
+    var feed=document.getElementById('awFeed'), cnt=document.getElementById('awCount');
+    function esc(t){var d=document.createElement('div');d.textContent=t||'';return d.innerHTML;}
+    function render(list){
+      if(!list||!list.length){feed.innerHTML='<div class="aw-empty">Developments will appear here as the appeal proceeds.</div>';cnt.textContent='';return;}
+      cnt.textContent=list.length+' verified development'+(list.length===1?'':'s')+' on the record';
+      feed.innerHTML=list.map(function(it){
+        var src=esc(it.outlet||'');
+        if(it.url){src='<a href="'+esc(it.url)+'" target="_blank" rel="noopener">'+src+' ↗</a>';}
+        var tier=it.tier?'<span class="aw-tier">Tier '+esc(it.tier)+'</span>':'';
+        return '<div class="aw-item"><div class="aw-top"><span class="aw-date">'+esc(it.date)+'</span>'+tier+'</div>'+
+               '<h3 class="aw-head">'+esc(it.headline)+'</h3>'+
+               '<p class="aw-body">'+esc(it.summary)+'</p>'+
+               '<div class="aw-src">Source: '+src+'</div></div>';
+      }).join('');
+    }
+    fetch(FN).then(function(r){return r.json();}).then(function(d){render((d.items||[]).slice(0,12));}).catch(function(){cnt.textContent='';feed.innerHTML='<div class="aw-empty">Developments will appear here as the appeal proceeds.</div>';});
+  })();
+  </script>
+</section>
+
 <!-- §03 THE LAW -->
 <section class="section" id="law">
   <div class="wrap">
@@ -1868,6 +1917,7 @@
         <h4>This File</h4>
         <a href="#record">§01 The Record</a>
         <a href="#facts">§02 The Facts</a>
+        <a href="#appeal-watch">§02b Appeal Watch</a>
         <a href="#law">§03 The Law</a>
         <a href="#stand">§04 Stand Up</a>
       </div>
