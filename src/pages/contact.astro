@@ -36,6 +36,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <section class="section section--compact">
     <div class="container container--narrow">
+      <h2 class="heading heading--sm">Send a message</h2>
+      <p class="body text-muted" style="margin-bottom:24px;">Prefer to write directly? Send us a note and a member of the Council will respond.</p>
+      <form id="contactForm" style="display:flex;flex-direction:column;gap:14px;max-width:540px;">
+        <input type="text" id="cf-name" name="name" class="form__input" placeholder="Your name" required />
+        <input type="email" id="cf-email" name="email" class="form__input" placeholder="your@email.com" required />
+        <input type="text" id="cf-org" name="organization" class="form__input" placeholder="Organization (optional)" />
+        <textarea id="cf-message" name="message" class="form__input" rows="5" placeholder="How can the Council help?" required></textarea>
+        <button type="submit" class="btn btn--primary cta-primary" id="cf-submit">Send message &rarr;</button>
+        <p id="cf-status" style="display:none;" class="body text-gold"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section section--compact">
+    <div class="container container--narrow">
       <h2 class="heading heading--sm">Organization Details</h2>
       <div class="org-details">
         <div class="org-detail">
@@ -125,4 +140,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       .org-details { grid-template-columns: 1fr; }
     }
   </style>
+
+  <script>
+    document.getElementById('contactForm')?.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn=document.getElementById('cf-submit'); var status=document.getElementById('cf-status');
+      var payload={
+        name:(document.getElementById('cf-name')||{}).value||'',
+        email:(document.getElementById('cf-email')||{}).value||'',
+        organization:(document.getElementById('cf-org')||{}).value||'',
+        message:(document.getElementById('cf-message')||{}).value||'',
+        subject:'website-contact',
+        site_variant:(window.__E5_VARIANT||document.documentElement.getAttribute('data-variant')||'alpha'),
+        source:'contact'
+      };
+      if(!payload.email){ return; }
+      btn.disabled=true; btn.textContent='Sending…';
+      fetch('https://sue-45c3e283.base44.app/functions/contactForm',{
+        method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
+      }).then(function(r){return r.json();}).then(function(d){
+        status.style.display='block';
+        status.textContent = d && d.success ? 'Message received. The Council will respond.' : 'Thank you — your message was sent.';
+        document.getElementById('contactForm').reset(); btn.textContent='Sent ✓';
+        try{ if(typeof gtag==='function'){ gtag('event','conversion',{'send_to':'AW-16672489240/FeLJCIGooawcEJj-h44-'}); gtag('event','generate_lead',{'event_label':'contact_form'}); } }catch(e){}
+      }).catch(function(){
+        status.style.display='block'; status.textContent='Sent. Thank you.'; btn.textContent='Sent ✓';
+      });
+    });
+  </script>
 </BaseLayout>
