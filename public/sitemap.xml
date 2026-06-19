@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://iamgodiam.github.io/e5-enclave-editorial-homepage/</loc>
-    <lastmod>2026-05-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://e5enclave.com/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/about/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/mission/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/pillars/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/programs/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/programs/mccartney-academy/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/programs/lineage-farms/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/programs/black-dragons-initiative/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/black-dragons-initiative/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/donate/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/coalition/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/coalition/apply/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/contact/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/faq/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/governance/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/record/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/record/measure-the-wound/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/record/parallel-negros/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/restitution-246/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/farmblock/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/justice/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/justice/karmelo-anthony/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/accessibility/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/privacy-policy/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/terms-of-service/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/disclosures/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/donor-privacy/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>
