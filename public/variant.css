@@ -88,7 +88,8 @@ html[data-variant="charlie"] body::after {
 html[data-variant="charlie"] body { padding-top:0; }
 #e5-char-banner {
   background:linear-gradient(90deg,#070708,#1a0606 55%,#6b1414);
-  color:#ece6d8; padding:14px 5vw; display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center;
+  color:#ece6d8; padding:16px 5vw; display:flex; flex-wrap:wrap; gap:12px 20px; align-items:center;
+  min-height:52px;
   border-bottom:1px solid rgba(236,230,216,.18); position:relative; z-index:50;
 }
 #e5-char-banner .e5-char-kick {
