@@ -1,0 +1,57 @@
+/* E5 A/B/C VARIANT LAYERS — DAG warroom-website-overhaul-abc-2026-0619
+   Alpha = control (no overrides). Beta = conversion polish. Charlie = radically bold Black-First. */
+
+/* ============ BETA — "The Funnel" (conversion-optimized, same brand DNA) ============ */
+html[data-variant="beta"] {
+  --e5-cta: #c9a84c;
+}
+/* one dominant CTA: dim secondary nav CTAs, amplify primary */
+html[data-variant="beta"] .btn-primary, html[data-variant="beta"] a.cta-primary {
+  box-shadow: 0 0 0 2px rgba(201,168,76,.35), 0 8px 28px rgba(201,168,76,.22);
+  transform: translateZ(0);
+  animation: e5beta-pulse 2.6s ease-in-out infinite;
+}
+@keyframes e5beta-pulse { 0%,100%{box-shadow:0 0 0 2px rgba(201,168,76,.30),0 8px 24px rgba(201,168,76,.18)} 50%{box-shadow:0 0 0 3px rgba(201,168,76,.55),0 12px 34px rgba(201,168,76,.34)} }
+/* sticky bottom CTA bar (injected by variant.js) */
+html[data-variant="beta"] #e5-sticky-cta {
+  position: fixed; left:0; right:0; bottom:0; z-index:9000;
+  background: #0b0b0d; border-top: 1px solid rgba(201,168,76,.4);
+  padding: 12px 16px; display:flex; gap:12px; align-items:center; justify-content:center;
+  font-family: inherit; color:#f4f1e8;
+}
+html[data-variant="beta"] #e5-sticky-cta a {
+  background:#c9a84c; color:#0b0b0d; padding:10px 20px; border-radius:6px; font-weight:700; text-decoration:none;
+}
+/* live supporter counter chip */
+html[data-variant="beta"] #e5-proof { color:#c9a84c; font-weight:700; }
+
+/* ============ CHARLIE — "The Reckoning" (RADICALLY BOLD, Black-First Sovereign) ============ */
+html[data-variant="charlie"] {
+  --char-ox: #6b1414; --char-obsidian:#070708; --char-bone:#ece6d8;
+  background: var(--char-obsidian) !important;
+}
+html[data-variant="charlie"] body { background: var(--char-obsidian); color: var(--char-bone); }
+/* oversized kinetic display type */
+html[data-variant="charlie"] h1 {
+  font-size: clamp(3.2rem, 11vw, 9rem) !important;
+  line-height: .92 !important; letter-spacing: -.02em;
+  text-shadow: 0 0 60px rgba(107,20,20,.5);
+}
+/* oxblood accent everywhere gold was */
+html[data-variant="charlie"] a, html[data-variant="charlie"] .accent { color: var(--char-ox); }
+html[data-variant="charlie"] .btn-primary, html[data-variant="charlie"] a.cta-primary {
+  background: var(--char-ox) !important; color: var(--char-bone) !important;
+  border:1px solid rgba(236,230,216,.25); letter-spacing:.04em; text-transform:uppercase;
+}
+/* scroll-reveal sections fade up */
+html[data-variant="charlie"] [data-reveal] { opacity:0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+html[data-variant="charlie"] [data-reveal].in { opacity:1; transform:none; }
+/* heavy vignette / cinematic frame */
+html[data-variant="charlie"] body::after {
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:1;
+  box-shadow: inset 0 0 220px 60px rgba(0,0,0,.85);
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-variant="charlie"] [data-reveal]{opacity:1;transform:none;transition:none}
+  html[data-variant="beta"] .btn-primary{animation:none}
+}
