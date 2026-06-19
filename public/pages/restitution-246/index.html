@@ -1,15 +1,1092 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Restitution 246 — E5 Enclave</title>
-<meta name="description" content="Restitution 246 — the wage-loss and opportunity-loss framework — E5 Enclave"/>
-<link rel="canonical" href="https://e5enclave.com/pages/restitution-246/"/>
-<meta http-equiv="refresh" content="0; url=https://e5enclave.com/pages/restitution-246/"/>
-<style>body{font-family:serif;background:#0a0908;color:#f4eee2;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;text-align:center;}</style>
+<title>Restitution 246 — A Framework in Five Questions | E5 Enclave</title>
+<meta name="description" content="Restitution 246 — a disciplined wage-loss and opportunity-loss framework for the 246 years of stolen labor under American chattel slavery. Five sequential questions, anchored to the Craemer (2015) methodology. By Lloyd Kelly, E5 Enclave."/>
+<link rel="canonical" href="https://e5enclave.com/restitution-246/"/>
+<meta property="og:title" content="Restitution 246 — A Framework in Five Questions"/>
+<meta property="og:description" content="The theft of labor. 246 years. A framework in five sequential questions — moral, legal, economic, structural."/>
+<meta property="og:url" content="https://e5enclave.com/restitution-246/"/>
+<meta property="og:type" content="article"/>
+<meta name="author" content="Lloyd Kelly"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"Restitution 246 — Wage-Loss and Opportunity-Loss Framework","description":"A disciplined wage-loss and opportunity-loss framework for the 246 years of stolen labor under American chattel slavery. Anchored to the Craemer (2015) wage-hour methodology.","creator":{"@type":"Organization","name":"E5 Enclave Inc","@id":"https://e5enclave.com/#organization"},"author":{"@type":"Person","name":"Lloyd Kelly"},"license":"https://creativecommons.org/publicdomain/zero/1.0/","url":"https://e5enclave.com/restitution-246/","citation":"Craemer, T. (2015). Estimating Slavery Reparations. Social Science Quarterly."}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-05PYDYP5S0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-05PYDYP5S0');gtag('config','AW-16672489240');</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,400;1,6..96,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ——— REPARATIONS | RESTORATION — EDITORIAL STYLES ——— */
+
+:root {
+  --ink: #0b0b0c;
+  --ink-soft: #1a1a1c;
+  --cream: #f3efe6;
+  --cream-deep: #e8e1d2;
+  --paper: #faf6ec;
+  --oxblood: #5c1a1b;
+  --oxblood-deep: #3d1011;
+  --champagne: oklch(0.78 0.07 85);
+  --gold: oklch(0.72 0.09 82);
+  --rule: rgba(11,11,12,0.18);
+  --rule-dark: rgba(243,239,230,0.18);
+  --serif-display: "Bodoni Moda", "Didot", "Times New Roman", serif;
+  --serif-text: "Cormorant Garamond", "Garamond", serif;
+  --sans: "Inter Tight", ui-sans-serif, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--serif-text);
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* ——— MICRO ——— */
+.micro { font-family: var(--sans); font-size: 10.5px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; }
+.micro-lg { font-size: 12px; letter-spacing: 0.28em; }
+.caption { font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 0.08em; color: rgba(11,11,12,0.55); }
+.dark .caption { color: rgba(243,239,230,0.55); }
+
+/* ——— TOPBAR ——— */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 60;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 40px;
+  background: linear-gradient(to bottom, rgba(11,11,12,0.6), rgba(11,11,12,0));
+  color: var(--cream);
+  pointer-events: none;
+  transition: background 0.4s, color 0.4s;
+}
+.topbar.light {
+  background: linear-gradient(to bottom, rgba(250,246,236,0.9), rgba(250,246,236,0));
+  color: var(--ink);
+}
+.topbar .mark { font-family: var(--serif-display); font-size: 14px; letter-spacing: 0.04em; font-weight: 500; }
+.topbar .mark em { font-style: italic; font-weight: 400; opacity: 0.75; }
+.topbar .folio { font-family: var(--sans); font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; opacity: 0.8; }
+
+/* ——— COVER ——— */
+.cover {
+  position: relative;
+  min-height: 100vh;
+  background: var(--ink);
+  color: var(--cream);
+  overflow: hidden;
+}
+.cover::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(92,26,27,0.32), transparent 55%),
+    radial-gradient(ellipse at 85% 80%, rgba(11,11,12,1), transparent 60%),
+    repeating-linear-gradient(90deg, transparent 0 79px, rgba(243,239,230,0.018) 79px 80px);
+  pointer-events: none;
+}
+.cover::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 120%, rgba(243,239,230,0.03), transparent 50%);
+  pointer-events: none;
+}
+.cover-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-rows: 1fr auto;
+  align-content: space-between;
+  min-height: 100vh;
+  padding: 120px 64px 56px;
+}
+.cover-folio {
+  position: absolute; top: 28px; left: 64px; right: 64px;
+  display: flex; justify-content: space-between; z-index: 3;
+}
+.cover-folio .l { color: var(--champagne); opacity: 0.9; }
+.cover-folio .r { color: rgba(243,239,230,0.65); }
+.cover-plate { text-align: center; align-self: center; margin: auto 0; padding: 40px 0; }
+.cover-eyebrow {
+  font-family: var(--sans); font-size: 11px; letter-spacing: 0.5em; text-transform: uppercase;
+  color: var(--champagne);
+  margin-bottom: 40px;
+  display: inline-flex; align-items: center; gap: 18px;
+}
+.cover-eyebrow::before, .cover-eyebrow::after {
+  content: ""; width: 48px; height: 1px; background: var(--champagne); opacity: 0.85;
+}
+.cover-title {
+  font-family: var(--serif-display);
+  font-weight: 500;
+  font-size: clamp(64px, 11vw, 168px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  font-optical-sizing: auto;
+}
+.cover-title .bar { display: inline-block; color: var(--champagne); font-weight: 300; margin: 0 0.12em; transform: translateY(-0.08em); }
+.cover-title .restoration { font-style: italic; font-weight: 400; }
+.cover-sub {
+  margin-top: 36px;
+  font-family: var(--serif-text); font-style: italic; font-weight: 300;
+  font-size: clamp(18px, 1.6vw, 24px);
+  letter-spacing: 0.02em;
+  color: rgba(243,239,230,0.8);
+}
+.cover-foot {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  align-items: end;
+  gap: 24px;
+  padding-top: 40px;
+  border-top: 1px solid var(--rule-dark);
+}
+.cover-foot .col { font-family: var(--sans); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(243,239,230,0.7); }
+.cover-foot .col.mid { text-align: center; color: var(--champagne); letter-spacing: 0.35em; }
+.cover-foot .col.right { text-align: right; }
+.cover-foot .col strong { display: block; color: var(--cream); font-weight: 500; margin-bottom: 4px; letter-spacing: 0.18em; }
+
+.scroll-hint {
+  position: absolute; left: 50%; bottom: 56px;
+  transform: translateX(-50%);
+  font-family: var(--sans); font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+  color: rgba(243,239,230,0.6);
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  z-index: 3;
+}
+.scroll-hint .line {
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, var(--champagne), transparent);
+  animation: drip 2.8s ease-in-out infinite;
+  transform-origin: top;
+}
+@keyframes drip {
+  0%,100% { transform: scaleY(0.3); opacity: 0.3; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
+
+/* ——— SECTION SCAFFOLD ——— */
+section { position: relative; }
+.plate { padding: 140px 80px; max-width: 1440px; margin: 0 auto; }
+.dark { background: var(--ink); color: var(--cream); }
+.deep { background: var(--oxblood-deep); color: var(--cream); }
+
+/* chapter header */
+.chapter-head {
+  display: grid; grid-template-columns: 200px 1fr;
+  gap: 80px; align-items: start;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 80px;
+}
+.dark .chapter-head, .deep .chapter-head { border-color: var(--rule-dark); }
+.chapter-num {
+  font-family: var(--serif-display); font-style: italic; font-weight: 400;
+  font-size: 148px; line-height: 0.85;
+  color: var(--oxblood);
+  letter-spacing: -0.04em;
+}
+.dark .chapter-num, .deep .chapter-num { color: var(--champagne); }
+.chapter-num::after {
+  content: ""; display: block; width: 64px; height: 1px; background: currentColor;
+  margin-top: 24px; opacity: 0.5;
+}
+.chapter-kicker {
+  font-family: var(--sans); font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--oxblood); margin-bottom: 22px;
+}
+.dark .chapter-kicker, .deep .chapter-kicker { color: var(--champagne); }
+.chapter-title {
+  font-family: var(--serif-display); font-weight: 500;
+  font-size: clamp(40px, 5.2vw, 72px);
+  line-height: 1.02; letter-spacing: -0.015em;
+  max-width: 20ch;
+}
+.chapter-answer {
+  margin-top: 40px;
+  display: inline-flex; align-items: baseline; gap: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule);
+}
+.dark .chapter-answer, .deep .chapter-answer { border-color: var(--rule-dark); }
+.chapter-answer .lbl { font-family: var(--sans); font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(11,11,12,0.55); }
+.dark .chapter-answer .lbl, .deep .chapter-answer .lbl { color: rgba(243,239,230,0.55); }
+.chapter-answer .val {
+  font-family: var(--serif-display); font-style: italic; font-weight: 500;
+  font-size: 40px; letter-spacing: -0.01em;
+  color: var(--oxblood);
+}
+.dark .chapter-answer .val, .deep .chapter-answer .val { color: var(--champagne); }
+
+/* body columns */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+.body-prose p {
+  font-family: var(--serif-text);
+  font-size: 20px; line-height: 1.55;
+  margin-bottom: 1.1em;
+  max-width: 36em;
+}
+.body-prose p.lead { font-size: 24px; line-height: 1.42; }
+.body-prose p.lead .dropcap {
+  float: left;
+  font-family: var(--serif-display); font-weight: 500;
+  font-size: 86px; line-height: 0.85;
+  padding: 6px 14px 0 0;
+  color: var(--oxblood);
+}
+.dark .body-prose p.lead .dropcap, .deep .body-prose p.lead .dropcap { color: var(--champagne); }
+.body-prose .accent { color: var(--oxblood); font-weight: 500; }
+.dark .body-prose .accent, .deep .body-prose .accent { color: var(--champagne); font-weight: 500; }
+
+.pull-quote {
+  font-family: var(--serif-display);
+  font-style: italic; font-weight: 400;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.2; letter-spacing: -0.005em;
+  padding: 24px 0 24px 32px;
+  border-left: 2px solid var(--oxblood);
+  max-width: 22ch;
+}
+.dark .pull-quote, .deep .pull-quote { border-left-color: var(--champagne); color: var(--cream); }
+
+/* ——— PREMISE ——— */
+.premise { background: var(--paper); }
+.premise-grid {
+  display: grid; grid-template-columns: 1fr 1.3fr;
+  gap: 120px; align-items: start;
+}
+.premise-kicker {
+  font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--oxblood); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 16px;
+}
+.premise-kicker::before { content: ""; width: 28px; height: 1px; background: var(--oxblood); }
+.premise-title {
+  font-family: var(--serif-display); font-weight: 500;
+  font-size: clamp(34px, 3.8vw, 56px);
+  line-height: 1.05; letter-spacing: -0.01em;
+  margin-bottom: 36px;
+}
+.premise-title em { font-style: italic; font-weight: 400; color: var(--oxblood); }
+.premise-note {
+  padding: 40px;
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--oxblood);
+  margin-top: 48px;
+}
+.premise-note .micro { color: var(--oxblood); margin-bottom: 14px; display: block; }
+.premise-note p { font-size: 18px; line-height: 1.5; }
+.premise-note p + p { margin-top: 12px; }
+
+/* ——— LEDGER ——— */
+.ledger { margin-top: 40px; border-top: 2px solid var(--ink); }
+.ledger-head {
+  display: grid; grid-template-columns: 80px 1.1fr 2fr;
+  padding: 16px 0; gap: 40px;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(11,11,12,0.6);
+}
+.ledger-row {
+  display: grid; grid-template-columns: 80px 1.1fr 2fr;
+  padding: 32px 0; gap: 40px;
+  border-bottom: 1px solid var(--rule);
+  align-items: baseline;
+}
+.ledger-row .idx { font-family: var(--serif-display); font-style: italic; font-weight: 400; font-size: 28px; color: var(--oxblood); }
+.ledger-row .name { font-family: var(--serif-display); font-size: 26px; font-weight: 500; letter-spacing: -0.005em; line-height: 1.15; }
+.ledger-row .desc { font-family: var(--serif-text); font-size: 18px; line-height: 1.5; color: rgba(11,11,12,0.78); max-width: 48em; }
+.ledger-foot {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 36px 0 0;
+  border-top: 2px solid var(--ink);
+  margin-top: 8px;
+}
+.ledger-foot .label { font-family: var(--serif-display); font-style: italic; font-weight: 500; font-size: 32px; }
+.ledger-foot .value { font-family: var(--serif-display); font-weight: 500; font-size: 32px; color: var(--oxblood); letter-spacing: -0.01em; }
+
+/* ——— NUMBER / CERTIFICATE ——— */
+.q4 { background: var(--oxblood-deep); color: var(--cream); overflow: hidden; }
+.q4::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(243,239,230,0.08), transparent 55%),
+    radial-gradient(ellipse at 50% 120%, rgba(11,11,12,0.6), transparent 60%);
+  pointer-events: none;
+}
+.q4 .plate { position: relative; z-index: 2; }
+.number-cert {
+  text-align: center;
+  padding: 80px 40px;
+  border-top: 1px solid var(--champagne);
+  border-bottom: 1px solid var(--champagne);
+  position: relative;
+  margin: 40px 0 80px;
+}
+.number-cert::before, .number-cert::after {
+  content: ""; position: absolute; width: 24px; height: 24px; border: 1px solid var(--champagne);
+}
+.number-cert::before { top: -12px; left: -12px; border-right: 0; border-bottom: 0; }
+.number-cert::after { bottom: -12px; right: -12px; border-left: 0; border-top: 0; }
+.number-seal {
+  font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.5em; text-transform: uppercase;
+  color: var(--champagne); margin-bottom: 28px;
+}
+.number-big {
+  font-family: var(--serif-display); font-weight: 500;
+  font-size: clamp(100px, 18vw, 280px);
+  line-height: 0.9; letter-spacing: -0.04em;
+  color: var(--cream);
+}
+.number-big .sign { font-weight: 300; color: var(--champagne); font-size: 0.6em; vertical-align: 0.3em; margin-right: 0.08em; }
+.number-big .unit { font-style: italic; font-weight: 400; font-size: 0.56em; color: var(--champagne); margin-left: 0.1em; letter-spacing: -0.02em; }
+.number-sub {
+  margin-top: 36px;
+  font-family: var(--serif-display); font-style: italic; font-weight: 400;
+  font-size: clamp(20px, 1.8vw, 26px);
+  color: rgba(243,239,230,0.88);
+}
+.number-foot-rule {
+  margin-top: 28px;
+  font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.4em; text-transform: uppercase;
+  color: rgba(243,239,230,0.55);
+}
+
+/* mechanism triptych */
+.mechanism {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--champagne);
+  margin-top: 40px; border: 1px solid var(--champagne);
+}
+.mechanism .cell {
+  background: var(--oxblood-deep);
+  padding: 44px 36px; min-height: 320px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.mechanism .cell .top { display: flex; justify-content: space-between; align-items: baseline; }
+.mechanism .cell .num { font-family: var(--serif-display); font-style: italic; font-weight: 400; font-size: 46px; color: var(--champagne); line-height: 1; }
+.mechanism .cell .tag { font-family: var(--sans); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(243,239,230,0.6); }
+.mechanism .cell h3 { margin: 40px 0 18px; font-family: var(--serif-display); font-weight: 500; font-size: 26px; line-height: 1.15; letter-spacing: -0.005em; }
+.mechanism .cell p { font-size: 16px; line-height: 1.5; color: rgba(243,239,230,0.82); max-width: 30em; }
+
+/* yield */
+.yield-row {
+  margin-top: 80px;
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: 48px; align-items: center;
+  padding: 48px 0;
+  border-top: 1px solid var(--rule-dark);
+  border-bottom: 1px solid var(--rule-dark);
+}
+.yield-row .lhs, .yield-row .rhs {
+  font-family: var(--serif-text); font-size: 18px; line-height: 1.5;
+  color: rgba(243,239,230,0.85); max-width: 28em;
+}
+.yield-row .rhs { text-align: right; justify-self: end; }
+.yield-center { text-align: center; }
+.yield-center .pct {
+  font-family: var(--serif-display); font-weight: 500;
+  font-size: 88px; line-height: 1; letter-spacing: -0.02em; color: var(--champagne);
+}
+.yield-center .pct em { font-style: italic; font-weight: 400; }
+.yield-center .lbl { font-family: var(--sans); font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(243,239,230,0.65); margin-top: 10px; }
+
+/* ——— BUREAU ——— */
+.bureau { background: var(--ink); color: var(--cream); }
+.bureau-hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 100px; align-items: center; }
+.bureau-seal { max-width: 440px; justify-self: end; aspect-ratio: 1/1; }
+.bureau-title { font-family: var(--serif-display); font-weight: 500; font-size: clamp(44px, 5vw, 76px); line-height: 1; letter-spacing: -0.015em; }
+.bureau-title em { font-style: italic; font-weight: 400; color: var(--champagne); }
+.bureau-sub { margin-top: 22px; font-family: var(--serif-text); font-style: italic; font-size: 22px; color: rgba(243,239,230,0.8); max-width: 30em; }
+.bureau-body { margin-top: 28px; font-family: var(--serif-text); font-size: 19px; line-height: 1.55; color: rgba(243,239,230,0.78); max-width: 34em; }
+
+.mandates { margin-top: 100px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--rule-dark); }
+.mandate { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 40px 48px 40px 0; border-bottom: 1px solid var(--rule-dark); }
+.mandate:nth-child(odd) { padding-right: 64px; border-right: 1px solid var(--rule-dark); }
+.mandate:nth-child(even) { padding-left: 48px; }
+.mandate .num { font-family: var(--serif-display); font-style: italic; font-weight: 400; font-size: 38px; color: var(--champagne); line-height: 1; }
+.mandate h4 { font-family: var(--serif-display); font-weight: 500; font-size: 23px; margin-bottom: 10px; letter-spacing: -0.005em; }
+.mandate p { font-family: var(--serif-text); font-size: 17px; line-height: 1.5; color: rgba(243,239,230,0.78); }
+
+/* ——— Q5 ——— */
+.q5 { background: var(--paper); }
+.elig-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 100px; }
+.elig-criteria { border-top: 1px solid var(--ink); margin-top: 20px; }
+.elig-criteria .row { display: grid; grid-template-columns: 60px 1fr; padding: 28px 0; border-bottom: 1px solid var(--rule); align-items: start; }
+.elig-criteria .row .mk { font-family: var(--serif-display); font-style: italic; font-weight: 400; font-size: 26px; color: var(--oxblood); line-height: 1; }
+.elig-criteria .row .txt { font-family: var(--serif-text); font-size: 21px; line-height: 1.4; }
+.elig-criteria .row .txt strong { font-weight: 500; color: var(--oxblood); }
+
+/* ——— SUMMARY ——— */
+.summary { background: var(--cream); }
+.summary-title { font-family: var(--serif-display); font-weight: 500; font-size: clamp(40px, 4.5vw, 64px); line-height: 1.04; letter-spacing: -0.01em; margin-bottom: 56px; max-width: 20ch; }
+.summary-title em { font-style: italic; color: var(--oxblood); font-weight: 400; }
+.summary-table { border-top: 2px solid var(--ink); }
+.summary-row { display: grid; grid-template-columns: 80px 1.4fr 1fr; gap: 40px; padding: 36px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+.summary-row .qnum { font-family: var(--serif-display); font-style: italic; font-weight: 500; font-size: 40px; color: var(--oxblood); line-height: 1; }
+.summary-row .q { font-family: var(--serif-display); font-size: 22px; font-weight: 500; letter-spacing: -0.005em; line-height: 1.2; }
+.summary-row .a { font-family: var(--serif-text); font-size: 20px; line-height: 1.4; color: var(--ink); }
+.summary-row .a strong { color: var(--oxblood); font-weight: 500; }
+
+/* ——— CLOSING ——— */
+.closing { background: var(--ink); color: var(--cream); padding: 180px 80px 64px; text-align: center; position: relative; overflow: hidden; }
+.closing::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(92,26,27,0.28), transparent 65%);
+  pointer-events: none;
+}
+.closing-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; }
+.closing .kicker { font-family: var(--sans); font-size: 11px; color: var(--champagne); margin-bottom: 48px; letter-spacing: 0.5em; text-transform: uppercase; }
+.closing-headline { font-family: var(--serif-display); font-weight: 500; font-size: clamp(44px, 5.5vw, 82px); line-height: 1.04; letter-spacing: -0.015em; max-width: 16ch; margin: 0 auto; }
+.closing-headline em { font-style: italic; font-weight: 400; color: var(--champagne); }
+.closing-body { margin: 56px auto 80px; font-family: var(--serif-text); font-style: italic; font-weight: 300; font-size: clamp(20px, 1.7vw, 25px); line-height: 1.5; max-width: 42em; color: rgba(243,239,230,0.85); }
+.colophon { border-top: 1px solid var(--rule-dark); padding-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(243,239,230,0.55); }
+.colophon .mid { text-align: center; color: var(--champagne); letter-spacing: 0.45em; }
+.colophon .right { text-align: right; }
+.colophon strong { display: block; color: var(--cream); font-weight: 500; margin-bottom: 6px; letter-spacing: 0.22em; }
+
+/* ——— REVEAL ——— */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 1.2s ease, transform 1.2s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-slow { transition-duration: 1.8s; }
+
+/* ——— TWEAKS PANEL ——— */
+.tweaks {
+  position: fixed; right: 24px; bottom: 24px; z-index: 100;
+  background: var(--ink); color: var(--cream);
+  padding: 22px 22px 18px;
+  width: 284px;
+  border: 1px solid var(--champagne);
+  font-family: var(--sans);
+  display: none;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+}
+.tweaks.on { display: block; }
+.tweaks h5 { font-family: var(--serif-display); font-style: italic; font-weight: 500; font-size: 20px; margin-bottom: 2px; color: var(--champagne); letter-spacing: 0.01em; }
+.tweaks .tw-sub { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(243,239,230,0.55); margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid rgba(243,239,230,0.15); }
+.tweaks .tw-group { margin-bottom: 14px; }
+.tweaks .tw-lbl { font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(243,239,230,0.65); margin-bottom: 8px; }
+.tweaks .tw-opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.tweaks button {
+  background: transparent; border: 1px solid rgba(243,239,230,0.22);
+  color: var(--cream); font-family: var(--sans); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 8px 4px; cursor: pointer; transition: all 0.2s;
+}
+.tweaks button:hover { border-color: var(--champagne); }
+.tweaks button.active { background: var(--champagne); color: var(--ink); border-color: var(--champagne); }
+
+/* accent variants */
+body.accent-oxblood { /* default */ }
+body.accent-forest { --oxblood: #1e3a2a; --oxblood-deep: #102418; }
+body.accent-midnight { --oxblood: #1a2348; --oxblood-deep: #0d1430; }
+body.accent-graphite { --oxblood: #2a2a2e; --oxblood-deep: #151518; }
+
+body.paper-cream { /* default */ }
+body.paper-bone { --cream: #efe9dd; --paper: #f3ede0; --cream-deep: #e3dcca; }
+body.paper-slate { --cream: #e4e3df; --paper: #ecece9; --cream-deep: #d6d6d2; }
+
+/* responsive */
+@media (max-width: 900px) {
+  .plate { padding: 100px 28px; }
+  .cover-inner { padding: 100px 28px 40px; }
+  .cover-folio { left: 28px; right: 28px; }
+  .two-col, .premise-grid, .elig-grid, .bureau-hero { grid-template-columns: 1fr; gap: 48px; }
+  .chapter-head { grid-template-columns: 1fr; gap: 24px; }
+  .chapter-num { font-size: 96px; }
+  .mechanism { grid-template-columns: 1fr; }
+  .mandates { grid-template-columns: 1fr; }
+  .mandate:nth-child(odd) { padding-right: 0; border-right: 0; }
+  .mandate:nth-child(even) { padding-left: 0; }
+  .ledger-row, .ledger-head { grid-template-columns: 40px 1fr; gap: 20px; }
+  .ledger-row .desc, .ledger-head .h-desc { grid-column: 2; padding-top: 10px; }
+  .summary-row { grid-template-columns: 50px 1fr; gap: 20px; }
+  .summary-row .a { grid-column: 2; padding-top: 10px; }
+  .cover-foot { grid-template-columns: 1fr; text-align: left; gap: 20px; }
+  .cover-foot .col.mid, .cover-foot .col.right { text-align: left; }
+  .yield-row { grid-template-columns: 1fr; }
+  .yield-row .rhs { text-align: left; justify-self: start; }
+  .topbar .folio { display: none; }
+  .bureau-seal { justify-self: start; }
+}
+[data-screen-label] { scroll-margin-top: 40px; }
+
+</style>
 </head>
-<body>
-<p>Redirecting to <a href="https://e5enclave.com/pages/restitution-246/">Restitution 246</a>…</p>
+<body class="accent-oxblood paper-cream">
+<div id="app"></div>
+<script>
+// ——— REPARATIONS | RESTORATION — CONTENT & RENDER ———
+
+const html = `
+<div class="topbar" id="topbar">
+  <div class="mark">Reparations <em>|</em> Restoration</div>
+  <div class="folio">A Framework · Developed by Lloyd Kelly</div>
+</div>
+
+<!-- COVER -->
+<section class="cover" data-screen-label="00 Cover">
+  <div class="cover-inner">
+    <div class="cover-folio">
+      <div class="micro l">Volume I · Folio 01</div>
+      <div class="micro r">MMXXVI</div>
+    </div>
+
+    <div class="cover-plate">
+      <div class="cover-eyebrow">A Framework in Five Questions</div>
+      <h1 class="cover-title">
+        <span>Reparations</span><br/>
+        <span class="bar">|</span>
+        <span class="restoration">Restoration</span>
+      </h1>
+      <div class="cover-sub">&ldquo;Reparations boil down to five simple questions.&rdquo;</div>
+    </div>
+
+    <div class="cover-foot">
+      <div class="col"><strong>Developed by</strong>Lloyd Kelly</div>
+      <div class="col mid">— A Reckoning —</div>
+      <div class="col right"><strong>Compiled</strong>April MMXXVI</div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Descend</span><span class="line"></span></div>
+</section>
+
+<!-- PREMISE -->
+<section class="premise" data-screen-label="01 Premise">
+  <div class="plate">
+    <div class="premise-grid">
+      <div>
+        <div class="premise-kicker reveal">The Premise</div>
+        <h2 class="premise-title reveal">The question of reparations is not political. It is <em>legal, and it is moral.</em></h2>
+        <p class="caption reveal" style="max-width:34em;">Five questions, sequential. Each answer is the logical foundation for the next. If you accept the first, the rest follow.</p>
+      </div>
+
+      <div class="reveal reveal-slow">
+        <div class="body-prose">
+          <p class="lead"><span class="dropcap">A</span>t the center of this framework is a specific economic claim: the theft of labor. For two hundred and forty-six years, the labor of enslaved Black Americans produced the wealth of a nation — and that labor was never compensated.</p>
+          <p>Not partially. Not inadequately. Not at below-market rates. It was taken entirely, under law, by force, and with no mechanism for recourse. What follows from that fact — legally, morally, and numerically — is what this framework addresses.</p>
+        </div>
+
+        <div class="premise-note">
+          <span class="micro">On the Title</span>
+          <p>The title is chosen with care: not <em>Reparations</em> alone, but <em>Reparations | Restoration.</em></p>
+          <p>Reparations acknowledges the debt. <span class="accent">Restoration is the act of returning what was taken — not as a gesture, but as a settlement.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Q1 -->
+<section class="q1" data-screen-label="02 Question One — Crime Against Humanity" style="background:var(--cream);">
+  <div class="plate">
+    <div class="chapter-head reveal">
+      <div class="chapter-num">I.</div>
+      <div>
+        <div class="chapter-kicker">Question One · The Moral Foundation</div>
+        <h2 class="chapter-title">Is it a crime against humanity for one person to own another?</h2>
+        <div class="chapter-answer">
+          <span class="lbl">Answer</span>
+          <span class="val">Yes.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="body-prose reveal">
+        <p class="lead"><span class="dropcap">T</span>he ownership of a human being — the reduction of a person to property, the denial of their autonomy, their labor, their family, their name, their future — is a crime against humanity by any coherent standard.</p>
+        <p>This is not seriously contested in modern law, in international human rights frameworks, or in the conscience of any person asked the question plainly.</p>
+      </div>
+
+      <div class="reveal reveal-slow">
+        <div class="pull-quote">To own a person is to own their labor. It is to confiscate every hour of work they will ever perform.</div>
+        <div class="body-prose" style="margin-top:40px;">
+          <p>It is to foreclose every economic opportunity their effort would have generated — not only for them, but for their children, and their children&rsquo;s children. The crime is not only the theft of a life. <span class="accent">It is the theft of every dollar that life would have earned, saved, invested, and passed forward.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Q2 -->
+<section class="q2 dark" data-screen-label="03 Question Two — Government Accountability">
+  <div class="plate">
+    <div class="chapter-head reveal">
+      <div class="chapter-num">II.</div>
+      <div>
+        <div class="chapter-kicker">Question Two · Government Accountability</div>
+        <h2 class="chapter-title">Should a government write laws that allow one citizen to own another?</h2>
+        <div class="chapter-answer">
+          <span class="lbl">Answer</span>
+          <span class="val">No.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="body-prose reveal">
+        <p class="lead"><span class="dropcap">N</span>o legitimate government has the authority to legislate the enslavement of its own people. Laws that did so were not merely unjust — they were a fundamental corruption of the social contract.</p>
+        <p>The United States, for nearly a century of its existence, did exactly this. And it did so while calling itself a republic of free men.</p>
+      </div>
+
+      <div class="body-prose reveal reveal-slow">
+        <p>The Slave Codes did not simply permit the ownership of persons. They prohibited the enslaved from earning wages, from accumulating property, from learning to read, from contracting for their own labor.</p>
+        <p>The law did not merely fail to protect Black economic participation — <span class="accent">it criminalized it.</span> Every dollar that was not earned, every business that was not started, every parcel that was not bought, every inheritance that was not passed forward, was prevented by statute, enforced by violence, and endorsed by the state.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Q3 LIABILITY — LEDGER -->
+<section class="q3" data-screen-label="04 Question Three — Liability">
+  <div class="plate">
+    <div class="chapter-head reveal">
+      <div class="chapter-num">III.</div>
+      <div>
+        <div class="chapter-kicker">Question Three · The Question of Liability</div>
+        <h2 class="chapter-title">When a government enacts a crime against humanity, who bears the liability?</h2>
+        <div class="chapter-answer">
+          <span class="lbl">Answer</span>
+          <span class="val">The Government.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="body-prose reveal">
+        <p class="lead"><span class="dropcap">T</span>his is the point at which the argument ceases to be abstract. If the act was a crime, and if the state authored and enforced it, then the state is the liable party. Not the individual citizen. Not the descendant of a citizen. <span class="accent">The state itself.</span></p>
+        <p>The ledger that follows does not price pain. It prices labor — the specific, quantifiable asset that was taken. The figures are conservative and derived from the historic wage scale of the period.</p>
+      </div>
+      <div class="reveal reveal-slow">
+        <div class="pull-quote">A nation that writes the crime into law inherits the debt that crime creates.</div>
+      </div>
+    </div>
+
+    <div class="ledger reveal">
+      <div class="ledger-head">
+        <div>§</div>
+        <div>The Instrument</div>
+        <div class="h-desc">What the Law Prevented</div>
+      </div>
+      <div class="ledger-row">
+        <div class="idx">i.</div>
+        <div class="name">Slave Codes (1641 — 1865)</div>
+        <div class="desc">Codified the ownership of persons; forbade the enslaved from earning wages, holding property, reading, writing, assembling, or contracting. 246 years of labor taken in full.</div>
+      </div>
+      <div class="ledger-row">
+        <div class="idx">ii.</div>
+        <div class="name">Black Codes</div>
+        <div class="desc">Enacted immediately following Emancipation to restrict movement, force labor contracts, and criminalize Black economic independence. Freedom on paper, coercion in practice.</div>
+      </div>
+      <div class="ledger-row">
+        <div class="idx">iii.</div>
+        <div class="name">Jim Crow (1877 — 1965)</div>
+        <div class="desc">A century of de jure segregation in schooling, housing, labor, transit, and commerce. Black Americans denied access to the institutions through which capital compounds.</div>
+      </div>
+      <div class="ledger-row">
+        <div class="idx">iv.</div>
+        <div class="name">Redlining &amp; Federal Housing Policy</div>
+        <div class="desc">The Federal Housing Administration, from 1934 onward, explicitly refused to insure mortgages in Black neighborhoods. The single greatest driver of household wealth in the 20th century — denied by federal design.</div>
+      </div>
+      <div class="ledger-foot">
+        <div class="label">Responsible Party</div>
+        <div class="value">The United States Government</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Q4 THE NUMBER -->
+<section class="q4" data-screen-label="05 Question Four — The Number">
+  <div class="plate">
+    <div class="chapter-head reveal">
+      <div class="chapter-num">IV.</div>
+      <div>
+        <div class="chapter-kicker">Question Four · What Is Owed</div>
+        <h2 class="chapter-title">What is the measure of the debt, and by what instrument is it paid?</h2>
+        <div class="chapter-answer">
+          <span class="lbl">The Principal</span>
+          <span class="val">Quantifiable.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="body-prose reveal">
+        <p class="lead"><span class="dropcap">T</span>he debt is not an estimate of suffering. It is the accrued value of labor performed without compensation, compounded at a conservative federal rate across the span of the harm. The methodology is the same any court would apply to any unpaid contract.</p>
+        <p>What is unusual here is not the math. It is the scale, the duration, and the identity of the debtor.</p>
+      </div>
+      <div class="reveal reveal-slow">
+        <div class="body-prose">
+          <p>The figure below is the principal on 246 years of uncompensated labor, calculated against the historic wage scale of the antebellum South and carried forward at the Treasury long-bond rate. It does not include the compounded losses of the Black Codes, Jim Crow, or redlining — those are addenda to the principal, not replacements for it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="number-cert reveal">
+      <div class="number-seal">— Principal Due · In Full Settlement —</div>
+      <div class="number-big">
+        <span class="sign">$</span>14<span class="unit"> trillion</span>
+      </div>
+      <div class="number-sub">payable to the descendants of the enslaved, as trustee of the unpaid estate.</div>
+      <div class="number-foot-rule">Conservative Floor · Exclusive of Post-Emancipation Harms</div>
+    </div>
+
+    <div style="margin-top:120px;">
+      <div class="premise-kicker reveal" style="color:var(--champagne);">The Instrument of Payment</div>
+      <h3 class="reveal" style="font-family:var(--serif-display); font-weight:500; font-size:clamp(32px,3.4vw,48px); line-height:1.05; letter-spacing:-0.01em; max-width:22ch; margin-bottom:14px;">A sovereign trust, not a check.</h3>
+      <p class="reveal" style="font-family:var(--serif-text); font-style:italic; font-size:20px; line-height:1.5; color:rgba(243,239,230,0.8); max-width:52em;">The debt is settled through a perpetual, sovereign-grade trust instrument — structured for generational restoration, not one-time dispersal. Three pillars, one estate.</p>
+
+      <div class="mechanism reveal">
+        <div class="cell">
+          <div class="top">
+            <div class="num">I.</div>
+            <div class="tag">Corpus</div>
+          </div>
+          <h3>The Sovereign Trust</h3>
+          <p>A federally-chartered trust holds the principal as a restricted corpus. The corpus is inviolate: it cannot be dissolved, reassigned, or diluted by subsequent legislation.</p>
+        </div>
+        <div class="cell">
+          <div class="top">
+            <div class="num">II.</div>
+            <div class="tag">Yield</div>
+          </div>
+          <h3>Perpetual Income</h3>
+          <p>The corpus generates a managed yield paid to qualifying descendants as a lifetime income stream — education, housing equity, enterprise capital, and retirement — not a lump-sum distribution.</p>
+        </div>
+        <div class="cell">
+          <div class="top">
+            <div class="num">III.</div>
+            <div class="tag">Governance</div>
+          </div>
+          <h3>The Bureau</h3>
+          <p>Administered by an independent chartered body reporting to Congress, insulated from the political cycle, and audited by an inspector general with statutory independence.</p>
+        </div>
+      </div>
+
+      <div class="yield-row reveal">
+        <div class="lhs">At a conservative 4&middot;25% real yield on the corpus, the trust generates ongoing restoration without touching the principal &mdash; restoration in perpetuity, not a single event.</div>
+        <div class="yield-center">
+          <div class="pct">4<em>·</em>25<span style="font-size:0.4em; vertical-align:0.5em; color:rgba(243,239,230,0.8);">%</span></div>
+          <div class="lbl">Real Yield · Perpetual Draw</div>
+        </div>
+        <div class="rhs">The principal is preserved as a standing rebuke, and as a guarantee that the debt remains settled for every generation thereafter.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUREAU -->
+<section class="bureau" data-screen-label="06 The Bureau">
+  <div class="plate">
+    <div class="bureau-hero">
+      <div class="reveal">
+        <div class="chapter-kicker">The Administering Body</div>
+        <h2 class="bureau-title">The Bureau of <em>Restoration &amp;<br/>Economic Restitution</em></h2>
+        <p class="bureau-sub">A federally-chartered body of the United States, independent of the appropriations cycle, with a statutory mandate measured in generations.</p>
+        <p class="bureau-body">The Bureau is not a program. It is an institution — of the same rank, tenure, and authority as the Federal Reserve or the Treasury. Its charter is perpetual. Its mandate is restoration. Its audit is public.</p>
+      </div>
+      <div class="bureau-seal reveal reveal-slow">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <path id="circ" d="M 200,200 m -170,0 a 170,170 0 1,1 340,0 a 170,170 0 1,1 -340,0" />
+          </defs>
+          <circle cx="200" cy="200" r="190" fill="none" stroke="oklch(0.78 0.07 85)" stroke-width="1"/>
+          <circle cx="200" cy="200" r="180" fill="none" stroke="oklch(0.78 0.07 85)" stroke-width="0.6"/>
+          <circle cx="200" cy="200" r="132" fill="none" stroke="oklch(0.78 0.07 85)" stroke-width="0.6"/>
+          <circle cx="200" cy="200" r="124" fill="none" stroke="oklch(0.78 0.07 85)" stroke-width="1"/>
+          <text fill="oklch(0.78 0.07 85)" font-family="Inter Tight, sans-serif" font-size="11" letter-spacing="6">
+            <textPath href="#circ" startOffset="0">BUREAU OF RESTORATION &amp; ECONOMIC RESTITUTION · UNITED STATES · MMXXVI ·  </textPath>
+          </text>
+          <g transform="translate(200,200)">
+            <text text-anchor="middle" font-family="Bodoni Moda, serif" font-style="italic" font-weight="500" font-size="72" fill="oklch(0.78 0.07 85)" y="8">B</text>
+            <text text-anchor="middle" font-family="Bodoni Moda, serif" font-style="italic" font-size="38" fill="oklch(0.78 0.07 85)" y="54">R</text>
+            <line x1="-48" y1="80" x2="48" y2="80" stroke="oklch(0.78 0.07 85)" stroke-width="0.6"/>
+            <text text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="9" letter-spacing="3" fill="oklch(0.78 0.07 85)" y="100">EST · MMXXVI</text>
+          </g>
+          <g stroke="oklch(0.78 0.07 85)" stroke-width="0.6" fill="none">
+            <line x1="200" y1="20" x2="200" y2="36"/>
+            <line x1="200" y1="364" x2="200" y2="380"/>
+            <line x1="20" y1="200" x2="36" y2="200"/>
+            <line x1="364" y1="200" x2="380" y2="200"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="mandates reveal">
+      <div class="mandate"><div class="num">§ 01</div><div><h4>Corpus Preservation</h4><p>Maintain the principal in perpetuity. The corpus is statutorily inviolate and may not be impaired by subsequent act of Congress absent a two-thirds joint resolution.</p></div></div>
+      <div class="mandate"><div class="num">§ 02</div><div><h4>Disbursement &amp; Yield</h4><p>Administer the yield through four canonical channels: education, housing equity, enterprise capital, and guaranteed retirement income.</p></div></div>
+      <div class="mandate"><div class="num">§ 03</div><div><h4>Lineage Verification</h4><p>Establish and maintain, in partnership with the National Archives, a sovereign-grade lineage registry — authoritative, confidential, and free to the claimant.</p></div></div>
+      <div class="mandate"><div class="num">§ 04</div><div><h4>Public Accounting</h4><p>Publish an annual actuarial report, subject to independent audit, and transmitted to the Congress and the public without redaction.</p></div></div>
+      <div class="mandate"><div class="num">§ 05</div><div><h4>Political Insulation</h4><p>Governors serve staggered fourteen-year terms, removable only for cause, on the model of the Federal Reserve Board. The mandate is insulated from the electoral cycle.</p></div></div>
+      <div class="mandate"><div class="num">§ 06</div><div><h4>Historical Record</h4><p>Maintain and publish the permanent ledger of the debt, its origin, its instruments, and its settlement — so the record cannot be lost and the matter cannot be reopened.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Q5 ELIGIBILITY -->
+<section class="q5" data-screen-label="07 Question Five — Eligibility">
+  <div class="plate">
+    <div class="chapter-head reveal">
+      <div class="chapter-num">V.</div>
+      <div>
+        <div class="chapter-kicker">Question Five · Eligibility</div>
+        <h2 class="chapter-title">Who is entitled to the restoration?</h2>
+        <div class="chapter-answer">
+          <span class="lbl">Answer</span>
+          <span class="val">The descendants.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="elig-grid">
+      <div class="body-prose reveal">
+        <p class="lead"><span class="dropcap">T</span>he beneficiary of the trust is the direct lineal descendant of persons enslaved within the jurisdiction of the United States prior to the Thirteenth Amendment.</p>
+        <p>This is the narrowest, most defensible definition available. It is the standard a court would apply to any unpaid estate: the heirs of the claimant, traced by lineage, verified by record.</p>
+        <p>It is not a racial test. It is a genealogical one. <span class="accent">It follows the harm, not an identity.</span></p>
+      </div>
+
+      <div class="reveal reveal-slow">
+        <div class="elig-criteria">
+          <div class="row"><div class="mk">i.</div><div class="txt"><strong>Direct lineal descent</strong> from a person enslaved within the United States prior to the ratification of the Thirteenth Amendment in 1865.</div></div>
+          <div class="row"><div class="mk">ii.</div><div class="txt"><strong>Verification through the sovereign lineage registry</strong> maintained by the Bureau in partnership with the National Archives.</div></div>
+          <div class="row"><div class="mk">iii.</div><div class="txt"><strong>No means test.</strong> The debt is owed to the estate; it is not conditional on the present circumstances of the heir.</div></div>
+          <div class="row"><div class="mk">iv.</div><div class="txt"><strong>No expiration.</strong> The right descends through generations until the corpus is fully distributed or the lineage ends.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section class="summary" data-screen-label="08 Summary — The Five Questions">
+  <div class="plate">
+    <h2 class="summary-title reveal">The framework, <em>in five lines.</em></h2>
+    <div class="summary-table reveal">
+      <div class="summary-row"><div class="qnum">I.</div><div class="q">Is it a crime against humanity for one person to own another?</div><div class="a"><strong>Yes.</strong></div></div>
+      <div class="summary-row"><div class="qnum">II.</div><div class="q">Should a government write laws that allow one citizen to own another?</div><div class="a"><strong>No.</strong></div></div>
+      <div class="summary-row"><div class="qnum">III.</div><div class="q">When a government enacts such laws, who bears the liability?</div><div class="a"><strong>The government.</strong></div></div>
+      <div class="summary-row"><div class="qnum">IV.</div><div class="q">What is the measure of the debt, and how is it paid?</div><div class="a"><strong>$14 trillion,</strong> held in a sovereign trust; paid in perpetual yield.</div></div>
+      <div class="summary-row"><div class="qnum">V.</div><div class="q">Who is entitled to the restoration?</div><div class="a">The <strong>direct lineal descendants</strong> of the enslaved.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+
+<section class="standwith" style="background:#0b0b0c;color:#f3efe6;padding:120px 6vw;text-align:center;">
+  <div style="max-width:640px;margin:0 auto;">
+    <p class="micro" style="color:#c9a84c;letter-spacing:0.5em;margin-bottom:28px;">STAND WITH THE RECORD</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 24px;">Add your name to the Restitution 246 record.</h2>
+    <p style="font-family:'Inter Tight',sans-serif;font-weight:300;font-size:16px;line-height:1.7;opacity:0.82;margin:0 0 40px;">A debt acknowledged is a nation made whole. Join the lineage and the allies standing behind this framework — receive the campaign brief and the call to action.</p>
+    <form id="restitutionForm" style="display:flex;flex-direction:column;gap:14px;max-width:440px;margin:0 auto;text-align:left;">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <input name="first_name" required placeholder="First name" style="flex:1;min-width:140px;padding:15px 16px;background:rgba(243,239,230,0.06);border:1px solid rgba(243,239,230,0.18);color:#f3efe6;font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;"/>
+        <input name="last_name" required placeholder="Last name" style="flex:1;min-width:140px;padding:15px 16px;background:rgba(243,239,230,0.06);border:1px solid rgba(243,239,230,0.18);color:#f3efe6;font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;"/>
+      </div>
+      <input name="email" type="email" required placeholder="Email address" style="padding:15px 16px;background:rgba(243,239,230,0.06);border:1px solid rgba(243,239,230,0.18);color:#f3efe6;font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;"/>
+      <input name="zip" placeholder="ZIP code (optional)" style="padding:15px 16px;background:rgba(243,239,230,0.06);border:1px solid rgba(243,239,230,0.18);color:#f3efe6;font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;"/>
+      <button type="submit" style="margin-top:8px;padding:17px;background:#c9a84c;color:#0b0b0c;border:none;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Add My Name to the Record</button>
+      <p id="restitutionMsg" style="font-family:'Inter Tight',sans-serif;font-size:14px;text-align:center;min-height:20px;margin:6px 0 0;opacity:0.9;"></p>
+    </form>
+  </div>
+</section>
+<script>
+(function(){
+  var f=document.getElementById('restitutionForm');
+  if(!f)return;
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var msg=document.getElementById('restitutionMsg');
+    var btn=f.querySelector('button');
+    btn.disabled=true;btn.textContent='Recording…';
+    var data={first_name:f.first_name.value.trim(),last_name:f.last_name.value.trim(),email:f.email.value.trim(),zip:f.zip.value.trim(),signup_type:'newsletter',source:'restitution-246-page',submitted_at:new Date().toISOString()};
+    fetch('https://sue-45c3e283.base44.app/functions/restitutionSignup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+    .then(function(r){return r.json().catch(function(){return{};});})
+    .then(function(){
+      msg.style.color='#c9a84c';msg.textContent='Your name is on the record. Thank you for standing with the lineage.';
+      f.querySelectorAll('input').forEach(function(i){i.style.display='none';});btn.style.display='none';
+      if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-16672489240/RJkQCMaJtKwcEJj-h44-'});gtag('event','generate_lead',{event_category:'restitution-246'});}
+    })
+    .catch(function(){msg.style.color='#e08a8a';msg.textContent='Something went wrong — please try again.';btn.disabled=false;btn.textContent='Add My Name to the Record';});
+  });
+})();
+</script>
+
+<section class="closing" data-screen-label="09 Closing">
+  <div class="closing-inner">
+    <div class="kicker">— In Closing —</div>
+    <h2 class="closing-headline">A debt acknowledged is a nation <em>made whole.</em></h2>
+    <p class="closing-body">The five questions are not rhetorical. They are the structure of a settlement. To answer them is to name the debt; to name it is to stand ready to pay it; to pay it is to close the ledger, and to begin — finally — the work of restoration.</p>
+    <div class="colophon">
+      <div class="left"><strong>Framework</strong>Lloyd Kelly</div>
+      <div class="mid">— Reparations | Restoration —</div>
+      <div class="right"><strong>Folio</strong>Volume I · MMXXVI</div>
+    </div>
+  </div>
+</section>
+
+<!-- TWEAKS -->
+<div class="tweaks" id="tweaks">
+  <h5>Tweaks</h5>
+  <div class="tw-sub">Editorial Controls</div>
+
+  <div class="tw-group">
+    <div class="tw-lbl">Accent</div>
+    <div class="tw-opts" data-group="accent">
+      <button data-val="oxblood">Oxblood</button>
+      <button data-val="midnight">Midnight</button>
+      <button data-val="forest">Forest</button>
+    </div>
+  </div>
+  <div class="tw-group">
+    <div class="tw-lbl">Paper</div>
+    <div class="tw-opts" data-group="paper">
+      <button data-val="cream">Cream</button>
+      <button data-val="bone">Bone</button>
+      <button data-val="slate">Slate</button>
+    </div>
+  </div>
+  <div class="tw-group">
+    <div class="tw-lbl">Principal</div>
+    <div class="tw-opts" data-group="principal">
+      <button data-val="14">$14T</button>
+      <button data-val="20">$20T</button>
+      <button data-val="6">$6T</button>
+    </div>
+  </div>
+</div>
+`;
+
+document.getElementById('app').innerHTML = html;
+
+</script>
+<script>
+// ——— TWEAKS ———
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "midnight",
+  "paper": "cream",
+  "principal": "6"
+}/*EDITMODE-END*/;
+
+let tweakState = { ...TWEAK_DEFAULTS };
+
+function applyTweaks(s) {
+  document.body.classList.remove('accent-oxblood','accent-midnight','accent-forest','accent-graphite');
+  document.body.classList.add('accent-' + s.accent);
+  document.body.classList.remove('paper-cream','paper-bone','paper-slate');
+  document.body.classList.add('paper-' + s.paper);
+
+  // principal number swap
+  const map = {
+    "14": { big: '14', unit: 'trillion', sub: 'payable to the descendants of the enslaved, as trustee of the unpaid estate.' },
+    "20": { big: '20', unit: 'trillion', sub: 'including compounded losses under the Black Codes, Jim Crow, and redlining.' },
+    "6":  { big: '6',  unit: 'trillion', sub: 'a conservative floor derived from 246 years of enslaved labor alone.' }
+  };
+  const m = map[s.principal] || map["14"];
+  const big = document.querySelector('.number-big');
+  if (big) big.innerHTML = '<span class="sign">$</span>' + m.big + '<span class="unit"> ' + m.unit + '</span>';
+  const sub = document.querySelector('.number-sub');
+  if (sub) sub.textContent = m.sub;
+
+  // summary row
+  const srows = document.querySelectorAll('.summary-row');
+  if (srows.length >= 4) {
+    const a = srows[3].querySelector('.a');
+    if (a) a.innerHTML = '<strong>$' + m.big + ' trillion,</strong> held in a sovereign trust; paid in perpetual yield.';
+  }
+
+  // active buttons
+  document.querySelectorAll('.tweaks .tw-opts').forEach(group => {
+    const key = group.dataset.group;
+    group.querySelectorAll('button').forEach(b => {
+      b.classList.toggle('active', b.dataset.val === s[key]);
+    });
+  });
+}
+
+function bindTweaks() {
+  document.querySelectorAll('.tweaks .tw-opts').forEach(group => {
+    const key = group.dataset.group;
+    group.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        tweakState[key] = btn.dataset.val;
+        applyTweaks(tweakState);
+        try { window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [key]: btn.dataset.val } }, '*'); } catch(e){}
+      });
+    });
+  });
+}
+
+window.addEventListener('message', (e) => {
+  const d = e.data || {};
+  if (d.type === '__activate_edit_mode') document.getElementById('tweaks').classList.add('on');
+  if (d.type === '__deactivate_edit_mode') document.getElementById('tweaks').classList.remove('on');
+});
+
+// init
+applyTweaks(tweakState);
+bindTweaks();
+try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch(e){}
+
+</script>
+<script>
+// ——— REVEAL ON SCROLL + TOPBAR MODE ———
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// topbar light/dark based on section
+const topbar = document.getElementById('topbar');
+const darkSections = document.querySelectorAll('.cover, .dark, .bureau, .closing, .q4');
+const tio = new IntersectionObserver((entries) => {
+  let anyDark = false;
+  entries.forEach(e => {
+    if (e.isIntersecting && e.intersectionRatio > 0.25) anyDark = true;
+  });
+  // fallback: determine by current topmost section
+  let topSection = null;
+  document.querySelectorAll('section').forEach(s => {
+    const r = s.getBoundingClientRect();
+    if (r.top <= 80 && r.bottom > 80) topSection = s;
+  });
+  const isDark = topSection && (topSection.classList.contains('cover') ||
+                                topSection.classList.contains('dark') ||
+                                topSection.classList.contains('bureau') ||
+                                topSection.classList.contains('closing') ||
+                                topSection.classList.contains('q4'));
+  topbar.classList.toggle('light', !isDark);
+}, { threshold: [0, 0.25, 0.5] });
+
+window.addEventListener('scroll', () => {
+  let topSection = null;
+  document.querySelectorAll('section').forEach(s => {
+    const r = s.getBoundingClientRect();
+    if (r.top <= 80 && r.bottom > 80) topSection = s;
+  });
+  const isDark = topSection && (topSection.classList.contains('cover') ||
+                                topSection.classList.contains('dark') ||
+                                topSection.classList.contains('bureau') ||
+                                topSection.classList.contains('closing') ||
+                                topSection.classList.contains('q4'));
+  topbar.classList.toggle('light', !isDark);
+}, { passive: true });
+
+</script>
 </body>
 </html>
