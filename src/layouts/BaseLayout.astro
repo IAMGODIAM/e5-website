@@ -453,6 +453,11 @@ const siteUrl = 'https://e5enclave.com';
         // Donate intent: any link to /donate or external donate/zeffy/stripe, or a donate-labeled button
         if(/\/donate\/?$/.test(href) || /zeffy|stripe|checkout|givebutter/.test(href) || (/donate|give/.test(txt) && a.classList.contains('btn--primary'))){
           fire('AW-16672489240/_T-KCLGGnawcEJj-h44-'); // E5 — Donate Page CTA Click (PURCHASE)
+          fire('AW-16672489240/B11GCOnl97UcEJj-h44-'); // E5 — Donate primary (biddable)
+        }
+        // Restitution intent: link to /restitution-246 or restitution/reparations-labeled CTA
+        else if(/\/restitution-246\/?$/.test(href) || (/restitution|reparation/.test(txt) && a.classList.contains('btn--primary'))){
+          fire('AW-16672489240/RJkQCMaJtKwcEJj-h44-'); // E5 — Restitution 246 CTA (SIGNUP)
         }
         // Contact intent: mailto or email-protection link, or contact-labeled card
         else if(href.indexOf('mailto:')===0 || href.indexOf('/cdn-cgi/l/email-protection')===0){
