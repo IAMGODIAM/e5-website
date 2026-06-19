@@ -1938,8 +1938,11 @@
     const errorMsg=document.getElementById('errorMsg');
     const successBox=document.getElementById('successBox');
     if(!form)return;
+    let __submitting=false;
     form.addEventListener('submit',async function(e){
       e.preventDefault();
+      if(__submitting)return;            // guard: ignore rapid double/triple submits
+      __submitting=true;
       errorMsg.style.display='none';
       errorMsg.textContent='';
       const emailEl=document.getElementById('message');
@@ -1963,7 +1966,8 @@
         if(res.ok&&data&&data.success){
           try{ if(typeof gtag==='function'){ gtag('event','karmelo_signup',{'event_category':'justice','event_label':'karmelo_email_signup','wall_status':(data.wall_status||'none')}); } }catch(e){}
           const hd=document.getElementById('successHd'), sm=document.getElementById('successMsg');
-          if(data.wall_status==='approved'){ if(hd)hd.innerHTML='Your message is live on the wall. <em>We have you.</em>'; if(sm)sm.textContent='Karmelo will know you stood with him. The appeal is underway.'; }
+          if(data.duplicate || data.wall_status==='duplicate'){ if(hd)hd.innerHTML='You\'re already on the record. <em>We have you.</em>'; if(sm)sm.textContent='We received this message — no need to send it again. Want to add a different note? Come back anytime.'; }
+          else if(data.wall_status==='approved'){ if(hd)hd.innerHTML='Your message is live on the wall. <em>We have you.</em>'; if(sm)sm.textContent='Karmelo will know you stood with him. The appeal is underway.'; }
           else if(data.wall_status==='held'){ if(hd)hd.innerHTML='Thank you — your message is in review. <em>We have you.</em>'; if(sm)sm.textContent='It will appear on the wall shortly after a quick board glance.'; }
           else { if(hd)hd.innerHTML="You're in. <em>We have you.</em>"; if(sm)sm.textContent="You'll get the case updates as they break. Want to add a message to the wall? Come back anytime."; }
           form.style.display='none';
@@ -1972,7 +1976,7 @@
         }else{
           errorMsg.textContent=(data&&data.error)?data.error:'Something went wrong. Please try again.';
           errorMsg.style.display='block';
-          btn.disabled=false;
+          btn.disabled=false;__submitting=false;
           btn.innerHTML='Count Me In — I Stand With Karmelo <span class="arrow">→</span>';
         }
       }catch(err){
