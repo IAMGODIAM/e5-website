@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://iamgodiam.github.io/e5-enclave-editorial-homepage/sitemap.xml
