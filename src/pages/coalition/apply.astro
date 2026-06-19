@@ -428,6 +428,24 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     // Handle form submission
     document.querySelector('.apply-form form')?.addEventListener('submit', function(e) {
       e.preventDefault();
+      /* E5FP wire — capture the applicant to the backend (DAG warroom-e5-forms-npm-wiring-2026-0619) */
+      var lanePick = document.querySelector('input[name="lane"]:checked');
+      var pledgeBoxes = document.querySelectorAll('.pledge__check');
+      var allPledged = pledgeBoxes.length>0 && Array.prototype.every.call(pledgeBoxes, function(c){return c.checked;});
+      var payload = {
+        name:  (document.getElementById('name')||{}).value || '',
+        email: (document.getElementById('email')||{}).value || '',
+        org:   (document.getElementById('org')||{}).value || '',
+        reason:(document.getElementById('reason')||{}).value || '',
+        lane:  lanePick ? lanePick.value : '',
+        pledged: allPledged,
+        site_variant: (window.__E5_VARIANT || document.documentElement.getAttribute('data-variant') || 'alpha'),
+        source: 'coalition-apply'
+      };
+      fetch('https://sue-45c3e283.base44.app/functions/coalitionApply', {
+        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)
+      }).catch(function(err){ console.error('coalition submit', err); });
+      /* show confirmation regardless (non-blocking UX) */
       document.querySelectorAll('.apply-step').forEach(s => s.classList.remove('apply-step--active'));
       document.getElementById('confirm').classList.add('active');
       document.querySelector('.steps').style.display = 'none';
