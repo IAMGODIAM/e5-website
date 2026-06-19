@@ -431,6 +431,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       document.querySelectorAll('.apply-step').forEach(s => s.classList.remove('apply-step--active'));
       document.getElementById('confirm').classList.add('active');
       document.querySelector('.steps').style.display = 'none';
+      /* FIRE Coalition SIGNUP conversion — DAG warroom-karmelo-conversion-fire-2026-0619 */
+      try{ if(typeof gtag==='function'){ gtag('event','conversion',{'send_to':'AW-16672489240/H8n8CNfl97UcEJj-h44-'}); gtag('event','generate_lead',{'event_label':'coalition_application'}); } }catch(e){}
     });
   </script>
 </BaseLayout>
