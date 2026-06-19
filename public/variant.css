@@ -31,6 +31,23 @@ html[data-variant="charlie"] {
   background: var(--char-obsidian) !important;
 }
 html[data-variant="charlie"] body { background: var(--char-obsidian); color: var(--char-bone); }
+
+/* ── FIX: editorial homepage (vc-) is light-on-cream by default. Under Charlie's
+   obsidian ground that makes dark-ink text invisible (founding-address section).
+   Re-map the editorial ink tokens to bone so ALL vc- text reads on black. ── */
+html[data-variant="charlie"] {
+  --vc-bone:#070708 !important; --vc-bone-2:#0e0e10 !important; --vc-bone-3:#141416 !important;
+  --vc-ink:#ece6d8 !important; --vc-ink-2:#cfc8ba !important; --vc-ink-3:#b3ab9c !important;
+  --vc-muted:#9a9384 !important; --vc-muted-2:#b5ad9c !important;
+  --vc-oxblood:#b5564f !important; --vc-oxblood-2:#c96a62 !important;
+  --vc-rule:rgba(236,230,216,0.16) !important; --vc-rule-2:rgba(236,230,216,0.30) !important; --vc-rule-3:rgba(236,230,216,0.50) !important;
+}
+/* keep the headline italics legible (oxblood→warm clay on black) */
+html[data-variant="charlie"] .vc-cover-h, html[data-variant="charlie"] .vc-feat-h,
+html[data-variant="charlie"] .vc-pillars-h, html[data-variant="charlie"] .vc-record-h,
+html[data-variant="charlie"] .vc-contrib-h { color: var(--vc-ink) !important; }
+html[data-variant="charlie"] .vc-cover-h em, html[data-variant="charlie"] .vc-join-h em { color:#c96a62 !important; }
+
 /* oversized kinetic display type */
 html[data-variant="charlie"] h1 {
   font-size: clamp(3.2rem, 11vw, 9rem) !important;
