@@ -28,8 +28,10 @@ const siteUrl = 'https://e5enclave.com';
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-05PYDYP5S0', { anonymize_ip: true });
-    gtag('config', 'AW-16672489240');
+    var __v = (window.__E5_VARIANT || (document.documentElement.getAttribute('data-variant')) || 'alpha');
+    gtag('set', { 'site_variant': __v });
+    gtag('config', 'G-05PYDYP5S0', { anonymize_ip: true, 'site_variant': __v });
+    gtag('config', 'AW-16672489240', { 'site_variant': __v });
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
