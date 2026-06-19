@@ -55,3 +55,50 @@ html[data-variant="charlie"] body::after {
   html[data-variant="charlie"] [data-reveal]{opacity:1;transform:none;transition:none}
   html[data-variant="beta"] .btn-primary{animation:none}
 }
+
+/* ============ BETA — EXIT-INTENT RECOVERY MODAL (funnel return path, SOP 13) ============ */
+#e5-exit-ov {
+  position:fixed; inset:0; z-index:10000; background:rgba(8,8,10,.78);
+  display:flex; align-items:center; justify-content:center; padding:24px;
+  animation:e5fade .25s ease;
+}
+@keyframes e5fade { from{opacity:0} to{opacity:1} }
+#e5-exit-card {
+  background:#fbf9f3; color:#161616; max-width:440px; width:100%; border-radius:14px;
+  padding:36px 32px 28px; position:relative; box-shadow:0 24px 80px rgba(0,0,0,.5);
+  border-top:4px solid #c9a84c; animation:e5pop .3s cubic-bezier(.2,.9,.3,1.2);
+}
+@keyframes e5pop { from{transform:translateY(16px) scale(.97);opacity:0} to{transform:none;opacity:1} }
+#e5-exit-card .e5-exit-eyebrow { font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:#9a7b1f; margin:0 0 8px; font-weight:700; }
+#e5-exit-card h3 { font-size:1.55rem; line-height:1.15; margin:0 0 12px; font-weight:700; }
+#e5-exit-card .e5-exit-body { font-size:1rem; line-height:1.5; color:#3a3a3a; margin:0 0 20px; }
+#e5-exit-cta {
+  display:block; text-align:center; background:#c9a84c; color:#0b0b0d; font-weight:700;
+  padding:14px 20px; border-radius:8px; text-decoration:none; font-size:1.05rem;
+}
+#e5-exit-cta:hover { background:#d8b757; }
+#e5-exit-dismiss {
+  display:block; width:100%; margin-top:10px; background:none; border:none; color:#777;
+  font-size:.9rem; cursor:pointer; padding:8px; text-decoration:underline;
+}
+#e5-exit-x { position:absolute; top:12px; right:14px; background:none; border:none; font-size:1.6rem; line-height:1; color:#999; cursor:pointer; }
+#e5-exit-x:hover { color:#161616; }
+
+/* ============ CHARLIE — KINETIC MORAL BANNER ("The Reckoning") ============ */
+html[data-variant="charlie"] body { padding-top:0; }
+#e5-char-banner {
+  background:linear-gradient(90deg,#070708,#1a0606 55%,#6b1414);
+  color:#ece6d8; padding:14px 5vw; display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center;
+  border-bottom:1px solid rgba(236,230,216,.18); position:relative; z-index:50;
+}
+#e5-char-banner .e5-char-kick {
+  font-size:.7rem; letter-spacing:.32em; font-weight:800; color:#c98a8a;
+  border:1px solid rgba(201,138,138,.5); padding:4px 10px; border-radius:2px; white-space:nowrap;
+}
+#e5-char-banner .e5-char-line { font-size:1.02rem; font-weight:600; flex:1 1 320px; letter-spacing:.01em; }
+#e5-char-banner a {
+  color:#ece6d8; font-weight:800; text-decoration:none; text-transform:uppercase; font-size:.82rem;
+  letter-spacing:.08em; border-bottom:2px solid #6b1414; padding-bottom:2px; white-space:nowrap;
+}
+#e5-char-banner a:hover { border-color:#ece6d8; }
+@media (max-width:620px){ #e5-char-banner .e5-char-line{ font-size:.95rem; } }
