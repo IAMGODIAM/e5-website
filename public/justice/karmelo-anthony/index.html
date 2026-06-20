@@ -1581,15 +1581,8 @@
             <input class="f-input" type="text" id="state" name="state" placeholder="TX" maxlength="2" />
           </div>
 
-          <div class="field full">
-            <label class="f-label">How else do you want to stand? <span class="hint">(optional)</span></label>
-            <div class="segmented" id="commitment_seg">
-              <input type="hidden" id="commitment_type" value="letter_writer" />
-              <div class="opt active" data-value="letter_writer">Letter<br/>Writer</div>
-              <div class="opt" data-value="appeal_advocacy">Join the<br/>Appeal</div>
-              <div class="opt" data-value="family_protection">Protect<br/>the Family</div>
-            </div>
-          </div>
+          <!-- Commitment consolidated to letter + manifesto (Chairman directive 2026-06-20). -->
+          <input type="hidden" id="commitment_type" value="letter_writer" />
 
           <div class="field full">
             
@@ -2008,28 +2001,8 @@
   })();
 
   (function(){
-    const seg=document.getElementById('commitment_seg');
     const hidden=document.getElementById('commitment_type');
-    if(!seg||!hidden)return;
-    seg.querySelectorAll('.opt').forEach(opt=>{
-      opt.addEventListener('click',()=>{
-        seg.querySelectorAll('.opt').forEach(o=>o.classList.remove('active'));
-        opt.classList.add('active');
-        hidden.value=opt.dataset.value;
-      });
-    });
-  })();
-
-  (function(){
-    const seg=document.getElementById('lodging_seg');
-    if(!seg||!hidden)return;
-    seg.querySelectorAll('.opt').forEach(opt=>{
-      opt.addEventListener('click',()=>{
-        seg.querySelectorAll('.opt').forEach(o=>o.classList.remove('active'));
-        opt.classList.add('active');
-        hidden.value=opt.dataset.value;
-      });
-    });
+    if(hidden) hidden.value='letter_writer'; // consolidated — always letter writer
   })();
 
   (function(){
