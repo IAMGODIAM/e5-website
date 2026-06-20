@@ -1115,6 +1115,18 @@
     cursor: pointer;
   }
   select.f-select option { background: #0a0a0a; color: var(--fg); }
+  /* Real-time gate notice + manifesto (signal-loop-gate-2026-0620) */
+  .gate-notice { margin-top:10px; padding:12px 14px; border-radius:10px; font-family:var(--sans);
+    font-size:13.5px; line-height:1.5; border:1px solid rgba(220,60,60,.45);
+    background:rgba(40,10,10,.55); color:#ffb9b9; letter-spacing:.01em; }
+  .gate-notice.warn { border-color:rgba(212,160,60,.5); background:rgba(40,30,8,.5); color:#ffd98a; }
+  .manifesto-check { display:flex; gap:12px; align-items:flex-start; cursor:pointer;
+    padding:14px 16px; border:1px solid var(--border); border-radius:12px;
+    background:rgba(255,255,255,.018); transition:border-color .2s,background .2s; }
+  .manifesto-check:hover { border-color:var(--accent,#7b5cff); background:rgba(123,92,255,.06); }
+  .manifesto-check input[type=checkbox]{ width:20px; height:20px; margin-top:1px; accent-color:var(--accent,#7b5cff); flex:0 0 auto; cursor:pointer; }
+  .manifesto-check span{ font-family:var(--sans); font-size:14px; line-height:1.45; color:var(--fg-dim); }
+  .manifesto-check strong{ color:var(--fg); }
 
   /* Segmented control */
   .segmented {
@@ -1567,6 +1579,13 @@
             <label class="f-label" for="message">Your message to Karmelo <span class="hint">(optional — posts to the wall)</span></label>
             <textarea class="f-textarea" id="message" name="message" placeholder="Karmelo, I'm standing with you because…"></textarea>
             <span class="f-label" style="font-size:12px;opacity:.6;font-weight:400;">If you add one, it posts publicly to the wall after a quick safety check. Keep it warm — this is for him.</span>
+            <div id="gateNotice" class="gate-notice" role="alert" aria-live="assertive" style="display:none;"></div>
+          </div>
+          <div class="field full">
+            <label class="manifesto-check" for="sign_manifesto">
+              <input type="checkbox" id="sign_manifesto" name="sign_manifesto" checked />
+              <span><strong>I sign the Manifesto.</strong> I stand with Karmelo — peaceful, lawful, sustained — until he is free.</span>
+            </label>
           </div>
           <div class="field">
             <label class="f-label" for="phone">Phone <span class="hint">(optional)</span></label>
@@ -2062,6 +2081,54 @@
     if(hidden) hidden.value='letter_writer'; // consolidated — always letter writer
   })();
 
+  // ── REAL-TIME GATE (client mirror of backend signal-loop-gate-2026-0620) ──
+  // Reads the message live + on submit. Hostile = blocked with a clean, no-profanity
+  // rejection. The board's standard: "fuck your negativity" — said with class.
+  window.__karmeloGate = (function(){
+    const SLURS=["nigger","nigga","faggot","retard","kike","spic","chink","coon","wetback","tranny"];
+    const THREATS=["kill","shoot","bomb","lynch","rape","raped","death to","hang him","drop the soap","get jumped","prison bitch","jail bitch","get raped","fresh meat","shank"];
+    const PREJUDICE=["guilty","murderer","murdering","deserves it","deserved it","deserve it","deserves jail","deserve jail","deserves prison","lock him up","rot in","throw away the key","belongs in prison","belongs in jail","is a killer","did the crime","do the crime","did the time","do the time","you earned this","earned your sentence","took a life","got what you deserve","reap what","convicted for a reason","jury got it right","justice was served"];
+    const DEHUMANIZE=["chimpanzee","monkey","ape ","gorilla","baboon","subhuman","sub-human","cotton picker","go back to africa"];
+    const HOSTILE_OFFTOPIC=["terrorist website","mock death","mocking death","you are disgusting","yall are disgusting","you all are disgusting","absolutely disgusting","should be ashamed","shame on everyone","shame on you all","clout chasing"];
+    const SARCASM=["great job everyone","good job everyone","congrats on","hope you rot","enjoy prison","enjoy jail","not standing with you","do not support you","you people"];
+    const CODED=["honey bun","honeybun","pillow cuh","no strings attached cuh","say hi to bubba","bubba happy","prison pimp","prison wife","fry in jail","fry in prison","getting what you deserve","get what you deserve","exactly what you deserve","what you deserve","not in jail","suicidal empathy","tribal empathy","you messed up","you are not innocent","youre not innocent","not innocent bro","watermelon","save some penis"];
+    const ALL=[].concat(SLURS,THREATS,PREJUDICE,DEHUMANIZE,HOSTILE_OFFTOPIC,SARCASM,CODED);
+    function check(text){
+      const t=(text||"").toLowerCase();
+      if(!t.trim())return {ok:true};
+      // hard slurs/threats/dehumanize = severe
+      const sev=[].concat(SLURS,THREATS,DEHUMANIZE).some(w=>t.includes(w));
+      const host=[].concat(PREJUDICE,HOSTILE_OFFTOPIC,SARCASM,CODED).some(w=>t.includes(w));
+      if(sev||host)return {ok:false,severe:sev};
+      return {ok:true};
+    }
+    return { check: check };
+  })();
+
+  // Live reader on the message box
+  (function(){
+    const msg=document.getElementById('message');
+    const notice=document.getElementById('gateNotice');
+    const btn=document.getElementById('submitBtn');
+    if(!msg||!notice)return;
+    const CLEAN_LINES=[
+      "We hear you — and this isn't the place for it. This wall is for people who stand with Karmelo. Your negativity doesn't get a seat here.",
+      "That message won't post. This space is for support, not contempt. Take the hostility elsewhere — it stops at this door.",
+      "Not here. This wall belongs to people building Karmelo up, not tearing him down. Keep your venom; we keep the love."
+    ];
+    let __t;
+    function paint(){
+      const r=window.__karmeloGate.check(msg.value);
+      if(r.ok){ notice.style.display='none'; notice.textContent=''; notice.classList.remove('warn'); if(btn)btn.disabled=false; return; }
+      const line=CLEAN_LINES[Math.floor(Math.random()*CLEAN_LINES.length)];
+      notice.textContent='✋ '+line;
+      notice.classList.remove('warn');
+      notice.style.display='block';
+    }
+    msg.addEventListener('input',function(){ clearTimeout(__t); __t=setTimeout(paint,350); });
+    msg.addEventListener('blur',paint);
+  })();
+
   (function(){
     const ENDPOINT='https://sue-45c3e283.base44.app/functions/karmeloSignup';
     const form=document.getElementById('signupForm');
@@ -2085,6 +2152,17 @@
       if(!lnEl||!(lnEl.value||'').trim()){fail('Please add your last name.',lnEl);return;}
       if(!mailEl||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((mailEl.value||'').trim())){fail('Please enter a valid email so we can keep you posted.',mailEl);return;}
       if(!stEl||!(stEl.value||'').trim()){fail('Please select your state or region.',stEl);return;}
+      // REAL-TIME GATE — hard block hostile messages at submit (signal-loop-gate-2026-0620)
+      const __msgEl=document.getElementById('message');
+      const __gate=window.__karmeloGate?window.__karmeloGate.check(__msgEl?__msgEl.value:''):{ok:true};
+      if(!__gate.ok){
+        const note=document.getElementById('gateNotice');
+        const line="This message won't post. This wall is for people who stand with Karmelo — your negativity doesn't get a seat here. Clear it out and we'll gladly take your support.";
+        if(note){ note.textContent='✋ '+line; note.style.display='block'; note.classList.remove('warn'); }
+        fail("Your message can’t be posted here. Please remove the hostile content.",__msgEl);
+        __submitting=false;
+        return;
+      }
       btn.disabled=true;
       btn.innerHTML='Posting… <span class="arrow">→</span>';
       const v=id=>(document.getElementById(id)||{}).value||'';
@@ -2094,7 +2172,7 @@
         zip:'',commitment_type:v('commitment_type'),
         message:v('message'),
         want_address:'no',
-        sign_manifesto:true, opt_in_newsletter:'yes',
+        sign_manifesto:(document.getElementById('sign_manifesto')||{checked:true}).checked, opt_in_newsletter:'yes',
         source:'e5enclave_justice_karmelo'
       };
       try{
