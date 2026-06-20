@@ -1553,15 +1553,15 @@
           <div class="field full">
             <label class="f-label" for="email">Email <span class="req">*</span></label>
             <input class="f-input" type="email" id="email" name="email" autocomplete="email" placeholder="you@domain.com" required />
-            <span class="f-label" style="font-size:12px;opacity:.6;font-weight:400;">That's all we need to keep you posted on the case. Everything below is optional.</span>
+            <span class="f-label" style="font-size:12px;opacity:.6;font-weight:400;">We'll keep you posted on the case. Your contact info never posts publicly.</span>
           </div>
           <div class="field">
-            <label class="f-label" for="first_name">First Name <span class="hint">(optional)</span></label>
-            <input class="f-input" type="text" id="first_name" name="first_name" autocomplete="given-name" placeholder="First" />
+            <label class="f-label" for="first_name">First Name <span class="req">*</span></label>
+            <input class="f-input" type="text" id="first_name" name="first_name" autocomplete="given-name" placeholder="First" required />
           </div>
           <div class="field">
-            <label class="f-label" for="last_name">Last Name <span class="hint">(optional)</span></label>
-            <input class="f-input" type="text" id="last_name" name="last_name" autocomplete="family-name" placeholder="Last" />
+            <label class="f-label" for="last_name">Last Name <span class="req">*</span></label>
+            <input class="f-input" type="text" id="last_name" name="last_name" autocomplete="family-name" placeholder="Last" required />
           </div>
           <div class="field full">
             <label class="f-label" for="message">Your message to Karmelo <span class="hint">(optional — posts to the wall)</span></label>
@@ -1577,8 +1577,65 @@
             <input class="f-input" type="text" id="city" name="city" placeholder="City" />
           </div>
           <div class="field third">
-            <label class="f-label" for="state">State</label>
-            <input class="f-input" type="text" id="state" name="state" placeholder="TX" maxlength="2" />
+            <label class="f-label" for="state">State / Region <span class="req">*</span></label>
+            <select class="f-input f-select" id="state" name="state" required>
+              <option value="" disabled selected>Select…</option>
+              <option value="AL">Alabama</option>
+              <option value="AK">Alaska</option>
+              <option value="AZ">Arizona</option>
+              <option value="AR">Arkansas</option>
+              <option value="CA">California</option>
+              <option value="CO">Colorado</option>
+              <option value="CT">Connecticut</option>
+              <option value="DE">Delaware</option>
+              <option value="DC">District of Columbia</option>
+              <option value="FL">Florida</option>
+              <option value="GA">Georgia</option>
+              <option value="HI">Hawaii</option>
+              <option value="ID">Idaho</option>
+              <option value="IL">Illinois</option>
+              <option value="IN">Indiana</option>
+              <option value="IA">Iowa</option>
+              <option value="KS">Kansas</option>
+              <option value="KY">Kentucky</option>
+              <option value="LA">Louisiana</option>
+              <option value="ME">Maine</option>
+              <option value="MD">Maryland</option>
+              <option value="MA">Massachusetts</option>
+              <option value="MI">Michigan</option>
+              <option value="MN">Minnesota</option>
+              <option value="MS">Mississippi</option>
+              <option value="MO">Missouri</option>
+              <option value="MT">Montana</option>
+              <option value="NE">Nebraska</option>
+              <option value="NV">Nevada</option>
+              <option value="NH">New Hampshire</option>
+              <option value="NJ">New Jersey</option>
+              <option value="NM">New Mexico</option>
+              <option value="NY">New York</option>
+              <option value="NC">North Carolina</option>
+              <option value="ND">North Dakota</option>
+              <option value="OH">Ohio</option>
+              <option value="OK">Oklahoma</option>
+              <option value="OR">Oregon</option>
+              <option value="PA">Pennsylvania</option>
+              <option value="RI">Rhode Island</option>
+              <option value="SC">South Carolina</option>
+              <option value="SD">South Dakota</option>
+              <option value="TN">Tennessee</option>
+              <option value="TX">Texas</option>
+              <option value="UT">Utah</option>
+              <option value="VT">Vermont</option>
+              <option value="VA">Virginia</option>
+              <option value="WA">Washington</option>
+              <option value="WV">West Virginia</option>
+              <option value="WI">Wisconsin</option>
+              <option value="WY">Wyoming</option>
+              <option value="PR">Puerto Rico</option>
+              <option value="VI">U.S. Virgin Islands</option>
+              <option value="GU">Guam</option>
+              <option value="INTL">Outside the U.S.</option>
+            </select>
           </div>
 
           <!-- Commitment consolidated to letter + manifesto (Chairman directive 2026-06-20). -->
@@ -2019,9 +2076,15 @@
       __submitting=true;
       errorMsg.style.display='none';
       errorMsg.textContent='';
-      const emailEl=document.getElementById('message');
       const mailEl=document.getElementById('email');
-      if(!mailEl||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((mailEl.value||'').trim())){errorMsg.textContent='Please enter a valid email so we can keep you posted.';errorMsg.style.display='block';return;}
+      const fnEl=document.getElementById('first_name');
+      const lnEl=document.getElementById('last_name');
+      const stEl=document.getElementById('state');
+      const fail=(msg,el)=>{errorMsg.textContent=msg;errorMsg.style.display='block';if(el){try{el.focus();}catch(e){}}};
+      if(!fnEl||!(fnEl.value||'').trim()){fail('Please add your first name.',fnEl);return;}
+      if(!lnEl||!(lnEl.value||'').trim()){fail('Please add your last name.',lnEl);return;}
+      if(!mailEl||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((mailEl.value||'').trim())){fail('Please enter a valid email so we can keep you posted.',mailEl);return;}
+      if(!stEl||!(stEl.value||'').trim()){fail('Please select your state or region.',stEl);return;}
       btn.disabled=true;
       btn.innerHTML='Posting… <span class="arrow">→</span>';
       const v=id=>(document.getElementById(id)||{}).value||'';
