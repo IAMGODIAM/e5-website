@@ -365,9 +365,9 @@
     --bg-1:      #0a0a0a;
     --bg-2:      #111111;
     --fg:        #ededed;
-    --fg-dim:    #a1a1a1;
-    --fg-dimmer: #6b6b6b;
-    --fg-ghost:  #3a3a3a;
+    --fg-dim:    #b9b9b9;
+    --fg-dimmer: #8f8f8f;
+    --fg-ghost:  #5a5a5a;
     --border:    #1c1c1c;
     --border-2:  #2a2a2a;
     --border-3:  #3f3f3f;
@@ -435,7 +435,8 @@
     font-size: 11px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: var(--fg-dim);
+    color: #cccccc;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.9);
   }
   .ticker-inner {
     display: flex;
@@ -460,7 +461,7 @@
     box-shadow: 0 0 0 0 rgba(255,77,77,0.55);
     animation: pulse 1.8s infinite;
   }
-  .ticker-divider { color: var(--fg-ghost); }
+  .ticker-divider { color: #6f6f6f; }
   @keyframes pulse {
     0%   { box-shadow: 0 0 0 0 rgba(255,77,77,0.6); }
     70%  { box-shadow: 0 0 0 8px rgba(255,77,77,0); }
@@ -1367,7 +1368,7 @@
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--fg-dim);
+  color: #c2c2c2;
   text-decoration: none;
   padding: 16px 0;
   transition: color .15s;
