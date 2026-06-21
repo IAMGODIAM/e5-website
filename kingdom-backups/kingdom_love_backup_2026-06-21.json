@@ -1,14 +1,15 @@
 {
-  "backup_meta": {
-    "snapshot_date": "2026-06-21",
-    "generated_at_utc": "2026-06-21T07:39:00Z",
+  "snapshot_meta": {
+    "backup_date": "2026-06-21",
     "guardian": "Draco — Treasury Dragon",
-    "purpose": "Sovereign preservation of all Kingdom love-data (feed, private letters/DMs, voice notes, photos, garden).",
+    "timezone": "America/New_York",
+    "generated_at_utc": "2026-06-21T07:53:00Z",
     "counts": {
       "kingdom_posts": 5,
       "kingdom_media": 0,
       "kingdom_plants": 2
-    }
+    },
+    "dag_stamp": "kingdom-love-backup-2026-0621"
   },
   "kingdom_posts": [
     {
