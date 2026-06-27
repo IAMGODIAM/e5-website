@@ -34,18 +34,22 @@ html[data-theme="dark"],body{background:var(--canon-ink);color:var(--canon-bone)
 .body,.body--lg,.body--sm,.body--xs,p{font-family:var(--canon-text);}
 .text-muted,.body--sm,.body--xs{color:var(--canon-muted)!important;}
 
-/* The CANON cream masthead band — applied to the FIRST section of every page */
+/* The CANON cream masthead band — full bone hero, headline sits entirely on cream */
 main#main-content > .section:first-of-type{
-  background:linear-gradient(180deg,var(--canon-bone) 0%,var(--canon-bone) 46%,var(--canon-ink) 46%,var(--canon-ink) 100%)!important;
-  padding-top:clamp(72px,12vw,140px)!important;padding-bottom:clamp(40px,6vw,72px)!important;text-align:center;position:relative;}
+  background:var(--canon-bone)!important;
+  padding-top:clamp(96px,13vw,150px)!important;
+  padding-bottom:clamp(48px,7vw,84px)!important;
+  text-align:center;position:relative;border-bottom:1px solid rgba(10,9,8,0.14);}
 main#main-content > .section:first-of-type::before{
-  content:"✦";display:block;color:var(--canon-oxblood);font-size:14px;margin-bottom:14px;}
-main#main-content > .section:first-of-type .section-header__label{color:var(--canon-ink-3)!important;}
+  content:"✦";display:block;color:var(--canon-oxblood);font-size:14px;margin-bottom:16px;}
+main#main-content > .section:first-of-type .section-header__label{color:var(--canon-ink-3)!important;display:block;margin-bottom:18px;}
 main#main-content > .section:first-of-type .display,
 main#main-content > .section:first-of-type h1{color:var(--canon-ink)!important;}
 main#main-content > .section:first-of-type .text-gold{color:var(--canon-oxblood)!important;}
 main#main-content > .section:first-of-type .container,
-main#main-content > .section:first-of-type .container--narrow{position:relative;}
+main#main-content > .section:first-of-type .container--narrow{position:relative;max-width:980px;}
+/* Section immediately after the hero gets ink bg + top breathing room */
+main#main-content > .section:first-of-type + .section{padding-top:clamp(48px,6vw,80px)!important;}
 
 /* Cards → warm Canon panels with gold-left accent */
 .card,.gov__card,.program-card{
