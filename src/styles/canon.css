@@ -1,0 +1,67 @@
+/* ============================================================
+   E5 CANON OVERRIDE — Editorial design system (bone/ink/oxblood/gold)
+   Makes EVERY BaseLayout page match the canonical homepage.
+   DAG: canon-reskin-2026-0627. Imported LAST in BaseLayout → wins.
+   Remaps Design Bible v2 classes to Canon. No page content changes.
+   ============================================================ */
+:root{
+  --canon-bone:#f4eee2; --canon-bone-2:#ebe3d1; --canon-bone-3:#e2d8c2;
+  --canon-ink:#0a0908; --canon-ink-2:#15120e; --canon-ink-3:#221d16;
+  --canon-oxblood:#6d1f20; --canon-gold:#a8884a; --canon-gold-2:#c4a468;
+  --canon-muted:#9c917c; --canon-muted-2:#b8ad95;
+  --canon-rule:rgba(244,238,226,0.12); --canon-rule-2:rgba(244,238,226,0.22);
+  --canon-display:"Cormorant Garamond","Playfair Display",Georgia,serif;
+  --canon-text:"Inter","Helvetica Neue",sans-serif;
+  /* Remap Bible v2 surface tokens to warm Canon ink */
+  --color-surface:var(--canon-ink); --c-neutral-900:var(--canon-ink);
+  --color-surface-elevated:var(--canon-ink-2); --c-neutral-800:var(--canon-ink-2);
+  --c-neutral-700:var(--canon-ink-3);
+  --color-on-surface:var(--canon-bone); --c-neutral-100:var(--canon-bone);
+  --color-on-surface-secondary:var(--canon-muted-2); --c-neutral-300:var(--canon-muted-2);
+  --color-primary:var(--canon-gold-2); --c-gold-500:var(--canon-gold-2); --c-gold-400:var(--canon-gold-2);
+  --color-border:var(--canon-rule); --color-border-gold:var(--canon-rule-2);
+}
+html[data-theme="dark"],body{background:var(--canon-ink);color:var(--canon-bone);}
+
+/* Headlines → Canon serif */
+.display,.display--lg,.display--md,.display--sm,h1,h2,h3{
+  font-family:var(--canon-display)!important;font-weight:500!important;letter-spacing:-.01em;color:var(--canon-bone);}
+.display--lg{font-size:clamp(2.6rem,6vw,4.4rem)!important;line-height:1.05!important;}
+.text-gold{color:var(--canon-gold-2)!important;font-style:italic;}
+.section-header__label{color:var(--canon-gold-2)!important;letter-spacing:.3em!important;text-transform:uppercase;font-family:var(--canon-text);font-size:12px;font-weight:600;}
+
+/* Body copy */
+.body,.body--lg,.body--sm,.body--xs,p{font-family:var(--canon-text);}
+.text-muted,.body--sm,.body--xs{color:var(--canon-muted)!important;}
+
+/* The CANON cream masthead band — applied to the FIRST section of every page */
+main#main-content > .section:first-of-type{
+  background:linear-gradient(180deg,var(--canon-bone) 0%,var(--canon-bone) 46%,var(--canon-ink) 46%,var(--canon-ink) 100%)!important;
+  padding-top:clamp(72px,12vw,140px)!important;padding-bottom:clamp(40px,6vw,72px)!important;text-align:center;position:relative;}
+main#main-content > .section:first-of-type::before{
+  content:"✦";display:block;color:var(--canon-oxblood);font-size:14px;margin-bottom:14px;}
+main#main-content > .section:first-of-type .section-header__label{color:var(--canon-ink-3)!important;}
+main#main-content > .section:first-of-type .display,
+main#main-content > .section:first-of-type h1{color:var(--canon-ink)!important;}
+main#main-content > .section:first-of-type .text-gold{color:var(--canon-oxblood)!important;}
+main#main-content > .section:first-of-type .container,
+main#main-content > .section:first-of-type .container--narrow{position:relative;}
+
+/* Cards → warm Canon panels with gold-left accent */
+.card,.gov__card,.program-card{
+  background:var(--canon-ink-2)!important;border:1px solid var(--canon-rule-2)!important;
+  border-radius:4px!important;border-left:2px solid var(--canon-gold)!important;}
+.card h3,.gov__card h3{color:var(--canon-bone)!important;font-family:var(--canon-display)!important;}
+.gov__icon{color:var(--canon-gold-2)!important;filter:grayscale(1) brightness(1.4);}
+
+/* Buttons → Canon gold */
+.btn--primary,.btn--gold{background:var(--canon-gold)!important;color:var(--canon-ink)!important;font-weight:700!important;border-radius:3px!important;}
+.btn--tertiary{color:var(--canon-gold-2)!important;background:transparent!important;}
+a{color:var(--canon-gold-2);}
+
+/* Header/footer warm tint */
+.header{background:rgba(10,9,8,0.92)!important;border-bottom:1px solid var(--canon-rule-2)!important;}
+.header__logo-icon,.footer .text-gold{color:var(--canon-gold-2)!important;}
+.header__link{font-family:var(--canon-text);color:var(--canon-muted-2)!important;}
+.header__link:hover{color:var(--canon-bone)!important;}
+.footer{background:var(--canon-ink-2)!important;border-top:1px solid var(--canon-rule-2);}
