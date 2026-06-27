@@ -1,13 +1,67 @@
-# Legacy Ads-slug reface → canonical (Phase 2b, DAG warroom-website-overhaul-abc-2026-0619)
-/about-e5                     /about/                       301
-/about-us                     /about/                       301
-/contact-us                   /contact/                     301
-/faqs                         /about/                       301
-/e5-blog                      /gospel-of-love/              301
-/vlog                         /gospel-of-love/              301
-/love-offerings               /donate/                      301
-/support                      /support/                     301
-/reconstruction-and-repair    /programs/                    301
-/black-dragons-initiative-1   /black-dragons-initiative/   301
-/gospel-of-love-%2Four-blogs  /gospel-of-love/             301
-/gospel-of-love-/our-blogs    /gospel-of-love/             301
+# ═══════════════════════════════════════════════════════════════
+# E5 WEBSITE RECTIFICATION — Full redirect map
+# DAG: warroom-website-rectify-2026-0627 | Princeton iteration protocol
+# ═══════════════════════════════════════════════════════════════
+
+# --- Legacy Ads-slug reface (Phase 2b, preserved) ---
+/about-e5                     /about/                          301
+/about-us                     /about/                          301
+/contact-us                   /contact/                        301
+/faqs                         /faq/                            301
+/e5-blog                      /record/                         301
+/vlog                         /record/                         301
+/love-offerings               /donate/                         301
+/reconstruction-and-repair    /programs/                       301
+/gospel-of-love-%2Four-blogs  /record/                         301
+/gospel-of-love-/our-blogs    /record/                         301
+
+# --- RECTIFICATION 2026-06-27: dead routes → correct canonical pages ---
+# Bare program slugs → canonical /programs/ paths
+/mccartney-academy            /programs/mccartney-academy/      301
+/mccartney-academy/           /programs/mccartney-academy/      301
+/lineage-farms                /programs/lineage-farms/          301
+/lineage-farms/               /programs/lineage-farms/          301
+/lineage-farm                 /programs/lineage-farms/          301
+/lineage-farm/                /programs/lineage-farms/          301
+/farmblock                    /programs/lineage-farms/          301
+/farmblock/                   /programs/lineage-farms/          301
+/lineage-foundation           /programs/lineage-farms/          301
+/lineage-foundation/          /programs/lineage-farms/          301
+/black-dragons                /black-dragons-initiative/        301
+/black-dragons/               /black-dragons-initiative/        301
+/bdi                          /black-dragons-initiative/        301
+
+# Doctrine / framework / executive order → doctrine + pillars
+/framework                    /pillars/                        301
+/framework/                   /pillars/                        301
+/executive-order              /doctrine/                       301
+/executive-order/             /doctrine/                       301
+
+# Record sub-pages that stay aliases
+/record/dispatches            /record/                         301
+/record/dispatches/           /record/                         301
+/record/research              /record/                         301
+/record/research/             /record/                         301
+/artifacts                    /record/                         301
+/artifacts/                   /record/                         301
+
+# Engagement aliases
+/join                         /coalition/apply/                301
+/join/                        /coalition/apply/                301
+/support                      /donate/                         301
+/support/                     /donate/                         301
+/gospel-of-love               /record/                         301
+/gospel-of-love/              /record/                         301
+/first-offering               /donate/                         301
+/first-offering/              /donate/                         301
+
+# About sub-pages → about (until built)
+/about/forensic-genealogy/    /about/                          301
+/about/israel/                /about/                          301
+/contracts-grants             /governance/                     301
+/contracts-grants/            /governance/                     301
+/blog                         /record/                         301
+/blog/                        /record/                         301
+
+# Legacy slug fix
+/black-dragons-initiative-1   /black-dragons-initiative/       301
