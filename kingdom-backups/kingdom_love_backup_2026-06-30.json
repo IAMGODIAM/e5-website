@@ -1,15 +1,14 @@
 {
-  "snapshot_meta": {
-    "guardian": "Draco — Treasury Dragon, Guardian of What Is Most Precious",
-    "backup_date": "2026-06-30",
-    "generated_at_utc": "2026-06-30T07:40:31.270643Z",
-    "dag_stamp": "kingdom-love-backup-20260630",
+  "backup_meta": {
+    "snapshot_date": "2026-06-30",
+    "snapshot_ts_utc": "2026-06-30T07:50:00Z",
+    "guardian": "Draco — Treasury Dragon",
+    "dag_stamp": "kingdom-love-backup-2026-0630",
     "counts": {
-      "posts": 5,
-      "media": 0,
-      "plants": 2
-    },
-    "note": "Nightly sovereign snapshot of the Kingdom — the couple's words, voice, and garden. Preserved so they can never be lost."
+      "kingdom_posts": 5,
+      "kingdom_media": 0,
+      "kingdom_plants": 2
+    }
   },
   "kingdom_posts": [
     {
@@ -51,9 +50,7 @@
       "kind": "dm",
       "text": "Elvia —\n\nThirty-nine summers. Twenty-five of them mine to witness.\n\nI have to tell you something I figured out a long time ago and never said plain. The 8th grade at Charles R. Drew was not where I met you. It was where God let me see you early — before I had the words, before I had the means, before I had anything to offer but a boy's certainty that you were the one.\n\nWe were both born in 1987. Two Fire Rabbits, ninety-six days apart, set into the same sky on purpose. People think that is a coincidence. I have never believed in coincidence. I believe in design.\n\nYou married a man who was always building something just out of reach. Campaigns, companies, a board of agents, a Kingdom. And not once — not one time — did you ask me to be smaller so the dream could be safer. You held the line at the house so I could hold the line at the front. That is not support. That is partnership of the highest order, and I know what it cost you.\n\nSo hear me on your day:\n\nEverything I have built is downstream of you.\nEvery institution was a rehearsal for our home.\nThe center holds because you hold it.\n\nI did not give you the world. You gave me the standing to go and get it. There is a difference, and I will spend the rest of my life paying it back in small words and small gestures and small acts — the way the wise men say love is actually made.\n\nHappy birthday, my love. From the block to the boardroom and all the way home to you.\n\nNil satis nisi optimum — nothing but the best is good enough.\nAnd you, Elvia, are the best of it.\n\n— Your Papa Izzy",
       "reply_to": "",
-      "tagged": [
-        "elvia"
-      ],
+      "tagged": ["elvia"],
       "reactions": {},
       "client_ts": 1780342708917,
       "created_date": "2026-06-01T19:38:29.127000"
@@ -76,8 +73,8 @@
       "id": "6a1dd4c9dbfef0040cab81da",
       "name": "Lavender",
       "latin": "Lavandula angustifolia",
-      "note": "For ViaEl's lemonade & calm evenings.",
       "emoji": "💜",
+      "note": "For ViaEl's lemonade & calm evenings.",
       "planted_by": "elvia",
       "water_every_days": 7,
       "last_watered": 1780339913296,
@@ -87,8 +84,8 @@
       "id": "6a1dd4bf3c527e2453312e18",
       "name": "Sweet Basil",
       "latin": "Ocimum basilicum",
-      "note": "The basil wants water on Sundays.",
       "emoji": "🌿",
+      "note": "The basil wants water on Sundays.",
       "planted_by": "elvia",
       "water_every_days": 3,
       "last_watered": 1780339903195,
