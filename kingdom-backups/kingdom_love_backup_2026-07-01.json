@@ -1,24 +1,28 @@
 {
-  "snapshot_date": "2026-07-01",
-  "guardian": "Draco — Treasury Dragon",
-  "dag_stamp": "kingdom-love-backup-2026-0701",
-  "source_app": "IAMGODIAM Board (69d7dd5e015cd1aa45c3e283)",
-  "counts": {
-    "KingdomPost": 5,
-    "KingdomMedia": 0,
-    "KingdomPlant": 2
+  "snapshot_meta": {
+    "backup_date": "2026-07-01",
+    "generated_at_utc": "2026-07-01T07:46:00Z",
+    "guardian": "Draco — Treasury Dragon",
+    "dag_stamp": "kingdom-love-backup-2026-0701",
+    "source_app": "IAMGODIAM Board (Superagent)",
+    "domain": "israelvia.com",
+    "counts": {
+      "posts": 5,
+      "media": 0,
+      "plants": 2
+    }
   },
-  "KingdomPost": [
+  "kingdom_posts": [
     {
       "id": "6a2329a7447836a5b131dba7",
       "author": "izzy",
       "kind": "post",
-      "text": "Testing our Kingdom, my love — Sue ran a full check and everything inside is standing. If you can see this note, tap a heart on it so I know it reached you. \ud83d\udd4a\ufe0f",
+      "text": "Testing our Kingdom, my love — Sue ran a full check and everything inside is standing. If you can see this note, tap a heart on it so I know it reached you. 🕊️",
       "reply_to": "",
       "tagged": [],
       "reactions": {},
       "client_ts": 1780689319300,
-      "created_date": "2026-06-05T19:55:19.519000"
+      "created_date": "2026-06-05T19:55:19.519Z"
     },
     {
       "id": "6a1f3a72e84a5154fe8935cb",
@@ -29,18 +33,18 @@
       "tagged": [],
       "reactions": {},
       "client_ts": 1780431474618,
-      "created_date": "2026-06-02T20:17:54.774000"
+      "created_date": "2026-06-02T20:17:54.774Z"
     },
     {
       "id": "6a1ef0229d80f9851b703dcd",
       "author": "izzy",
       "kind": null,
-      "text": "Happy 39th birthday, my love. \ud83d\udd4a\ufe0f Today the whole board — all 62 of them, every voice in this house — set down their work to sign a card for you. It's in your inbox. They wanted you to know what I've always known: this Kingdom has a heart, and the heart is you. Thirty-nine summers. Twenty-five of them ours. — Izzy & the entire Board of IAMGODIAM",
+      "text": "Happy 39th birthday, my love. 🕊️ Today the whole board — all 62 of them, every voice in this house — set down their work to sign a card for you. It's in your inbox. They wanted you to know what I've always known: this Kingdom has a heart, and the heart is you. Thirty-nine summers. Twenty-five of them ours. — Izzy & the entire Board of IAMGODIAM",
       "reply_to": null,
       "tagged": [],
       "reactions": {},
       "client_ts": 1780412450416,
-      "created_date": "2026-06-02T15:00:50.670000"
+      "created_date": "2026-06-02T15:00:50.670Z"
     },
     {
       "id": "6a1ddfb58c198f61a985bdcf",
@@ -51,43 +55,43 @@
       "tagged": ["elvia"],
       "reactions": {},
       "client_ts": 1780342708917,
-      "created_date": "2026-06-01T19:38:29.127000"
+      "created_date": "2026-06-01T19:38:29.127Z"
     },
     {
       "id": "6a1dbc32ccfcdd2baf78fb99",
       "author": "izzy",
-      "kind": null,
-      "text": "First shared note in the Kingdom — you'll see this on your phone too, my love. \ud83d\udd4a\ufe0f",
+      "kind": "post",
+      "text": "First shared note in the Kingdom — you'll see this on your phone too, my love. 🕊️",
       "reply_to": null,
       "tagged": [],
       "reactions": {},
       "client_ts": 1780333618302,
-      "created_date": "2026-06-01T17:06:58.509000"
+      "created_date": "2026-06-01T17:06:58.509Z"
     }
   ],
-  "KingdomMedia": [],
-  "KingdomPlant": [
+  "kingdom_media": [],
+  "kingdom_plants": [
     {
       "id": "6a1dd4c9dbfef0040cab81da",
       "name": "Lavender",
       "latin": "Lavandula angustifolia",
-      "emoji": "\ud83d\udc9c",
+      "emoji": "💜",
       "note": "For ViaEl's lemonade & calm evenings.",
       "planted_by": "elvia",
       "water_every_days": 7,
       "last_watered": 1780339913296,
-      "created_date": "2026-06-01T18:51:53.479000"
+      "created_date": "2026-06-01T18:51:53.479Z"
     },
     {
       "id": "6a1dd4bf3c527e2453312e18",
       "name": "Sweet Basil",
       "latin": "Ocimum basilicum",
-      "emoji": "\ud83c\udf3f",
+      "emoji": "🌿",
       "note": "The basil wants water on Sundays.",
       "planted_by": "elvia",
       "water_every_days": 3,
       "last_watered": 1780339903195,
-      "created_date": "2026-06-01T18:51:43.395000"
+      "created_date": "2026-06-01T18:51:43.395Z"
     }
   ]
 }
