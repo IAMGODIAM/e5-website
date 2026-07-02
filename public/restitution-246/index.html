@@ -519,8 +519,39 @@ body.paper-slate { --cream: #e4e3df; --paper: #ecece9; --cream-deep: #d6d6d2; }
 [data-screen-label] { scroll-margin-top: 40px; }
 
 </style>
+<style id="vc-nav-inject">.vc-palette-toggle {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 6px;
+    border: 1px solid var(--vc-rule-2);
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+    margin-left: 8px;
+  }.vc-palette-toggle:hover { border-color: var(--vc-ink); }.vc-palette-toggle .sw {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 1px solid rgba(var(--vc-ink-rgb),0.35);
+    transition: transform .2s ease;
+  }.vc-palette-toggle .sw-edit { background: linear-gradient(135deg, #f4eee2 0 50%, #6d1f20 50% 100%); }.vc-palette-toggle .sw-orig { background: linear-gradient(135deg, #e2dbd3 0 50%, #293d1b 50% 100%); }.vc-palette-toggle .sw-edit,
+  html:not([data-palette]) .vc-palette-toggle .sw-edit { transform: scale(1.18); border-color: var(--vc-oxblood); }.vc-palette-toggle .sw-orig { transform: scale(1.18); border-color: var(--vc-oxblood); }.vc-nav { display: flex; gap: 44px; justify-content: center; padding: 18px 56px; flex-wrap: wrap;
+    border-bottom: 1.5px solid var(--vc-ink); font-size: 10.5px; letter-spacing: 0.42em;
+    text-transform: uppercase; font-weight: 500; background: var(--vc-bone);
+    position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }.vc-nav a { color: var(--vc-ink); padding: 4px 0; transition: color .2s ease; }.vc-nav a:hover { color: var(--vc-oxblood); }.vc-nav .sep { width: 4px; height: 4px; border-radius: 50%; background: var(--vc-oxblood); align-self: center; opacity: 0.7; }.vc-nav, .vc-palette-toggle, .vc-counter, .vc-skip { display: none !important; }.vc-nav { gap: 16px; padding: 14px 20px; font-size: 9.5px; letter-spacing: 0.28em; }.vc-nav .sep { display: none; }
+.vc-nav{position:sticky;top:0;z-index:999;}</style>
 </head>
 <body class="accent-oxblood paper-cream">
+<nav class="vc-nav">
+  <a href="/mission/">Mission</a><span class="sep"></span>
+  <a href="/pillars/">Pillars</a><span class="sep"></span>
+  <a href="/record/">The Record</a><span class="sep"></span>
+  <a href="/programs/">Programs</a><span class="sep"></span>
+  <a href="/coalition/">Coalition</a><span class="sep"></span>
+  <a href="/donate/">Donate</a>
+  <button class="vc-palette-toggle" id="vc-palette-toggle" type="button" aria-label="Toggle palette" title="Toggle palette">
+    <span class="sw sw-edit" aria-hidden="true"></span>
+    <span class="sw sw-orig" aria-hidden="true"></span>
+  </button>
+</nav>
+
 <div id="app"></div>
 <script>
 // ——— REPARATIONS | RESTORATION — CONTENT & RENDER ———
