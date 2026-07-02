@@ -31,11 +31,9 @@
 /black-dragons/               /black-dragons-initiative/        301
 /bdi                          /black-dragons-initiative/        301
 
-# Doctrine / framework / executive order → doctrine + pillars
+# Doctrine / framework → pillars (executive-order now a real page)
 /framework                    /pillars/                        301
 /framework/                   /pillars/                        301
-/executive-order              /doctrine/                       301
-/executive-order/             /doctrine/                       301
 
 # Record sub-pages that stay aliases
 /record/dispatches            /record/                         301
@@ -58,8 +56,6 @@
 # About sub-pages → about (until built)
 /about/forensic-genealogy/    /about/                          301
 /about/israel/                /about/                          301
-/contracts-grants             /governance/                     301
-/contracts-grants/            /governance/                     301
 /blog                         /record/                         301
 /blog/                        /record/                         301
 
