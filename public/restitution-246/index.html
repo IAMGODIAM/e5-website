@@ -30,10 +30,10 @@
   --paper: #faf6ec;
   --oxblood: #5c1a1b;
   --oxblood-deep: #3d1011;
-  --champagne: oklch(0.78 0.07 85);
-  --gold: oklch(0.72 0.09 82);
+  --champagne: #7e6329;
+  --gold: #7e6329;
   --rule: rgba(11,11,12,0.18);
-  --rule-dark: rgba(243,239,230,0.18);
+  --rule-dark: rgba(11,11,12,0.14);
   --serif-display: "Bodoni Moda", "Didot", "Times New Roman", serif;
   --serif-text: "Cormorant Garamond", "Garamond", serif;
   --sans: "Inter Tight", ui-sans-serif, sans-serif;
@@ -58,15 +58,15 @@ a { color: inherit; text-decoration: none; }
 .micro { font-family: var(--sans); font-size: 10.5px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; }
 .micro-lg { font-size: 12px; letter-spacing: 0.28em; }
 .caption { font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 0.08em; color: rgba(11,11,12,0.55); }
-.dark .caption { color: rgba(243,239,230,0.55); }
+.dark .caption { color: rgba(11,11,12,0.55); }
 
 /* ——— TOPBAR ——— */
 .topbar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 60;
   display: flex; align-items: center; justify-content: space-between;
   padding: 18px 40px;
-  background: linear-gradient(to bottom, rgba(11,11,12,0.6), rgba(11,11,12,0));
-  color: var(--cream);
+  background: linear-gradient(to bottom, rgba(250,246,236,0.9), rgba(250,246,236,0));
+  color: var(--ink);
   pointer-events: none;
   transition: background 0.4s, color 0.4s;
 }
@@ -82,23 +82,23 @@ a { color: inherit; text-decoration: none; }
 .cover {
   position: relative;
   min-height: 100vh;
-  background: var(--ink);
-  color: var(--cream);
+  background: linear-gradient(180deg, var(--paper) 0%, var(--cream-deep) 100%);
+  color: var(--ink);
   overflow: hidden;
 }
 .cover::before {
   content: "";
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse at 20% 30%, rgba(92,26,27,0.32), transparent 55%),
-    radial-gradient(ellipse at 85% 80%, rgba(11,11,12,1), transparent 60%),
-    repeating-linear-gradient(90deg, transparent 0 79px, rgba(243,239,230,0.018) 79px 80px);
+    radial-gradient(ellipse at 20% 30%, rgba(126,99,41,0.14), transparent 55%),
+    radial-gradient(ellipse at 85% 80%, rgba(92,26,27,0.10), transparent 60%),
+    repeating-linear-gradient(90deg, transparent 0 79px, rgba(11,11,12,0.022) 79px 80px);
   pointer-events: none;
 }
 .cover::after {
   content: "";
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 120%, rgba(243,239,230,0.03), transparent 50%);
+  background: radial-gradient(ellipse at 50% 120%, rgba(126,99,41,0.06), transparent 50%);
   pointer-events: none;
 }
 .cover-inner {
@@ -113,7 +113,7 @@ a { color: inherit; text-decoration: none; }
   display: flex; justify-content: space-between; z-index: 3;
 }
 .cover-folio .l { color: var(--champagne); opacity: 0.9; }
-.cover-folio .r { color: rgba(243,239,230,0.65); }
+.cover-folio .r { color: rgba(11,11,12,0.65); }
 .cover-plate { text-align: center; align-self: center; margin: auto 0; padding: 40px 0; }
 .cover-eyebrow {
   font-family: var(--sans); font-size: 11px; letter-spacing: 0.5em; text-transform: uppercase;
@@ -139,7 +139,7 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--serif-text); font-style: italic; font-weight: 300;
   font-size: clamp(18px, 1.6vw, 24px);
   letter-spacing: 0.02em;
-  color: rgba(243,239,230,0.8);
+  color: rgba(11,11,12,0.8);
 }
 .cover-foot {
   display: grid; grid-template-columns: 1fr 1fr 1fr;
@@ -148,16 +148,16 @@ a { color: inherit; text-decoration: none; }
   padding-top: 40px;
   border-top: 1px solid var(--rule-dark);
 }
-.cover-foot .col { font-family: var(--sans); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(243,239,230,0.7); }
+.cover-foot .col { font-family: var(--sans); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(11,11,12,0.7); }
 .cover-foot .col.mid { text-align: center; color: var(--champagne); letter-spacing: 0.35em; }
 .cover-foot .col.right { text-align: right; }
-.cover-foot .col strong { display: block; color: var(--cream); font-weight: 500; margin-bottom: 4px; letter-spacing: 0.18em; }
+.cover-foot .col strong { display: block; color: var(--ink); font-weight: 500; margin-bottom: 4px; letter-spacing: 0.18em; }
 
 .scroll-hint {
   position: absolute; left: 50%; bottom: 56px;
   transform: translateX(-50%);
   font-family: var(--sans); font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
-  color: rgba(243,239,230,0.6);
+  color: rgba(11,11,12,0.6);
   display: flex; flex-direction: column; align-items: center; gap: 14px;
   z-index: 3;
 }
@@ -175,8 +175,8 @@ a { color: inherit; text-decoration: none; }
 /* ——— SECTION SCAFFOLD ——— */
 section { position: relative; }
 .plate { padding: 140px 80px; max-width: 1440px; margin: 0 auto; }
-.dark { background: var(--ink); color: var(--cream); }
-.deep { background: var(--oxblood-deep); color: var(--cream); }
+.dark { background: var(--cream-deep); color: var(--ink); }
+.deep { background: var(--cream-deep); color: var(--ink); }
 
 /* chapter header */
 .chapter-head {
@@ -217,7 +217,7 @@ section { position: relative; }
 }
 .dark .chapter-answer, .deep .chapter-answer { border-color: var(--rule-dark); }
 .chapter-answer .lbl { font-family: var(--sans); font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(11,11,12,0.55); }
-.dark .chapter-answer .lbl, .deep .chapter-answer .lbl { color: rgba(243,239,230,0.55); }
+.dark .chapter-answer .lbl, .deep .chapter-answer .lbl { color: rgba(11,11,12,0.55); }
 .chapter-answer .val {
   font-family: var(--serif-display); font-style: italic; font-weight: 500;
   font-size: 40px; letter-spacing: -0.01em;
@@ -254,7 +254,7 @@ section { position: relative; }
   border-left: 2px solid var(--oxblood);
   max-width: 22ch;
 }
-.dark .pull-quote, .deep .pull-quote { border-left-color: var(--champagne); color: var(--cream); }
+.dark .pull-quote, .deep .pull-quote { border-left-color: var(--champagne); color: var(--ink); }
 
 /* ——— PREMISE ——— */
 .premise { background: var(--paper); }
@@ -314,12 +314,12 @@ section { position: relative; }
 .ledger-foot .value { font-family: var(--serif-display); font-weight: 500; font-size: 32px; color: var(--oxblood); letter-spacing: -0.01em; }
 
 /* ——— NUMBER / CERTIFICATE ——— */
-.q4 { background: var(--oxblood-deep); color: var(--cream); overflow: hidden; }
+.q4 { background: var(--cream-deep); color: var(--ink); overflow: hidden; }
 .q4::before {
   content: ""; position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(243,239,230,0.08), transparent 55%),
-    radial-gradient(ellipse at 50% 120%, rgba(11,11,12,0.6), transparent 60%);
+    radial-gradient(ellipse at 50% 0%, rgba(126,99,41,0.10), transparent 55%),
+    radial-gradient(ellipse at 50% 120%, rgba(92,26,27,0.08), transparent 60%);
   pointer-events: none;
 }
 .q4 .plate { position: relative; z-index: 2; }
@@ -344,7 +344,7 @@ section { position: relative; }
   font-family: var(--serif-display); font-weight: 500;
   font-size: clamp(100px, 18vw, 280px);
   line-height: 0.9; letter-spacing: -0.04em;
-  color: var(--cream);
+  color: var(--ink);
 }
 .number-big .sign { font-weight: 300; color: var(--champagne); font-size: 0.6em; vertical-align: 0.3em; margin-right: 0.08em; }
 .number-big .unit { font-style: italic; font-weight: 400; font-size: 0.56em; color: var(--champagne); margin-left: 0.1em; letter-spacing: -0.02em; }
@@ -352,12 +352,12 @@ section { position: relative; }
   margin-top: 36px;
   font-family: var(--serif-display); font-style: italic; font-weight: 400;
   font-size: clamp(20px, 1.8vw, 26px);
-  color: rgba(243,239,230,0.88);
+  color: rgba(11,11,12,0.88);
 }
 .number-foot-rule {
   margin-top: 28px;
   font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.4em; text-transform: uppercase;
-  color: rgba(243,239,230,0.55);
+  color: rgba(11,11,12,0.55);
 }
 
 /* mechanism triptych */
@@ -367,15 +367,15 @@ section { position: relative; }
   margin-top: 40px; border: 1px solid var(--champagne);
 }
 .mechanism .cell {
-  background: var(--oxblood-deep);
+  background: var(--cream);
   padding: 44px 36px; min-height: 320px;
   display: flex; flex-direction: column; justify-content: space-between;
 }
 .mechanism .cell .top { display: flex; justify-content: space-between; align-items: baseline; }
 .mechanism .cell .num { font-family: var(--serif-display); font-style: italic; font-weight: 400; font-size: 46px; color: var(--champagne); line-height: 1; }
-.mechanism .cell .tag { font-family: var(--sans); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(243,239,230,0.6); }
+.mechanism .cell .tag { font-family: var(--sans); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(11,11,12,0.6); }
 .mechanism .cell h3 { margin: 40px 0 18px; font-family: var(--serif-display); font-weight: 500; font-size: 26px; line-height: 1.15; letter-spacing: -0.005em; }
-.mechanism .cell p { font-size: 16px; line-height: 1.5; color: rgba(243,239,230,0.82); max-width: 30em; }
+.mechanism .cell p { font-size: 16px; line-height: 1.5; color: rgba(11,11,12,0.82); max-width: 30em; }
 
 /* yield */
 .yield-row {
@@ -388,7 +388,7 @@ section { position: relative; }
 }
 .yield-row .lhs, .yield-row .rhs {
   font-family: var(--serif-text); font-size: 18px; line-height: 1.5;
-  color: rgba(243,239,230,0.85); max-width: 28em;
+  color: rgba(11,11,12,0.85); max-width: 28em;
 }
 .yield-row .rhs { text-align: right; justify-self: end; }
 .yield-center { text-align: center; }
@@ -397,16 +397,16 @@ section { position: relative; }
   font-size: 88px; line-height: 1; letter-spacing: -0.02em; color: var(--champagne);
 }
 .yield-center .pct em { font-style: italic; font-weight: 400; }
-.yield-center .lbl { font-family: var(--sans); font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(243,239,230,0.65); margin-top: 10px; }
+.yield-center .lbl { font-family: var(--sans); font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(11,11,12,0.65); margin-top: 10px; }
 
 /* ——— BUREAU ——— */
-.bureau { background: var(--ink); color: var(--cream); }
+.bureau { background: var(--cream-deep); color: var(--ink); }
 .bureau-hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 100px; align-items: center; }
 .bureau-seal { max-width: 440px; justify-self: end; aspect-ratio: 1/1; }
 .bureau-title { font-family: var(--serif-display); font-weight: 500; font-size: clamp(44px, 5vw, 76px); line-height: 1; letter-spacing: -0.015em; }
 .bureau-title em { font-style: italic; font-weight: 400; color: var(--champagne); }
-.bureau-sub { margin-top: 22px; font-family: var(--serif-text); font-style: italic; font-size: 22px; color: rgba(243,239,230,0.8); max-width: 30em; }
-.bureau-body { margin-top: 28px; font-family: var(--serif-text); font-size: 19px; line-height: 1.55; color: rgba(243,239,230,0.78); max-width: 34em; }
+.bureau-sub { margin-top: 22px; font-family: var(--serif-text); font-style: italic; font-size: 22px; color: rgba(11,11,12,0.8); max-width: 30em; }
+.bureau-body { margin-top: 28px; font-family: var(--serif-text); font-size: 19px; line-height: 1.55; color: rgba(11,11,12,0.78); max-width: 34em; }
 
 .mandates { margin-top: 100px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--rule-dark); }
 .mandate { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 40px 48px 40px 0; border-bottom: 1px solid var(--rule-dark); }
@@ -414,7 +414,7 @@ section { position: relative; }
 .mandate:nth-child(even) { padding-left: 48px; }
 .mandate .num { font-family: var(--serif-display); font-style: italic; font-weight: 400; font-size: 38px; color: var(--champagne); line-height: 1; }
 .mandate h4 { font-family: var(--serif-display); font-weight: 500; font-size: 23px; margin-bottom: 10px; letter-spacing: -0.005em; }
-.mandate p { font-family: var(--serif-text); font-size: 17px; line-height: 1.5; color: rgba(243,239,230,0.78); }
+.mandate p { font-family: var(--serif-text); font-size: 17px; line-height: 1.5; color: rgba(11,11,12,0.78); }
 
 /* ——— Q5 ——— */
 .q5 { background: var(--paper); }
@@ -437,21 +437,21 @@ section { position: relative; }
 .summary-row .a strong { color: var(--oxblood); font-weight: 500; }
 
 /* ——— CLOSING ——— */
-.closing { background: var(--ink); color: var(--cream); padding: 180px 80px 64px; text-align: center; position: relative; overflow: hidden; }
+.closing { background: var(--cream-deep); color: var(--ink); padding: 180px 80px 64px; text-align: center; position: relative; overflow: hidden; }
 .closing::before {
   content: ""; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 40%, rgba(92,26,27,0.28), transparent 65%);
+  background: radial-gradient(ellipse at 50% 40%, rgba(126,99,41,0.10), transparent 65%);
   pointer-events: none;
 }
 .closing-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; }
 .closing .kicker { font-family: var(--sans); font-size: 11px; color: var(--champagne); margin-bottom: 48px; letter-spacing: 0.5em; text-transform: uppercase; }
 .closing-headline { font-family: var(--serif-display); font-weight: 500; font-size: clamp(44px, 5.5vw, 82px); line-height: 1.04; letter-spacing: -0.015em; max-width: 16ch; margin: 0 auto; }
 .closing-headline em { font-style: italic; font-weight: 400; color: var(--champagne); }
-.closing-body { margin: 56px auto 80px; font-family: var(--serif-text); font-style: italic; font-weight: 300; font-size: clamp(20px, 1.7vw, 25px); line-height: 1.5; max-width: 42em; color: rgba(243,239,230,0.85); }
-.colophon { border-top: 1px solid var(--rule-dark); padding-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(243,239,230,0.55); }
+.closing-body { margin: 56px auto 80px; font-family: var(--serif-text); font-style: italic; font-weight: 300; font-size: clamp(20px, 1.7vw, 25px); line-height: 1.5; max-width: 42em; color: rgba(11,11,12,0.85); }
+.colophon { border-top: 1px solid var(--rule-dark); padding-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(11,11,12,0.55); }
 .colophon .mid { text-align: center; color: var(--champagne); letter-spacing: 0.45em; }
 .colophon .right { text-align: right; }
-.colophon strong { display: block; color: var(--cream); font-weight: 500; margin-bottom: 6px; letter-spacing: 0.22em; }
+.colophon strong { display: block; color: var(--ink); font-weight: 500; margin-bottom: 6px; letter-spacing: 0.22em; }
 
 /* ——— REVEAL ——— */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 1.2s ease, transform 1.2s cubic-bezier(.2,.7,.2,1); }
@@ -461,27 +461,27 @@ section { position: relative; }
 /* ——— TWEAKS PANEL ——— */
 .tweaks {
   position: fixed; right: 24px; bottom: 24px; z-index: 100;
-  background: var(--ink); color: var(--cream);
+  background: var(--paper); color: var(--ink);
   padding: 22px 22px 18px;
   width: 284px;
   border: 1px solid var(--champagne);
   font-family: var(--sans);
   display: none;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.20);
 }
 .tweaks.on { display: block; }
 .tweaks h5 { font-family: var(--serif-display); font-style: italic; font-weight: 500; font-size: 20px; margin-bottom: 2px; color: var(--champagne); letter-spacing: 0.01em; }
-.tweaks .tw-sub { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(243,239,230,0.55); margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid rgba(243,239,230,0.15); }
+.tweaks .tw-sub { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(11,11,12,0.55); margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid rgba(11,11,12,0.15); }
 .tweaks .tw-group { margin-bottom: 14px; }
-.tweaks .tw-lbl { font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(243,239,230,0.65); margin-bottom: 8px; }
+.tweaks .tw-lbl { font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(11,11,12,0.65); margin-bottom: 8px; }
 .tweaks .tw-opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
 .tweaks button {
-  background: transparent; border: 1px solid rgba(243,239,230,0.22);
-  color: var(--cream); font-family: var(--sans); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase;
+  background: transparent; border: 1px solid rgba(11,11,12,0.22);
+  color: var(--ink); font-family: var(--sans); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase;
   padding: 8px 4px; cursor: pointer; transition: all 0.2s;
 }
 .tweaks button:hover { border-color: var(--champagne); }
-.tweaks button.active { background: var(--champagne); color: var(--ink); border-color: var(--champagne); }
+.tweaks button.active { background: var(--champagne); color: var(--paper); border-color: var(--champagne); }
 
 /* accent variants */
 body.accent-oxblood { /* default */ }
@@ -773,7 +773,7 @@ const html = `
     <div style="margin-top:120px;">
       <div class="premise-kicker reveal" style="color:var(--champagne);">The Instrument of Payment</div>
       <h3 class="reveal" style="font-family:var(--serif-display); font-weight:500; font-size:clamp(32px,3.4vw,48px); line-height:1.05; letter-spacing:-0.01em; max-width:22ch; margin-bottom:14px;">A sovereign trust, not a check.</h3>
-      <p class="reveal" style="font-family:var(--serif-text); font-style:italic; font-size:20px; line-height:1.5; color:rgba(243,239,230,0.8); max-width:52em;">The debt is settled through a perpetual, sovereign-grade trust instrument — structured for generational restoration, not one-time dispersal. Three pillars, one estate.</p>
+      <p class="reveal" style="font-family:var(--serif-text); font-style:italic; font-size:20px; line-height:1.5; color:rgba(11,11,12,0.8); max-width:52em;">The debt is settled through a perpetual, sovereign-grade trust instrument — structured for generational restoration, not one-time dispersal. Three pillars, one estate.</p>
 
       <div class="mechanism reveal">
         <div class="cell">
@@ -805,7 +805,7 @@ const html = `
       <div class="yield-row reveal">
         <div class="lhs">At a conservative 4&middot;25% real yield on the corpus, the trust generates ongoing restoration without touching the principal &mdash; restoration in perpetuity, not a single event.</div>
         <div class="yield-center">
-          <div class="pct">4<em>·</em>25<span style="font-size:0.4em; vertical-align:0.5em; color:rgba(243,239,230,0.8);">%</span></div>
+          <div class="pct">4<em>·</em>25<span style="font-size:0.4em; vertical-align:0.5em; color:rgba(11,11,12,0.8);">%</span></div>
           <div class="lbl">Real Yield · Perpetual Draw</div>
         </div>
         <div class="rhs">The principal is preserved as a standing rebuke, and as a guarantee that the debt remains settled for every generation thereafter.</div>
@@ -829,20 +829,20 @@ const html = `
           <defs>
             <path id="circ" d="M 200,200 m -170,0 a 170,170 0 1,1 340,0 a 170,170 0 1,1 -340,0" />
           </defs>
-          <circle cx="200" cy="200" r="190" fill="none" stroke="oklch(0.78 0.07 85)" stroke-width="1"/>
-          <circle cx="200" cy="200" r="180" fill="none" stroke="oklch(0.78 0.07 85)" stroke-width="0.6"/>
-          <circle cx="200" cy="200" r="132" fill="none" stroke="oklch(0.78 0.07 85)" stroke-width="0.6"/>
-          <circle cx="200" cy="200" r="124" fill="none" stroke="oklch(0.78 0.07 85)" stroke-width="1"/>
-          <text fill="oklch(0.78 0.07 85)" font-family="Inter Tight, sans-serif" font-size="11" letter-spacing="6">
+          <circle cx="200" cy="200" r="190" fill="none" stroke="#7e6329" stroke-width="1"/>
+          <circle cx="200" cy="200" r="180" fill="none" stroke="#7e6329" stroke-width="0.6"/>
+          <circle cx="200" cy="200" r="132" fill="none" stroke="#7e6329" stroke-width="0.6"/>
+          <circle cx="200" cy="200" r="124" fill="none" stroke="#7e6329" stroke-width="1"/>
+          <text fill="#7e6329" font-family="Inter Tight, sans-serif" font-size="11" letter-spacing="6">
             <textPath href="#circ" startOffset="0">BUREAU OF RESTORATION &amp; ECONOMIC RESTITUTION · UNITED STATES · MMXXVI ·  </textPath>
           </text>
           <g transform="translate(200,200)">
-            <text text-anchor="middle" font-family="Bodoni Moda, serif" font-style="italic" font-weight="500" font-size="72" fill="oklch(0.78 0.07 85)" y="8">B</text>
-            <text text-anchor="middle" font-family="Bodoni Moda, serif" font-style="italic" font-size="38" fill="oklch(0.78 0.07 85)" y="54">R</text>
-            <line x1="-48" y1="80" x2="48" y2="80" stroke="oklch(0.78 0.07 85)" stroke-width="0.6"/>
-            <text text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="9" letter-spacing="3" fill="oklch(0.78 0.07 85)" y="100">EST · MMXXVI</text>
+            <text text-anchor="middle" font-family="Bodoni Moda, serif" font-style="italic" font-weight="500" font-size="72" fill="#7e6329" y="8">B</text>
+            <text text-anchor="middle" font-family="Bodoni Moda, serif" font-style="italic" font-size="38" fill="#7e6329" y="54">R</text>
+            <line x1="-48" y1="80" x2="48" y2="80" stroke="#7e6329" stroke-width="0.6"/>
+            <text text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="9" letter-spacing="3" fill="#7e6329" y="100">EST · MMXXVI</text>
           </g>
-          <g stroke="oklch(0.78 0.07 85)" stroke-width="0.6" fill="none">
+          <g stroke="#7e6329" stroke-width="0.6" fill="none">
             <line x1="200" y1="20" x2="200" y2="36"/>
             <line x1="200" y1="364" x2="200" y2="380"/>
             <line x1="20" y1="200" x2="36" y2="200"/>
@@ -913,19 +913,19 @@ const html = `
 
 <!-- CLOSING -->
 
-<section class="standwith" style="background:#0b0b0c;color:#f3efe6;padding:120px 6vw;text-align:center;">
+<section class="standwith" style="background:var(--cream-deep);color:var(--ink);padding:120px 6vw;text-align:center;">
   <div style="max-width:640px;margin:0 auto;">
-    <p class="micro" style="color:#c9a84c;letter-spacing:0.5em;margin-bottom:28px;">STAND WITH THE RECORD</p>
+    <p class="micro" style="color:#7e6329;letter-spacing:0.5em;margin-bottom:28px;">STAND WITH THE RECORD</p>
     <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 24px;">Add your name to the Restitution 246 record.</h2>
     <p style="font-family:'Inter Tight',sans-serif;font-weight:300;font-size:16px;line-height:1.7;opacity:0.82;margin:0 0 40px;">A debt acknowledged is a nation made whole. Join the lineage and the allies standing behind this framework — receive the campaign brief and the call to action.</p>
     <form id="restitutionForm" style="display:flex;flex-direction:column;gap:14px;max-width:440px;margin:0 auto;text-align:left;">
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <input name="first_name" required placeholder="First name" style="flex:1;min-width:140px;padding:15px 16px;background:rgba(243,239,230,0.06);border:1px solid rgba(243,239,230,0.18);color:#f3efe6;font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;"/>
-        <input name="last_name" required placeholder="Last name" style="flex:1;min-width:140px;padding:15px 16px;background:rgba(243,239,230,0.06);border:1px solid rgba(243,239,230,0.18);color:#f3efe6;font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;"/>
+        <input name="first_name" required placeholder="First name" style="flex:1;min-width:140px;padding:15px 16px;background:rgba(11,11,12,0.04);border:1px solid rgba(11,11,12,0.22);color:var(--ink);font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;"/>
+        <input name="last_name" required placeholder="Last name" style="flex:1;min-width:140px;padding:15px 16px;background:rgba(11,11,12,0.04);border:1px solid rgba(11,11,12,0.22);color:var(--ink);font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;"/>
       </div>
-      <input name="email" type="email" required placeholder="Email address" style="padding:15px 16px;background:rgba(243,239,230,0.06);border:1px solid rgba(243,239,230,0.18);color:#f3efe6;font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;"/>
-      <input name="zip" placeholder="ZIP code (optional)" style="padding:15px 16px;background:rgba(243,239,230,0.06);border:1px solid rgba(243,239,230,0.18);color:#f3efe6;font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;"/>
-      <button type="submit" style="margin-top:8px;padding:17px;background:#c9a84c;color:#0b0b0c;border:none;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Add My Name to the Record</button>
+      <input name="email" type="email" required placeholder="Email address" style="padding:15px 16px;background:rgba(11,11,12,0.04);border:1px solid rgba(11,11,12,0.22);color:var(--ink);font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;"/>
+      <input name="zip" placeholder="ZIP code (optional)" style="padding:15px 16px;background:rgba(11,11,12,0.04);border:1px solid rgba(11,11,12,0.22);color:var(--ink);font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;"/>
+      <button type="submit" style="margin-top:8px;padding:17px;background:#7e6329;color:#f3efe6;border:none;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Add My Name to the Record</button>
       <p id="restitutionMsg" style="font-family:'Inter Tight',sans-serif;font-size:14px;text-align:center;min-height:20px;margin:6px 0 0;opacity:0.9;"></p>
     </form>
   </div>
@@ -943,7 +943,7 @@ const html = `
     fetch('https://sue-45c3e283.base44.app/functions/restitutionSignup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
     .then(function(r){return r.json().catch(function(){return{};});})
     .then(function(){
-      msg.style.color='#c9a84c';msg.textContent='Your name is on the record. Thank you for standing with the lineage.';
+      msg.style.color='#7e6329';msg.textContent='Your name is on the record. Thank you for standing with the lineage.';
       f.querySelectorAll('input').forEach(function(i){i.style.display='none';});btn.style.display='none';
       if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-16672489240/RJkQCMaJtKwcEJj-h44-'});gtag('event','generate_lead',{event_category:'restitution-246'});}
     })

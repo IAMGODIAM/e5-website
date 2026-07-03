@@ -19,7 +19,7 @@
 <meta name="twitter:title" content="E5 Enclave — A Lineage-led Think Tank"/>
 <meta name="twitter:description" content="A lineage-led think tank comprised of a Coalition of the Willing. Founded 2 June 2024 · Liberty City."/>
 <meta name="twitter:image" content="https://e5enclave.com/assets/og.png"/>
-<meta name="theme-color" content="#0a0908"/>
+<meta name="theme-color" content="#f4eee2"/>
 <link rel="canonical" href="https://e5enclave.com/programs/mccartney-academy/"/>
 <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png"/>
@@ -42,6 +42,8 @@
     --vc-ink: #0a0908; --vc-ink-2: #1f1c18; --vc-ink-3: #3a342c;
     --vc-oxblood: #6d1f20; --vc-oxblood-2: #4a1416;
     --vc-gold: #a8884a; --vc-gold-2: #c4a468;
+    /* deep burnished gilt for gold text/accents on the light (cream) ground — AA legible */
+    --vc-gold-text: #7e6329;
     --vc-muted: #6b6457; --vc-muted-2: #8a8270;
     --vc-rule: rgba(10,9,8,0.14); --vc-rule-2: rgba(10,9,8,0.32); --vc-rule-3: rgba(10,9,8,0.62);
     --vc-bone-rgb: 244,238,226;
@@ -54,6 +56,8 @@
     /* Eyebrow/accent: forest green; secondary accent: gold ochre. */
     --vc-oxblood: #293d1b; --vc-oxblood-2: #1a2a10;
     --vc-gold: #b7954d; --vc-gold-2: #cda965;
+    /* deep gilt for gold text on the (darker) parchment ground */
+    --vc-gold-text: #6b551f;
     --vc-muted: #727272; --vc-muted-2: #555555;
     --vc-rule: rgba(1,1,1,0.16); --vc-rule-2: rgba(1,1,1,0.32); --vc-rule-3: rgba(1,1,1,0.62);
     --vc-bone-rgb: 226,219,211;
@@ -135,22 +139,24 @@
      ============================================================ */
   .vc-foundation {
     --gleam-x: 50%;
+    /* LIGHT (Gilded) hero — a refined editorial cover on cream.
+       Warm bone gradient with a soft gold gleam that follows the pointer. */
     background:
-      radial-gradient(ellipse 55% 80% at var(--gleam-x) 50%, rgba(196, 164, 104, 0.18), transparent 70%),
-      var(--vc-ink);
-    color: var(--vc-bone);
+      radial-gradient(ellipse 55% 80% at var(--gleam-x) 50%, rgba(196, 164, 104, 0.30), transparent 72%),
+      linear-gradient(180deg, var(--vc-bone) 0%, var(--vc-bone-2) 100%);
+    color: var(--vc-ink);
     padding: 56px 56px 48px;
     margin: 0 -56px;
     text-align: center;
     position: relative;
     border-top: 2px solid var(--vc-oxblood);
-    border-bottom: 1.5px solid var(--vc-ink);
+    border-bottom: 1.5px solid var(--vc-rule-3);
     transition: --gleam-x .25s ease;
   }
   @property --gleam-x { syntax: '<percentage>'; initial-value: 50%; inherits: false; }
   .vc-foundation::before, .vc-foundation::after {
     content: ""; position: absolute; left: 0; right: 0;
-    height: 1px; background: rgba(var(--vc-bone-rgb),0.18);
+    height: 1px; background: rgba(var(--vc-ink-rgb),0.14);
     pointer-events: none;
   }
   .vc-foundation::before { top: 18px; }
@@ -170,7 +176,8 @@
   .vc-wordmark .em5 {
     font-style: italic;
     font-weight: 400;
-    color: var(--vc-gold-2);
+    /* deepen the E5 seal for legibility on cream while staying gilded */
+    color: var(--vc-gold-text);
     font-size: clamp(64px, 11vw, 172px);
     letter-spacing: -0.02em;
     line-height: 0.92;
@@ -182,14 +189,14 @@
     font-size: clamp(64px, 13.4vw, 210px);
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--vc-bone);
+    color: var(--vc-ink);
     padding-left: 0.18em;
     line-height: 0.92;
-    /* subtle highlight that catches the gleam — preserved */
+    /* ink gradient clipped to text — dramatic ink-on-bone, catches the gleam */
     background: linear-gradient(180deg,
-      rgba(var(--vc-bone-rgb),1.0) 0%,
-      rgba(var(--vc-bone-rgb),0.92) 60%,
-      rgba(var(--vc-bone-rgb),0.78) 100%);
+      var(--vc-ink) 0%,
+      var(--vc-ink-2) 62%,
+      var(--vc-ink-3) 100%);
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent; color: transparent;
   }
@@ -200,14 +207,14 @@
     font-style: italic;
     font-weight: 400;
     font-size: clamp(18px, 2.1vw, 30px);
-    color: var(--vc-gold-2);
+    color: var(--vc-gold-text);
     letter-spacing: 0.005em;
     line-height: 1.35;
     max-width: 28ch;
     margin: 28px auto 0;
   }
-  .vc-tagline .ll { color: var(--vc-bone); font-style: italic; }
-  .vc-tagline .cw { color: var(--vc-bone); font-style: italic; }
+  .vc-tagline .ll { color: var(--vc-ink); font-style: italic; }
+  .vc-tagline .cw { color: var(--vc-ink); font-style: italic; }
 
   /* Three founding dates — equal weight, ruled apart. */
   .vc-dates {
@@ -216,12 +223,12 @@
     gap: 0;
     align-items: stretch;
     flex-wrap: wrap; justify-content: center;
-    border-top: 1px solid rgba(var(--vc-bone-rgb),0.20);
-    border-bottom: 1px solid rgba(var(--vc-bone-rgb),0.20);
+    border-top: 1px solid rgba(var(--vc-ink-rgb),0.22);
+    border-bottom: 1px solid rgba(var(--vc-ink-rgb),0.22);
   }
   .vc-date {
     padding: 14px 28px;
-    border-right: 1px solid rgba(var(--vc-bone-rgb),0.16);
+    border-right: 1px solid rgba(var(--vc-ink-rgb),0.16);
     text-align: center;
     min-width: 0;
   }
@@ -233,18 +240,18 @@
     letter-spacing: 0.42em;
     text-transform: uppercase;
     font-weight: 600;
-    color: rgba(var(--vc-bone-rgb),0.55);
+    color: var(--vc-muted);
     margin-bottom: 6px;
   }
   .vc-date .val {
     font-family: var(--vc-display);
     font-style: italic;
     font-size: clamp(15px, 1.3vw, 19px);
-    color: var(--vc-bone);
+    color: var(--vc-ink);
     letter-spacing: 0.01em;
     line-height: 1.15;
   }
-  .vc-date .val em { color: var(--vc-gold-2); font-style: italic; }
+  .vc-date .val em { color: var(--vc-gold-text); font-style: italic; }
 
   /* Colophon line — oblique reverence, no explicit citation. */
   .vc-foundation-colophon {
@@ -252,13 +259,13 @@
     font-family: var(--vc-display);
     font-style: italic;
     font-size: 13.5px;
-    color: rgba(var(--vc-bone-rgb),0.62);
+    color: var(--vc-ink-3);
     letter-spacing: 0.015em;
     line-height: 1.55;
     max-width: 56ch;
     margin-left: auto; margin-right: auto;
   }
-  .vc-foundation-colophon .center { color: var(--vc-gold-2); font-style: italic; }
+  .vc-foundation-colophon .center { color: var(--vc-gold-text); font-style: italic; }
 
   @media (max-width: 720px) {
     .vc-wordmark { flex-direction: column; gap: 4px; }
@@ -292,14 +299,13 @@
   .vc-counter-num {
     font-family: var(--vc-display);
     font-weight: 400;
-    font-size: clamp(36px, 4.4vw, 56px);
-    line-height: 0.95;
+    font-style: italic;
+    font-size: clamp(30px, 3.2vw, 42px);
+    line-height: 1.02;
     color: var(--vc-ink);
-    letter-spacing: -0.02em;
-    font-variant-numeric: tabular-nums lining-nums;
-    transition: color .35s ease;
+    letter-spacing: -0.008em;
   }
-  .vc-counter-num.tick { color: var(--vc-oxblood); }
+  .vc-counter-num .amp { color: var(--vc-oxblood); font-style: italic; }
   .vc-counter-meta {
     font-family: var(--vc-display); font-style: italic;
     font-size: 13px; color: var(--vc-muted);
@@ -438,28 +444,28 @@
   .vc-letter-sign .name-block em { font-family: var(--vc-display); font-style: italic; font-size: 14px;
     color: var(--vc-ink); letter-spacing: 0.01em; text-transform: none; display: block; margin-top: 2px; }
 
-  /* ===== VALUES ===== */
-  .vc-values { padding: 96px 56px; background: var(--vc-ink); color: var(--vc-bone); border-bottom: 1px solid var(--vc-ink); }
+  /* ===== VALUES ===== (LIGHT / Gilded — bone ground, ink text) */
+  .vc-values { padding: 96px 56px; background: var(--vc-bone-3); color: var(--vc-ink); border-bottom: 1px solid var(--vc-rule-3); }
   .vc-values-head { display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
     max-width: 1180px; margin: 0 auto 64px; align-items: end; }
   .vc-values-head .lhs .rubric { font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase;
-    color: var(--vc-gold-2); font-weight: 600; margin-bottom: 18px; display: block; }
+    color: var(--vc-oxblood); font-weight: 600; margin-bottom: 18px; display: block; }
   .vc-values-head h2 { font-family: var(--vc-display); font-weight: 400;
     font-size: clamp(40px, 5.2vw, 88px); line-height: 0.96; letter-spacing: -0.022em;
-    margin: 0; color: var(--vc-bone); }
-  .vc-values-head h2 em { color: var(--vc-gold-2); font-style: italic; }
+    margin: 0; color: var(--vc-ink); }
+  .vc-values-head h2 em { color: var(--vc-oxblood); font-style: italic; }
   .vc-values-head .rhs { font-family: var(--vc-display); font-style: italic; font-size: 19px;
-    line-height: 1.5; color: rgba(244,238,226,0.72); padding-left: 28px;
-    border-left: 1px solid rgba(244,238,226,0.22); max-width: 48ch; }
-  .vc-values-list { max-width: 1180px; margin: 0 auto; border-top: 1px solid rgba(244,238,226,0.22); }
+    line-height: 1.5; color: var(--vc-ink-2); padding-left: 28px;
+    border-left: 1px solid var(--vc-rule-2); max-width: 48ch; }
+  .vc-values-list { max-width: 1180px; margin: 0 auto; border-top: 1px solid var(--vc-rule-2); }
   .vc-value-row { display: grid; grid-template-columns: 70px 1fr 1.6fr; gap: 40px;
-    padding: 32px 0; border-bottom: 1px solid rgba(244,238,226,0.14); align-items: baseline; }
+    padding: 32px 0; border-bottom: 1px solid var(--vc-rule); align-items: baseline; }
   .vc-value-row .num { font-family: var(--vc-display); font-style: italic; font-size: 30px;
-    color: var(--vc-gold-2); line-height: 1; letter-spacing: 0; }
+    color: var(--vc-gold-text); line-height: 1; letter-spacing: 0; }
   .vc-value-row .name { font-family: var(--vc-display); font-size: 30px; line-height: 1.05;
-    color: var(--vc-bone); letter-spacing: -0.005em; }
+    color: var(--vc-ink); letter-spacing: -0.005em; }
   .vc-value-row .body { font-family: var(--vc-text); font-size: 14px; line-height: 1.65;
-    color: rgba(244,238,226,0.78); max-width: 60ch; }
+    color: var(--vc-ink-3); max-width: 60ch; }
 
   /* ===== PILLARS ===== */
   .vc-pillars { padding: 104px 56px; background: var(--vc-bone-2); border-bottom: 1px solid var(--vc-rule-3); }
@@ -500,21 +506,23 @@
     line-height: 1.45; color: var(--vc-ink-2); margin: 0 0 36px; max-width: 56ch;
     padding-left: 24px; border-left: 1.5px solid var(--vc-oxblood); }
   .vc-r246-body { font-size: 14px; line-height: 1.7; color: var(--vc-ink-3); margin: 0 0 24px; max-width: 58ch; }
-  .vc-mech { background: var(--vc-ink); color: var(--vc-bone); padding: 48px 40px; position: sticky; top: 88px; }
+  /* LIGHT / Gilded — a ruled bone plaque, lifted from the surrounding cream by tone + gilt frame */
+  .vc-mech { background: var(--vc-bone-3); color: var(--vc-ink); padding: 48px 40px; position: sticky; top: 88px;
+    border: 1px solid var(--vc-rule-2); border-top: 2px solid var(--vc-oxblood); box-shadow: 0 1px 0 rgba(var(--vc-ink-rgb),0.04); }
   .vc-mech .label { font-size: 9.5px; letter-spacing: 0.5em; text-transform: uppercase;
-    color: var(--vc-gold-2); font-weight: 600; margin-bottom: 14px; }
+    color: var(--vc-oxblood); font-weight: 600; margin-bottom: 14px; }
   .vc-mech .num { font-family: var(--vc-display); font-size: clamp(96px, 14vw, 168px);
-    line-height: 0.84; color: var(--vc-bone); margin: 4px 0 8px; letter-spacing: -0.04em; font-weight: 400; }
-  .vc-mech .num .t { color: var(--vc-gold-2); font-style: italic; }
+    line-height: 0.84; color: var(--vc-ink); margin: 4px 0 8px; letter-spacing: -0.04em; font-weight: 400; }
+  .vc-mech .num .t { color: var(--vc-gold-text); font-style: italic; }
   .vc-mech .tag { font-family: var(--vc-display); font-style: italic; font-size: 19px;
-    color: var(--vc-gold-2); margin-bottom: 24px; letter-spacing: 0.01em; }
-  .vc-mech .body { font-size: 13.5px; line-height: 1.65; color: rgba(244,238,226,0.78); margin: 0 0 28px; }
-  .vc-mech hr { border: 0; border-top: 1px solid rgba(244,238,226,0.22); margin: 0 0 22px; }
+    color: var(--vc-gold-text); margin-bottom: 24px; letter-spacing: 0.01em; }
+  .vc-mech .body { font-size: 13.5px; line-height: 1.65; color: var(--vc-ink-3); margin: 0 0 28px; }
+  .vc-mech hr { border: 0; border-top: 1px solid var(--vc-rule-2); margin: 0 0 22px; }
   .vc-mech .attr { display: flex; flex-direction: column; gap: 12px; margin-bottom: 0; }
   .vc-mech .attr-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
   .vc-mech .attr-row dt { font-size: 9px; letter-spacing: 0.36em; text-transform: uppercase;
-    color: rgba(244,238,226,0.5); font-weight: 500; }
-  .vc-mech .attr-row dd { font-family: var(--vc-display); font-style: italic; font-size: 16px; color: var(--vc-gold-2); margin: 0; }
+    color: var(--vc-muted); font-weight: 500; }
+  .vc-mech .attr-row dd { font-family: var(--vc-display); font-style: italic; font-size: 16px; color: var(--vc-gold-text); margin: 0; }
 
   /* ===== R246 CTAs ===== */
   .vc-r246-cta { display: flex; flex-direction: column; gap: 16px; align-items: flex-start;
@@ -579,23 +587,24 @@
   .vc-record-card .link span { transition: transform .2s ease; display: inline-block; }
   .vc-record-card .link:hover span { transform: translateX(4px); }
 
-  /* ===== PULL QUOTE ===== */
-  .vc-pull { padding: 144px 56px; text-align: center; background: var(--vc-oxblood-2);
-    color: var(--vc-bone); border-bottom: 1px solid var(--vc-ink); position: relative; overflow: hidden; }
+  /* ===== PULL QUOTE ===== (LIGHT / Gilded — bone ground, ink quote, gold + oxblood accents;
+     vignette re-toned to a warm gilt wash so no dark box remains) */
+  .vc-pull { padding: 144px 56px; text-align: center; background: var(--vc-bone-2);
+    color: var(--vc-ink); border-bottom: 1px solid var(--vc-rule-3); position: relative; overflow: hidden; }
   .vc-pull::before { content: ""; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 30% 30%, rgba(168,136,74,0.12), transparent 55%),
-      radial-gradient(ellipse at 70% 70%, rgba(109,31,32,0.55), transparent 60%); pointer-events: none; }
+    background: radial-gradient(ellipse at 30% 30%, rgba(168,136,74,0.16), transparent 55%),
+      radial-gradient(ellipse at 70% 70%, rgba(109,31,32,0.10), transparent 60%); pointer-events: none; }
   .vc-pull-inner { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; }
-  .vc-pull-orn { max-width: 360px; margin: 0 auto 28px; color: rgba(244,238,226,0.32); }
-  .vc-pull-orn .mk { color: var(--vc-gold-2); }
+  .vc-pull-orn { max-width: 360px; margin: 0 auto 28px; color: var(--vc-rule-3); }
+  .vc-pull-orn .mk { color: var(--vc-oxblood); }
   .vc-pull-rubric { font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase;
-    color: var(--vc-gold-2); margin-bottom: 36px; font-weight: 600; }
+    color: var(--vc-oxblood); margin-bottom: 36px; font-weight: 600; }
   .vc-pull blockquote { font-family: var(--vc-display); font-weight: 400;
     font-size: clamp(36px, 5vw, 76px); line-height: 1.12; letter-spacing: -0.018em;
     margin: 0 auto; font-style: italic; }
-  .vc-pull blockquote em { color: var(--vc-gold-2); font-style: italic; }
+  .vc-pull blockquote em { color: var(--vc-oxblood); font-style: italic; }
   .vc-pull-cite { margin-top: 40px; font-size: 10px; letter-spacing: 0.5em;
-    text-transform: uppercase; color: rgba(244,238,226,0.55); font-weight: 500; }
+    text-transform: uppercase; color: var(--vc-muted); font-weight: 500; }
 
   /* ===== CONTRIBUTORS ===== */
   .vc-contrib { padding: 88px 56px; background: var(--vc-bone-2); border-bottom: 1px solid var(--vc-rule-3); }
@@ -819,7 +828,7 @@
     .vc-letter-grid { grid-template-columns: 1fr; gap: 32px; }
     .vc-letter-body { padding-left: 0; border-left: 0; padding-top: 24px; border-top: 1px solid var(--vc-rule-2); }
     .vc-values-head { grid-template-columns: 1fr; gap: 28px; }
-    .vc-values-head .rhs { padding-left: 0; border-left: 0; padding-top: 18px; border-top: 1px solid rgba(244,238,226,0.22); }
+    .vc-values-head .rhs { padding-left: 0; border-left: 0; padding-top: 18px; border-top: 1px solid var(--vc-rule-2); }
     .vc-pillars-grid { grid-template-columns: 1fr 1fr; }
     .vc-pillar { border-bottom: 1px solid var(--vc-rule-2); }
     .vc-pillar:nth-child(2n) { border-right: 0; }
