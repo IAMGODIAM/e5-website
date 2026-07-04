@@ -1,15 +1,14 @@
 // E5 Enclave — A/B/C whole-site variant edge split (sovereign, CF Pages Functions)
 // DAG: warroom-website-overhaul-abc-2026-0619
-// Assigns alpha|beta|charlie 33/33/33 cookie-sticky; stamps <html data-variant> + window.__E5_VARIANT.
+// Assigns alpha|beta 50/50 cookie-sticky (charlie/dark retired 2026-07-03); stamps <html data-variant> + window.__E5_VARIANT.
 // Rollback: delete this file + redeploy. Variants render via /variant.css + /variant.js (data-variant driven).
 
-const VARIANTS = ["alpha", "beta", "charlie"];
+const VARIANTS = ["alpha", "beta"];
 const COOKIE = "e5_variant";
 const MAXAGE = 60 * 60 * 24 * 30; // 30d sticky
 
 function pick() {
-  const r = Math.random();
-  return r < 1/3 ? "alpha" : r < 2/3 ? "beta" : "charlie";
+  return Math.random() < 0.5 ? "alpha" : "beta";
 }
 
 export async function onRequest(context) {
