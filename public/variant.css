@@ -25,51 +25,7 @@ html[data-variant="beta"] #e5-sticky-cta a {
 /* live supporter counter chip */
 html[data-variant="beta"] #e5-proof { color:#c9a84c; font-weight:700; }
 
-/* ============ CHARLIE — "The Reckoning" (RADICALLY BOLD, Black-First Sovereign) ============ */
-html[data-variant="charlie"] {
-  --char-ox: #6b1414; --char-obsidian:#070708; --char-bone:#ece6d8;
-  background: var(--char-obsidian) !important;
-}
-html[data-variant="charlie"] body { background: var(--char-obsidian); color: var(--char-bone); }
-
-/* ── FIX: editorial homepage (vc-) is light-on-cream by default. Under Charlie's
-   obsidian ground that makes dark-ink text invisible (founding-address section).
-   Re-map the editorial ink tokens to bone so ALL vc- text reads on black. ── */
-html[data-variant="charlie"] {
-  --vc-bone:#070708 !important; --vc-bone-2:#0e0e10 !important; --vc-bone-3:#141416 !important;
-  --vc-ink:#ece6d8 !important; --vc-ink-2:#cfc8ba !important; --vc-ink-3:#b3ab9c !important;
-  --vc-muted:#9a9384 !important; --vc-muted-2:#b5ad9c !important;
-  --vc-oxblood:#b5564f !important; --vc-oxblood-2:#c96a62 !important;
-  --vc-rule:rgba(236,230,216,0.16) !important; --vc-rule-2:rgba(236,230,216,0.30) !important; --vc-rule-3:rgba(236,230,216,0.50) !important;
-}
-/* keep the headline italics legible (oxblood→warm clay on black) */
-html[data-variant="charlie"] .vc-cover-h, html[data-variant="charlie"] .vc-feat-h,
-html[data-variant="charlie"] .vc-pillars-h, html[data-variant="charlie"] .vc-record-h,
-html[data-variant="charlie"] .vc-contrib-h { color: var(--vc-ink) !important; }
-html[data-variant="charlie"] .vc-cover-h em, html[data-variant="charlie"] .vc-join-h em { color:#c96a62 !important; }
-
-/* oversized kinetic display type */
-html[data-variant="charlie"] h1 {
-  font-size: clamp(3.2rem, 11vw, 9rem) !important;
-  line-height: .92 !important; letter-spacing: -.02em;
-  text-shadow: 0 0 60px rgba(107,20,20,.5);
-}
-/* oxblood accent everywhere gold was */
-html[data-variant="charlie"] a, html[data-variant="charlie"] .accent { color: var(--char-ox); }
-html[data-variant="charlie"] .btn-primary, html[data-variant="charlie"] a.cta-primary {
-  background: var(--char-ox) !important; color: var(--char-bone) !important;
-  border:1px solid rgba(236,230,216,.25); letter-spacing:.04em; text-transform:uppercase;
-}
-/* scroll-reveal sections fade up */
-html[data-variant="charlie"] [data-reveal] { opacity:0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
-html[data-variant="charlie"] [data-reveal].in { opacity:1; transform:none; }
-/* heavy vignette / cinematic frame */
-html[data-variant="charlie"] body::after {
-  content:""; position:fixed; inset:0; pointer-events:none; z-index:1;
-  box-shadow: inset 0 0 220px 60px rgba(0,0,0,.85);
-}
 @media (prefers-reduced-motion: reduce) {
-  html[data-variant="charlie"] [data-reveal]{opacity:1;transform:none;transition:none}
   html[data-variant="beta"] .btn-primary{animation:none}
 }
 
@@ -101,25 +57,6 @@ html[data-variant="charlie"] body::after {
 #e5-exit-x { position:absolute; top:12px; right:14px; background:none; border:none; font-size:1.6rem; line-height:1; color:#999; cursor:pointer; }
 #e5-exit-x:hover { color:#161616; }
 
-/* ============ CHARLIE — KINETIC MORAL BANNER ("The Reckoning") ============ */
-html[data-variant="charlie"] body { padding-top:0; }
-#e5-char-banner {
-  background:linear-gradient(90deg,#070708,#1a0606 55%,#6b1414);
-  color:#ece6d8; padding:16px 5vw; display:flex; flex-wrap:wrap; gap:12px 20px; align-items:center;
-  min-height:52px;
-  border-bottom:1px solid rgba(236,230,216,.18); position:relative; z-index:50;
-}
-#e5-char-banner .e5-char-kick {
-  font-size:.7rem; letter-spacing:.32em; font-weight:800; color:#c98a8a;
-  border:1px solid rgba(201,138,138,.5); padding:4px 10px; border-radius:2px; white-space:nowrap;
-}
-#e5-char-banner .e5-char-line { font-size:1.02rem; font-weight:600; flex:1 1 320px; letter-spacing:.01em; }
-#e5-char-banner a {
-  color:#ece6d8; font-weight:800; text-decoration:none; text-transform:uppercase; font-size:.82rem;
-  letter-spacing:.08em; border-bottom:2px solid #6b1414; padding-bottom:2px; white-space:nowrap;
-}
-#e5-char-banner a:hover { border-color:#ece6d8; }
-@media (max-width:620px){ #e5-char-banner .e5-char-line{ font-size:.95rem; } }
 
 /* ================= E5 CANONICAL vc- EDITORIAL COMPONENTS (shared interior) — injected 2026-07-01 ================= */
 /* ============================================================

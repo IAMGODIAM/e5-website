@@ -54,22 +54,4 @@
     }
   }
 
-  if (V === 'charlie') {
-    var ban = document.createElement('div'); ban.id='e5-char-banner';
-    ban.innerHTML = '<span class="e5-char-kick">THE RECKONING</span>'
-      + '<span class="e5-char-line">Four years for one teen. Thirty-five for another. Same plea. One county line apart.</span>'
-      + '<a href="'+KARM+'" data-e5cta="reckoning_banner">See the record &rarr;</a>';
-    document.body.insertBefore(ban, document.body.firstChild);
-    ban.querySelector('a').addEventListener('click', function(){ g('cta_click',{location:'reckoning_banner'}); });
-
-    var els = document.querySelectorAll('section, .card, article, h2, [data-reveal]');
-    els.forEach(function(el){ el.setAttribute('data-reveal',''); });
-    if('IntersectionObserver' in window){
-      var io = new IntersectionObserver(function(en){
-        en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target);} });
-      }, {threshold:.12});
-      els.forEach(function(el){ io.observe(el); });
-    } else { els.forEach(function(el){ el.classList.add('in'); }); }
-    g('charlie_engaged');
-  }
 })();
