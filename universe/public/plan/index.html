@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="E5 Enclave Incorporated — Business Plan & Interconnected Universe (FY2026–2029). A Florida 501(c)(3) public charity, publisher of the Black Distress Index. Built, not begged." />
+<title>E5 Enclave Incorporated — Business Plan & Interconnected Universe (FY2026–2029)</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<!-- GSAP & ScrollTrigger (preserved) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<!-- countUp + GSAP (preserved from source) -->
+<script src="https://cdn.jsdelivr.net/npm/countup.js@2.8/dist/countUp.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
+
+<style>
+  /* ============================================================
+     E5 ENCLAVE — GILDED EDITORIAL · BUSINESS PLAN
+     Warm bone ground · navy display · fine gold linework
+     (Design system copied verbatim from e5_home.html)
+     ============================================================ */
+  :root {
+    /* Grounds */
+    --bone:    #f4efe4;
+    --bone-2:  #ece4d2;
+    --bone-hi: #fbf7ee;
+    /* Text */
+    --ink:     #14161d;
+    --muted:   #6b6456;
+    --faint:   #928a78;
+    /* Marks */
+    --navy:    #0c1c4d;
+    --gold:    #a9843f;   /* deep gold — for contrast on light */
+    --gold-hi: #c9a84c;   /* house-mark accent */
+    --ox:      #6d1f20;   /* oxblood — rare emphasis */
+    /* On-navy (full-bleed band) */
+    --on-navy:      #f4efe4;
+    --on-navy-mut:  #b9c0d8;
+    /* Type */
+    --display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --body:    'Inter', system-ui, -apple-system, sans-serif;
+    --mono:    'JetBrains Mono', 'SFMono-Regular', Menlo, monospace;
+    /* Layout */
+    --max:  1240px;
+    --gutter: clamp(1.25rem, 5vw, 5rem);
+    /* Rules */
+    --line:      rgba(20,22,29,0.14);
+    --line-soft: rgba(20,22,29,0.10);
+    --gold-line: rgba(169,132,63,0.42);
+
+    /* Legacy aliases (kept so any inline var() references resolve on the new ground) */
+    --color-bg-canvas: var(--bone);
+    --color-bg-hero: var(--bone-hi);
+    --color-bg-card: var(--bone-2);
+    --color-text-primary: var(--ink);
+    --color-text-secondary: var(--muted);
+    --color-text-muted: var(--faint);
+    --color-gold: var(--gold);
+    --font-serif: var(--display);
+    --font-sans: var(--body);
+    --font-mono: var(--mono);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    background: var(--bone);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.72;
+    font-size: 1.02rem;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--gold-hi); color: var(--navy); }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* ---------- Typographic primitives ---------- */
+  h1, h2, h3, h4 { font-family: var(--display); font-weight: 500; line-height: 1.06; color: var(--navy); letter-spacing: -0.01em; }
+  strong { font-weight: 600; color: var(--navy); }
+  em { font-family: var(--display); font-style: italic; }
+
+  p { color: var(--muted); }
+
+  .eyebrow {
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--gold);
+    display: inline-block;
+  }
+  .mono { font-family: var(--mono); letter-spacing: 0.2em; text-transform: uppercase; }
+  .roman {
+    font-family: var(--mono);
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+  .ornament { color: var(--gold); font-family: var(--display); font-style: italic; }
+
+  /* Hairline divider — thin gold rule */
+  .hair {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, var(--gold-line), transparent);
+    border: 0;
+    margin: 0;
+  }
+
+  /* Caveat — flagged/estimate language */
+  .caveat {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--faint);
+    border-bottom: 1px dashed var(--gold-line);
+    padding-bottom: 1px;
+  }
+
+  /* External link */
+  .external-link {
+    color: var(--navy);
+    border-bottom: 1px solid var(--gold);
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+  .external-link:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* ---------- Layout shell ---------- */
+  section { position: relative; }
+
+  /* ============================================================
+     APP FRAME — sidebar + main
+     ============================================================ */
+  .app-container { display: flex; min-height: 100vh; position: relative; }
+
+  /* Sticky Left Sidebar Navigation (Gilded) */
+  .sidebar-nav {
+    width: 320px;
+    flex-shrink: 0;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    border-right: 1px solid var(--gold-line);
+    padding: 3rem 2.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--bone-2);
+    z-index: 100;
+  }
+  .sidebar-logo { border-bottom: 1px solid var(--gold-line); padding-bottom: 1.5rem; }
+  .sidebar-logo h2 {
+    font-family: var(--display);
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.01em;
+  }
+  .sidebar-logo h2 .e5 { color: var(--gold); font-style: italic; }
+  .sidebar-logo p {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    margin-top: 0.5rem;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    margin: 1.75rem 0;
+    overflow-y: auto;
+    padding-right: 0.4rem;
+  }
+  .nav-links::-webkit-scrollbar { width: 2px; }
+  .nav-links::-webkit-scrollbar-thumb { background: var(--gold-line); }
+
+  .nav-item a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.25s ease, transform 0.25s ease;
+    padding: 0.35rem 0;
+    line-height: 1.5;
+  }
+  .nav-item span.num { color: var(--gold-line); width: 20px; flex-shrink: 0; }
+  .nav-item.active a, .nav-item a:hover { color: var(--navy); transform: translateX(4px); }
+  .nav-item.active span.num { color: var(--gold); font-weight: 600; }
+
+  .sidebar-footer {
+    border-top: 1px solid var(--gold-line);
+    padding-top: 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .sidebar-footer p + p { margin-top: 0.4rem; }
+
+  /* Main Content */
+  .main-content { flex: 1; min-width: 0; background: var(--bone); }
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero {
+    background: var(--bone-hi);
+    padding: clamp(6rem, 14vh, 9rem) var(--gutter) clamp(4rem, 9vh, 6rem);
+    border-bottom: 1px solid var(--gold-line);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba(169,132,63,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(169,132,63,0.05) 1px, transparent 1px);
+    background-size: 100px 100px;
+    pointer-events: none;
+    -webkit-mask-image: radial-gradient(120% 100% at 0% 0%, #000, transparent 78%);
+            mask-image: radial-gradient(120% 100% at 0% 0%, #000, transparent 78%);
+  }
+  .hero-meta {
+    font-family: var(--mono);
+    color: var(--gold);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2rem;
+    border-left: 2px solid var(--gold);
+    padding-left: 1.4rem;
+    line-height: 1.7;
+    max-width: 60ch;
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(2.8rem, 7vw, 5.2rem);
+    line-height: 1.02;
+    margin-bottom: 1.5rem;
+    color: var(--navy);
+  }
+  .hero h1 .accent { color: var(--gold); font-style: italic; }
+  .hero-tagline {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.4rem, 2.9vw, 2.05rem);
+    color: #33322b;
+    max-width: 44ch;
+    line-height: 1.42;
+  }
+  .hero-tagline em { color: var(--gold); font-style: italic; }
+
+  /* ============================================================
+     GENERIC SECTION + OPENER
+     ============================================================ */
+  section.section-pad {
+    padding: clamp(4rem, 10vh, 7.5rem) var(--gutter);
+    border-bottom: 1px solid var(--gold-line);
+    scroll-margin-top: 2rem;
+  }
+  section.section-pad:last-of-type { border-bottom: none; }
+
+  .band-alt { background: var(--bone-2); }
+
+  .inner { max-width: var(--max); margin: 0 auto; }
+
+  /* Section opener — Roman numeral + Cormorant H2 (gold-italic emphasis) + gold rule + mono sub-label */
+  .opener {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2.75rem;
+    border-bottom: 1px solid var(--gold-line);
+  }
+  .opener .roman { white-space: nowrap; }
+  .opener h2 {
+    font-size: clamp(2.1rem, 5.5vw, 4rem);
+    font-weight: 500;
+  }
+  .opener h2 em { font-style: italic; color: var(--gold); }
+  .opener .sub-label {
+    font-family: var(--mono);
+    color: var(--muted);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin-left: auto;
+  }
+
+  /* Body copy */
+  .body-copy { color: var(--muted); max-width: 68ch; font-size: 1.05rem; margin-bottom: 1.5rem; }
+  .body-copy:last-child { margin-bottom: 0; }
+  .body-copy strong { color: var(--navy); font-weight: 600; }
+
+  /* Lead + drop cap */
+  .lead {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(1.4rem, 2.7vw, 2.05rem);
+    line-height: 1.42;
+    color: #33322b;
+    max-width: 56ch;
+    margin-bottom: 1.6rem;
+  }
+  .lead .ornament { color: var(--gold); }
+  .dropcap::first-letter {
+    font-family: var(--display);
+    font-weight: 600;
+    color: var(--gold);
+    float: left;
+    font-size: 4.6rem;
+    line-height: 0.72;
+    padding: 0.32rem 0.7rem 0 0;
+  }
+
+  /* IF/THEN logic block — editorial framed statement */
+  .logic-statement {
+    font-family: var(--display);
+    font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+    line-height: 1.5;
+    color: var(--ink);
+    border-left: 2px solid var(--gold);
+    padding-left: clamp(1.25rem, 3vw, 2rem);
+    margin: 2.5rem 0;
+    max-width: 68ch;
+  }
+  .logic-statement strong { color: var(--navy); font-weight: 600; }
+
+  /* Pullquote */
+  .pullquote-container {
+    margin: clamp(2.75rem, 7vh, 4.5rem) 0;
+    padding: clamp(1.75rem, 4vh, 3rem) 0;
+    border-top: 1px solid var(--gold-line);
+    border-bottom: 1px solid var(--gold-line);
+    position: relative;
+  }
+  .pullquote {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.55rem, 4vw, 2.6rem);
+    color: var(--navy);
+    line-height: 1.32;
+    text-align: center;
+    max-width: 30ch;
+    margin: 0 auto;
+  }
+  .pullquote::before { content: "\201C"; color: var(--gold); }
+  .pullquote::after  { content: "\201D"; color: var(--gold); }
+
+  /* ---------- Lists ---------- */
+  ul.refined-list, ol.refined-list { list-style: none; margin: 2rem 0; max-width: 74ch; }
+  ul.refined-list li, ol.refined-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1.4rem;
+    font-size: 1.02rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  ul.refined-list li strong, ol.refined-list li strong { color: var(--navy); }
+  ul.refined-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-family: var(--mono);
+  }
+  ol.refined-list { counter-reset: refined-counter; }
+  ol.refined-list li { counter-increment: refined-counter; }
+  ol.refined-list li::before {
+    content: counter(refined-counter, decimal-leading-zero) ".";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .subhead {
+    font-family: var(--display);
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 600;
+    color: var(--navy);
+    margin: 2.75rem 0 0.5rem;
+  }
+  .subhead em { color: var(--gold); font-style: italic; }
+  .subhead + p { margin-top: 0.75rem; }
+
+  /* ============================================================
+     METRICS ROW — bordered editorial stat cells
+     ============================================================ */
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-top: clamp(2.5rem, 6vh, 4rem);
+    border: 1px solid var(--line);
+    border-right: 0;
+  }
+  .metric-card {
+    border-right: 1px solid var(--line);
+    padding: 1.9rem 1.75rem 2rem;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: background 0.3s ease;
+  }
+  .metric-card:hover { background: var(--bone-hi); }
+  .metric-value {
+    font-family: var(--display);
+    font-weight: 500;
+    color: var(--navy);
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+  .metric-value span { color: inherit; }
+  .metric-label {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    line-height: 1.6;
+    margin-top: 0.95rem;
+    max-width: 26ch;
+  }
+
+  /* ============================================================
+     EIGHT PILLARS GRID — bordered cards ("Fig." plate framing)
+     ============================================================ */
+  .pillars-plate { position: relative; margin: 3rem 0 0; }
+  .pillars-plate .cap {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.9rem;
+    display: block;
+  }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .pillar-card {
+    background: var(--bone);
+    padding: 2rem 1.9rem 2.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 2px solid var(--gold);
+    transition: background 0.3s ease;
+  }
+  .pillar-card:hover { background: var(--bone-hi); }
+  .pillar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--line-soft);
+    padding-bottom: 0.9rem;
+    margin-bottom: 1.3rem;
+  }
+  .pillar-title {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+  }
+  .pillar-number {
+    font-family: var(--display);
+    font-size: 1.35rem;
+    color: var(--navy);
+    font-weight: 600;
+  }
+  .pillar-content {
+    font-family: var(--display);
+    font-size: 1.35rem;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 1.3rem;
+    flex: 1;
+  }
+  .pillar-source {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-top: 1px solid var(--line-soft);
+    padding-top: 0.8rem;
+  }
+
+  /* ============================================================
+     INTERCONNECTED UNIVERSE WIDGET
+     ============================================================ */
+  .universe-widget {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin: 3.5rem 0;
+    align-items: stretch;
+  }
+  .universe-core-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--navy);
+    color: var(--on-navy);
+    border: 1px solid var(--navy);
+    border-top: 2px solid var(--gold-hi);
+    padding: clamp(2rem, 4vw, 3rem);
+    position: relative;
+    box-shadow: 0 20px 50px rgba(20,22,29,0.12);
+  }
+  .universe-core-subtitle {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold-hi);
+    margin-bottom: 1.25rem;
+  }
+  .universe-core-title {
+    font-family: var(--display);
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    font-weight: 600;
+    color: var(--on-navy);
+    margin-bottom: 1rem;
+  }
+  .universe-core-container p { color: var(--on-navy-mut); font-size: 0.98rem; margin: 0; }
+
+  .universe-wings-list { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+  .wing-item {
+    border: 1px solid var(--line);
+    background: var(--bone);
+    padding: 1.15rem 1.6rem;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease, padding 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .wing-item::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 0;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .wing-item:hover, .wing-item.active {
+    border-color: var(--gold);
+    background: var(--bone-hi);
+    padding-left: 2.1rem;
+  }
+  .wing-item:hover::after, .wing-item.active::after { width: 4px; }
+  .wing-meta {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+  .wing-title {
+    font-family: var(--display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-top: 0.2rem;
+  }
+
+  .wing-panel-frame {
+    background: var(--bone-hi);
+    border: 1px solid var(--gold-line);
+    border-top: 2px solid var(--gold);
+    padding: clamp(1.75rem, 3vw, 2.25rem);
+    box-shadow: 0 14px 34px rgba(20,22,29,0.08);
+  }
+  .wing-description-panel { display: none; }
+  .wing-description-panel.active { display: block; animation: fadeIn 0.4s ease-out forwards; }
+  .wing-description-panel .wp-title {
+    font-family: var(--display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.55rem;
+  }
+  .wing-description-panel p { color: var(--muted); margin: 0; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .wing-description-panel.active { animation: none; } }
+
+  @media (max-width: 1024px) {
+    .universe-widget { grid-template-columns: 1fr; }
+  }
+
+  /* ============================================================
+     RISK MATRIX
+     ============================================================ */
+  .risk-matrix { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin: 3rem 0; }
+  .risk-row {
+    border: 1px solid var(--line);
+    border-left: 2px solid var(--gold);
+    background: var(--bone-hi);
+    padding: 1.9rem 2rem;
+    display: grid;
+    grid-template-columns: 0.9fr 1.6fr;
+    gap: 2rem;
+    transition: background 0.3s ease;
+  }
+  .risk-row:hover { background: var(--bone-2); }
+  .risk-label {
+    font-family: var(--display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+  .risk-label span {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.55rem;
+    font-weight: 600;
+  }
+  .risk-mitigation {
+    font-size: 1rem;
+    color: var(--muted);
+    border-left: 1px solid var(--line);
+    padding-left: 2rem;
+    line-height: 1.7;
+  }
+  @media (max-width: 768px) {
+    .risk-row { grid-template-columns: 1fr; gap: 1rem; }
+    .risk-mitigation { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 1rem; }
+  }
+
+  /* ============================================================
+     FINANCIAL / CONTACT BLOCK
+     ============================================================ */
+  .contact-block {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    line-height: 1.9;
+    margin-top: 2.5rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--gold-line);
+    text-transform: uppercase;
+  }
+
+  /* ============================================================
+     SITE FOOTER / COLOPHON
+     ============================================================ */
+  .site-footer {
+    background: var(--bone-2);
+    border-top: 1px solid var(--gold-line);
+    padding: clamp(3rem, 8vh, 5rem) var(--gutter);
+    text-align: center;
+  }
+  .site-footer p {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    max-width: 78ch;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+  .site-footer p + p { margin-top: 0.9rem; }
+
+  /* ============================================================
+     MOBILE HEADER + DRAWER
+     ============================================================ */
+  .mobile-header {
+    display: none;
+    position: sticky;
+    top: 0;
+    background: rgba(244,239,228,0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gold-line);
+    padding: 0.85rem 1.5rem;
+    z-index: 1000;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mobile-header .mh-brand { font-family: var(--display); font-size: 1.2rem; color: var(--navy); font-weight: 600; }
+  .mobile-header .mh-brand .e5 { color: var(--gold); font-style: italic; }
+  .mobile-header .mh-sub { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-top: 0.15rem; }
+  .mobile-menu-btn {
+    background: none;
+    border: 1px solid var(--gold-line);
+    color: var(--navy);
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 0.5rem 0.85rem;
+  }
+
+  .mobile-drawer {
+    display: none;
+    position: fixed;
+    top: 55px;
+    left: 0; right: 0; bottom: 0;
+    background: rgba(244,239,228,0.98);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    z-index: 999;
+    padding: 2rem var(--gutter);
+    overflow-y: auto;
+  }
+  .mobile-drawer.active { display: block; }
+  .mobile-drawer .nav-links { margin: 0; gap: 0.4rem; }
+  .mobile-drawer .nav-item a { font-size: 0.8rem; }
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width: 992px) {
+    .sidebar-nav { display: none; }
+    .mobile-header { display: flex; }
+    .app-container { flex-direction: column; }
+    .metric-value { font-size: clamp(2.2rem, 8vw, 3rem); }
+  }
+  @media (max-width: 640px) {
+    .metrics-row { grid-template-columns: 1fr; border-right: 1px solid var(--line); }
+    .metric-card { border-right: 0; border-bottom: 1px solid var(--line); }
+    .metric-card:last-child { border-bottom: 0; }
+    .opener .sub-label { margin-left: 0; width: 100%; }
+  }
+
+  /* Scroll-reveal via GSAP (fallback: visible) */
+  .reveal-init { opacity: 0; transform: translateY(24px); }
+
+  /* Skip link */
+  .skip {
+    position: absolute; left: -999px; top: 0; z-index: 2000;
+    background: var(--navy); color: var(--bone);
+    padding: 0.6rem 1rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em;
+  }
+  .skip:focus { left: 1rem; top: 1rem; }
+</style>
+<style>
+.ha-img-placeholder{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;background:#f4f4f5;border:1px dashed #d4d4d8;border-radius:8px;color:#71717a;font-size:12px;font-family:system-ui,sans-serif;min-height:80px;padding:16px;box-sizing:border-box;animation:ha-img-pulse 1.5s ease-in-out infinite}
+.ha-img-placeholder.ha-failed{animation:none;opacity:.7}
+@keyframes ha-img-pulse{0%,100%{opacity:1}50%{opacity:.5}}
+@media(prefers-color-scheme:dark){.ha-img-placeholder{background:#27272a;border-color:#3f3f46;color:#a1a1aa}}
+</style>
+</head>
+<body>
+
+<a href="#why-we-exist" class="skip">Skip to content</a>
+
+<!-- Mobile Header -->
+<header class="mobile-header">
+  <div>
+    <div class="mh-brand"><span class="e5">E5</span> Enclave</div>
+    <div class="mh-sub">Business Plan</div>
+  </div>
+  <button class="mobile-menu-btn" id="menuToggle" aria-expanded="false" aria-controls="mobileDrawer">Menu</button>
+</header>
+
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <ul class="nav-links">
+    <li class="nav-item"><a href="#why-we-exist"><span class="num">01</span> Why We Exist</a></li>
+    <li class="nav-item"><a href="#who-we-are"><span class="num">02</span> Who We Are</a></li>
+    <li class="nav-item"><a href="#the-problem"><span class="num">03</span> The Problem: Eight Pillars</a></li>
+    <li class="nav-item"><a href="#theory-of-change"><span class="num">04</span> Theory of Change</a></li>
+    <li class="nav-item"><a href="#interconnected-universe"><span class="num">05</span> The Interconnected Universe</a></li>
+    <li class="nav-item"><a href="#programs-services"><span class="num">06</span> Programs &amp; Services</a></li>
+    <li class="nav-item"><a href="#market-white-space"><span class="num">07</span> Market &amp; White Space</a></li>
+    <li class="nav-item"><a href="#funding-strategy"><span class="num">08</span> Funding Strategy</a></li>
+    <li class="nav-item"><a href="#financial-plan"><span class="num">09</span> Financial Plan</a></li>
+    <li class="nav-item"><a href="#leadership-governance"><span class="num">10</span> Leadership &amp; Governance</a></li>
+    <li class="nav-item"><a href="#trust-risk-candor"><span class="num">11</span> Trust, Risk &amp; Candor</a></li>
+    <li class="nav-item"><a href="#the-ask"><span class="num">12</span> The Ask</a></li>
+  </ul>
+</div>
+
+<div class="app-container">
+
+  <!-- Sticky Sidebar Navigation (Desktop) -->
+  <nav class="sidebar-nav" aria-label="Business plan sections">
+    <div class="sidebar-logo">
+      <h2><span class="e5">E5</span> Enclave</h2>
+      <p>Incorporated · DBA IAMGODIAM</p>
+    </div>
+
+    <ul class="nav-links">
+      <li class="nav-item" id="nav-why-we-exist"><a href="#why-we-exist"><span class="num">I</span> Why We Exist</a></li>
+      <li class="nav-item" id="nav-who-we-are"><a href="#who-we-are"><span class="num">II</span> Who We Are</a></li>
+      <li class="nav-item" id="nav-the-problem"><a href="#the-problem"><span class="num">III</span> The Problem: Eight Pillars</a></li>
+      <li class="nav-item" id="nav-theory-of-change"><a href="#theory-of-change"><span class="num">IV</span> Theory of Change</a></li>
+      <li class="nav-item" id="nav-interconnected-universe"><a href="#interconnected-universe"><span class="num">V</span> Interconnected Universe</a></li>
+      <li class="nav-item" id="nav-programs-services"><a href="#programs-services"><span class="num">VI</span> Programs &amp; Services</a></li>
+      <li class="nav-item" id="nav-market-white-space"><a href="#market-white-space"><span class="num">VII</span> Market &amp; White Space</a></li>
+      <li class="nav-item" id="nav-funding-strategy"><a href="#funding-strategy"><span class="num">VIII</span> Funding Strategy</a></li>
+      <li class="nav-item" id="nav-financial-plan"><a href="#financial-plan"><span class="num">IX</span> Financial Plan</a></li>
+      <li class="nav-item" id="nav-leadership-governance"><a href="#leadership-governance"><span class="num">X</span> Leadership &amp; Governance</a></li>
+      <li class="nav-item" id="nav-trust-risk-candor"><a href="#trust-risk-candor"><span class="num">XI</span> Trust, Risk &amp; Candor</a></li>
+      <li class="nav-item" id="nav-the-ask"><a href="#the-ask"><span class="num">XII</span> The Ask</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <p>Investor-Grade Edition</p>
+      <p>FY2026–2029</p>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-meta">DBA IAMGODIAM · NONPROFIT BUSINESS PLAN &amp; INTERCONNECTED UNIVERSE · LIBERTY CITY, MIAMI</div>
+      <h1>E5 Enclave <span class="accent">Incorporated</span></h1>
+      <p class="hero-tagline">Among the first agentic-first staffed nonprofits in the United States — publisher of the Black Distress Index. <em>Built, not begged.</em></p>
+    </header>
+
+    <!-- 01. Why We Exist -->
+    <section class="section-pad" id="why-we-exist">
+      <div class="inner">
+        <div class="opener">
+          <span class="roman">I</span>
+          <h2>Why We <em>Exist</em></h2>
+          <span class="sub-label">§ Purpose</span>
+        </div>
+
+        <p class="lead dropcap">E5 Enclave Incorporated (DBA IAMGODIAM) is among the first agentic-first staffed nonprofits in the United States and the publisher of the Black Distress Index (BDI): a CC0-licensed, dual-source-verified, eight-pillar record of the structural condition of Black Americans across a 33-year window (1991–2024). We exist to close the gap between the empirical record of structural harm to Black Americans and the institutions, technologies, and community systems capable of addressing it.</p>
+
+        <p class="body-copy">The urgency is concrete. On February 5, 2025, the federal government rescinded EJScreen — the only public environmental-justice mapping tool — and moved to terminate roughly 781 EPA environmental-justice grants. Executive Orders 14151 and 14173 now require federal grantees to certify against "DEI" programs under False Claims Act liability. The empirical record of structural harm is being withdrawn from public infrastructure. A durable, independent, CC0 alternative is no longer a convenience; it is an emergency public good.</p>
+
+        <p class="body-copy">The funder case in one sentence: if an unassailable, CC0-licensed record of Black American structural conditions — paired with community-operable agentic tooling — is not built in the next 24 months, the next generation of reparative policy and litigation will proceed on a fragmented evidence base controlled by institutions actively disinvesting from racial equity. E5 is already building that record and is ready to scale.</p>
+
+        <div class="pullquote-container">
+          <blockquote class="pullquote">Built, not begged.</blockquote>
+        </div>
+
+        <div class="metrics-row">
+          <div class="metric-card">
+            <div class="metric-value" data-count="1574">0</div>
+            <div class="metric-label">dual-source-verified data points</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value" data-count="8">0</div>
+            <div class="metric-label">interlocking pillars</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">33-Year</div>
+            <div class="metric-label">window (1991–2024)</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">~27k</div>
+            <div class="metric-label">word, 10-chapter Black Paper</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02. Who We Are -->
+    <section class="section-pad band-alt" id="who-we-are">
+      <div class="inner">
+        <div class="opener">
+          <span class="roman">II</span>
+          <h2>Who We <em>Are</em></h2>
+          <span class="sub-label">¶ Identity</span>
+        </div>
+
+        <p class="lead">E5 Enclave Incorporated is a verified, early-stage organization with disproportionate strategic assets. We hold what most nonprofits spend years assembling — and we are honest that the rest is still being built.</p>
+        <p class="body-copy">The record is verifiable:</p>
+
+        <ul class="refined-list">
+          <li><strong>Florida Not-For-Profit Corporation</strong>, Sunbiz #N24000007976 (effective 2024-06-30, ACTIVE)</li>
+          <li><strong>501(c)(3) public charity</strong> under §509(a)(2); IRS Determination Letter 947 (2024-07-03); EIN 99-3822441</li>
+          <li><strong>Federal registration</strong>: UEI H8NGXEYE2HH8; CAGE 07E88; SAM.gov <strong>active through 2027-04-16</strong> (renewed; purpose: All Awards)</li>
+          <li><strong>Federally recognized socio-economic status</strong> (SAM.gov): Minority-Owned, Women-Owned, Black American Owned, and Community Development Corporation</li>
+          <li><strong>Registered office</strong>: 820 NW 64th St, Miami FL 33150-4350</li>
+          <li><strong>Service area</strong>: Liberty City (ZIP 33150) and Overtown (ZIP 33136), Miami-Dade County; secondary scope national</li>
+          <li><strong>Web</strong>: <a href="https://e5enclave.com" target="_blank" rel="noopener noreferrer" class="external-link">e5enclave.com</a></li>
+        </ul>
+
+        <p class="body-copy">Our draft values: Empirical Integrity · Sovereign Capacity · Black-First · Radical Transparency · Intergenerational Accountability. Our mottos: <em>Dum spiro, spero</em> (while I breathe, I hope) and <em>Nil satis nisi optimum</em> (nothing but the best is good enough).</p>
+        <p class="body-copy">Founder Israel Lee Armstead is a Liberty City native — Charles R. Drew K-8 (2001) and Miami Northwestern Senior High (2001–2005) alumnus, former General Councilor of the Urantia Book Fellowship — who declared E5 a pioneering agentic-first staffed NGO on 2026-04-11. His grand-uncle Ralph McCartney was a security guard at Drew K-8; McCartney's 1997 oral history (Samuel Proctor Oral History Program, University of Florida) testifies that I-95/I-395 construction bisected Overtown and its ~40,000 residents.</p>
+        <p class="body-copy">We are candid about our stage: a verified dataset, a 501(c)(3), SAM.gov registration, and a live agentic platform — but not yet a full board or paid human staff. We are building those.</p>
+
+        <div class="pullquote-container">
+          <blockquote class="pullquote">"Never did a hungry person cross that door and leave out that same way." — Ralph McCartney</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03. The Problem -->
+    <section class="section-pad" id="the-problem">
+      <div class="inner">
+        <div class="opener">
+          <span class="roman">III</span>
+          <h2>The Problem: <em>Eight Pillars</em></h2>
+          <span class="sub-label">§ Diagnosis</span>
+        </div>
+        <p class="lead">The dispossession of Black Americans is structural and multigenerational. It is not one wound but eight, interlocking — each documented in the BDI across 1991–2024.</p>
+
+        <div class="pillars-plate">
+          <span class="cap">Fig. — Eight Pillars of Structural Harm (BDI, 1991–2024)</span>
+          <div class="pillars-grid">
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <span class="pillar-title">Economic</span>
+                <span class="pillar-number">I</span>
+              </div>
+              <div class="pillar-content">Median family wealth, Black vs. White: $44,890 vs. $285,000 (a ~$240,120 gap).</div>
+              <div class="pillar-source">Federal Reserve SCF 2022</div>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <span class="pillar-title">Health</span>
+                <span class="pillar-number">II</span>
+              </div>
+              <div class="pillar-content">Maternal mortality: 49.5 vs. 19.0 deaths per 100,000 live births (ratio 2.61).</div>
+              <div class="pillar-source">CDC NCHS NVSS 2022</div>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <span class="pillar-title">Criminal Justice</span>
+                <span class="pillar-number">III</span>
+              </div>
+              <div class="pillar-content">Black-to-white imprisonment rate is roughly 5× nationally.</div>
+              <div class="pillar-source">BJS; The Sentencing Project 2022</div>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <span class="pillar-title">Educational</span>
+                <span class="pillar-number">IV</span>
+              </div>
+              <div class="pillar-content">K-12 per-pupil funding gaps and systemic discipline disparities.</div>
+              <div class="pillar-source">U.S. Dept. of Education / NCES / OCR</div>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <span class="pillar-title">Housing</span>
+                <span class="pillar-number">V</span>
+              </div>
+              <div class="pillar-content">Homeownership: 46.4% vs. 74.4% (a ~28-point gap, as wide as the late 1960s).</div>
+              <div class="pillar-source">Census HVS Q4 2024</div>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <span class="pillar-title">Political</span>
+                <span class="pillar-number">VI</span>
+              </div>
+              <div class="pillar-content">Voter registration, representation, and structured districting (1991–2024).</div>
+              <div class="pillar-source">Census CPS; Brennan Center</div>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <span class="pillar-title">Environmental</span>
+                <span class="pillar-number">VII</span>
+              </div>
+              <div class="pillar-content">Proximity to TRI facilities and air-quality burden by census tract.</div>
+              <div class="pillar-source">EPA (EJScreen, archived)</div>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <span class="pillar-title">Historical</span>
+                <span class="pillar-number">VIII</span>
+              </div>
+              <div class="pillar-content">246 yrs enslavement; HOLC redlining (239 cities); urban renewal; sentencing.</div>
+              <div class="pillar-source">Darity &amp; Mullen 2020; Mapping Inequality</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="body-copy" style="margin-top:2.5rem;">Roughly 46–47 million people identify as Black or African American (Census 2024); Darity and Mullen estimate 30–40 million are descendants of the enslaved. The empty niche is plain: no single open, CC0, dual-source-verified reference integrates all eight pillars. The BDI is the first.</p>
+
+        <div class="metrics-row">
+          <div class="metric-card">
+            <div class="metric-value">$240,120</div>
+            <div class="metric-label">Black–White median family wealth gap</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value" data-count="2.61" data-decimals="2">0</div>
+            <div class="metric-label">Black maternal mortality ratio</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">~28 pt</div>
+            <div class="metric-label">homeownership gap — as wide as the late 1960s</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">46-47M</div>
+            <div class="metric-label">Black / African Americans</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. Our Theory of Change -->
+    <section class="section-pad band-alt" id="theory-of-change">
+      <div class="inner">
+        <div class="opener">
+          <span class="roman">IV</span>
+          <h2>Our Theory of <em>Change</em></h2>
+          <span class="sub-label">¶ Logic</span>
+        </div>
+        <p class="lead">The bottleneck is not the absence of political will alone — it is the fragmentation and inaccessibility of the empirical record. Our theory follows from that diagnosis.</p>
+
+        <p class="logic-statement">
+          <strong>IF</strong> E5 builds and freely distributes empirically verified, dual-source-confirmed eight-pillar data infrastructure, <strong>AND</strong> develops agentic tools that communities and advocates can operate themselves, <strong>THEN</strong> advocacy organizations, legal teams, policymakers, and community members are equipped with unassailable evidence and the operational capacity to pursue structural remedy — <strong>BECAUSE</strong> the central obstacle is the scattered, hard-to-reach state of the evidence, not a shortage of resolve.
+        </p>
+
+        <p class="body-copy">The grounding is empirical. No current institution integrates all eight pillars in a single CC0 reference. Advocacy organizations routinely spend an estimated 20–40% of research budgets reproducing the same baseline statistics that one shared open dataset would eliminate. Releasing both evidence and tooling under CC0 converts that duplication into reallocable capacity across the entire Black-advocacy ecosystem — one house, built once, usable by all.</p>
+
+        <div class="pullquote-container">
+          <blockquote class="pullquote">Built once, under CC0 — so it need never be begged for again.</blockquote>
+        </div>
+
+        <div class="metrics-row">
+          <div class="metric-card">
+            <div class="metric-value">20-40%</div>
+            <div class="metric-label">of research budgets saved from duplication</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">1st</div>
+            <div class="metric-label">Unified 8-pillar CC0 Reference</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. The Interconnected Universe -->
+    <section class="section-pad" id="interconnected-universe">
+      <div class="inner">
+        <div class="opener">
+          <span class="roman">V</span>
+          <h2>The Interconnected <em>Universe</em></h2>
+          <span class="sub-label">§ Structure</span>
+        </div>
+        <p class="lead">E5 is one house with many wings: a charitable mission core surrounded by purpose-built entities, each legally separate so that risk stays apart from assets and each wing can carry the right governance and tax treatment. All formations are in formation (pending Florida counsel + CPA).</p>
+        <p class="body-copy">The 501(c)(3) — a tax-exempt charity — is the soul. Around it orbit entities built to make money or hold mission as appropriate. Hover or click below to explore each wing's distinct operational role:</p>
+
+        <div class="universe-widget">
+          <!-- Core Section -->
+          <div class="universe-core-container">
+            <div class="universe-core-subtitle">Mission Core</div>
+            <h3 class="universe-core-title">E5 Enclave Inc.</h3>
+            <p>501(c)(3) public charity. The soul: the Black Distress Index, education, and the publication of record.</p>
+          </div>
+
+          <!-- Orbit Wings -->
+          <div class="universe-wings-list">
+            <div class="wing-item active" data-target="iamgodiam">
+              <span class="wing-meta">Delaware C-Corp</span>
+              <div class="wing-title">IAMGODIAM, Inc.</div>
+            </div>
+            <div class="wing-item" data-target="agrimesh">
+              <span class="wing-meta">Florida Corp</span>
+              <div class="wing-title">AgriMesh, Inc.</div>
+            </div>
+            <div class="wing-item" data-target="panacea">
+              <span class="wing-meta">Florida Benefit Corp</span>
+              <div class="wing-title">Panacea Elder-Relief</div>
+            </div>
+            <div class="wing-item" data-target="opco">
+              <span class="wing-meta">Florida Subchapter-T</span>
+              <div class="wing-title">OpCo Co-ops</div>
+            </div>
+            <div class="wing-item" data-target="assetco">
+              <span class="wing-meta">Mission LLC</span>
+              <div class="wing-title">AssetCo</div>
+            </div>
+            <div class="wing-item" data-target="c4arm">
+              <span class="wing-meta">501(c)(4)</span>
+              <div class="wing-title">Advocacy Arm</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Display Panel for Selected Wing -->
+        <div class="wing-panel-frame">
+          <span class="eyebrow">Wing Specifications</span>
+          <div id="iamgodiam" class="wing-description-panel active">
+            <p class="wp-title">IAMGODIAM, Inc. (Delaware C-corp — in formation)</p>
+            <p>The services arm: AI-native back-office services (governance, compliance, grant ops, donor cultivation, case management) for the long tail of solo nonprofit founders, fiscally-sponsored projects, and B-corp aspirants; priced per outcome. E5 is its anchor customer and design partner.</p>
+          </div>
+          <div id="agrimesh" class="wing-description-panel">
+            <p class="wp-title">AgriMesh, Inc. (Florida — in formation)</p>
+            <p>The farm-tech arm: FarmBlock's offline-first edge-AI and self-healing mesh for small farms, urban and rural, sold as hardware-enabled SaaS on an NSF SBIR track. It is deliberately not a blockchain project.</p>
+          </div>
+          <div id="panacea" class="wing-description-panel">
+            <p class="wp-title">Panacea Elder-Relief Benefit Corp (Florida — in formation)</p>
+            <p>The relief arm: non-invasive, drug-free pain and circulation technology for elders (FDA-registered anchor supplier), with a charter-locked pledge of 20% of income back to E5. A benefit corporation is a for-profit that writes a public mission into its charter.</p>
+          </div>
+          <div id="opco" class="wing-description-panel">
+            <p class="wp-title">OpCo co-ops (Florida — in formation)</p>
+            <p>Subchapter-T patronage, one-member-one-vote, for community and worker ownership. A co-op is member-owned: one member, one vote.</p>
+          </div>
+          <div id="assetco" class="wing-description-panel">
+            <p class="wp-title">AssetCo (in formation)</p>
+            <p>A community land trust or mission-LLC to hold land, infrastructure, and physical equipment safely separated from operational liabilities.</p>
+          </div>
+          <div id="c4arm" class="wing-description-panel">
+            <p class="wp-title">501(c)(4) Advocacy Arm (in formation)</p>
+            <p>A social-welfare organization built to run direct public advocacy, policy lobbying, and campaign activities without compromising the 501(c)(3)'s tax status.</p>
+          </div>
+        </div>
+
+        <p class="body-copy" style="margin-top:2.5rem;">What binds the house: fair-market shared-services agreements among the entities, a strict firewall so the (c)(3) never funds political or for-profit activity, and operational coordination through the Lattice, E5's signed-event agent mesh.</p>
+        <p class="body-copy">An eighth, <strong>exploratory</strong> wing is in study: a <strong>lineage-led Community Development Credit Union</strong> — a member-owned, not-for-profit financial cooperative for Liberty City and Overtown — pursued on a multi-year, NCUA-regulated track (beginning as a CDFI loan fund and a partnership with an existing community development credit union). It would be member-owned and separately regulated, not owned by the charity.</p>
+
+        <div class="pullquote-container">
+          <blockquote class="pullquote">One house, many wings — built, not begged.</blockquote>
+        </div>
+
+        <div class="metrics-row">
+          <div class="metric-card">
+            <div class="metric-value">1 Core + 6</div>
+            <div class="metric-label">purpose-built wings</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">20%</div>
+            <div class="metric-label">chartered income return to E5</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">Legally Apart</div>
+            <div class="metric-label">risk and assets securely separated</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06. Programs & Services -->
+    <section class="section-pad band-alt" id="programs-services">
+      <div class="inner">
+        <div class="opener">
+          <span class="roman">VI</span>
+          <h2>Programs &amp; <em>Services</em></h2>
+          <span class="sub-label">¶ Execution</span>
+        </div>
+        <p class="lead">E5 runs five mission program lines, now paired with three earned-revenue verticals that fund mission independence. The programs carry the mission; the verticals pay for the freedom to keep it.</p>
+
+        <h3 class="subhead">The Five Mission <em>Programs</em></h3>
+        <ol class="refined-list">
+          <li><strong>BDI Research &amp; Data Infrastructure</strong> — the eight-pillar dataset and the ~27,000-word, ten-chapter Black Paper, published CC0 (released to the public domain, free to use without permission). The publication of record.</li>
+          <li><strong>IAMGODIAM Agentic Platform</strong> — autonomous AI-agent infrastructure for nonprofit operations, research synthesis, and grant operations. A staff of a dozen-plus agents at Staffed Agentic Status (Sue/Chief of Staff, PRIME, Moses, JOB41, and others), running on Base44 with post-quantum cryptography (ML-DSA / Dilithium3 signed events).</li>
+          <li><strong>McCartney Academy</strong> — a school and a business center for Liberty City, named for Ralph McCartney. Two tracks: Track A, academic programming with correctional-education partners (FCI / MDC); Track B, a physical building pursued with Florida Rep. Dorothy Bendross-Mindingall and Miami-Dade County Public Schools, sited at/around Charles R. Drew K-8 under Florida's Schools of Hope framework.</li>
+          <li><strong>Black Dragons Initiative</strong> — community building, mentorship, and youth development (<a href="https://twitter.com/e5blackdragons" target="_blank" rel="noopener noreferrer" class="external-link">@e5blackdragons</a>).</li>
+          <li><strong>Reparations Framework</strong> — public education on the documented obligation: the Lloyd Kelly five-question framework and scholarly estimates of the debt — from roughly $14 trillion in unpaid labor (Craemer, 2015) to the $100–131 trillion the Brattle Group (2023) attributes to the full transatlantic trade. Education, not adjudication.</li>
+        </ol>
+
+        <h3 class="subhead">Three Earned-Revenue <em>Verticals</em></h3>
+        <p class="body-copy">Each vertical is a legally separate for-profit wing that returns a chartered share of income to the mission core. None of this commercial revenue touches the 501(c)(3).</p>
+        <ul class="refined-list">
+          <li><strong>IAMGODIAM, Inc.</strong> (Delaware C-corp, in formation) — AI-native back-office services for the long tail of solo nonprofit founders, fiscally-sponsored projects, and benefit-corp aspirants; priced per outcome. E5 is its anchor customer and design partner. <span class="caveat">Serviceable market estimated at $15–30B/yr — to be independently sized before any public use.</span></li>
+          <li><strong>Panacea Elder-Relief</strong> (Florida Benefit Corporation, in formation) — non-invasive, drug-free pain and circulation technology for elders, sourced from an FDA-registered anchor supplier at roughly 50% gross margin, with a charter-locked pledge of 20% of income back to E5. Mission-native to the Elder Justice and Health Justice pillars.</li>
+          <li><strong>AgriMesh, Inc.</strong> (Florida corporation, in formation) — offline-first edge-AI and self-healing mesh for small farms, urban and rural, sold as hardware-enabled SaaS on an NSF SBIR track. Deliberately not a blockchain project. Liberty City testbed.</li>
+        </ul>
+
+        <div class="pullquote-container">
+          <blockquote class="pullquote">The programs carry the mission; the verticals pay for the freedom to keep it.</blockquote>
+        </div>
+
+        <div class="metrics-row">
+          <div class="metric-card">
+            <div class="metric-value" data-count="5">0</div>
+            <div class="metric-label">mission program lines</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value" data-count="3">0</div>
+            <div class="metric-label">earned-revenue verticals</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">~50%</div>
+            <div class="metric-label">verified gross margin, Elder-Relief resale</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">20%</div>
+            <div class="metric-label">chartered income return to E5</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07. Market & White Space -->
+    <section class="section-pad" id="market-white-space">
+      <div class="inner">
+        <div class="opener">
+          <span class="roman">VII</span>
+          <h2>Market &amp; <em>White Space</em></h2>
+          <span class="sub-label">§ Opportunity</span>
+        </div>
+        <p class="lead">E5 sits at the intersection of three real and growing markets, and one genuinely empty niche. The markets give the verticals room to fund the mission; the empty niche is the mission itself.</p>
+        <p class="body-copy">The verticals address concrete demand: an aging population that overwhelmingly intends to age in place and needs drug-free relief; small farms, urban and rural, stranded on the wrong side of the connectivity gap; and roughly a million sub-$500K nonprofits drowning in back-office overhead. <span class="caveat">Top-line sizes for the consumer markets are working estimates and are flagged to verify before any public or fundraising use.</span></p>
+
+        <p class="logic-statement">
+          The white space is not a market — it is an absence. No single open, CC0, dual-source-verified reference integrates all eight pillars of Black structural condition across a 33-year window. The BDI is the first. That is a zero-to-one position, not a better mousetrap.
+        </p>
+
+        <p class="body-copy">The moat is threefold and compounding. First, <strong>agentic cost structure</strong>: a staffed agent fleet delivers research, operations, and creative output at near-zero marginal cost, against competitors carrying ad spend and headcount. Second, <strong>community trust</strong>: real channels and real standing in Liberty City and Overtown that cannot be bought. Third, <strong>owned assets</strong>: E5 builds and keeps its content, data, and SEO surface under CC0 rather than renting attention.</p>
+
+        <div class="metrics-row">
+          <div class="metric-card">
+            <div class="metric-value">0 → 1</div>
+            <div class="metric-label">first unified 8-pillar CC0 reference</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">~$0</div>
+            <div class="metric-label">marginal cost of agentic output</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">CC0</div>
+            <div class="metric-label">owned, not rented — public-domain assets</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08. Funding Strategy -->
+    <section class="section-pad band-alt" id="funding-strategy">
+      <div class="inner">
+        <div class="opener">
+          <span class="roman">VIII</span>
+          <h2>Funding <em>Strategy</em></h2>
+          <span class="sub-label">¶ Capital</span>
+        </div>
+        <p class="lead">E5 is built to be diversified from day one — six revenue streams, so that no single funder or political season can switch off the work. The earned-revenue layer is the difference between a grant-dependent nonprofit and a sovereign one.</p>
+
+        <ul class="refined-list">
+          <li><strong>Federal grants</strong> — NSF SBIR (AgriMesh) and aligned public-purpose programs.</li>
+          <li><strong>National foundations</strong> — racial-equity, data-infrastructure, and civic-technology portfolios.</li>
+          <li><strong>Tech / AI funders</strong> — the emerging public-purpose-AI field.</li>
+          <li><strong>Reparations &amp; racial-justice funders</strong> — a consolidating philanthropic field seeking a CC0 evidence base.</li>
+          <li><strong>Individual giving</strong> — community, diaspora, and aligned donors.</li>
+          <li><strong>Earned revenue</strong> — the three for-profit wings, returning a chartered 20% to the core.</li>
+        </ul>
+
+        <p class="body-copy">Target funders and collaborators identified include Liberation Ventures, the National Urban League, PolicyLink, the Equal Justice Initiative, the Sentencing Project, and Florida Memorial University as a minority-serving research partner. <span class="caveat">These are identified prospects, not committed partners; each is confirmed case by case before any public claim, never overstated.</span></p>
+        <p class="body-copy">E5's SAM.gov socio-economic certifications — Minority-Owned, Women-Owned, Black American Owned, and Community Development Corporation — strengthen eligibility for set-aside, equity-focused, and minority-serving funding streams.</p>
+
+        <p class="body-copy">The timing is not incidental. As federal infrastructure for racial-equity data is being withdrawn — EJScreen rescinded on 2025-02-05, some 781 environmental-justice grants moved for termination, and Executive Orders 14151 and 14173 attaching False Claims Act liability to "DEI" certification — independent, CC0, litigation-grade data becomes an emergency public good. Meanwhile public-purpose AI is professionalizing (the McGovern Foundation's $75.8M commitment; Anthropic's Claude for Nonprofits, launched 2025-12-02). E5 is positioned squarely in both currents.</p>
+
+        <div class="metrics-row">
+          <div class="metric-card">
+            <div class="metric-value" data-count="6">0</div>
+            <div class="metric-label">diversified revenue streams</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">781</div>
+            <div class="metric-label">federal EJ grants moved for termination (2025)</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">$75.8M</div>
+            <div class="metric-label">McGovern public-purpose-AI commitment</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09. Financial Plan -->
+    <section class="section-pad" id="financial-plan">
+      <div class="inner">
+        <div class="opener">
+          <span class="roman">IX</span>
+          <h2>Financial <em>Plan</em></h2>
+          <span class="sub-label">§ Trajectory</span>
+        </div>
+        <p class="lead">The three-year trajectory is a diversified ramp from foundation to proof to ecosystem. <span class="caveat">The figures below are targets and projections — planning instruments, not booked revenue. They are presented as such.</span></p>
+
+        <div class="metrics-row">
+          <div class="metric-card">
+            <div class="metric-value"><span data-count="385" data-prefix="$" data-suffix="K">$0</span></div>
+            <div class="metric-label">Year 1 target · 2026 · Foundation</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value"><span data-count="1.25" data-prefix="$" data-suffix="M" data-decimals="2">$0</span></div>
+            <div class="metric-label">Year 2 target · 2027 · Proof</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value"><span data-count="2.8" data-prefix="$" data-suffix="M" data-decimals="1">$0</span></div>
+            <div class="metric-label">Year 3 target · 2028 · Ecosystem</div>
+          </div>
+        </div>
+
+        <p class="body-copy" style="margin-top:3rem;">Two structural commitments anchor the model. The <strong>chartered 20% pledge</strong>: each for-profit wing returns one-fifth of income to the mission core, written into its charter rather than left to goodwill. And <strong>unit economics grounded in verified margin</strong>: the Elder-Relief vertical resells FDA-registered devices at a roughly 50% gross margin confirmed against the supplier's published wholesale and MSRP tiers. <span class="caveat">AgriMesh and IAMGODIAM unit economics remain projections pending pilot data and are labeled accordingly.</span></p>
+
+        <p class="body-copy">Commercial revenue routes exclusively through the for-profit wings, never the 501(c)(3), to keep the charity free of unrelated-business-income exposure and private-benefit risk. All entity formations are in formation, pending Florida counsel and CPA sign-off.</p>
+      </div>
+    </section>
+
+    <!-- 10. Leadership & Governance -->
+    <section class="section-pad band-alt" id="leadership-governance">
+      <div class="inner">
+        <div class="opener">
+          <span class="roman">X</span>
+          <h2>Leadership &amp; <em>Governance</em></h2>
+          <span class="sub-label">¶ People</span>
+        </div>
+        <p class="lead">E5 is founder-led, advisor-supported, and agent-staffed — an honest description of an early-stage organization with unusual operational leverage.</p>
+
+        <ul class="refined-list">
+          <li><strong>Israel Lee Armstead</strong> — Founder and Chief Visionary; Liberty City native; grand-nephew of Ralph McCartney. Currently the sole board member. Declared E5 a pioneering agentic-first staffed NGO on 2026-04-11.</li>
+          <li><strong>Advisory</strong> — Florida counsel on entity architecture and co-op structure, plus a licensed CPA.</li>
+          <li><strong>The agentic workforce</strong> — a dozen-plus AI agents at Staffed Agentic Status (Sue / Chief of Staff, PRIME, Moses, JOB41 and others) carrying day-to-day operations, research, and grant work, coordinated through the Lattice.</li>
+        </ul>
+
+        <p class="body-copy">The governance roadmap is explicit: expand from a single founder to a <strong>seven-member board by Q4 2026</strong>, stand up the entity wings under counsel, and add paid human staff in step with funding milestones. We do not pretend to have a full board and staff today; we have a plan to build them, tied to capital.</p>
+
+        <div class="pullquote-container">
+          <blockquote class="pullquote">Founder-led, advisor-supported, agent-staffed — and candid about each.</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. Trust, Risk & Candor -->
+    <section class="section-pad" id="trust-risk-candor">
+      <div class="inner">
+        <div class="opener">
+          <span class="roman">XI</span>
+          <h2>Trust, Risk &amp; <em>Candor</em></h2>
+          <span class="sub-label">§ Candor</span>
+        </div>
+        <p class="lead">Trust is earned by naming the risks before a funder has to. What follows is the honest ledger — every material risk we carry, and the specific mitigation against it. We would rather lose a conversation to candor than win one on a figure we could not defend.</p>
+
+        <div class="risk-matrix">
+          <div class="risk-row">
+            <div class="risk-label"><span>Risk 01</span>Key-person dependency</div>
+            <div class="risk-mitigation">A single founder today. Mitigation: board expansion to seven by Q4 2026, fully documented agent operations that survive any one person, and a written succession posture.</div>
+          </div>
+          <div class="risk-row">
+            <div class="risk-label"><span>Risk 02</span>Early-stage capacity</div>
+            <div class="risk-mitigation">No full board or paid human staff yet. Mitigation: phased hiring tied to funding milestones, with the agent fleet absorbing operational load in the interim — built, not begged.</div>
+          </div>
+          <div class="risk-row">
+            <div class="risk-label"><span>Risk 03</span>Political &amp; regulatory headwinds</div>
+            <div class="risk-mitigation">Anti-"DEI" executive orders and False Claims Act certification exposure. Mitigation: a CC0 public-good framing that does not depend on the contested category, counsel review of every federal touchpoint, and avoidance of certifications we cannot cleanly meet.</div>
+          </div>
+          <div class="risk-row">
+            <div class="risk-label"><span>Risk 04</span>Unverified figures</div>
+            <div class="risk-mitigation">Some market sizes are still estimates. Mitigation: a verified-versus-projected ledger throughout this plan, explicit labeling of every projection, and a hard rule that nothing public ships until it is sourced.</div>
+          </div>
+          <div class="risk-row">
+            <div class="risk-label"><span>Risk 05</span>Commercial revenue &amp; tax</div>
+            <div class="risk-mitigation">Earned revenue can threaten a charity's status. Mitigation: all commercial activity sits in legally separate for-profit wings, a strict firewall keeps the (c)(3) clear of unrelated-business income, and formations are counsel-gated.</div>
+          </div>
+          <div class="risk-row">
+            <div class="risk-label"><span>Risk 06</span>Health-claims compliance</div>
+            <div class="risk-mitigation">Elder-relief marketing is heavily regulated. Mitigation: a claims-discipline gate that matches every statement to the device's actual FDA clearance scope, with confirm-before-publish on all marketing copy and no cure-all language, ever.</div>
+          </div>
+        </div>
+
+        <div class="pullquote-container">
+          <blockquote class="pullquote">We would rather lose a conversation to candor than win one on a figure we could not defend.</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. The Ask -->
+    <section class="section-pad band-alt" id="the-ask">
+      <div class="inner">
+        <div class="opener">
+          <span class="roman">XII</span>
+          <h2>The <em>Ask</em></h2>
+          <span class="sub-label">¶ Invitation</span>
+        </div>
+        <p class="lead">We are not asking you to buy in. We are inviting you to belong to the house being built. Concretely, here is where partnership moves the work forward now:</p>
+
+        <ol class="refined-list">
+          <li><strong>NSF SBIR &amp; research partners</strong> — back AgriMesh's offline-first edge-AI on the SBIR track and the Liberty City testbed.</li>
+          <li><strong>Foundation &amp; grant support</strong> — fund the BDI as durable, CC0, litigation-grade public infrastructure during a moment of federal retrenchment.</li>
+          <li><strong>Reparations &amp; racial-justice funders</strong> — partner on the eight-pillar evidence base the field has been reproducing piecemeal.</li>
+          <li><strong>Community capital</strong> — participate in the co-op wings' member and community-investment structures as they are stood up under counsel.</li>
+          <li><strong>Individual giving</strong> — give directly to the mission core at <a href="https://e5enclave.com" target="_blank" rel="noopener noreferrer" class="external-link">e5enclave.com</a>.</li>
+          <li><strong>Counsel &amp; board</strong> — pro-bono legal, financial, and governance talent toward the seven-member board.</li>
+        </ol>
+
+        <div class="pullquote-container">
+          <blockquote class="pullquote">Built, not begged.</blockquote>
+        </div>
+
+        <p class="contact-block">
+          E5 Enclave Incorporated (DBA IAMGODIAM) · 501(c)(3) public charity · EIN 99-3822441<br />
+          820 NW 64th St, Miami FL 33150-4350 · Liberty City &amp; Overtown, Miami-Dade<br />
+          <a href="https://e5enclave.com" target="_blank" rel="noopener noreferrer" class="external-link">e5enclave.com</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <p>E5 Enclave Incorporated · DBA IAMGODIAM · Investor-Grade Edition · FY2026–2029</p>
+  <p>Figures marked as targets or estimates are projections, labeled as such. Verified registrations and the dual-source BDI record stand on the public record. Built, not begged.</p>
+</footer>
+
+<script>
+  // Mobile drawer toggle
+  (function () {
+    var btn = document.getElementById('menuToggle');
+    var drawer = document.getElementById('mobileDrawer');
+    if (btn && drawer) {
+      btn.addEventListener('click', function () {
+        var open = drawer.classList.toggle('active');
+        btn.textContent = open ? 'Close' : 'Menu';
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      drawer.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          drawer.classList.remove('active');
+          btn.textContent = 'Menu';
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  })();
+
+  // CountUp on metric values when scrolled into view
+  (function () {
+    var UA = (window.countUp && (window.countUp.CountUp || window.countUp)) || window.CountUp;
+    function animate(el) {
+      var end = parseFloat(el.getAttribute('data-count'));
+      if (isNaN(end)) return;
+      var dec = parseInt(el.getAttribute('data-decimals') || '0', 10);
+      var prefix = el.getAttribute('data-prefix') || '';
+      var suffix = el.getAttribute('data-suffix') || '';
+      if (UA) {
+        try {
+          var c = new UA(el, end, { decimalPlaces: dec, duration: 2.0, prefix: prefix, suffix: suffix });
+          if (!c.error) { c.start(); return; }
+        } catch (e) {}
+      }
+      el.textContent = prefix + end.toFixed(dec) + suffix; // graceful fallback
+    }
+    var targets = document.querySelectorAll('[data-count]');
+    if (!('IntersectionObserver' in window)) { targets.forEach(animate); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { animate(en.target); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.4 });
+    targets.forEach(function (t) { io.observe(t); });
+  })();
+
+  // Scroll-spy: highlight the active sidebar nav item
+  (function () {
+    var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
+    var map = {};
+    sections.forEach(function (s) {
+      var item = document.getElementById('nav-' + s.id);
+      if (item) map[s.id] = item;
+    });
+    if (!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          Object.keys(map).forEach(function (k) { map[k].classList.remove('active'); });
+          if (map[en.target.id]) map[en.target.id].classList.add('active');
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+    sections.forEach(function (s) { io.observe(s); });
+  })();
+
+  // Interactive universe widget: wing selection
+  (function () {
+    var items = document.querySelectorAll('.wing-item');
+    var panels = document.querySelectorAll('.wing-description-panel');
+    items.forEach(function (item) {
+      item.addEventListener('click', function () {
+        var target = item.getAttribute('data-target');
+        items.forEach(function (i) { i.classList.remove('active'); });
+        panels.forEach(function (p) { p.classList.remove('active'); });
+        item.classList.add('active');
+        var panel = document.getElementById(target);
+        if (panel) panel.classList.add('active');
+      });
+    });
+  })();
+
+  // GSAP + ScrollTrigger: gentle section reveals (progressive enhancement)
+  (function () {
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced || !window.gsap || !window.ScrollTrigger) return;
+    gsap.registerPlugin(ScrollTrigger);
+    var blocks = document.querySelectorAll('.section-pad .opener, .section-pad .lead, .section-pad .body-copy, .section-pad .metrics-row, .section-pad .pillars-plate, .section-pad .universe-widget, .section-pad .wing-panel-frame, .section-pad .risk-matrix, .section-pad .pullquote-container, .section-pad .logic-statement, .section-pad .refined-list');
+    blocks.forEach(function (el) {
+      gsap.from(el, {
+        opacity: 0,
+        y: 26,
+        duration: 0.9,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+      });
+    });
+  })();
+</script>
+
+<nav aria-label="E5 suite navigation" style="font-family:'JetBrains Mono',ui-monospace,monospace;background:var(--bone-2);border-top:1px solid var(--gold-line);padding:28px 24px;display:flex;flex-wrap:wrap;gap:10px 26px;align-items:center;justify-content:center;font-size:12px;letter-spacing:.12em;text-transform:uppercase;">
+<span style="color:var(--faint);margin-right:6px;">E5 Enclave ·</span>
+<a href="/" style="color:var(--gold);text-decoration:none;">← Universe Home</a>
+<a href="/academy/" style="color:var(--muted);text-decoration:none;">McCartney Academy</a>
+<a href="/archive/" style="color:var(--muted);text-decoration:none;">Oral-History Archive</a>
+<a href="/schools-of-hope/" style="color:var(--muted);text-decoration:none;">Schools of Hope</a>
+<a href="/plan/" style="color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px;">Business Plan</a>
+</nav>
+</body>
+</html>

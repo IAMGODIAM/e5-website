@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="The Schools of Hope Playbook — how E5 Enclave secures a permanent home for the McCartney Academy in Liberty City under Florida's 2025 Schools of Hope statutes. Strategic analysis." />
+<title>The Schools of Hope Playbook — Securing a Home for the McCartney Academy | E5 Enclave</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<!-- CountUp.js for elegant metrics -->
+<script src="https://cdn.jsdelivr.net/npm/countup.js@2.8/dist/countUp.umd.js"></script>
+
+<style>
+  /* ============================================================
+     E5 ENCLAVE — GILDED EDITORIAL
+     Warm bone ground · navy display · fine gold linework
+     ============================================================ */
+  :root {
+    /* Grounds */
+    --bone:    #f4efe4;
+    --bone-2:  #ece4d2;
+    --bone-hi: #fbf7ee;
+    /* Text */
+    --ink:     #14161d;
+    --muted:   #6b6456;
+    --faint:   #928a78;
+    /* Marks */
+    --navy:    #0c1c4d;
+    --gold:    #a9843f;   /* deep gold — for contrast on light */
+    --gold-hi: #c9a84c;   /* house-mark accent */
+    --ox:      #6d1f20;   /* oxblood — rare emphasis */
+    /* On-navy (full-bleed band) */
+    --on-navy:      #f4efe4;
+    --on-navy-mut:  #b9c0d8;
+    /* Type */
+    --display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --body:    'Inter', system-ui, -apple-system, sans-serif;
+    --mono:    'JetBrains Mono', 'SFMono-Regular', Menlo, monospace;
+    /* Layout */
+    --max:  1240px;
+    --gutter: clamp(1.25rem, 5vw, 5rem);
+    /* Rules */
+    --line:      rgba(20,22,29,0.14);
+    --line-soft: rgba(20,22,29,0.10);
+    --gold-line: rgba(169,132,63,0.42);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    background: var(--bone);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.72;
+    font-size: 1.02rem;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--gold-hi); color: var(--navy); }
+
+  a { color: inherit; text-decoration: none; }
+
+  img { max-width: 100%; display: block; }
+
+  /* ---------- Typographic primitives ---------- */
+  .eyebrow {
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--gold);
+  }
+  .mono { font-family: var(--mono); letter-spacing: 0.2em; text-transform: uppercase; }
+
+  .roman {
+    font-family: var(--mono);
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  h1, h2, h3, h4 { font-family: var(--display); font-weight: 500; line-height: 1.05; color: var(--navy); }
+
+  .ornament { color: var(--gold); font-family: var(--display); font-style: italic; }
+
+  /* Hairline divider — thin gold rule */
+  .hair {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, var(--gold-line), transparent);
+    border: 0;
+    margin: 0;
+  }
+
+  /* ---------- Layout shell ---------- */
+  .wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+
+  section { position: relative; }
+
+  .section-pad { padding: clamp(4rem, 10vh, 8rem) 0; }
+
+  /* Alternating band ground */
+  .band-alt { background: var(--bone-2); }
+
+  /* Section opener header — thin gold rule beneath */
+  .opener {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2.75rem;
+    border-bottom: 1px solid var(--gold-line);
+  }
+  .opener .roman { white-space: nowrap; }
+  .opener h2 {
+    font-size: clamp(2.2rem, 6vw, 4.4rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .opener h2 em { font-style: italic; color: var(--gold); }
+  .opener .sub-label { font-family: var(--mono); color: var(--muted); letter-spacing: 0.22em; text-transform: uppercase; font-size: 0.7rem; margin-left: auto; }
+
+  /* Drop cap */
+  .dropcap::first-letter {
+    font-family: var(--display);
+    font-weight: 600;
+    color: var(--gold);
+    float: left;
+    font-size: 4.6rem;
+    line-height: 0.72;
+    padding: 0.32rem 0.7rem 0 0;
+  }
+
+  /* Lead paragraph */
+  .lead {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(1.4rem, 2.7vw, 2.05rem);
+    line-height: 1.42;
+    color: #33322b;
+    max-width: 54ch;
+  }
+  .lead .ornament { color: var(--gold); }
+  .body-copy { color: var(--muted); max-width: 62ch; font-size: 1.02rem; }
+  .body-copy strong { color: var(--navy); font-weight: 600; }
+  .body-copy + .body-copy { margin-top: 1.2rem; }
+
+  /* Pullquote */
+  .pullquote {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 4vw, 2.9rem);
+    line-height: 1.3;
+    color: var(--navy);
+    max-width: 24ch;
+    border-left: 2px solid var(--gold);
+    padding-left: clamp(1.25rem, 3vw, 2.25rem);
+    margin: clamp(2.5rem, 6vh, 4.5rem) 0;
+  }
+  .pullquote::before { content: "\201C"; color: var(--gold); }
+  .pullquote::after  { content: "\201D"; color: var(--gold); }
+  .pullquote.center {
+    margin-left: auto; margin-right: auto; text-align: center;
+    border-left: 0;
+    border-top: 1px solid var(--gold-line);
+    border-bottom: 1px solid var(--gold-line);
+    padding: clamp(1.5rem,4vh,3rem) 0;
+    max-width: 30ch;
+  }
+
+  /* Stats row — bordered editorial cells */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-top: clamp(2.5rem, 6vh, 4rem);
+    border: 1px solid var(--line);
+    border-right: 0;
+  }
+  .stat {
+    border-right: 1px solid var(--line);
+    padding: 1.75rem 1.75rem 1.9rem;
+  }
+  .stat .figure {
+    font-family: var(--display);
+    font-weight: 500;
+    color: var(--navy);
+    font-size: clamp(2.8rem, 6vw, 4.4rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+  .stat .figure .figure-suffix { color: var(--gold); font-size: 0.62em; margin-left: 2px; }
+  .stat .figure .figure-prefix { color: var(--gold); font-size: 0.62em; margin-right: 1px; }
+  .stat .label {
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin-top: 0.95rem;
+    max-width: 26ch;
+    line-height: 1.6;
+  }
+  .stat .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    border: 1px solid var(--gold-line);
+    padding: 0.18rem 0.5rem;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  /* Framed "Fig." plate */
+  .plate {
+    position: relative;
+    border: 1px solid var(--gold-line);
+    background: linear-gradient(180deg, var(--bone-hi), var(--bone-2));
+    box-shadow: 0 20px 50px rgba(20,22,29,0.08);
+    padding: 2.6rem 1.5rem 1.5rem;
+  }
+  .plate .cap {
+    position: absolute;
+    top: 12px; left: 14px;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    z-index: 4;
+  }
+  .plate .cap-ref {
+    position: absolute;
+    top: 12px; right: 14px;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    z-index: 4;
+  }
+  .plate .cap-ref strong { color: var(--gold); font-weight: 600; }
+  .plate img {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--gold-line);
+    display: block;
+  }
+  .plate .plate-caption {
+    margin-top: 1rem;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  /* ============================================================
+     NAV
+     ============================================================ */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem var(--gutter);
+    background: rgba(244,239,228,0.0);
+    transition: background 0.4s ease, border-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    background: rgba(244,239,228,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gold-line);
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  .nav .brand {
+    font-family: var(--display);
+    font-size: 1.35rem;
+    letter-spacing: 0.02em;
+    color: var(--navy);
+    font-weight: 600;
+  }
+  .nav .brand .e5 { color: var(--gold); font-style: italic; }
+  .nav .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .nav .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    position: relative;
+    padding: 0.3rem 0;
+    transition: color 0.25s ease;
+  }
+  .nav .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -2px;
+    height: 1px; width: 0;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .nav .nav-links a:hover,
+  .nav .nav-links a.active { color: var(--navy); }
+  .nav .nav-links a.active::after { width: 100%; }
+  .nav .nav-links a.home-link { color: var(--gold); }
+  .nav .nav-links a.home-link:hover { color: var(--navy); }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--gold-line);
+    color: var(--navy);
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .nav .nav-links {
+      position: fixed;
+      inset: 0 0 0 auto;
+      width: min(78vw, 340px);
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1.6rem;
+      padding: 2rem var(--gutter);
+      background: rgba(244,239,228,0.98);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-left: 1px solid var(--gold-line);
+      transform: translateX(105%);
+      transition: transform 0.4s cubic-bezier(.6,.0,.2,1);
+    }
+    .nav .nav-links.open { transform: translateX(0); }
+    .nav .nav-links a { font-size: 0.82rem; }
+    .nav-toggle { display: inline-block; z-index: 110; }
+  }
+
+  /* ============================================================
+     HERO / MASTHEAD
+     ============================================================ */
+  .hero {
+    padding: 9rem var(--gutter) 0;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .hero .eyebrow { margin-bottom: 1.6rem; display: inline-block; }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(2.6rem, 7vw, 5.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    color: var(--navy);
+  }
+  .hero .hrule { width: 70px; height: 3px; background: var(--gold); margin: 1.5rem 0 1.4rem; }
+  .hero .subtitle {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.35rem, 3.2vw, 2.05rem);
+    color: #33322b;
+    margin-top: 0.2rem;
+    max-width: 40ch;
+  }
+  .hero .subtitle em { color: var(--gold); font-style: italic; }
+  .hero .deck {
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--muted);
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    margin-top: 1.4rem;
+    max-width: 56ch;
+    line-height: 1.5;
+  }
+
+  .meta-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 2.4rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--gold-line);
+  }
+  .meta-strip .meta-item {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    padding: 0.55rem 0.95rem;
+  }
+  .meta-strip .meta-item strong { color: var(--gold); font-weight: 600; }
+
+  /* ============================================================
+     LEVER CARDS — bordered editorial cards on bone
+     ============================================================ */
+  .levers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: clamp(2.5rem, 6vh, 3.5rem);
+  }
+  .lever-card {
+    background: var(--bone);
+    padding: 2.1rem 1.9rem 2.1rem;
+    position: relative;
+    border-top: 2px solid var(--gold);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background 0.3s ease;
+    min-height: 240px;
+  }
+  .lever-card:hover { background: var(--bone-hi); }
+  .lever-num {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: block;
+  }
+  .lever-title {
+    font-family: var(--display);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 0.7rem 0 0.7rem;
+    line-height: 1.15;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--gold-line);
+  }
+  .lever-desc {
+    color: var(--muted);
+    font-size: 0.98rem;
+    margin-bottom: 1.6rem;
+    line-height: 1.6;
+  }
+  .lever-unlock {
+    border-left: 2px solid var(--gold);
+    padding: 0.65rem 0 0.65rem 1rem;
+    margin-top: auto;
+  }
+  .lever-unlock-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .lever-unlock-text {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+
+  /* ============================================================
+     DATA TABLE — editorial linework
+     ============================================================ */
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin: clamp(2.5rem, 6vh, 3.5rem) 0;
+    border: 1px solid var(--line);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--body);
+    font-size: 0.92rem;
+    text-align: left;
+  }
+  thead th {
+    background: var(--bone-2);
+    color: var(--navy);
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid var(--gold-line);
+    font-size: 0.64rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  td {
+    padding: 1rem 1rem;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--muted);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:hover td { background: var(--bone-hi); }
+  td strong { color: var(--navy); font-weight: 600; }
+
+  tr.target-row { background: rgba(169,132,63,0.09); }
+  tr.target-row td { color: var(--ink); }
+  tr.target-row:hover td { background: rgba(169,132,63,0.14); }
+
+  .badge-vacant {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bone);
+    background: var(--navy);
+    padding: 0.2rem 0.5rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* ============================================================
+     PLAYBOOK TIMELINE
+     ============================================================ */
+  .timeline {
+    margin-top: clamp(2rem, 5vh, 3rem);
+    position: relative;
+    padding-left: 2.4rem;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 6px; top: 6px; bottom: 6px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), var(--gold-line), transparent);
+  }
+  .tl-item { position: relative; padding-bottom: 2.6rem; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item .marker {
+    position: absolute;
+    left: -2.4rem; top: 4px;
+    width: 22px; height: 22px;
+    transform: translateX(-0.5px);
+    background: var(--bone);
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    font-weight: 600;
+    color: var(--gold);
+  }
+  .tl-item.lit .marker { background: var(--gold); color: var(--bone); }
+  .tl-item .tl-phase {
+    font-family: var(--display);
+    font-size: 1.55rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 0 0 0.5rem;
+    line-height: 1.15;
+  }
+  .tl-item .tl-body { color: var(--muted); max-width: 62ch; }
+  .tl-item .tl-body strong { color: var(--navy); font-weight: 600; }
+
+  /* ============================================================
+     STRATEGIC LISTS (Risks / Ask)
+     ============================================================ */
+  .strategic-list { list-style: none; margin: clamp(1.5rem, 4vh, 2.5rem) 0 0; }
+  .strategic-list li {
+    position: relative;
+    padding: 0 0 1.4rem 2rem;
+    color: var(--muted);
+    font-size: 1.0rem;
+    line-height: 1.6;
+  }
+  .strategic-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0; top: 0;
+    color: var(--gold);
+    font-family: var(--mono);
+  }
+  .strategic-list li strong {
+    display: block;
+    color: var(--navy);
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+
+  /* Honest-read note block */
+  .note-block {
+    border-left: 2px solid var(--gold);
+    padding-left: 1.25rem;
+    margin-top: 2rem;
+    color: var(--muted);
+    max-width: 68ch;
+  }
+  .note-block strong { color: var(--navy); font-weight: 600; }
+
+  /* ============================================================
+     FOOTER / COLOPHON — The Record
+     ============================================================ */
+  .colophon {
+    border-top: 1px solid var(--gold-line);
+    background: var(--bone-2);
+    padding: clamp(3.5rem, 9vh, 6rem) 0 3rem;
+  }
+  .colophon-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+  }
+  @media (max-width: 767px) {
+    .colophon-grid { grid-template-columns: 1fr; gap: 2.25rem; }
+  }
+  .colophon-block h3 {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 1.4rem;
+    font-weight: 600;
+  }
+  .colophon-block p {
+    color: var(--muted);
+    max-width: 68ch;
+    font-size: 0.96rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+  .colophon-block p strong { color: var(--navy); font-weight: 600; }
+  .colophon-seal {
+    border-left: 1px solid var(--gold-line);
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  @media (max-width: 767px) {
+    .colophon-seal {
+      border-left: 0;
+      padding-left: 0;
+      border-top: 1px solid var(--gold-line);
+      padding-top: 2rem;
+    }
+  }
+  .colophon-seal .seal-name {
+    font-family: var(--display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .colophon-seal .seal-loc {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 0.4rem;
+  }
+  .colophon-seal .seal-ref {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .colophon .record a { color: var(--navy); border-bottom: 1px solid var(--gold); }
+  .colophon .record a:hover { color: var(--gold); }
+  .colophon .motto {
+    margin-top: 2.5rem;
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.35rem, 3vw, 2.05rem);
+    color: var(--gold);
+    border-top: 1px solid var(--gold-line);
+    padding-top: 2rem;
+  }
+
+  /* Suite navigation (bottom) */
+  .suite-nav {
+    font-family: var(--mono);
+    background: var(--bone);
+    border-top: 1px solid var(--gold-line);
+    padding: 28px var(--gutter);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 26px;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .suite-nav .suite-lead { color: var(--faint); margin-right: 6px; }
+  .suite-nav a { color: var(--muted); transition: color 0.25s ease; }
+  .suite-nav a:hover { color: var(--navy); }
+  .suite-nav a.suite-home { color: var(--gold); }
+  .suite-nav a.suite-current {
+    color: var(--navy);
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+  }
+
+  /* ============================================================
+     SCROLL-REVEAL
+     ============================================================ */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(.2,.6,.2,1), transform 0.9s cubic-bezier(.2,.6,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal.d1 { transition-delay: 0.08s; }
+  .reveal.d2 { transition-delay: 0.16s; }
+  .reveal.d3 { transition-delay: 0.24s; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+
+  /* Skip link */
+  .skip {
+    position: absolute; left: -999px; top: 0; z-index: 200;
+    background: var(--navy); color: var(--bone);
+    padding: 0.6rem 1rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em;
+  }
+  .skip:focus { left: 1rem; top: 1rem; }
+
+  /* Image placeholder (broken-img handler) */
+  .ha-img-placeholder{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;background:var(--bone-2);border:1px dashed var(--gold-line);color:var(--muted);font-size:12px;font-family:var(--mono);min-height:120px;padding:16px;box-sizing:border-box;animation:ha-img-pulse 1.5s ease-in-out infinite}
+  .ha-img-placeholder.ha-failed{animation:none;opacity:.7}
+  @keyframes ha-img-pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+  @media (max-width: 640px) {
+    .lever-card { min-height: 0; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#opening" class="skip">Skip to content</a>
+
+<!-- ============================ NAV ============================ -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <a href="#top" class="brand"><span class="e5">E5</span> Enclave</a>
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+  <div class="nav-links" id="navLinks">
+    <a href="/" class="home-link">← Home</a>
+    <a href="#opening" data-spy="opening">I · Opening</a>
+    <a href="#levers" data-spy="levers">II · Legal Levers</a>
+    <a href="#inventory" data-spy="inventory">III · Inventory</a>
+    <a href="#playbook" data-spy="playbook">IV · Playbook</a>
+    <a href="#risks" data-spy="risks">V · Risks</a>
+    <a href="#ask" data-spy="ask">VI · The Ask</a>
+    <a href="#record" data-spy="record">VII · Record</a>
+  </div>
+</nav>
+
+<!-- ============================ HERO ============================ -->
+<header class="hero" id="top">
+  <span class="eyebrow">Strategic Dispatch · E5 Enclave Incorporated</span>
+  <h1>The Schools of Hope <em class="ornament">Playbook</em></h1>
+  <div class="hrule" aria-hidden="true"></div>
+  <p class="subtitle">Securing a Permanent Home for the <em>McCartney Academy</em> in Liberty City</p>
+  <p class="deck">Facility Acquisition Strategy: how we secure the building. Strategic analysis. Current statute text is verified before any action.</p>
+
+  <div class="meta-strip">
+    <div class="meta-item">Author: <strong>E5 Intel Unit</strong></div>
+    <div class="meta-item">Target: <strong>M-DCPS Dist-2</strong></div>
+    <div class="meta-item">Status: <strong>Active Strat</strong></div>
+  </div>
+</header>
+
+<!-- ============================ I. THE OPENING ============================ -->
+<section class="section-pad" id="opening">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">I</span>
+      <h2>The <em>Opening</em></h2>
+      <span class="sub-label">§ The Door Reopened</span>
+    </div>
+
+    <p class="lead dropcap reveal d1">For the first time, Florida law puts community-serving schools first in line for surplus public-school property. Securing a permanent home for the McCartney Academy in Liberty City is no longer a hope — it is a navigable legal path. This playbook turns the 2025 statutes and the State of Florida's own facilities inventory into a concrete acquisition plan.</p>
+
+    <p class="body-copy reveal d2" style="margin-top:1.6rem;">And the inventory delivered the headline before we asked: the State's own report lists <strong>Charles R. Drew Middle School as vacant</strong> — the exact site of our District-2 proposal.</p>
+
+    <div class="stats reveal d2">
+      <div class="stat">
+        <div class="figure"><span id="stat-date">0</span></div>
+        <div class="label">July 1, 2025 — laws took effect</div>
+      </div>
+      <div class="stat">
+        <div class="figure"><span id="stat-vacant-count">0</span></div>
+        <div class="label">Vacant schools in our target belt</div>
+      </div>
+      <div class="stat">
+        <div class="figure"><span class="figure-prefix">$</span><span id="stat-funding">0</span><span class="figure-suffix">M</span></div>
+        <div class="label">Schools of Hope annual funding floor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hair" />
+
+<!-- ============================ II. THE LEGAL ENGINE ============================ -->
+<section class="section-pad band-alt" id="levers">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">II</span>
+      <h2>The Legal <em>Engine</em></h2>
+      <span class="sub-label">¶ Five Levers</span>
+    </div>
+
+    <p class="lead reveal d1">The 2025 legislative session passed four aligned bills. Each is a specific statutory lever we can pull to bypass traditional municipal hurdles.</p>
+
+    <div class="levers-grid reveal d2">
+      <!-- Lever 1 -->
+      <div class="lever-card">
+        <div>
+          <span class="lever-num">Lever 01 · HB 443</span>
+          <h3 class="lever-title">Right of First Refusal</h3>
+          <p class="lever-desc">Before a district may sell, lease, or transfer any school property, it must first offer it to public charter schools for educational use.</p>
+        </div>
+        <div class="lever-unlock">
+          <span class="lever-unlock-label">Unlocks</span>
+          <span class="lever-unlock-text">First claim on surplus buildings.</span>
+        </div>
+      </div>
+
+      <!-- Lever 2 -->
+      <div class="lever-card">
+        <div>
+          <span class="lever-num">Lever 02 · HB 443</span>
+          <h3 class="lever-title">Ad Valorem Exemption &amp; Reuse</h3>
+          <p class="lever-desc">Any facility housing an approved charter school is exempt from property taxes; libraries, churches, museums, and community buildings may host a school under existing zoning.</p>
+        </div>
+        <div class="lever-unlock">
+          <span class="lever-unlock-label">Unlocks</span>
+          <span class="lever-unlock-text">Lower carrying cost, flexible siting.</span>
+        </div>
+      </div>
+
+      <!-- Lever 3 -->
+      <div class="lever-card">
+        <div>
+          <span class="lever-num">Lever 03 · HB 1255</span>
+          <h3 class="lever-title">Land-Use Preemption</h3>
+          <p class="lever-desc">Local building, site, capacity, and operational rules that single out charter schools are void unless applied uniformly to all public schools.</p>
+        </div>
+        <div class="lever-unlock">
+          <span class="lever-unlock-label">Unlocks</span>
+          <span class="lever-unlock-text">No rezoning battle.</span>
+        </div>
+      </div>
+
+      <!-- Lever 4 -->
+      <div class="lever-card">
+        <div>
+          <span class="lever-num">Lever 04 · HB 1105</span>
+          <h3 class="lever-title">Conversion Pathways</h3>
+          <p class="lever-desc">Parent-initiated conversion and municipal "job-engine charter" routes open existing schools to community-led, workforce-focused reuse; districts must share infrastructure surtax revenue.</p>
+        </div>
+        <div class="lever-unlock">
+          <span class="lever-unlock-label">Unlocks</span>
+          <span class="lever-unlock-text">A community route in, plus operating revenue.</span>
+        </div>
+      </div>
+
+      <!-- Lever 5 -->
+      <div class="lever-card">
+        <div>
+          <span class="lever-num">Lever 05 · SB 2510</span>
+          <h3 class="lever-title">The Funding Floor</h3>
+          <p class="lever-desc">The state statutory framework guarantees the Schools of Hope capital program is held at a constant, non-discretionary funding minimum.</p>
+        </div>
+        <div class="lever-unlock">
+          <span class="lever-unlock-label">Unlocks</span>
+          <span class="lever-unlock-text">A dedicated capital pool of $25M+ annually.</span>
+        </div>
+      </div>
+    </div>
+
+    <blockquote class="pullquote center reveal">The door the highway closed, the law has reopened.</blockquote>
+  </div>
+</section>
+
+<hr class="hair" />
+
+<!-- ============================ III. THE INVENTORY ============================ -->
+<section class="section-pad" id="inventory">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">III</span>
+      <h2>The <em>Inventory</em></h2>
+      <span class="sub-label">§ Real Targets</span>
+    </div>
+
+    <p class="lead reveal d1">Grounded in the Florida Inventory of School Houses <span class="ornament">(FISH)</span> Level-of-Service Report for Miami-Dade, dated March 6, 2025.</p>
+
+    <p class="body-copy reveal d2" style="margin-top:1.6rem;">"Vacant" is the State's own flag; "% used" and "surplus seats" are its verified utilization figures.</p>
+
+    <div class="table-wrapper reveal d2">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Facility</th>
+            <th scope="col">Status / % Used</th>
+            <th scope="col">Surplus Seats</th>
+            <th scope="col">Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="target-row">
+            <td><strong>Charles R. Drew Middle</strong></td>
+            <td><span class="badge-vacant">Vacant</span></td>
+            <td>— (1,440 dining cap.)</td>
+            <td><strong>Primary target — the exact site of the District-2 pitch</strong></td>
+          </tr>
+          <tr class="target-row">
+            <td><strong>Westview Middle</strong></td>
+            <td><span class="badge-vacant">Vacant</span></td>
+            <td>—</td>
+            <td>Second vacant building in the belt</td>
+          </tr>
+          <tr>
+            <td>Booker T. Washington Sr High</td>
+            <td>49% used</td>
+            <td>~1,065</td>
+            <td>The school McCartney helped rebuild — symbolic anchor, co-location capacity</td>
+          </tr>
+          <tr>
+            <td>Poinciana Park Elementary</td>
+            <td>20% used</td>
+            <td>~607</td>
+            <td>Most underused in the belt</td>
+          </tr>
+          <tr>
+            <td>Liberty City Elementary</td>
+            <td>28% used</td>
+            <td>~597</td>
+            <td>In-name-and-place</td>
+          </tr>
+          <tr>
+            <td>Brownsville Middle</td>
+            <td>34% used</td>
+            <td>~899</td>
+            <td>Large surplus, adjacent community</td>
+          </tr>
+          <tr>
+            <td>Orchard Villa Elementary</td>
+            <td>37% used</td>
+            <td>~454</td>
+            <td>Conversion candidate</td>
+          </tr>
+          <tr>
+            <td>Miami Edison Senior High</td>
+            <td>38% used</td>
+            <td>~1,013</td>
+            <td>Major surplus capacity</td>
+          </tr>
+          <tr>
+            <td>Paul Laurence Dunbar K-8</td>
+            <td>38% used</td>
+            <td>~485</td>
+            <td>Conversion candidate</td>
+          </tr>
+          <tr>
+            <td>Lillie C. Evans K-8</td>
+            <td>39% used</td>
+            <td>~393</td>
+            <td>Conversion candidate</td>
+          </tr>
+          <tr>
+            <td>Georgia Jones-Ayers Middle</td>
+            <td>42% used</td>
+            <td>~669</td>
+            <td>Conversion candidate</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="body-copy reveal d2"><strong>Honest read:</strong> FISH utilization and vacancy are verified facts, but "underused" in FISH is not the same as a district's formal declaration of surplus. The right of first refusal triggers when the district moves to sell, lease, or transfer. So the two <strong>vacant</strong> buildings (Drew Middle, Westview) are the cleanest reuse; the <strong>underused</strong> ones are conversion and co-location candidates.</p>
+
+    <div class="stats reveal d2">
+      <div class="stat">
+        <div class="figure"><span id="stat-candidates">0</span></div>
+        <div class="label">Identified vacant / underused candidates</div>
+      </div>
+      <div class="stat">
+        <div class="figure"><span id="stat-seats">0</span></div>
+        <div class="label">Surplus seats at BTW Senior High</div>
+      </div>
+      <div class="stat">
+        <div class="figure"><span id="stat-exact-pitch">0</span></div>
+        <div class="label">Vacant building at the exact pitch site</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hair" />
+
+<!-- ============================ IV. THE PLAYBOOK ============================ -->
+<section class="section-pad band-alt" id="playbook">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">IV</span>
+      <h2>The <em>Playbook</em></h2>
+      <span class="sub-label">¶ Six Moves</span>
+    </div>
+
+    <p class="lead reveal d1">A non-linear, multi-front campaign to secure the site. Speed and statutory alignment are our tactical advantages.</p>
+
+    <div class="timeline reveal d2">
+      <div class="tl-item lit">
+        <span class="marker" aria-hidden="true">1</span>
+        <div class="tl-phase">Stand up standing</div>
+        <p class="tl-body">Establish the McCartney Academy's status as an approved public/charter school — the absolute prerequisite to both the right of first refusal and the ad valorem exemption. <strong>(In development — the gating step.)</strong></p>
+      </div>
+      <div class="tl-item">
+        <span class="marker" aria-hidden="true">2</span>
+        <div class="tl-phase">Claim Charles R. Drew Middle</div>
+        <p class="tl-body">File written interest in the vacant building; track and trigger the right of first refusal on the District's disposition of the property.</p>
+      </div>
+      <div class="tl-item">
+        <span class="marker" aria-hidden="true">3</span>
+        <div class="tl-phase">Run the conversion route in parallel (HB 1105)</div>
+        <p class="tl-body">Pursue the parent-initiated and/or municipal "job-engine charter" pathway for a community-led, workforce-focused academy.</p>
+      </div>
+      <div class="tl-item">
+        <span class="marker" aria-hidden="true">4</span>
+        <div class="tl-phase">Invoke the protections</div>
+        <p class="tl-body">Apply the ad valorem exemption <strong>(HB 443)</strong> and the land-use preemption <strong>(HB 1255)</strong> — bypass municipal rezoning fights entirely for institutional reuse.</p>
+      </div>
+      <div class="tl-item">
+        <span class="marker" aria-hidden="true">5</span>
+        <div class="tl-phase">Stack capital funding</div>
+        <p class="tl-body">Stack Schools of Hope program funds (the $25M floor), HB 1105 surtax revenue-sharing, and philanthropic/grant capital for acquisition and buildout.</p>
+      </div>
+      <div class="tl-item">
+        <span class="marker" aria-hidden="true">6</span>
+        <div class="tl-phase">Build the integrated ecosystem</div>
+        <p class="tl-body">Establish the school on one side; the Lotus Gate Forum business center on or adjacent to the site — welding education and economic capacity together.</p>
+      </div>
+    </div>
+
+    <blockquote class="pullquote center reveal">We are not asking for a favor. We are exercising a right.</blockquote>
+  </div>
+</section>
+
+<hr class="hair" />
+
+<!-- ============================ V. RISKS & THE HONEST READ ============================ -->
+<section class="section-pad" id="risks">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">V</span>
+      <h2>Risks &amp; the <em>Honest Read</em></h2>
+      <span class="sub-label">§ Managed Continuously</span>
+    </div>
+
+    <p class="lead reveal d1">Strategic success requires intellectual honesty. We have identified four primary operational risks that must be managed continuously.</p>
+
+    <ul class="strategic-list reveal d2">
+      <li>
+        <strong>Timing &amp; Control</strong>
+        FISH status is not a formal surplus declaration; the final property disposition timeline remains within the District's bureaucratic discretion.
+      </li>
+      <li>
+        <strong>Gating Prerequisite</strong>
+        Approved-school status is the hard gate through which all statutory claims must pass, and we are currently early in that process.
+      </li>
+      <li>
+        <strong>Competitive Pressure</strong>
+        Every public charter operator in Florida holds the same right of first refusal — our structural edge is speed, deep community legitimacy, and the McCartney-Drew historical lineage.
+      </li>
+      <li>
+        <strong>Rigorous Diligence</strong>
+        We must verify current statute text daily and evaluate the building's physical/environmental condition comprehensively prior to any formal filing.
+      </li>
+    </ul>
+
+    <div class="stats reveal d2">
+      <div class="stat">
+        <div class="figure"><span id="stat-prereq">0</span></div>
+        <div class="label">Gating prerequisite: approved-school status</div>
+      </div>
+      <div class="stat">
+        <div class="figure"><span id="stat-paths">0</span></div>
+        <div class="label">Parallel operational paths run simultaneously</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hair" />
+
+<!-- ============================ VI. THE ASK ============================ -->
+<section class="section-pad band-alt" id="ask">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">VI</span>
+      <h2>The <em>Ask</em></h2>
+      <span class="sub-label">¶ Four Partners</span>
+    </div>
+
+    <p class="lead reveal d1">To execute this playbook flawlessly, we require the immediate alignment of four critical partners:</p>
+
+    <ul class="strategic-list reveal d2">
+      <li>
+        <strong>Legal &amp; Charter Counsel</strong>
+        To fast-track and secure the vital approved-school status prerequisite.
+      </li>
+      <li>
+        <strong>Facilities &amp; Real-Estate Partner</strong>
+        For the engineering feasibility, architectural planning, and structural conversion of the Drew Middle facility.
+      </li>
+      <li>
+        <strong>Philanthropic Capital Partners</strong>
+        To bridge early capital requirements between acquisition and state funding reimbursement.
+      </li>
+      <li>
+        <strong>District Engagement</strong>
+        Direct lines of coordination with Miami-Dade County Public Schools and the District 2 office under Dr. Dorothy Bendross-Mindingall.
+      </li>
+    </ul>
+
+    <!-- Framed "Fig." plate — Lotus Gate Blueprint -->
+    <figure class="plate reveal d2" style="margin-top:clamp(2.5rem,6vh,3.5rem);">
+      <span class="cap">Fig. 1.0 — Architectural Specification</span>
+      <span class="cap-ref">Ref: <strong>LP-001 / Lotus Gate Forum</strong></span>
+      <img src="https://pub.hyperagent.com/api/published/pbf01KW47088Q_V2AZR7RSZDX6664J/cmqw3d9ld04at07ad0vzxdlct_9C8FE40F-E04E-4C2D-9C07-55607E90E423.png" alt="Architectural blueprint of the Lotus Gate Forum business center and McCartney Academy ecosystem layout" loading="lazy" onerror="this.style.display='none'" />
+      <figcaption class="plate-caption">Integrated Academic &amp; Economic Infrastructure Blueprint</figcaption>
+    </figure>
+
+    <div class="stats reveal d2">
+      <div class="stat">
+        <div class="figure"><span id="stat-site">0</span></div>
+        <div class="label">Site</div>
+      </div>
+      <div class="stat">
+        <div class="figure"><span id="stat-right">0</span></div>
+        <div class="label">Right</div>
+      </div>
+      <div class="stat">
+        <div class="figure"><span id="stat-window">0</span></div>
+        <div class="label">Window</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ VII. THE RECORD ============================ -->
+<footer class="colophon" id="record">
+  <div class="wrap">
+    <span class="roman">VII</span>
+    <h2 class="reveal" style="font-family:var(--display);font-weight:500;font-size:clamp(1.7rem,3.5vw,2.6rem);color:var(--navy);margin:1.5rem 0;">The Record</h2>
+
+    <div class="colophon-grid reveal d1">
+      <div class="colophon-block record">
+        <h3>Sources &amp; Compliance — Kept Honestly</h3>
+        <p>The legislative summary draws on Florida 2025 legislative session bills — <strong>HB 443 (Ch. 2025-144)</strong>, <strong>HB 1105 (Ch. 2025-109)</strong>, <strong>SB 2510</strong>, and <strong>HB 1255</strong> — as strategic analysis; current statute text must be verified with certified legal counsel before filings. Facility-level data is pulled directly from the FLDoE Office of Educational Facilities FISH Level-of-Service Report, Miami-Dade, dated March 6, 2025 (retrieved via Internet Archive mirror).</p>
+        <p>The McCartney Academy is a programmatic initiative of <strong>E5 Enclave Incorporated</strong> — a Florida 501(c)(3) public charity (EIN 99-3822441; §509(a)(2)), based in Liberty City, Miami, Florida. <a href="https://e5enclave.com" target="_blank" rel="noopener noreferrer">e5enclave.com</a>.</p>
+        <p>This report is classified as internal strategic planning material. Distribution is restricted to verified project partners and designated strategic advisors of E5 Enclave Incorporated.</p>
+      </div>
+      <div class="colophon-seal">
+        <div>
+          <div class="seal-name">E5 Enclave Inc.</div>
+          <div class="seal-loc">Liberty City, Miami, FL</div>
+        </div>
+        <div class="seal-ref">Print Ref: E5-SHP-2025-v1.1</div>
+      </div>
+    </div>
+
+    <p class="motto reveal d1">Nil satis nisi optimum — nothing but the best is good enough.</p>
+  </div>
+</footer>
+
+<!-- ============================ SUITE NAV ============================ -->
+<nav class="suite-nav" aria-label="E5 suite navigation">
+  <span class="suite-lead">E5 Enclave ·</span>
+  <a href="/" class="suite-home">← Universe Home</a>
+  <a href="/academy/">McCartney Academy</a>
+  <a href="/archive/">Oral-History Archive</a>
+  <a href="/schools-of-hope/" class="suite-current">Schools of Hope</a>
+  <a href="/plan/">Business Plan</a>
+</nav>
+
+<!-- ============================ SCRIPTS ============================ -->
+<script>
+(function () {
+  'use strict';
+
+  var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- NAV: scrolled state + mobile toggle ---------- */
+  var nav = document.getElementById('nav');
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+
+  function onScroll() {
+    if (window.scrollY > 40) { nav.classList.add('scrolled'); }
+    else { nav.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', function () {
+      var open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  /* ---------- SCROLL-REVEAL ---------- */
+  var reveals = document.querySelectorAll('.reveal');
+  if (prefersReduced || !('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var revObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add('in');
+          revObs.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (el) { revObs.observe(el); });
+  }
+
+  /* ---------- STAT COUNTERS (CountUp.js) ---------- */
+  var CountUpCtor = (window.countUp && window.countUp.CountUp) ? window.countUp.CountUp : window.CountUp;
+
+  function makeCounter(id, end, decimals, opts) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    var options = { useEasing: true, duration: 1.5 };
+    if (decimals) { options.decimalPlaces = decimals; }
+    if (opts) { for (var k in opts) { options[k] = opts[k]; } }
+    if (prefersReduced) {
+      // set final value without animating
+      var finalVal = options.useGrouping === false
+        ? String(end)
+        : Number(end).toLocaleString('en-US');
+      el.textContent = finalVal;
+      return;
+    }
+    if (!CountUpCtor) { el.textContent = end; return; }
+    try {
+      var c = new CountUpCtor(id, end, options);
+      if (!c.error) { c.start(); } else { el.textContent = end; }
+    } catch (err) {
+      el.textContent = end;
+    }
+  }
+
+  var metrics = [
+    { id: 'stat-date',         end: 2025, opts: { useGrouping: false } },
+    { id: 'stat-vacant-count', end: 2 },
+    { id: 'stat-funding',      end: 25 },
+    { id: 'stat-candidates',   end: 11 },
+    { id: 'stat-seats',        end: 1065, opts: { separator: ',' } },
+    { id: 'stat-exact-pitch',  end: 1 },
+    { id: 'stat-prereq',       end: 1 },
+    { id: 'stat-paths',        end: 3 },
+    { id: 'stat-site',         end: 1 },
+    { id: 'stat-right',        end: 1 },
+    { id: 'stat-window',       end: 1 }
+  ];
+  var metricMap = {};
+  metrics.forEach(function (m) { metricMap[m.id] = m; });
+
+  if (prefersReduced || !('IntersectionObserver' in window)) {
+    metrics.forEach(function (m) { makeCounter(m.id, m.end, 0, m.opts); });
+  } else {
+    var cObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          var m = metricMap[en.target.id];
+          if (m) { makeCounter(m.id, m.end, 0, m.opts); }
+          cObs.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    metrics.forEach(function (m) {
+      var el = document.getElementById(m.id);
+      if (el) { cObs.observe(el); }
+    });
+  }
+
+  /* ---------- SCROLL-SPY NAV ---------- */
+  var spyLinks = document.querySelectorAll('.nav-links a[data-spy]');
+  var sections = [];
+  spyLinks.forEach(function (a) {
+    var id = a.getAttribute('data-spy');
+    var sec = document.getElementById(id);
+    if (sec) { sections.push({ id: id, el: sec, link: a }); }
+  });
+
+  if ('IntersectionObserver' in window && sections.length) {
+    var spyObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          spyLinks.forEach(function (l) { l.classList.remove('active'); });
+          var match = sections.filter(function (s) { return s.el === en.target; })[0];
+          if (match) { match.link.classList.add('active'); }
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { spyObs.observe(s.el); });
+  }
+})();
+</script>
+
+<script>
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && window.parent !== window) {
+    window.parent.postMessage({ type: 'close-fullscreen' }, '*');
+  }
+});
+</script>
+
+<!-- broken-img-handler -->
+<script>
+(function(){
+  if(window.__brokenImgHandler)return;
+  window.__brokenImgHandler=true;
+  var MAX=5,DELAYS=[2000,4000,8000,16000,32000];
+  document.addEventListener('error',function(e){
+    var img=e.target;
+    if(!img||img.tagName!=='IMG')return;
+    var liveSrc=img.getAttribute('src');
+    var src=img.dataset.haOriginalSrc||liveSrc;
+    if(!src)return;
+    if(img.dataset.haOriginalSrc&&liveSrc&&liveSrc!==img.dataset.haOriginalSrc&&liveSrc.indexOf('_r=')<0){src=liveSrc;img.dataset.haOriginalSrc=src;img.dataset.haRetryCount='0'}
+    else if(!img.dataset.haOriginalSrc){img.dataset.haOriginalSrc=src}
+    var attempt=parseInt(img.dataset.haRetryCount||'0',10);
+    if(img.dataset.haPhId){var old=document.getElementById(img.dataset.haPhId);if(old)old.remove()}
+    var ph=document.createElement('div');
+    ph.className='ha-img-placeholder'+(attempt>=MAX?' ha-failed':'');
+    ph.id='ha-ph-'+Math.random().toString(36).slice(2,9);
+    var w=img.getAttribute('width');var h=img.getAttribute('height');
+    if(w)ph.style.width=w+(isNaN(Number(w))?'':'px');
+    else if(img.style.width)ph.style.width=img.style.width;
+    else if(img.width>1)ph.style.width=img.width+'px';
+    if(h)ph.style.height=h+(isNaN(Number(h))?'':'px');
+    else if(img.style.height)ph.style.height=img.style.height;
+    else if(img.height>1)ph.style.height=img.height+'px';
+    ph.textContent=attempt>=MAX?'Image unavailable':'Loading image…';
+    img.dataset.haPhId=ph.id;
+    if(img.dataset.haOrigDisplay==null)img.dataset.haOrigDisplay=img.style.display||'';
+    img.style.display='none';
+    img.insertAdjacentElement('afterend',ph);
+    if(attempt<MAX){
+      img.dataset.haRetryCount=String(attempt+1);
+      setTimeout(function(){
+        if(!img.isConnected)return;
+        if(img.dataset.haOriginalSrc!==src)return;
+        if(img.complete&&img.naturalWidth>0)return;
+        var curSrc=img.getAttribute('src');
+        if(curSrc&&curSrc.indexOf(src)!==0)return;
+        var fresh=src+(src.indexOf('?')>=0?'&':'?')+'_r='+(attempt+1)+'_'+Date.now();
+        img.src=fresh;
+      },DELAYS[attempt]);
+    }
+  },true);
+  document.addEventListener('load',function(e){
+    var img=e.target;
+    if(!img||img.tagName!=='IMG')return;
+    if(img.dataset.haPhId){
+      var ph=document.getElementById(img.dataset.haPhId);
+      if(ph)ph.remove();
+      delete img.dataset.haPhId;
+      img.style.display=img.dataset.haOrigDisplay||'';
+      delete img.dataset.haOrigDisplay;
+      delete img.dataset.haOriginalSrc;
+      delete img.dataset.haRetryCount;
+    }
+  },true);
+})();
+</script>
+
+</body>
+</html>

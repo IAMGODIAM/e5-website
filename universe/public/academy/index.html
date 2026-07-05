@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="The McCartney Academy — a school and a business center for Liberty City, Miami. A program of E5 Enclave Incorporated, a Florida 501(c)(3) public charity. Built, not begged." />
+<title>The McCartney Academy — A School &amp; a Business Center for Liberty City | E5 Enclave</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<!-- CountUp.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.7/countUp.umd.js"></script>
+
+<style>
+  /* ============================================================
+     E5 ENCLAVE — GILDED EDITORIAL  ·  The McCartney Academy
+     Warm bone ground · navy display · fine gold linework
+     ============================================================ */
+  :root {
+    /* Grounds */
+    --bone:    #f4efe4;
+    --bone-2:  #ece4d2;
+    --bone-hi: #fbf7ee;
+    /* Text */
+    --ink:     #14161d;
+    --muted:   #6b6456;
+    --faint:   #928a78;
+    /* Marks */
+    --navy:    #0c1c4d;
+    --gold:    #a9843f;   /* deep gold — for contrast on light */
+    --gold-hi: #c9a84c;   /* house-mark accent */
+    --ox:      #6d1f20;   /* oxblood — rare emphasis */
+    /* On-navy (full-bleed band) */
+    --on-navy:      #f4efe4;
+    --on-navy-mut:  #b9c0d8;
+    /* Type */
+    --display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --body:    'Inter', system-ui, -apple-system, sans-serif;
+    --mono:    'JetBrains Mono', 'SFMono-Regular', Menlo, monospace;
+    /* Layout */
+    --max:  1240px;
+    --gutter: clamp(1.25rem, 5vw, 5rem);
+    /* Rules */
+    --line:      rgba(20,22,29,0.14);
+    --line-soft: rgba(20,22,29,0.10);
+    --gold-line: rgba(169,132,63,0.42);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    background: var(--bone);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.72;
+    font-size: 1.02rem;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--gold-hi); color: var(--navy); }
+
+  a { color: inherit; text-decoration: none; }
+
+  img { max-width: 100%; display: block; }
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bone-2); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+  /* ---------- Typographic primitives ---------- */
+  .eyebrow {
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--gold);
+  }
+  .mono { font-family: var(--mono); letter-spacing: 0.2em; text-transform: uppercase; }
+
+  .roman {
+    font-family: var(--mono);
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  h1, h2, h3, h4 { font-family: var(--display); font-weight: 500; line-height: 1.05; color: var(--navy); }
+
+  .ornament { color: var(--gold); font-family: var(--display); font-style: italic; }
+
+  /* Hairline divider — thin gold rule */
+  .hair {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, var(--gold-line), transparent);
+    border: 0;
+    margin: 0;
+  }
+
+  /* ---------- Layout shell ---------- */
+  .wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+
+  section { position: relative; }
+
+  .section-pad { padding: clamp(4rem, 10vh, 8rem) 0; }
+
+  /* Alternating band ground */
+  .band-alt { background: var(--bone-2); }
+
+  /* Section opener header — thin gold rule beneath */
+  .opener {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2.75rem;
+    border-bottom: 1px solid var(--gold-line);
+  }
+  .opener .roman { white-space: nowrap; }
+  .opener h2 {
+    font-size: clamp(2.2rem, 6vw, 4.4rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .opener h2 em { font-style: italic; color: var(--gold); }
+  .opener .sub-label { font-family: var(--mono); color: var(--muted); letter-spacing: 0.22em; text-transform: uppercase; font-size: 0.7rem; margin-left: auto; }
+
+  /* Drop cap */
+  .dropcap::first-letter {
+    font-family: var(--display);
+    font-weight: 600;
+    color: var(--gold);
+    float: left;
+    font-size: 4.6rem;
+    line-height: 0.72;
+    padding: 0.32rem 0.7rem 0 0;
+  }
+
+  /* Lead paragraph */
+  .lead {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(1.4rem, 2.7vw, 2.05rem);
+    line-height: 1.42;
+    color: #33322b;
+    max-width: 54ch;
+  }
+  .lead .ornament { color: var(--gold); }
+  .body-copy { color: var(--muted); max-width: 64ch; font-size: 1.02rem; }
+  .body-copy strong { color: var(--navy); font-weight: 600; }
+  .body-copy + .body-copy { margin-top: 1.2rem; }
+  .body-copy.wide { max-width: 72ch; }
+
+  /* Meta-note — small italic disclosure */
+  .meta-note {
+    font-family: var(--body);
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-style: italic;
+    border-top: 1px solid var(--line-soft);
+    padding-top: 1.5rem;
+    margin-top: 2.75rem;
+    max-width: 74ch;
+  }
+
+  /* Pullquote */
+  .pullquote {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 4vw, 2.9rem);
+    line-height: 1.3;
+    color: var(--navy);
+    max-width: 24ch;
+    border-left: 2px solid var(--gold);
+    padding-left: clamp(1.25rem, 3vw, 2.25rem);
+    margin: clamp(2.5rem, 6vh, 4.5rem) 0;
+  }
+  .pullquote::before { content: "\201C"; color: var(--gold); }
+  .pullquote::after  { content: "\201D"; color: var(--gold); }
+  .pullquote cite {
+    display: block;
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 1.4rem;
+  }
+  .pullquote.center {
+    margin-left: auto; margin-right: auto; text-align: center;
+    border-left: 0;
+    border-top: 1px solid var(--gold-line);
+    border-bottom: 1px solid var(--gold-line);
+    padding: clamp(1.5rem,4vh,3rem) 0;
+    max-width: 34ch;
+  }
+  .pullquote.center::before,
+  .pullquote.center::after { content: ""; }
+
+  /* Stats row — bordered editorial cells */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    margin: clamp(2.5rem, 6vh, 4rem) 0;
+    border: 1px solid var(--line);
+    border-right: 0;
+  }
+  .stat {
+    border-right: 1px solid var(--line);
+    padding: 1.75rem 1.75rem 1.9rem;
+  }
+  .stat .figure {
+    font-family: var(--display);
+    font-weight: 500;
+    color: var(--navy);
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+  .stat .figure.word { font-size: clamp(1.5rem, 3.4vw, 2.05rem); letter-spacing: 0.02em; color: var(--gold); padding-top: 0.4rem; }
+  .stat .label {
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin-top: 0.95rem;
+    max-width: 30ch;
+    line-height: 1.6;
+  }
+  .stat .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    border: 1px solid var(--gold-line);
+    padding: 0.18rem 0.5rem;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  /* Framed "Fig." plate */
+  .plate {
+    position: relative;
+    border: 1px solid var(--gold-line);
+    background: linear-gradient(180deg, var(--bone-hi), var(--bone-2));
+    box-shadow: 0 20px 50px rgba(20,22,29,0.08);
+    padding: 2.6rem 0.6rem 0.6rem;
+    margin: clamp(2.5rem, 6vh, 4rem) 0;
+  }
+  .plate .cap {
+    position: absolute;
+    top: 12px; left: 14px;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    z-index: 4;
+    max-width: calc(100% - 28px);
+    line-height: 1.4;
+  }
+  .plate img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--line-soft);
+  }
+  /* Two-up plate grid (before/after) */
+  .plate-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.25rem, 3vw, 2rem);
+    margin: clamp(2.5rem, 6vh, 4rem) 0;
+  }
+  .plate-grid .plate { margin: 0; }
+  @media (max-width: 768px) {
+    .plate-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============================================================
+     NAV
+     ============================================================ */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem var(--gutter);
+    background: rgba(244,239,228,0.0);
+    transition: background 0.4s ease, border-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    background: rgba(244,239,228,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gold-line);
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  .nav .brand {
+    font-family: var(--display);
+    font-size: 1.35rem;
+    letter-spacing: 0.02em;
+    color: var(--navy);
+    font-weight: 600;
+  }
+  .nav .brand .e5 { color: var(--gold); font-style: italic; }
+  .nav .nav-links {
+    display: flex;
+    gap: 1.35rem;
+    align-items: center;
+  }
+  .nav .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    position: relative;
+    padding: 0.3rem 0;
+    transition: color 0.25s ease;
+    white-space: nowrap;
+  }
+  .nav .nav-links a.home { color: var(--navy); }
+  .nav .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -2px;
+    height: 1px; width: 0;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .nav .nav-links a:hover,
+  .nav .nav-links a.active { color: var(--navy); }
+  .nav .nav-links a.active::after,
+  .nav .nav-links a.home::after { width: 100%; }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--gold-line);
+    color: var(--navy);
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 980px) {
+    .nav .nav-links {
+      position: fixed;
+      inset: 0 0 0 auto;
+      width: min(80vw, 360px);
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1.4rem;
+      padding: 2rem var(--gutter);
+      background: rgba(244,239,228,0.98);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-left: 1px solid var(--gold-line);
+      transform: translateX(105%);
+      transition: transform 0.4s cubic-bezier(.6,.0,.2,1);
+      overflow-y: auto;
+    }
+    .nav .nav-links.open { transform: translateX(0); }
+    .nav .nav-links a { font-size: 0.8rem; }
+    .nav-toggle { display: inline-block; z-index: 110; }
+  }
+
+  /* ============================================================
+     HERO — bone editorial dispatch
+     ============================================================ */
+  .hero {
+    position: relative;
+    padding: 10rem var(--gutter) 4rem;
+    max-width: var(--max);
+    margin: 0 auto;
+    border-bottom: 1px solid var(--gold-line);
+  }
+  .hero .eyebrow { margin-bottom: 1.6rem; display: inline-block; }
+  .hero h1.wordmark {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(2.8rem, 8vw, 5.6rem);
+    line-height: 1.0;
+    letter-spacing: -0.015em;
+    color: var(--navy);
+    max-width: 16ch;
+  }
+  .hero h1.wordmark .accent { color: var(--gold); font-style: italic; font-weight: 500; }
+  .hero .hrule { width: 70px; height: 3px; background: var(--gold); margin: 1.6rem 0 1.6rem; }
+  .hero .hero-meta {
+    font-family: var(--body);
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 60ch;
+    border-left: 2px solid var(--gold);
+    padding-left: 1.5rem;
+    margin-bottom: 2.2rem;
+    line-height: 1.7;
+  }
+  .hero .hero-meta strong { color: var(--navy); font-weight: 600; }
+  .hero .tagline {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.4rem, 3.4vw, 2.2rem);
+    color: var(--gold);
+    line-height: 1.4;
+    max-width: 30ch;
+  }
+
+  /* ============================================================
+     STICKY SUB-NAV (section index)
+     ============================================================ */
+  .subnav {
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    background: rgba(244,239,228,0.94);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--gold-line);
+    border-top: 1px solid var(--gold-line);
+    padding: 0.85rem 0;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .subnav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: flex;
+    gap: 1.6rem;
+  }
+  .subnav a {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    transition: color 0.3s ease;
+  }
+  .subnav a span { color: var(--gold); margin-right: 0.35rem; }
+  .subnav a:hover, .subnav a.active { color: var(--navy); }
+
+  /* ============================================================
+     CURRICULUM / STATUTE LIST
+     ============================================================ */
+  .stat-list {
+    list-style: none;
+    margin: 2.75rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .stat-list li {
+    position: relative;
+    padding: 1.6rem 0 1.6rem 2.4rem;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .stat-list li::before {
+    content: "\00A7";
+    position: absolute;
+    left: 0.4rem; top: 1.55rem;
+    color: var(--gold);
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+  .stat-list strong {
+    display: block;
+    color: var(--navy);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .stat-list .desc { color: var(--muted); font-size: 1rem; }
+
+  /* ============================================================
+     ACTION CARDS (Stand With Us) — bordered editorial cards
+     ============================================================ */
+  .action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: 1rem;
+  }
+  .action-card {
+    background: var(--bone);
+    padding: 2.2rem 1.9rem 2.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 2px solid var(--gold);
+    transition: background 0.3s ease;
+  }
+  .action-card:hover { background: var(--bone-hi); }
+  .action-card .ac-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+  .action-card h3 {
+    font-family: var(--display);
+    font-size: 1.85rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.7rem;
+  }
+  .action-card p {
+    color: var(--muted);
+    font-size: 0.97rem;
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
+    flex: 1;
+  }
+  .action-card .ac-cta {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--navy);
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+    align-self: flex-start;
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+  .action-card .ac-cta:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* ============================================================
+     NAVY FULL-BLEED BAND — The Forum / Lotus Gate
+     ============================================================ */
+  .band-navy {
+    background: var(--navy);
+    color: var(--on-navy);
+    position: relative;
+    isolation: isolate;
+  }
+  .band-navy .opener { border-bottom-color: rgba(201,168,76,0.42); }
+  .band-navy .opener h2 { color: var(--on-navy); }
+  .band-navy .opener h2 em { color: var(--gold-hi); }
+  .band-navy .roman { color: var(--gold-hi); }
+  .band-navy .opener .sub-label { color: var(--on-navy-mut); }
+  .band-navy .lead { color: var(--on-navy); }
+  .band-navy .lead .ornament { color: var(--gold-hi); }
+  .band-navy .dropcap::first-letter { color: var(--gold-hi); }
+  .band-navy .body-copy { color: var(--on-navy-mut); }
+  .band-navy .body-copy strong { color: var(--gold-hi); }
+  .band-navy .meta-note { color: var(--on-navy-mut); border-top-color: rgba(201,168,76,0.3); }
+  .band-navy .stats { border-color: rgba(201,168,76,0.3); }
+  .band-navy .stat { border-right-color: rgba(201,168,76,0.3); }
+  .band-navy .stat .figure { color: var(--gold-hi); }
+  .band-navy .stat .figure.word { color: var(--gold-hi); }
+  .band-navy .stat .label { color: var(--on-navy-mut); }
+  /* Plate inside navy band — keep the framed blueprint legible on navy */
+  .band-navy .plate {
+    background: linear-gradient(180deg, #0e2258, #0a1740);
+    border-color: rgba(201,168,76,0.5);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  }
+  .band-navy .plate .cap { color: var(--on-navy-mut); }
+  .band-navy .plate img { border-color: rgba(201,168,76,0.25); }
+
+  /* ============================================================
+     COLOPHON — The Record
+     ============================================================ */
+  .colophon {
+    border-top: 1px solid var(--gold-line);
+    background: var(--bone-2);
+    padding: clamp(3.5rem, 9vh, 6rem) 0 3rem;
+  }
+  .colophon .roman { margin-bottom: 1.5rem; display: inline-block; }
+  .colophon h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+  }
+  .colophon-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+    margin-top: 2.5rem;
+  }
+  @media (max-width: 768px) {
+    .colophon-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+  .colophon-about h4 {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+  }
+  .colophon-about p {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.3rem;
+    max-width: 62ch;
+  }
+  .colophon-details {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    line-height: 2.1;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .colophon-details span { color: var(--gold); }
+  .colophon .record a { color: var(--navy); border-bottom: 1px solid var(--gold); }
+  .colophon .record a:hover { color: var(--gold); }
+  .colophon .motto {
+    margin-top: 2.5rem;
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.35rem, 3vw, 2.05rem);
+    color: var(--gold);
+    border-top: 1px solid var(--gold-line);
+    padding-top: 2rem;
+  }
+  .colophon .credit {
+    margin-top: 2rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--faint);
+    line-height: 1.7;
+  }
+
+  /* Suite footer nav (carried from source) */
+  .suite-nav {
+    font-family: var(--mono);
+    background: var(--bone);
+    border-top: 1px solid var(--gold-line);
+    padding: 28px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 26px;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .suite-nav .lbl { color: var(--faint); margin-right: 6px; }
+  .suite-nav a { color: var(--muted); }
+  .suite-nav a.home { color: var(--gold); }
+  .suite-nav a.here { color: var(--navy); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+
+  /* ============================================================
+     SCROLL-REVEAL
+     ============================================================ */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(.2,.6,.2,1), transform 0.9s cubic-bezier(.2,.6,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal.d1 { transition-delay: 0.08s; }
+  .reveal.d2 { transition-delay: 0.16s; }
+  .reveal.d3 { transition-delay: 0.24s; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+
+  /* Skip link */
+  .skip {
+    position: absolute; left: -999px; top: 0; z-index: 200;
+    background: var(--navy); color: var(--bone);
+    padding: 0.6rem 1rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em;
+  }
+  .skip:focus { left: 1rem; top: 1rem; }
+
+  /* Broken-image placeholder (carried from source) */
+  .ha-img-placeholder{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;background:var(--bone-2);border:1px dashed var(--gold-line);border-radius:2px;color:var(--muted);font-size:12px;font-family:var(--mono);min-height:80px;padding:16px;box-sizing:border-box;animation:ha-img-pulse 1.5s ease-in-out infinite}
+  .ha-img-placeholder.ha-failed{animation:none;opacity:.7}
+  @keyframes ha-img-pulse{0%,100%{opacity:1}50%{opacity:.5}}
+</style>
+</head>
+<body>
+
+<a href="#why-we-build" class="skip">Skip to content</a>
+
+<!-- ============================ NAV ============================ -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <a href="/" class="brand"><span class="e5">E5</span> Enclave</a>
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+  <div class="nav-links" id="navLinks">
+    <a href="/" class="home">← Universe</a>
+    <a href="#why-we-build" data-spy="why-we-build">I · Why</a>
+    <a href="#namesake" data-spy="namesake">II · Namesake</a>
+    <a href="#wound" data-spy="wound">III · Wound</a>
+    <a href="#academy" data-spy="academy">IV · Academy</a>
+    <a href="#strategy" data-spy="strategy">V · Strategy</a>
+    <a href="#forum" data-spy="forum">VI · Forum</a>
+    <a href="#stand-with-us" data-spy="stand-with-us">VII · Act</a>
+    <a href="#record" data-spy="record">VIII · Record</a>
+  </div>
+</nav>
+
+<!-- ============================ HERO ============================ -->
+<header class="hero" id="top">
+  <span class="eyebrow">Institutional Dispatch · E5 Enclave</span>
+  <h1 class="wordmark">The McCartney <span class="accent">Academy</span></h1>
+  <div class="hrule" aria-hidden="true"></div>
+  <p class="hero-meta"><strong>E5 Enclave Incorporated · Liberty City, Miami</strong> — A School and a Business Center: the Liberty City Ecosystem at Charles R. Drew, District 2.</p>
+  <p class="tagline">“Built, not begged. A school is the catalyst of a community. They took ours. We are building it back.”</p>
+</header>
+
+<!-- ============================ STICKY SUB-NAV ============================ -->
+<nav class="subnav" aria-label="Section index">
+  <div class="subnav-inner">
+    <a href="#why-we-build" data-spy="why-we-build"><span>I.</span> Why</a>
+    <a href="#namesake" data-spy="namesake"><span>II.</span> Namesake</a>
+    <a href="#wound" data-spy="wound"><span>III.</span> Wound</a>
+    <a href="#academy" data-spy="academy"><span>IV.</span> Academy</a>
+    <a href="#strategy" data-spy="strategy"><span>V.</span> Strategy</a>
+    <a href="#forum" data-spy="forum"><span>VI.</span> Forum</a>
+    <a href="#stand-with-us" data-spy="stand-with-us"><span>VII.</span> Act</a>
+    <a href="#record" data-spy="record"><span>VIII.</span> Record</a>
+  </div>
+</nav>
+
+<!-- ============================ I. WHY WE BUILD ============================ -->
+<section class="section-pad" id="why-we-build">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">I</span>
+      <h2>Why We <em>Build</em></h2>
+      <span class="sub-label">§ Section I</span>
+    </div>
+
+    <p class="lead dropcap reveal d1">A school is not a building. It is the catalyst of a community — the thing that makes a people proud, and capable, and whole. Overtown had one. In the 1960s the highways came, scattered the neighborhood, and the school was phased out. What was taken was not just brick; it was the engine of a people.</p>
+
+    <p class="body-copy reveal d2" style="margin-top:1.6rem;">The McCartney Academy rebuilds that engine. It is named for Ralph McCartney — a son of Overtown who spent his life keeping children in school and out of jail, and who fought, and won, to help rebuild the very school the system let decline. His grand-nephew, Israel Lee Armstead, founder of E5 Enclave, carries it forward.</p>
+
+    <p class="body-copy reveal d2">The case, in one sentence: a generation of Liberty City children needs the catalyst their grandparents were denied — and for the first time, Florida law has reopened the door to reclaim a public facility and put it back to work. We intend to walk through it.</p>
+
+    <div class="stats reveal d2">
+      <div class="stat">
+        <div class="figure countup" data-val="40000" data-prefix="~" data-separator=",">0</div>
+        <div class="label">Overtown residents displaced by I-95 &amp; I-395</div>
+      </div>
+      <div class="stat">
+        <div class="figure countup" data-val="1">0</div>
+        <div class="label">School — the absolute catalyst of a community</div>
+      </div>
+      <div class="stat">
+        <div class="figure word">District 2</div>
+        <div class="label">Liberty City · Miami</div>
+      </div>
+    </div>
+
+    <blockquote class="pullquote reveal">They gave us Booker Washington and made us proud — and they took it away, and they destroyed us.<cite>Ralph McCartney, Oral History, 1997</cite></blockquote>
+  </div>
+</section>
+
+<hr class="hair" />
+
+<!-- ============================ II. THE NAMESAKE ============================ -->
+<section class="section-pad band-alt" id="namesake">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">II</span>
+      <h2>The <em>Namesake</em> — Ralph McCartney</h2>
+      <span class="sub-label">§ Section II</span>
+    </div>
+
+    <p class="lead dropcap reveal d1">Ralph McCartney was the youngest of eight children born to a Bahamian family in Overtown, in a home that ran like a community center — where, in his telling, “never did a hungry person cross that door and leave out that same way.” He graduated Booker T. Washington in 1952, served his country, and gave his working life to his community: the Urban League, the Community Relations Board, and finally the county jail, where the man who had spent years trying to keep young people out of it now met them inside.</p>
+
+    <p class="body-copy wide reveal d2" style="margin-top:1.6rem;">The record honors him. The City of Opa-Locka proclaimed “Mr. Ralph McCartney Day” in 1997. The United States Congressional Record carries a 1994 tribute from Rep. Carrie Meek naming his work behind the scenes: the Edison Park I-95 overpass he fought to build so children no longer risked their lives crossing the highway to reach school; his role, with the community, in the rebuilding of Booker T. Washington School; and his service to the Department of Defense Race Relations Institute.</p>
+
+    <!-- Fig. II — Opa-Locka Proclamation (archival document) -->
+    <figure class="plate reveal d2">
+      <span class="cap">Fig. II — Archival Document · Opa-Locka Proclamation, 1997</span>
+      <img src="https://pub.hyperagent.com/api/published/pbf01KW47076V_27SDW7H87110HM36/cmqw3d9m604au07adiu9aw3t3_IMG_8999.jpeg" alt="City of Opa-Locka Proclamation declaring Mr. Ralph McCartney Day, 1997" loading="lazy" />
+    </figure>
+
+    <div class="stats reveal d2">
+      <div class="stat">
+        <div class="figure countup" data-val="1994">0</div>
+        <div class="label">U.S. Congressional Record tribute honoring his legacy</div>
+      </div>
+      <div class="stat">
+        <div class="figure countup" data-val="1997">0</div>
+        <div class="label">“Mr. Ralph McCartney Day” proclaimed in Opa-Locka</div>
+      </div>
+      <div class="stat">
+        <div class="figure countup" data-val="1952">0</div>
+        <div class="label">Class of 1952 — Booker T. Washington High School</div>
+      </div>
+    </div>
+
+    <blockquote class="pullquote reveal">Asked how he wished to be remembered, he answered simply: that I was a McCartney.<cite>Congressional Record, February 1, 1994</cite></blockquote>
+  </div>
+</section>
+
+<hr class="hair" />
+
+<!-- ============================ III. THE WOUND ============================ -->
+<section class="section-pad" id="wound">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">III</span>
+      <h2>The <em>Wound</em> — Overtown, by Design</h2>
+      <span class="sub-label">§ Section III</span>
+    </div>
+
+    <p class="lead dropcap reveal d1">Overtown was the Harlem of the South — a dense, self-sustaining Black community of churches, businesses, theaters, and schools. In the 1960s, Interstates 95 and 395 were routed directly through its heart, bisecting a community of roughly 40,000 residents into four severed fragments. Then the schools were phased out. McCartney called it “the Big Monster.”</p>
+
+    <p class="body-copy reveal d2" style="margin-top:1.6rem;">This was not an accident of geography. It was a decision. Naming it plainly is the first act of repair.</p>
+
+    <!-- Fig. III — Overtown before / after -->
+    <div class="plate-grid reveal d2">
+      <figure class="plate">
+        <span class="cap">Fig. III·a — Before · Historic Overtown (source: housingissues.org)</span>
+        <img src="https://pub.hyperagent.com/api/published/pbf01KW470Q8Y_E4MP5XHYJMM0CYQH/overtown1900.jpg" alt="Historic Overtown before the highways" loading="lazy" />
+      </figure>
+      <figure class="plate">
+        <span class="cap">Fig. III·b — After · I-95 through Overtown, 1960s (source: housingissues.org)</span>
+        <img src="https://pub.hyperagent.com/api/published/pbf01KW470QRZ_8WN986KRYRF1JXNE/overtown-i95.jpg" alt="I-95 cutting through Overtown" loading="lazy" />
+      </figure>
+    </div>
+
+    <div class="stats reveal d2">
+      <div class="stat">
+        <div class="figure countup" data-val="2">0</div>
+        <div class="label">Expressways routed directly through Overtown’s heart</div>
+      </div>
+      <div class="stat">
+        <div class="figure countup" data-val="4">0</div>
+        <div class="label">Severed fragments where a single, unified community stood</div>
+      </div>
+      <div class="stat">
+        <div class="figure countup" data-val="1960" data-suffix="s">0</div>
+        <div class="label">The Decade of the Cut — structural displacement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hair" />
+
+<!-- ============================ IV. THE ACADEMY ============================ -->
+<section class="section-pad band-alt" id="academy">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">IV</span>
+      <h2>The <em>Academy</em> — STEAM, and a Doula Corps</h2>
+      <span class="sub-label">§ Section IV</span>
+    </div>
+
+    <p class="lead dropcap reveal d1">We are building two things under one roof. First, a STEAM core — science, technology, engineering, arts, and mathematics — that prepares Liberty City’s young people not for the margins but for the frontier. Second, a Doula and Black-maternal-health track that trains and credentials community birth workers, because in this country a Black mother dies in childbirth at more than two and a half times the rate of a white mother, and trained community support is among the most direct answers we have.</p>
+
+    <p class="body-copy reveal d2" style="margin-top:1.6rem;">A school on one side; economic and human capacity on the other. Education and a business center, together — one ecosystem.</p>
+
+    <div class="stats reveal d2">
+      <div class="stat">
+        <div class="figure word">STEAM + Doula</div>
+        <div class="label">Integrated dual-track community educational model</div>
+      </div>
+      <div class="stat">
+        <div class="figure countup" data-val="2.61" data-suffix="x" data-decimals="2">0</div>
+        <div class="label">Black maternal mortality ratio (the crisis we actively answer)</div>
+      </div>
+    </div>
+
+    <p class="meta-note reveal d2">Program specifics — curriculum, cohort sizes, enrollment timeline — are in development and finalized with our district partners.</p>
+  </div>
+</section>
+
+<hr class="hair" />
+
+<!-- ============================ V. THE STRATEGY ============================ -->
+<section class="section-pad" id="strategy">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">V</span>
+      <h2>The <em>Strategy</em> — Schools of Hope</h2>
+      <span class="sub-label">§ Section V</span>
+    </div>
+
+    <p class="lead dropcap reveal d1">For the first time, Florida law makes this reclamation possible. The 2025 “Schools of Hope” reforms, effective July 1, 2025, reordered who gets first claim on a community’s surplus schools:</p>
+
+    <ul class="stat-list reveal d2">
+      <li>
+        <strong>Right of first refusal (HB 443)</strong>
+        <span class="desc">Before a district may sell, lease, or transfer any school property, it must offer it to public charter schools for educational use.</span>
+      </li>
+      <li>
+        <strong>Tax exemption (HB 443)</strong>
+        <span class="desc">Any facility housing an approved charter school is exempt from ad valorem taxes.</span>
+      </li>
+      <li>
+        <strong>Zoning preemption (HB 1255)</strong>
+        <span class="desc">Local building, site, and land-use barriers that single out such schools are void and unenforceable.</span>
+      </li>
+      <li>
+        <strong>Conversion pathways (HB 1105)</strong>
+        <span class="desc">Parent-initiated and municipal “job-engine” routes open existing schools to community-led, workforce-focused reuse.</span>
+      </li>
+      <li>
+        <strong>A funding floor (SB 2510)</strong>
+        <span class="desc">The Schools of Hope program is held at $25 million or more annually.</span>
+      </li>
+    </ul>
+
+    <p class="body-copy wide reveal d2">The Florida Department of Education’s Miami-Dade Vacant &amp; Underused Facilities report is the live inventory — the exact pipeline these laws were built to channel. E5 Enclave intends to use this framework to secure a permanent home for the Academy in District 2.</p>
+
+    <div class="stats reveal d2">
+      <div class="stat">
+        <div class="figure word" style="color:var(--navy);">HB 443</div>
+        <div class="label">Right of first refusal on surplus public facilities</div>
+      </div>
+      <div class="stat">
+        <div class="figure countup" data-val="25" data-prefix="$" data-suffix="M">0</div>
+        <div class="label">Schools of Hope program annual funding floor</div>
+      </div>
+      <div class="stat">
+        <div class="figure countup" data-val="4">0</div>
+        <div class="label">Statutes aligned and effective as of July 1, 2025</div>
+      </div>
+    </div>
+
+    <blockquote class="pullquote reveal">The door the highway closed, the law has reopened. We intend to walk through it.</blockquote>
+
+    <p class="meta-note reveal d2">This is strategic analysis; current statute text is verified before any action.</p>
+  </div>
+</section>
+
+<!-- ============================ VI. THE FORUM (navy full-bleed band) ============================ -->
+<section class="section-pad band-navy" id="forum">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">VI</span>
+      <h2>The <em>Forum</em> — The Lotus Gate</h2>
+      <span class="sub-label">§ Section VI</span>
+    </div>
+
+    <p class="lead dropcap reveal d1">The business-center half of the ecosystem has a name and a form: The Lotus Gate Forum — a civic ark of memory, council, and transmission. A place for the community the highways scattered to gather, decide, and pass its inheritance forward. It is the room where a neighborhood becomes a people again.</p>
+
+    <!-- Fig. VI — Lotus Gate Forum blueprint -->
+    <figure class="plate reveal d2">
+      <span class="cap">Fig. VI — Architecture · Blueprint concept of The Lotus Gate Forum</span>
+      <img src="https://pub.hyperagent.com/api/published/pbf01KW47088Q_V2AZR7RSZDX6664J/cmqw3d9ld04at07ad0vzxdlct_9C8FE40F-E04E-4C2D-9C07-55607E90E423.png" alt="The Lotus Gate Forum Architectural Blueprint" loading="lazy" />
+    </figure>
+
+    <div class="stats reveal d2">
+      <div class="stat">
+        <div class="figure word">Memory · Council · Transmission</div>
+        <div class="label">A sovereign, civic ark for the community</div>
+      </div>
+    </div>
+
+    <p class="meta-note reveal d2">Concept design shown; capacity and program in development.</p>
+  </div>
+</section>
+
+<hr class="hair" />
+
+<!-- ============================ VII. STAND WITH US ============================ -->
+<section class="section-pad" id="stand-with-us">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">VII</span>
+      <h2>Stand With <em>Us</em></h2>
+      <span class="sub-label">¶ Choose Your Door</span>
+    </div>
+
+    <p class="lead reveal d1">There are four ways to build this — choose yours.</p>
+
+    <div class="action-grid reveal d2">
+      <div class="action-card">
+        <div>
+          <span class="ac-label">01 / Capital</span>
+          <h3>Invest</h3>
+          <p>Institutional partners and impact investors: back the facility acquisition and the ecosystem that grows on it. The institutional case and data room are available on request.</p>
+        </div>
+        <a href="/cdn-cgi/l/email-protection#0172756476607365416434646f626d6077642f6e73663e7274636b6462753c486f776472756c646f7521486f7074687378212c21556964214c62426073756f64782140626065646c78" target="_blank" rel="noopener noreferrer" class="ac-cta">Request Case ↗</a>
+      </div>
+
+      <div class="action-card">
+        <div>
+          <span class="ac-label">02 / Philanthropy</span>
+          <h3>Give</h3>
+          <p>Donors: fund the first cohort, the build, and the structural future of a Liberty City child.</p>
+        </div>
+        <a href="https://e5enclave.org/give" target="_blank" rel="noopener noreferrer" class="ac-cta">Donate Now ↗</a>
+      </div>
+
+      <div class="action-card">
+        <div>
+          <span class="ac-label">03 / Collaboration</span>
+          <h3>Volunteer</h3>
+          <p>Teachers, doulas, builders, organizers — lend your technical hands and intellect to the physical work.</p>
+        </div>
+        <a href="https://e5enclave.org/volunteer" target="_blank" rel="noopener noreferrer" class="ac-cta">Join Coalition ↗</a>
+      </div>
+
+      <div class="action-card">
+        <div>
+          <span class="ac-label">04 / Movement</span>
+          <h3>Join</h3>
+          <p>Community and the coalition of the willing: this is your house. Wear it. Build it. Hold it.</p>
+        </div>
+        <a href="https://e5enclave.org/join" target="_blank" rel="noopener noreferrer" class="ac-cta">Connect With Us ↗</a>
+      </div>
+    </div>
+
+    <div class="stats reveal d2">
+      <div class="stat">
+        <div class="figure countup" data-val="4">0</div>
+        <div class="label">Sovereign ways to co-sign and build this ecosystem</div>
+      </div>
+      <div class="stat">
+        <div class="figure countup" data-val="1">0</div>
+        <div class="label">One house, built by many hands</div>
+      </div>
+    </div>
+
+    <blockquote class="pullquote reveal">We are not asking you to fund a program. We are inviting you to rebuild a catalyst.</blockquote>
+
+    <p class="meta-note reveal d2">A steward — “Joseph” — will soon live on this page as your point of contact: the coalition, personified.</p>
+  </div>
+</section>
+
+<!-- ============================ VIII. THE RECORD ============================ -->
+<footer class="colophon" id="record">
+  <div class="wrap">
+    <span class="roman">VIII</span>
+    <h2 class="reveal">The Record</h2>
+
+    <p class="record body-copy wide reveal d1" style="color:var(--muted);">The McCartney Academy is a program of <a href="https://e5enclave.com" target="_blank" rel="noopener noreferrer"><strong style="color:var(--navy);">E5 Enclave Incorporated</strong></a> — a Florida 501(c)(3) public charity (EIN 99-3822441; §509(a)(2)), based in Liberty City, Miami.</p>
+
+    <p class="record body-copy wide reveal d1" style="color:var(--muted); margin-top:1.2rem;">In the spirit of the work, the record is kept honestly. Figures here are either verified or marked in-development. Ralph McCartney’s words are Fair-Use excerpts from his oral-history interview (Samuel Proctor Oral History Program, University of Florida, August 14, 1997) and the Congressional Record (February 1, 1994). The historical Overtown photographs are shown for this preview with their sources noted; final image licensing will be cleared before public launch. The Schools of Hope summary is strategic analysis, verified against current statute before action.</p>
+
+    <div class="colophon-grid reveal d2">
+      <div class="colophon-about">
+        <h4>E5 Enclave Incorporated</h4>
+        <p>An institutional engine for historical repair, economic growth, and structural autonomy based in Liberty City, Miami. Built, not begged.</p>
+        <div class="colophon-details">
+          <span>REGISTRY:</span> Florida 501(c)(3) Public Charity<br />
+          <span>EIN:</span> 99-3822441 · Section 509(a)(2)<br />
+          <span>HEADQUARTERS:</span> Liberty City, Miami, FL
+        </div>
+      </div>
+      <div class="colophon-details" style="display:flex; flex-direction:column; justify-content:flex-end;">
+        <p style="margin-bottom:1rem;">© E5 Enclave Incorporated. All rights reserved.</p>
+        <p><a href="https://e5enclave.com" target="_blank" rel="noopener noreferrer" style="color:var(--navy); border-bottom:1px solid var(--gold);">e5enclave.com</a></p>
+      </div>
+    </div>
+
+    <p class="motto reveal d1">Nil satis nisi optimum — nothing but the best is good enough.</p>
+
+    <p class="credit reveal d2">E5 Enclave Incorporated · One house. Many wings. Built, not begged.</p>
+  </div>
+</footer>
+
+<!-- ============================ SUITE NAV ============================ -->
+<nav class="suite-nav" aria-label="E5 suite navigation">
+  <span class="lbl">E5 Enclave ·</span>
+  <a href="/" class="home">← Universe Home</a>
+  <a href="/academy/" class="here">McCartney Academy</a>
+  <a href="/archive/">Oral-History Archive</a>
+  <a href="/schools-of-hope/">Schools of Hope</a>
+  <a href="/plan/">Business Plan</a>
+</nav>
+
+<!-- ============================ SCRIPTS ============================ -->
+<script>
+(function () {
+  'use strict';
+  var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- NAV: scrolled state + mobile toggle ---------- */
+  var nav = document.getElementById('nav');
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+
+  function onScroll() {
+    if (window.scrollY > 40) { nav.classList.add('scrolled'); }
+    else { nav.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', function () {
+      var open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  /* ---------- SCROLL-REVEAL ---------- */
+  var reveals = document.querySelectorAll('.reveal');
+  if (prefersReduced || !('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var revObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add('in');
+          revObs.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (el) { revObs.observe(el); });
+  }
+
+  /* ---------- SCROLL-SPY NAV (top nav + sticky sub-nav) ---------- */
+  var spyLinks = document.querySelectorAll('a[data-spy]');
+  var sectionMap = {};
+  spyLinks.forEach(function (a) {
+    var id = a.getAttribute('data-spy');
+    var sec = document.getElementById(id);
+    if (sec) {
+      if (!sectionMap[id]) { sectionMap[id] = { el: sec, links: [] }; }
+      sectionMap[id].links.push(a);
+    }
+  });
+  var sections = Object.keys(sectionMap).map(function (id) { return sectionMap[id]; });
+
+  if ('IntersectionObserver' in window && sections.length) {
+    var spyObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          spyLinks.forEach(function (l) { l.classList.remove('active'); });
+          var match = sections.filter(function (s) { return s.el === en.target; })[0];
+          if (match) { match.links.forEach(function (l) { l.classList.add('active'); }); }
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { spyObs.observe(s.el); });
+  }
+})();
+</script>
+
+<!-- ---------- CountUp.js Orchestrator (preserved) ---------- -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var countOptions = {
+    useEasing: true,
+    useGrouping: true,
+    separator: ',',
+    decimal: '.',
+    duration: 2.5
+  };
+
+  var countObserver = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var el = entry.target;
+        var targetVal = parseFloat(el.getAttribute('data-val'));
+        var prefix = el.getAttribute('data-prefix') || '';
+        var suffix = el.getAttribute('data-suffix') || '';
+        var decimals = el.getAttribute('data-decimals') ? parseInt(el.getAttribute('data-decimals')) : 0;
+
+        var countUpInstance = new window.countUp.CountUp(el, targetVal, Object.assign({}, countOptions, {
+          prefix: prefix,
+          suffix: suffix,
+          decimalPlaces: decimals
+        }));
+
+        if (!countUpInstance.error) {
+          countUpInstance.start();
+        } else {
+          console.error(countUpInstance.error);
+          el.textContent = prefix + targetVal + suffix; // Fallback
+        }
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.countup').forEach(function (el) {
+    countObserver.observe(el);
+  });
+});
+</script>
+
+<script>
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && window.parent !== window) {
+    window.parent.postMessage({ type: 'close-fullscreen' }, '*');
+  }
+});
+</script>
+
+<!-- broken-img-handler -->
+<script>
+(function(){
+  if(window.__brokenImgHandler)return;
+  window.__brokenImgHandler=true;
+  var MAX=5,DELAYS=[2000,4000,8000,16000,32000];
+  document.addEventListener('error',function(e){
+    var img=e.target;
+    if(!img||img.tagName!=='IMG')return;
+    var liveSrc=img.getAttribute('src');
+    var src=img.dataset.haOriginalSrc||liveSrc;
+    if(!src)return;
+    if(img.dataset.haOriginalSrc&&liveSrc&&liveSrc!==img.dataset.haOriginalSrc&&liveSrc.indexOf('_r=')<0){src=liveSrc;img.dataset.haOriginalSrc=src;img.dataset.haRetryCount='0'}
+    else if(!img.dataset.haOriginalSrc){img.dataset.haOriginalSrc=src}
+    var attempt=parseInt(img.dataset.haRetryCount||'0',10);
+    if(img.dataset.haPhId){var old=document.getElementById(img.dataset.haPhId);if(old)old.remove()}
+    var ph=document.createElement('div');
+    ph.className='ha-img-placeholder'+(attempt>=MAX?' ha-failed':'');
+    ph.id='ha-ph-'+Math.random().toString(36).slice(2,9);
+    var w=img.getAttribute('width');var h=img.getAttribute('height');
+    if(w)ph.style.width=w+(isNaN(Number(w))?'':'px');
+    else if(img.style.width)ph.style.width=img.style.width;
+    else if(img.width>1)ph.style.width=img.width+'px';
+    if(h)ph.style.height=h+(isNaN(Number(h))?'':'px');
+    else if(img.style.height)ph.style.height=img.style.height;
+    else if(img.height>1)ph.style.height=img.height+'px';
+    ph.textContent=attempt>=MAX?'Image unavailable':'Loading image…';
+    img.dataset.haPhId=ph.id;
+    if(img.dataset.haOrigDisplay==null)img.dataset.haOrigDisplay=img.style.display||'';
+    img.style.display='none';
+    img.insertAdjacentElement('afterend',ph);
+    if(attempt<MAX){
+      img.dataset.haRetryCount=String(attempt+1);
+      setTimeout(function(){
+        if(!img.isConnected)return;
+        if(img.dataset.haOriginalSrc!==src)return;
+        if(img.complete&&img.naturalWidth>0)return;
+        var curSrc=img.getAttribute('src');
+        if(curSrc&&curSrc.indexOf(src)!==0)return;
+        var fresh=src+(src.indexOf('?')>=0?'&':'?')+'_r='+(attempt+1)+'_'+Date.now();
+        img.src=fresh;
+      },DELAYS[attempt]);
+    }
+  },true);
+  document.addEventListener('load',function(e){
+    var img=e.target;
+    if(!img||img.tagName!=='IMG')return;
+    if(img.dataset.haPhId){
+      var ph=document.getElementById(img.dataset.haPhId);
+      if(ph)ph.remove();
+      delete img.dataset.haPhId;
+      img.style.display=img.dataset.haOrigDisplay||'';
+      delete img.dataset.haOrigDisplay;
+      delete img.dataset.haOriginalSrc;
+      delete img.dataset.haRetryCount;
+    }
+  },true);
+})();
+</script>
+
+</body>
+</html>

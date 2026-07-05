@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="The Ralph McCartney Oral-History Archive — a kept record of Overtown's witness, namesake of the McCartney Academy. Maintained by E5 Enclave Incorporated, Liberty City, Miami." />
+<title>The Ralph McCartney Oral-History Archive | E5 Enclave</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<!-- CDNs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.7/countUp.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/countup.js@2.8/dist/countUp.umd.js"></script>
+
+<style>
+  /* ============================================================
+     E5 ENCLAVE — GILDED EDITORIAL
+     Warm bone ground · navy display · fine gold linework
+     (The Ralph McCartney Oral-History Archive)
+     ============================================================ */
+  :root {
+    /* Grounds */
+    --bone:    #f4efe4;
+    --bone-2:  #ece4d2;
+    --bone-hi: #fbf7ee;
+    /* Text */
+    --ink:     #14161d;
+    --muted:   #6b6456;
+    --faint:   #928a78;
+    /* Marks */
+    --navy:    #0c1c4d;
+    --gold:    #a9843f;   /* deep gold — for contrast on light */
+    --gold-hi: #c9a84c;   /* house-mark accent */
+    --ox:      #6d1f20;   /* oxblood — rare emphasis */
+    /* On-navy (full-bleed band) */
+    --on-navy:      #f4efe4;
+    --on-navy-mut:  #b9c0d8;
+    /* Type */
+    --display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --body:    'Inter', system-ui, -apple-system, sans-serif;
+    --mono:    'JetBrains Mono', 'SFMono-Regular', Menlo, monospace;
+    /* Layout */
+    --max:  1240px;
+    --gutter: clamp(1.25rem, 5vw, 5rem);
+    /* Rules */
+    --line:      rgba(20,22,29,0.14);
+    --line-soft: rgba(20,22,29,0.10);
+    --gold-line: rgba(169,132,63,0.42);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    background: var(--bone);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.72;
+    font-size: 1.02rem;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--gold-hi); color: var(--navy); }
+
+  a { color: inherit; text-decoration: none; }
+
+  img { max-width: 100%; display: block; }
+
+  /* ---------- Typographic primitives ---------- */
+  .eyebrow {
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--gold);
+  }
+  .mono { font-family: var(--mono); letter-spacing: 0.2em; text-transform: uppercase; }
+
+  .roman {
+    font-family: var(--mono);
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  h1, h2, h3, h4 { font-family: var(--display); font-weight: 500; line-height: 1.05; color: var(--navy); }
+
+  .ornament { color: var(--gold); font-family: var(--display); font-style: italic; }
+
+  /* Hairline divider — thin gold rule */
+  .hair {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, var(--gold-line), transparent);
+    border: 0;
+    margin: 0;
+  }
+
+  /* ---------- Layout shell ---------- */
+  .wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+
+  section { position: relative; }
+
+  .section-pad { padding: clamp(4rem, 10vh, 8rem) 0; }
+
+  /* Alternating band ground */
+  .band-alt { background: var(--bone-2); }
+
+  /* Section opener header — thin gold rule beneath */
+  .opener {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2.75rem;
+    border-bottom: 1px solid var(--gold-line);
+  }
+  .opener .roman { white-space: nowrap; }
+  .opener h2 {
+    font-size: clamp(2.2rem, 6vw, 4.4rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .opener h2 em { font-style: italic; color: var(--gold); }
+  .opener .sub-label { font-family: var(--mono); color: var(--muted); letter-spacing: 0.22em; text-transform: uppercase; font-size: 0.7rem; margin-left: auto; }
+
+  /* Drop cap */
+  .dropcap::first-letter {
+    font-family: var(--display);
+    font-weight: 600;
+    color: var(--gold);
+    float: left;
+    font-size: 4.6rem;
+    line-height: 0.72;
+    padding: 0.32rem 0.7rem 0 0;
+  }
+
+  /* Lead paragraph */
+  .lead {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(1.4rem, 2.7vw, 2.05rem);
+    line-height: 1.42;
+    color: #33322b;
+    max-width: 60ch;
+  }
+  .lead .ornament { color: var(--gold); }
+  .body-copy { color: var(--muted); max-width: 66ch; font-size: 1.02rem; }
+  .body-copy strong { color: var(--navy); font-weight: 600; }
+  .body-copy em { font-style: italic; color: var(--ink); }
+  .body-copy + .body-copy { margin-top: 1.2rem; }
+
+  /* Rights / attribution note — thin dashed gold rule above, mono-tagged, verbatim-preserving */
+  .rights-note {
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 66ch;
+    margin-top: 2.25rem;
+    padding-top: 1.1rem;
+    border-top: 1px dashed var(--gold-line);
+  }
+
+  /* Editorial record list (§ markers) */
+  .record-list { list-style: none; margin-top: 2rem; border-top: 1px solid var(--line); }
+  .record-list li {
+    position: relative;
+    padding: 1.6rem 0 1.6rem 2.4rem;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--muted);
+    max-width: 72ch;
+  }
+  .record-list li::before {
+    content: "§";
+    position: absolute;
+    left: 0; top: 1.55rem;
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    color: var(--gold);
+  }
+  .record-list li strong {
+    display: block;
+    font-family: var(--display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 0.35rem;
+  }
+  .record-list li em { font-style: italic; color: var(--ink); }
+
+  /* Pullquote */
+  .pullquote {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 4vw, 2.9rem);
+    line-height: 1.3;
+    color: var(--navy);
+    max-width: 28ch;
+    border-left: 2px solid var(--gold);
+    padding-left: clamp(1.25rem, 3vw, 2.25rem);
+    margin: clamp(2.5rem, 6vh, 4.5rem) 0;
+  }
+  .pullquote::before { content: "\201C"; color: var(--gold); }
+  .pullquote::after  { content: "\201D"; color: var(--gold); }
+  .pullquote cite {
+    display: block;
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 1.1rem;
+  }
+  .pullquote.center {
+    margin-left: auto; margin-right: auto; text-align: center;
+    border-left: 0;
+    border-top: 1px solid var(--gold-line);
+    border-bottom: 1px solid var(--gold-line);
+    padding: clamp(1.5rem,4vh,3rem) 0;
+    max-width: 34ch;
+  }
+  /* Pullquotes that carry a full sentence (with quotes baked in) shouldn't add curly marks */
+  .pullquote.plain::before,
+  .pullquote.plain::after { content: none; }
+
+  /* Stats row — bordered editorial cells */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-top: clamp(2.5rem, 6vh, 4rem);
+    border: 1px solid var(--line);
+    border-right: 0;
+  }
+  .stat {
+    border-right: 1px solid var(--line);
+    padding: 1.75rem 1.75rem 1.9rem;
+  }
+  .stat .figure {
+    font-family: var(--display);
+    font-weight: 500;
+    color: var(--navy);
+    font-size: clamp(2.8rem, 6vw, 4.4rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+  .stat .label {
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin-top: 0.95rem;
+    max-width: 26ch;
+    line-height: 1.6;
+  }
+
+  /* Framed "Fig." plate */
+  .plate {
+    position: relative;
+    border: 1px solid var(--gold-line);
+    background: linear-gradient(180deg, var(--bone-hi), var(--bone-2));
+    box-shadow: 0 20px 50px rgba(20,22,29,0.08);
+    padding: 2.5rem 1.5rem 1.5rem;
+    margin: clamp(2.5rem, 6vh, 4rem) 0;
+  }
+  .plate .cap {
+    position: absolute;
+    top: 12px; left: 14px;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    z-index: 4;
+  }
+  .plate .plate-img {
+    background: var(--bone-hi);
+    border: 1px solid var(--gold-line);
+    padding: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .plate .plate-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .plate .plate-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .plate .plate-cap {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-top: 1px dashed var(--gold-line);
+    padding-top: 0.9rem;
+    margin-top: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .plate .plate-cap .source { color: var(--muted); }
+  @media (max-width: 720px) {
+    .plate .plate-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============================================================
+     NAV
+     ============================================================ */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem var(--gutter);
+    background: rgba(244,239,228,0.0);
+    transition: background 0.4s ease, border-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    background: rgba(244,239,228,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gold-line);
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  .nav .brand {
+    font-family: var(--display);
+    font-size: 1.35rem;
+    letter-spacing: 0.02em;
+    color: var(--navy);
+    font-weight: 600;
+  }
+  .nav .brand .e5 { color: var(--gold); font-style: italic; }
+  .nav .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .nav .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    position: relative;
+    padding: 0.3rem 0;
+    transition: color 0.25s ease;
+  }
+  .nav .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -2px;
+    height: 1px; width: 0;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .nav .nav-links a:hover,
+  .nav .nav-links a.active { color: var(--navy); }
+  .nav .nav-links a.active::after { width: 100%; }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--gold-line);
+    color: var(--navy);
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .nav .nav-links {
+      position: fixed;
+      inset: 0 0 0 auto;
+      width: min(78vw, 340px);
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1.6rem;
+      padding: 2rem var(--gutter);
+      background: rgba(244,239,228,0.98);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-left: 1px solid var(--gold-line);
+      transform: translateX(105%);
+      transition: transform 0.4s cubic-bezier(.6,.0,.2,1);
+    }
+    .nav .nav-links.open { transform: translateX(0); }
+    .nav .nav-links a { font-size: 0.82rem; }
+    .nav-toggle { display: inline-block; z-index: 110; }
+  }
+
+  /* ============================================================
+     MASTHEAD
+     ============================================================ */
+  .masthead {
+    padding: clamp(8rem, 18vh, 12rem) 0 clamp(3.5rem, 8vh, 6rem);
+    text-align: center;
+    border-bottom: 1px solid var(--gold-line);
+  }
+  .masthead .eyebrow { display: inline-block; margin-bottom: 1.75rem; }
+  .masthead h1 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    color: var(--navy);
+  }
+  .masthead h1 em { font-style: italic; color: var(--gold); }
+  .masthead .subtitle {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    color: #33322b;
+    max-width: 44ch;
+    margin: 1.5rem auto 0;
+  }
+  .masthead .hrule { width: 70px; height: 3px; background: var(--gold); margin: 2rem auto; }
+  .masthead .epigraph {
+    display: inline-block;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(1.4rem, 3.4vw, 2rem);
+    color: var(--gold);
+    border-top: 1px solid var(--gold-line);
+    border-bottom: 1px solid var(--gold-line);
+    padding: 1rem 3rem;
+    margin-top: 0.5rem;
+  }
+
+  /* ============================================================
+     ARCHIVE GRID — sticky index + record room
+     ============================================================ */
+  .archive-grid {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    padding: clamp(3rem, 7vh, 5rem) 0 clamp(4rem, 9vh, 7rem);
+  }
+
+  .index-col { position: relative; }
+  .index-sticky {
+    position: sticky;
+    top: 6.5rem;
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+    padding-right: 0.75rem;
+  }
+  .index-sticky .idx-head {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--gold-line);
+  }
+  .index-sticky ul { list-style: none; }
+  .index-sticky li { margin-bottom: 0.85rem; }
+  .index-sticky a {
+    display: block;
+    font-family: var(--display);
+    font-size: 1.15rem;
+    color: var(--muted);
+    line-height: 1.3;
+    padding-left: 0;
+    border-left: 2px solid transparent;
+    transition: color 0.25s ease, padding-left 0.25s ease, border-color 0.25s ease;
+  }
+  .index-sticky a .idx-num {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    color: var(--gold);
+    margin-right: 0.5rem;
+  }
+  .index-sticky a:hover,
+  .index-sticky a.active {
+    color: var(--navy);
+    padding-left: 0.65rem;
+    border-left-color: var(--gold);
+  }
+
+  .record-room { min-width: 0; }
+
+  .archive-section {
+    padding: clamp(2.5rem, 6vh, 4.5rem) 0;
+    border-bottom: 1px solid var(--gold-line);
+    scroll-margin-top: 6rem;
+  }
+  .archive-section:first-child { padding-top: 0; }
+  .archive-section:last-child { border-bottom: 0; }
+
+  @media (max-width: 992px) {
+    .archive-grid { grid-template-columns: 1fr; }
+    .index-sticky {
+      position: relative;
+      top: 0;
+      max-height: none;
+      overflow: visible;
+      padding-right: 0;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid var(--gold-line);
+    }
+    .index-sticky ul { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .index-sticky li { margin-bottom: 0; }
+    .index-sticky a {
+      border: 1px solid var(--line);
+      border-left: 2px solid var(--gold-line);
+      padding: 0.5rem 0.9rem;
+      font-size: 0.98rem;
+    }
+    .index-sticky a:hover,
+    .index-sticky a.active { padding-left: 0.9rem; border-left-color: var(--gold); }
+  }
+
+  /* Timeline — diamond markers on a gold gradient rail */
+  .timeline {
+    margin-top: 2rem;
+    position: relative;
+    padding-left: 2.4rem;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 6px; top: 6px; bottom: 6px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), var(--gold-line), transparent);
+  }
+  .tl-item { position: relative; padding-bottom: 2.6rem; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item .marker {
+    position: absolute;
+    left: -2.4rem; top: 4px;
+    width: 13px; height: 13px;
+    transform: translateX(-0.5px) rotate(45deg);
+    background: var(--bone);
+    border: 1px solid var(--gold);
+  }
+  .tl-item.lit .marker { background: var(--gold); }
+  .tl-item .tl-year {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .tl-item .tl-phase {
+    font-family: var(--display);
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 0.3rem 0 0.5rem;
+  }
+  .tl-item .tl-body { color: var(--muted); max-width: 62ch; }
+
+  /* Colophon card */
+  .colophon-card {
+    border: 1px solid var(--gold-line);
+    background: var(--bone-hi);
+    padding: clamp(1.75rem, 4vw, 3rem);
+    margin-top: 2.5rem;
+  }
+  .colophon-card h4 {
+    font-family: var(--display);
+    font-size: 1.55rem;
+    font-weight: 600;
+    color: var(--navy);
+    border-bottom: 1px solid var(--gold-line);
+    padding-bottom: 0.65rem;
+    margin-bottom: 1.1rem;
+  }
+  .colophon-card p { color: var(--muted); font-size: 1rem; line-height: 1.7; max-width: 74ch; }
+  .colophon-card p strong { color: var(--navy); font-weight: 600; }
+
+  /* ============================================================
+     NAVY FULL-BLEED BAND — Why We Keep This
+     ============================================================ */
+  .band-navy {
+    background: var(--navy);
+    color: var(--on-navy);
+    position: relative;
+    isolation: isolate;
+  }
+  .band-navy .opener { border-bottom-color: rgba(201,168,76,0.42); }
+  .band-navy .opener h2 { color: var(--on-navy); }
+  .band-navy .opener h2 em { color: var(--gold-hi); }
+  .band-navy .roman { color: var(--gold-hi); }
+  .band-navy .opener .sub-label { color: var(--on-navy-mut); }
+  .band-navy .lead { color: var(--on-navy); }
+  .band-navy .lead .ornament { color: var(--gold-hi); }
+  .band-navy .dropcap::first-letter { color: var(--gold-hi); }
+  .band-navy .body-copy { color: var(--on-navy-mut); }
+  .band-navy .body-copy strong { color: var(--gold-hi); }
+  .band-navy .pullquote { color: var(--on-navy); border-color: var(--gold-hi); }
+  .band-navy .pullquote.center { border-color: rgba(201,168,76,0.42); }
+  .band-navy .pullquote::before,
+  .band-navy .pullquote::after { color: var(--gold-hi); }
+  .band-navy .pullquote cite { color: var(--gold-hi); }
+
+  /* ============================================================
+     FOOTER / COLOPHON — The Record
+     ============================================================ */
+  .colophon {
+    border-top: 1px solid var(--gold-line);
+    background: var(--bone-2);
+    padding: clamp(3.5rem, 9vh, 6rem) 0 3rem;
+    text-align: center;
+  }
+  .colophon .crest {
+    font-family: var(--display);
+    font-size: 2rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+  }
+  .colophon .motto {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.35rem, 3vw, 2.05rem);
+    color: var(--gold);
+    max-width: 40ch;
+    margin: 0 auto 2rem;
+  }
+  .colophon .credit {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 0.5rem;
+  }
+
+  /* Suite navigation (bottom) */
+  .suite-nav {
+    font-family: var(--mono);
+    background: var(--bone);
+    border-top: 1px solid var(--gold-line);
+    padding: 1.75rem var(--gutter);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 1.6rem;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .suite-nav .lede { color: var(--faint); margin-right: 0.35rem; }
+  .suite-nav a { color: var(--muted); transition: color 0.25s ease; }
+  .suite-nav a:hover { color: var(--navy); }
+  .suite-nav a.home { color: var(--gold); }
+  .suite-nav a.current { color: var(--navy); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+
+  /* ============================================================
+     SCROLL-REVEAL
+     ============================================================ */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(.2,.6,.2,1), transform 0.9s cubic-bezier(.2,.6,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal.d1 { transition-delay: 0.08s; }
+  .reveal.d2 { transition-delay: 0.16s; }
+  .reveal.d3 { transition-delay: 0.24s; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+
+  /* Skip link */
+  .skip {
+    position: absolute; left: -999px; top: 0; z-index: 200;
+    background: var(--navy); color: var(--bone);
+    padding: 0.6rem 1rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em;
+  }
+  .skip:focus { left: 1rem; top: 1rem; }
+
+  /* Broken-image placeholder (tuned to bone ground) */
+  .ha-img-placeholder{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;background:var(--bone-hi);border:1px dashed var(--gold-line);color:var(--muted);font-size:12px;font-family:var(--mono);min-height:120px;padding:16px;box-sizing:border-box;letter-spacing:0.12em;text-transform:uppercase;animation:ha-img-pulse 1.5s ease-in-out infinite}
+  .ha-img-placeholder.ha-failed{animation:none;opacity:.7}
+  @keyframes ha-img-pulse{0%,100%{opacity:1}50%{opacity:.5}}
+</style>
+</head>
+<body>
+
+<a href="#section-1" class="skip">Skip to content</a>
+
+<!-- ============================ NAV ============================ -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <a href="/" class="brand"><span class="e5">E5</span> Enclave</a>
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+  <div class="nav-links" id="navLinks">
+    <a href="/">Universe Home</a>
+    <a href="#section-1" data-spy="section-1">I · Witness</a>
+    <a href="#section-2" data-spy="section-2">II · His Words</a>
+    <a href="#section-3" data-spy="section-3">III · Proclamation</a>
+    <a href="#section-4" data-spy="section-4">IV · Congress</a>
+    <a href="#section-5" data-spy="section-5">V · A Life</a>
+    <a href="#section-6" data-spy="section-6">VI · Why</a>
+    <a href="#section-7" data-spy="section-7">VII · Record</a>
+  </div>
+</nav>
+
+<!-- ============================ MASTHEAD ============================ -->
+<header class="masthead" id="top">
+  <div class="wrap">
+    <span class="eyebrow">E5 Enclave Incorporated · Liberty City, Miami</span>
+    <h1>The Ralph McCartney<br /><em>Oral-History</em> Archive</h1>
+    <p class="subtitle">The namesake of the McCartney Academy. A kept record of Overtown's witness.</p>
+    <div class="hrule" aria-hidden="true"></div>
+    <span class="epigraph">“Tell the Story.”</span>
+  </div>
+</header>
+
+<!-- ============================ ARCHIVE GRID ============================ -->
+<div class="wrap">
+  <div class="archive-grid">
+
+    <!-- Sticky index -->
+    <aside class="index-col">
+      <nav class="index-sticky" aria-label="Archive Index">
+        <div class="idx-head">Archive Index</div>
+        <ul>
+          <li><a href="#section-1" class="idx-link active" data-idx="section-1"><span class="idx-num">I</span>The Witness</a></li>
+          <li><a href="#section-2" class="idx-link" data-idx="section-2"><span class="idx-num">II</span>In His Own Words</a></li>
+          <li><a href="#section-3" class="idx-link" data-idx="section-3"><span class="idx-num">III</span>The Proclamation</a></li>
+          <li><a href="#section-4" class="idx-link" data-idx="section-4"><span class="idx-num">IV</span>Congressional Record</a></li>
+          <li><a href="#section-5" class="idx-link" data-idx="section-5"><span class="idx-num">V</span>A Life — The Record</a></li>
+          <li><a href="#section-6" class="idx-link" data-idx="section-6"><span class="idx-num">VI</span>Why We Keep This</a></li>
+          <li><a href="#section-7" class="idx-link" data-idx="section-7"><span class="idx-num">VII</span>Archival Colophon</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Record room -->
+    <main class="record-room">
+
+      <!-- ==================== SECTION I ==================== -->
+      <section id="section-1" class="archive-section">
+        <div class="opener reveal">
+          <span class="roman">I</span>
+          <h2>The <em>Witness</em></h2>
+          <span class="sub-label">§ The Namesake</span>
+        </div>
+
+        <p class="lead dropcap reveal d1">Ralph McCartney was a son of Overtown — community activist, mentor, keeper of his neighborhood's memory, and the man for whom the McCartney Academy is named. This archive preserves his own words and the public record that honored him, so that the testimony grounding our work is kept, sourced, and unerasable. A people that keeps its own record can never be told it has none.</p>
+
+        <div class="stats reveal d2">
+          <div class="stat">
+            <div class="figure" id="stat-1997-1">1997</div>
+            <div class="label">August 14, 1997 — The Oral History Interview</div>
+          </div>
+          <div class="stat">
+            <div class="figure">1952</div>
+            <div class="label">Class of 1952 — Booker T. Washington</div>
+          </div>
+          <div class="stat">
+            <div class="figure">MIA</div>
+            <div class="label">The Migration: Overtown → Liberty City</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SECTION II ==================== -->
+      <section id="section-2" class="archive-section">
+        <div class="opener reveal">
+          <span class="roman">II</span>
+          <h2>In His Own <em>Words</em></h2>
+          <span class="sub-label">¶ The 1997 Oral History</span>
+        </div>
+
+        <p class="lead dropcap reveal d1">Recorded for the Samuel Proctor Oral History Program under the title “Tell the Story.” Short excerpts, used under Fair Use and attributed; the full interview is held by the program.</p>
+
+        <ul class="record-list reveal d2">
+          <li>
+            <strong>The house that fed the neighborhood.</strong>
+            The McCartney home doubled as a gathering place — kids nicknamed it “the McCartney Palace on McCartney Square.” Of his parents he said: <em>“Never did a hungry person cross that door and leave out that same way.”</em>
+          </li>
+          <li>
+            <strong>The school as catalyst.</strong>
+            In his Overtown, school was the center of pride: <em>“To go to school is what was cool at that time.”</em> The school, he said, was the catalyst of the whole community.
+          </li>
+          <li>
+            <strong>The Big Monster.</strong>
+            When the expressways came, they <em>“dissected and bisected the community”</em> into <em>“four different areas where there was once a whole community.”</em> His verdict was unsparing: <em>“Those whom the Gods will destroy, they first make proud — so they gave us Booker Washington and they made us proud, and they took it away, and they destroyed us.”</em>
+          </li>
+          <li>
+            <strong>Keeping children out of jail.</strong>
+            After a life spent steering young people away from it, he took a post inside the county jail: <em>“I must have worked in the jail for at least 7 or 8 months before I learned to stop crying every night.”</em>
+          </li>
+          <li>
+            <strong>The charge he carried.</strong>
+            <em>“When you see something wrong, you've got to speak out against it — because if you don't, then you're perpetuating that wrong.”</em>
+          </li>
+        </ul>
+
+        <blockquote class="pullquote reveal">The whole neighborhood was a family.<cite>Ralph McCartney, oral history, 1997</cite></blockquote>
+
+        <p class="rights-note reveal">Excerpts © Samuel Proctor Oral History Program, University of Florida (2005); used under Fair Use with attribution.</p>
+      </section>
+
+      <!-- ==================== SECTION III ==================== -->
+      <section id="section-3" class="archive-section">
+        <div class="opener reveal">
+          <span class="roman">III</span>
+          <h2>The <em>Proclamation</em></h2>
+          <span class="sub-label">§ City of Opa-Locka, 1997</span>
+        </div>
+
+        <p class="lead dropcap reveal d1">In 1997 the City of Opa-Locka — “a community of brotherhood and sisterhood” — proclaimed “Mr. Ralph McCartney Day,” honoring his decades of community activism, his civil-rights work, and his labor to preserve Black history.</p>
+
+        <div class="stats reveal d2">
+          <div class="stat">
+            <div class="figure">1997</div>
+            <div class="label">“Mr. Ralph McCartney Day” declared</div>
+          </div>
+          <div class="stat">
+            <div class="figure">OPA</div>
+            <div class="label">City of Opa-Locka, Florida</div>
+          </div>
+        </div>
+
+        <!-- Exhibit I — Fig. plate -->
+        <figure class="plate reveal">
+          <span class="cap">Fig. I — Exhibit I · Proclamation Document</span>
+          <div class="plate-img">
+            <img src="https://pub.hyperagent.com/api/published/pbf01KW47076V_27SDW7H87110HM36/cmqw3d9m604au07adiu9aw3t3_IMG_8999.jpeg" alt="City of Opa-Locka 'Mr. Ralph McCartney Day' proclamation, 1997" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+          <figcaption class="plate-cap">
+            <span>Exhibit I: Proclamation Document</span>
+            <span class="source">City of Opa-Locka Archives, 1997</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <!-- ==================== SECTION IV ==================== -->
+      <section id="section-4" class="archive-section">
+        <div class="opener reveal">
+          <span class="roman">IV</span>
+          <h2>The <em>Congressional</em> Record</h2>
+          <span class="sub-label">§ February 1, 1994</span>
+        </div>
+
+        <p class="lead dropcap reveal d1">Rep. Carrie Meek (FL-17) rose in the United States House of Representatives to pay tribute to Ralph McCartney of Overtown — a man, she said, best known for his eloquence reciting great literature, but whose most outstanding contributions came “from working behind the scenes.” She named three key elements of his legacy:</p>
+
+        <ul class="record-list reveal d2">
+          <li>
+            <strong>The Edison Park I-95 overpass.</strong>
+            Through his relentless effort it was built, so that — in her words — “young children no longer have to face the death-defying temptations of taking a short-cut across I-95 to get to school.”
+          </li>
+          <li>
+            <strong>The rebuilding of Booker T. Washington School.</strong>
+            “The tireless work of Mr. McCartney, the late Dr. Johnny Jones, the school board, and the community led to the successful rebuilding of the school.”
+          </li>
+          <li>
+            <strong>The Department of Defense Race Relations Institute</strong>
+            Through which many gained a deeper understanding of their role in making America and its institutions more just.
+          </li>
+        </ul>
+
+        <div class="stats reveal d2">
+          <div class="stat">
+            <div class="figure">1994</div>
+            <div class="label">U.S. Congressional Record Entrance</div>
+          </div>
+          <div class="stat">
+            <div class="figure" id="stat-contrib">3</div>
+            <div class="label">Major Contributions named on House Floor</div>
+          </div>
+        </div>
+
+        <!-- Exhibits II & III — Fig. plate (double) -->
+        <figure class="plate reveal">
+          <span class="cap">Fig. II — Exhibits II &amp; III · House Proceedings</span>
+          <div class="plate-grid">
+            <div class="plate-img">
+              <img src="https://pub.hyperagent.com/api/published/pbf01KW472Z9H_ZWC83CPCW9NJ6932/cmqw3o4kk047p07ad718jdbx7_IMG_5803.png" alt="Rep. Carrie Meek's 1994 Congressional Record tribute full column" loading="lazy" onerror="this.style.display='none'" />
+            </div>
+            <div class="plate-img">
+              <img src="https://pub.hyperagent.com/api/published/pbf01KW473031_H4S1AHXZTKC26GGC/cmqw3o4l1047q07adrej3s3qu_IMG_5804.jpeg" alt="Close-up of the Congressional Record tribute ending 'That I was a McCartney'" loading="lazy" onerror="this.style.display='none'" />
+            </div>
+          </div>
+          <figcaption class="plate-cap">
+            <span>Exhibits II &amp; III: U.S. House of Representatives Proceedings</span>
+            <span class="source">Congressional Record · February 1, 1994</span>
+          </figcaption>
+        </figure>
+
+        <blockquote class="pullquote plain reveal">Asked how he wished to be remembered, he answered simply: “That I was a McCartney.”<cite>Congressional Record, February 1, 1994</cite></blockquote>
+      </section>
+
+      <!-- ==================== SECTION V ==================== -->
+      <section id="section-5" class="archive-section">
+        <div class="opener reveal">
+          <span class="roman">V</span>
+          <h2>A Life — <em>The Record</em></h2>
+          <span class="sub-label">¶ Chronology</span>
+        </div>
+
+        <div class="timeline reveal d1">
+          <div class="tl-item lit">
+            <span class="marker" aria-hidden="true"></span>
+            <div class="tl-year">Origins</div>
+            <div class="tl-phase">Overtown Rooting</div>
+            <p class="tl-body">Born to parents from Eleuthera, the Bahamas; the youngest of eight children.</p>
+          </div>
+          <div class="tl-item">
+            <span class="marker" aria-hidden="true"></span>
+            <div class="tl-year">1952</div>
+            <div class="tl-phase">The Crucible</div>
+            <p class="tl-body">Graduates Booker T. Washington High School, under the legendary principal Charles L. Williams.</p>
+          </div>
+          <div class="tl-item">
+            <span class="marker" aria-hidden="true"></span>
+            <div class="tl-year">Veterancy</div>
+            <div class="tl-phase">Military Service</div>
+            <p class="tl-body">Honorable service as a United States veteran.</p>
+          </div>
+          <div class="tl-item">
+            <span class="marker" aria-hidden="true"></span>
+            <div class="tl-year">Migration</div>
+            <div class="tl-phase">The New York Tenure</div>
+            <p class="tl-body">Works at the United States Post Office and at Chase Manhattan Bank.</p>
+          </div>
+          <div class="tl-item">
+            <span class="marker" aria-hidden="true"></span>
+            <div class="tl-year">Service</div>
+            <div class="tl-phase">Civil &amp; Institutional Labors</div>
+            <p class="tl-body">Builds a lifelong career of community service across the Urban League, EOPI/OIC, the county Community Relations Board, and as an active legislative aide.</p>
+          </div>
+          <div class="tl-item">
+            <span class="marker" aria-hidden="true"></span>
+            <div class="tl-year">Guardianship</div>
+            <div class="tl-phase">Dade County Corrections</div>
+            <p class="tl-body">The man who fought tirelessly to keep youth out of jail begins working directly within it, providing guidance and hope.</p>
+          </div>
+          <div class="tl-item">
+            <span class="marker" aria-hidden="true"></span>
+            <div class="tl-year">1994</div>
+            <div class="tl-phase">National Recognition</div>
+            <p class="tl-body">Honored on the floor of the U.S. House of Representatives, preserved in the Congressional Record.</p>
+          </div>
+          <div class="tl-item">
+            <span class="marker" aria-hidden="true"></span>
+            <div class="tl-year">1997</div>
+            <div class="tl-phase">A Day of Story</div>
+            <p class="tl-body">Celebrated as “Mr. Ralph McCartney Day” and sits down to record his crucial oral history, “Tell the Story.”</p>
+          </div>
+          <div class="tl-item">
+            <span class="marker" aria-hidden="true"></span>
+            <div class="tl-year">2026</div>
+            <div class="tl-phase">The Living Monument</div>
+            <p class="tl-body">The McCartney Academy is officially named in his honor, keeping his educational legacy alive for future generations.</p>
+          </div>
+        </div>
+
+        <div class="stats reveal d2">
+          <div class="stat">
+            <div class="figure" id="stat-kids">8</div>
+            <div class="label">Children in the Family — Ralph the Youngest</div>
+          </div>
+          <div class="stat">
+            <div class="figure">1</div>
+            <div class="label">Lifetime of Service dedicated to Overtown and Liberty City</div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- ==================== SECTION VI — NAVY FULL-BLEED BAND ==================== -->
+<section id="section-6" class="section-pad band-navy archive-section" style="border-bottom:0; scroll-margin-top:6rem;">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">VI</span>
+      <h2>Why We <em>Keep</em> This</h2>
+      <span class="sub-label">§ The Ground Truth</span>
+    </div>
+
+    <p class="lead dropcap reveal d1">A school is the catalyst of a community. The highways took Overtown's. The family the highways displaced is building it back — and this archive is the ground truth beneath that work, kept honestly so it can never be erased again. The McCartney Academy is not named for a stranger. It is named for a man who, asked what he wanted, asked only to be remembered as what he was.</p>
+
+    <blockquote class="pullquote center reveal">A people that keeps its own record can never be told it has none.</blockquote>
+  </div>
+</section>
+
+<hr class="hair" />
+
+<!-- ==================== SECTION VII — THE RECORD ==================== -->
+<section id="section-7" class="section-pad band-alt archive-section" style="border-bottom:0; scroll-margin-top:6rem;">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">VII</span>
+      <h2>The <em>Record</em></h2>
+      <span class="sub-label">¶ Archival Colophon</span>
+    </div>
+
+    <p class="lead dropcap reveal d1">This archive is maintained by <strong>E5 Enclave Incorporated</strong> — a Florida 501(c)(3) public charity (EIN 99-3822441; §509(a)(2)), Liberty City, Miami — as the legacy companion to the McCartney Academy.</p>
+
+    <div class="colophon-card reveal d2">
+      <h4>Archival Sources &amp; Verification</h4>
+      <p>Sources are preserved with strict accuracy: the oral-history excerpts are © 2005 University of Florida (Samuel Proctor Oral History Program), used under Fair Use with attribution; the Congressional tribute is drawn from the public Congressional Record (February 1, 1994); the municipal proclamation is certified by the City of Opa-Locka, Florida (1997). Photographic elements are displayed as factual historical exhibits of the public record.</p>
+    </div>
+
+    <blockquote class="pullquote center reveal">Nil satis nisi optimum — nothing but the best is good enough.</blockquote>
+  </div>
+</section>
+
+<!-- ============================ FOOTER / COLOPHON ============================ -->
+<footer class="colophon">
+  <div class="wrap">
+    <div class="crest">§</div>
+    <p class="motto">One house. Many wings. Built, not begged.</p>
+    <p class="credit">E5 Enclave Incorporated</p>
+    <p class="credit" style="color:var(--gold);">Est. 2026 · Miami, Florida</p>
+  </div>
+</footer>
+
+<!-- ============================ SUITE NAV ============================ -->
+<nav class="suite-nav" aria-label="E5 suite navigation">
+  <span class="lede">E5 Enclave ·</span>
+  <a href="/" class="home">← Universe Home</a>
+  <a href="/academy/">McCartney Academy</a>
+  <a href="/archive/" class="current">Oral-History Archive</a>
+  <a href="/schools-of-hope/">Schools of Hope</a>
+  <a href="/plan/">Business Plan</a>
+</nav>
+
+<!-- ============================ SCRIPTS ============================ -->
+<script>
+(function () {
+  'use strict';
+
+  var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- NAV: scrolled state + mobile toggle ---------- */
+  var nav = document.getElementById('nav');
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+
+  function onScroll() {
+    if (window.scrollY > 40) { nav.classList.add('scrolled'); }
+    else { nav.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', function () {
+      var open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  /* ---------- SCROLL-REVEAL ---------- */
+  var reveals = document.querySelectorAll('.reveal');
+  if (prefersReduced || !('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var revObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add('in');
+          revObs.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (el) { revObs.observe(el); });
+  }
+
+  /* ---------- STAT COUNTERS (countUp.js) ---------- */
+  function startCount(el) {
+    if (el.dataset.counted) { return; }
+    var targetVal = parseInt(el.textContent, 10);
+    if (isNaN(targetVal)) { return; }               // leave MIA / OPA / text figures as-is
+    var CU = window.countUp && (window.countUp.CountUp || window.countUp);
+    if (typeof CU === 'function') {
+      var counter = new CU(el, targetVal, {
+        useEasing: true,
+        useGrouping: false,
+        duration: prefersReduced ? 0 : 2.5
+      });
+      if (!counter.error) {
+        counter.start();
+        el.dataset.counted = 'true';
+        return;
+      }
+    }
+    /* fallback if the CDN is unavailable */
+    el.textContent = String(targetVal);
+    el.dataset.counted = 'true';
+  }
+
+  var counters = document.querySelectorAll('.figure');
+  if (prefersReduced || !('IntersectionObserver' in window)) {
+    counters.forEach(startCount);
+  } else {
+    var cObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          startCount(en.target);
+          cObs.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(function (el) { cObs.observe(el); });
+  }
+
+  /* ---------- SCROLL-SPY: nav + sticky index ---------- */
+  var spyTargets = ['section-1','section-2','section-3','section-4','section-5','section-6','section-7'];
+  var navSpy = document.querySelectorAll('.nav-links a[data-spy]');
+  var idxSpy = document.querySelectorAll('.index-sticky a[data-idx]');
+  var spySections = [];
+  spyTargets.forEach(function (id) {
+    var sec = document.getElementById(id);
+    if (sec) { spySections.push({ id: id, el: sec }); }
+  });
+
+  function setActive(id) {
+    navSpy.forEach(function (l) { l.classList.toggle('active', l.getAttribute('data-spy') === id); });
+    idxSpy.forEach(function (l) { l.classList.toggle('active', l.getAttribute('data-idx') === id); });
+  }
+
+  if ('IntersectionObserver' in window && spySections.length) {
+    var spyObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { setActive(en.target.id); }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    spySections.forEach(function (s) { spyObs.observe(s.el); });
+  }
+})();
+</script>
+
+<!-- iframe escape helper (preserved from source) -->
+<script>
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && window.parent !== window) {
+    window.parent.postMessage({ type: 'close-fullscreen' }, '*');
+  }
+});
+</script>
+
+<!-- broken-img-handler (preserved from source) -->
+<script>
+(function(){
+  if(window.__brokenImgHandler)return;
+  window.__brokenImgHandler=true;
+  var MAX=5,DELAYS=[2000,4000,8000,16000,32000];
+  document.addEventListener('error',function(e){
+    var img=e.target;
+    if(!img||img.tagName!=='IMG')return;
+    var liveSrc=img.getAttribute('src');
+    var src=img.dataset.haOriginalSrc||liveSrc;
+    if(!src)return;
+    if(img.dataset.haOriginalSrc&&liveSrc&&liveSrc!==img.dataset.haOriginalSrc&&liveSrc.indexOf('_r=')<0){src=liveSrc;img.dataset.haOriginalSrc=src;img.dataset.haRetryCount='0'}
+    else if(!img.dataset.haOriginalSrc){img.dataset.haOriginalSrc=src}
+    var attempt=parseInt(img.dataset.haRetryCount||'0',10);
+    if(img.dataset.haPhId){var old=document.getElementById(img.dataset.haPhId);if(old)old.remove()}
+    var ph=document.createElement('div');
+    ph.className='ha-img-placeholder'+(attempt>=MAX?' ha-failed':'');
+    ph.id='ha-ph-'+Math.random().toString(36).slice(2,9);
+    var w=img.getAttribute('width');var h=img.getAttribute('height');
+    if(w)ph.style.width=w+(isNaN(Number(w))?'':'px');
+    else if(img.style.width)ph.style.width=img.style.width;
+    else if(img.width>1)ph.style.width=img.width+'px';
+    if(h)ph.style.height=h+(isNaN(Number(h))?'':'px');
+    else if(img.style.height)ph.style.height=img.style.height;
+    else if(img.height>1)ph.style.height=img.height+'px';
+    ph.textContent=attempt>=MAX?'Image unavailable':'Loading image…';
+    img.dataset.haPhId=ph.id;
+    if(img.dataset.haOrigDisplay==null)img.dataset.haOrigDisplay=img.style.display||'';
+    img.style.display='none';
+    img.insertAdjacentElement('afterend',ph);
+    if(attempt<MAX){
+      img.dataset.haRetryCount=String(attempt+1);
+      setTimeout(function(){
+        if(!img.isConnected)return;
+        if(img.dataset.haOriginalSrc!==src)return;
+        if(img.complete&&img.naturalWidth>0)return;
+        var curSrc=img.getAttribute('src');
+        if(curSrc&&curSrc.indexOf(src)!==0)return;
+        var fresh=src+(src.indexOf('?')>=0?'&':'?')+'_r='+(attempt+1)+'_'+Date.now();
+        img.src=fresh;
+      },DELAYS[attempt]);
+    }
+  },true);
+  document.addEventListener('load',function(e){
+    var img=e.target;
+    if(!img||img.tagName!=='IMG')return;
+    if(img.dataset.haPhId){
+      var ph=document.getElementById(img.dataset.haPhId);
+      if(ph)ph.remove();
+      delete img.dataset.haPhId;
+      img.style.display=img.dataset.haOrigDisplay||'';
+      delete img.dataset.haOrigDisplay;
+      delete img.dataset.haOriginalSrc;
+      delete img.dataset.haRetryCount;
+    }
+  },true);
+})();
+</script>
+
+</body>
+</html>

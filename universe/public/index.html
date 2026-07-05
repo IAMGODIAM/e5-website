@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="E5 Enclave Incorporated — a Florida 501(c)(3) public charity rebuilding Black self-determination from Liberty City, Miami. One house. Many wings. Built, not begged." />
+<title>E5 Enclave Incorporated — One House. Many Wings. Built, Not Begged.</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* ============================================================
+     E5 ENCLAVE — GILDED EDITORIAL
+     Warm bone ground · navy display · fine gold linework
+     ============================================================ */
+  :root {
+    /* Grounds */
+    --bone:    #f4efe4;
+    --bone-2:  #ece4d2;
+    --bone-hi: #fbf7ee;
+    /* Text */
+    --ink:     #14161d;
+    --muted:   #6b6456;
+    --faint:   #928a78;
+    /* Marks */
+    --navy:    #0c1c4d;
+    --gold:    #a9843f;   /* deep gold — for contrast on light */
+    --gold-hi: #c9a84c;   /* house-mark accent */
+    --ox:      #6d1f20;   /* oxblood — rare emphasis */
+    /* On-navy (full-bleed band) */
+    --on-navy:      #f4efe4;
+    --on-navy-mut:  #b9c0d8;
+    /* Type */
+    --display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --body:    'Inter', system-ui, -apple-system, sans-serif;
+    --mono:    'JetBrains Mono', 'SFMono-Regular', Menlo, monospace;
+    /* Layout */
+    --max:  1240px;
+    --gutter: clamp(1.25rem, 5vw, 5rem);
+    /* Rules */
+    --line:      rgba(20,22,29,0.14);
+    --line-soft: rgba(20,22,29,0.10);
+    --gold-line: rgba(169,132,63,0.42);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    background: var(--bone);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.72;
+    font-size: 1.02rem;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--gold-hi); color: var(--navy); }
+
+  a { color: inherit; text-decoration: none; }
+
+  img { max-width: 100%; display: block; }
+
+  /* ---------- Typographic primitives ---------- */
+  .eyebrow {
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--gold);
+  }
+  .mono { font-family: var(--mono); letter-spacing: 0.2em; text-transform: uppercase; }
+
+  .roman {
+    font-family: var(--mono);
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  h1, h2, h3, h4 { font-family: var(--display); font-weight: 500; line-height: 1.05; color: var(--navy); }
+
+  .ornament { color: var(--gold); font-family: var(--display); font-style: italic; }
+
+  /* Hairline divider — thin gold rule */
+  .hair {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, var(--gold-line), transparent);
+    border: 0;
+    margin: 0;
+  }
+
+  /* ---------- Layout shell ---------- */
+  .wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+
+  section { position: relative; }
+
+  .section-pad { padding: clamp(4rem, 10vh, 8rem) 0; }
+
+  /* Alternating band ground */
+  .band-alt { background: var(--bone-2); }
+
+  /* Section opener header — thin gold rule beneath */
+  .opener {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2.75rem;
+    border-bottom: 1px solid var(--gold-line);
+  }
+  .opener .roman { white-space: nowrap; }
+  .opener h2 {
+    font-size: clamp(2.2rem, 6vw, 4.4rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .opener h2 em { font-style: italic; color: var(--gold); }
+  .opener .sub-label { font-family: var(--mono); color: var(--muted); letter-spacing: 0.22em; text-transform: uppercase; font-size: 0.7rem; margin-left: auto; }
+
+  /* Drop cap */
+  .dropcap::first-letter {
+    font-family: var(--display);
+    font-weight: 600;
+    color: var(--gold);
+    float: left;
+    font-size: 4.6rem;
+    line-height: 0.72;
+    padding: 0.32rem 0.7rem 0 0;
+  }
+
+  /* Lead paragraph */
+  .lead {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(1.4rem, 2.7vw, 2.05rem);
+    line-height: 1.42;
+    color: #33322b;
+    max-width: 54ch;
+  }
+  .lead .ornament { color: var(--gold); }
+  .body-copy { color: var(--muted); max-width: 62ch; font-size: 1.02rem; }
+  .body-copy strong { color: var(--navy); font-weight: 600; }
+  .body-copy + .body-copy { margin-top: 1.2rem; }
+
+  /* Pullquote */
+  .pullquote {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 4vw, 2.9rem);
+    line-height: 1.3;
+    color: var(--navy);
+    max-width: 24ch;
+    border-left: 2px solid var(--gold);
+    padding-left: clamp(1.25rem, 3vw, 2.25rem);
+    margin: clamp(2.5rem, 6vh, 4.5rem) 0;
+  }
+  .pullquote::before { content: "\201C"; color: var(--gold); }
+  .pullquote::after  { content: "\201D"; color: var(--gold); }
+  .pullquote.center {
+    margin-left: auto; margin-right: auto; text-align: center;
+    border-left: 0;
+    border-top: 1px solid var(--gold-line);
+    border-bottom: 1px solid var(--gold-line);
+    padding: clamp(1.5rem,4vh,3rem) 0;
+    max-width: 28ch;
+  }
+
+  /* Stats row — bordered editorial cells */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-top: clamp(2.5rem, 6vh, 4rem);
+    border: 1px solid var(--line);
+    border-right: 0;
+  }
+  .stat {
+    border-right: 1px solid var(--line);
+    padding: 1.75rem 1.75rem 1.9rem;
+  }
+  .stat .figure {
+    font-family: var(--display);
+    font-weight: 500;
+    color: var(--navy);
+    font-size: clamp(2.8rem, 6vw, 4.4rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+  .stat .label {
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin-top: 0.95rem;
+    max-width: 26ch;
+    line-height: 1.6;
+  }
+  .stat .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    border: 1px solid var(--gold-line);
+    padding: 0.18rem 0.5rem;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  /* Framed "Fig." plate */
+  .plate {
+    position: relative;
+    border: 1px solid var(--gold-line);
+    background: linear-gradient(180deg, var(--bone-hi), var(--bone-2));
+    box-shadow: 0 20px 50px rgba(20,22,29,0.08);
+  }
+  .plate .cap {
+    position: absolute;
+    top: 12px; left: 14px;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    z-index: 4;
+  }
+
+  /* ============================================================
+     NAV
+     ============================================================ */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem var(--gutter);
+    background: rgba(244,239,228,0.0);
+    transition: background 0.4s ease, border-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    background: rgba(244,239,228,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gold-line);
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  .nav .brand {
+    font-family: var(--display);
+    font-size: 1.35rem;
+    letter-spacing: 0.02em;
+    color: var(--navy);
+    font-weight: 600;
+  }
+  .nav .brand .e5 { color: var(--gold); font-style: italic; }
+  .nav .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .nav .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    position: relative;
+    padding: 0.3rem 0;
+    transition: color 0.25s ease;
+  }
+  .nav .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -2px;
+    height: 1px; width: 0;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .nav .nav-links a:hover,
+  .nav .nav-links a.active { color: var(--navy); }
+  .nav .nav-links a.active::after { width: 100%; }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--gold-line);
+    color: var(--navy);
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .nav .nav-links {
+      position: fixed;
+      inset: 0 0 0 auto;
+      width: min(78vw, 340px);
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1.6rem;
+      padding: 2rem var(--gutter);
+      background: rgba(244,239,228,0.98);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-left: 1px solid var(--gold-line);
+      transform: translateX(105%);
+      transition: transform 0.4s cubic-bezier(.6,.0,.2,1);
+    }
+    .nav .nav-links.open { transform: translateX(0); }
+    .nav .nav-links a { font-size: 0.82rem; }
+    .nav-toggle { display: inline-block; z-index: 110; }
+  }
+
+  /* ============================================================
+     HERO — THE CONSTELLATION (Fig. I)
+     ============================================================ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    overflow: hidden;
+    padding: 8rem var(--gutter) 4rem;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .hero-inner { position: relative; z-index: 3; }
+
+  .hero .eyebrow { margin-bottom: 1.6rem; display: inline-block; }
+  .hero h1.wordmark {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(2.8rem, 7vw, 5.4rem);
+    line-height: 1.0;
+    letter-spacing: -0.015em;
+    color: var(--navy);
+  }
+  .hero h1.wordmark .accent { color: var(--gold); font-style: italic; font-weight: 500; }
+  .hero .hrule { width: 70px; height: 3px; background: var(--gold); margin: 1.5rem 0 1.4rem; }
+  .hero .tagline {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.35rem, 3.2vw, 2.05rem);
+    color: #33322b;
+    margin-top: 0.2rem;
+  }
+  .hero .tagline em { color: var(--gold); font-style: italic; }
+  .hero .sub {
+    color: var(--muted);
+    max-width: 46ch;
+    margin: 1.4rem 0 0;
+    font-size: clamp(0.98rem, 1.6vw, 1.1rem);
+  }
+
+  /* Audience chips */
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2.4rem;
+  }
+  .chips a {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    padding: 0.6rem 1.1rem;
+    transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  }
+  .chips a:hover, .chips a:focus-visible {
+    color: var(--bone);
+    background: var(--navy);
+    border-color: var(--navy);
+    outline: none;
+  }
+
+  /* Constellation plate (desktop) */
+  .constellation-wrap {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+  }
+  .constellation-wrap.plate { display: block; }
+  .constellation { width: 100%; height: 100%; overflow: visible; display: block; }
+
+  .node-group { cursor: pointer; }
+  .node-core { transition: r 0.3s ease; }
+  .node-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    fill: var(--muted);
+    transition: fill 0.25s ease;
+    pointer-events: none;
+  }
+  .node-group:hover .node-label,
+  .node-group:focus .node-label { fill: var(--navy); }
+
+  .center-node .node-label { fill: var(--navy); font-size: 14px; font-weight: 600; }
+
+  /* soft ring pulse (subtle) */
+  @keyframes pulse-ring {
+    0%, 100% { opacity: 0.28; }
+    50%      { opacity: 0.6; }
+  }
+  .glow { animation: pulse-ring 4.5s ease-in-out infinite; }
+  .glow.g2 { animation-duration: 5.5s; animation-delay: -1.5s; }
+  .glow.g3 { animation-duration: 6.5s; animation-delay: -2.8s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .glow, .lattice-line, .scroll-cue .dot { animation: none !important; }
+  }
+
+  /* lattice lines — fine gold linework */
+  .lattice-line {
+    stroke: var(--gold);
+    stroke-width: 1.1;
+    fill: none;
+    opacity: 0.7;
+  }
+  .lattice-line.outer { opacity: 0.4; stroke-width: 0.9; }
+  .orbit-ring { stroke: var(--gold); stroke-width: 1; fill: none; opacity: 0.45; }
+
+  /* tooltip card */
+  .tooltip {
+    position: absolute;
+    z-index: 12;
+    min-width: 200px;
+    max-width: 260px;
+    background: var(--bone-hi);
+    border: 1px solid var(--gold-line);
+    border-top: 2px solid var(--gold);
+    box-shadow: 0 14px 34px rgba(20,22,29,0.14);
+    padding: 0.9rem 1rem;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    text-align: left;
+  }
+  .tooltip.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .tooltip .t-name {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .tooltip .t-role { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+  .tooltip .t-link {
+    display: inline-block;
+    margin-top: 0.55rem;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    color: var(--navy);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--gold);
+    pointer-events: auto;
+  }
+
+  /* scroll cue */
+  .scroll-cue {
+    position: absolute;
+    left: 50%;
+    bottom: 1.5rem;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .scroll-cue .txt {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .scroll-cue .track {
+    width: 1px; height: 42px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    position: relative;
+    overflow: hidden;
+  }
+  .scroll-cue .dot {
+    position: absolute; left: -1.5px; top: 0;
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--gold);
+    animation: cue 2.4s ease-in-out infinite;
+  }
+  @keyframes cue { 0% { top: -6px; opacity: 0; } 30% { opacity: 1; } 100% { top: 42px; opacity: 0; } }
+
+  /* Mobile constellation → vertical list */
+  .constellation-list { display: none; }
+
+  @media (max-width: 920px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 7rem; padding-bottom: 3rem; text-align: left; }
+    .scroll-cue { display: none; }
+  }
+  @media (max-width: 720px) {
+    .constellation-wrap { display: none; }
+    .constellation-list {
+      display: block;
+      width: 100%;
+      max-width: 480px;
+      margin: 2rem 0 0;
+      text-align: left;
+      position: relative; z-index: 3;
+    }
+    .constellation-list .cl-center {
+      border: 1px solid var(--gold);
+      border-top-width: 2px;
+      padding: 1rem 1.1rem;
+      margin-bottom: 1.4rem;
+      background: var(--bone-hi);
+    }
+    .constellation-list .cl-center .nm { font-family: var(--display); font-size: 1.35rem; color: var(--navy); font-weight: 600; }
+    .constellation-list .cl-center .rl { font-size: 0.85rem; color: var(--muted); }
+    .constellation-list ul { list-style: none; }
+    .constellation-list li {
+      border-left: 2px solid var(--accent, var(--gold));
+      padding: 0.6rem 0 0.6rem 0.9rem;
+      margin-bottom: 0.7rem;
+    }
+    .constellation-list li .nm { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); }
+    .constellation-list li .rl { font-size: 0.82rem; color: var(--muted); }
+  }
+
+  /* ============================================================
+     CARDS / GRIDS
+     ============================================================ */
+  /* Wing cards — bordered editorial cards on bone */
+  .grid-wings {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: 1rem;
+  }
+  .wing-card {
+    background: var(--bone);
+    padding: 2rem 1.75rem 2.25rem;
+    position: relative;
+    border-top: 2px solid var(--wing, var(--gold));
+    transition: background 0.3s ease;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+  }
+  .wing-card:hover { background: var(--bone-hi); }
+  .wing-card .wc-num {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--wing, var(--gold));
+  }
+  .wing-card .wc-title {
+    font-family: var(--display);
+    font-size: 1.65rem;
+    font-weight: 600;
+    margin: 0.8rem 0 0.7rem;
+    color: var(--navy);
+  }
+  .wing-card .wc-role { color: var(--muted); font-size: 0.95rem; flex: 1; }
+  .wing-card .wc-link {
+    margin-top: 1.1rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--navy);
+    border-bottom: 1px solid var(--gold);
+    align-self: flex-start;
+    padding-bottom: 2px;
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+  .wing-card .wc-link:hover { color: var(--gold); border-color: var(--gold); }
+  .wing-card .wc-seal { width: 54px; height: 54px; margin-bottom: 0.6rem; opacity: 0.95; }
+
+  /* Entity list (Universe section) — bordered rows */
+  .entities { margin-top: 1rem; border-top: 1px solid var(--line); }
+  .entity-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.5fr);
+    gap: 1.5rem;
+    align-items: baseline;
+    padding: 1.5rem 0 1.5rem 1.1rem;
+    border-bottom: 1px solid var(--line-soft);
+    position: relative;
+  }
+  .entity-row::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 1.4rem; bottom: 1.4rem;
+    width: 2px;
+    background: var(--wing, var(--gold));
+  }
+  .entity-row .e-name {
+    font-family: var(--display);
+    font-size: 1.55rem;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.15;
+  }
+  .entity-row .e-name .e-class {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 0.4rem;
+    font-weight: 500;
+  }
+  .entity-row .e-role { color: var(--muted); font-size: 0.98rem; }
+  @media (max-width: 640px) {
+    .entity-row { grid-template-columns: 1fr; gap: 0.5rem; }
+  }
+
+  /* Streams chips (The Plan) */
+  .streams {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 2rem 0 0;
+  }
+  .streams span {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    padding: 0.6rem 0.95rem;
+  }
+  .streams span .num { color: var(--gold); margin-right: 0.5rem; font-weight: 600; }
+
+  /* Timeline (Roadmap) */
+  .timeline {
+    margin-top: 1.5rem;
+    position: relative;
+    padding-left: 2.4rem;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 6px; top: 6px; bottom: 6px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), var(--gold-line), transparent);
+  }
+  .tl-item { position: relative; padding-bottom: 2.6rem; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item .marker {
+    position: absolute;
+    left: -2.4rem; top: 4px;
+    width: 13px; height: 13px;
+    transform: translateX(-0.5px) rotate(45deg);
+    background: var(--bone);
+    border: 1px solid var(--gold);
+  }
+  .tl-item.lit .marker { background: var(--gold); }
+  .tl-item .tl-year {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .tl-item .tl-phase {
+    font-family: var(--display);
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 0.3rem 0 0.5rem;
+  }
+  .tl-item .tl-body { color: var(--muted); max-width: 60ch; }
+
+  /* Find Your Place cards */
+  .grid-entry {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: 1rem;
+  }
+  .entry-card {
+    background: var(--bone);
+    padding: 2.1rem 1.8rem;
+    transition: background 0.3s ease;
+    position: relative;
+    display: block;
+  }
+  .entry-card:hover { background: var(--bone-hi); }
+  .entry-card .ec-num {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .entry-card .ec-title {
+    font-family: var(--display);
+    font-size: 1.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 0.7rem 0 0.6rem;
+  }
+  .entry-card .ec-body { color: var(--muted); font-size: 0.95rem; }
+  .entry-card .ec-arrow {
+    font-family: var(--mono);
+    color: var(--gold);
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  .entry-card:hover .ec-arrow { transform: translateX(6px); }
+
+  /* ============================================================
+     NAVY FULL-BLEED BAND — Black Banking Initiative
+     ============================================================ */
+  .band-navy {
+    background: var(--navy);
+    color: var(--on-navy);
+    position: relative;
+    isolation: isolate;
+  }
+  .band-navy .opener { border-bottom-color: rgba(201,168,76,0.42); }
+  .band-navy .opener h2 { color: var(--on-navy); }
+  .band-navy .opener h2 em { color: var(--gold-hi); }
+  .band-navy .roman { color: var(--gold-hi); }
+  .band-navy .opener .sub-label { color: var(--on-navy-mut); }
+  .band-navy .lead { color: var(--on-navy); }
+  .band-navy .lead .ornament { color: var(--gold-hi); }
+  .band-navy .dropcap::first-letter { color: var(--gold-hi); }
+  .band-navy .body-copy { color: var(--on-navy-mut); }
+  .band-navy .body-copy strong { color: var(--gold-hi); }
+  .band-navy .pullquote { color: var(--on-navy); border-color: var(--gold-hi); }
+  .band-navy .pullquote::before,
+  .band-navy .pullquote.center { border-color: rgba(201,168,76,0.42); }
+  .band-navy .pullquote::before,
+  .band-navy .pullquote::after { color: var(--gold-hi); }
+  .band-navy .stats { border-color: rgba(201,168,76,0.3); }
+  .band-navy .stat { border-right-color: rgba(201,168,76,0.3); }
+  .band-navy .stat .figure { color: var(--gold-hi); }
+  .band-navy .stat .label { color: var(--on-navy-mut); }
+
+  /* Roadmap backdrop image */
+  .has-backdrop { position: relative; isolation: isolate; overflow: hidden; }
+  .has-backdrop .backdrop {
+    position: absolute; inset: 0; z-index: -2;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.10;
+  }
+  .has-backdrop .backdrop-overlay {
+    position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgba(244,239,228,0.78), rgba(236,228,210,0.92));
+  }
+
+  /* ============================================================
+     FOOTER / COLOPHON — The Record
+     ============================================================ */
+  .colophon {
+    border-top: 1px solid var(--gold-line);
+    background: var(--bone-2);
+    padding: clamp(3.5rem, 9vh, 6rem) 0 3rem;
+  }
+  .colophon .roman { margin-bottom: 1.5rem; display: inline-block; }
+  .colophon h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+  }
+  .colophon .record {
+    color: var(--muted);
+    max-width: 70ch;
+    font-size: 0.98rem;
+    line-height: 1.8;
+  }
+  .colophon .record a { color: var(--navy); border-bottom: 1px solid var(--gold); }
+  .colophon .record a:hover { color: var(--gold); }
+  .colophon .motto {
+    margin-top: 2.5rem;
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.35rem, 3vw, 2.05rem);
+    color: var(--gold);
+    border-top: 1px solid var(--gold-line);
+    padding-top: 2rem;
+  }
+  .colophon .credit {
+    margin-top: 2.5rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  /* ============================================================
+     SCROLL-REVEAL
+     ============================================================ */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(.2,.6,.2,1), transform 0.9s cubic-bezier(.2,.6,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal.d1 { transition-delay: 0.08s; }
+  .reveal.d2 { transition-delay: 0.16s; }
+  .reveal.d3 { transition-delay: 0.24s; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+
+  /* Skip link */
+  .skip {
+    position: absolute; left: -999px; top: 0; z-index: 200;
+    background: var(--navy); color: var(--bone);
+    padding: 0.6rem 1rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em;
+  }
+  .skip:focus { left: 1rem; top: 1rem; }
+</style>
+</head>
+<body>
+
+<a href="#thesis" class="skip">Skip to content</a>
+
+<!-- ============================ NAV ============================ -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <a href="#top" class="brand"><span class="e5">E5</span> Enclave</a>
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+  <div class="nav-links" id="navLinks">
+    <a href="#thesis" data-spy="thesis">I · Thesis</a>
+    <a href="#universe" data-spy="universe">II · Universe</a>
+    <a href="#work" data-spy="work">III · Work</a>
+    <a href="#plan" data-spy="plan">IV · Plan</a>
+    <a href="#roadmap" data-spy="roadmap">V · Roadmap</a>
+    <a href="#place" data-spy="place">VI · Find Your Place</a>
+    <a href="#record" data-spy="record">VII · Record</a>
+  </div>
+</nav>
+
+<!-- ============================ HERO ============================ -->
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <span class="eyebrow">Liberty City · Miami · The Universe</span>
+    <h1 class="wordmark">E5 Enclave <span class="accent">Incorporated</span></h1>
+    <div class="hrule" aria-hidden="true"></div>
+    <p class="tagline">One house. Many wings. <em>Built, not begged.</em></p>
+    <p class="sub">A think tank, a publisher, and a cluster of enterprises rebuilding Black self-determination from Liberty City, Miami.</p>
+
+    <div class="chips" role="navigation" aria-label="Find your entry point">
+      <a href="#place">Donor</a>
+      <a href="#place">Investor</a>
+      <a href="#place">Partner</a>
+      <a href="#place">Volunteer</a>
+      <a href="#place">Community</a>
+      <a href="#place">Official</a>
+    </div>
+
+    <!-- Constellation (mobile fallback list) -->
+    <div class="constellation-list" aria-hidden="false">
+      <div class="cl-center">
+        <div class="nm">E5 Enclave · 501(c)(3)</div>
+        <div class="rl">The soul — mission, the Black Distress Index, education.</div>
+      </div>
+      <ul>
+        <li style="--accent:#0c1c4d;"><div class="nm">BLM Grassroots Miami · (c)(4)</div><div class="rl">The voice — advocacy and lobbying.</div></li>
+        <li style="--accent:#5a6b8c;"><div class="nm">IAMGODIAM · C-corp</div><div class="rl">The engine — AI-native services.</div></li>
+        <li style="--accent:#a9843f;"><div class="nm">Panacea · Benefit Corp</div><div class="rl">The hands — elder relief tech; 20% pledged to E5.</div></li>
+        <li style="--accent:#2e6b3e;"><div class="nm">AgriMesh · Florida</div><div class="rl">The field — edge-AI for small farms.</div></li>
+        <li style="--accent:#a4694a;"><div class="nm">The Cooperative</div><div class="rl">The commons — community &amp; worker ownership.</div></li>
+        <li style="--accent:#6b5a3e;"><div class="nm">Community Land Trust</div><div class="rl">The ground — land held in trust.</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Constellation plate (desktop) — Fig. I, recolored to gold linework on bone -->
+  <div class="constellation-wrap plate" id="constellationWrap">
+    <span class="cap">Fig. I — The House &amp; Its Wings</span>
+    <svg class="constellation" viewBox="0 0 1000 1000" role="img" aria-label="The E5 Universe constellation map: E5 Enclave at center, six entities on an inner orbit, six wings on an outer ring, connected by fine gold Lattice lines.">
+      <!-- Orbit rings -->
+      <circle class="orbit-ring" cx="500" cy="500" r="180"></circle>
+      <circle class="orbit-ring" cx="500" cy="500" r="380"></circle>
+
+      <!-- Lattice lines: center -> entities -->
+      <g id="lattice-inner">
+        <line class="lattice-line" x1="500" y1="500" x2="500" y2="320"></line>
+        <line class="lattice-line" x1="500" y1="500" x2="656" y2="410"></line>
+        <line class="lattice-line" x1="500" y1="500" x2="656" y2="590"></line>
+        <line class="lattice-line" x1="500" y1="500" x2="500" y2="680"></line>
+        <line class="lattice-line" x1="500" y1="500" x2="344" y2="590"></line>
+        <line class="lattice-line" x1="500" y1="500" x2="344" y2="410"></line>
+      </g>
+      <!-- Lattice lines: entities -> related wings (outer) -->
+      <g id="lattice-outer">
+        <line class="lattice-line outer" x1="500" y1="320" x2="500" y2="120"></line>
+        <line class="lattice-line outer" x1="656" y1="410" x2="829" y2="310"></line>
+        <line class="lattice-line outer" x1="656" y1="590" x2="829" y2="690"></line>
+        <line class="lattice-line outer" x1="500" y1="680" x2="500" y2="880"></line>
+        <line class="lattice-line outer" x1="344" y1="590" x2="171" y2="690"></line>
+        <line class="lattice-line outer" x1="344" y1="410" x2="171" y2="310"></line>
+      </g>
+
+      <!-- CENTER NODE -->
+      <g class="node-group center-node" tabindex="0"
+         data-name="E5 Enclave Inc — 501(c)(3)"
+         data-role="The soul — mission, the Black Distress Index, education.">
+        <circle class="glow" cx="500" cy="500" r="42" fill="none" stroke="#a9843f" stroke-width="1"></circle>
+        <circle class="node-core" cx="500" cy="500" r="20" fill="#0c1c4d"></circle>
+        <circle cx="500" cy="500" r="8" fill="#c9a84c"></circle>
+        <text class="node-label" x="500" y="546" text-anchor="middle">E5 Enclave · 501(c)(3)</text>
+      </g>
+
+      <!-- INNER ORBIT — ENTITIES -->
+      <g class="node-group" tabindex="0"
+         data-name="BLM Grassroots Miami — 501(c)(4)"
+         data-role="The voice — advocacy and lobbying."
+         data-link="https://blmmiami.com" data-color="#0c1c4d">
+        <circle class="glow g2" cx="500" cy="320" r="22" fill="none" stroke="#a9843f" stroke-width="0.8"></circle>
+        <circle class="node-core" cx="500" cy="320" r="12" fill="#0c1c4d"></circle>
+        <text class="node-label" x="500" y="292" text-anchor="middle">BLM Miami · (c)(4)</text>
+      </g>
+
+      <g class="node-group" tabindex="0"
+         data-name="IAMGODIAM, Inc. — Delaware C-corp"
+         data-role="The engine — AI-native services."
+         data-link="https://e5enclave.com" data-color="#0c1c4d">
+        <circle class="glow g3" cx="656" cy="410" r="22" fill="none" stroke="#a9843f" stroke-width="0.8"></circle>
+        <circle class="node-core" cx="656" cy="410" r="12" fill="#0c1c4d"></circle>
+        <text class="node-label" x="656" y="382" text-anchor="middle">IAMGODIAM · C-corp</text>
+      </g>
+
+      <g class="node-group" tabindex="0"
+         data-name="Panacea — Florida Benefit Corp"
+         data-role="The hands — elder relief tech; 20% pledged to E5."
+         data-color="#0c1c4d">
+        <circle class="glow" cx="656" cy="590" r="22" fill="none" stroke="#a9843f" stroke-width="0.8"></circle>
+        <circle class="node-core" cx="656" cy="590" r="12" fill="#0c1c4d"></circle>
+        <text class="node-label" x="656" y="628" text-anchor="middle">Panacea · B-Corp</text>
+      </g>
+
+      <g class="node-group" tabindex="0"
+         data-name="AgriMesh, Inc. — Florida"
+         data-role="The field — edge-AI for small farms."
+         data-link="https://farmblock.vip" data-color="#0c1c4d">
+        <circle class="glow g2" cx="500" cy="680" r="22" fill="none" stroke="#a9843f" stroke-width="0.8"></circle>
+        <circle class="node-core" cx="500" cy="680" r="12" fill="#0c1c4d"></circle>
+        <text class="node-label" x="500" y="718" text-anchor="middle">AgriMesh · FL</text>
+      </g>
+
+      <g class="node-group" tabindex="0"
+         data-name="The Cooperative"
+         data-role="The commons — community &amp; worker ownership."
+         data-color="#0c1c4d">
+        <circle class="glow g3" cx="344" cy="590" r="22" fill="none" stroke="#a9843f" stroke-width="0.8"></circle>
+        <circle class="node-core" cx="344" cy="590" r="12" fill="#0c1c4d"></circle>
+        <text class="node-label" x="344" y="628" text-anchor="middle">The Cooperative</text>
+      </g>
+
+      <g class="node-group" tabindex="0"
+         data-name="The Community Land Trust"
+         data-role="The ground — land held in trust."
+         data-color="#0c1c4d">
+        <circle class="glow" cx="344" cy="410" r="22" fill="none" stroke="#a9843f" stroke-width="0.8"></circle>
+        <circle class="node-core" cx="344" cy="410" r="12" fill="#0c1c4d"></circle>
+        <text class="node-label" x="344" y="382" text-anchor="middle">Land Trust</text>
+      </g>
+
+      <!-- OUTER RING — WINGS / PROGRAMS -->
+      <g class="node-group" tabindex="0"
+         data-name="Black Distress Index"
+         data-role="The eight-pillar, CC0, dual-source-verified record." data-color="#a9843f">
+        <circle class="node-core" cx="500" cy="120" r="7" fill="#a9843f"></circle>
+        <text class="node-label" x="500" y="98" text-anchor="middle">Black Distress Index</text>
+      </g>
+      <g class="node-group" tabindex="0"
+         data-name="McCartney Academy"
+         data-role="A school and a business center for Liberty City." data-color="#a9843f">
+        <circle class="node-core" cx="829" cy="310" r="7" fill="#a9843f"></circle>
+        <text class="node-label" x="829" y="288" text-anchor="middle">McCartney Academy</text>
+      </g>
+      <g class="node-group" tabindex="0"
+         data-name="FarmBlock"
+         data-role="Food sovereignty and farm AI."
+         data-link="https://farmblock.vip" data-color="#a9843f">
+        <circle class="node-core" cx="829" cy="690" r="7" fill="#a9843f"></circle>
+        <text class="node-label" x="829" y="668" text-anchor="middle">FarmBlock</text>
+      </g>
+      <g class="node-group" tabindex="0"
+         data-name="Elder Relief"
+         data-role="Non-invasive relief technology for elders." data-color="#a9843f">
+        <circle class="node-core" cx="500" cy="880" r="7" fill="#a9843f"></circle>
+        <text class="node-label" x="500" y="902" text-anchor="middle">Elder Relief</text>
+      </g>
+      <g class="node-group" tabindex="0"
+         data-name="Free Karmelo"
+         data-role="The justice-support vertical."
+         data-link="https://freekarmelo.net" data-color="#a9843f">
+        <circle class="node-core" cx="171" cy="690" r="7" fill="#a9843f"></circle>
+        <text class="node-label" x="171" y="668" text-anchor="middle">Free Karmelo</text>
+      </g>
+      <g class="node-group" tabindex="0"
+         data-name="Reparations Framework"
+         data-role="Public education on the documented obligation." data-color="#a9843f">
+        <circle class="node-core" cx="171" cy="310" r="7" fill="#a9843f"></circle>
+        <text class="node-label" x="171" y="288" text-anchor="middle">Reparations</text>
+      </g>
+    </svg>
+
+    <div class="tooltip" id="tooltip" role="status" aria-live="polite">
+      <div class="t-name"></div>
+      <div class="t-role"></div>
+      <a class="t-link" target="_blank" rel="noopener noreferrer" style="display:none;">Visit ↗</a>
+    </div>
+  </div>
+
+  <div class="scroll-cue">
+    <span class="txt">Enter</span>
+    <div class="track"><span class="dot"></span></div>
+  </div>
+</header>
+
+<!-- ============================ I. THE THESIS ============================ -->
+<section class="section-pad" id="thesis">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">I</span>
+      <h2>The <em>Thesis</em></h2>
+      <span class="sub-label">§ Why We Build</span>
+    </div>
+
+    <p class="lead dropcap reveal d1">We close the gap between the empirical record of structural harm to Black Americans and the institutions, technologies, and communities able to address it. We do not wait for permission — we build.</p>
+
+    <p class="body-copy reveal d2" style="margin-top:1.6rem;">As the federal record is withdrawn (the EJScreen tool pulled; ~781 environmental-justice grants ended), a sovereign, openly-licensed alternative is an emergency public good. We built one — and a cluster of enterprises to fund the mission rather than beg for it.</p>
+
+    <div class="stats reveal d2">
+      <div class="stat">
+        <div class="figure" data-count="8">8</div>
+        <div class="label">Pillars of harm, measured</div>
+      </div>
+      <div class="stat">
+        <div class="figure" data-count="1574">1,574</div>
+        <div class="label">Verified data points</div>
+      </div>
+      <div class="stat">
+        <div class="figure" data-count="1">1</div>
+        <div class="label">House, many wings</div>
+      </div>
+    </div>
+
+    <blockquote class="pullquote reveal">We don't ask for a seat at the table. We build the table.</blockquote>
+  </div>
+</section>
+
+<hr class="hair" />
+
+<!-- ============================ II. THE UNIVERSE ============================ -->
+<section class="section-pad band-alt" id="universe">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">II</span>
+      <h2>The <em>Universe</em></h2>
+      <span class="sub-label">¶ One Cluster</span>
+    </div>
+
+    <p class="lead reveal d1">E5 Enclave Inc <span class="ornament">(501(c)(3))</span> sits at the center — the soul. Around it, separate by law and united by mission:</p>
+
+    <div class="entities reveal d2">
+      <div class="entity-row" style="--wing:var(--gold-hi);">
+        <div class="e-name">E5 Enclave Inc<span class="e-class">501(c)(3)</span></div>
+        <div class="e-role">The soul — mission, the Black Distress Index, education.</div>
+      </div>
+      <div class="entity-row" style="--wing:var(--navy);">
+        <div class="e-name">BLM Grassroots Miami<span class="e-class">501(c)(4)</span></div>
+        <div class="e-role">The voice — advocacy and lobbying.</div>
+      </div>
+      <div class="entity-row" style="--wing:#5a6b8c;">
+        <div class="e-name">IAMGODIAM, Inc.<span class="e-class">Delaware C-corp</span></div>
+        <div class="e-role">The engine — AI-native services.</div>
+      </div>
+      <div class="entity-row" style="--wing:var(--gold);">
+        <div class="e-name">Panacea<span class="e-class">Florida Benefit Corp</span></div>
+        <div class="e-role">The hands — elder relief tech; 20% pledged to E5.</div>
+      </div>
+      <div class="entity-row" style="--wing:#2e6b3e;">
+        <div class="e-name">AgriMesh, Inc.<span class="e-class">Florida</span></div>
+        <div class="e-role">The field — edge-AI for small farms.</div>
+      </div>
+      <div class="entity-row" style="--wing:#a4694a;">
+        <div class="e-name">The Cooperative<span class="e-class">Member-owned</span></div>
+        <div class="e-role">The commons — community &amp; worker ownership.</div>
+      </div>
+      <div class="entity-row" style="--wing:#6b5a3e;">
+        <div class="e-name">The Community Land Trust<span class="e-class">Held in trust</span></div>
+        <div class="e-role">The ground — land held in trust.</div>
+      </div>
+    </div>
+
+    <p class="body-copy reveal d2" style="margin-top:2rem;">Bound by the Lattice — the signed-event mesh that lets them act as one.</p>
+
+    <div class="stats reveal d2">
+      <div class="stat">
+        <div class="figure" data-count="7">7</div>
+        <div class="label">Entities, one mission</div>
+      </div>
+      <div class="stat">
+        <div class="figure" data-count="20" data-suffix="%">20%</div>
+        <div class="label">Of income pledged to the mission</div>
+      </div>
+    </div>
+
+    <blockquote class="pullquote center reveal">Separate by law. United by mission. Connected by the Lattice.</blockquote>
+  </div>
+</section>
+
+<hr class="hair" />
+
+<!-- ============================ III. THE WORK ============================ -->
+<section class="section-pad" id="work">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">III</span>
+      <h2>The <em>Work</em></h2>
+      <span class="sub-label">§ The Wings</span>
+    </div>
+
+    <p class="lead reveal d1">Seven wings. One table. Each a working answer to a documented harm.</p>
+
+    <div class="grid-wings reveal d2">
+      <div class="wing-card" style="--wing:var(--gold-hi);">
+        <span class="wc-num">/ 01</span>
+        <h3 class="wc-title">Black Distress Index</h3>
+        <p class="wc-role">The eight-pillar, CC0, dual-source-verified record.</p>
+      </div>
+
+      <div class="wing-card" style="--wing:var(--gold);">
+        <span class="wc-num">/ 02</span>
+        <h3 class="wc-title">McCartney Academy</h3>
+        <p class="wc-role">A school and a business center for Liberty City.</p>
+        <a class="wc-link" href="/academy/">Enter the Academy →</a>
+      </div>
+
+      <div class="wing-card" style="--wing:#2e6b3e;">
+        <span class="wc-num">/ 03</span>
+        <h3 class="wc-title">FarmBlock / AgriMesh</h3>
+        <p class="wc-role">Food sovereignty and farm AI.</p>
+        <a class="wc-link" href="https://farmblock.vip" target="_blank" rel="noopener noreferrer">farmblock.vip ↗</a>
+      </div>
+
+      <div class="wing-card" style="--wing:var(--gold);">
+        <span class="wc-num">/ 04</span>
+        <h3 class="wc-title">Elder Relief / Panacea</h3>
+        <p class="wc-role">Non-invasive relief technology for elders.</p>
+      </div>
+
+      <div class="wing-card" style="--wing:#9b59b6;">
+        <span class="wc-num">/ 05</span>
+        <h3 class="wc-title">Free Karmelo / Justice</h3>
+        <p class="wc-role">The justice-support vertical.</p>
+        <a class="wc-link" href="https://freekarmelo.net" target="_blank" rel="noopener noreferrer">freekarmelo.net ↗</a>
+      </div>
+
+      <div class="wing-card" style="--wing:var(--navy);">
+        <img class="wc-seal" src="https://pub.hyperagent.com/api/published/pbf01KW46MCX4_WKCXGMHWFJSJDTK5/cmqw4pm8l04ef07ado2etnvm2_FB20C49E-C191-4CE9-A53F-8CAF0A6E61F3.png" alt="BLM Grassroots Miami official seal — a navy and gold circular emblem." loading="lazy" onerror="this.style.display='none'" />
+        <span class="wc-num">/ 06</span>
+        <h3 class="wc-title">BLM Grassroots Miami</h3>
+        <p class="wc-role">The advocacy arm.</p>
+        <a class="wc-link" href="https://blmmiami.com" target="_blank" rel="noopener noreferrer">blmmiami.com ↗</a>
+      </div>
+
+      <div class="wing-card" style="--wing:var(--gold-hi);">
+        <span class="wc-num">/ 07</span>
+        <h3 class="wc-title">Reparations Framework</h3>
+        <p class="wc-role">Public education on the documented obligation.</p>
+      </div>
+    </div>
+
+    <div class="stats reveal d2">
+      <div class="stat">
+        <div class="figure" data-count="7">7</div>
+        <div class="label">Wings, one table</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= THE BLACK BANKING INITIATIVE (navy full-bleed band) ======================= -->
+<section class="section-pad band-navy" id="banking">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">✦</span>
+      <h2>The <em>Black Banking</em> Initiative</h2>
+      <span class="sub-label">§ Where the Movement Banks</span>
+    </div>
+
+    <p class="lead dropcap reveal d1">Where a people banks is itself a statement. E5 is moving its capital — and inviting the community’s — into Black-owned institutions, and building toward finance the community owns.</p>
+
+    <p class="body-copy reveal d2" style="margin-top:1.6rem;">Three moves, in sequence. <strong>First</strong>, bank Black — place operating and reserve funds with Black-owned banks. <strong>Second</strong>, open partnerships across the nation’s Black-owned banks and community development financial institutions for deposits, community lending, and capital. <strong>Third</strong>, build toward a <strong>lineage-led community development credit union</strong> — member-owned, one member, one vote — serving Liberty City and Overtown.</p>
+
+    <p class="body-copy reveal d2">The field we are engaging includes OneUnited Bank, City First / Broadway, Liberty Bank &amp; Trust, Carver, Industrial, Citizens Trust, and The Harbor Bank of Maryland — the Black-owned banks and CDFIs that have carried community capital for generations. These are relationships we are opening, not endorsements claimed.</p>
+
+    <blockquote class="pullquote center reveal">Banking Black is itself the statement.</blockquote>
+
+    <div class="stats reveal d2">
+      <div class="stat"><div class="figure">Bank</div><div class="label">move capital into Black-owned institutions</div></div>
+      <div class="stat"><div class="figure">Partner</div><div class="label">the nation’s Black-owned banks &amp; CDFIs</div></div>
+      <div class="stat"><div class="figure">Build</div><div class="label">toward a member-owned community credit union</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="hair" />
+
+<!-- ============================ IV. THE PLAN ============================ -->
+<section class="section-pad" id="plan">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">IV</span>
+      <h2>The <em>Plan</em></h2>
+      <span class="sub-label">¶ The Sovereignty Layer</span>
+    </div>
+
+    <p class="lead dropcap reveal d1">A diversified think tank with an earned-revenue sovereignty layer — products, SaaS, and services — that funds the mission instead of depending on grants alone.</p>
+
+    <p class="body-copy reveal d2" style="margin-top:1.6rem;">Six streams: federal grants, national foundations, tech/AI funders, reparations and racial-justice funders, individual giving, and earned revenue.</p>
+
+    <div class="streams reveal d2">
+      <span><span class="num">01</span>Federal grants</span>
+      <span><span class="num">02</span>National foundations</span>
+      <span><span class="num">03</span>Tech / AI funders</span>
+      <span><span class="num">04</span>Reparations &amp; racial-justice funders</span>
+      <span><span class="num">05</span>Individual giving</span>
+      <span><span class="num">06</span>Earned revenue</span>
+    </div>
+
+    <div class="stats reveal d2">
+      <div class="stat">
+        <span class="tag">Target</span>
+        <div class="figure" data-count="385" data-prefix="$" data-suffix="K">$385K</div>
+        <div class="label">Year 1 target · 2026</div>
+      </div>
+      <div class="stat">
+        <span class="tag">Target</span>
+        <div class="figure" data-count="1.25" data-prefix="$" data-suffix="M" data-decimals="2">$1.25M</div>
+        <div class="label">Year 2 target · 2027</div>
+      </div>
+      <div class="stat">
+        <span class="tag">Target</span>
+        <div class="figure" data-count="2.8" data-prefix="$" data-suffix="M" data-decimals="1">$2.8M</div>
+        <div class="label">Year 3 target · 2028</div>
+      </div>
+    </div>
+    <p class="reveal d2" style="margin-top:2.5rem;text-align:center;"><a href="/plan/" style="font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#0c1c4d;text-decoration:none;border:1px solid #0c1c4d;padding:14px 30px;display:inline-block;">Read the full business plan →</a></p>
+  </div>
+</section>
+
+<hr class="hair" />
+
+<!-- ============================ V. THE ROADMAP ============================ -->
+<section class="section-pad band-alt has-backdrop" id="roadmap">
+  <div class="backdrop" style="background-image:url('https://pub.hyperagent.com/api/published/pbf01KW46RR9G_MYRVW33MKAAZ7RZ6/cmqw4rini04j907adgfqtlo0s_aee4ec6c-2975-4aa1-9197-c38266866505.png.jpeg');" role="img" aria-label="Atmospheric gold rose and moon texture used as a faint backdrop."></div>
+  <div class="backdrop-overlay" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">V</span>
+      <h2>The <em>Roadmap</em></h2>
+      <span class="sub-label">§ FY2026–2029</span>
+    </div>
+
+    <div class="timeline reveal d1">
+      <div class="tl-item lit">
+        <span class="marker" aria-hidden="true"></span>
+        <div class="tl-year">2026 · Foundation</div>
+        <div class="tl-phase">Foundation</div>
+        <p class="tl-body">Entities formed (counsel-gated); McCartney Academy facility pursuit under Schools of Hope; Elder-Relief launch; AgriMesh NSF SBIR; board expands to seven.</p>
+      </div>
+      <div class="tl-item">
+        <span class="marker" aria-hidden="true"></span>
+        <div class="tl-year">2027 · Proof</div>
+        <div class="tl-phase">Proof</div>
+        <p class="tl-body">Verticals scaling; the cooperative stood up; the $1.25M target.</p>
+      </div>
+      <div class="tl-item">
+        <span class="marker" aria-hidden="true"></span>
+        <div class="tl-year">2028 · Ecosystem</div>
+        <div class="tl-phase">Ecosystem</div>
+        <p class="tl-body">The cluster operating as one; the Lotus Gate Forum; the $2.8M target.</p>
+      </div>
+      <div class="tl-item">
+        <span class="marker" aria-hidden="true"></span>
+        <div class="tl-year">2029 · Sovereignty</div>
+        <div class="tl-phase">Sovereignty</div>
+        <p class="tl-body">A self-sustaining cluster, and a model transferable to other communities.</p>
+      </div>
+    </div>
+
+    <div class="stats reveal d2">
+      <div class="stat">
+        <div class="figure" data-count="4">4</div>
+        <div class="label">Years, one arc</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hair" />
+
+<!-- ============================ VI. FIND YOUR PLACE ============================ -->
+<section class="section-pad" id="place">
+  <div class="wrap">
+    <div class="opener reveal">
+      <span class="roman">VI</span>
+      <h2>Find Your <em>Place</em></h2>
+      <span class="sub-label">¶ Six Doors, One House</span>
+    </div>
+
+    <div class="grid-entry reveal d1">
+      <div class="entry-card">
+        <span class="ec-num">— Donor</span>
+        <h3 class="ec-title">Donor</h3>
+        <p class="ec-body">Fund the work; every gift compounds across the house.</p>
+        <span class="ec-arrow">→</span>
+      </div>
+      <div class="entry-card">
+        <span class="ec-num">— Investor</span>
+        <h3 class="ec-title">Investor</h3>
+        <p class="ec-body">Back the enterprises that fund the mission.</p>
+        <span class="ec-arrow">→</span>
+      </div>
+      <div class="entry-card">
+        <span class="ec-num">— Partner / Funder</span>
+        <h3 class="ec-title">Partner / Funder</h3>
+        <p class="ec-body">Institutional collaboration and CC0 data partnership.</p>
+        <span class="ec-arrow">→</span>
+      </div>
+      <div class="entry-card">
+        <span class="ec-num">— Volunteer</span>
+        <h3 class="ec-title">Volunteer</h3>
+        <p class="ec-body">Teachers, doulas, builders, organizers: lend your hands.</p>
+        <span class="ec-arrow">→</span>
+      </div>
+      <div class="entry-card">
+        <span class="ec-num">— Community</span>
+        <h3 class="ec-title">Community</h3>
+        <p class="ec-body">This is your house. Wear it. Build it. Hold it.</p>
+        <span class="ec-arrow">→</span>
+      </div>
+      <div class="entry-card">
+        <span class="ec-num">— Official</span>
+        <h3 class="ec-title">Official</h3>
+        <p class="ec-body">Policy, facilities, and partnership in Liberty City and beyond.</p>
+        <span class="ec-arrow">→</span>
+      </div>
+    </div>
+
+    <blockquote class="pullquote center reveal">We are not asking you to buy in. We are inviting you to belong.</blockquote>
+  </div>
+</section>
+
+<!-- ============================ VII. THE RECORD ============================ -->
+<footer class="colophon" id="record">
+  <div class="wrap">
+    <span class="roman">VII</span>
+    <h2 class="reveal">The Record</h2>
+    <p class="record reveal d1">E5 Enclave Incorporated — a Florida 501(c)(3) public charity (EIN 99-3822441; §509(a)(2)), Liberty City, Miami. <a href="https://e5enclave.com" target="_blank" rel="noopener noreferrer">e5enclave.com</a>. Kept honestly: figures are verified or marked as targets; the enterprise entities are in formation, pending Florida counsel. The mission is the constant; the structure serves it.</p>
+
+    <p class="credit reveal d2" style="font-size:0.66rem; opacity:0.8; max-width:74ch; margin-left:auto; margin-right:auto; line-height:1.6;">A COPY OF THE OFFICIAL REGISTRATION AND FINANCIAL INFORMATION MAY BE OBTAINED FROM THE DIVISION OF CONSUMER SERVICES BY CALLING TOLL-FREE, WITHIN THE STATE, 1-800-HELP-FLA (435-7352), OR AT www.FDACS.gov. REGISTRATION DOES NOT IMPLY ENDORSEMENT, APPROVAL, OR RECOMMENDATION BY THE STATE.</p>
+
+    <p class="motto reveal d1">Nil satis nisi optimum — nothing but the best is good enough.</p>
+
+    <p class="credit reveal d2">E5 Enclave Incorporated · One house. Many wings. Built, not begged.</p>
+  </div>
+</footer>
+
+<!-- ============================ SCRIPTS ============================ -->
+<script>
+(function () {
+  'use strict';
+
+  var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- NAV: scrolled state + mobile toggle ---------- */
+  var nav = document.getElementById('nav');
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+
+  function onScroll() {
+    if (window.scrollY > 40) { nav.classList.add('scrolled'); }
+    else { nav.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', function () {
+      var open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  /* ---------- SCROLL-REVEAL ---------- */
+  var reveals = document.querySelectorAll('.reveal');
+  if (prefersReduced || !('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var revObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add('in');
+          revObs.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (el) { revObs.observe(el); });
+  }
+
+  /* ---------- STAT COUNTERS ---------- */
+  function animateCount(el) {
+    var target = parseFloat(el.getAttribute('data-count'));
+    var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    if (isNaN(target)) { return; }
+    if (prefersReduced) {
+      el.textContent = prefix + formatNum(target, decimals) + suffix;
+      return;
+    }
+    var dur = 1500;
+    var start = null;
+    function fmtStep(val) { return prefix + formatNum(val, decimals) + suffix; }
+    function step(ts) {
+      if (start === null) { start = ts; }
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmtStep(target * eased);
+      if (p < 1) { requestAnimationFrame(step); }
+      else { el.textContent = fmtStep(target); }
+    }
+    requestAnimationFrame(step);
+  }
+  function formatNum(val, decimals) {
+    if (decimals > 0) { return val.toFixed(decimals); }
+    return Math.round(val).toLocaleString('en-US');
+  }
+
+  var counters = document.querySelectorAll('.figure[data-count]');
+  if (prefersReduced || !('IntersectionObserver' in window)) {
+    counters.forEach(animateCount);
+  } else {
+    var cObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          animateCount(en.target);
+          cObs.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(function (el) { cObs.observe(el); });
+  }
+
+  /* ---------- SCROLL-SPY NAV ---------- */
+  var spyLinks = document.querySelectorAll('.nav-links a[data-spy]');
+  var sections = [];
+  spyLinks.forEach(function (a) {
+    var id = a.getAttribute('data-spy');
+    var sec = document.getElementById(id);
+    if (sec) { sections.push({ id: id, el: sec, link: a }); }
+  });
+
+  if ('IntersectionObserver' in window && sections.length) {
+    var spyObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          spyLinks.forEach(function (l) { l.classList.remove('active'); });
+          var match = sections.filter(function (s) { return s.el === en.target; })[0];
+          if (match) { match.link.classList.add('active'); }
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { spyObs.observe(s.el); });
+  }
+
+  /* ---------- CONSTELLATION TOOLTIPS ---------- */
+  var wrap = document.getElementById('constellationWrap');
+  var tooltip = document.getElementById('tooltip');
+  if (wrap && tooltip) {
+    var tName = tooltip.querySelector('.t-name');
+    var tRole = tooltip.querySelector('.t-role');
+    var tLink = tooltip.querySelector('.t-link');
+    var nodes = wrap.querySelectorAll('.node-group');
+
+    function showTip(node) {
+      var name = node.getAttribute('data-name') || '';
+      var role = node.getAttribute('data-role') || '';
+      var link = node.getAttribute('data-link');
+      var color = node.getAttribute('data-color') || 'var(--gold)';
+      tName.textContent = name;
+      tRole.innerHTML = role;
+      tooltip.style.borderTopColor = color;
+      if (link) {
+        tLink.href = link;
+        tLink.style.display = 'inline-block';
+        var host = link.replace(/^https?:\/\//, '').replace(/\/$/, '');
+        tLink.textContent = host + ' ↗';
+      } else {
+        tLink.style.display = 'none';
+      }
+      // position near node center within wrap
+      var core = node.querySelector('.node-core');
+      var wrapRect = wrap.getBoundingClientRect();
+      var nodeRect = core.getBoundingClientRect();
+      var x = nodeRect.left - wrapRect.left + nodeRect.width / 2;
+      var y = nodeRect.top - wrapRect.top + nodeRect.height / 2;
+      tooltip.classList.add('show');
+      var tipW = tooltip.offsetWidth;
+      var tipH = tooltip.offsetHeight;
+      var left = x - tipW / 2;
+      var top = y - tipH - 18;
+      if (top < 0) { top = y + 22; }
+      if (left < 4) { left = 4; }
+      if (left + tipW > wrapRect.width - 4) { left = wrapRect.width - tipW - 4; }
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+    }
+    function hideTip() { tooltip.classList.remove('show'); }
+
+    nodes.forEach(function (node) {
+      node.addEventListener('mouseenter', function () { showTip(node); });
+      node.addEventListener('focus', function () { showTip(node); });
+      node.addEventListener('mouseleave', hideTip);
+      node.addEventListener('blur', hideTip);
+      // mobile tap
+      node.addEventListener('click', function (e) {
+        if (tooltip.classList.contains('show') && tName.textContent === node.getAttribute('data-name')) {
+          hideTip();
+        } else {
+          showTip(node);
+        }
+      });
+      node.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          var link = node.getAttribute('data-link');
+          if (link) { window.open(link, '_blank', 'noopener,noreferrer'); }
+        }
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!wrap.contains(e.target)) { hideTip(); }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
