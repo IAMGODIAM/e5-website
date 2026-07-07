@@ -1,15 +1,15 @@
 <!doctype html>
 <!-- E5 Enclave · Editorial homepage · v2.0 · with palette toggle, three-date hierarchy, counter band, Coalition Covenant -->
 <html lang="en">
-<head><script>window.__E5_VARIANT="beta";</script><link rel="stylesheet" href="/variant.css"><script defer src="/variant.js"></script>
+<head><script>document.documentElement.classList.add('js');</script><script>window.__E5_VARIANT="beta";</script><link rel="stylesheet" href="/variant.css"><script defer src="/variant.js"></script>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Congressional Engagement — Reparations Infrastructure | E5 Enclave</title>
-<meta name="description" content="E5 Enclave's framework for congressional partnership on reparations delivery — the implementation infrastructure between the moral resolution and the remedy. Dossiers on Rep. Summer Lee and Rep. Ayanna Pressley."/>
+<title>Congressional Engagement — E5 Enclave</title>
+<meta name="description" content="The E5 congressional engagement record: reparations infrastructure briefings, H.R. 40 and H.Res. 414 analysis, and member dossiers."/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="E5 Enclave"/>
 <meta property="og:title" content="E5 Enclave — A Lineage-led Think Tank"/>
-<meta property="og:description" content="A lineage-led think tank comprised of a Coalition of the Willing. Founded 2 June 2024 in Liberty City. Public Announcement Juneteenth · MMXXVI. Eden Launch 17 February · MMXXVII."/>
+<meta property="og:description" content="The E5 congressional engagement record: reparations infrastructure briefings, H.R. 40 and H.Res. 414 analysis, and member dossiers."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:image" content="https://e5enclave.com/assets/og.png"/>
 <meta property="og:image:width" content="1200"/>
@@ -464,7 +464,7 @@
     color: var(--vc-gold-text); line-height: 1; letter-spacing: 0; }
   .vc-value-row .name { font-family: var(--vc-display); font-size: 30px; line-height: 1.05;
     color: var(--vc-ink); letter-spacing: -0.005em; }
-  .vc-value-row .body { font-family: var(--vc-text); font-size: 14px; line-height: 1.65;
+  .vc-value-row .body { font-family: var(--vc-text); font-size: 16px; line-height: 1.65;
     color: var(--vc-ink-3); max-width: 60ch; }
 
   /* ===== PILLARS ===== */
@@ -620,7 +620,7 @@
   .vc-contrib-col { padding: 28px 24px; border-right: 1px solid var(--vc-rule-2);
     display: flex; flex-direction: column; gap: 10px; }
   .vc-contrib-col:last-child { border-right: 0; }
-  .vc-contrib-col h4 { font-size: 9.5px; letter-spacing: 0.42em; text-transform: uppercase;
+  .vc-contrib-col h3 { font-size: 9.5px; letter-spacing: 0.42em; text-transform: uppercase;
     color: var(--vc-oxblood); margin: 0 0 10px; font-weight: 600;
     padding-bottom: 8px; border-bottom: 1px solid var(--vc-rule-2); }
   .vc-contrib-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
@@ -708,7 +708,7 @@
   .vc-foot-grid .colophon strong { font-style: normal; font-family: var(--vc-text); font-size: 9.5px;
     letter-spacing: 0.42em; text-transform: uppercase; color: var(--vc-oxblood); font-weight: 600;
     display: block; margin-bottom: 12px; }
-  .vc-foot-grid h4 { font-size: 9.5px; letter-spacing: 0.42em; text-transform: uppercase;
+  .vc-foot-grid h3 { font-size: 9.5px; letter-spacing: 0.42em; text-transform: uppercase;
     color: var(--vc-oxblood); margin: 0 0 14px; font-weight: 600; }
   .vc-foot-grid ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
   .vc-foot-grid a { color: var(--vc-ink); font-size: 16px; font-family: var(--vc-display); font-style: italic; letter-spacing: 0.005em; transition: color .2s ease; }
@@ -814,7 +814,7 @@
     section { page-break-inside: avoid; }
     a { color: #000 !important; text-decoration: underline; }
   }
-  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  html.js .reveal:not(.in) { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
   .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
@@ -875,7 +875,10 @@
     .vc-foot-grid { grid-template-columns: 1fr; }
     .vc-foot-fine { flex-direction: column; align-items: center; text-align: center; }
   }
+
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid #6d1f20;outline-offset:2px}
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Congressional Engagement","url":"https://e5enclave.com/record/congressional-engagement/","author":{"@type":"Organization","name":"E5 Enclave Incorporated"},"publisher":{"@type":"Organization","name":"E5 Enclave Incorporated"}}</script>
 </head>
 <body>
 <nav class="vc-nav">
@@ -1119,7 +1122,7 @@
   display: block;
   font-style: italic;
 }
-.cong-pillar h4 {
+.cong-pillar h3 {
   font-family: var(--vc-text);
   font-size: 0.72rem;
   letter-spacing: 0.12em;
@@ -1479,7 +1482,7 @@
       <em>Measure the Wound</em> — E5 Enclave's CC0-licensed empirical record of Black American structural conditions — assembles 1,574 verified data points across eight pillars from 1991 to 2024. Every claim is dual-sourced against federal agency or peer-reviewed data. It is not an advocacy document. It is the evidentiary foundation against which every E5 program is designed and every congressional partnership is proposed.
     </p>
     <p>
-      <a href="/dispatches/measure-the-wound/" style="font-family: var(--vc-text); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vc-oxblood); text-decoration: none; border-bottom: 1px solid currentColor;">Read the full record → <em>Measure the Wound</em></a>
+      <a href="/record/measure-the-wound/" style="font-family: var(--vc-text); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vc-oxblood); text-decoration: none; border-bottom: 1px solid currentColor;">Read the full record → <em>Measure the Wound</em></a>
     </p>
   </section>
 
@@ -1520,22 +1523,22 @@
     <div class="cong-pillars">
       <div class="cong-pillar">
         <span class="cong-pillar-num">I</span>
-        <h4>Housing Wealth Restoration</h4>
+        <h3>Housing Wealth Restoration</h3>
         <p>Appraisal bias auditing, automated valuation model (AVM) discrimination detection, and community reinvestment targeting for historically redlined neighborhoods. The Homeownership pillar of <em>Measure the Wound</em> documents a 30.1-point Black-white homeownership gap persisting across three decades — this is the evidentiary basis for this pillar's program design.</p>
       </div>
       <div class="cong-pillar">
         <span class="cong-pillar-num">II</span>
-        <h4>Algorithmic Justice</h4>
+        <h3>Algorithmic Justice</h3>
         <p>Technical auditing of algorithmic systems that perpetuate racial discrimination in lending, employment, housing, and education — automated valuation models, credit scoring systems, and workforce screening tools. Programs aligned with the Eliminating Bias in Algorithmic Systems Act and the AI Civil Rights Act.</p>
       </div>
       <div class="cong-pillar">
         <span class="cong-pillar-num">III</span>
-        <h4>Digital Asset Consumer Protection</h4>
+        <h3>Digital Asset Consumer Protection</h3>
         <p>Protection of Black communities from predatory digital finance practices. Sovereign economic infrastructure — community-controlled asset frameworks and blockchain-verified ownership records — designed to ensure the digital economy does not replicate the exclusions of the analog one.</p>
       </div>
       <div class="cong-pillar">
         <span class="cong-pillar-num">IV</span>
-        <h4>Direct Community Investment</h4>
+        <h3>Direct Community Investment</h3>
         <p>Program delivery infrastructure for direct reparative investment — community land trusts, educational endowments, healthcare infrastructure, and community banking partnerships. The administrative backbone required to translate H.Res. 414's Resolved Clauses into material outcomes at the zip-code level.</p>
       </div>
     </div>
@@ -1682,9 +1685,9 @@
     </div>
 
     <p style="margin-top: 1.5rem;">
-      <a href="/dispatches/measure-the-wound/" style="font-family: var(--vc-text); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vc-oxblood); text-decoration: none; border-bottom: 1px solid currentColor;">Full empirical record → <em>Measure the Wound</em></a>
+      <a href="/record/measure-the-wound/" style="font-family: var(--vc-text); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vc-oxblood); text-decoration: none; border-bottom: 1px solid currentColor;">Full empirical record → <em>Measure the Wound</em></a>
       &nbsp;&nbsp;
-      <a href="/record/restitution-246/" style="font-family: var(--vc-text); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vc-muted); text-decoration: none; border-bottom: 1px solid currentColor;">Restitution 246 → Wage-hour methodology</a>
+      <a href="/restitution-246/" style="font-family: var(--vc-text); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vc-muted); text-decoration: none; border-bottom: 1px solid currentColor;">Restitution 246 → Wage-hour methodology</a>
     </p>
   </section>
 
@@ -1695,8 +1698,8 @@
     </p>
     <div class="cong-cta-links">
       <a href="/coalition/apply/" class="cong-cta-link primary">Join the Coalition →</a>
-      <a href="/dispatches/measure-the-wound/" class="cong-cta-link">Read Measure the Wound →</a>
-      <a href="/record/restitution-246/" class="cong-cta-link">Restitution 246 →</a>
+      <a href="/record/measure-the-wound/" class="cong-cta-link">Read Measure the Wound →</a>
+      <a href="/restitution-246/" class="cong-cta-link">Restitution 246 →</a>
       <a href="/about/israel/" class="cong-cta-link">Founder Profile →</a>
     </div>
   </div>
@@ -1798,38 +1801,38 @@
       <strong>Colophon</strong>
       Convened in Liberty City, Florida. Set in Cormorant Garamond &amp; Inter. Printed for the Coalition of the Willing, founded Juneteenth, MMXXVI.
     </div>
-    <div><h4>Institution</h4><ul>
+    <div><h3>Institution</h3><ul>
       <li><a href="/about/">About</a></li>
       <li><a href="/mission/">Mission</a></li>
       <li><a href="/doctrine/">Doctrine</a></li>
       <li><a href="/pillars/">The Five Pillars</a></li>
       <li><a href="/governance/">Governance</a></li>
     </ul></div>
-    <div><h4>The Record</h4><ul>
+    <div><h3>The Record</h3><ul>
       <li><a href="/record/">The Record</a></li>
       <li><a href="/record/congressional-engagement/">Congressional Engagement</a></li>
       <li><a href="/record/parallel-negros/">Parallel Negros</a></li>
       <li><a href="/record/measure-the-wound/">Measure the Wound</a></li>
       <li><a href="/restitution-246/">Restitution 246</a></li>
     </ul></div>
-    <div><h4>Programs</h4><ul>
+    <div><h3>Programs</h3><ul>
       <li><a href="/programs/">All Programs</a></li>
       <li><a href="/programs/mccartney-academy/">McCartney Academy</a></li>
       <li><a href="/programs/lineage-farms/">Lineage Farms</a> · <a href="https://farmblock.vip" target="_blank" rel="noopener noreferrer">FarmBlock</a></li>
-      <li><a href="/programs/black-dragons-initiative/">Black Dragons Initiative</a></li>
+      <li><a href="/black-dragons-initiative/">Black Dragons Initiative</a></li>
     </ul></div>
-    <div><h4>Justice</h4><ul>
+    <div><h3>Justice</h3><ul>
       <li><a href="/justice/">Justice</a></li>
       <li><a href="/justice/karmelo-anthony/">Stand With Karmelo</a></li>
     </ul></div>
-    <div><h4>The Coalition</h4><ul>
+    <div><h3>The Coalition</h3><ul>
       <li><a href="/coalition/">Coalition</a></li>
       <li><a href="/coalition/apply/">Apply</a></li>
       <li><a href="/donate/">Donate</a></li>
       <li><a href="/contact/">Contact</a></li>
       <li><a href="/faq/">FAQ</a></li>
     </ul></div>
-    <div><h4>Legal</h4><ul>
+    <div><h3>Legal</h3><ul>
       <li><a href="/privacy-policy/">Privacy Policy</a></li>
       <li><a href="/terms-of-service/">Terms of Service</a></li>
       <li><a href="/disclosures/">Disclosures</a></li>
@@ -1945,5 +1948,5 @@
     }
   });
 </script>
-</body>
+<script>/*revealFailsafe*/window.addEventListener('load',function(){setTimeout(function(){document.querySelectorAll('.reveal:not(.in)').forEach(function(e){e.classList.add('in');});},1200);});</script></body>
 </html>

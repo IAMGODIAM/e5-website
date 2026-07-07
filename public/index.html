@@ -1,15 +1,15 @@
 <!doctype html>
 <!-- E5 Enclave · Editorial homepage · v2.0 · with palette toggle, three-date hierarchy, counter band, Coalition Covenant -->
 <html lang="en">
-<head>
+<head><script>document.documentElement.classList.add('js');</script>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>E5 Enclave — A Lineage-led Think Tank</title>
-<meta name="description" content="E5 Enclave is a lineage-led think tank comprised of a Coalition of the Willing — building the institutions, evidence systems, and projects the lineage needs to repair, rise, and govern its future."/>
+<meta name="description" content="A lineage-led think tank and Coalition of the Willing building institutions, farms, schools, and policy tools for Black community repair — Liberty City, Miami."/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="E5 Enclave"/>
 <meta property="og:title" content="E5 Enclave — A Lineage-led Think Tank"/>
-<meta property="og:description" content="A lineage-led think tank comprised of a Coalition of the Willing. Founded 2 June 2024 in Liberty City. Public Announcement Juneteenth · MMXXVI. Eden Launch 17 February · MMXXVII."/>
+<meta property="og:description" content="A lineage-led think tank and Coalition of the Willing building institutions, farms, schools, and policy tools for Black community repair — Liberty City, Miami."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:image" content="https://e5enclave.com/assets/og.png"/>
 <meta property="og:image:width" content="1200"/>
@@ -464,7 +464,7 @@
     color: var(--vc-gold-text); line-height: 1; letter-spacing: 0; }
   .vc-value-row .name { font-family: var(--vc-display); font-size: 30px; line-height: 1.05;
     color: var(--vc-ink); letter-spacing: -0.005em; }
-  .vc-value-row .body { font-family: var(--vc-text); font-size: 14px; line-height: 1.65;
+  .vc-value-row .body { font-family: var(--vc-text); font-size: 16px; line-height: 1.65;
     color: var(--vc-ink-3); max-width: 60ch; }
 
   /* ===== PILLARS ===== */
@@ -621,7 +621,7 @@
   .vc-contrib-col { padding: 28px 24px; border-right: 1px solid var(--vc-rule-2);
     display: flex; flex-direction: column; gap: 10px; }
   .vc-contrib-col:last-child { border-right: 0; }
-  .vc-contrib-col h4 { font-size: 9.5px; letter-spacing: 0.42em; text-transform: uppercase;
+  .vc-contrib-col h3 { font-size: 9.5px; letter-spacing: 0.42em; text-transform: uppercase;
     color: var(--vc-oxblood); margin: 0 0 10px; font-weight: 600;
     padding-bottom: 8px; border-bottom: 1px solid var(--vc-rule-2); }
   .vc-contrib-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
@@ -709,7 +709,7 @@
   .vc-foot-grid .colophon strong { font-style: normal; font-family: var(--vc-text); font-size: 9.5px;
     letter-spacing: 0.42em; text-transform: uppercase; color: var(--vc-oxblood); font-weight: 600;
     display: block; margin-bottom: 12px; }
-  .vc-foot-grid h4 { font-size: 9.5px; letter-spacing: 0.42em; text-transform: uppercase;
+  .vc-foot-grid h3 { font-size: 9.5px; letter-spacing: 0.42em; text-transform: uppercase;
     color: var(--vc-oxblood); margin: 0 0 14px; font-weight: 600; }
   .vc-foot-grid ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
   .vc-foot-grid a { color: var(--vc-ink); font-size: 16px; font-family: var(--vc-display); font-style: italic; letter-spacing: 0.005em; transition: color .2s ease; }
@@ -815,7 +815,7 @@
     section { page-break-inside: avoid; }
     a { color: #000 !important; text-decoration: underline; }
   }
-  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  html.js .reveal:not(.in) { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
   .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
@@ -876,7 +876,10 @@
     .vc-foot-grid { grid-template-columns: 1fr; }
     .vc-foot-fine { flex-direction: column; align-items: center; text-align: center; }
   }
+
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid #6d1f20;outline-offset:2px}
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NGO","name":"E5 Enclave Incorporated","alternateName":"E5 Enclave","url":"https://e5enclave.com/","foundingDate":"2024-06-02","taxID":"99-3822441","nonprofitStatus":"Nonprofit501c3","address":{"@type":"PostalAddress","streetAddress":"820 NW 64th St","addressLocality":"Miami","addressRegion":"FL","postalCode":"33150","addressCountry":"US"},"sameAs":["https://universe.e5enclave.com/"]}</script>
 </head>
 <body>
 <a href="#main" class="vc-skip">Skip to content</a>
@@ -1181,7 +1184,7 @@
   <h2 class="vc-contrib-h reveal">A masthead of <em>builders, stewards, and elders.</em></h2>
   <div class="vc-contrib-grid reveal">
     <div class="vc-contrib-col">
-      <h4>Editorial</h4>
+      <h3>Editorial</h3>
       <ul>
         <li>Israel Lee<small>Chairman &amp; Founder</small></li>
         <li>The Enclave<small>Editorial direction</small></li>
@@ -1189,7 +1192,7 @@
       </ul>
     </div>
     <div class="vc-contrib-col">
-      <h4>Programs</h4>
+      <h3>Programs</h3>
       <ul>
         <li>McCartney Academy<small>Educational pillar</small></li>
         <li>Lineage Farms · FarmBlock<small>Environmental pillar</small></li>
@@ -1197,7 +1200,7 @@
       </ul>
     </div>
     <div class="vc-contrib-col">
-      <h4>Campaigns</h4>
+      <h3>Campaigns</h3>
       <ul>
         <li>Restitution 246<small>Lloyd Kelly · Framework</small></li>
         <li>Craemer (2015)<small>Wage-hour methodology</small></li>
@@ -1205,7 +1208,7 @@
       </ul>
     </div>
     <div class="vc-contrib-col">
-      <h4>In Memoriam</h4>
+      <h3>In Memoriam</h3>
       <ul>
         <li>Ralph McCartney<small>Community elder · Liberty City</small></li>
         <li>The Lineage<small>Past, present, and future</small></li>
@@ -1286,38 +1289,38 @@
       <strong>Colophon</strong>
       Convened in Liberty City, Florida. Set in Cormorant Garamond &amp; Inter. Printed for the Coalition of the Willing, founded Juneteenth, MMXXVI.
     </div>
-    <div><h4>Institution</h4><ul>
+    <div><h3>Institution</h3><ul>
       <li><a href="/about/">About</a></li>
       <li><a href="/mission/">Mission</a></li>
       <li><a href="/doctrine/">Doctrine</a></li>
       <li><a href="/pillars/">The Five Pillars</a></li>
       <li><a href="/governance/">Governance</a></li>
     </ul></div>
-    <div><h4>The Record</h4><ul>
+    <div><h3>The Record</h3><ul>
       <li><a href="/record/">The Record</a></li>
       <li><a href="/record/congressional-engagement/">Congressional Engagement</a></li>
       <li><a href="/record/parallel-negros/">Parallel Negros</a></li>
       <li><a href="/record/measure-the-wound/">Measure the Wound</a></li>
       <li><a href="/restitution-246/">Restitution 246</a></li>
     </ul></div>
-    <div><h4>Programs</h4><ul>
+    <div><h3>Programs</h3><ul>
       <li><a href="/programs/">All Programs</a></li>
       <li><a href="/programs/mccartney-academy/">McCartney Academy</a></li>
       <li><a href="/programs/lineage-farms/">Lineage Farms</a> · <a href="https://farmblock.vip" target="_blank" rel="noopener noreferrer">FarmBlock</a></li>
-      <li><a href="/programs/black-dragons-initiative/">Black Dragons Initiative</a></li>
+      <li><a href="/black-dragons-initiative/">Black Dragons Initiative</a></li>
     </ul></div>
-    <div><h4>Justice</h4><ul>
+    <div><h3>Justice</h3><ul>
       <li><a href="/justice/">Justice</a></li>
       <li><a href="/justice/karmelo-anthony/">Stand With Karmelo</a></li>
     </ul></div>
-    <div><h4>The Coalition</h4><ul>
+    <div><h3>The Coalition</h3><ul>
       <li><a href="/coalition/">Coalition</a></li>
       <li><a href="/coalition/apply/">Apply</a></li>
       <li><a href="/donate/">Donate</a></li>
       <li><a href="/contact/">Contact</a></li>
       <li><a href="/faq/">FAQ</a></li>
     </ul></div>
-    <div><h4>Legal</h4><ul>
+    <div><h3>Legal</h3><ul>
       <li><a href="/privacy-policy/">Privacy Policy</a></li>
       <li><a href="/terms-of-service/">Terms of Service</a></li>
       <li><a href="/disclosures/">Disclosures</a></li>
@@ -1437,5 +1440,5 @@
   });
 </script>
 
-</body>
+<script>/*revealFailsafe*/window.addEventListener('load',function(){setTimeout(function(){document.querySelectorAll('.reveal:not(.in)').forEach(function(e){e.classList.add('in');});},1200);});</script></body>
 </html>

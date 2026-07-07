@@ -61,3 +61,39 @@
 
 # Legacy slug fix
 /black-dragons-initiative-1   /black-dragons-initiative/       301
+
+# --- REMEDIATION 2026-07-07 (forensic audit P0/P2/P3): dead slugs + stubs + duplicate ---
+/store                        /donate/                          301
+/store/                       /donate/                          301
+/volunteer                    /coalition/apply/                 301
+/volunteer/                   /coalition/apply/                 301
+/press                        /contact/                         301
+/press/                       /contact/                         301
+/libations                    /donate/                          301
+/libations/                   /donate/                          301
+/founding-address             /                                 301
+/founding-address/            /                                 301
+/programs/block-to-the-boardroom   /programs/                   301
+/programs/block-to-the-boardroom/  /programs/                   301
+/dispatches/measure-the-wound      /record/measure-the-wound/   301
+/dispatches/measure-the-wound/     /record/measure-the-wound/   301
+/record/restitution-246       /restitution-246/                 301
+/record/restitution-246/      /restitution-246/                 301
+/programs/black-dragons-initiative   /black-dragons-initiative/ 301
+/programs/black-dragons-initiative/  /black-dragons-initiative/ 301
+/pages/black-dragons          /black-dragons-initiative/        301
+/pages/black-dragons/         /black-dragons-initiative/        301
+/pages/coalition              /coalition/                       301
+/pages/coalition/             /coalition/                       301
+/pages/framework              /pillars/                         301
+/pages/framework/             /pillars/                         301
+/pages/join                   /coalition/apply/                 301
+/pages/join/                  /coalition/apply/                 301
+/pages/lineage-farms          /programs/lineage-farms/          301
+/pages/lineage-farms/         /programs/lineage-farms/          301
+/pages/lineage-foundation     /programs/lineage-farms/          301
+/pages/lineage-foundation/    /programs/lineage-farms/          301
+/pages/mccartney-academy      /programs/mccartney-academy/      301
+/pages/mccartney-academy/     /programs/mccartney-academy/      301
+/pages/restitution-246        /restitution-246/                 301
+/pages/restitution-246/       /restitution-246/                 301

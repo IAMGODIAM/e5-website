@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="theme-color" content="#f4eee2"/>
 <title>Restitution 246 — A Framework in Five Questions | E5 Enclave</title>
-<meta name="description" content="Restitution 246 — a disciplined wage-loss and opportunity-loss framework for the 246 years of stolen labor under American chattel slavery. Five sequential questions, anchored to the Craemer (2015) methodology. By Lloyd Kelly, E5 Enclave."/>
+<meta name="description" content="Restitution 246 — a research framework in five questions for wage-loss and opportunity-loss from 246 years of chattel slavery, anchored to Craemer (2015)."/>
 <link rel="canonical" href="https://e5enclave.com/restitution-246/"/>
 <meta property="og:title" content="Restitution 246 — A Framework in Five Questions"/>
-<meta property="og:description" content="The theft of labor. 246 years. A framework in five sequential questions — moral, legal, economic, structural."/>
+<meta property="og:description" content="Restitution 246 — a research framework in five questions for wage-loss and opportunity-loss from 246 years of chattel slavery, anchored to Craemer (2015)."/>
 <meta property="og:url" content="https://e5enclave.com/restitution-246/"/>
 <meta property="og:type" content="article"/>
 <meta name="author" content="Lloyd Kelly"/>
@@ -414,7 +414,7 @@ section { position: relative; }
 .mandate:nth-child(odd) { padding-right: 64px; border-right: 1px solid var(--rule-dark); }
 .mandate:nth-child(even) { padding-left: 48px; }
 .mandate .num { font-family: var(--serif-display); font-style: italic; font-weight: 400; font-size: 38px; color: var(--champagne); line-height: 1; }
-.mandate h4 { font-family: var(--serif-display); font-weight: 500; font-size: 23px; margin-bottom: 10px; letter-spacing: -0.005em; }
+.mandate h3 { font-family: var(--serif-display); font-weight: 500; font-size: 23px; margin-bottom: 10px; letter-spacing: -0.005em; }
 .mandate p { font-family: var(--serif-text); font-size: 17px; line-height: 1.5; color: rgba(11,11,12,0.78); }
 
 /* ——— Q5 ——— */
@@ -519,6 +519,10 @@ body.paper-slate { --cream: #e4e3df; --paper: #ecece9; --cream-deep: #d6d6d2; }
 }
 [data-screen-label] { scroll-margin-top: 40px; }
 
+
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid #6d1f20;outline-offset:2px}
+
+.vc-vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
 <style id="vc-nav-inject">.vc-palette-toggle {
     display: inline-flex; align-items: center; gap: 6px;
@@ -854,12 +858,12 @@ const html = `
     </div>
 
     <div class="mandates reveal">
-      <div class="mandate"><div class="num">§ 01</div><div><h4>Corpus Preservation</h4><p>Maintain the principal in perpetuity. The corpus is statutorily inviolate and may not be impaired by subsequent act of Congress absent a two-thirds joint resolution.</p></div></div>
-      <div class="mandate"><div class="num">§ 02</div><div><h4>Disbursement &amp; Yield</h4><p>Administer the yield through four canonical channels: education, housing equity, enterprise capital, and guaranteed retirement income.</p></div></div>
-      <div class="mandate"><div class="num">§ 03</div><div><h4>Lineage Verification</h4><p>Establish and maintain, in partnership with the National Archives, a sovereign-grade lineage registry — authoritative, confidential, and free to the claimant.</p></div></div>
-      <div class="mandate"><div class="num">§ 04</div><div><h4>Public Accounting</h4><p>Publish an annual actuarial report, subject to independent audit, and transmitted to the Congress and the public without redaction.</p></div></div>
-      <div class="mandate"><div class="num">§ 05</div><div><h4>Political Insulation</h4><p>Governors serve staggered fourteen-year terms, removable only for cause, on the model of the Federal Reserve Board. The mandate is insulated from the electoral cycle.</p></div></div>
-      <div class="mandate"><div class="num">§ 06</div><div><h4>Historical Record</h4><p>Maintain and publish the permanent ledger of the debt, its origin, its instruments, and its settlement — so the record cannot be lost and the matter cannot be reopened.</p></div></div>
+      <div class="mandate"><div class="num">§ 01</div><div><h3>Corpus Preservation</h3><p>Maintain the principal in perpetuity. The corpus is statutorily inviolate and may not be impaired by subsequent act of Congress absent a two-thirds joint resolution.</p></div></div>
+      <div class="mandate"><div class="num">§ 02</div><div><h3>Disbursement &amp; Yield</h3><p>Administer the yield through four canonical channels: education, housing equity, enterprise capital, and guaranteed retirement income.</p></div></div>
+      <div class="mandate"><div class="num">§ 03</div><div><h3>Lineage Verification</h3><p>Establish and maintain, in partnership with the National Archives, a sovereign-grade lineage registry — authoritative, confidential, and free to the claimant.</p></div></div>
+      <div class="mandate"><div class="num">§ 04</div><div><h3>Public Accounting</h3><p>Publish an annual actuarial report, subject to independent audit, and transmitted to the Congress and the public without redaction.</p></div></div>
+      <div class="mandate"><div class="num">§ 05</div><div><h3>Political Insulation</h3><p>Governors serve staggered fourteen-year terms, removable only for cause, on the model of the Federal Reserve Board. The mandate is insulated from the electoral cycle.</p></div></div>
+      <div class="mandate"><div class="num">§ 06</div><div><h3>Historical Record</h3><p>Maintain and publish the permanent ledger of the debt, its origin, its instruments, and its settlement — so the record cannot be lost and the matter cannot be reopened.</p></div></div>
     </div>
   </div>
 </section>
@@ -921,11 +925,11 @@ const html = `
     <p style="font-family:'Inter Tight',sans-serif;font-weight:300;font-size:16px;line-height:1.7;opacity:0.82;margin:0 0 40px;">A debt acknowledged is a nation made whole. Join the lineage and the allies standing behind this framework — receive the campaign brief and the call to action.</p>
     <form id="restitutionForm" style="display:flex;flex-direction:column;gap:14px;max-width:440px;margin:0 auto;text-align:left;">
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <input name="first_name" required placeholder="First name" style="flex:1;min-width:140px;padding:15px 16px;background:rgba(11,11,12,0.04);border:1px solid rgba(11,11,12,0.22);color:var(--ink);font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;"/>
-        <input name="last_name" required placeholder="Last name" style="flex:1;min-width:140px;padding:15px 16px;background:rgba(11,11,12,0.04);border:1px solid rgba(11,11,12,0.22);color:var(--ink);font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;"/>
+        <input name="first_name" required placeholder="First name" style="flex:1;min-width:140px;padding:15px 16px;background:rgba(11,11,12,0.04);border:1px solid rgba(11,11,12,0.22);color:var(--ink);font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;" aria-label="First name" />
+        <input name="last_name" required placeholder="Last name" style="flex:1;min-width:140px;padding:15px 16px;background:rgba(11,11,12,0.04);border:1px solid rgba(11,11,12,0.22);color:var(--ink);font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;" aria-label="Last name" />
       </div>
-      <input name="email" type="email" required placeholder="Email address" style="padding:15px 16px;background:rgba(11,11,12,0.04);border:1px solid rgba(11,11,12,0.22);color:var(--ink);font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;"/>
-      <input name="zip" placeholder="ZIP code (optional)" style="padding:15px 16px;background:rgba(11,11,12,0.04);border:1px solid rgba(11,11,12,0.22);color:var(--ink);font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;"/>
+      <input name="email" type="email" required placeholder="Email address" style="padding:15px 16px;background:rgba(11,11,12,0.04);border:1px solid rgba(11,11,12,0.22);color:var(--ink);font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;" aria-label="Email address" />
+      <input name="zip" placeholder="ZIP code (optional)" style="padding:15px 16px;background:rgba(11,11,12,0.04);border:1px solid rgba(11,11,12,0.22);color:var(--ink);font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;" aria-label="ZIP code (optional)" />
       <button type="submit" style="margin-top:8px;padding:17px;background:#7e6329;color:#f3efe6;border:none;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Add My Name to the Record</button>
       <p id="restitutionMsg" style="font-family:'Inter Tight',sans-serif;font-size:14px;text-align:center;min-height:20px;margin:6px 0 0;opacity:0.9;"></p>
     </form>
