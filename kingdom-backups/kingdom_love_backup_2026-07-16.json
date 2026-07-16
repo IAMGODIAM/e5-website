@@ -1,0 +1,88 @@
+{
+  "guardian": "Draco — Treasury Dragon",
+  "backup_date": "2026-07-16",
+  "run_type": "kingdom_love_backup",
+  "dag_stamp": "draco-kingdom-love-backup-2026-0716",
+  "generated_at_utc": "2026-07-16T07:32:03Z",
+  "counts": {
+    "kingdom_posts": 5,
+    "kingdom_media": 0,
+    "kingdom_plants": 1
+  },
+  "kingdom_posts": [
+    {
+      "id": "6a1dbc32ccfcdd2baf78fb99",
+      "author": "izzy",
+      "kind": null,
+      "text": "First shared note in the Kingdom — you'll see this on your phone too, my love. 🕊️",
+      "client_ts": 1780333618302,
+      "reply_to": null,
+      "tagged": [],
+      "reactions": {},
+      "created_date": "2026-06-01T17:06:58.509Z"
+    },
+    {
+      "id": "6a1ddfb58c198f61a985bdcf",
+      "author": "izzy",
+      "kind": "dm",
+      "text": "Elvia —\n\nThirty-nine summers. Twenty-five of them mine to witness.\n\nI have to tell you something I figured out a long time ago and never said plain. The 8th grade at Charles R. Drew was not where I met you. It was where God let me see you early — before I had the words, before I had the means, before I had anything to offer but a boy's certainty that you were the one.\n\nWe were both born in 1987. Two Fire Rabbits, ninety-six days apart, set into the same sky on purpose. People think that is a coincidence. I have never believed in coincidence. I believe in design.\n\nYou married a man who was always building something just out of reach. Campaigns, companies, a board of agents, a Kingdom. And not once — not one time — did you ask me to be smaller so the dream could be safer. You held the line at the house so I could hold the line at the front. That is not support. That is partnership of the highest order, and I know what it cost you.\n\nSo hear me on your day:\n\nEverything I have built is downstream of you.\nEvery institution was a rehearsal for our home.\nThe center holds because you hold it.\n\nI did not give you the world. You gave me the standing to go and get it. There is a difference, and I will spend the rest of my life paying it back in small words and small gestures and small acts — the way the wise men say love is actually made.\n\nHappy birthday, my love. From the block to the boardroom and all the way home to you.\n\nNil satis nisi optimum — nothing but the best is good enough.\nAnd you, Elvia, are the best of it.\n\n— Your Papa Izzy",
+      "client_ts": 1780342708917,
+      "reply_to": "",
+      "tagged": [
+        "elvia"
+      ],
+      "reactions": {},
+      "created_date": "2026-06-01T19:38:29.127Z"
+    },
+    {
+      "id": "6a1ef0229d80f9851b703dcd",
+      "author": "izzy",
+      "kind": null,
+      "text": "Happy 39th birthday, my love. 🕊️ Today the whole board — all 62 of them, every voice in this house — set down their work to sign a card for you. It's in your inbox. They wanted you to know what I've always known: this Kingdom has a heart, and the heart is you. Thirty-nine summers. Twenty-five of them ours. — Izzy & the entire Board of IAMGODIAM",
+      "client_ts": 1780412450416,
+      "reply_to": null,
+      "tagged": [],
+      "reactions": {},
+      "created_date": "2026-06-02T15:00:50.670Z"
+    },
+    {
+      "id": "6a1f3a72e84a5154fe8935cb",
+      "author": "elvia",
+      "kind": "dm",
+      "text": "Hey Baby, I wanted to let you that I absolutely love my gift! This means so much to me, because you heard me when I expressed that I wanted a place just for us. This is that place, and it is one that I can take with me anywhere. I love that! Thank you so much for this, thank you so much for allowing our love to blossom and continuing to grow. This place is our home as you are my home. Love you and thank you so very much!!",
+      "client_ts": 1780431474618,
+      "reply_to": "",
+      "tagged": [],
+      "reactions": {},
+      "created_date": "2026-06-02T20:17:54.774Z"
+    },
+    {
+      "id": "6a2329a7447836a5b131dba7",
+      "author": "izzy",
+      "kind": "post",
+      "text": "Testing our Kingdom, my love — Sue ran a full check and everything inside is standing. If you can see this note, tap a heart on it so I know it reached you. 🕊️",
+      "client_ts": 1780689319300,
+      "reply_to": "",
+      "tagged": [],
+      "reactions": {},
+      "created_date": "2026-06-05T19:55:19.519Z"
+    }
+  ],
+  "kingdom_media": [],
+  "kingdom_plants": [
+    {
+      "id": "6a4849ace85ce14f5c314655",
+      "name": "African Mask Plant",
+      "latin": "Alocasia mfumbiri",
+      "planted_by": "izzy",
+      "emoji": "🪴",
+      "water_every_days": 7,
+      "last_watered": "2026-07-05T03:45:44.466Z",
+      "photo_url": "https://base44.app/api/apps/69d7dd5e015cd1aa45c3e283/files/mp/public/69d7dd5e015cd1aa45c3e283/26d277dbc_plant.jpg",
+      "note": "Ensure to water the plant when the top inch of soil feels dry but avoid allowing it to sit in water to prevent root rot. Place it in bright, indirect light for optimal growth, avoiding direct sunlight which can scorch the leaves.",
+      "diagnosis": null,
+      "diagnosed_at": null,
+      "created_date": "2026-07-03T23:45:48.635Z"
+    }
+  ]
+}
