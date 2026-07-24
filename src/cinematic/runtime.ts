@@ -65,8 +65,9 @@ async function initialize(): Promise<void> {
   if (!captureDocument && location.pathname !== '/' && location.pathname !== '/index.html') return;
   const masthead = document.querySelector<HTMLElement>('.vc-masthead');
   if (!masthead) return;
+  const capture = new URLSearchParams(location.search).has('capture') || captureDocument;
 
-  const caps = detectCapabilities();
+  const caps = detectCapabilities(capture);
   const override = getMotionOverride();
   if (override !== null) caps.reducedMotion = override;
   applyCapabilityClasses(caps);
@@ -76,7 +77,6 @@ async function initialize(): Promise<void> {
   document.documentElement.classList.add(`e5-quality-${tier}`);
   qualityController = new AdaptiveQualityController(tier);
 
-  const capture = new URLSearchParams(location.search).has('capture') || captureDocument;
   if (!capture) await afterFirstPaint();
 
   const { DOMGSAPAdapter } = await import('./adapters/dom-gsap');

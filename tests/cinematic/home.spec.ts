@@ -35,14 +35,13 @@ test('authored reduced-motion path keeps semantic content and removes canvas', a
   await context.close();
 });
 
-test('context-loss fallback never removes the semantic page', async ({ page }) => {
-  await page.goto('/?v=alpha');
+test('capture path exercises WebGL and context-loss fallback', async ({ page }) => {
+  await page.goto('/?v=alpha&capture=1');
   await page.evaluate(() => window.E5Cinematic?.ready);
   const canvas = page.locator('.e5-cinematic-canvas');
-  if (await canvas.count()) {
-    await canvas.dispatchEvent('webglcontextlost');
-    await expect(page.locator('html')).toHaveClass(/e5-canvas-fallback/);
-  }
+  await expect(canvas).toHaveCount(1);
+  await canvas.dispatchEvent('webglcontextlost');
+  await expect(page.locator('html')).toHaveClass(/e5-canvas-fallback/);
   await expect(page.locator('.vc-wordmark')).toBeVisible();
 });
 

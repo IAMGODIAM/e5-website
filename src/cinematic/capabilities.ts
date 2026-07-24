@@ -6,12 +6,12 @@ type NavigatorWithHints = Navigator & {
   gpu?: unknown;
 };
 
-export function detectCapabilities(): Capabilities {
+export function detectCapabilities(allowSoftwareRenderer = false): Capabilities {
   const nav = navigator as NavigatorWithHints;
   const canvas = document.createElement('canvas');
   let webgl2 = false;
   try {
-    webgl2 = Boolean(canvas.getContext('webgl2', { failIfMajorPerformanceCaveat: true }));
+    webgl2 = Boolean(canvas.getContext('webgl2', { failIfMajorPerformanceCaveat: !allowSoftwareRenderer }));
   } catch {
     webgl2 = false;
   }
