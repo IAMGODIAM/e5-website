@@ -4,3 +4,8 @@ dist/
 .env
 *.log
 
+
+artifacts/
+test-results/
+playwright-report/
+tools/hyperframes/node_modules/
