@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" data-hyperframes>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>E5 Genesis — Deterministic Composition</title>
+  <link rel="stylesheet" href="/assets/cinematic/e5-cinematic.css">
+  <style>
+    :root{--vc-bone:#f4eee2;--vc-ink:#0a0908;--vc-oxblood:#6d1f20;--vc-gold:#a8884a;--vc-display:Georgia,'Times New Roman',serif;--vc-text:Arial,Helvetica,sans-serif}
+    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--vc-bone);color:var(--vc-ink)}
+    .composition{width:100%;height:100%;position:relative;display:grid;place-items:center;background:radial-gradient(circle at 50% 42%,#fffaf1 0,var(--vc-bone) 56%,#e2d8c2 100%)}
+    .vc-masthead{width:100%;height:100%;display:grid;place-items:center;padding:6vw;text-align:center}
+    .vc-masthead-rule{position:absolute;top:7%;left:8%;right:8%;border-top:1px solid rgba(10,9,8,.28)}
+    .vc-masthead-rule::after{content:'✦';position:absolute;left:50%;top:0;transform:translate(-50%,-52%);background:var(--vc-bone);padding:0 16px;color:var(--vc-oxblood)}
+    .vc-masthead-eyebrow{font:600 clamp(9px,1vw,13px)/1 var(--vc-text);letter-spacing:.34em;text-transform:uppercase;margin-bottom:2.2vh}
+    .vc-foundation{position:relative;z-index:2;max-width:1100px}
+    .vc-wordmark{margin:0;font-family:var(--vc-display);font-weight:400;line-height:.83;letter-spacing:.01em}
+    .vc-wordmark .em5{display:block;font-size:clamp(40px,8vw,118px);font-style:italic;color:var(--vc-oxblood)}
+    .vc-wordmark .word{display:block;font-size:clamp(76px,17vw,250px);font-weight:400}
+    .vc-tagline{font:italic clamp(18px,2.3vw,34px)/1.35 var(--vc-display);max-width:850px;margin:3vh auto 0}
+    .vc-tagline .cw{color:var(--vc-oxblood)}
+    .vc-dates{display:flex;justify-content:center;gap:clamp(22px,5vw,76px);margin-top:4vh;padding-top:2.4vh;border-top:1px solid rgba(10,9,8,.2)}
+    .vc-date{font:600 clamp(8px,.8vw,11px)/1.6 var(--vc-text);letter-spacing:.18em;text-transform:uppercase}.vc-date .val{display:block;font-family:var(--vc-display);font-size:clamp(13px,1.3vw,19px);font-style:italic;letter-spacing:.04em;text-transform:none}
+    .vc-foundation-colophon{font:italic clamp(11px,1vw,15px)/1.5 var(--vc-display);margin:3vh 0 0}.center{color:var(--vc-oxblood)}
+    .vc-nav{display:none}.e5-motion-toggle{display:none}
+    @media(max-aspect-ratio:4/5){.vc-masthead{padding:12vw 8vw}.vc-wordmark .word{font-size:22vw}.vc-wordmark .em5{font-size:13vw}.vc-dates{flex-direction:column;gap:1.4vh}.vc-tagline{font-size:5.2vw}}
+  </style>
+</head>
+<body>
+  <main id="e5-genesis" class="composition" data-composition-id="e5-genesis" data-start="0" data-duration="6" data-width="1920" data-height="1080" data-fps="30">
+    <header class="vc-masthead" data-start="0" data-duration="6" data-track-index="0">
+      <div class="vc-masthead-rule" aria-hidden="true"></div>
+      <div class="vc-foundation">
+        <div class="vc-masthead-eyebrow">Liberty City · Established MMXXIV</div>
+        <h1 class="vc-wordmark" aria-label="E5 Enclave"><span class="em5" aria-hidden="true">E5</span><span class="word">Enclave</span></h1>
+        <p class="vc-tagline">A lineage-led think tank comprised of a <span class="cw">Coalition of the Willing</span>.</p>
+        <div class="vc-dates" role="list">
+          <div class="vc-date" role="listitem">Founded<span class="val">2 June 2024</span></div>
+          <div class="vc-date" role="listitem">Public Announcement<span class="val">Juneteenth · MMXXVI</span></div>
+          <div class="vc-date" role="listitem">Eden Launch<span class="val">17 February · MMXXVII</span></div>
+        </div>
+        <p class="vc-foundation-colophon">Set against the calendar of the lineage. <span class="center">The center holds.</span></p>
+      </div>
+    </header>
+  </main>
+  <script type="module" src="/assets/cinematic/e5-cinematic.js"></script>
+</body>
+</html>

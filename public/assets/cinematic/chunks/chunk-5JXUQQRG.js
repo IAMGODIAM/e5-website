@@ -1,0 +1,1 @@
+function a(r,e){let t=Math.max(0,r.getDurationFrames());return Math.min(t,Math.max(0,Math.floor(Number.isFinite(e)?e:0)))}async function o(r,e){for(let t of r)await t.seekFrame(a(t,e))}async function m(r){for(let e of[...r].reverse())await e.destroy?.()}export{a,o as b,m as c};

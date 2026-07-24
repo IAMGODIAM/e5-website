@@ -12,7 +12,8 @@
     "qa:chassis": "node scripts/chassis-sweep.mjs",
     "render:cinematic": "docker build -f tools/hyperframes/Dockerfile -t e5-hyperframes . && docker run --rm -v $PWD/artifacts:/work/artifacts e5-hyperframes",
     "preview:cinematic": "cd tools/hyperframes && npm install && npm run preview",
-    "optimize:assets": "node scripts/optimize-assets.mjs"
+    "optimize:assets": "node scripts/optimize-assets.mjs",
+    "qa:adapters": "node scripts/verify-frame-adapters.mjs"
   },
   "dependencies": {
     "astro": "7.1.3",
