@@ -1,28 +1,50 @@
 # e5-website
 
-Official institutional website for **E5 Enclave Incorporated** (501(c)(3)) — [e5enclave.com](https://e5enclave.com). A 15-page Astro static site: mission, programs, governance, donation, and legal disclosures.
+Official institutional website for **E5 Enclave Incorporated** (501(c)(3)) — [e5enclave.com](https://e5enclave.com).
 
-## Pages (15)
-index · mission · donate · record · programs · pillars · governance · coalition/apply · faq · contact · privacy-policy · terms-of-service · accessibility · disclosures · donor-privacy
+## Canonical source
 
-## Stack
-Astro 5 · custom dark/gold CSS design system · Google Fonts (Cormorant Garamond + Inter). No CSS framework.
+`public/` is the deployable semantic site. The homepage `public/index.html` is the canonical visual reference; interior routes retain the vc-chassis or their approved bespoke editorial design.
 
-## Build & deploy
+## Cinematic architecture
+
+DOM-first · GSAP-directed · WebGL-focal · WebGPU-progressive · HyperFrames-rendered · accessibility-complete.
+
+The semantic document is authoritative. Cinematic layers are progressive, finite, capability-gated, reduced-motion aware, and disposable. HyperFrames is isolated under `tools/hyperframes/` on Node 22 and is not part of the production dependency graph.
+
+## Build and QA
+
+Production CI remains compatible with Node 20.20.2:
+
 ```bash
-npm install
-npm run build   # astro build → dist/
+npm ci
+npm run build          # cinematic bundle + deterministic public/ → dist/ copy
+npm run qa:adapters
+npm run qa:cinematic
+npm audit
 ```
-Deploy: Cloudflare Pages (project `e5sovereign`) from `main`. Domain: e5enclave.com.
 
-## Configuration
-Set via the host environment / a local secret store — never commit secrets:
-- Stripe publishable key (donate page)
-- PostHog key (analytics)
-- Form backend (Formspree/Basin) for coalition + contact
+HyperFrames render:
 
-## Editorial / legal constraint
-No "campaign" language. **Restitution 246 is always a "research framework."** Legal review required on: governance, disclosures, donor-privacy, terms-of-service, privacy-policy, record.
+```bash
+cd tools/hyperframes
+nvm use 22.12.0
+npm ci
+npm run render
+```
 
-## Status
-Built; **pre-launch**. Open items: DNS, Stripe, forms, analytics, legal review. Note: `dist/` is currently committed — build artifacts should be moved to `.gitignore`.
+Deploy target: Cloudflare Pages from `main`; output directory `dist/`; domain `e5enclave.com`.
+
+## Release gates
+
+- Full canonical sitemap returns successful responses and semantic chassis markers.
+- Homepage passes serious/critical axe checks.
+- Reduced motion receives the authored static path with no GPU canvas.
+- WebGL context loss preserves semantic content.
+- Synthetic LCP/INP/CLS proxies stay inside documented budgets.
+- Top and footer captures are reviewed at 16:9, 9:16, and 1:1.
+- Golden baselines are never overwritten without an approval record.
+
+## Editorial constraint
+
+No “campaign” language for Restitution 246; it remains a **research framework**. Public legal and appellate claims require verified sourcing and editorial/legal review.
