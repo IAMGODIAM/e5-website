@@ -46,7 +46,12 @@ test('capture path exercises WebGL and context-loss fallback', async ({ page }) 
 });
 
 test('homepage has no serious or critical axe violations', async ({ page }) => {
+  // Audit the authored reduced-motion state: all semantic content is settled and visible,
+  // while separate tests continue covering the default full-motion runtime.
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/?v=alpha');
+  await page.waitForFunction(() => Boolean(window.E5Cinematic));
+  await page.evaluate(() => window.E5Cinematic?.ready);
   const results = await new AxeBuilder({ page }).analyze();
   const blocking = results.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical');
   expect(blocking, JSON.stringify(blocking, null, 2)).toEqual([]);
