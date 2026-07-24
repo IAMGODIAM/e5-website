@@ -1,0 +1,16 @@
+{
+  "name": "@e5/hyperframes-renderer",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "preview": "hyperframes preview ../../public --composition compositions/e5-genesis.html",
+    "render": "hyperframes telemetry disable && mkdir -p ../../artifacts && hyperframes render ../../public --composition compositions/e5-genesis.html --output ../../artifacts/e5-genesis.mp4 --fps 30 --workers 1 --no-browser-gpu --strict"
+  },
+  "devDependencies": {
+    "hyperframes": "0.7.69"
+  }
+}
