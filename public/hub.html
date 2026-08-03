@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" data-e5-scheme>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>E5 Enclave — A Lineage-led Think Tank</title>
+<meta name="description" content="E5 Enclave is a lineage-led think tank and Coalition of the Willing building institutions, farms, schools, and policy tools for Black community repair — Liberty City, Miami.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:opsz,wght@14..32,400;14..32,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tokens.css">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--e5-bg);color:var(--e5-text);font-family:var(--e5-font-body);font-size:var(--e5-size-body);line-height:var(--e5-body-line-height)}
+a{color:var(--e5-gold);text-decoration:none;transition:color .15s}
+a:hover{color:var(--e5-gold-light)}
+
+/* ── Masthead ── */
+.masthead{position:sticky;top:0;z-index:100;background:rgba(10,20,48,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:var(--e5-rule-hairline)}
+.masthead-inner{max-width:1280px;margin:0 auto;padding:0 var(--e5-space-xl);display:flex;align-items:center;justify-content:space-between;height:60px}
+.masthead-brand{display:flex;align-items:center;gap:var(--e5-space-md)}
+.masthead-brand span{font-family:var(--e5-font-display);font-size:1.125rem;font-style:italic}
+.masthead-nav{display:flex;gap:var(--e5-space-lg);align-items:center}
+.masthead-nav a{font-size:.8125rem;font-family:var(--e5-font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--e5-text-muted)}
+.masthead-nav a:hover{color:var(--e5-gold)}
+.masthead-nav a.cta{color:var(--e5-gold)}
+
+/* ── Hero ── */
+.hero{padding:var(--e5-space-3xl) var(--e5-space-xl);text-align:center;max-width:900px;margin:0 auto}
+.hero .eyebrow{margin-bottom:var(--e5-space-lg)}
+.hero h1{font-family:var(--e5-font-display);font-size:var(--e5-size-display);font-weight:400;line-height:var(--e5-heading-line-height);margin-bottom:var(--e5-space-lg)}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--e5-gold),var(--e5-gold-light),var(--e5-gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p.dek{font-size:1.125rem;color:var(--e5-text-muted);max-width:600px;margin:0 auto var(--e5-space-2xl)}
+.hero-rule{border:none;border-top:var(--e5-rule-gold);width:120px;margin:0 auto var(--e5-space-2xl)}
+
+/* ── Hub Grid ── */
+.hub{max-width:1280px;margin:0 auto;padding:0 var(--e5-space-xl) var(--e5-space-3xl)}
+.hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:var(--e5-space-lg)}
+.section-eyebrow{font-family:var(--e5-font-mono);font-size:var(--e5-size-eyebrow);letter-spacing:.12em;text-transform:uppercase;color:var(--e5-metal);margin-bottom:var(--e5-space-xl);grid-column:1/-1}
+.hub-card{background:var(--e5-surface);border:var(--e5-rule-hairline);padding:var(--e5-space-xl);border-radius:0;position:relative;transition:border-color .2s,transform .15s}
+.hub-card:hover{border-color:var(--e5-gold);transform:translateY(-1px)}
+.hub-card .card-tag{font-family:var(--e5-font-mono);font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;color:var(--e5-gold);margin-bottom:var(--e5-space-md)}
+.hub-card .card-title{font-family:var(--e5-font-display);font-size:1.5rem;font-weight:400;line-height:var(--e5-heading-line-height);margin-bottom:var(--e5-space-sm);color:var(--e5-text)}
+.hub-card .card-desc{font-size:.875rem;color:var(--e5-text-muted);line-height:1.6}
+.hub-card .card-link{display:inline-flex;align-items:center;gap:var(--e5-space-sm);margin-top:var(--e5-space-md);font-family:var(--e5-font-mono);font-size:.75rem;letter-spacing:.06em}
+
+/* ── Books section ── */
+.books-row{grid-column:1/-1;margin-top:var(--e5-space-xl);padding-top:var(--e5-space-xl);border-top:var(--e5-rule-hairline)}
+.books-row .section-eyebrow{margin-bottom:var(--e5-space-lg)}
+.books-row h3{font-family:var(--e5-font-display);font-size:var(--e5-size-h2);font-weight:400;color:var(--e5-text);margin-bottom:var(--e5-space-lg)}
+.book-card{background:var(--e5-surface);border:var(--e5-rule-hairline);padding:var(--e5-space-xl)}
+.book-card:hover{border-color:var(--e5-gold)}
+.book-card .card-tag{color:var(--e5-leaf)}
+
+/* ── Footer ── */
+.footer{background:var(--e5-bg-tonal);border-top:var(--e5-rule-hairline);padding:var(--e5-space-2xl) var(--e5-space-xl)}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:var(--e5-space-2xl)}
+.footer-brand{display:flex;align-items:center;gap:var(--e5-space-md)}
+.footer-links{display:flex;flex-wrap:wrap;gap:var(--e5-space-lg)}
+.footer-links a{font-size:.75rem;font-family:var(--e5-font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--e5-text-muted)}
+.footer-meta{font-family:var(--e5-font-mono);font-size:.75rem;color:var(--e5-text-muted);width:100%;margin-top:var(--e5-space-lg);padding-top:var(--e5-space-lg);border-top:var(--e5-rule-hairline)}
+.footer-meta p{margin:0}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-brand">
+      <div class="e5-seal">E5</div>
+      <span class="e5-wordmark">E5 Enclave</span>
+    </div>
+    <nav class="masthead-nav">
+      <a href="/programs/">Programs</a>
+      <a href="https://universe.e5enclave.com">Universe</a>
+      <a href="/books/">Library</a>
+      <a href="https://genealogy.e5enclave.com">Genealogy</a>
+      <a href="https://lab.e5enclave.com">Lab</a>
+      <a href="/coalition/">Coalition</a>
+      <a href="/donate/" class="cta">Donate</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow e5-eyebrow">Liberty City, Miami · EIN 99-3822441</p>
+    <h1>We turn scattered community effort into <em>coordinated lineage power.</em></h1>
+    <p class="dek">A Lineage-based Think Tank comprised of a Coalition of the Willing — convening builders, educators, farmers, technologists, advocates, and community leaders to repair, rise, and govern the lineage&rsquo;s future.</p>
+    <hr class="hero-rule">
+  </section>
+
+  <section class="hub">
+    <h2 class="e5-sr-only">E5 Enclave — All Surfaces</h2>
+    <div class="hub-grid">
+
+      <p class="section-eyebrow">The House</p>
+
+      <a href="/mission/" class="hub-card" style="display:block">
+        <div class="card-tag">Public Mission</div>
+        <div class="card-title">Mission &amp; Method</div>
+        <div class="card-desc">Five institutional values. Five pillars. The architecture of remedy. Published openly, audited against practice.</div>
+        <span class="card-link">Read the mission ↗</span>
+      </a>
+
+      <a href="/programs/" class="hub-card" style="display:block">
+        <div class="card-tag">Flagship Programs</div>
+        <div class="card-title">Programs</div>
+        <div class="card-desc">McCartney Academy, FarmBlock, and Block to the Boardroom. Permanent infrastructure, not pilot projects.</div>
+        <span class="card-link">Explore programs ↗</span>
+      </a>
+
+      <a href="/pillars/" class="hub-card" style="display:block">
+        <div class="card-tag">Five Pillars</div>
+        <div class="card-title">The Pillars</div>
+        <div class="card-desc">Environmental, Economic, Educational, Engagement, Emancipated. The structure of the harm is the structure of the remedy.</div>
+        <span class="card-link">The Pillars ↗</span>
+      </a>
+
+      <p class="section-eyebrow">The Wings</p>
+
+      <a href="https://universe.e5enclave.com" class="hub-card" style="display:block" target="_blank" rel="noopener noreferrer">
+        <div class="card-tag">Cluster Map</div>
+        <div class="card-title">The Interconnected Universe</div>
+        <div class="card-desc">Seven wings. One table. Each a working answer to a documented harm. Black Banking Initiative, roadmap to sovereignty.</div>
+        <span class="card-link">Explore the universe ↗</span>
+      </a>
+
+      <a href="https://genealogy.e5enclave.com" class="hub-card" style="display:block" target="_blank" rel="noopener noreferrer">
+        <div class="card-tag">Commercial Pipeline</div>
+        <div class="card-title">Forensic Genealogy at Scale</div>
+        <div class="card-desc">GPS-standard lineage verification in 90 minutes. Eight verticals. Federal procurement ready. SAM.gov registered.</div>
+        <span class="card-link">Learn more ↗</span>
+      </a>
+
+      <a href="https://lab.e5enclave.com" class="hub-card" style="display:block" target="_blank" rel="noopener noreferrer">
+        <div class="card-tag">Robotics Corps</div>
+        <div class="card-title">Innovations Lab</div>
+        <div class="card-desc">Durable machines for neighborhood repair. Donation or multi-year lease. Fix the windows — not police them.</div>
+        <span class="card-link">Visit the Lab ↗</span>
+      </a>
+
+      <p class="section-eyebrow">Advocacy &amp; Resources</p>
+
+      <a href="https://signon.e5enclave.com" class="hub-card" style="display:block" target="_blank" rel="noopener noreferrer">
+        <div class="card-tag">Active Petition</div>
+        <div class="card-title">Congressional Hearing Demand</div>
+        <div class="card-desc">Add your name to demand a Congressional hearing on the economic condition of Foundational Black Americans.</div>
+        <span class="card-link">Sign On ↗</span>
+      </a>
+
+      <a href="https://dc.e5enclave.com" class="hub-card" style="display:block" target="_blank" rel="noopener noreferrer">
+        <div class="card-tag">Resource Library</div>
+        <div class="card-title">The DC Package</div>
+        <div class="card-desc">Nine advocacy packets — 1,495 pages of research, JEC reporting, and the evidentiary record for congressional hearings.</div>
+        <span class="card-link">Download the package ↗</span>
+      </a>
+
+      <a href="https://ebony.e5enclave.com" class="hub-card" style="display:block" target="_blank" rel="noopener noreferrer">
+        <div class="card-tag">Research Library</div>
+        <div class="card-title">Indicia — The E5 Library</div>
+        <div class="card-desc">Full-text, authenticated legal documents. Offline-capable. An AI librarian that answers from the collection — or says it can&rsquo;t.</div>
+        <span class="card-link">Explore the library ↗</span>
+      </a>
+
+      <p class="section-eyebrow">Engage</p>
+
+      <a href="/coalition/apply/" class="hub-card" style="display:block">
+        <div class="card-tag">Membership</div>
+        <div class="card-title">Join the Coalition</div>
+        <div class="card-desc">Black-led organizations, builders, funders, and partners — the Coalition is open. Four commitments. One table.</div>
+        <span class="card-link">Apply to the Coalition ↗</span>
+      </a>
+
+      <a href="/donate/" class="hub-card" style="display:block">
+        <div class="card-tag">Give</div>
+        <div class="card-title">Donate</div>
+        <div class="card-desc">Fund the work. Every gift compounds across the house. E5 is a 501(c)(3) public charity — all donations tax-deductible.</div>
+        <span class="card-link">Donate now ↗</span>
+      </a>
+
+      <a href="/rectification/" class="hub-card" style="display:block">
+        <div class="card-tag">Campaign</div>
+        <div class="card-title">Restitution 246</div>
+        <div class="card-desc">A disciplined wage-loss and opportunity-loss framework for 246 years of stolen labor. Anchored to Craemer (2015). Open and auditable.</div>
+        <span class="card-link">Read the framework ↗</span>
+      </a>
+
+      <div class="books-row">
+        <p class="section-eyebrow">The Library · Marginalium Chapters</p>
+        <div class="hub-grid" style="margin-top:0">
+          <a href="/books/genesis/the-keepers-commission/" class="book-card" style="display:block">
+            <div class="card-tag">Genesis Galaxy</div>
+            <div class="card-title">The Keeper&rsquo;s Commission</div>
+            <div class="card-desc">God hands Adam the garden — to serve it, and to guard it. The first delegated authority, before the Fall.</div>
+            <span class="card-link">Read the chapter ↗</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="e5-seal">E5</div>
+      <span class="e5-wordmark">E5 Enclave</span>
+    </div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/governance/">Governance</a>
+      <a href="/contact/">Contact</a>
+      <a href="/faq/">FAQ</a>
+      <a href="https://ebony.e5enclave.com">Indicia</a>
+      <a href="/privacy-policy/">Privacy</a>
+      <a href="/accessibility/">Accessibility</a>
+    </div>
+    <div class="footer-meta">
+      <p>E5 Enclave Incorporated · 501(c)(3) · EIN 99-3822441 · 820 NW 64th St, Miami, FL 33150<br>
+      Nil satis nisi optimum. By grace, perfect ways. Published openly. Audited against practice.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

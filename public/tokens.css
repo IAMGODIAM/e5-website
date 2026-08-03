@@ -1,0 +1,161 @@
+/* ═══════════════════════════════════════════════════════════════
+   E5 WEB ESTATE — CANONICAL DESIGN TOKENS (v2.0)
+   DAG: consolidation-sprint-2026-0802
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Palette: Midnight & Gold Leaf (primary, the DC register) ── */
+  --e5-bg:          #0a1430;
+  --e5-bg-tonal:    #0f1c3d;
+  --e5-surface:     #162544;
+  --e5-text:        #ecd9a4;
+  --e5-text-muted:  #8b7e65;
+  --e5-gold:        #d6a84b;
+  --e5-gold-light:  #ecd9a4;
+  --e5-metal:       #8b7e65;
+  --e5-leaf:        #4a7c5c;
+  --e5-danger:      #a03030;
+  --e5-danger-light:#d06060;
+
+  /* ── Typography ── */
+  --e5-font-display:  'Cormorant Garamond', Georgia, serif;
+  --e5-font-body:     'Inter', -apple-system, sans-serif;
+  --e5-font-mono:     'JetBrains Mono', ui-monospace, monospace;
+
+  /* ── Scale ── */
+  --e5-size-eyebrow: 0.6875rem;
+  --e5-size-body:    1rem;
+  --e5-size-h5:      1.125rem;
+  --e5-size-h4:      1.375rem;
+  --e5-size-h3:      1.75rem;
+  --e5-size-h2:      2.25rem;
+  --e5-size-h1:      3rem;
+  --e5-size-display: clamp(3rem, 6vw, 5rem);
+
+  /* ── Spacing ── */
+  --e5-space-xs:  0.25rem;
+  --e5-space-sm:  0.5rem;
+  --e5-space-md:  1rem;
+  --e5-space-lg:  1.5rem;
+  --e5-space-xl:  2rem;
+  --e5-space-2xl: 3rem;
+  --e5-space-3xl: 5rem;
+  --e5-section-pad: 84px;
+
+  /* ── Borders & Rules ── */
+  --e5-rule-hairline: 1px solid var(--e5-metal);
+  --e5-rule-gold:     1px solid var(--e5-gold);
+
+  /* ── Body defaults ── */
+  --e5-body-align: justify;
+  --e5-body-line-height: 1.75;
+  --e5-heading-weight: 400;
+  --e5-heading-line-height: 0.95;
+}
+
+/* ── SCHEME: Ivory Record (light/print) ── */
+[data-e5-scheme="ivory"] {
+  --e5-bg:          #f6f1e7;
+  --e5-bg-tonal:    #ede5d5;
+  --e5-surface:     #e8dfcc;
+  --e5-text:        #1a1714;
+  --e5-text-muted:  #6b5e54;
+  --e5-gold:        #b08a31;
+  --e5-gold-light:  #c9a64a;
+  --e5-metal:       #8b7e65;
+  --e5-leaf:        #3d6b4a;
+  --e5-danger:      #7a1518;
+  --e5-danger-light:#a84040;
+}
+
+/* ── SCHEME: Obsidian & Gold Leaf (dark alt) ── */
+[data-e5-scheme="obsidian"] {
+  --e5-bg:          #0a0a0a;
+  --e5-bg-tonal:    #141414;
+  --e5-surface:     #1c1c1c;
+  --e5-text:        #e0d5b8;
+  --e5-text-muted:  #6b6050;
+  --e5-gold:        #d6a84b;
+  --e5-gold-light:  #ecd9a4;
+  --e5-metal:       #8b7e65;
+}
+
+/* ── SCHEME: Oxblood Royal (editorial) ── */
+[data-e5-scheme="oxblood"] {
+  --e5-bg:          #1b0a0a;
+  --e5-bg-tonal:    #2c1010;
+  --e5-surface:     #3a1515;
+  --e5-text:        #e8d5c8;
+  --e5-text-muted:  #8b7060;
+  --e5-gold:        #d6a84b;
+  --e5-gold-light:  #ecd9a4;
+  --e5-metal:       #7a1518;
+}
+
+/* ── MASTER SIGNATURE: Gold-Leaf Gradient Wordmark ── */
+.e5-wordmark {
+  font-family: var(--e5-font-display);
+  font-style: italic;
+  background: linear-gradient(135deg, var(--e5-gold) 0%, var(--e5-gold-light) 50%, var(--e5-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── MASTER SIGNATURE: Eyebrow ── */
+.e5-eyebrow {
+  font-family: var(--e5-font-mono);
+  font-size: var(--e5-size-eyebrow);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--e5-metal);
+}
+
+/* ── MASTER SIGNATURE: Hairline Rule ── */
+.e5-rule { border: none; border-top: var(--e5-rule-hairline); margin: var(--e5-space-lg) 0; }
+.e5-rule-gold { border: none; border-top: var(--e5-rule-gold); margin: var(--e5-space-lg) 0; }
+
+/* ── MASTER SIGNATURE: Drop Cap ── */
+.e5-dropcap p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--e5-font-display);
+  font-size: 4.5rem;
+  line-height: 0.8;
+  padding-right: 0.5rem;
+  padding-top: 0.15rem;
+  color: var(--e5-gold);
+}
+
+/* ── MASTER SIGNATURE: Headings ── */
+.e5-h1, .e5-h2, .e5-h3, .e5-h4 { font-weight: var(--e5-heading-weight); line-height: var(--e5-heading-line-height); margin: 0; }
+.e5-h1 { font-size: var(--e5-size-h1); font-family: var(--e5-font-display); }
+.e5-h2 { font-size: var(--e5-size-h2); font-family: var(--e5-font-display); }
+.e5-h3 { font-size: var(--e5-size-h3); font-family: var(--e5-font-mono); color: var(--e5-metal); letter-spacing: 0.08em; }
+.e5-h4 { font-size: var(--e5-size-h4); font-family: var(--e5-font-display); }
+
+/* ── CSS-ONLY E5 SEAL (the round mark) ── */
+.e5-seal {
+  width: 48px; height: 48px;
+  border: 1px solid var(--e5-gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--e5-font-display);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--e5-gold);
+  flex-shrink: 0;
+}
+.e5-seal-lg { width: 80px; height: 80px; font-size: 32px; }
+
+/* ── COLOPHON ── */
+.e5-colophon {
+  font-family: var(--e5-font-mono);
+  font-size: 0.75rem;
+  color: var(--e5-text-muted);
+  margin-top: var(--e5-space-3xl);
+  padding-top: var(--e5-space-lg);
+  border-top: var(--e5-rule-hairline);
+}
+
+/* ── UTILITY ── */
+.e5-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
