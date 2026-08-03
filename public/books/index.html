@@ -1,0 +1,270 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Books — E5 Enclave Library</title>
+<meta name="description" content="The marginalium — chapters from the E5 Enclave vault, published to the public register.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tokens.css">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--e5-bg);color:var(--e5-text);font-family:var(--e5-font-body);font-size:var(--e5-size-body);line-height:1.75}
+a {color:var(--e5-gold);text-decoration:none;transition:color .15s}
+a:hover{color:var(--e5-gold-light)}
+
+.e-masthead{position:sticky;top:0;z-index:100;background:rgba(10,20,48,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #8b7e65}
+.e-masthead-inner{max-width:1280px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px}
+.e-masthead-brand{display:flex;align-items:center;gap:.5rem}
+.e-masthead-brand span{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.125rem;font-style:italic;background:linear-gradient(135deg,#d6a84b,#ecd9a4,#d6a84b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.e-masthead-nav{display:flex;gap:1.5rem;align-items:center}
+.e-masthead-nav a{font-size:.8125rem;font-family:'JetBrains Mono',ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:#8b7e65;text-decoration:none}
+.e-masthead-nav a:hover{color:#d6a84b}
+.e-masthead-nav a.cta{color:#d6a84b}
+
+.hero{padding:5rem 1.5rem 3rem;text-align:center;max-width:900px;margin:0 auto}
+.hero .eyebrow{mergin-bottom:1.5rem}
+.hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:400;line-height:.95;margin-bottom:1.5rem}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--e5-gold),var(--e5-gold-light),var(--e5-gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .dek{font-size:1.125rem;color:#8b7e65;max-width:600px;margin:0 auto 2rem}
+.hero-rule{border:none;border-top:1px solid var(--e5-gold);width:120px;margin:0 auto}
+
+.gallery{max-width:1280px;margin:0 auto;padding:0 1.5rem 3rem}
+.gallery-section {margin-bottom:4rem}
+.gallery-section-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:2rem;padding-bottom:.75rem;border-bottom:1px solid var(--e5-metal)}
+.gallery-section-head h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.75rem;font-weight:400;margin:0}
+.gallery-section-head .count{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.75rem;color:#8b7e65;letter-spacing:.08em;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+
+.book-card{background:var(--e5-surface);border:1px solid var(--e5-metal);overflow:hidden;position:relative;transition:border-color .2s,transform .15s}
+.book-card:hover{border-color:var(--e5-gold);transform:translateY(-2px)}
+.book-card-cover{height:180px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.book-card-cover .spine{width:2px;height:100%;background:var(--e5-gold);opacity:.4}
+.book-card-cover .cover-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;font-weight:400;font-style:italic;color:#fff;text-align:center;padding:2rem;line-height:1.2;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+.book-card-body{padding:1.5rem}
+.book-card-body .galaxy{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;color:var(--e5-gold);margin-bottom:.75rem}
+.book-card-body .title{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;line-height:1.15;margin-bottom:.75rem}
+.book-card-body .subtitle{font-size:.875rem;color:#8b7e65;line-height:1.5;margin-bottom:1rem}
+.book-card-body .meta{display:flex;align-items:center;gap:1rem;font-size:.75rem;font-family:'JetBrains Mono',ui-monospace,monospace;color:#8b7e65}
+.book-card-body .status{display:inline-flex;align-items:center;gap:.3rem;padding:.1rem .5rem}
+.status.published{color:var(--e5-leaf)}
+.status.published::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--e5-leaf)}
+.status.draft{color:#8b7e65}
+.status.draft::before{content:'';width:6px;height:6px;border-radius:50%;background:#8b7e65}
+.book-card-body .link{display:inline-flex;align-items:center;gap:.3rem;margin-top:1rem;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.75rem;letter-spacingg:.06em}
+
+.empty-state{text-align:center;padding:3rem;background:var(--e5-bg-tonal);border:1px dashed #8b7e65;color:#8b7e65}
+.empty-state .key{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;font-style:italic;padding-bottom:.5rem}
+
+.e-footer{background:var(--e5-bg-tonal);border-top:1px solid #8b7e65;padding:2rem 1.5rem;font-size:.75rem;color:#8b7e65}
+.e-footer-inner{max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:2rem}
+.e-footer-brand{display:flex;align-items:center;gap:.5rem}
+.e-footer-links{display:flex;flex-wrap:wrap;gap:1.5rem}
+.e-footer-links a{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#8b7e65;text-decoration:none}
+.e-footer-links a:hover{color:#d6a84b}
+.e-footer-meta{width:100%;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid #8b7e65;font-family:'JetBrains Mono',ui-monospace,monospace}
+.e-footer-meta p{margin:0}
+.e-seal-basic{width:48px;height:48px;border:1px solid #d6a84b;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:20px;color:#d6a84b;flex-shrink:0}
+.e-wordmark{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;background:linear-gradient(135deg,#d6a84b,#ecd9a4,#d6a84b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+@media print{.e-masthead{position:static}.book-card{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<header class="e-masthead">
+  <div class="e-masthead-inner">
+    <div class="e-masthead-brand">
+      <div class="e-seal-basic">E19</div>
+      <span class="e-wordmark">E5 Enclave</span>
+    </div>
+    <nav class="e-masthead-nav">
+      <a href="/">Home</a>
+      <a href="/programs/">Programs</a>
+      <a href="https://universe.e5enclave.com">Universe</a>
+      <a href="/hub.html">Hub</a>
+      <a href="/books/" class="cta">Books</a>
+      <a href="https://genealogy.e5enclave.com">Genealogy</a>
+      <a href="https://lab.e5enclave.com">Lab</a>
+      <a href="/donate/" class="cta">Donate</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow" style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:#8b7e65">Marginalium Vault &nbsp;&middot;&nbsp; Public Register</p>
+    <h1>The <em>Books</em></h1>
+    <p class="dek">Chapters from the E5 Enclave vault — published to the public register, DC format, once reviewed and dispatched.</p>
+    <hr class="hero-rule">
+  </section>
+
+  <section class="gallery">
+    <div class="gallery-section">
+      <div class="gallery-section-head">
+        <h3>Genesis Galaxy</h3>
+        <span class="count">2 chapters</span>
+      </div>
+      <div class="grid">
+        
+        <a href="/books/genesis/the-keepers-commission/" class="book-card" style="display:block">
+          <div class="book-card-cover" style="background:linear-gradient(135deg, #0a140d 0%, #1d3b2a 55%, #c9a84c 125%)">
+            <div class="cover-title">The Keeper's<br>Commission</div>
+          </div>
+          <div class="book-card-body">
+            <div class="galaxy">Genesis Galaxy</div>
+            <div class="title">The Keeper's Commission</div>
+            <div class="subtitle">God hands Adam the garden — to serve it, and to guard it. The first delegated authority, before the Fall.</div>
+            <div class="meta">
+              <span class="status published">Published</span>
+              <span>Aug 2&nbsp;2026</span>
+            </div>
+            <div class="link">Read the chapter →</div>
+          </div>
+        </a>
+
+        <div class="book-card">
+          <div class="book-card-cover" style="background:#0f1c3d">
+            <div class="cover-title">Creation was<pr >Born in Darkness</div>
+          </div>
+          <div class="book-card-body">
+            <div class="galaxy">Genesis Galaxy</div>
+            <div class="title">Creation was Born in Darkness</div>
+            <div class="subtitle">When did God first start thinking.</div>
+            <div class="meta">
+              <span class="status draft">Drafting</span>
+              <span>Jun 18&nbsp;2026</span>
+            </div>
+            <div style="margin-top:1rem;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.75rem;color:#8b7e64">Awaiting review</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-section">
+      <div class="gallery-section-head">
+        <h3>Genesis</h3>
+        <span class="count">4 chapters</span>
+      </div>
+      <div class="grid">
+        
+        <div class="book-card">
+          <div class="book-card-cover" style="background:linear-gradient(135deg,#551718,#1b1610)">
+            <div class="cover-title">Eve's<pr >Choice</div>
+          </div>
+          <div class="book-card-body">
+            <div class="galaxy">Genesis</div>
+            <div class="title">Eve's Choice</div>
+            <div class="subtitle">after Genesis 3</div>
+            <div class="meta">
+              <span class="status published">Dispatched</span>
+              <span>Jun 18&nbsp;2026</span>
+            </div>
+            <div style="margin-top:1rem;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.75rem;color:#8b7e64">Publication pending</div>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <div class="book-card-cover" style="background:linear-gradient(135deg,#1d3a2a,#1b1610)">
+            <div class="cover-title">Enoch, Who<pr >Due Not Die</div>
+          </div>
+          <div class="book-card-body">
+            <div class="galaxy">Genesis</div>
+            <div class="title">Enoch, Who Did Not Die</div>
+            <div class="subtitle">after Genesis 5</div>
+            <div class="meta">
+              <span class="status draft">Drafting</span>
+              <span>Jun 18&nbsp;2026</span>
+            </div>
+            <div style="margin-top:1rem;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.75rem;color:#8b7e64">Awaiting review</div>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <div class="book-card-cover" style="background:linear-gradient(135deg,#3a3016,#1b1610)">
+            <div class="cover-title">The Naming<br >of Beasts</div>
+          </div>
+          <div class="book-card-body">
+            <div class="galaxy">Genesis</div>
+            <div class="title">The Naming of Beasts</div>
+            <div class="subtitle">after Genesis 2</div>
+            <div class="meta">
+              <span class="status published">In Review</span>
+              <span>Jun 18&nbsp;2026</span>
+            </div>
+            <div style="margin-top:1rem;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.75rem;color:#4a7c5c">Awaiting dispatch</div>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <div class="book-card-cover" style="background:#0f1c3d">
+            <div class="cover-title" style="opacity:.5;font-size:1rem">Cover unset</div>
+          </div>
+          <div class="book-card-body">
+            <div class="galaxy">Genesis</div>
+            <div class="title">Unset</div>
+            <div class="subtitle">When did God first start thinking.</div>
+            <div class="meta">
+              <span class="status draft">Drafting</span>
+              <span>Jun 18&nbsp;2026</span>
+            </div>
+            <div style="margin-top:1rem;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.75rem;color:#8b7e64">Awaiting review</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-section">
+      <div class="gallery-section-head">
+        <h3>Edenville</h3>
+        <span class="count">1 chapter</span>
+      </div>
+      <div class="grid">
+        <div class="book-card">
+          <div class="book-card-cover" style="background:linear-gradient(135deg,#1d3a2a,#1b1610)">
+            <div class="cover-title">The Silver<pr >Shoes Protocol</div>
+          </div>
+          <div class="book-card-body">
+            <div class="galaxy">Edenville</div>
+            <div class="title">The Silver Shoes Protocol</div>
+            <div class="subtitle">after Baum, 1900</div>
+            <div class="meta">
+              <span class="status draft">Drafting</span>
+              <span>Jun 18&nbsp;2026</span>
+            </div>
+            <div style="margin-top:1rem;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.75rem;color:#8b7e64">Awaiting review</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="empty-state" style="grid-column:1/-1;margin-top:2rem">
+      <div class="key">The vault is open.</div>
+      <p style="margin:0 0 .5rem">Every chapter in the Marginalium vault is listed here.</p>
+      <p style="margin:0;font-size:.875rem">Published chapters link to their full DC-register pages. Draft chapters await review and dispatch.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="e-footer">
+  <div class="e-footer-inner">
+    <div class="e-footer-brand">
+      <div class="e-seal-basic">E19</div>
+      <span class="e-wordmark">E5 Enclave</span>
+    </div>
+    <div class="e-footer-links">
+      <a href="/about/">About</a>
+      <a href="/governance/">Governance</a>
+      <a href="/contact/">Contact</a>
+      <a href="/faq/">FAQ</a>
+      <a href="https://ebony.e5enclave.com">Indicia</a>
+      <a href="/privacy-policy/">Privacy</a>
+    </div>
+    <div class="e-footer-meta">
+      <p>E19 Enclave Incorporated &middot; 501(c)(3) &middot; EIN 99-3822441 &middot; 820 NW 64th St, Miami, FL 33150<br>Nil satis nisi optimum. By grace, perfect ways.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
