@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign On — E5 Enclave · Letter to Congress</title>
+<meta name="description" content="Add your name to the E5 Enclave coalition's letter to the United States Congress, demanding a Congressional hearing on the economic condition of foundational Black Americans.">
+<meta property="og:title" content="Sign On — E5 Enclave · Letter to Congress">
+<meta property="og:description" content="Add your name to the demand for a Congressional hearing on the economic condition of foundational Black Americans.">
+<meta property="og:image" content="https://ebony.e5enclave.com/og.jpg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ebony:#0B0B0D; --panel:#151518; --panel2:#1C1C20; --ivory:#F1EBDD; --ivory-dim:#D2CABA;
+  --muted:#928A7D; --faint:#615B51; --gold:#D8B36A; --gold-deep:#A9822F; --on-gold:#100D06;
+  --line:rgba(241,235,221,.10); --line2:rgba(241,235,221,.18);
+  --gold-leaf:linear-gradient(180deg,#F3DFA6 0%,#D8B36A 42%,#A9822F 100%);
+  --serif:"Source Serif 4",Georgia,serif; --display:"Cormorant Garamond",Georgia,serif;
+  --ui:"Inter",-apple-system,sans-serif; --mono:"JetBrains Mono",monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ebony);color:var(--ivory-dim);font-family:var(--serif);line-height:1.6;
+  -webkit-font-smoothing:antialiased;padding:0 0 80px}
+.wrap{max-width:640px;margin:0 auto;padding:0 22px}
+.hero{position:relative;padding:64px 0 26px;text-align:center;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 0%,rgba(216,179,106,.12),transparent 70%);pointer-events:none}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.wm{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:.06em;
+  background:var(--gold-leaf);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:22px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(32px,7vw,50px);line-height:1.02;color:var(--ivory);margin:14px 0 0}
+h1 .leaf{font-style:italic;background:var(--gold-leaf);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.lede{font-size:17px;color:var(--ivory-dim);margin:20px auto 0;max-width:52ch;line-height:1.55}
+.rule{width:120px;height:2px;margin:26px auto 0;background:linear-gradient(90deg,transparent,var(--gold-deep),var(--gold),var(--gold-deep),transparent)}
+form{background:var(--panel);border:1px solid var(--line2);border-radius:16px;padding:26px 22px;margin-top:34px}
+.cap{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.cap label{cursor:pointer}
+.cap input{position:absolute;opacity:0;pointer-events:none}
+.cap .card{border:1px solid var(--line2);border-radius:11px;padding:13px 12px;text-align:center;
+  font-family:var(--ui);font-size:14px;font-weight:500;color:var(--ivory-dim);transition:.15s}
+.cap input:checked + .card{border-color:var(--gold);background:rgba(216,179,106,.08);color:var(--ivory)}
+.cap .card small{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{margin-bottom:14px}
+label.lbl{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+label.lbl .req{color:var(--gold)}
+input[type=text],input[type=email],input[type=tel],textarea,select{
+  width:100%;background:var(--panel2);border:1px solid var(--line2);border-radius:10px;
+  color:var(--ivory);font-family:var(--serif);font-size:15px;padding:11px 13px;outline:none;transition:.15s}
+input:focus,textarea:focus,select:focus{border-color:var(--gold)}
+textarea{min-height:80px;resize:vertical}
+#orgField{display:none}
+.affirm{display:flex;gap:11px;align-items:flex-start;margin:6px 0 20px;padding:14px;border:1px solid var(--line);border-radius:11px;background:rgba(216,179,106,.04)}
+.affirm input{margin-top:3px;width:18px;height:18px;accent-color:var(--gold);flex:none}
+.affirm label{font-size:13.5px;color:var(--ivory-dim);line-height:1.5}
+button{width:100%;font-family:var(--ui);font-weight:600;font-size:16px;color:var(--on-gold);
+  background:var(--gold-leaf);border:0;border-radius:13px;padding:15px;cursor:pointer;transition:.18s;
+  box-shadow:0 8px 30px rgba(216,179,106,.20)}
+button:hover{transform:translateY(-1px)}
+button:disabled{opacity:.5;transform:none;cursor:default}
+.err{color:#E7A18C;font-size:13px;margin-top:12px;text-align:center;min-height:1em}
+.foot{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);text-align:center;margin-top:26px;line-height:1.8}
+.success{text-align:center;padding:30px 8px}
+.success .mark{font-size:40px;color:var(--gold)}
+.success h2{font-family:var(--display);font-size:30px;color:var(--ivory);font-weight:600;margin:12px 0 6px}
+.success p{color:var(--ivory-dim);font-size:15px}
+.success .n{color:var(--gold);font-weight:600}
+.letter{background:var(--panel);border:1px solid var(--line2);border-radius:16px;padding:30px 26px;margin-top:36px}
+.letter .tag{font-family:var(--mono);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);text-align:center}
+.letter h2{font-family:var(--display);font-size:25px;color:var(--ivory);font-weight:600;text-align:center;margin:6px 0 18px}
+.letter p{font-size:14.5px;line-height:1.62;color:var(--ivory-dim);margin:0 0 12px}
+.letter p.salut{color:var(--ivory)}
+.letter p.demand{font-family:var(--display);font-style:italic;font-size:20px;color:var(--gold);text-align:center;margin-top:16px}
+</style><link rel="stylesheet" href="https://e5enclave.com/tokens.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+.e-masthead{position:sticky;top:0;z-index:100;background:rgba(10,20,48,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #8b7e65}
+.e-masthead-inner{max-width:1280px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px}
+.e-masthead-brand{display:flex;align-items:center;gap:.5rem}
+.e-masthead-brand span{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.125rem;font-style:italic;background:linear-gradient(135deg,#d6a84b,#ecd9a4,#d6a84b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.e-masthead-nav{display:flex;gap:1.5rem;align-items:center}
+.e-masthead-nav a{font-size:.8125rem;font-family:'JetBrains Mono',ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:#8b7e65;text-decoration:none}
+.e-masthead-nav a:hover{color:#d6a84b}
+.e-masthead-nav a.cta{color:#d6a84b}
+.e-footer{background:#0f1c3d;border-top:1px solid #8b7e65;padding:2rem 1.5rem;font-family:'Inter',-apple-system,sans-serif;color:#8b7e65;font-size:.75rem}
+.e-footer-inner{max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:2rem}
+.e-footer-brand{display:flex;align-items:center;gap:.5rem}
+.e-footer-links{display:flex;flex-wrap:wrap;gap:1.5rem}
+.e-footer-links a{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#8b7e65;text-decoration:none}
+.e-footer-links a:hover{color:#d6a84b}
+.e-footer-meta{width:100%;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid #8b7e65;font-family:'JetBrains Mono',ui-monospace,monospace}
+.e-footer-meta p{margin:0}
+.e-seal-basic{width:48px;height:48px;border:1px solid #d6a84b;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:20px;color:#d6a84b;flex-shrink:0}
+.e-wordmark{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;background:linear-gradient(135deg,#d6a84b,#ecd9a4,#d6a84b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+</style>
+
+</head>
+<body>
+<header class="e-masthead">
+  <div class="e-masthead-inner">
+    <div class="e-masthead-brand">
+      <div class="e-seal-basic">E5</div>
+      <span class="e-wordmark">E5 Enclave</span>
+    </div>
+    <nav class="e-masthead-nav">
+      <a href="https://e5enclave.com/">Home</a>
+      <a href="https://e5enclave.com/programs/">Programs</a>
+      <a href="https://universe.e5enclave.com">Universe</a>
+      <a href="https://e5enclave.com/hub.html">Hub</a>
+      <a href="https://e5enclave.com/coalition/">Coalition</a>
+      <a href="https://e5enclave.com/donate/" class="cta">Donate</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero"><div class="wrap">
+  <div class="wm">E5&nbsp;ENCLAVE</div>
+  <span class="eyebrow">The FBA Congressional Hearing</span>
+  <h1>Add your name to the <span class="leaf">demand</span>.</h1>
+  <p class="lede">Foundational Black Americans sit at the bottom of the economic ladder in nearly every state — a condition the 2020 Joint Economic Committee report laid bare. We are bringing that record to Capitol Hill and demanding a <strong style="color:var(--ivory)">Congressional hearing</strong>. Sign on to put your name — and your organization, if you carry one — on the letter.</p>
+  <div class="rule"></div>
+</div></div>
+
+<div class="wrap"><div class="letter">
+  <div class="tag">The Letter · to the United States Congress</div>
+  <h2>What you're signing</h2>
+  <p class="salut">Dear Congressperson,</p>
+  <p>We, the undersigned, are persons seeking government intervention for economic justice for Black Americans.</p>
+  <p>As you know, according to the <strong>2020 Joint Economic Committee Report</strong>, the economic plight of foundational Black Americans is teetering on economic genocide.</p>
+  <p>That report stated that foundational Black Americans are at the bottom of the economic ladder in every state — Montana being the exception. Combined with the abysmal unemployment numbers, the future of foundational Black Americans is <strong>economic extinction</strong> in a country of vast wealth; wealth that was created on the chattel enslavement of foundational Black Americans.</p>
+  <p>This is more than egregious. We have come to Capitol Hill to tell both Houses — and all of Black grassroots — that it must be corrected.</p>
+  <p class="demand">We demand a Congressional hearing.</p>
+</div></div>
+
+<div class="wrap">
+  <form id="signon" novalidate>
+    <div class="cap">
+      <label><input type="radio" name="capacity" value="individual" checked><div class="card">As an individual<small>My own name</small></div></label>
+      <label><input type="radio" name="capacity" value="organization"><div class="card">For an organization<small>On its behalf</small></div></label>
+    </div>
+
+    <div class="row">
+      <div class="field"><label class="lbl">First name <span class="req">*</span></label><input type="text" name="first_name" autocomplete="given-name" required></div>
+      <div class="field"><label class="lbl">Last name <span class="req">*</span></label><input type="text" name="last_name" autocomplete="family-name" required></div>
+    </div>
+
+    <div class="field" id="orgField"><label class="lbl">Organization name <span class="req">*</span></label><input type="text" name="organization" autocomplete="organization"></div>
+
+    <div class="row">
+      <div class="field"><label class="lbl">Email <span class="req">*</span></label><input type="email" name="email" autocomplete="email" required></div>
+      <div class="field"><label class="lbl">Phone <span class="req">*</span></label><input type="tel" name="phone" autocomplete="tel" required></div>
+    </div>
+
+    <div class="row">
+      <div class="field"><label class="lbl">City <span class="req">*</span></label><input type="text" name="city" autocomplete="address-level2" required></div>
+      <div class="field"><label class="lbl">State <span class="req">*</span></label><input type="text" name="state" maxlength="2" placeholder="FL" autocomplete="address-level1" required style="text-transform:uppercase"></div>
+    </div>
+
+    <div class="field"><label class="lbl">Notes <span style="color:var(--faint)">(optional)</span></label><textarea name="notes" placeholder="Anything you'd like us to know."></textarea></div>
+
+    <div class="affirm">
+      <input type="checkbox" id="affirm" required>
+      <label for="affirm">I agree to add my name to the E5 Enclave coalition's letter to the United States Congress, demanding a Congressional hearing on the economic condition of foundational Black Americans.</label>
+    </div>
+
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAADwWa8Qdp9etrkoA" data-theme="dark" style="margin:4px 0 14px"></div>
+    <button type="submit" id="submitBtn">Sign On</button>
+    <div class="err" id="err"></div>
+  </form>
+
+  <p class="foot">E5 Enclave Incorporated · 501(c)(3)<br>820 NW 64th St · Miami, FL 33150 · e5enclave.com</p>
+</div>
+
+<footer class="e-footer">
+  <div class="e-footer-inner">
+    <div class="e-footer-brand">
+      <div class="e-seal-basic">E5</div>
+      <span class="e-wordmark">E5 Enclave</span>
+    </div>
+    <div class="e-footer-links">
+      <a href="https://e5enclave.com/about/">About</a>
+      <a href="https://e5enclave.com/governance/">Governance</a>
+      <a href="https://e5enclave.com/contact/">Contact</a>
+      <a href="https://e5enclave.com/faq/">FAQ</a>
+      <a href="https://ebony.e5enclave.com">Indicia</a>
+      <a href="https://e5enclave.com/privacy-policy/">Privacy</a>
+    </div>
+    <div class="e-footer-meta">
+      <p>E5 Enclave Incorporated &middot; 501(c)(3) &middot; EIN 99-3822441 &middot; 820 NW 64th St, Miami, FL 33150<br>Nil satis nisi optimum. By grace, perfect ways.</p>
+    </div>
+  </div>
+</footer>
+
+</body></html>
