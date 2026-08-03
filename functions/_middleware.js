@@ -36,7 +36,14 @@ export async function onRequest(context) {
   const ct = resp.headers.get("Content-Type") || "";
   if (!ct.includes("text/html")) return resp;
 
-  let html = await resp.text();
+  let html;
+  try {
+    html = await resp.text();
+  } catch (_) {
+    // redirect or empty-body response — pass through untouched
+    return resp;
+  }
+
   // stamp the variant on <html> + expose to JS before any GA4 fires
   html = html.replace(/<html(\s|>)/i, `<html data-variant="${variant}"$1`);
   html = html.replace(/<head(\s*)>/i,
