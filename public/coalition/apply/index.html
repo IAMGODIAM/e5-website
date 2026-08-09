@@ -1297,7 +1297,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
         <div class="form__nav">
           <button type="button" class="btn btn--secondary" onclick="nextStep(3)">&larr; Back</button>
-          <button type="submit" class="btn btn--primary btn--lg form__submit">Submit Application</button>
+          <div id="e5Turnstile" style="margin:6px 0 12px"></div>
+              <button type="submit" class="btn btn--primary btn--lg form__submit">Submit Application</button>
         </div>
       </div>
 
@@ -1460,9 +1461,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         lane:  lanePick ? lanePick.value : '',
         pledged: allPledged,
         site_variant: (window.__E5_VARIANT || document.documentElement.getAttribute('data-variant') || 'alpha'),
-        source: 'coalition-apply'
+        source: 'coalition-apply',
+        turnstile_token: e5TsToken()
       };
-      fetch('https://sue-45c3e283.base44.app/functions/coalitionApply', {
+      fetch('https://e5-fk-events.yisraelleemccartney.workers.dev/coalition-apply', {
         method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)
       }).catch(function(err){ console.error('coalition submit', err); });
       /* show confirmation regardless (non-blocking UX) */
@@ -1577,5 +1579,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     }
   });
 </script>
-<script>/*revealFailsafe*/window.addEventListener('load',function(){setTimeout(function(){document.querySelectorAll('.reveal:not(.in)').forEach(function(e){e.classList.add('in');});},1200);});</script></body>
+<script>/*revealFailsafe*/window.addEventListener('load',function(){setTimeout(function(){document.querySelectorAll('.reveal:not(.in)').forEach(function(e){e.classList.add('in');});},1200);});</script><script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=e5TsInit&render=explicit" async defer></script>
+<script>
+var __e5TsWidget=null;
+function e5TsInit(){ var el=document.getElementById('e5Turnstile'); if(el && window.turnstile && __e5TsWidget===null){ __e5TsWidget=turnstile.render('#e5Turnstile',{sitekey:'0x4AAAAAAEAo1uozlYeV9QpL',theme:'dark'}); } }
+function e5TsToken(){ try{ return (window.turnstile && __e5TsWidget!==null)?(turnstile.getResponse(__e5TsWidget)||''):''; }catch(e){ return ''; } }
+function e5TsReset(){ try{ if(window.turnstile && __e5TsWidget!==null) turnstile.reset(__e5TsWidget); }catch(e){} }
+</script>
+</body>
 </html>

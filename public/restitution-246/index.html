@@ -931,7 +931,8 @@ const html = `
       </div>
       <input name="email" type="email" required placeholder="Email address" style="padding:15px 16px;background:rgba(11,11,12,0.04);border:1px solid rgba(11,11,12,0.22);color:var(--ink);font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;" aria-label="Email address" />
       <input name="zip" placeholder="ZIP code (optional)" style="padding:15px 16px;background:rgba(11,11,12,0.04);border:1px solid rgba(11,11,12,0.22);color:var(--ink);font-family:'Inter Tight',sans-serif;font-size:15px;border-radius:2px;" aria-label="ZIP code (optional)" />
-      <button type="submit" style="margin-top:8px;padding:17px;background:#7e6329;color:#f3efe6;border:none;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Add My Name to the Record</button>
+      <div id="e5Turnstile" style="margin:4px 0"></div>
+<button type="submit" style="margin-top:8px;padding:17px;background:#7e6329;color:#f3efe6;border:none;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-radius:2px;">Add My Name to the Record</button>
       <p id="restitutionMsg" style="font-family:'Inter Tight',sans-serif;font-size:14px;text-align:center;min-height:20px;margin:6px 0 0;opacity:0.9;"></p>
     </form>
   </div>
@@ -945,8 +946,8 @@ const html = `
     var msg=document.getElementById('restitutionMsg');
     var btn=f.querySelector('button');
     btn.disabled=true;btn.textContent='Recording…';
-    var data={first_name:f.first_name.value.trim(),last_name:f.last_name.value.trim(),email:f.email.value.trim(),zip:f.zip.value.trim(),signup_type:'newsletter',source:'restitution-246-page',submitted_at:new Date().toISOString()};
-    fetch('https://sue-45c3e283.base44.app/functions/restitutionSignup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+    var data={first_name:f.first_name.value.trim(),last_name:f.last_name.value.trim(),email:f.email.value.trim(),zip:f.zip.value.trim(),signup_type:'newsletter',source:'restitution-246-page',submitted_at:new Date().toISOString(),turnstile_token:e5TsToken()};
+    fetch('https://e5-fk-events.yisraelleemccartney.workers.dev/restitution-signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
     .then(function(r){return r.json().catch(function(){return{};});})
     .then(function(){
       msg.style.color='#7e6329';msg.textContent='Your name is on the record. Thank you for standing with the lineage.';
@@ -1125,6 +1126,13 @@ window.addEventListener('scroll', () => {
   topbar.classList.toggle('light', !isDark);
 }, { passive: true });
 
+</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=e5TsInit&render=explicit" async defer></script>
+<script>
+var __e5TsWidget=null;
+function e5TsInit(){ var el=document.getElementById('e5Turnstile'); if(el && window.turnstile && __e5TsWidget===null){ __e5TsWidget=turnstile.render('#e5Turnstile',{sitekey:'0x4AAAAAAEAo1uozlYeV9QpL',theme:'light'}); } }
+function e5TsToken(){ try{ return (window.turnstile && __e5TsWidget!==null)?(turnstile.getResponse(__e5TsWidget)||''):''; }catch(e){ return ''; } }
+function e5TsReset(){ try{ if(window.turnstile && __e5TsWidget!==null) turnstile.reset(__e5TsWidget); }catch(e){} }
 </script>
 </body>
 </html>

@@ -960,7 +960,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         <label class="vc-vh" for="cf-email">Email address</label><input type="email" id="cf-email" name="email" class="form__input" placeholder="your@email.com" required />
         <label class="vc-vh" for="cf-org">Organization (optional)</label><input type="text" id="cf-org" name="organization" class="form__input" placeholder="Organization (optional)" />
         <label class="vc-vh" for="cf-message">Message</label><textarea id="cf-message" name="message" class="form__input" rows="5" placeholder="How can the Council help?" required></textarea>
-        <button type="submit" class="btn btn--primary cta-primary" id="cf-submit">Send message &rarr;</button>
+        <div id="e5Turnstile" style="margin:6px 0 12px"></div>
+<button type="submit" class="btn btn--primary cta-primary" id="cf-submit">Send message &rarr;</button>
         <p id="cf-status" style="display:none;" class="body text-gold"></p>
       </form>
     </div>
@@ -1122,16 +1123,17 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         message:(document.getElementById('cf-message')||{}).value||'',
         subject:'website-contact',
         site_variant:(window.__E5_VARIANT||document.documentElement.getAttribute('data-variant')||'alpha'),
-        source:'contact'
+        source:'contact',
+        turnstile_token:e5TsToken()
       };
       if(!payload.email){ return; }
       btn.disabled=true; btn.textContent='Sending…';
-      fetch('https://sue-45c3e283.base44.app/functions/contactForm',{
+      fetch('https://e5-fk-events.yisraelleemccartney.workers.dev/contact-submit',{
         method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
       }).then(function(r){return r.json();}).then(function(d){
         status.style.display='block';
         status.textContent = d && d.success ? 'Message received. The Council will respond.' : 'Thank you — your message was sent.';
-        document.getElementById('contactForm').reset(); btn.textContent='Sent ✓';
+        document.getElementById('contactForm').reset(); btn.textContent='Sent ✓'; e5TsReset();
         try{ if(typeof gtag==='function'){ gtag('event','conversion',{'send_to':'AW-16672489240/FeLJCIGooawcEJj-h44-'}); gtag('event','generate_lead',{'event_label':'contact_form'}); } }catch(e){}
       }).catch(function(){
         status.style.display='block'; status.textContent='Sent. Thank you.'; btn.textContent='Sent ✓';
@@ -1242,5 +1244,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     }
   });
 </script>
-<script>/*revealFailsafe*/window.addEventListener('load',function(){setTimeout(function(){document.querySelectorAll('.reveal:not(.in)').forEach(function(e){e.classList.add('in');});},1200);});</script></body>
+<script>/*revealFailsafe*/window.addEventListener('load',function(){setTimeout(function(){document.querySelectorAll('.reveal:not(.in)').forEach(function(e){e.classList.add('in');});},1200);});</script><script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=e5TsInit&render=explicit" async defer></script>
+<script>
+var __e5TsWidget=null;
+function e5TsInit(){ var el=document.getElementById('e5Turnstile'); if(el && window.turnstile && __e5TsWidget===null){ __e5TsWidget=turnstile.render('#e5Turnstile',{sitekey:'0x4AAAAAAEAo1uozlYeV9QpL',theme:'dark'}); } }
+function e5TsToken(){ try{ return (window.turnstile && __e5TsWidget!==null)?(turnstile.getResponse(__e5TsWidget)||''):''; }catch(e){ return ''; } }
+function e5TsReset(){ try{ if(window.turnstile && __e5TsWidget!==null) turnstile.reset(__e5TsWidget); }catch(e){} }
+</script>
+</body>
 </html>

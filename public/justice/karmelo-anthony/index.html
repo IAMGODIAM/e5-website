@@ -1669,6 +1669,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         </div>
 
         <div class="submit-row">
+          <div id="e5Turnstile" style="margin:6px 0 12px"></div>
           <button class="submit-btn" type="submit" id="submitBtn">
             Count Me In — I Stand With Karmelo <span class="arrow">→</span>
           </button>
@@ -2155,7 +2156,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
       const fnEl=document.getElementById('first_name');
       const lnEl=document.getElementById('last_name');
       const stEl=document.getElementById('state');
-      const fail=(msg,el)=>{errorMsg.textContent=msg;errorMsg.style.display='block';if(el){try{el.focus();}catch(e){}}};
+      const fail=(msg,el)=>{errorMsg.textContent=msg;errorMsg.style.display='block';e5TsReset();if(el){try{el.focus();}catch(e){}}};
       if(!fnEl||!(fnEl.value||'').trim()){fail('Please add your first name.',fnEl);return;}
       if(!lnEl||!(lnEl.value||'').trim()){fail('Please add your last name.',lnEl);return;}
       if(!mailEl||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((mailEl.value||'').trim())){fail('Please enter a valid email so we can keep you posted.',mailEl);return;}
@@ -2181,7 +2182,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         message:v('message'),
         want_address:'no',
         sign_manifesto:(document.getElementById('sign_manifesto')||{checked:true}).checked, opt_in_newsletter:'yes',
-        source:'e5enclave_justice_karmelo'
+        source:'e5enclave_justice_karmelo',
+        turnstile_token:e5TsToken()
       };
       try{
         const res=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
@@ -2256,6 +2258,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 })();
 </script>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=e5TsInit&render=explicit" async defer></script>
+<script>
+var __e5TsWidget=null;
+function e5TsInit(){ var el=document.getElementById('e5Turnstile'); if(el && window.turnstile && __e5TsWidget===null){ __e5TsWidget=turnstile.render('#e5Turnstile',{sitekey:'0x4AAAAAAEAo1uozlYeV9QpL',theme:'dark'}); } }
+function e5TsToken(){ try{ return (window.turnstile && __e5TsWidget!==null)?(turnstile.getResponse(__e5TsWidget)||''):''; }catch(e){ return ''; } }
+function e5TsReset(){ try{ if(window.turnstile && __e5TsWidget!==null) turnstile.reset(__e5TsWidget); }catch(e){} }
+</script>
 </body>
 
 </main>
