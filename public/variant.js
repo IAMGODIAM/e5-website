@@ -16,7 +16,7 @@
       + '<a href="'+KARM+'" data-e5cta="add_name">Add your name to the record &rarr;</a>';
     document.body.appendChild(bar);
     bar.querySelector('a').addEventListener('click', function(){ g('cta_click',{location:'sticky_bar'}); });
-    fetch('https://sue-45c3e283.base44.app/functions/karmeloTimelineFeed?mode=count')
+    fetch('https://e5-fk-events.yisraelleemccartney.workers.dev/wall?mode=feed')
       .then(function(r){return r.json();}).then(function(d){
         var n = (d && (d.count!=null ? d.count : d.total)) || null;
         document.getElementById('e5-proof').innerHTML = n
