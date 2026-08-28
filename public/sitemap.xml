@@ -34,4 +34,8 @@
   <url><loc>https://e5enclave.com/the-record/lineage/ralph-mccartney/</loc></url>
   <url><loc>https://e5enclave.com/the-record/lineage/samuel-j-cornelius/</loc></url>
   <url><loc>https://e5enclave.com/the-record/lineage/kay-coles-james/</loc></url>
+<url><loc>https://e5enclave.com/liberty-city</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://e5enclave.com/overtown</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://e5enclave.com/little-haiti</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://e5enclave.com/brownsville</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
