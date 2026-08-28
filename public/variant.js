@@ -1,3 +1,25 @@
+/* ── Google tag (GA4 + Google Ads) ───────────────────────────────────────────
+   Defined here, at the top of the file that uses it, because every page on the
+   site loads variant.js. Everything below guards on `typeof gtag==='function'`
+   and was silently doing nothing until this existed.
+   GA4  G-05PYDYP5S0  — property "Project R&R", stream "E5"
+   Ads  AW-16672489240  — target of the conv() send_to below
+   ------------------------------------------------------------------------- */
+(function(){
+  if (window.__E5_TAG) return;
+  window.__E5_TAG = 1;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-05PYDYP5S0';
+  (document.head || document.documentElement).appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', 'G-05PYDYP5S0');
+  gtag('config', 'AW-16672489240');
+})();
+
 /* E5 A/B/C VARIANT BEHAVIOR — DAG warroom-website-overhaul-abc-2026-0619
    Funnel war-room deepening (SOP 13 Nudge + SOP 14 conversion copy).
    Alpha: control (no-op). Beta "The Funnel": real social proof + single dominant nudge + exit-intent
