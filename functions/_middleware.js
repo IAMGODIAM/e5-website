@@ -44,6 +44,9 @@ export async function onRequest(context) {
     return resp;
   }
 
+  // The Sovereign front carries its own analytics and no funnel variant; serve it untouched.
+  if (/<html[^>]*data-e5-front/i.test(html)) return new Response(html, { status: resp.status, headers: resp.headers });
+
   // stamp the variant on <html> + expose to JS before any GA4 fires
   html = html.replace(/<html(\s|>)/i, `<html data-variant="${variant}"$1`);
   html = html.replace(/<head(\s*)>/i,
