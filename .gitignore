@@ -12,7 +12,7 @@ tools/hyperframes/node_modules/
 
 .astro/
 
-# Wrangler local state (created by wrangler dev/deploy)
+# Wrangler local state (created by wrangler pages dev)
 .wrangler/
 .dev.vars*
 !.dev.vars.example
