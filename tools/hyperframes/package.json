@@ -11,6 +11,6 @@
     "render": "hyperframes telemetry disable && mkdir -p ../../artifacts && hyperframes render ../../public --composition compositions/e5-genesis.html --output ../../artifacts/e5-genesis.mp4 --fps 30 --workers 1 --no-browser-gpu --strict"
   },
   "devDependencies": {
-    "hyperframes": "0.7.69"
+    "hyperframes": "0.7.111"
   }
 }
