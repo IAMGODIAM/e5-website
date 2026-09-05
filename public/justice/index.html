@@ -89,33 +89,118 @@
 <link rel="stylesheet" href="/assets/front/sovereign-chrome.css">
 </head>
 <body class="">
+<!-- e5:chrome-head -->
 <div class="sov-chrome sov-chrome-head">
-<div data-m="hide" style="position:relative; z-index:5; display:flex; justify-content:space-between; align-items:center; padding:12px clamp(20px,4vw,48px); border-bottom:1px solid #12161F; background:#06070B; font:400 10px/1 'IBM Plex Mono',monospace; letter-spacing:.24em; text-transform:uppercase; color:#8A7238">
+<style id="e5-chrome-css">
+  /* Sovereign chrome — generated into every page by scripts/apply-chrome.mjs. Edit scripts/chrome/head.html, not the pages. */
+  .sov-chrome-head { display:contents; }
+  .e5-bar { position:sticky; top:0; z-index:40; background:rgba(5,6,9,.84); backdrop-filter:blur(18px) saturate(1.3); -webkit-backdrop-filter:blur(18px) saturate(1.3); border-bottom:1px solid #1A2030; }
+  .e5-brand { display:flex; align-items:center; gap:14px; min-height:44px; color:#EEF0F4; text-decoration:none; }
+  .e5-seal-mark { width:44px; height:44px; flex:none; display:block; border-radius:50%; background:#0A0D14;
+    box-shadow:0 0 0 1px #C9A24A, 0 0 0 2px rgba(5,6,9,.9), 0 0 0 3px rgba(233,211,160,.28), 0 0 18px rgba(201,162,74,.22); }
+  .e5-wordmark { font-family:'Cormorant Garamond',Garamond,serif; font-size:clamp(19px,1.7vw,24px); font-weight:600; letter-spacing:.2em; text-transform:uppercase; line-height:1; white-space:nowrap;
+    color:#E9D3A0; background:linear-gradient(100deg,#F5E6C4 0%,#E9D3A0 28%,#C9A24A 58%,#F5E6C4 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  @supports not (background-clip:text) { .e5-wordmark { background:none; -webkit-text-fill-color:#E9D3A0; } }
+  .e5-brand:hover .e5-seal-mark { box-shadow:0 0 0 1px #E9D3A0, 0 0 0 2px rgba(5,6,9,.9), 0 0 0 3px rgba(233,211,160,.45), 0 0 26px rgba(201,162,74,.38); }
+  .e5-nav { display:flex; align-items:center; gap:clamp(16px,2.2vw,32px); font-size:12px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; white-space:nowrap; }
+  .e5-nav > a[data-m] { color:#B6BCC8; padding:12px 0; }
+
+  /* Gold leaf — the one button finish used across the property. */
+  .e5-gilt, .nb-cta a, .vc-cta-primary, .btn-primary, a.cta-primary {
+    position:relative; isolation:isolate; display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    color:#050609 !important; border:1px solid #E9D3A0 !important; border-radius:0 !important; text-decoration:none;
+    font-family:'IBM Plex Sans',system-ui,sans-serif !important; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
+    background:
+      linear-gradient(180deg, rgba(255,250,235,.28) 0%, rgba(255,250,235,0) 42%, rgba(0,0,0,.22) 100%),
+      linear-gradient(110deg, #B8903A 0%, #E9D3A0 34%, #C9A24A 52%, #A88E4C 74%, #E9D3A0 100%) !important;
+    background-size:100% 100%, 240% 100% !important; background-position:0 0, 0% 50%;
+    box-shadow: inset 0 1px 0 rgba(255,244,214,.6), inset 0 -1px 0 rgba(0,0,0,.4), 0 1px 0 rgba(0,0,0,.65), 0 0 0 1px rgba(5,6,9,.6);
+    text-shadow:0 1px 0 rgba(255,244,214,.4);
+    transition:box-shadow .35s ease, background-position .6s ease;
+  }
+  .e5-gilt:hover, .e5-gilt:focus-visible, .nb-cta a:hover, .vc-cta-primary:hover, .btn-primary:hover, a.cta-primary:hover {
+    color:#050609 !important; background-position:0 0, 100% 50% !important;
+    box-shadow: inset 0 1px 0 rgba(255,244,214,.75), inset 0 -1px 0 rgba(0,0,0,.4), 0 1px 0 rgba(0,0,0,.65), 0 0 0 1px rgba(5,6,9,.6), 0 0 22px rgba(201,162,74,.32);
+  }
+  .e5-gilt:focus-visible { outline:1px solid #F5E6C4; outline-offset:3px; }
+  .e5-give { min-height:44px; padding:0 22px; font-size:11px; }
+  .e5-gilt.e5-gilt-sm { min-height:36px; padding:0 16px; font-size:10px; font-family:'IBM Plex Mono',monospace !important; font-weight:500; letter-spacing:.18em; }
+  .e5-gilt-line { display:inline-flex; align-items:center; gap:10px; padding:11px 16px; border:1px solid #C9A24A; color:#E9D3A0; font:500 10px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase;
+    box-shadow: inset 0 0 0 1px rgba(5,6,9,.6), inset 0 0 0 2px rgba(233,211,160,.18); }
+
+  /* Blueprint: a fine plan grid in gold, laid under a section's content. */
+  .e5-plan { position:relative; }
+  .e5-plan::before { content:""; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.6;
+    background:
+      repeating-linear-gradient(90deg, rgba(201,162,74,.09) 0 1px, transparent 1px 24px),
+      repeating-linear-gradient(0deg,  rgba(201,162,74,.09) 0 1px, transparent 1px 24px),
+      repeating-linear-gradient(90deg, rgba(233,211,160,.16) 0 1px, transparent 1px 120px),
+      repeating-linear-gradient(0deg,  rgba(233,211,160,.16) 0 1px, transparent 1px 120px);
+    -webkit-mask-image:radial-gradient(ellipse 72% 64% at 62% 42%, #000 18%, transparent 78%); mask-image:radial-gradient(ellipse 72% 64% at 62% 42%, #000 18%, transparent 78%); }
+  .e5-plan > * { position:relative; }
+
+  /* Anchored sections clear the sticky bar. */
+  [id] { scroll-margin-top:84px; }
+
+  /* Mobile navigation: a disclosure that needs no script to open. */
+  .e5-mnav { display:none; position:relative; }
+  .e5-mnav-btn { list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; min-height:44px; min-width:44px; padding:0 4px; color:#C8CDD8; font:500 10px/1 'IBM Plex Mono',monospace; letter-spacing:.2em; text-transform:uppercase; }
+  .e5-mnav-btn::-webkit-details-marker { display:none; }
+  .e5-mnav-btn::marker { content:""; }
+  .e5-mnav-btn svg { display:block; }
+  .e5-mnav[open] .e5-mnav-btn { color:#E9D3A0; }
+  .e5-mnav-panel { position:absolute; top:calc(100% + 13px); right:calc(-1 * clamp(20px,4vw,48px)); width:100vw; display:flex; flex-direction:column;
+    background:rgba(5,6,9,.97); -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px); border-top:1px solid #1A2030; border-bottom:1px solid #6E5220; padding:8px clamp(20px,4vw,48px) 18px; }
+  .e5-mnav-panel a { display:flex; align-items:center; justify-content:space-between; min-height:48px; padding:0 2px; border-bottom:1px solid #12161F; color:#EEF0F4; font:500 13px/1 'IBM Plex Sans',system-ui,sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+  .e5-mnav-panel a:last-child { border-bottom:0; color:#E9D3A0; }
+  .e5-mnav-panel a::after { content:"→"; color:#A88E4C; font-family:'IBM Plex Mono',monospace; }
+  @media (max-width: 900px) {
+    .e5-mnav { display:block; }
+    .e5-nav { gap:10px; flex:none; }
+    .e5-brand { gap:11px; min-width:0; }
+    .e5-give { padding:0 14px; min-height:42px; }
+    .e5-mnav-btn span { display:none; }
+    .e5-wordmark { font-size:17px; letter-spacing:.14em; }
+  }
+  @media (max-width: 360px) { .e5-wordmark { font-size:15px; letter-spacing:.1em; } .e5-give { padding:0 11px; } }
+  @media (prefers-reduced-motion: reduce) { .e5-gilt, .nb-cta a, .vc-cta-primary, .btn-primary, a.cta-primary { transition:none; } }
+</style>
+<div data-m="hide" style="position:relative; z-index:5; display:flex; justify-content:space-between; align-items:center; padding:12px clamp(20px,4vw,48px); border-bottom:1px solid #12161F; background:#06070B; font:400 10px/1 'IBM Plex Mono',monospace; letter-spacing:.24em; text-transform:uppercase; color:#A88E4C">
     <span style="display:flex; align-items:center; gap:14px; white-space:nowrap"><span style="width:6px; height:6px; border-radius:50%; background:#3F6BD8; animation:e5-pulse 2.6s ease-out infinite"></span><span style="color:#C9A24A">E5 Enclave Incorporated</span><span style="color:#3A4256">·</span>501(c)(3) public charity<span style="color:#3A4256">·</span>Liberty City, Miami</span>
     <span data-m="hidemd" style="display:flex; gap:22px; align-items:center; white-space:nowrap"><span>Est. MMXXIV</span><span style="color:#3A4256">·</span><span style="font-family:'Cormorant Garamond',serif; font-size:13px; letter-spacing:.08em; text-transform:none; color:#E9D3A0; font-style:italic">Nil satis nisi optimum</span></span>
   </div>
 
-  <div style="position:sticky; top:0; z-index:40; background:rgba(5,6,9,.82); backdrop-filter:blur(18px) saturate(1.3); -webkit-backdrop-filter:blur(18px) saturate(1.3); border-bottom:1px solid #1A2030">
-    <div style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:14px clamp(20px,4vw,48px)">
-      <a href="/" style="display:flex; align-items:center; gap:14px; color:#EEF0F4; min-height:44px">
-        <svg viewBox="0 0 64 72" width="34" height="38" aria-label="E5 Enclave" style="color:#C9A24A; display:block; flex:none"><path d="M32 3 L61 11 V36 C61 53 47 64 32 69 C17 64 3 53 3 36 V11 Z" fill="#0A0D14" stroke="currentColor" stroke-width="2.6"></path><path d="M32 9 L55 15 V36 C55 49 44 58 32 62 C20 58 9 49 9 36 V15 Z" fill="none" stroke="currentColor" stroke-width="1" opacity=".55"></path><text x="32" y="46" text-anchor="middle" font-family="'Cormorant Garamond',Garamond,serif" font-size="30" font-weight="600" fill="#E9D3A0" letter-spacing="-1">E5</text></svg>
-        <span style="display:flex; flex-direction:column; gap:3px">
-          <span style="font-family:'Cormorant Garamond',serif; font-size:clamp(18px,1.6vw,22px); font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:#F5F6F8; line-height:1; white-space:nowrap">E5 Enclave</span>
-          <span style="font:400 9px/1 'IBM Plex Mono',monospace; letter-spacing:.22em; text-transform:uppercase; color:#7E869A">Incorporated</span>
-        </span>
+  <div class="e5-bar">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:12px clamp(20px,4vw,48px)">
+      <a href="/" class="e5-brand" aria-label="E5 Enclave Incorporated — home">
+        <img class="e5-seal-mark" src="/assets/front/brand/e5-seal-mark-96.webp" srcset="/assets/front/brand/e5-seal-mark-96.webp 96w, /assets/front/brand/e5-seal-mark-192.webp 192w, /assets/front/brand/e5-seal-mark-288.webp 288w" sizes="44px" width="44" height="44" alt="The seal of E5 Enclave Incorporated" decoding="async">
+        <span class="e5-wordmark">E5 Enclave</span>
       </a>
-      <div style="display:flex; align-items:center; gap:clamp(16px,2.2vw,32px); font-size:12px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; white-space:nowrap">
-        <a data-m="hide" href="/about/" style="color:#B6BCC8; padding:12px 0" class="h1">About</a>
-        <a data-m="hide" href="/pillars/" style="color:#B6BCC8; padding:12px 0" class="h1">Pillars</a>
-        <a data-m="hide" href="/restitution-246/" style="color:#B6BCC8; padding:12px 0" class="h1">Before Congress</a>
-        <a data-m="hide" href="/record/" style="color:#B6BCC8; padding:12px 0" class="h1">The Record</a>
-        <a data-m="hide" href="/coalition/" style="color:#B6BCC8; padding:12px 0" class="h1">Coalition</a>
-        <a href="https://e5enclave.com/donate/" style="display:flex; align-items:center; gap:10px; min-height:44px; color:#050609; background:linear-gradient(110deg,#B8903A,#E9D3A0 45%,#C9A24A 60%,#E9D3A0); background-size:200% 100%; padding:0 22px; font-size:11px; font-weight:600; letter-spacing:.2em; border:1px solid #E9D3A0" class="h2">Give<svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"></path></svg></a>
-      </div>
+      <nav class="e5-nav" aria-label="Primary">
+        <a data-m="hide" href="/about/" class="h1">About</a>
+        <a data-m="hide" href="/pillars/" class="h1">Pillars</a>
+        <a data-m="hide" href="/restitution-246/" class="h1">Before Congress</a>
+        <a data-m="hide" href="/record/" class="h1">The Record</a>
+        <a data-m="hide" href="/coalition/" class="h1">Coalition</a>
+        <a href="https://e5enclave.com/donate/" class="e5-gilt e5-give">Give<svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"></path></svg></a>
+        <details class="e5-mnav">
+          <summary class="e5-mnav-btn" aria-label="Site menu"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"></path></svg><span>Menu</span></summary>
+          <div class="e5-mnav-panel">
+            <a href="/about/">About</a>
+            <a href="/pillars/">Pillars</a>
+            <a href="/restitution-246/">Before Congress</a>
+            <a href="/record/">The Record</a>
+            <a href="/coalition/">Coalition</a>
+            <a href="https://e5enclave.com/donate/">Give</a>
+          </div>
+        </details>
+      </nav>
     </div>
     <div style="height:1px; background:#12161F"><div data-progress="1" style="height:1px; width:0; background:linear-gradient(90deg,#C9A24A,#3F6BD8)"></div></div>
   </div>
+<script>(function(){var d=document.querySelector('.e5-mnav');if(!d)return;d.addEventListener('click',function(e){if(e.target.closest('a'))d.open=false;});document.addEventListener('keydown',function(e){if(e.key==='Escape')d.open=false;});document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false;});})();</script>
 </div>
+<!-- /e5:chrome-head -->
 
 
   <!-- Google Tag Manager (noscript) GT-5TG37D4M -->
@@ -1289,7 +1374,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 })();
 </script>
 
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0ada46f396a205a',t:'MTc4MTMxNzUwMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0adef39bfb0cb9b',t:'MTc4MTMyMDU2NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><div class="sov-chrome sov-chrome-foot" style="margin-top:clamp(60px,8vw,120px)">
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0ada46f396a205a',t:'MTc4MTMxNzUwMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0adef39bfb0cb9b',t:'MTc4MTMyMDU2NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><!-- e5:chrome-foot -->
+<div class="sov-chrome sov-chrome-foot" style="margin-top:clamp(60px,8vw,120px)">
 <div style="position:relative; z-index:5; margin-top:0; height:4px; background:linear-gradient(90deg,#6E5220,#C9A24A 24%,#E9D3A0 50%,#C9A24A 76%,#6E5220)"></div>
   <div style="position:relative; z-index:5; background:#06070B; padding:64px clamp(20px,4vw,48px) 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:44px clamp(24px,3vw,48px)">
     <div style="display:flex; flex-direction:column; gap:20px; grid-column:span 1">
@@ -1297,19 +1383,20 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
       <span style="font:400 12px/1.9 'IBM Plex Mono',monospace; color:#9AA1B4">E5 Enclave Incorporated<br>501(c)(3) public charity · EIN 99-3822441<br>820 NW 64th Street<br>Liberty City, Miami, Florida 33150</span>
       <span style="font-family:'Cormorant Garamond',serif; font-size:24px; font-style:italic; color:#E9D3A0">Nil satis nisi optimum</span>
     </div>
-    <div style="display:flex; flex-direction:column; gap:12px"><span style="font:500 9px/1 'IBM Plex Mono',monospace; letter-spacing:.24em; text-transform:uppercase; color:#8A7238">Institution</span><a href="https://e5enclave.com/about/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">About</a><a href="https://e5enclave.com/doctrine/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Doctrine</a><a href="https://e5enclave.com/governance/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Credentials</a><a href="https://e5enclave.com/disclosures/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Accountability</a></div>
-    <div style="display:flex; flex-direction:column; gap:12px"><span style="font:500 9px/1 'IBM Plex Mono',monospace; letter-spacing:.24em; text-transform:uppercase; color:#8A7238">The Record</span><a href="https://e5enclave.com/record/measure-the-wound/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Dispatches</a><a href="https://e5enclave.com/liberty-city/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Places</a><a href="https://e5enclave.com/the-record/lineage/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Lineage</a><a href="https://e5enclave.com/record/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Data</a></div>
-    <div style="display:flex; flex-direction:column; gap:12px"><span style="font:500 9px/1 'IBM Plex Mono',monospace; letter-spacing:.24em; text-transform:uppercase; color:#8A7238">Before Congress</span><a href="https://e5enclave.com/restitution-246/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Restitution 246</a><a href="https://dc.e5enclave.com" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">The DC Package ↗</a><a href="https://e5enclave.com/executive-order/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Executive Order</a></div>
-    <div style="display:flex; flex-direction:column; gap:12px"><span style="font:500 9px/1 'IBM Plex Mono',monospace; letter-spacing:.24em; text-transform:uppercase; color:#8A7238">Act</span><a href="https://e5enclave.com/coalition/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Join the Coalition</a><a href="https://e5enclave.com/programs/lineage-farms/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">The farms</a><a href="https://e5enclave.com/donate/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Give</a></div>
+    <div style="display:flex; flex-direction:column; gap:12px"><span style="font:500 9px/1 'IBM Plex Mono',monospace; letter-spacing:.24em; text-transform:uppercase; color:#A88E4C">Institution</span><a href="https://e5enclave.com/about/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">About</a><a href="https://e5enclave.com/doctrine/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Doctrine</a><a href="https://e5enclave.com/governance/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Credentials</a><a href="https://e5enclave.com/disclosures/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Accountability</a></div>
+    <div style="display:flex; flex-direction:column; gap:12px"><span style="font:500 9px/1 'IBM Plex Mono',monospace; letter-spacing:.24em; text-transform:uppercase; color:#A88E4C">The Record</span><a href="https://e5enclave.com/record/measure-the-wound/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Dispatches</a><a href="https://e5enclave.com/liberty-city/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Places</a><a href="https://e5enclave.com/the-record/lineage/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Lineage</a><a href="https://e5enclave.com/record/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Data</a></div>
+    <div style="display:flex; flex-direction:column; gap:12px"><span style="font:500 9px/1 'IBM Plex Mono',monospace; letter-spacing:.24em; text-transform:uppercase; color:#A88E4C">Before Congress</span><a href="https://e5enclave.com/restitution-246/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Restitution 246</a><a href="https://dc.e5enclave.com" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">The DC Package ↗</a><a href="https://e5enclave.com/executive-order/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Executive Order</a></div>
+    <div style="display:flex; flex-direction:column; gap:12px"><span style="font:500 9px/1 'IBM Plex Mono',monospace; letter-spacing:.24em; text-transform:uppercase; color:#A88E4C">Act</span><a href="https://e5enclave.com/coalition/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Join the Coalition</a><a href="https://e5enclave.com/programs/lineage-farms/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">The farms</a><a href="https://e5enclave.com/donate/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Give</a></div>
   </div>
   <div style="position:relative; z-index:5; background:#06070B; margin-top:56px; padding:22px clamp(20px,4vw,48px); border-top:1px solid #12161F; display:flex; justify-content:space-between; align-items:center; gap:30px; font:400 10px/1.6 'IBM Plex Mono',monospace; letter-spacing:.14em; text-transform:uppercase; color:#7E869A">
     <span style="display:flex; gap:18px; flex-wrap:wrap"><span>NVIDIA Inception Program</span><span style="color:#3A4256">·</span><span>Google for Nonprofits</span><span style="color:#3A4256">·</span><span>Splunk Product and Training Donation Program</span><span style="color:#3A4256">·</span><span>Hyperagent Founding 500</span><span style="color:#3A4256">·</span><a href="https://elevenlabs.io/impact-program" style="color:#9AA1B4" class="h1">ElevenLabs Impact Program ↗</a></span>
-    <span style="display:flex; gap:18px; flex-wrap:wrap; align-items:center; justify-content:flex-end"><span style="color:#8A7238; letter-spacing:.24em">Follow</span><a href="https://www.instagram.com/e5enclave/" style="color:#9AA1B4" class="h-foot">Instagram · @e5enclave</a><span style="color:#3A4256">·</span><a href="https://www.youtube.com/@E5BlackDragons" style="color:#9AA1B4" class="h-foot">YouTube · @E5BlackDragons</a><span style="color:#3A4256">·</span><a href="https://www.tiktok.com/@e5blackdragons" style="color:#9AA1B4" class="h-foot">TikTok · @e5blackdragons</a><span style="color:#3A4256">·</span><a href="https://x.com/e5enclave" style="color:#9AA1B4" class="h-foot">X · @e5enclave</a><span style="color:#3A4256">·</span><a href="https://github.com/IAMGODIAM" style="color:#9AA1B4" class="h-foot">GitHub · IAMGODIAM</a><span style="color:#3A4256">·</span><a href="mailto:contact@e5enclave.com" style="color:#9AA1B4" class="h-foot">contact@e5enclave.com</a></span>
+    <span style="display:flex; gap:18px; flex-wrap:wrap; align-items:center; justify-content:flex-end"><span style="color:#A88E4C; letter-spacing:.24em">Follow</span><a href="https://www.instagram.com/e5enclave/" style="color:#9AA1B4" class="h-foot">Instagram · @e5enclave</a><span style="color:#3A4256">·</span><a href="https://www.youtube.com/@E5BlackDragons" style="color:#9AA1B4" class="h-foot">YouTube · @E5BlackDragons</a><span style="color:#3A4256">·</span><a href="https://www.tiktok.com/@e5blackdragons" style="color:#9AA1B4" class="h-foot">TikTok · @e5blackdragons</a><span style="color:#3A4256">·</span><a href="https://x.com/e5enclave" style="color:#9AA1B4" class="h-foot">X · @e5enclave</a><span style="color:#3A4256">·</span><a href="https://github.com/IAMGODIAM" style="color:#9AA1B4" class="h-foot">GitHub · IAMGODIAM</a><span style="color:#3A4256">·</span><a href="mailto:contact@e5enclave.com" style="color:#9AA1B4" class="h-foot">contact@e5enclave.com</a></span>
   </div>
   <div data-m="col" style="position:relative; z-index:5; background:#06070B; padding:22px clamp(20px,4vw,48px) 40px; border-top:1px solid #12161F; display:flex; justify-content:space-between; gap:18px 30px; font:400 11px/1.7 'IBM Plex Mono',monospace; color:#7E869A">
     <span>Form 990 and the IRS determination letter are open for public inspection at 820 NW 64th Street and furnished on written request.</span>
     <span style="display:flex; flex-wrap:wrap; gap:18px"><a href="https://e5enclave.com/privacy-policy/" style="color:#7E869A" class="h1">Privacy</a><a href="https://e5enclave.com/terms-of-service/" style="color:#7E869A" class="h1">Terms</a><a href="https://e5enclave.com/donor-privacy/" style="color:#7E869A" class="h1">Donor privacy</a><a href="https://e5enclave.com/accessibility/" style="color:#7E869A" class="h1">Accessibility</a></span>
   </div>
 </div>
+<!-- /e5:chrome-foot -->
 </body>
 </html>
