@@ -43,6 +43,7 @@ for (const route of routes) {
 
 // Standing order (wiki: docs/doctrine/no-azure.md): Netlify and Azure are not in the stack.
 // Hosting is Cloudflare, with GitHub Pages as the static fallback. Fail if either creeps back in.
+if (process.env.NETLIFY === 'true' || process.env.NETLIFY_BUILD_BASE) fail('build environment', 'this repository does not build on Netlify — disconnect the Netlify GitHub App (standing order: no Netlify)');
 for (const dead of ['netlify.toml', 'netlify', '.netlify', 'staticwebapp.config.json', 'azure-pipelines.yml']) {
   if (existsSync(resolve(ROOT, dead))) fail(dead, 'dead platform config present (no Netlify, no Azure)');
 }
