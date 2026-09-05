@@ -2,7 +2,7 @@
 // The property must be built out: every route in the sitemap exists, carries the
 // generated chrome, has no design-tool placeholders, and keeps the editorial line.
 //   node scripts/verify-sovereign.mjs      (exit 1 on any failure)
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { run as applyChrome } from './apply-chrome.mjs';
@@ -39,6 +39,18 @@ for (const route of routes) {
   const text = visibleText(html);
   for (const re of FORBID) { const m = text.match(re); if (m) fail(rel, `forbidden wording "${m[0]}"`); }
   for (const m of text.matchAll(/.{0,50}campaign.{0,40}/gi)) warns.push(`${rel}: …${m[0].trim()}…`);
+}
+
+// Standing order (wiki: docs/doctrine/no-azure.md): Netlify and Azure are not in the stack.
+// Hosting is Cloudflare, with GitHub Pages as the static fallback. Fail if either creeps back in.
+for (const dead of ['netlify.toml', 'netlify', '.netlify', 'staticwebapp.config.json', 'azure-pipelines.yml']) {
+  if (existsSync(resolve(ROOT, dead))) fail(dead, 'dead platform config present (no Netlify, no Azure)');
+}
+if (existsSync(resolve(ROOT, '.github/workflows'))) {
+  for (const wf of readdirSync(resolve(ROOT, '.github/workflows'))) {
+    const y = readFileSync(resolve(ROOT, '.github/workflows', wf), 'utf8');
+    if (/netlify|azure\/static-web-apps|Azure\/webapps/i.test(y)) fail(`.github/workflows/${wf}`, 'workflow references a dead platform (Netlify/Azure)');
+  }
 }
 
 const stale = applyChrome({ write: false }).filter(r => r.changed);
