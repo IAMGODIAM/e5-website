@@ -75,13 +75,11 @@ main a:not([class]):hover, .nb-wrap a:not([class]):hover { color:#F5E6C4; }
 /* old chrome, in case any survives */
 .vc-nav, .vc-masthead, .vc-sub-masthead, .vc-palette-toggle, .vc-counter, .vc-skip, .nb-top, .nb-foot { display:none !important; }
 
-/* buttons */
-.vc-cta-primary, .btn-primary, a.cta-primary, .nb-cta a {
-  background:#C9A24A !important; color:#050609 !important; border:1px solid #E9D3A0 !important; border-radius:0 !important;
-  font-family:'IBM Plex Sans',system-ui,sans-serif !important; letter-spacing:.2em; text-transform:uppercase; font-weight:600;
-}
-.vc-cta-primary:hover, .btn-primary:hover, a.cta-primary:hover, .nb-cta a:hover { background:#E9D3A0 !important; }
-.nb-cta a { display:inline-block; padding:12px 18px; margin:6px 12px 0 0; border-bottom:1px solid #E9D3A0 !important; }
+/* buttons — the gold-leaf finish itself ships in the chrome partial (scripts/chrome/head.html);
+   here only the layout of the neighbourhood CTA row. */
+.nb-cta a { display:inline-flex; padding:13px 18px; margin:10px 10px 0 0; font-size:11px; line-height:1; }
+.nb-cta { display:flex; flex-wrap:wrap; align-items:flex-start; }
+.nb-cta p { flex:0 0 100%; }
 .vc-cta-link { color:#9AA1B4; }
 .vc-cta-link em, .vc-cta-link:hover { color:#E9D3A0; }
 
@@ -112,6 +110,17 @@ input:focus, select:focus, textarea:focus { outline:1px solid #C9A24A !important
 .nb-note { background:rgba(11,19,48,.35) !important; border-left-color:#C9A24A !important; }
 .nb-rule, .nb-facts, .nb-facts div, .nb-src { border-color:#1A2030 !important; }
 .nb-cta { border-top-color:#6E5220 !important; }
+
+/* blueprint plan grid under the editorial page head (same recipe as .e5-plan in the chrome partial) */
+.vc-page-head { position:relative; }
+.vc-page-head::before { content:""; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.6;
+  background:
+    repeating-linear-gradient(90deg, rgba(201,162,74,.09) 0 1px, transparent 1px 24px),
+    repeating-linear-gradient(0deg,  rgba(201,162,74,.09) 0 1px, transparent 1px 24px),
+    repeating-linear-gradient(90deg, rgba(233,211,160,.16) 0 1px, transparent 1px 120px),
+    repeating-linear-gradient(0deg,  rgba(233,211,160,.16) 0 1px, transparent 1px 120px);
+  -webkit-mask-image:radial-gradient(ellipse 72% 64% at 62% 42%, #000 18%, transparent 78%); mask-image:radial-gradient(ellipse 72% 64% at 62% 42%, #000 18%, transparent 78%); }
+.vc-page-head > * { position:relative; z-index:1; }
 
 /* the injected chrome must sit above page backgrounds */
 .sov-chrome { position:relative; z-index:40; }

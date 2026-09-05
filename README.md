@@ -35,6 +35,32 @@ npm run render
 
 Deploy target: Cloudflare Pages from `main`; output directory `dist/`; domain `e5enclave.com`.
 
+## Chrome (masthead + footer)
+
+The masthead and footer on every page are generated from one source:
+
+- `scripts/chrome/head.html` — masthead: seal medallion, gilded wordmark, primary nav, mobile menu, the gold-leaf button finish (`.e5-gilt`) and the blueprint grid (`.e5-plan`). Its `<style>` block ships inline to every page.
+- `scripts/chrome/foot.html` — footer (the homepage variant adds `photo-credits.html`).
+- `scripts/chrome/nav.mjs` — the five primary links and the two variants (`route` for subpages, `front` for the homepage).
+
+Pages carry `<!-- e5:chrome-head [front] -->…<!-- /e5:chrome-head -->` and `<!-- e5:chrome-foot [front] -->…<!-- /e5:chrome-foot -->` markers. Edit the partials, then:
+
+```bash
+npm run chrome          # rewrite every marked page (line endings preserved)
+npm run chrome:check    # exit 1 if any page is stale — `npm run build` runs this via `npm run verify`
+```
+
+The masthead seal is cropped from `public/assets/seal/e5-seal-portrait.png` by `npm run seal:mark` (headless Chromium canvas).
+
+## Verification
+
+```bash
+npm run verify          # sitemap routes exist, chrome present and current, no placeholders, editorial wording
+npm run qa:smoke        # Playwright: Section IV visible with third-party hosts blocked, sticky masthead, mobile menu, images, CTA fit
+```
+
+The homepage reveal animation is opt-in: content is visible by default and the script only hides elements once it is ready to observe them, with a load + 1.5 s failsafe.
+
 ## Release gates
 
 - Full canonical sitemap returns successful responses and semantic chassis markers.
