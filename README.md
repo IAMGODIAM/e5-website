@@ -33,7 +33,7 @@ npm ci
 npm run render
 ```
 
-Deploy target: Cloudflare Pages from `main`; output directory `dist/`; domain `e5enclave.com`.
+Deploy target: Cloudflare Workers Builds (git-connected to this repo, `wrangler.jsonc`), output directory `dist/`, domain `e5enclave.com`. Pushes to `main` deploy production; pushes to any other branch upload a version and post a preview URL on the pull request. Netlify and Azure are not in the stack and the build refuses them (`npm run verify`).
 
 ## Chrome (masthead + footer)
 
