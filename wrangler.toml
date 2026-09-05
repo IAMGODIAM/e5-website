@@ -1,0 +1,15 @@
+# Cloudflare Pages configuration for e5-website (e5enclave.com)
+#
+# The site is served by the Cloudflare Pages project `e5-website`
+# (e5-website-98u.pages.dev; e5enclave.com and www CNAME to it), git-connected
+# to IAMGODIAM/e5-website:
+#   - production branch:  main
+#   - preview deployments: every other branch (a preview URL is posted on the PR)
+#   - build command:       npm run build      (verify -> cinematic bundle -> public/ copied to dist/)
+#   - build output dir:    dist
+# `functions/` holds Pages Functions. `_redirects` and `_headers` in public/ are
+# copied to dist/ and applied by Pages. No Netlify, no Azure (npm run verify enforces it).
+name = "e5-website"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-05-18"
+compatibility_flags = ["nodejs_compat"]
