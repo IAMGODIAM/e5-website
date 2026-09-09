@@ -104,3 +104,12 @@
 /the-record/                  /record/                          301
 /record/lineage               /the-record/lineage/              301
 /record/lineage/              /the-record/lineage/              301
+
+# --- D10, 2026-09-09: dc.e5enclave.com is the host of record for the DC Package.
+#     The flagship carried an unlinked stale copy at /dc/ whose twelve PDF links all 404'd here
+#     while resolving on dc. — a congressional reader landed on a page that downloaded nothing.
+#     The copy is deleted; these send /dc/ and the /pdf/ paths it cited to the canonical host.
+/dc                           https://dc.e5enclave.com/         301
+/dc/                          https://dc.e5enclave.com/         301
+/dc/*                         https://dc.e5enclave.com/:splat   301
+/pdf/*                        https://dc.e5enclave.com/pdf/:splat  301
