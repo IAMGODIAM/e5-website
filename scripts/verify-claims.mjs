@@ -16,7 +16,7 @@ const failures = [];
 const fail = (file, msg) => failures.push(`${file}: ${msg}`);
 
 // Routes that are NOT public pages (scaffolding, mirrors, internal): checked for encoding only.
-const NON_PUBLIC = /^\/(dc|hub\.html|privacy\.html|atelier|books|compositions|pages|signon|strategy|404\.html)/;
+const NON_PUBLIC = /^\/(hub\.html|privacy\.html|atelier|books|compositions|pages|signon|strategy|404\.html)/;
 
 function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
