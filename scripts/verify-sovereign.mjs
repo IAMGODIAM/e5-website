@@ -21,17 +21,30 @@ const visibleText = html => html
   .replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ')
   .replace(/<!--[\s\S]*?-->/g, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
 
+// Self-chromed campaign surfaces: published pages that carry their own masthead by design and so
+// are exempt from the shared-chrome checks — never from the truth, placeholder or landmark checks.
+// /justice/kohen-wiley/ is a bespoke campaign page whose own sticky header brands E5 and links home;
+// adding the Sovereign masthead on top of it would stack two sticky bars (the artifact recorded on
+// Restitution 246 in 11 §8.9b). Frozen by D19 until the rebuild, so it is exempt, not restyled.
+// Add to this list only with a decision recorded in the bundle.
+const SELF_CHROMED = new Set(['public/justice/kohen-wiley/index.html']);
+
 for (const route of routes) {
   const rel = route === '/' ? 'public/index.html' : `public${route.replace(/\/$/, '')}/index.html`;
   const file = resolve(ROOT, rel);
   if (!existsSync(file)) { fail(rel, 'route in sitemap but file missing'); continue; }
   const html = readFileSync(file, 'utf8');
+  if (SELF_CHROMED.has(rel)) {
+    // still must be navigable and self-identifying
+    if (!/<a[^>]+href="\/"/.test(html)) fail(rel, 'self-chromed page must link back to the site root');
+    if (!/E5/.test(html)) fail(rel, 'self-chromed page must identify E5');
+  } else
   for (const k of ['head', 'foot']) {
     if ((html.match(new RegExp(`<!-- e5:chrome-${k}( front)? -->`, 'g')) || []).length !== 1) fail(rel, `expected exactly one e5:chrome-${k} marker`);
     if ((html.match(new RegExp(`<!-- /e5:chrome-${k} -->`, 'g')) || []).length !== 1) fail(rel, `expected exactly one closing e5:chrome-${k} marker`);
   }
-  if (!html.includes('class="e5-seal-mark"')) fail(rel, 'masthead seal missing');
-  if ((html.match(/<details class="e5-mnav">/g) || []).length !== 1) fail(rel, 'expected one mobile nav');
+  if (!SELF_CHROMED.has(rel) && !html.includes('class="e5-seal-mark"')) fail(rel, 'masthead seal missing');
+  if (!SELF_CHROMED.has(rel) && (html.match(/<details class="e5-mnav">/g) || []).length !== 1) fail(rel, 'expected one mobile nav');
   if (/<image-slot/i.test(html)) fail(rel, 'design-tool <image-slot> placeholder present');
   if (/image-slot\.js/.test(html)) fail(rel, 'references image-slot.js scaffold');
   if (/placeholder="[^"]*(drop|image|photo|bound and boxed)/i.test(html)) fail(rel, 'placeholder attribute left in markup');
