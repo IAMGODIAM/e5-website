@@ -17,7 +17,7 @@
     "chrome": "node scripts/apply-chrome.mjs",
     "chrome:check": "node scripts/apply-chrome.mjs --check",
     "seal:mark": "node scripts/make-seal-mark.mjs",
-    "verify": "node scripts/verify-sovereign.mjs",
+    "verify": "node scripts/verify-sovereign.mjs && node scripts/verify-claims.mjs",
     "qa:smoke": "playwright test -c playwright.smoke.config.mjs"
   },
   "dependencies": {

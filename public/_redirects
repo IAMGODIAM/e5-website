@@ -54,8 +54,10 @@
 /first-offering/              /donate/                         301
 
 # About sub-pages → about (until built)
-/about/forensic-genealogy/    /about/                          301
+/about/forensic-genealogy/    /genealogy/                      301
+/about/forensic-genealogy     /genealogy/                      301
 /about/israel/                /about/                          301
+/about/israel                 /about/                          301
 /blog                         /record/                         301
 /blog/                        /record/                         301
 
@@ -95,3 +97,10 @@
 /pages/mccartney-academy/     /programs/mccartney-academy/      301
 /pages/restitution-246        /restitution-246/                 301
 /pages/restitution-246/       /restitution-246/                 301
+
+# --- STABILIZATION 2026-09-09 (Phase ½): parent segments that 404'd; unslashed twins because
+#     Pages matches redirect sources with the trailing slash stripped (/join works, /about/israel/ did not)
+/the-record                   /record/                          301
+/the-record/                  /record/                          301
+/record/lineage               /the-record/lineage/              301
+/record/lineage/              /the-record/lineage/              301
