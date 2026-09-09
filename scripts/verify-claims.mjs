@@ -39,6 +39,18 @@ const FORBIDDEN_CLAIMS = [
   [/world(?:'|’)s\s+first/i,                 'unverifiable superlative — "among the first" or cite the method (11 §3)'],
   [/\[email(?:&#160;|&nbsp;|\s)protected\]/i,'Cloudflare email-obfuscation placeholder baked into source — write the address'],
   [/2026\s*<\/div><div[^>]*>\s*Founding\s+year/i, 'founding year is 2024 (D8)'],
+  [/registrant\s+in\s+good\s+standing/i,      'SAM registration lapsed 4 Aug 2026 (O1) — "renewal in progress" until a .gov confirmation exists'],
+  [/Federal\s+registrant\.\s*Active\s+status/i,'SAM registration lapsed 4 Aug 2026 (O1)'],
+  [/Active\s+through\s+August\s+2026/i,        'SAM expiry date has passed (O1)'],
+  [/nonprofit\s*\+\s*federal\s+contractor/i,   'SAM registration lapsed 4 Aug 2026 (O1)'],
+  [/Full\s+financials/i,                        'no financials are published — institutional disclosure sits at the federal floor (D5)'],
+  [/Open\s+bylaws/i,                            'bylaws are not published (D5)'],
+  [/bylaws[^<.]{0,60}published/i,               'bylaws are not published (D5)'],
+  [/audited\s+financials/i,                     'no audited financials exist or are published (D5)'],
+  [/No\s+admin\s+overhead/i,                   'unsupportable fundraising representation (D18) — use "directed to the programs named"'],
+  [/directors\s+of\s+record/i,                 'no board roster is published (D6)'],
+  [/BDI\s+Sovereign\s+Dataset/i,               'BDI = Black Distress Index; write "the Black Distress Index dataset" (D13)'],
+  [/window\.__E5_VARIANT\s*=|src="\/variant\.js"/, 'the A/B variant layer was retired 9 Sep 2026 (D9); the Google tag lives in the chrome partial'],
 ];
 
 // Placeholder tokens that must never ship on a public page.
@@ -65,6 +77,9 @@ for (const file of walk(PUBLIC)) {
     if (m) fail(rel, `forbidden claim "${m[0]}" — ${why}`);
   }
   const visible = body.replace(/<[^>]+>/g, ' ');
+  // D13: "BDI" means the Black Distress Index and nothing else. The Black Dragons Initiative is never abbreviated.
+  if (/Black\s+Dragons\s+Initiative\s*\(BDI\)/i.test(visible)) fail(rel, 'Black Dragons Initiative is never abbreviated (D13)');
+  if (/\bBDI\b/.test(visible) && !/Black\s+Distress\s+Index/i.test(visible)) fail(rel, '"BDI" used without "Black Distress Index" on the page — expand it, or it reads as Black Dragons (D13)');
   for (const re of PLACEHOLDERS) {
     const m = visible.match(re);
     if (m) fail(rel, `placeholder text "${m[0]}"`);

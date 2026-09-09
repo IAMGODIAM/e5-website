@@ -1,0 +1,422 @@
+/* ============================================================
+   Sovereign interior — the homepage's design language, applied to
+   every interior route through one stylesheet.
+
+   Loaded by /assets/front/sovereign-chrome.css (@import) on every
+   page that is not the front. Scoped to <main class="sv-interior">.
+   Pages with an approved bespoke editorial design (Restitution 246,
+   the justice vertical, Congressional Engagement, the Executive
+   Order, Contracts & Grants) do not carry the class and are untouched.
+
+   Vocabulary, in the order the homepage uses it:
+     eyebrow  — mono 10px, .26em tracking, gold, with a Roman numeral
+     display  — Cormorant 500, tight leading, near-white
+     body     — Plex Sans 300, 17px, cool grey
+     rule     — 1px #6E5220 (gold-deep) at the top of a run, #1A2030 between rows
+     ledger   — numeral · name · body rows, 36px vertical rhythm
+     gilt     — the one button finish (defined in the chrome partial)
+
+   Added 9 September 2026. Edit here, not in the pages.
+   ============================================================ */
+
+:root {
+  --sv-bg:#050609; --sv-bg-2:#06070B; --sv-bg-3:#0B0D14; --sv-panel:rgba(8,10,16,.72);
+  --sv-ink:#EEF0F4; --sv-ink-hi:#F5F6F8; --sv-ink-2:#C8CDD8; --sv-ink-3:#B6BCC8;
+  --sv-muted:#9AA1B4; --sv-dim:#7E869A; --sv-faint:#3A4256;
+  --sv-gold:#C9A24A; --sv-gold-hi:#E9D3A0; --sv-gold-pale:#F5E6C4; --sv-gold-mid:#A88E4C; --sv-gold-deep:#6E5220; --sv-gold-ink:#8A7238;
+  --sv-blue:#3F6BD8;
+  --sv-rule:#1A2030; --sv-rule-2:#12161F; --sv-rule-3:#2A3348;
+  --sv-serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --sv-sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --sv-mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --sv-gutter:clamp(20px,4vw,48px);
+  --sv-max:1440px;   /* the homepage runs edge to edge on a 48px gutter; the frame only bites on very wide screens */
+  --sv-measure:700px;   /* ≈68ch of 17px Plex Sans; fixed so mono headings and rules share the same edge */
+  --sv-section:clamp(64px,8vw,120px);
+}
+
+/* ------------------------------------------------------------
+   0 · Base: everything inside an interior main
+   ------------------------------------------------------------ */
+main.sv-interior { display:block; font-family:var(--sv-sans); font-weight:300; font-size:17px; line-height:1.7; color:var(--sv-ink-3); counter-reset:sv-sec; }
+main.sv-interior *, main.sv-interior *::before, main.sv-interior *::after { box-sizing:border-box; }
+main.sv-interior img { max-width:100%; height:auto; }
+main.sv-interior a:not(.e5-gilt):not(.btn):not([class*="vc-cta"]) { color:var(--sv-gold-hi); text-decoration:none; }
+main.sv-interior a:not(.e5-gilt):not(.btn):not([class*="vc-cta"]):hover { color:var(--sv-gold-pale); }
+main.sv-interior strong, main.sv-interior b { font-weight:500; color:var(--sv-ink-hi); }
+main.sv-interior em, main.sv-interior i { color:var(--sv-gold-hi); font-style:italic; }
+main.sv-interior code, main.sv-interior kbd { font-family:var(--sv-mono); font-size:.9em; color:var(--sv-gold-hi); }
+main.sv-interior hr { border:0; height:1px; background:var(--sv-gold-deep); margin:clamp(40px,5vw,64px) 0; }
+main.sv-interior ::selection { background:var(--sv-gold); color:var(--sv-bg); }
+main.sv-interior :focus-visible { outline:1px solid var(--sv-gold-pale); outline-offset:3px; }
+
+/* The eyebrow, as the homepage sets it: a short gold rule, then mono caps. */
+.sv-eyebrow,
+main.sv-interior .vc-page-eyebrow,
+main.sv-interior .section-header__label,
+main.sv-interior .eyebrow,
+main.sv-interior .kicker,
+main.sv-interior .vc-values-head .rubric,
+main.sv-interior .nb-eyebrow,
+main.sv-interior .body--xs {
+  display:flex; align-items:center; gap:16px;
+  font-family:var(--sv-mono); font-weight:400; font-size:10px; line-height:1.6;
+  letter-spacing:.26em; text-transform:uppercase; color:var(--sv-gold);
+  margin:0 0 24px;
+}
+main.sv-interior .vc-page-eyebrow::before,
+main.sv-interior .nb-eyebrow::before,
+main.sv-interior .section-header__label::before,
+main.sv-interior .eyebrow::before,
+main.sv-interior .kicker::before { content:""; flex:none; width:48px; height:1px; background:var(--sv-gold); }
+
+/* Roman numeral spine: every section heading after the first counts. */
+.sv-numeral,
+main.sv-interior .vc-prose > h2::before,
+main.sv-interior .vc-values-head h2::before,
+main.sv-interior .section:not(:first-child) > .container > .display--md::before,
+main.sv-interior .section:not(:first-child) > .container > .heading::before,
+main.sv-interior .section-header .section-header__title::before,
+main.sv-interior .nb-wrap-body > h2::before {
+  display:block; content:counter(sv-sec, upper-roman);
+  font-family:var(--sv-serif); font-weight:400; font-style:normal; font-size:30px; line-height:1; letter-spacing:.04em;
+  color:var(--sv-blue); margin:0 0 14px;
+}
+main.sv-interior .vc-prose > h2,
+main.sv-interior .vc-values-head h2,
+main.sv-interior .section:not(:first-child) > .container > .display--md,
+main.sv-interior .section:not(:first-child) > .container > .heading,
+main.sv-interior .section-header .section-header__title,
+main.sv-interior .nb-wrap-body > h2 { counter-increment:sv-sec; }
+
+/* ------------------------------------------------------------
+   1 · Page head (editorial chassis) — the homepage's section opener
+   ------------------------------------------------------------ */
+main.sv-interior .vc-page-head {
+  position:relative; max-width:none; margin:0;
+  padding:var(--sv-section) var(--sv-gutter) clamp(36px,4.5vw,64px);
+  border-bottom:1px solid var(--sv-gold-deep);
+}
+main.sv-interior .vc-page-head::before { opacity:.5; -webkit-mask-image:radial-gradient(ellipse 60% 80% at 28% 40%, #000 10%, transparent 78%); mask-image:radial-gradient(ellipse 60% 80% at 28% 40%, #000 10%, transparent 78%); }
+main.sv-interior .vc-page-head > * { position:relative; z-index:1; }
+main.sv-interior .vc-page-head, main.sv-interior .vc-prose, main.sv-interior .vc-values, main.sv-interior .section, main.sv-interior.nb-wrap { padding-left:max(var(--sv-gutter), calc((100% - var(--sv-max)) / 2 + var(--sv-gutter))); padding-right:max(var(--sv-gutter), calc((100% - var(--sv-max)) / 2 + var(--sv-gutter))); }
+main.sv-interior .vc-page-eyebrow { margin-bottom:32px; }
+main.sv-interior .vc-page-h {
+  font-family:var(--sv-serif); font-weight:500; font-size:clamp(42px,6vw,88px); line-height:1; letter-spacing:-.014em;
+  color:var(--sv-ink-hi); margin:0 0 28px; max-width:20ch; text-wrap:balance;
+}
+main.sv-interior .vc-page-h em { color:var(--sv-gold-hi); font-style:italic; font-weight:400; }
+main.sv-interior .vc-page-deck {
+  font-family:var(--sv-sans); font-style:normal; font-weight:300; font-size:clamp(18px,1.5vw,21px); line-height:1.6;
+  color:var(--sv-ink-3); max-width:60ch; margin:0; text-wrap:pretty;
+}
+main.sv-interior .vc-page-deck em { font-family:var(--sv-serif); font-style:italic; font-size:1.25em; color:var(--sv-gold-hi); }
+
+/* ------------------------------------------------------------
+   2 · Prose (editorial chassis) — the reading column, with a spine
+   ------------------------------------------------------------ */
+main.sv-interior .vc-prose {
+  max-width:none; margin:0;
+  padding:clamp(48px,6vw,88px) var(--sv-gutter) clamp(80px,10vw,140px);
+  font-family:var(--sv-sans); font-size:17px; line-height:1.75; font-weight:300; color:var(--sv-ink-3);
+}
+main.sv-interior .vc-prose > * { max-width:var(--sv-measure); }
+main.sv-interior .vc-prose p { margin:0 0 1.25em; text-wrap:pretty; }
+main.sv-interior .vc-prose > p.first,
+main.sv-interior .vc-prose > p:first-child { font-size:clamp(19px,1.55vw,22px); line-height:1.6; color:var(--sv-ink-2); }
+main.sv-interior .vc-prose > h2 {
+  font-family:var(--sv-serif); font-weight:500; font-size:clamp(34px,4vw,56px); line-height:1.02; letter-spacing:-.014em;
+  color:var(--sv-ink-hi); margin:clamp(56px,7vw,96px) 0 24px; text-wrap:balance;
+}
+main.sv-interior .vc-prose > hr + h2 { margin-top:0; }
+main.sv-interior .vc-prose > h2 em { color:var(--sv-gold-hi); font-weight:400; }
+main.sv-interior .vc-prose h3 {
+  font-family:var(--sv-mono); font-weight:500; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--sv-gold);
+  margin:2.4em 0 .9em; padding-top:18px; border-top:1px solid var(--sv-rule);
+}
+main.sv-interior .vc-prose h3 + p { color:var(--sv-ink-2); }
+main.sv-interior .vc-prose a { color:var(--sv-gold-hi); text-decoration:underline; text-decoration-color:rgba(201,162,74,.45); text-underline-offset:4px; text-decoration-thickness:1px; }
+main.sv-interior .vc-prose a:hover { color:var(--sv-gold-pale); text-decoration-color:var(--sv-gold-hi); }
+main.sv-interior .vc-prose hr { max-width:var(--sv-measure); }
+
+/* Lists become ledgers. */
+main.sv-interior .vc-prose ul, main.sv-interior .vc-prose ol { list-style:none; margin:8px 0 1.6em; padding:0; border-top:1px solid var(--sv-gold-deep); counter-reset:sv-li; }
+main.sv-interior .vc-prose li { position:relative; padding:16px 0 16px 56px; border-bottom:1px solid var(--sv-rule); line-height:1.6; }
+main.sv-interior .vc-prose ul li::before { content:"—"; position:absolute; left:0; top:15px; font-family:var(--sv-serif); font-size:20px; line-height:1; color:var(--sv-gold-mid); }
+main.sv-interior .vc-prose ol li { counter-increment:sv-li; }
+main.sv-interior .vc-prose ol li::before { content:counter(sv-li); position:absolute; left:0; top:12px; font-family:var(--sv-serif); font-size:26px; line-height:1; color:var(--sv-blue); }
+main.sv-interior .vc-prose li strong { color:var(--sv-ink-hi); }
+main.sv-interior .vc-prose li em { color:var(--sv-gold-hi); }
+main.sv-interior .vc-prose li li { padding-left:24px; border-bottom:0; padding-top:6px; padding-bottom:6px; }
+main.sv-interior .vc-prose li ul, main.sv-interior .vc-prose li ol { border-top:0; margin:4px 0 0; }
+
+main.sv-interior .vc-prose blockquote {
+  margin:2em 0; padding:8px 0 8px 28px; border-left:1px solid var(--sv-gold);
+  font-family:var(--sv-serif); font-style:italic; font-size:clamp(22px,1.8vw,27px); line-height:1.4; color:var(--sv-ink-hi);
+}
+main.sv-interior .vc-prose blockquote p { margin:0; }
+main.sv-interior .vc-prose table { width:100%; border-collapse:collapse; margin:1.6em 0; font-size:15px; }
+main.sv-interior .vc-prose th { text-align:left; font:500 10px/1 var(--sv-mono); letter-spacing:.2em; text-transform:uppercase; color:var(--sv-gold); padding:0 12px 14px 0; border-bottom:1px solid var(--sv-gold-deep); }
+main.sv-interior .vc-prose td { padding:14px 12px 14px 0; border-bottom:1px solid var(--sv-rule); vertical-align:top; color:var(--sv-ink-3); }
+main.sv-interior .vc-prose td:first-child { color:var(--sv-ink-hi); }
+
+/* ------------------------------------------------------------
+   3 · Values / ledgers (editorial chassis)
+   ------------------------------------------------------------ */
+main.sv-interior .vc-values { padding:clamp(56px,7vw,104px) var(--sv-gutter); background:transparent; border-bottom:0; color:var(--sv-ink-3); }
+main.sv-interior .vc-values + .vc-values { padding-top:0; border-top:0 !important; }
+main.sv-interior .vc-values-head { max-width:none; margin:0 0 clamp(36px,4vw,56px); display:grid; grid-template-columns:minmax(0,1fr) 420px; gap:clamp(20px,5vw,72px); align-items:end; }
+main.sv-interior .vc-values-head .lhs { display:flex; flex-direction:column; gap:0; }
+main.sv-interior .vc-values-head .rubric { margin-bottom:18px; }
+main.sv-interior .vc-values-head h2 { margin:0; font-family:var(--sv-serif); font-weight:500; font-size:clamp(38px,4.8vw,68px); line-height:1; letter-spacing:-.014em; color:var(--sv-ink-hi); text-wrap:balance; }
+main.sv-interior .vc-values-head h2 em { color:var(--sv-gold-hi); font-weight:400; }
+main.sv-interior .vc-values-head .rhs { margin:0; padding:0 0 6px; border:0; font-family:var(--sv-sans); font-style:normal; font-weight:300; font-size:17px; line-height:1.65; color:var(--sv-ink-3); text-wrap:pretty; }
+main.sv-interior .vc-values-list { max-width:none; margin:0; border-top:1px solid var(--sv-gold-deep); }
+main.sv-interior .vc-value-row { display:grid; grid-template-columns:72px minmax(0,1fr) minmax(0,1.5fr); gap:clamp(18px,3vw,44px); padding:36px 0; border-bottom:1px solid var(--sv-rule); align-items:start; transition:background .35s; }
+main.sv-interior a.vc-value-row:hover { background:rgba(11,19,48,.3); }
+main.sv-interior .vc-value-row .num { font-family:var(--sv-serif); font-style:normal; font-size:36px; line-height:1; color:var(--sv-blue); padding-top:4px; }
+main.sv-interior .vc-value-row .name { font-family:var(--sv-serif); font-weight:500; font-size:clamp(26px,2.3vw,32px); line-height:1.08; color:var(--sv-ink-hi); }
+main.sv-interior .vc-value-row .body { font-family:var(--sv-sans); font-weight:300; font-size:16px; line-height:1.65; color:var(--sv-muted); }
+main.sv-interior .vc-value-row .body strong { color:var(--sv-ink-hi) !important; font-weight:500; }
+main.sv-interior .vc-value-row .body em { color:var(--sv-gold-hi); }
+main.sv-interior .vc-value-row .body a { color:var(--sv-gold-hi); }
+
+/* Stat tiles laid inside a values list (coalition) — the homepage's counters. */
+main.sv-interior .vc-values-list[style*="repeat"] { display:grid; border-top:1px solid var(--sv-gold-deep); border-bottom:1px solid var(--sv-rule); gap:0 !important; }
+main.sv-interior .vc-values-list[style*="repeat"] > div { border-right:1px solid var(--sv-rule); }
+main.sv-interior .vc-values-list[style*="repeat"] > div:last-child { border-right:0; }
+main.sv-interior .vc-values-list[style*="repeat"] > div > div:first-child { color:var(--sv-ink-hi) !important; font-family:var(--sv-serif) !important; font-weight:400; font-size:clamp(30px,3.4vw,48px) !important; }
+main.sv-interior .vc-values-list[style*="repeat"] > div > div:last-child { font-family:var(--sv-mono) !important; font-size:10px !important; letter-spacing:.24em !important; text-transform:uppercase; color:var(--sv-gold) !important; margin-top:12px; }
+
+/* ------------------------------------------------------------
+   4 · The design-system vocabulary (programs, dispatches, contact,
+       donate, apply) — restored from src/styles/*.css in Sovereign
+   ------------------------------------------------------------ */
+main.sv-interior .section { position:relative; padding:clamp(48px,6vw,88px) var(--sv-gutter); }
+main.sv-interior .section--compact { padding-top:clamp(36px,4.5vw,64px); padding-bottom:clamp(36px,4.5vw,64px); }
+main.sv-interior .section--dark, main.sv-interior .section--elevated { background:transparent; }
+main.sv-interior .section--elevated { border-top:1px solid var(--sv-rule); }
+main.sv-interior .container { max-width:none; margin:0; padding:0; }
+main.sv-interior .container--narrow > :not(.display--lg):not(.display--xl):not(.donate__tiers):not(.trust-grid):not(.contact-grid):not(.org-details) { max-width:var(--sv-measure); }
+main.sv-interior .display, main.sv-interior .heading, main.sv-interior .section-header__title { font-family:var(--sv-serif); font-weight:500; letter-spacing:-.014em; color:var(--sv-ink-hi); text-wrap:balance; margin:0; }
+main.sv-interior .display--xl { font-size:clamp(48px,7vw,104px); line-height:.98; }
+main.sv-interior .display--lg { font-size:clamp(42px,6vw,88px); line-height:1; max-width:20ch; }
+main.sv-interior .display--md { font-size:clamp(32px,3.8vw,54px); line-height:1.04; }
+main.sv-interior .display--sm { font-size:clamp(26px,2.6vw,36px); line-height:1.1; }
+main.sv-interior .heading--xl { font-size:clamp(32px,3.8vw,54px); line-height:1.04; }
+main.sv-interior .heading--lg { font-size:clamp(28px,3vw,42px); line-height:1.08; }
+main.sv-interior .heading--md { font-size:clamp(24px,2.4vw,32px); line-height:1.12; }
+main.sv-interior .heading--sm { font-size:clamp(22px,2vw,28px); line-height:1.15; }
+main.sv-interior .display + .body, main.sv-interior .display + p, main.sv-interior .heading + .body, main.sv-interior .heading + p { margin-top:22px; }
+main.sv-interior .body { font-family:var(--sv-sans); font-weight:300; line-height:1.7; color:var(--sv-ink-3); text-wrap:pretty; }
+main.sv-interior .body--lg { font-size:clamp(18px,1.5vw,21px); line-height:1.6; }
+main.sv-interior .body--sm { font-size:14px; color:var(--sv-muted); }
+main.sv-interior .body--xs { display:block; margin:0; font-size:10px; }
+main.sv-interior .body--xs::before { content:none; }
+main.sv-interior .text-gold { color:var(--sv-gold-hi); }
+main.sv-interior .display .text-gold, main.sv-interior .heading .text-gold, main.sv-interior .section-header__title .text-gold { font-style:italic; font-weight:400; }
+main.sv-interior .text-muted { color:var(--sv-muted); }
+main.sv-interior .body.text-muted { color:var(--sv-ink-3); }
+main.sv-interior .mono { font-family:var(--sv-mono); font-size:13px; }
+main.sv-interior .divider { border:0; height:1px; background:var(--sv-rule); margin:clamp(36px,4vw,56px) 0; }
+main.sv-interior .divider--gold { background:var(--sv-gold-deep); }
+main.sv-interior .section-header { max-width:none; margin:0 0 clamp(36px,4vw,56px); text-align:left; }
+main.sv-interior .section-header__label { margin-bottom:24px; }
+main.sv-interior .section-header__title { font-size:clamp(34px,4.2vw,60px); line-height:1.02; max-width:22ch; margin:0; }
+main.sv-interior .section-header__subtitle { margin:22px 0 0; max-width:var(--sv-measure); font-size:17px; line-height:1.65; color:var(--sv-ink-3); }
+main.sv-interior .section-separator { width:48px; height:1px; background:var(--sv-gold); border:0; margin:clamp(36px,4vw,56px) 0; }
+
+/* The first section of a design-system page is its opener: plan grid, gold rule. */
+main.sv-interior > .section:first-child { padding-top:var(--sv-section); padding-bottom:clamp(36px,4.5vw,64px); border-bottom:1px solid var(--sv-gold-deep); }
+main.sv-interior > .section:first-child::before { content:""; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.5;
+  background:
+    repeating-linear-gradient(90deg, rgba(201,162,74,.09) 0 1px, transparent 1px 24px),
+    repeating-linear-gradient(0deg,  rgba(201,162,74,.09) 0 1px, transparent 1px 24px),
+    repeating-linear-gradient(90deg, rgba(233,211,160,.16) 0 1px, transparent 1px 120px),
+    repeating-linear-gradient(0deg,  rgba(233,211,160,.16) 0 1px, transparent 1px 120px);
+  -webkit-mask-image:radial-gradient(ellipse 60% 80% at 28% 40%, #000 10%, transparent 78%); mask-image:radial-gradient(ellipse 60% 80% at 28% 40%, #000 10%, transparent 78%); }
+main.sv-interior > .section:first-child > * { position:relative; z-index:1; }
+main.sv-interior > .section:first-child .section-header__label { margin-bottom:32px; }
+main.sv-interior > .section:first-child .display--lg + .body { margin-top:28px; max-width:60ch; }
+/* A section that follows the editorial page head opens without its own rule. */
+main.sv-interior .vc-page-head + .section .display--lg { font-size:clamp(30px,3.4vw,48px); line-height:1.06; max-width:26ch; }
+main.sv-interior .vc-page-head + .section .display--lg br { display:none; }
+/* The closing "back" section. */
+main.sv-interior .section:last-child .container[style*="center"] { text-align:left !important; }
+main.sv-interior .section:last-child .container[style*="center"] > a { display:inline-flex; align-items:center; gap:10px; padding:11px 16px; border:1px solid var(--sv-gold); color:var(--sv-gold-hi) !important; text-decoration:none !important; font:500 10px/1 var(--sv-mono); letter-spacing:.18em; text-transform:uppercase; box-shadow:inset 0 0 0 1px rgba(5,6,9,.6), inset 0 0 0 2px rgba(233,211,160,.18); }
+
+/* Buttons. Primary takes the gilt (chrome partial); secondary is the gold line; tertiary is a mono link. */
+main.sv-interior .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:44px; padding:0 22px; font-family:var(--sv-sans); font-weight:600; font-size:11px; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; border-radius:0; cursor:pointer; white-space:nowrap; user-select:none; transition:color .3s, border-color .3s, background .3s; }
+main.sv-interior .btn--primary, main.sv-interior .cta-primary { /* the gilt finish lives in the chrome partial */ }
+main.sv-interior .btn--secondary { background:transparent; color:var(--sv-gold-hi); border:1px solid var(--sv-gold); box-shadow:inset 0 0 0 1px rgba(5,6,9,.6), inset 0 0 0 2px rgba(233,211,160,.18); }
+main.sv-interior .btn--secondary:hover { color:var(--sv-gold-pale); border-color:var(--sv-gold-hi); background:rgba(201,162,74,.06); }
+main.sv-interior .btn--tertiary { background:transparent; color:var(--sv-gold-hi); padding:0; min-height:0; font-family:var(--sv-mono); font-weight:500; font-size:10px; letter-spacing:.18em; }
+main.sv-interior .btn--tertiary:hover { color:var(--sv-gold-pale); text-decoration:none; }
+main.sv-interior .btn--sm { min-height:36px; padding:0 16px; font-size:10px; }
+main.sv-interior .btn--lg { min-height:52px; padding:0 30px; font-size:12px; }
+main.sv-interior .btn:disabled, main.sv-interior .btn--disabled { opacity:.4; pointer-events:none; }
+
+/* Cards — the homepage's panels: dark glass, hairline, gold spine. */
+main.sv-interior .card { position:relative; display:flex; flex-direction:column; gap:14px; padding:28px 28px 28px 32px; background:var(--sv-panel); border:1px solid var(--sv-rule); border-radius:0; color:var(--sv-ink); text-decoration:none; transition:background .5s, border-color .5s; }
+main.sv-interior .card::before { content:""; position:absolute; left:-1px; top:-1px; bottom:-1px; width:2px; background:linear-gradient(180deg,var(--sv-gold-hi),var(--sv-gold) 30%,var(--sv-gold-deep)); }
+main.sv-interior .card:hover { background:rgba(14,20,40,.85); border-color:var(--sv-rule-3); }
+main.sv-interior .card h3, main.sv-interior .card__title { margin:0; font-family:var(--sv-serif); font-weight:500; font-size:clamp(26px,2.2vw,32px); line-height:1.06; color:var(--sv-ink-hi); }
+main.sv-interior .card p, main.sv-interior .card__description { margin:0; font-size:15px; line-height:1.6; color:var(--sv-muted); }
+main.sv-interior .card .btn--tertiary, main.sv-interior .card__cta { margin-top:auto; padding-top:10px; align-self:flex-start; justify-content:flex-start; }
+main.sv-interior .contact-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:2px; border-top:1px solid var(--sv-gold-deep); padding-top:2px; }
+main.sv-interior .contact-grid .card { min-height:260px; }
+
+/* Definition rows (organization details, facts). */
+main.sv-interior .org-details { border-top:1px solid var(--sv-gold-deep); margin-top:8px; }
+main.sv-interior .org-detail { display:grid; grid-template-columns:minmax(140px,200px) minmax(0,1fr); gap:24px; padding:14px 0; border-bottom:1px solid var(--sv-rule); }
+main.sv-interior .org-detail__label { font:500 10px/1.6 var(--sv-mono); letter-spacing:.2em; text-transform:uppercase; color:var(--sv-gold); padding-top:4px; }
+main.sv-interior .org-detail__value { font-size:16px; color:var(--sv-ink-hi); }
+
+/* Trust grid (donate). */
+main.sv-interior .trust-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:0; border-top:1px solid var(--sv-gold-deep); }
+main.sv-interior .trust-item { display:flex; flex-direction:column; gap:12px; padding:28px 28px 28px 0; border-right:1px solid var(--sv-rule); border-bottom:1px solid var(--sv-rule); margin-right:28px; }
+main.sv-interior .trust-item:last-child { border-right:0; margin-right:0; }
+main.sv-interior .trust-item__icon { font-family:var(--sv-serif); font-size:26px; line-height:1; color:var(--sv-blue); }
+main.sv-interior .trust-item h3 { margin:0; font-family:var(--sv-serif); font-weight:500; font-size:24px; line-height:1.1; color:var(--sv-ink-hi); }
+main.sv-interior .trust-item p { margin:0; font-size:15px; line-height:1.6; color:var(--sv-muted); }
+main.sv-interior .trust-item .btn--tertiary { margin-top:auto; padding-top:8px; }
+
+/* Donation tiers. */
+main.sv-interior .donate__tiers { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:2px; border-top:1px solid var(--sv-gold-deep); padding-top:2px; margin-bottom:32px; }
+main.sv-interior .donate__tier { position:relative; display:flex; flex-direction:column; gap:12px; padding:32px 28px 28px 32px; background:var(--sv-panel); border:1px solid var(--sv-rule); min-height:320px; transition:background .5s, border-color .5s; }
+main.sv-interior .donate__tier::before { content:""; position:absolute; left:-1px; top:-1px; bottom:-1px; width:2px; background:linear-gradient(180deg,var(--sv-gold-hi),var(--sv-gold) 30%,var(--sv-gold-deep)); opacity:0; transition:opacity .4s; }
+main.sv-interior .donate__tier:hover::before, main.sv-interior .donate__tier--featured::before, main.sv-interior .donate__tier:has(.tier__radio:checked)::before { opacity:1; }
+main.sv-interior .donate__tier--featured, main.sv-interior .donate__tier:has(.tier__radio:checked) { background:rgba(14,20,40,.85); border-color:var(--sv-rule-3); }
+main.sv-interior .tier__badge { position:absolute; top:-1px; right:20px; padding:6px 10px; background:var(--sv-gold); color:var(--sv-bg); font:500 9px/1 var(--sv-mono); letter-spacing:.2em; text-transform:uppercase; }
+main.sv-interior .tier__amount { font-family:var(--sv-serif); font-weight:500; font-size:clamp(40px,3.6vw,52px); line-height:1; color:var(--sv-ink-hi); }
+main.sv-interior .tier__freq { font-family:var(--sv-mono); font-size:11px; letter-spacing:.14em; color:var(--sv-muted); margin-left:6px; }
+main.sv-interior .tier__impact { margin:4px 0 0; font-family:var(--sv-serif); font-weight:500; font-size:24px; line-height:1.1; color:var(--sv-gold-hi); }
+main.sv-interior .tier__desc { margin:0; font-size:14px; line-height:1.6; color:var(--sv-muted); }
+main.sv-interior .tier__radio { position:absolute; opacity:0; pointer-events:none; }
+main.sv-interior .tier__btn { margin-top:auto; align-self:flex-start; }
+main.sv-interior .donate__custom, main.sv-interior .donate__freq-toggle, main.sv-interior .donate__quickgive { display:flex; flex-wrap:wrap; align-items:center; gap:16px 20px; padding:18px 0; border-bottom:1px solid var(--sv-rule); }
+main.sv-interior .donate__custom .body, main.sv-interior .donate__freq-toggle .body, main.sv-interior .donate__quickgive .body { margin:0; font:500 10px/1 var(--sv-mono); letter-spacing:.2em; text-transform:uppercase; color:var(--sv-gold); min-width:160px; }
+main.sv-interior .donate__custom-input { display:inline-flex; align-items:center; gap:10px; }
+main.sv-interior .donate__dollar, main.sv-interior .donate__freq { font-family:var(--sv-serif); font-size:24px; color:var(--sv-gold-hi); }
+main.sv-interior .donate__input { width:160px; min-height:44px; padding:0 14px; font-family:var(--sv-sans); font-size:17px; }
+main.sv-interior .donate__freq-option { display:inline-flex; align-items:center; gap:10px; font-size:14px; color:var(--sv-ink-2); cursor:pointer; }
+main.sv-interior .donate__freq-option input { appearance:none; -webkit-appearance:none; width:14px; height:14px; border:1px solid var(--sv-gold) !important; border-radius:50% !important; background:transparent !important; margin:0; display:inline-grid; place-content:center; }
+main.sv-interior .donate__freq-option input::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--sv-gold-hi); transform:scale(0); transition:transform .2s; }
+main.sv-interior .donate__freq-option input:checked::before { transform:scale(1); }
+main.sv-interior .donate__action { display:flex; flex-wrap:wrap; align-items:center; gap:24px; padding-top:32px; }
+main.sv-interior .donate__trust { margin:0; display:flex; align-items:center; gap:6px; color:var(--sv-dim); letter-spacing:.14em; }
+main.sv-interior .donate__trust::before { content:none; }
+
+/* Forms. */
+main.sv-interior .form__group { display:flex; flex-direction:column; gap:8px; margin-bottom:18px; }
+main.sv-interior .form__label { font:500 10px/1 var(--sv-mono); letter-spacing:.2em; text-transform:uppercase; color:var(--sv-gold); }
+main.sv-interior .form__required { color:var(--sv-gold-hi); }
+main.sv-interior .form__input, main.sv-interior .form__textarea, main.sv-interior input:not([type="radio"]):not([type="checkbox"]), main.sv-interior select, main.sv-interior textarea { width:100%; min-height:48px; padding:12px 16px; font-family:var(--sv-sans); font-size:16px; font-weight:300; color:var(--sv-ink) !important; background:var(--sv-bg-3) !important; border:1px solid var(--sv-rule-3) !important; border-radius:0 !important; }
+main.sv-interior textarea { min-height:140px; resize:vertical; }
+main.sv-interior input:focus, main.sv-interior select:focus, main.sv-interior textarea:focus { outline:1px solid var(--sv-gold) !important; outline-offset:0; border-color:var(--sv-gold) !important; }
+main.sv-interior ::placeholder { color:var(--sv-dim); }
+main.sv-interior .form__nav { display:flex; flex-wrap:wrap; gap:14px; padding-top:18px; }
+main.sv-interior form .btn--primary { align-self:flex-start; }
+main.sv-interior .vc-vh { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+/* Counters. */
+main.sv-interior .counters { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1px solid var(--sv-gold-deep); border-bottom:1px solid var(--sv-rule); text-align:left; padding:0; gap:0; }
+main.sv-interior .counters > * { padding:32px 24px; border-right:1px solid var(--sv-rule); }
+main.sv-interior .counters > :last-child { border-right:0; }
+main.sv-interior .counter__number { font-family:var(--sv-serif); font-weight:400; font-size:clamp(40px,4vw,56px); line-height:1; color:var(--sv-ink-hi); }
+main.sv-interior .counter__label { margin-top:12px; font:500 10px/1.5 var(--sv-mono); letter-spacing:.24em; text-transform:uppercase; color:var(--sv-gold); }
+
+/* Glass / bento, kept for any page that still uses them. */
+main.sv-interior .glass { background:var(--sv-panel); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border:1px solid var(--sv-rule); border-radius:0; }
+main.sv-interior .glass--gold { border-color:var(--sv-gold-deep); }
+main.sv-interior .bento { display:grid; gap:2px; }
+main.sv-interior .bento--3 { grid-template-columns:repeat(3,minmax(0,1fr)); }
+main.sv-interior .bento--5 { grid-template-columns:repeat(4,minmax(0,1fr)); }
+main.sv-interior .bento--5 .bento__hero { grid-column:span 2; grid-row:span 2; }
+
+/* ------------------------------------------------------------
+   5 · Neighbourhood pages (nb-*): the same opener and ledgers
+   ------------------------------------------------------------ */
+main.sv-interior.nb-wrap { max-width:none; padding-top:0; padding-bottom:clamp(80px,10vw,140px); }
+main.sv-interior.nb-wrap > * { max-width:var(--sv-measure); }
+main.sv-interior .nb-top { max-width:none; margin:0; padding:28px 0 0; }
+main.sv-interior .nb-back { font:500 10px/1 var(--sv-mono); letter-spacing:.2em; text-transform:uppercase; color:var(--sv-muted); border:0; }
+main.sv-interior .nb-back:hover { color:var(--sv-gold-hi); }
+main.sv-interior .nb-eyebrow { margin:var(--sv-section) 0 32px; }
+main.sv-interior.nb-wrap > h1 { font-family:var(--sv-serif); font-weight:500; font-size:clamp(42px,6vw,88px); line-height:1; letter-spacing:-.014em; color:var(--sv-ink-hi); margin:0 0 28px; max-width:20ch; }
+main.sv-interior .nb-lede { font-family:var(--sv-sans); font-style:normal; font-weight:300; font-size:clamp(18px,1.5vw,21px); line-height:1.6; color:var(--sv-ink-3); margin:0 0 8px; }
+main.sv-interior .nb-rule { border:0; height:1px; background:var(--sv-gold-deep); margin:clamp(36px,4.5vw,56px) 0; }
+main.sv-interior.nb-wrap > h2 { counter-increment:sv-sec; font-family:var(--sv-serif); font-weight:500; font-size:clamp(32px,3.8vw,52px); line-height:1.04; letter-spacing:-.014em; color:var(--sv-ink-hi); margin:clamp(48px,6vw,80px) 0 20px; }
+main.sv-interior.nb-wrap > h2::before { display:block; content:counter(sv-sec, upper-roman); font-family:var(--sv-serif); font-weight:400; font-size:30px; line-height:1; letter-spacing:.04em; color:var(--sv-blue); margin:0 0 14px; }
+main.sv-interior.nb-wrap > .nb-rule + h2 { margin-top:0; }
+main.sv-interior.nb-wrap h3 { font:500 10px/1 var(--sv-mono); letter-spacing:.24em; text-transform:uppercase; color:var(--sv-gold); margin:2.2em 0 .8em; }
+main.sv-interior.nb-wrap p { margin:0 0 1.25em; }
+main.sv-interior.nb-wrap ul, main.sv-interior.nb-wrap ol { list-style:none; margin:8px 0 1.6em; padding:0; border-top:1px solid var(--sv-gold-deep); counter-reset:sv-li; }
+main.sv-interior.nb-wrap li { position:relative; padding:14px 0 14px 48px; border-bottom:1px solid var(--sv-rule); margin:0; }
+main.sv-interior.nb-wrap ul li::before { content:"—"; position:absolute; left:0; top:13px; font-family:var(--sv-serif); font-size:20px; line-height:1; color:var(--sv-gold-mid); }
+main.sv-interior.nb-wrap ol li { counter-increment:sv-li; }
+main.sv-interior.nb-wrap ol li::before { content:counter(sv-li); position:absolute; left:0; top:10px; font-family:var(--sv-serif); font-size:24px; line-height:1; color:var(--sv-blue); }
+main.sv-interior .nb-note { position:relative; margin:36px 0; padding:24px 28px 24px 32px; background:var(--sv-panel) !important; border:1px solid var(--sv-rule); border-left:0 !important; font-size:15.5px; color:var(--sv-ink-3); }
+main.sv-interior .nb-note::before { content:""; position:absolute; left:-1px; top:-1px; bottom:-1px; width:2px; background:linear-gradient(180deg,var(--sv-gold-hi),var(--sv-gold) 30%,var(--sv-gold-deep)); }
+main.sv-interior .nb-note .lbl { display:block; font:500 10px/1 var(--sv-mono); letter-spacing:.24em; text-transform:uppercase; color:var(--sv-gold); margin-bottom:12px; }
+main.sv-interior .nb-facts { border-top:1px solid var(--sv-gold-deep) !important; margin:36px 0 0; }
+main.sv-interior .nb-facts div { grid-template-columns:minmax(140px,200px) 1fr; gap:24px; padding:14px 0; border-bottom:1px solid var(--sv-rule) !important; font-size:15px; }
+main.sv-interior .nb-facts dt { font:500 10px/1.6 var(--sv-mono); letter-spacing:.2em; text-transform:uppercase; color:var(--sv-gold); padding-top:4px; }
+main.sv-interior .nb-facts dd { color:var(--sv-ink-hi); }
+main.sv-interior .nb-cta { margin:clamp(48px,6vw,80px) 0 0; padding:28px 0 0; border-top:1px solid var(--sv-gold-deep) !important; }
+main.sv-interior .nb-src { margin-top:clamp(48px,6vw,80px); padding-top:24px; border-top:1px solid var(--sv-rule) !important; font-size:13.5px; line-height:1.6; color:var(--sv-muted); }
+main.sv-interior .nb-src h2 { font:500 10px/1 var(--sv-mono); letter-spacing:.24em; text-transform:uppercase; color:var(--sv-gold); margin:0 0 16px; counter-increment:none; }
+main.sv-interior .nb-src h2::before { content:none; }
+main.sv-interior .nb-src ol { border-top:0; margin:0; }
+main.sv-interior .nb-src li { padding:8px 0 8px 40px; border-bottom:0; }
+main.sv-interior .nb-src ol li::before { font-size:18px; top:7px; color:var(--sv-gold-mid); }
+main.sv-interior .nb-foot { display:none; }
+
+/* ------------------------------------------------------------
+   6 · Closing CTA rows on the editorial chassis
+   ------------------------------------------------------------ */
+main.sv-interior .vc-cta-link { display:inline-flex; align-items:center; gap:10px; font:500 10px/1 var(--sv-mono); letter-spacing:.18em; text-transform:uppercase; color:var(--sv-muted); }
+main.sv-interior .vc-cta-link em, main.sv-interior .vc-cta-link:hover { color:var(--sv-gold-hi); font-style:normal; }
+
+/* ------------------------------------------------------------
+   7 · Retired funnel furniture — never renders, whatever a cached
+       script does
+   ------------------------------------------------------------ */
+#e5-sticky-cta, #e5-exit-ov { display:none !important; }
+
+/* ------------------------------------------------------------
+   8 · Viewports
+   ------------------------------------------------------------ */
+@media (max-width: 1100px) {
+  main.sv-interior .contact-grid, main.sv-interior .trust-grid, main.sv-interior .donate__tiers, main.sv-interior .counters, main.sv-interior .bento--5 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  main.sv-interior .trust-item:nth-child(2n) { border-right:0; margin-right:0; }
+  main.sv-interior .trust-item:nth-child(2n+1) { padding-right:28px; }
+  main.sv-interior .vc-values-head { grid-template-columns:minmax(0,1fr); gap:20px; align-items:start; }
+}
+@media (max-width: 720px) {
+  main.sv-interior { font-size:16px; }
+  main.sv-interior .vc-page-h, main.sv-interior.nb-wrap > h1, main.sv-interior .display--lg { font-size:clamp(34px,10.5vw,44px); }
+  main.sv-interior .vc-value-row { grid-template-columns:44px minmax(0,1fr); gap:14px 18px; padding:26px 0; }
+  main.sv-interior .vc-value-row .num { font-size:28px; }
+  main.sv-interior .vc-value-row .body { grid-column:1 / -1; padding-left:0; }
+  main.sv-interior .vc-values-list[style*="repeat"] { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+  main.sv-interior .vc-values-list[style*="repeat"] > div { border-right:0; border-bottom:1px solid var(--sv-rule); }
+  main.sv-interior .vc-values-list[style*="repeat"] > div:nth-child(odd) { border-right:1px solid var(--sv-rule); }
+  main.sv-interior .contact-grid, main.sv-interior .trust-grid, main.sv-interior .donate__tiers, main.sv-interior .bento--3, main.sv-interior .bento--5 { grid-template-columns:minmax(0,1fr); }
+  main.sv-interior .trust-item { border-right:0; margin-right:0; padding-right:0; }
+  main.sv-interior .counters { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  main.sv-interior .counters > :nth-child(2n) { border-right:0; }
+  main.sv-interior .org-detail, main.sv-interior .nb-facts div { grid-template-columns:minmax(0,1fr); gap:4px; }
+  main.sv-interior .vc-prose li { padding-left:40px; }
+  main.sv-interior .vc-prose ul li::before { font-size:18px; }
+  main.sv-interior .vc-prose ol li::before { font-size:22px; }
+  main.sv-interior .donate__custom .body, main.sv-interior .donate__freq-toggle .body, main.sv-interior .donate__quickgive .body { min-width:0; flex:0 0 100%; }
+  main.sv-interior .btn { white-space:normal; text-align:center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  main.sv-interior * { transition:none !important; }
+}
+@media print {
+  main.sv-interior { color:#000; }
+  main.sv-interior .vc-page-head::before, main.sv-interior > .section:first-child::before { display:none; }
+}
