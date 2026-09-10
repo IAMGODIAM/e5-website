@@ -113,3 +113,9 @@
 /dc/                          https://dc.e5enclave.com/         301
 /dc/*                         https://dc.e5enclave.com/:splat   301
 /pdf/*                        https://dc.e5enclave.com/pdf/:splat  301
+
+# --- Project 2033 rebrand (2026-09-10): reparations keyword routes → canonical page ---
+/reparations                  /restitution-246/                301
+/reparations/                 /restitution-246/                301
+/project-2033                 /restitution-246/                301
+/project-2033/                /restitution-246/                301
