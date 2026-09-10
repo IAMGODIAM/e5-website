@@ -520,13 +520,13 @@ function ChartReading({who}){const p=person(who);const cp=cosmicProfile(who);if(
   </Card>;}
 
 /* ---- Today's Sky: live transits touching your charts ---- */
-const TRANSIT_FN='https://sue-app-e73f9f1e.base44.app/api/apps/69d7dd5e015cd1aa45c3e283/functions/transitsToday';
+
 let _transitCache=null;
 function TodaySky({me,partner}){
   const [data,setData]=useState(_transitCache);
   const [err,setErr]=useState(false);
   useEffect(()=>{ if(_transitCache){setData(_transitCache);return;} (async()=>{
-    try{const r=await fetch(TRANSIT_FN,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({secret:'viael-izzy-2-22-22-doves'})});
+    try{const r=await fetch('/api/transits',{method:'POST'});
       const d=await r.json(); if(d&&d.ok){_transitCache=d;setData(d);} else setErr(true);
     }catch(e){setErr(true);}
   })(); },[]);
@@ -658,10 +658,10 @@ function Cosmos(){
   </div>);}
 
 /* ============ THE WORD — full Bible reader (books → chapters → verses) ============ */
-const BIBLE_SECRET='viael-izzy-2-22-22-doves';
-const BIBLE_FN='https://sue-app-e73f9f1e.base44.app/api/apps/69d7dd5e015cd1aa45c3e283/functions/bibleProxy';
+
+
 async function bibleCall(payload){
-  const r=await fetch(BIBLE_FN,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({secret:BIBLE_SECRET,...payload})});
+  const r=await fetch('/api/bible',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});
   if(!r.ok) throw new Error('bible '+r.status);
   return r.json();
 }
