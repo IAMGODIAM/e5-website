@@ -1,32 +1,80 @@
-<!doctype html>
-<html lang="en" data-hyperframes>
+<!DOCTYPE html>
+<html lang="en" data-palette="editorial">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>E5 Genesis — Deterministic Composition</title>
-  <link rel="stylesheet" href="assets/cinematic/e5-cinematic.css">
-  <style>
-    :root{--vc-bone:#f4eee2;--vc-ink:#0a0908;--vc-oxblood:#6d1f20;--vc-gold:#a8884a;--vc-display:Georgia,'Times New Roman',serif;--vc-text:Arial,Helvetica,sans-serif}
-    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--vc-bone);color:var(--vc-ink)}
-    .composition{width:100%;height:100%;position:relative;display:grid;place-items:center;background:radial-gradient(circle at 50% 42%,#fffaf1 0,var(--vc-bone) 56%,#e2d8c2 100%)}
-    .vc-masthead{width:100%;height:100%;display:grid;place-items:center;padding:6vw;text-align:center}
-    .vc-masthead-rule{position:absolute;top:7%;left:8%;right:8%;border-top:1px solid rgba(10,9,8,.28)}
-    .vc-masthead-rule::after{content:'✦';position:absolute;left:50%;top:0;transform:translate(-50%,-52%);background:var(--vc-bone);padding:0 16px;color:var(--vc-oxblood)}
-    .vc-masthead-eyebrow{font:600 clamp(9px,1vw,13px)/1 var(--vc-text);letter-spacing:.34em;text-transform:uppercase;margin-bottom:2.2vh}
-    .vc-foundation{position:relative;z-index:2;max-width:1100px}
-    .vc-wordmark{margin:0;font-family:var(--vc-display);font-weight:400;line-height:.83;letter-spacing:.01em}
-    .vc-wordmark .em5{display:block;font-size:clamp(40px,8vw,118px);font-style:italic;color:var(--vc-oxblood)}
-    .vc-wordmark .word{display:block;font-size:clamp(76px,17vw,250px);font-weight:400}
-    .vc-tagline{font:italic clamp(18px,2.3vw,34px)/1.35 var(--vc-display);max-width:850px;margin:3vh auto 0}
-    .vc-tagline .cw{color:var(--vc-oxblood)}
-    .vc-dates{display:flex;justify-content:center;gap:clamp(22px,5vw,76px);margin-top:4vh;padding-top:2.4vh;border-top:1px solid rgba(10,9,8,.2)}
-    .vc-date{font:600 clamp(8px,.8vw,11px)/1.6 var(--vc-text);letter-spacing:.18em;text-transform:uppercase}.vc-date .val{display:block;font-family:var(--vc-display);font-size:clamp(13px,1.3vw,19px);font-style:italic;letter-spacing:.04em;text-transform:none}
-    .vc-foundation-colophon{font:italic clamp(11px,1vw,15px)/1.5 var(--vc-display);margin:3vh 0 0}.center{color:var(--vc-oxblood)}
-    .vc-nav{display:none}.e5-motion-toggle{display:none}
-    @media(max-aspect-ratio:4/5){.vc-masthead{padding:12vw 8vw}.vc-wordmark .word{font-size:22vw}.vc-wordmark .em5{font-size:13vw}.vc-dates{flex-direction:column;gap:1.4vh}.vc-tagline{font-size:5.2vw}}
-  </style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
-<link rel="stylesheet" href="/assets/front/sovereign-chrome.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Research — E5 Enclave</title>
+<meta name="description" content="Scholarly papers from E5 Enclave Inc. — a numbered research series with full citations, identifiers, and publication status.">
+<link rel="canonical" href="https://e5enclave.com/research/">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="E5 Enclave">
+<meta property="og:title" content="Research — E5 Enclave">
+<meta property="og:description" content="Scholarly papers from E5 Enclave Inc. — a numbered research series with full citations, identifiers, and publication status.">
+<meta property="og:url" content="https://e5enclave.com/research/">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* E5 Research Papers — mobile-first */
+:root{
+  --rp-bone:#f4eee2; --rp-bone2:#ece3cf; --rp-card:#fdfaf3;
+  --rp-ink:#0a0908; --rp-ink2:#2b251d; --rp-muted:#6b6457;
+  --rp-rule:rgba(10,9,8,.14); --rp-rule2:rgba(10,9,8,.34);
+  --rp-ox:#6d1f20; --rp-gold:#a8884a; --rp-goldtext:#7e6329; --rp-green:#2f5d3a;
+  --rp-display:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --rp-text:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --rp-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+html{background:#06070b}
+body{margin:0;background:var(--rp-bone);color:var(--rp-ink);font-family:var(--rp-text);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
+.rp-wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+@media(min-width:720px){.rp-wrap{padding:0 32px}}
+.rp-hero{padding:3.25rem 0 2.25rem}
+@media(min-width:720px){.rp-hero{padding:5rem 0 3.5rem}}
+.rp-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--rp-goldtext);margin:0 0 1.1rem}
+.rp-hero h1{font-family:var(--rp-display);font-weight:500;font-size:clamp(2.75rem,10vw,4.75rem);line-height:1.02;letter-spacing:-.01em;margin:0 0 1.25rem}
+.rp-lede{font-family:var(--rp-display);font-size:clamp(1.15rem,2.8vw,1.4rem);line-height:1.55;color:var(--rp-ink2);max-width:42rem;margin:0}
+.rp-series{border-top:1px solid var(--rp-rule2);margin-top:.5rem}
+.rp-row{display:block;padding:2.25rem 0;border-bottom:1px solid var(--rp-rule);color:inherit;text-decoration:none}
+.rp-no{font-family:var(--rp-display);font-style:italic;font-size:1.45rem;color:var(--rp-muted);line-height:1.2}
+.rp-no small{font-style:normal;font-family:var(--rp-text);font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-left:.65rem}
+.rp-title{font-family:var(--rp-display);font-weight:500;font-size:clamp(1.55rem,5vw,2.15rem);line-height:1.16;letter-spacing:-.005em;margin:.9rem 0 .6rem;max-width:46rem}
+.rp-byline{font-size:.86rem;color:var(--rp-muted);margin:0 0 .2rem;max-width:46rem}
+.rp-byline b{color:var(--rp-ink2);font-weight:600}
+.rp-finding{font-family:var(--rp-display);font-style:italic;font-size:1.14rem;line-height:1.55;color:var(--rp-ink2);border-left:2px solid var(--rp-gold);padding-left:1rem;margin:1.15rem 0;max-width:40rem}
+.rp-meta{font-size:.8rem;color:var(--rp-muted);margin:0;max-width:46rem;overflow-wrap:anywhere}
+.rp-meta b{color:var(--rp-ink2)}
+.rp-more{display:inline-flex;align-items:center;min-height:44px;margin-top:.9rem;font-size:.74rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--rp-goldtext)}
+.rp-more svg{margin-left:.55rem}
+@media(min-width:760px){
+  .rp-row{display:grid;grid-template-columns:8rem 1fr;gap:2.25rem;align-items:start;padding:2.75rem 0}
+  .rp-no{font-size:2rem;padding-top:.15rem}
+  .rp-no small{display:block;margin:.45rem 0 0}
+  .rp-row:hover .rp-title{color:var(--rp-ox)}
+  .rp-row:hover .rp-more{color:var(--rp-ox)}
+}
+.rp-badges{display:flex;gap:.6rem;flex-wrap:wrap;margin:0 0 .2rem}
+.rp-badge{display:inline-flex;align-items:center;gap:.5rem;min-height:32px;font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.5rem .95rem;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+.rp-badge i{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
+.rp-b-pre{border-color:var(--rp-goldtext);color:var(--rp-goldtext)}
+.rp-b-rev{background:var(--rp-ink);color:var(--rp-bone)}
+.rp-b-pub{background:var(--rp-green);color:#fff}
+.rp-key{background:var(--rp-bone2);border:1px solid var(--rp-rule);padding:1.6rem;margin:3.5rem 0 1rem}
+@media(min-width:720px){.rp-key{padding:2.4rem 2.6rem;margin-top:4.5rem}}
+.rp-key h2{font-family:var(--rp-display);font-size:1.45rem;font-weight:500;margin:0 0 1rem}
+.rp-key .rp-badges{margin-bottom:1.1rem}
+.rp-key dl{margin:0;display:grid;gap:.85rem}
+@media(min-width:720px){.rp-key dl{grid-template-columns:12.5rem 1fr;gap:1rem 1.5rem}}
+.rp-key dt{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--rp-ink2)}
+.rp-key dd{margin:0;font-size:.9rem;line-height:1.6;color:var(--rp-ink2)}
+.rp-note{font-size:.82rem;color:var(--rp-muted);font-style:italic;margin:1.2rem 0 0;max-width:44rem}
+.rp-foot-space{height:1rem}
+@media (max-width:1180px){[data-m~="hidemd"]{display:none!important}}
+@media (max-width:900px){[data-m~="hide"]{display:none!important}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
 </head>
 <body>
 <!-- e5:chrome-head -->
@@ -142,25 +190,72 @@
 <script>(function(){var d=document.querySelector('.e5-mnav');if(!d)return;d.addEventListener('click',function(e){if(e.target.closest('a'))d.open=false;});document.addEventListener('keydown',function(e){if(e.key==='Escape')d.open=false;});document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false;});})();</script>
 </div>
 <!-- /e5:chrome-head -->
+<main>
+  <div class="rp-wrap">
+    <section class="rp-hero">
+      <p class="rp-eyebrow">E5 Research Papers</p>
+      <h1>Research</h1>
+      <p class="rp-lede">Quantitative and historical scholarship from E5 Enclave Inc., issued as a numbered series. Every entry carries its full scholarly record — citation, identifier, publication status, and source files — the way a journal presents an article, not the way a feed presents a post.</p>
+    </section>
 
-
-  <main id="e5-genesis" class="composition" data-composition-id="e5-genesis" data-start="0" data-duration="6" data-width="1920" data-height="1080" data-fps="30" data-no-timeline>
-    <header id="masthead-genesis" class="vc-masthead clip" data-start="0" data-duration="6" data-track-index="0">
-      <div class="vc-masthead-rule" aria-hidden="true"></div>
-      <div class="vc-foundation">
-        <div class="vc-masthead-eyebrow">Liberty City · Established MMXXIV</div>
-        <h1 class="vc-wordmark" aria-label="E5 Enclave"><span class="em5" aria-hidden="true">E5</span><span class="word">Enclave</span></h1>
-        <p class="vc-tagline">A lineage-led think tank comprised of a <span class="cw">Coalition of the Willing</span>.</p>
-        <div class="vc-dates" role="list">
-          <div class="vc-date" role="listitem">Founded<span class="val">2 June 2024</span></div>
-          <div class="vc-date" role="listitem">Public Announcement<span class="val">Juneteenth · MMXXVI</span></div>
-          <div class="vc-date" role="listitem">Eden Launch<span class="val">17 February · MMXXVII</span></div>
+    <section class="rp-series" aria-label="Research papers">
+      <a class="rp-row" href="/research/parallel-negros/">
+        <div class="rp-no">No. 3<small>2026</small></div>
+        <div>
+          <div class="rp-badges"><span class="rp-badge rp-b-rev"><i></i>Under peer review</span></div>
+          <h2 class="rp-title">Parallel Negros: A Documentary Reckoning with Naming, Commerce, and Survival in the Early Atlantic, 1492–1685</h2>
+          <p class="rp-byline"><b>Israel Lee Armstead</b> · E5 Enclave Inc. · Submitted to <i>Atlantic Studies: Global Currents</i>, September 2026</p>
+          <p class="rp-finding">How a single word — <i>negro</i> — was made, priced, and survived across nearly two centuries of the early Atlantic world.</p>
+          <p class="rp-meta"><b>≈9,400 words</b> · Archival &amp; documentary history · Full text available upon publication</p>
+          <span class="rp-more">Read the paper <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M0 6h14M10 1l5 5-5 5"/></svg></span>
         </div>
-        <p class="vc-foundation-colophon">Set against the calendar of the lineage. <span class="center">The center holds.</span></p>
+      </a>
+
+      <a class="rp-row" href="/research/rate-improves-distance-grows/">
+        <div class="rp-no">No. 2<small>2026</small></div>
+        <div>
+          <div class="rp-badges"><span class="rp-badge rp-b-rev"><i></i>Under peer review</span></div>
+          <h2 class="rp-title">The Rate Improves and the Distance Grows: Black–White Economic Disparity Across Five Decades of U.S. Federal Data</h2>
+          <p class="rp-byline"><b>Israel Lee Armstead</b> · E5 Enclave Inc. · Submitted to the <i>Review of Black Political Economy</i>, September 2026 · Manuscript RBPE-26-0057</p>
+          <p class="rp-finding">The rate improved; whether the distance shrank depends on which distance is measured — and the disagreement among the measures is the finding.</p>
+          <p class="rp-meta"><b>7,712 words</b> · 4 tables · 2 figures · 18 references · Source manuscript: <b>doi:10.5281/zenodo.22703028</b></p>
+          <span class="rp-more">Read the paper <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M0 6h14M10 1l5 5-5 5"/></svg></span>
+        </div>
+      </a>
+
+      <a class="rp-row" href="/research/measure-of-the-wound/">
+        <div class="rp-no">No. 1<small>2026</small></div>
+        <div>
+          <div class="rp-badges"><span class="rp-badge rp-b-pre"><i></i>Preprint</span></div>
+          <h2 class="rp-title">The Measure of the Wound: A Sovereign Empirical Record of Black American Structural Distress, 1991–2024</h2>
+          <p class="rp-byline"><b>Israel Lee Armstead</b> · E5 Enclave Inc. · Zenodo, v1.4.4, September 2026</p>
+          <p class="rp-finding">An eight-pillar empirical record of Black American structural disparity across 1991–2024, nested within federal series reaching back to 1900.</p>
+          <p class="rp-meta"><b>101 pages</b> · Data snapshot · Reproducible code · Correction ledger · <b>doi:10.5281/zenodo.22703028</b> · CC0</p>
+          <span class="rp-more">Read the paper <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M0 6h14M10 1l5 5-5 5"/></svg></span>
+        </div>
+      </a>
+    </section>
+
+    <section class="rp-key" aria-label="How to read publication status">
+      <h2>Reading the record</h2>
+      <div class="rp-badges">
+        <span class="rp-badge rp-b-pub"><i></i>Published</span>
+        <span class="rp-badge rp-b-rev"><i></i>Under peer review</span>
+        <span class="rp-badge rp-b-pre"><i></i>Preprint</span>
       </div>
-    </header>
-  </main>
-  <script type="module" src="assets/cinematic/e5-cinematic.js"></script>
+      <dl>
+        <dt>Published</dt>
+        <dd>Peer-reviewed and issued by a journal or press. The version of record is cited.</dd>
+        <dt>Under peer review</dt>
+        <dd>Submitted to a named journal and awaiting a decision. Findings are the author's and have not been certified by reviewers.</dd>
+        <dt>Preprint</dt>
+        <dd>Public working version, archived with a DOI. It has <em>not</em> undergone peer review; check the version history before citing.</dd>
+      </dl>
+      <p class="rp-note">Status is shown exactly as it stands. E5 Enclave Inc. does not present preprints or submissions as peer-reviewed publications.</p>
+    </section>
+    <div class="rp-foot-space"></div>
+  </div>
+</main>
 <!-- e5:chrome-foot -->
 <div class="sov-chrome sov-chrome-foot" style="margin-top:clamp(60px,8vw,120px)">
 <div style="position:relative; z-index:5; margin-top:0; height:4px; background:linear-gradient(90deg,#6E5220,#C9A24A 24%,#E9D3A0 50%,#C9A24A 76%,#6E5220)"></div>
