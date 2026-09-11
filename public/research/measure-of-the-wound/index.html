@@ -1,32 +1,81 @@
-<!doctype html>
-<html lang="en" data-hyperframes>
+<!DOCTYPE html>
+<html lang="en" data-palette="editorial">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>E5 Genesis — Deterministic Composition</title>
-  <link rel="stylesheet" href="assets/cinematic/e5-cinematic.css">
-  <style>
-    :root{--vc-bone:#f4eee2;--vc-ink:#0a0908;--vc-oxblood:#6d1f20;--vc-gold:#a8884a;--vc-display:Georgia,'Times New Roman',serif;--vc-text:Arial,Helvetica,sans-serif}
-    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--vc-bone);color:var(--vc-ink)}
-    .composition{width:100%;height:100%;position:relative;display:grid;place-items:center;background:radial-gradient(circle at 50% 42%,#fffaf1 0,var(--vc-bone) 56%,#e2d8c2 100%)}
-    .vc-masthead{width:100%;height:100%;display:grid;place-items:center;padding:6vw;text-align:center}
-    .vc-masthead-rule{position:absolute;top:7%;left:8%;right:8%;border-top:1px solid rgba(10,9,8,.28)}
-    .vc-masthead-rule::after{content:'✦';position:absolute;left:50%;top:0;transform:translate(-50%,-52%);background:var(--vc-bone);padding:0 16px;color:var(--vc-oxblood)}
-    .vc-masthead-eyebrow{font:600 clamp(9px,1vw,13px)/1 var(--vc-text);letter-spacing:.34em;text-transform:uppercase;margin-bottom:2.2vh}
-    .vc-foundation{position:relative;z-index:2;max-width:1100px}
-    .vc-wordmark{margin:0;font-family:var(--vc-display);font-weight:400;line-height:.83;letter-spacing:.01em}
-    .vc-wordmark .em5{display:block;font-size:clamp(40px,8vw,118px);font-style:italic;color:var(--vc-oxblood)}
-    .vc-wordmark .word{display:block;font-size:clamp(76px,17vw,250px);font-weight:400}
-    .vc-tagline{font:italic clamp(18px,2.3vw,34px)/1.35 var(--vc-display);max-width:850px;margin:3vh auto 0}
-    .vc-tagline .cw{color:var(--vc-oxblood)}
-    .vc-dates{display:flex;justify-content:center;gap:clamp(22px,5vw,76px);margin-top:4vh;padding-top:2.4vh;border-top:1px solid rgba(10,9,8,.2)}
-    .vc-date{font:600 clamp(8px,.8vw,11px)/1.6 var(--vc-text);letter-spacing:.18em;text-transform:uppercase}.vc-date .val{display:block;font-family:var(--vc-display);font-size:clamp(13px,1.3vw,19px);font-style:italic;letter-spacing:.04em;text-transform:none}
-    .vc-foundation-colophon{font:italic clamp(11px,1vw,15px)/1.5 var(--vc-display);margin:3vh 0 0}.center{color:var(--vc-oxblood)}
-    .vc-nav{display:none}.e5-motion-toggle{display:none}
-    @media(max-aspect-ratio:4/5){.vc-masthead{padding:12vw 8vw}.vc-wordmark .word{font-size:22vw}.vc-wordmark .em5{font-size:13vw}.vc-dates{flex-direction:column;gap:1.4vh}.vc-tagline{font-size:5.2vw}}
-  </style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
-<link rel="stylesheet" href="/assets/front/sovereign-chrome.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Measure of the Wound — E5 Research</title>
+<meta name="description" content="Preprint: an eight-pillar empirical record of Black American structural disparity, 1991–2024, with open data and code. doi:10.5281/zenodo.22703028.">
+<link rel="canonical" href="https://e5enclave.com/research/measure-of-the-wound/">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="E5 Enclave">
+<meta property="og:title" content="The Measure of the Wound — E5 Research">
+<meta property="og:description" content="Preprint: an eight-pillar empirical record of Black American structural disparity, 1991–2024, with open data and code.">
+<meta property="og:url" content="https://e5enclave.com/research/measure-of-the-wound/">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rp-bone:#f4eee2; --rp-bone2:#ece3cf; --rp-card:#fdfaf3;
+  --rp-ink:#0a0908; --rp-ink2:#2b251d; --rp-muted:#6b6457;
+  --rp-rule:rgba(10,9,8,.14); --rp-rule2:rgba(10,9,8,.34);
+  --rp-ox:#6d1f20; --rp-gold:#a8884a; --rp-goldtext:#7e6329; --rp-green:#2f5d3a;
+  --rp-display:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --rp-text:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --rp-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+html{background:#06070b}
+body{margin:0;background:var(--rp-bone);color:var(--rp-ink);font-family:var(--rp-text);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
+.rp-wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+@media(min-width:720px){.rp-wrap{padding:0 32px}}
+.rp-crumb{display:inline-flex;align-items:center;min-height:44px;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--rp-muted);text-decoration:none;margin:1.25rem 0 .25rem}
+.rp-crumb:hover{color:var(--rp-ink)}
+.rp-badges{display:flex;gap:.6rem;flex-wrap:wrap;margin:0 0 .2rem}
+.rp-badge{display:inline-flex;align-items:center;gap:.5rem;min-height:32px;font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.5rem .95rem;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+.rp-badge i{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
+.rp-b-pre{border-color:var(--rp-goldtext);color:var(--rp-goldtext)}
+.rp-b-rev{background:var(--rp-ink);color:var(--rp-bone)}
+.rp-b-pub{background:var(--rp-green);color:#fff}
+.rp-no{font-family:var(--rp-display);font-style:italic;font-size:1.2rem;color:var(--rp-muted);margin:.9rem 0 0}
+.rp-dtitle{font-family:var(--rp-display);font-weight:500;font-size:clamp(2.1rem,7.2vw,3.5rem);line-height:1.06;letter-spacing:-.01em;margin:1rem 0 .9rem;max-width:56rem}
+.rp-byline{font-size:.9rem;color:var(--rp-muted);margin:0 0 .3rem;max-width:52rem}
+.rp-byline b{color:var(--rp-ink);font-weight:600}
+.rp-pull{font-family:var(--rp-display);font-style:italic;font-weight:500;font-size:clamp(1.3rem,3.6vw,1.75rem);line-height:1.48;color:var(--rp-ink);border-top:1px solid var(--rp-rule2);border-bottom:1px solid var(--rp-rule2);padding:1.75rem 0;margin:2.5rem 0;max-width:48rem}
+.rp-sec{font-size:.76rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--rp-ox);margin:3.25rem 0 1.2rem;padding-bottom:.75rem;border-bottom:1px solid var(--rp-rule)}
+.rp-prose{font-size:1.02rem;line-height:1.75;color:var(--rp-ink2);max-width:46rem}
+.rp-prose p{margin:0 0 1.1em}
+.rp-record{border-top:1px solid var(--rp-rule2);max-width:56rem}
+.rp-record>div{padding:.95rem 0;border-bottom:1px solid var(--rp-rule)}
+.rp-record dt{font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--rp-muted);margin:0 0 .3rem}
+.rp-record dd{margin:0;font-size:.94rem;line-height:1.6;color:var(--rp-ink);overflow-wrap:anywhere}
+.rp-record a{color:var(--rp-goldtext);text-decoration:underline;text-underline-offset:3px}
+.rp-actions{display:flex;flex-direction:column;gap:.8rem;margin:2.25rem 0 .5rem;max-width:56rem}
+@media(min-width:560px){.rp-actions{flex-direction:row;flex-wrap:wrap}}
+.rp-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:.9rem 1.75rem;background:var(--rp-ink);color:var(--rp-bone);font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--rp-ink);border-radius:2px;cursor:pointer;font-family:var(--rp-text)}
+.rp-btn:hover{background:#000}
+.rp-btn-ghost{background:transparent;color:var(--rp-ink)}
+.rp-btn-ghost:hover{background:var(--rp-ink);color:var(--rp-bone)}
+.rp-cite{background:var(--rp-bone2);border:1px solid var(--rp-rule);padding:1.4rem;font-family:var(--rp-display);font-size:1.06rem;line-height:1.65;color:var(--rp-ink2);max-width:56rem;margin:0;overflow-wrap:anywhere}
+@media(min-width:720px){.rp-cite{padding:1.75rem 2rem}}
+.rp-tl{list-style:none;margin:0;padding:0;max-width:46rem}
+.rp-tl li{position:relative;padding:0 0 1.6rem 1.75rem;border-left:1px solid var(--rp-rule2)}
+.rp-tl li:last-child{padding-bottom:.25rem}
+.rp-tl li::before{content:"";position:absolute;left:-5px;top:.42rem;width:9px;height:9px;border-radius:50%;background:var(--rp-gold)}
+.rp-tl .d{font-family:var(--rp-mono);font-size:.74rem;color:var(--rp-muted)}
+.rp-tl .t{font-size:.94rem;color:var(--rp-ink2);margin:.25rem 0 0}
+.rp-tl .t b{color:var(--rp-ink)}
+.rp-pn{border-top:1px solid var(--rp-rule2);margin-top:4rem}
+.rp-pn a{display:block;padding:1.4rem 0;text-decoration:none;border-bottom:1px solid var(--rp-rule);min-height:44px}
+.rp-pn .dir{font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--rp-muted)}
+.rp-pn .t{font-family:var(--rp-display);font-size:1.3rem;font-weight:500;margin-top:.5rem;display:block;color:var(--rp-ink);line-height:1.25}
+@media(min-width:720px){.rp-pn{display:grid;grid-template-columns:1fr 1fr}.rp-pn a{border-bottom:0;padding:1.75rem 0}.rp-pn a:first-child{padding-right:2rem}.rp-pn a:last-child{border-left:1px solid var(--rp-rule);text-align:right;padding-left:2rem}.rp-pn a:hover .t{color:var(--rp-ox)}}
+.rp-foot-space{height:1rem}
+@media (max-width:1180px){[data-m~="hidemd"]{display:none!important}}
+@media (max-width:900px){[data-m~="hide"]{display:none!important}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
 </head>
 <body>
 <!-- e5:chrome-head -->
@@ -142,25 +191,56 @@
 <script>(function(){var d=document.querySelector('.e5-mnav');if(!d)return;d.addEventListener('click',function(e){if(e.target.closest('a'))d.open=false;});document.addEventListener('keydown',function(e){if(e.key==='Escape')d.open=false;});document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false;});})();</script>
 </div>
 <!-- /e5:chrome-head -->
+<main>
+  <div class="rp-wrap">
+    <a class="rp-crumb" href="/research/">← Research</a>
+    <p class="rp-no">E5 Research Paper No. 1</p>
+    <div class="rp-badges"><span class="rp-badge rp-b-pre"><i></i>Preprint</span></div>
+    <h1 class="rp-dtitle">The Measure of the Wound: A Sovereign Empirical Record of Black American Structural Distress, 1991–2024</h1>
+    <p class="rp-byline"><b>Israel Lee Armstead</b> · E5 Enclave Inc. · orcid.org/0009-0001-2505-5863</p>
+    <p class="rp-byline">Zenodo, version 1.4.4, September 11, 2026 · doi:10.5281/zenodo.22703028</p>
 
+    <p class="rp-pull">“An eight-pillar empirical record of Black American structural disparity across 1991–2024, nested within federal series reaching back to 1900.”</p>
 
-  <main id="e5-genesis" class="composition" data-composition-id="e5-genesis" data-start="0" data-duration="6" data-width="1920" data-height="1080" data-fps="30" data-no-timeline>
-    <header id="masthead-genesis" class="vc-masthead clip" data-start="0" data-duration="6" data-track-index="0">
-      <div class="vc-masthead-rule" aria-hidden="true"></div>
-      <div class="vc-foundation">
-        <div class="vc-masthead-eyebrow">Liberty City · Established MMXXIV</div>
-        <h1 class="vc-wordmark" aria-label="E5 Enclave"><span class="em5" aria-hidden="true">E5</span><span class="word">Enclave</span></h1>
-        <p class="vc-tagline">A lineage-led think tank comprised of a <span class="cw">Coalition of the Willing</span>.</p>
-        <div class="vc-dates" role="list">
-          <div class="vc-date" role="listitem">Founded<span class="val">2 June 2024</span></div>
-          <div class="vc-date" role="listitem">Public Announcement<span class="val">Juneteenth · MMXXVI</span></div>
-          <div class="vc-date" role="listitem">Eden Launch<span class="val">17 February · MMXXVII</span></div>
-        </div>
-        <p class="vc-foundation-colophon">Set against the calendar of the lineage. <span class="center">The center holds.</span></p>
-      </div>
-    </header>
-  </main>
-  <script type="module" src="assets/cinematic/e5-cinematic.js"></script>
+    <h2 class="rp-sec">About this paper</h2>
+    <div class="rp-prose">
+      <p><i>The Measure of the Wound</i> assembles eight domains of Black American structural disparity — wealth, labor, housing, health, criminal justice, and political participation among them — into a single empirical record spanning 1991–2024, nested within federal series reaching to 1900 (health), 1925 (criminal justice), 1940 (housing), 1964 (political participation), and 1972 (labor).</p>
+      <p>The publication package includes the 101-page manuscript, a frozen snapshot of every raw federal source file the tables are built from, the reproducible typesetting pipeline, the recomputation log, a complete correction ledger (Appendix H), and the independent verification review with the author's response. Every figure is recomputed from the sealed sources; claims that could not be verified were struck or demoted through four successive forensic passes.</p>
+    </div>
+
+    <h2 class="rp-sec">Scholarly record</h2>
+    <dl class="rp-record">
+      <div><dt>Status</dt><dd>Preprint — not peer-reviewed</dd></div>
+      <div><dt>DOI</dt><dd><a href="https://doi.org/10.5281/zenodo.22703028">doi:10.5281/zenodo.22703028</a> (version) · <a href="https://doi.org/10.5281/zenodo.22270905">doi:10.5281/zenodo.22270905</a> (concept)</dd></div>
+      <div><dt>Published</dt><dd>September 11, 2026 · Version 1.4.4</dd></div>
+      <div><dt>Length</dt><dd>101 pages · 8 empirical pillars · Appendices A–I</dd></div>
+      <div><dt>Keywords</dt><dd>racial inequality; wealth gap; structural racism; Black Americans; longitudinal federal data; maternal mortality; incarceration; homeownership; open data</dd></div>
+      <div><dt>Reproducibility</dt><dd>Data snapshot · Reproducible code · Recomputation log · Correction ledger</dd></div>
+      <div><dt>License</dt><dd>CC0 1.0 (public domain)</dd></div>
+    </dl>
+
+    <div class="rp-actions">
+      <a class="rp-btn" href="https://doi.org/10.5281/zenodo.22703028">Download PDF &amp; data ↓</a>
+      <button class="rp-btn rp-btn-ghost" id="copycite" type="button">Copy citation</button>
+    </div>
+
+    <h2 class="rp-sec">Cite this paper</h2>
+    <p class="rp-cite" id="citation">Armstead, Israel Lee. “The Measure of the Wound: A Sovereign Empirical Record of Black American Structural Distress, 1991–2024.” <i>E5 Research Paper No. 1.</i> E5 Enclave Inc., 2026. Zenodo. https://doi.org/10.5281/zenodo.22703028. CC0 1.0.</p>
+
+    <h2 class="rp-sec">Version history</h2>
+    <ul class="rp-tl">
+      <li><p class="d">2026-09-11</p><p class="t"><b>v1.4.4</b> — fourth forensic pass: unverified index demoted to exploratory output, incarceration endpoint corrected to BJS Table 13, 39 passages tightened from causal to descriptive language, ACS/PLACES provenance recovered.</p></li>
+      <li><p class="d">2026-09-09</p><p class="t"><b>v1.4.2</b> — third-wave corrections: withdrawn SCF series deprecated and replaced, sovereign dataset resealed, complete correction ledger added (Appendix H).</p></li>
+      <li><p class="d">2026-09-03</p><p class="t"><b>v1.4.1</b> — first public release on Zenodo.</p></li>
+    </ul>
+
+    <nav class="rp-pn" aria-label="More research papers">
+      <a href="/research/"><span class="dir">← Index</span><span class="t">All research papers</span></a>
+      <a href="/research/rate-improves-distance-grows/"><span class="dir">Next →</span><span class="t">No. 2 — The Rate Improves and the Distance Grows</span></a>
+    </nav>
+    <div class="rp-foot-space"></div>
+  </div>
+</main>
 <!-- e5:chrome-foot -->
 <div class="sov-chrome sov-chrome-foot" style="margin-top:clamp(60px,8vw,120px)">
 <div style="position:relative; z-index:5; margin-top:0; height:4px; background:linear-gradient(90deg,#6E5220,#C9A24A 24%,#E9D3A0 50%,#C9A24A 76%,#6E5220)"></div>
@@ -185,5 +265,13 @@
   </div>
 </div>
 <!-- /e5:chrome-foot -->
+<script>
+document.getElementById('copycite').addEventListener('click',function(){
+  var t=document.getElementById('citation').innerText, b=this;
+  function done(){b.textContent='Copied ✓';setTimeout(function(){b.textContent='Copy citation'},1800);}
+  function fallback(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(fallback);}else{fallback();}
+});
+</script>
 </body>
 </html>
