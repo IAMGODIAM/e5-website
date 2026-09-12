@@ -1,0 +1,146 @@
+/* ============================================================
+   bd50-farm.css — FarmBlock Pilot living-farm simulation
+   Black / oxblood red / gold. Canvas 2D scene + zone pins,
+   pill toggles, telemetry, narrative cards, poster callout.
+   Fail-closed: every word below is visible with JS disabled;
+   the canvas is decorative enhancement only (aria-hidden).
+   Copy frozen — presentation only.
+   ============================================================ */
+
+.bd50-farm{background:var(--bd-ink);border-bottom:1px solid var(--bd-rule-soft);
+  padding:clamp(64px,7vw,120px) 0 0;position:relative;overflow:hidden}
+.bd50-farm .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+.bd50-farm-head{max-width:76ch}
+.bd50-farm .bd50-tag{font-family:var(--bd-mono);font-size:11px;letter-spacing:.5em;
+  text-transform:uppercase;font-weight:600;color:var(--bd-red-hot);margin-bottom:18px}
+.bd50-farm h2{font-family:var(--bd-display);font-weight:500;
+  font-size:clamp(34px,4vw,60px);line-height:1.05;letter-spacing:-.015em;
+  margin:0 0 22px;color:var(--bd-ivory)}
+.bd50-farm-head>p{font-size:16px;line-height:1.78;color:var(--bd-ivory-dim);
+  margin:0 0 1.1em;max-width:62ch}
+.bd50-farm .bd50-note{margin-top:26px;padding-top:20px;border-top:1px solid var(--bd-red-hot);
+  font-family:var(--bd-display);font-style:italic;font-size:clamp(16px,1.7vw,21px);
+  line-height:1.5;color:var(--bd-gold-2);max-width:62ch}
+
+/* ---------- stage ---------- */
+.bd50-farm-stage{position:relative;margin:clamp(36px,4.5vw,64px) 0 0;
+  aspect-ratio:16/9;min-height:420px;max-height:78vh;overflow:hidden;
+  border:1px solid var(--bd-rule);background:#050304;
+  box-shadow:0 40px 90px -40px rgba(0,0,0,.85),0 0 90px rgba(140,29,33,.22)}
+.bd50-farm-stage::after{content:"";position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(217,168,63,.14),inset 0 0 120px rgba(0,0,0,.55)}
+.bd50-farm-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.bd50-farm-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
+/* no-JS or canvas-failure: poster replaces the canvas */
+html:not(.js) .bd50-farm-canvas,.farm-static .bd50-farm-canvas{display:none}
+html:not(.js) .bd50-farm-poster,.farm-static .bd50-farm-poster{display:block}
+
+/* ---------- telemetry ---------- */
+.bd50-farm-telemetry{position:absolute;top:14px;left:16px;z-index:5;pointer-events:none;
+  font-family:var(--bd-mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--bd-gold-2);text-shadow:0 1px 8px rgba(0,0,0,.9);line-height:2.1}
+.bd50-farm-telemetry .tl-dim{color:var(--bd-gold-dim)}
+.bd50-farm-telemetry .tl-bar{display:inline-block;width:34px;height:1px;background:var(--bd-gold);
+  vertical-align:middle;margin-right:10px;opacity:.7}
+
+/* ---------- zone pins ---------- */
+.bd50-farm-pins{position:absolute;inset:0;z-index:6}
+html:not(.js) .bd50-farm-pins,.farm-static .bd50-farm-pins{display:none}
+.bd50-farm-pin{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);
+  background:none;border:0;padding:14px;cursor:pointer;display:flex;align-items:center;gap:10px}
+.bd50-farm-pin .dot{position:relative;width:14px;height:14px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#ffe9b0,var(--bd-gold) 60%,#7c5a17);
+  box-shadow:0 0 0 2px rgba(7,5,6,.85),0 0 18px rgba(217,168,63,.9);flex:none;
+  transition:transform .25s ease}
+.bd50-farm-pin .dot::after{content:"";position:absolute;inset:-9px;border-radius:50%;
+  border:1px solid rgba(217,168,63,.55);animation:farm-ping 2.6s ease-out infinite}
+.bd50-farm-pin .lbl{font-family:var(--bd-mono);font-size:10px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--bd-ivory);background:rgba(7,5,6,.78);
+  border:1px solid var(--bd-rule);padding:7px 12px;white-space:nowrap;
+  opacity:0;transform:translateX(-6px);transition:opacity .25s,transform .25s;pointer-events:none}
+.bd50-farm-pin:hover .lbl,.bd50-farm-pin:focus-visible .lbl,
+.bd50-farm-pin[aria-pressed="true"] .lbl{opacity:1;transform:none}
+.bd50-farm-pin:hover .dot,.bd50-farm-pin[aria-pressed="true"] .dot{transform:scale(1.25)}
+.bd50-farm-pin:focus-visible{outline:2px solid var(--bd-gold-2);outline-offset:2px}
+.bd50-farm-pin[aria-pressed="true"] .dot::after{animation-duration:1.4s;border-color:var(--bd-gold-2)}
+@keyframes farm-ping{0%{transform:scale(.55);opacity:.9}70%{opacity:.25}100%{transform:scale(1.5);opacity:0}}
+
+/* ---------- zone card popover ---------- */
+.bd50-farm-card{position:absolute;z-index:8;left:clamp(12px,3%,40px);right:clamp(12px,3%,40px);
+  bottom:clamp(12px,3%,32px);max-width:560px;background:rgba(10,7,6,.94);
+  border:1px solid var(--bd-gold);padding:clamp(20px,2.6vw,32px);
+  box-shadow:0 30px 70px rgba(0,0,0,.7),0 0 60px rgba(140,29,33,.25);
+  display:grid;grid-template-columns:auto 1fr auto;gap:6px 20px;align-items:start}
+.bd50-farm-card[hidden]{display:none}
+.bd50-farm-card .num{font-family:var(--bd-display);font-weight:500;font-size:clamp(44px,5vw,72px);
+  line-height:.9;color:var(--bd-gold);text-shadow:0 0 30px rgba(217,168,63,.4)}
+.bd50-farm-card h3{font-family:var(--bd-mono);font-size:12px;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--bd-ivory);margin:8px 0 10px;font-weight:600}
+.bd50-farm-card p{font-family:var(--bd-display);font-style:italic;
+  font-size:clamp(16px,1.8vw,21px);line-height:1.55;color:var(--bd-ivory-dim);margin:0;grid-column:2}
+.bd50-farm-card .x{grid-row:1;grid-column:3;background:none;border:1px solid var(--bd-rule);
+  color:var(--bd-gold-2);width:34px;height:34px;font-size:16px;line-height:1;cursor:pointer}
+.bd50-farm-card .x:hover{border-color:var(--bd-gold);color:var(--bd-ivory)}
+
+/* ---------- pill toggles ---------- */
+.bd50-farm-toggles{position:absolute;z-index:7;left:50%;transform:translateX(-50%);
+  bottom:clamp(12px,2.5vw,26px);display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
+  padding:0 12px;max-width:100%}
+html:not(.js) .bd50-farm-toggles,.farm-static .bd50-farm-toggles{display:none}
+.bd50-farm-toggles button{font-family:var(--bd-mono);font-size:10px;letter-spacing:.26em;
+  text-transform:uppercase;font-weight:600;color:var(--bd-gold-2);
+  background:rgba(7,5,6,.8);border:1px solid var(--bd-gold);border-radius:999px;
+  padding:11px 20px 11px 22px;cursor:pointer;transition:all .25s;white-space:nowrap}
+.bd50-farm-toggles button:hover{color:#0a0805;background:var(--bd-gold)}
+.bd50-farm-toggles button[aria-pressed="true"]{color:#0a0805;background:var(--bd-gold);
+  box-shadow:0 0 26px rgba(217,168,63,.55)}
+.bd50-farm-toggles button:focus-visible{outline:2px solid var(--bd-gold-2);outline-offset:2px}
+/* when the card is open, lift the toggles above it on short stages */
+.bd50-farm-card:not([hidden])~.bd50-farm-toggles{bottom:auto;top:14px}
+/* while the card is open, keep pins + pills above it so re-tapping
+   the active pin/pill toggles the card closed (hit-test fix) */
+.bd50-farm-stage.farm-card-open .bd50-farm-pins,
+.bd50-farm-stage.farm-card-open .bd50-farm-toggles{z-index:9}
+/* the pins/toggles containers overlay the whole stage — make only their
+   buttons hit-testable so the card's × close button stays clickable
+   beneath them while pins/pills remain tappable (re-tap close intact) */
+.bd50-farm-pins,.bd50-farm-toggles{pointer-events:none}
+.bd50-farm-pin,.bd50-farm-toggles button{pointer-events:auto}
+
+/* ---------- narrative grid (fallback + mobile) ---------- */
+.bd50-farm-grid{display:none;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:1px;background:var(--bd-rule-soft);border:1px solid var(--bd-rule-soft);margin-top:26px}
+html:not(.js) .bd50-farm-grid,.farm-static .bd50-farm-grid{display:grid}
+.bd50-farm-grid article{background:var(--bd-ink);padding:clamp(22px,2.6vw,34px)}
+.bd50-farm-grid .num{font-family:var(--bd-display);font-weight:500;font-size:clamp(38px,4vw,58px);
+  line-height:1;color:var(--bd-gold);margin-bottom:14px}
+.bd50-farm-grid h3{font-family:var(--bd-mono);font-size:11px;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--bd-ivory);margin:0 0 12px;font-weight:600}
+.bd50-farm-grid p{font-family:var(--bd-display);font-style:italic;font-size:16px;
+  line-height:1.6;color:var(--bd-ivory-dim);margin:0}
+
+/* ---------- poster callout ---------- */
+.bd50-farm-callout{margin:clamp(48px,6vw,90px) 0 0;padding:0 0 clamp(56px,6.5vw,110px);
+  border:0;max-width:20ch}
+.bd50-farm-callout p{margin:0;font-family:var(--bd-text);font-weight:800;
+  font-size:clamp(34px,5.2vw,76px);line-height:1.02;letter-spacing:-.02em;
+  text-transform:uppercase;color:var(--bd-ivory)}
+.bd50-farm-callout p em{font-family:var(--bd-display);font-style:italic;font-weight:500;
+  text-transform:none;letter-spacing:0;color:var(--bd-gold-2);display:block;margin-top:.35em}
+.bd50-farm-callout .src{display:block;margin-top:22px;font-family:var(--bd-mono);font-size:10px;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--bd-gold-dim)}
+
+/* ---------- responsive ---------- */
+@media(max-width:1100px){.bd50-farm-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){
+  .bd50-farm-stage{aspect-ratio:4/5;min-height:480px;max-height:none}
+  .bd50-farm-pins{display:none}
+  .bd50-farm-grid{display:grid}
+  .bd50-farm-card{left:10px;right:10px;bottom:64px}
+  .bd50-farm-telemetry{font-size:9px;letter-spacing:.2em}
+}
+@media(prefers-reduced-motion:reduce){
+  .bd50-farm-pin .dot::after{animation:none;opacity:.4}
+  .bd50-farm-pin .lbl{transition:none}
+  .bd50-farm-toggles button{transition:none}
+}

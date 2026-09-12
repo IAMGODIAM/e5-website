@@ -1,0 +1,69 @@
+/* ============================================================
+   bd50-cinematic.css — cinematic hero layer, Black Dragons v50
+   Black / red / gold. Fail-closed: every hidden resting state below
+   is gated on html.bd50-cine, a class added ONLY by JavaScript at
+   runtime. No JS (or reduced motion) => hero fully visible, static.
+   ============================================================ */
+
+/* ---------- 3-D canvas stage ---------- */
+.bd50-hero3d{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  z-index:1; pointer-events:none;
+  opacity:1;
+}
+/* If WebGL/JS never initializes, the canvas stays transparent: invisible. */
+
+/* ---------- entrance choreography (staged states, JS-gated) ---------- */
+html.bd50-cine .bd50-hero-copy > *{
+  opacity:0;
+  transform:translateY(34px);
+  transition:opacity .9s ease, transform 1.1s cubic-bezier(.19,1,.22,1);
+  will-change:opacity,transform;
+}
+html.bd50-cine .bd50-scrollcue{
+  opacity:0;
+  transition:opacity 1.2s ease 1.1s;
+}
+html.bd50-cine-go .bd50-hero-copy > *{ opacity:1; transform:none; }
+html.bd50-cine-go .bd50-hero-copy > .bd50-kicker{ transition-delay:.12s; }
+html.bd50-cine-go .bd50-hero-copy > .bd50-h1{ transition-delay:.28s; }
+html.bd50-cine-go .bd50-hero-copy > .bd50-stand{ transition-delay:.52s; }
+html.bd50-cine-go .bd50-hero-copy > .bd50-badge{ transition-delay:.74s; }
+html.bd50-cine-go .bd50-scrollcue{ opacity:1; }
+html.bd50-cine-go .bd50-hero-copy > *{ will-change:auto; }
+
+/* ---------- bespoke icon set (gold line-work, dragon-scale world) ---------- */
+.bd50-ico{ display:inline-flex; color:#d9ba6c; flex:none; }
+.bd50-ico svg{ display:block; width:100%; height:100%; }
+
+/* principles: icon | numeral | text */
+html.bd50-icons .bd50-principle{
+  grid-template-columns:auto auto minmax(0,1fr);
+  align-items:center;
+  column-gap:clamp(18px,2.6vw,40px);
+}
+.bd50-principle .bd50-ico{ width:46px; height:46px; opacity:.92; }
+
+/* pillars: engraved seal medallion after the kicker */
+.bd50-pillar .bd50-ico{
+  display:block;
+  width:58px; height:58px;
+  margin:22px 0 6px; padding:11px;
+  border:1px solid rgba(217,186,108,.38);
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(217,186,108,.10) 0%, rgba(217,186,108,0) 68%);
+  box-shadow:0 0 26px rgba(217,186,108,.10), inset 0 0 14px rgba(217,186,108,.06);
+}
+.bd50-pillar.bd50-fire .bd50-ico{ margin-left:0; }
+
+/* ---------- reduced motion: static hero, always visible ---------- */
+@media (prefers-reduced-motion: reduce){
+  html.bd50-cine .bd50-hero-copy > *,
+  html.bd50-cine .bd50-scrollcue{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+  }
+  .bd50-hero3d{ display:none; }
+}
