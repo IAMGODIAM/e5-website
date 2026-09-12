@@ -46,26 +46,45 @@ body.am{background:var(--am-paper);color:var(--am-ink);font-family:var(--am-body
 .am a{color:var(--am-green-deep)}
 .am-rule{border:0;border-top:1px solid var(--am-rule);margin:0}
 
-/* ---------- Hero ---------- */
+/* ---------- Hero : cinematic film ---------- */
 .am-hero{position:relative;overflow:hidden;text-align:center;
-  background:linear-gradient(180deg,var(--am-sky-1) 0%,var(--am-sky-2) 52%,var(--am-sky-3) 100%);
+  min-height:92vh;display:flex;align-items:center;
   padding-block:clamp(84px,12vw,150px) clamp(64px,9vw,110px)}
-.am-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:34%;
-  background:linear-gradient(180deg,transparent,rgba(46,107,56,.16));
-  pointer-events:none}
-.am-hero .am-sun{position:absolute;top:clamp(40px,9vw,90px);left:50%;transform:translateX(-50%);
-  width:clamp(90px,14vw,150px);height:clamp(90px,14vw,150px);border-radius:50%;
-  background:radial-gradient(circle,#fff3d6 0%,#ffd98c 42%,var(--am-sun) 78%,rgba(231,155,52,0) 80%);
-  box-shadow:0 0 90px 30px rgba(231,155,52,.35)}
+.am-hero-film{position:absolute;inset:0;z-index:0}
+.am-hero-film .am-film-video{width:100%;height:100%;object-fit:cover;display:block}
+.am-hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(24,17,8,.42) 0%,rgba(24,17,8,.05) 34%,
+    rgba(24,17,8,0) 55%,rgba(24,17,8,.62) 100%)}
+.am-hero .am-wrap{position:relative;z-index:2}
+.am-hero .am-eyebrow{color:#ffe9b8}
 .am-hero h1{font-family:var(--am-display);font-weight:500;position:relative;
-  font-size:clamp(2.7rem,7.2vw,5.4rem);line-height:1.04;margin:.4rem 0 1.2rem}
+  font-size:clamp(2.7rem,7.2vw,5.4rem);line-height:1.04;margin:.4rem 0 1.2rem;
+  color:#fffdf4;text-shadow:0 2px 22px rgba(24,15,5,.6)}
 .am-hero .am-thesis{font-family:var(--am-display);font-style:italic;position:relative;
-  font-size:clamp(1.25rem,2.8vw,1.9rem);color:var(--am-green-deep);max-width:40rem;margin:0 auto 1.4rem}
-.am-hero .am-sub{position:relative;color:var(--am-ink-soft);max-width:44rem;margin:0 auto 2rem;font-size:1.02rem}
+  font-size:clamp(1.25rem,2.8vw,1.9rem);color:#fdf3dd;max-width:40rem;margin:0 auto 1.4rem;
+  text-shadow:0 2px 14px rgba(24,15,5,.6)}
+.am-hero .am-sub{position:relative;color:#f7ecd4;max-width:44rem;margin:0 auto 2rem;font-size:1.02rem;
+  text-shadow:0 1px 10px rgba(24,15,5,.6)}
 .am-scrollcue{position:relative;display:inline-block;font-family:var(--am-mono);font-size:.78rem;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--am-ink-soft);text-decoration:none;
-  border:1px solid var(--am-gold-line);border-radius:999px;padding:.7rem 1.5rem;background:rgba(255,253,247,.6)}
-.am-hero-rows{position:absolute;left:0;right:0;bottom:0;height:30%;pointer-events:none;opacity:.5}
+  letter-spacing:.2em;text-transform:uppercase;color:#ffe9b8;text-decoration:none;
+  border:1px solid rgba(255,233,184,.65);border-radius:999px;padding:.7rem 1.5rem;
+  background:rgba(24,17,8,.45)}
+/* ---------- Cinematic film elements ---------- */
+.am-filmwide{position:relative;margin:0;overflow:hidden;border-block:1px solid var(--am-rule)}
+.am-filmwide .am-film-video{width:100%;height:min(78vh,680px);object-fit:cover;display:block}
+.am-film-tag{position:absolute;right:14px;bottom:14px;font-family:var(--am-mono);font-size:.68rem;
+  letter-spacing:.16em;text-transform:uppercase;color:#ffe9b8;
+  background:rgba(20,14,6,.55);padding:.45rem .9rem;border-radius:999px}
+.am-filmcap{font-size:.92rem;color:var(--am-ink-soft);max-width:44rem;margin:1.2rem auto 0}
+.am-filmbreak{padding-block:clamp(48px,7vw,96px) 0}
+.am-filmbreak .am-filmwide{margin-top:1.6rem}
+.am-filmbreak .am-filmcap{padding-bottom:clamp(48px,7vw,96px)}
+@media (prefers-reduced-motion:reduce){
+  .am-film-video{display:none}
+  .am-hero-film{background:url("media/hero-dawn-poster.jpg") center/cover no-repeat}
+  .am-filmwide{background:url("media/growth-cycle-poster.jpg") center/cover no-repeat;min-height:62vh}
+  .am-filmwide-drone{background-image:url("media/drone-node-poster.jpg")}
+}
 
 /* ---------- Pills (gold-outlined, E5 idiom) ---------- */
 .am-pill{font-family:var(--am-mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
@@ -113,6 +132,16 @@ body.am{background:var(--am-paper);color:var(--am-ink);font-family:var(--am-body
   padding:1.2rem;box-shadow:var(--am-shadow)}
 .am-chapter-art svg{display:block;width:100%;height:auto}
 .am-chapter-art figcaption{font-family:var(--am-mono);font-size:.74rem;color:var(--am-ink-faint);margin-top:.7rem}
+
+/* ---------- Innovation chapter mesh overlays (ambient canvas) ---------- */
+/* The canvas is an ambient layer behind the teaching SVG: hidden until the
+   am-mesh module reveals it after a successful first frame, so no-JS or
+   canvas failure leaves the SVG untouched. aria-hidden, no copy. */
+.am-chapter-art{position:relative;overflow:hidden}
+canvas[data-mesh]{position:absolute;inset:0;width:100%;height:100%;display:none;
+  pointer-events:none;opacity:.65}
+.am-chapter-art>svg,.am-chapter-art>figcaption{position:relative;z-index:1}
+@media (prefers-reduced-motion:reduce){canvas[data-mesh]{opacity:.5}}
 .am-chip{display:inline-block;font-family:var(--am-mono);font-size:.72rem;letter-spacing:.18em;
   text-transform:uppercase;color:var(--am-green-deep);border:1px solid var(--am-green);
   border-radius:999px;padding:.3rem .9rem;margin-bottom:.8rem}

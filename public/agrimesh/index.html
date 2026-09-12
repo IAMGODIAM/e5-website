@@ -141,7 +141,12 @@
 <main>
   <!-- 1 · HOOK -->
   <section class="am-hero am-reveal" aria-labelledby="am-h1">
-    <div class="am-sun am-breathe" aria-hidden="true"></div>
+    <div class="am-hero-film" aria-hidden="true">
+      <video class="am-film-video" muted loop playsinline autoplay preload="metadata"
+             poster="media/hero-dawn-poster.jpg">
+        <source src="media/hero-dawn.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="am-wrap">
       <p class="am-eyebrow" style="position:relative">AgriMesh · an E5 Enclave technology story</p>
       <h1 id="am-h1">The field, at dawn.</h1>
@@ -149,13 +154,6 @@
       <p class="am-sub">AgriMesh is a proposed offline-first farm sensing system, now under development — a self-healing mesh of low-cost sensors and on-device intelligence, designed for the small farms and urban growers that precision agriculture left behind. It is pursued by AgriMesh Corporation (for-profit); E5 Enclave Inc. is the storyteller.</p>
       <a class="am-scrollcue" href="#am-twin">Meet the living field below</a>
     </div>
-    <svg class="am-hero-rows" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
-      <g stroke="#2e6b38" stroke-width="2" fill="none" opacity=".8">
-        <path d="M0,20 C300,40 600,0 900,30 S1200,20 1200,20"/>
-        <path d="M0,55 C300,70 600,45 900,65 S1200,55 1200,55"/>
-        <path d="M0,92 C300,100 600,85 900,98 S1200,92 1200,92"/>
-      </g>
-    </svg>
   </section>
 
   <!-- 2 · PROBLEM -->
@@ -200,6 +198,7 @@
             <p><a href="#am-twin">Watch it heal in the living field ↓</a></p>
           </div>
           <figure class="am-chapter-art">
+            <canvas class="am-mesh" data-mesh="heal" aria-hidden="true"></canvas>
             <svg viewBox="0 0 400 240" role="img" aria-label="Diagram of six sensor nodes linked in a mesh; one link is dashed to show a rerouted path around a failed node.">
               <g stroke="#2e6b38" stroke-width="2">
                 <line x1="70" y1="120" x2="160" y2="60"/><line x1="160" y1="60" x2="260" y2="80"/>
@@ -225,6 +224,7 @@
             <p>The design calls for low-cost standardized arrays — soil moisture at two depths, temperature, humidity, pressure, pH, and light — at roughly one array per two hundred square feet: far denser than typical commercial deployments. Redundant cross-validation between neighboring sensors filters anomalies before any decision is made.</p>
           </div>
           <figure class="am-chapter-art">
+            <canvas class="am-mesh" data-mesh="sensors" aria-hidden="true"></canvas>
             <svg viewBox="0 0 400 240" role="img" aria-label="Diagram of a field grid with a sensor array in every cell, denser than a sparse commercial deployment shown beside it.">
               <g fill="#2e6b38" opacity=".9">
                 <g>
@@ -252,6 +252,7 @@
             <p>Lightweight models read the sensor streams on low-power edge computers and recommend the next action — irrigate now, or wait for the rain that's coming. No round trip to the cloud, and no pause when the uplink drops. The field keeps thinking with or without the internet.</p>
           </div>
           <figure class="am-chapter-art">
+            <canvas class="am-mesh" data-mesh="edge" aria-hidden="true"></canvas>
             <svg viewBox="0 0 400 240" role="img" aria-label="Diagram showing sensor readings flowing into an on-device edge computer, which outputs an irrigation recommendation.">
               <g fill="none" stroke="#2e6b38" stroke-width="2">
                 <rect x="24" y="70" width="96" height="100" rx="12"/>
@@ -278,6 +279,7 @@
             <p>Readings live in an encrypted local database, and the growers who work the land decide who sees them. No outside dashboard owns the season's data. Any sharing — with researchers, with buyers, with a cooperative — happens on terms the community sets.</p>
           </div>
           <figure class="am-chapter-art">
+            <canvas class="am-mesh" data-mesh="commons" aria-hidden="true"></canvas>
             <svg viewBox="0 0 400 240" role="img" aria-label="Diagram of three growers around a shared database, each holding a key to their own share of the data.">
               <g fill="none" stroke="#2e6b38" stroke-width="2">
                 <rect x="160" y="86" width="80" height="68" rx="10"/>
@@ -296,6 +298,24 @@
         </article>
 
       </div>
+    </div>
+  </section>
+
+  <!-- 4.5 · THE GROWTH CYCLE (cinematic interlude) -->
+  <section class="am-filmbreak" aria-label="The growth cycle: an illustrative film">
+    <div class="am-wrap">
+      <p class="am-eyebrow am-reveal">The cycle</p>
+      <h2 class="am-reveal">Every season begins the same way.</h2>
+    </div>
+    <figure class="am-filmwide am-reveal" aria-hidden="true">
+      <video class="am-film-video" muted loop playsinline preload="none"
+             poster="media/growth-cycle-poster.jpg" data-film>
+        <source data-src="media/growth-cycle.mp4" type="video/mp4">
+      </video>
+      <span class="am-film-tag">Illustrative film</span>
+    </figure>
+    <div class="am-wrap">
+      <p class="am-filmcap am-reveal">Seed, sprout, flower, harvest — the cycle AgriMesh is being built to watch over. The system is proposed and under development; this film imagines the future it is designed to serve.</p>
     </div>
   </section>
 
@@ -441,6 +461,14 @@
           <p>Before AgriMesh, an earlier architecture called FarmBlock was piloted at two sites — a Liberty City community garden and a Homestead farm. The FarmBlock Pilot was a deployment phase of that earlier, ledger-centered system: related to this work, not identical to it.</p>
         </div>
       </div>
+      <figure class="am-filmwide am-filmwide-drone am-reveal" aria-hidden="true">
+        <video class="am-film-video" muted loop playsinline preload="none"
+               poster="media/drone-node-poster.jpg" data-film>
+          <source data-src="media/drone-node.mp4" type="video/mp4">
+        </video>
+        <span class="am-film-tag">Illustrative film</span>
+      </figure>
+      <p class="am-filmcap am-reveal">A drone checks in on a sensor node — the kind of visit AgriMesh is designed to make routine. Illustrative film; the system is proposed and under development.</p>
     </div>
   </section>
 
@@ -560,7 +588,31 @@ const AM_INTAKE_ENDPOINT = "https://agrimesh-intake.e5enclave.com/submit";
   });
 })();
 </script>
+<script>
+/* Cinematic film loader: lazy <video> elements marked data-film load and play
+   only when scrolled into view, and pause offscreen. Hero film (real src)
+   loads eagerly with its poster. No-JS: <video> renders its poster frame as a
+   static cinematic still. reduced-motion: CSS hides video, shows poster. */
+(function(){
+  if (!('IntersectionObserver' in window)) return;
+  var vids = document.querySelectorAll('video[data-film]');
+  if (!vids.length) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var v = e.target;
+      if (e.isIntersecting) {
+        var s = v.querySelector('source[data-src]');
+        if (s && !s.getAttribute('src')) { s.setAttribute('src', s.getAttribute('data-src')); v.load(); }
+        var p = v.play();
+        if (p && p.catch) p.catch(function(){});
+      } else { v.pause(); }
+    });
+  }, { threshold: 0.15 });
+  vids.forEach(function(v){ io.observe(v); });
+})();
+</script>
 <script src="js/am-twin.js" defer></script>
+<script src="js/am-mesh.js" defer></script>
 <!-- e5:chrome-foot -->
 <div class="sov-chrome sov-chrome-foot" style="margin-top:clamp(60px,8vw,120px)">
 <div style="position:relative; z-index:5; margin-top:0; height:4px; background:linear-gradient(90deg,#6E5220,#C9A24A 24%,#E9D3A0 50%,#C9A24A 76%,#6E5220)"></div>

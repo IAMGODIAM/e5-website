@@ -42,6 +42,21 @@
  *     → draw one static frame, stop. Poster stays the visual anchor.
  *   - prefers-reduced-motion → one static fully-legible frame, no loop, no
  *     auto-beat. Nodes remain operable buttons; stepped HTML carries the story.
+ * Cinematic pass (2026-09-12, aesthetics only — honesty rules unchanged):
+ *   - Node buttons: soft CSS glow (box-shadow) + a subtle gold pulse on the
+ *     gateway; animation gated off under prefers-reduced-motion. Kept crisp
+ *     for daylight legibility.
+ *   - Link bloom: every link drawn twice — wide low-alpha halo (additive)
+ *     + narrow bright core. Particles get an additive halo + a normal-blend
+ *     core so the mesh glows without losing sunlight legibility.
+ *   - Dawn atmosphere (sky band ONLY — decorative, never moves data): gently
+ *     pulsing sun glow, ~40 drifting gold motes (seeded, breath-like), a soft
+ *     diagonal light-ray wash. Static/reduced-motion frames render the resting
+ *     state (motes at rest, no drone).
+ *   - Drone flyover accent: a small drone silhouette crosses the sky band
+ *     every ~25 s with a faint light trail and blinking nav light. Atmosphere
+ *     only. Never appears in static/reduced-motion frames.
+ *   Perf budget unchanged: DPR <= 1.5, same FPS governor, same hard-pauses.
  * ========================================================================== */
 (function (global) {
 'use strict';
@@ -71,12 +86,17 @@ var NODE_CSS =
   '.am-node-btn{position:absolute;width:38px;height:38px;margin:0;padding:0;' +
   'border-radius:9999px;border:2px solid #2f7a3d;background:rgba(255,255,255,.94);' +
   'color:#1d4a26;font:600 13px/1 system-ui,-apple-system,sans-serif;cursor:pointer;' +
-  'box-shadow:0 1px 4px rgba(60,40,10,.28);transform:translate(-50%,-50%);' +
+  'box-shadow:0 1px 4px rgba(60,40,10,.28),0 0 9px rgba(90,154,82,.5);transform:translate(-50%,-50%);' +
   'pointer-events:auto;transition:background .2s,border-color .2s,color .2s;}' +
-  '.am-node-btn:hover{border-color:#b08d3e;}' +
+  '.am-node-btn:hover{border-color:#b08d3e;box-shadow:0 1px 4px rgba(60,40,10,.28),0 0 14px rgba(176,141,62,.65);}' +
   '.am-node-btn:focus-visible{outline:3px solid #b08d3e;outline-offset:2px;}' +
-  '.am-node-btn.is-gateway{border-color:#b08d3e;background:#fff8e6;color:#6b4d12;}' +
-  '.am-node-btn.is-offline{background:#e9e2d2;border-color:#a33333;border-style:dashed;color:#7a2a2a;}';
+  '.am-node-btn.is-gateway{border-color:#b08d3e;background:#fff8e6;color:#6b4d12;' +
+  'animation:am-node-pulse 2.6s ease-in-out infinite;}' +
+  '.am-node-btn.is-offline{background:#e9e2d2;border-color:#a33333;border-style:dashed;color:#7a2a2a;}' +
+  '@keyframes am-node-pulse{' +
+  '0%,100%{box-shadow:0 1px 4px rgba(60,40,10,.28),0 0 0 0 rgba(176,141,62,.5);}' +
+  '50%{box-shadow:0 1px 4px rgba(60,40,10,.28),0 0 14px 4px rgba(176,141,62,.30);}}' +
+  '@media (prefers-reduced-motion:reduce){.am-node-btn,.am-node-btn.is-gateway{animation:none!important;}}';
 
 /* ================================================================== */
 function createTwin(env) {
@@ -113,7 +133,9 @@ function createTwin(env) {
     frameTimes: [],
     W: 0, H: 0,
     scrollTimer: 0,
-    beatTimers: []
+    beatTimers: [],
+    motes: [],            // dawn-atmosphere gold motes (sky band only)
+    drone: null           // { active, t0, nextAt, dur } — flyover accent
   };
 
   var root, stage, viewport, poster, canvas, ctx, pillsBox, legend, nodesBox, live;
@@ -360,6 +382,118 @@ function createTwin(env) {
     return c;
   }
 
+  /* ---------------- dawn atmosphere (cinematic pass) ---------------- */
+  // Decorative sky-band-only layer: sun-glow pulse, drifting gold motes,
+  // light-ray wash, drone flyover. Never touches the data field; never moves
+  // data. Motes are seeded so static frames are deterministic.
+  function seededRand(seed) {
+    var s = seed % 2147483647; if (s <= 0) s += 2147483646;
+    return function () { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
+  }
+
+  function initAtmosphere() {
+    state.motes = [];
+    var rnd = seededRand(20330);
+    for (var i = 0; i < 40; i++) {
+      state.motes.push({
+        x: rnd(), y: rnd(),            // sky-band fractions
+        r: 1 + rnd() * 1.8,
+        phase: rnd() * 6.283,
+        speed: 0.25 + rnd() * 0.5
+      });
+    }
+    state.drone = { active: false, t0: 0, nextAt: 6, dur: 9 };
+  }
+
+  function drawAtmosphere(tSec, animate) {
+    var W = state.W, H = state.H;
+    var skyH = H * 0.16;
+    if (skyH <= 0) return;
+    var pulse = animate ? 0.5 + 0.5 * Math.sin(tSec * 0.5) : 0.5;
+    ctx.save();
+    ctx.beginPath(); ctx.rect(0, 0, W, skyH + 2); ctx.clip();
+
+    // gently pulsing sun glow
+    var g = ctx.createRadialGradient(W * 0.72, skyH * 0.55, 4, W * 0.72, skyH * 0.55, W * 0.34);
+    g.addColorStop(0, 'rgba(255,196,120,' + (0.10 + 0.06 * pulse).toFixed(3) + ')');
+    g.addColorStop(1, 'rgba(255,196,120,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, skyH + 2);
+
+    // soft diagonal light-ray wash
+    var rayA = (0.05 + 0.02 * pulse).toFixed(3);
+    ctx.save();
+    ctx.translate(W * 0.5, skyH * 0.5);
+    ctx.rotate(0.42);
+    var band = function (off, wdt, alpha) {
+      var lg = ctx.createLinearGradient(-wdt / 2, 0, wdt / 2, 0);
+      lg.addColorStop(0, 'rgba(255,244,214,0)');
+      lg.addColorStop(0.5, 'rgba(255,244,214,' + alpha + ')');
+      lg.addColorStop(1, 'rgba(255,244,214,0)');
+      ctx.fillStyle = lg;
+      ctx.fillRect(off - wdt / 2, -skyH * 2, wdt, skyH * 4);
+    };
+    band(-W * 0.16, W * 0.09, rayA);
+    band(W * 0.10, W * 0.15, (rayA * 0.7).toFixed(3));
+    ctx.restore();
+
+    // drifting gold motes — sky band only
+    ctx.globalCompositeOperation = 'lighter';
+    var i;
+    for (i = 0; i < state.motes.length; i++) {
+      var m = state.motes[i];
+      var dy = animate ? Math.sin(tSec * m.speed + m.phase) * 7 : 0;
+      var ma = animate ? 0.10 + 0.09 * (0.5 + 0.5 * Math.sin(tSec * m.speed * 1.3 + m.phase)) : 0.14;
+      ctx.fillStyle = 'rgba(232,178,84,' + ma.toFixed(3) + ')';
+      ctx.beginPath();
+      ctx.arc(m.x * W, m.y * skyH + dy, m.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.restore();
+
+    drawDrone(tSec, animate, skyH);
+  }
+
+  // Small sleek silhouette crossing the sky band every ~25 s: faint light
+  // trail + blinking nav light. Pure atmosphere; hidden in static frames.
+  function drawDrone(tSec, animate, skyH) {
+    var d = state.drone;
+    if (!d || !animate) return;
+    if (!d.active && tSec >= d.nextAt) { d.active = true; d.t0 = tSec; }
+    if (!d.active) return;
+    var u = (tSec - d.t0) / d.dur;
+    if (u >= 1) { d.active = false; d.nextAt = tSec + 25; return; }
+    var W = state.W;
+    var x = (-0.08 + 1.16 * u) * W;
+    var y = skyH * 0.42 + Math.sin(u * 6.283) * skyH * 0.05;
+    ctx.save();
+    // faint light trail
+    ctx.strokeStyle = 'rgba(255,214,140,0.35)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x - W * 0.05, y - 2);
+    ctx.stroke();
+    // silhouette
+    ctx.fillStyle = 'rgba(44,40,34,0.85)';
+    ctx.beginPath();
+    ctx.ellipse(x, y, 7, 3.2, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(44,40,34,0.7)';
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.moveTo(x - 7, y - 2); ctx.lineTo(x - 11, y - 5);
+    ctx.moveTo(x + 7, y - 2); ctx.lineTo(x + 11, y - 5);
+    ctx.stroke();
+    // blinking nav light
+    if ((tSec * 2.5) % 1 < 0.5) {
+      ctx.fillStyle = 'rgba(255,90,70,0.95)';
+      ctx.beginPath(); ctx.arc(x + 3, y - 4, 1.8, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.restore();
+  }
+
   function buildStaticCanvases() {
     var w = Math.round(state.W * state.dpr), h = Math.round(state.H * state.dpr);
     state.bgCanvas = renderBackground(w, h);
@@ -367,18 +501,46 @@ function createTwin(env) {
   }
 
   /* ---------------- frame render ---------------- */
+  /* Links: bloom feel — a wide low-alpha halo pass (additive) under a
+     narrow bright core pass (normal blend, kept legible in daylight). */
   function drawLinks() {
     var gain = state.layer === 'network' ? 1 : 0.45; // traffic emphasis per layer
-    for (var i = 0; i < state.links.length; i++) {
-      var l = state.links[i];
-      var a = state.nodePx[l.a], b = state.nodePx[l.b];
+    var i, l, a, b, on;
+    // halo pass
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.lineCap = 'round';
+    for (i = 0; i < state.links.length; i++) {
+      l = state.links[i];
+      a = state.nodePx[l.a]; b = state.nodePx[l.b];
       if (!a || !b) continue;
-      var on = isOnline(l.a) && isOnline(l.b);
+      on = isOnline(l.a) && isOnline(l.b);
       if (on) {
-        ctx.strokeStyle = 'rgba(84,138,72,' + (0.22 + 0.58 * l.health * gain).toFixed(3) + ')';
-        ctx.lineWidth = (1 + 2 * l.health * gain);
+        ctx.strokeStyle = 'rgba(150,205,120,' + (0.10 + 0.18 * l.health * gain).toFixed(3) + ')';
+        ctx.lineWidth = 6 + 4 * l.health * gain;
       } else {
-        ctx.strokeStyle = 'rgba(130,118,96,0.22)';
+        ctx.strokeStyle = 'rgba(150,140,120,0.08)';
+        ctx.lineWidth = 5;
+      }
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.stroke();
+    }
+    ctx.restore();
+    // core pass
+    ctx.save();
+    ctx.lineCap = 'round';
+    for (i = 0; i < state.links.length; i++) {
+      l = state.links[i];
+      a = state.nodePx[l.a]; b = state.nodePx[l.b];
+      if (!a || !b) continue;
+      on = isOnline(l.a) && isOnline(l.b);
+      if (on) {
+        ctx.strokeStyle = 'rgba(52,112,62,' + (0.35 + 0.55 * l.health * gain).toFixed(3) + ')';
+        ctx.lineWidth = 1 + 1.6 * l.health * gain;
+      } else {
+        ctx.strokeStyle = 'rgba(130,118,96,0.30)';
         ctx.lineWidth = 1;
       }
       ctx.beginPath();
@@ -386,19 +548,39 @@ function createTwin(env) {
       ctx.lineTo(b.x, b.y);
       ctx.stroke();
     }
+    ctx.restore();
   }
 
-  function drawParticles(tSec) {
-    var alpha = state.layer === 'network' ? 0.95 : 0.30;
-    ctx.fillStyle = 'rgba(46,110,58,' + alpha.toFixed(2) + ')';
-    for (var i = 0; i < state.particles.length; i++) {
-      var p = state.particles[i];
+  /* Packets: additive halo for the glow, then a normal-blend core so each
+     packet stays readable in sunlight. */
+  function drawParticles() {
+    var alpha = state.layer === 'network' ? 1 : 0.32;
+    var i, p, pos;
+    // halo pass
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    for (i = 0; i < state.particles.length; i++) {
+      p = state.particles[i];
       if (!p.active || p.route.length < 2) continue;
-      var pos = particlePos(p);
+      pos = particlePos(p);
+      ctx.fillStyle = 'rgba(120,200,110,' + (0.20 * alpha).toFixed(3) + ')';
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, 4.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+    // core pass
+    ctx.save();
+    ctx.fillStyle = 'rgba(38,102,52,' + alpha.toFixed(2) + ')';
+    for (i = 0; i < state.particles.length; i++) {
+      p = state.particles[i];
+      if (!p.active || p.route.length < 2) continue;
+      pos = particlePos(p);
       ctx.beginPath();
       ctx.arc(pos.x, pos.y, 2, 0, Math.PI * 2);
       ctx.fill();
     }
+    ctx.restore();
   }
 
   function drawWatermark() {
@@ -411,7 +593,10 @@ function createTwin(env) {
     ctx.restore();
   }
 
-  function renderFrame() {
+  /* tSec: wall-clock seconds for atmosphere animation. animate=false
+     renders the resting state (motes at rest, drone hidden) for static
+     and reduced-motion frames. */
+  function renderFrame(tSec, animate) {
     if (!ctx || state.W <= 0) return;
     ctx.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
     if (state.bgCanvas) ctx.drawImage(state.bgCanvas, 0, 0, state.W, state.H);
@@ -422,8 +607,12 @@ function createTwin(env) {
     }
     drawLinks();
     drawParticles();
+    drawAtmosphere(tSec, animate); // sky-band only; decorative, moves no data
     drawWatermark(); // every frame, permanent
   }
+
+  // One deterministic resting frame for static-first / reduced-motion paths.
+  function staticRender() { renderFrame(0, false); }
 
   /* ---------------- sizing ---------------- */
   function resize() {
@@ -475,7 +664,7 @@ function createTwin(env) {
       }
     }
     updateParticles(Math.min(0.1, dtMs / 1000));
-    renderFrame();
+    renderFrame(now / 1000, true);
     state.rafId = raf(tick);
   }
 
@@ -508,7 +697,7 @@ function createTwin(env) {
     if (legend) legend.textContent = LEGENDS[name];
     if (state.fieldCanvas || state.W > 0) {
       state.fieldCanvas = buildFieldLayer(name, Math.round(state.W * state.dpr), Math.round(state.H * state.dpr));
-      if (!shouldRun()) renderFrame(); // keep the static frame fresh when the loop is off
+      if (!shouldRun()) staticRender(); // keep the static frame fresh when the loop is off
     }
     if (!silent) narrate('Showing ' + LAYER_LABELS[name] + '. ' + LEGENDS[name]);
   }
@@ -574,7 +763,7 @@ function createTwin(env) {
     rerouteParticles();
     var msg = rerouteNarration(id);
     narrate((scripted ? msg.replace('offline.', 'offline (simulated).') : msg));
-    renderFrame();
+    staticRender();
   }
 
   function healNode(id, scripted) {
@@ -584,7 +773,7 @@ function createTwin(env) {
     refreshNodeButton(n);
     rerouteParticles();
     narrate('Node ' + id + ' back online' + (scripted ? ' (simulated)' : '') + '. Mesh healed.');
-    renderFrame();
+    staticRender();
   }
 
   function toggleNode(id, scripted) {
@@ -650,6 +839,7 @@ function createTwin(env) {
       var i;
       for (i = 0; i < state.nodes.length; i++) state.nodeById[state.nodes[i].id] = state.nodes[i];
       buildGraph();
+      initAtmosphere();
 
       canvas.setAttribute('role', 'img');
       if (!canvas.getAttribute('aria-label')) {
@@ -681,7 +871,7 @@ function createTwin(env) {
       state.dpr = Math.min(MAX_DPR, win.devicePixelRatio || 1);
       resize();
       syncParticles();
-      renderFrame(); // one frame always: static modes stop here
+      staticRender(); // one frame always: static modes stop here
 
       if (state.staticFirst) {
         // constrained device: poster remains the visual anchor, no node
@@ -734,7 +924,7 @@ function createTwin(env) {
       doc.addEventListener('visibilitychange', function () { updateRunning(); });
 
       if (win.addEventListener) {
-        win.addEventListener('resize', function () { resize(); renderFrame(); });
+        win.addEventListener('resize', function () { resize(); staticRender(); });
       }
 
       updateRunning();
