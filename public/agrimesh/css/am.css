@@ -1,0 +1,198 @@
+/* ============================================================
+   AGRIMESH — "The field, at dawn."
+   Dawn-light visual world: warm paper ground, deep soil ink,
+   living green accent, gold leaf reserved for emphasis.
+   Zero external requests: system font stacks only.
+   Fail-closed reveals: content is fully visible in CSS;
+   JS only adds animation enhancement classes.
+   ============================================================ */
+:root{
+  --am-paper:#f7f2e7;
+  --am-paper-2:#efe6d2;
+  --am-paper-3:#e7dabf;
+  --am-ink:#1c1410;
+  --am-ink-soft:#4a3d2e;
+  --am-ink-faint:#6b5c48;
+  --am-green:#2e6b38;
+  --am-green-deep:#1d4a25;
+  --am-leaf:#5a9a52;
+  --am-gold:#8f6f26;
+  --am-gold-line:#b08d3e;
+  --am-sun:#e79b34;
+  --am-sky-1:#f9ecc9;
+  --am-sky-2:#f3dcae;
+  --am-sky-3:#eecfa4;
+  --am-rule:rgba(143,111,38,.35);
+  --am-card:#fffdf7;
+  --am-shadow:0 18px 50px -18px rgba(60,42,18,.28);
+  --am-display:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --am-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --am-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  --am-max:74rem;
+}
+html{scroll-behavior:smooth}
+body.am{background:var(--am-paper);color:var(--am-ink);font-family:var(--am-body);
+  font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.am ::selection{background:#e8c86a;color:var(--am-ink)}
+.am-wrap{max-width:var(--am-max);margin-inline:auto;padding-inline:clamp(20px,4vw,48px)}
+.am section{padding-block:clamp(56px,8vw,110px)}
+.am-eyebrow{font-family:var(--am-mono);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--am-gold);margin:0 0 1rem}
+.am h2,.am h3{font-family:var(--am-display);font-weight:500;line-height:1.12;letter-spacing:.01em}
+.am h2{font-size:clamp(2rem,4.4vw,3.4rem);margin:0 0 1.2rem}
+.am h3{font-size:clamp(1.35rem,2.6vw,1.9rem);margin:0 0 .8rem}
+.am p{margin:0 0 1.1rem;max-width:44rem}
+.am .lede{font-size:clamp(1.08rem,1.9vw,1.32rem);color:var(--am-ink-soft);max-width:46rem}
+.am a{color:var(--am-green-deep)}
+.am-rule{border:0;border-top:1px solid var(--am-rule);margin:0}
+
+/* ---------- Hero : cinematic film ---------- */
+.am-hero{position:relative;overflow:hidden;text-align:center;
+  min-height:92vh;display:flex;align-items:center;
+  padding-block:clamp(84px,12vw,150px) clamp(64px,9vw,110px)}
+.am-hero-film{position:absolute;inset:0;z-index:0}
+.am-hero-film .am-film-video{width:100%;height:100%;object-fit:cover;display:block}
+.am-hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(24,17,8,.42) 0%,rgba(24,17,8,.05) 34%,
+    rgba(24,17,8,0) 55%,rgba(24,17,8,.62) 100%)}
+.am-hero .am-wrap{position:relative;z-index:2}
+.am-hero .am-eyebrow{color:#ffe9b8}
+.am-hero h1{font-family:var(--am-display);font-weight:500;position:relative;
+  font-size:clamp(2.7rem,7.2vw,5.4rem);line-height:1.04;margin:.4rem 0 1.2rem;
+  color:#fffdf4;text-shadow:0 2px 22px rgba(24,15,5,.6)}
+.am-hero .am-thesis{font-family:var(--am-display);font-style:italic;position:relative;
+  font-size:clamp(1.25rem,2.8vw,1.9rem);color:#fdf3dd;max-width:40rem;margin:0 auto 1.4rem;
+  text-shadow:0 2px 14px rgba(24,15,5,.6)}
+.am-hero .am-sub{position:relative;color:#f7ecd4;max-width:44rem;margin:0 auto 2rem;font-size:1.02rem;
+  text-shadow:0 1px 10px rgba(24,15,5,.6)}
+.am a.am-scrollcue{position:relative;display:inline-block;font-family:var(--am-mono);font-size:.78rem;
+  letter-spacing:.2em;text-transform:uppercase;color:#fff7e2;text-decoration:none;
+  border:1px solid rgba(255,233,184,.85);border-radius:999px;padding:.7rem 1.5rem;
+  background:rgba(16,10,4,.82);font-weight:700;text-shadow:0 1px 6px rgba(0,0,0,.8)}
+/* ---------- Cinematic film elements ---------- */
+.am-filmwide{position:relative;margin:0;overflow:hidden;border-block:1px solid var(--am-rule)}
+.am-filmwide .am-film-video{width:100%;height:min(78vh,680px);object-fit:cover;display:block}
+.am-film-tag{position:absolute;right:14px;bottom:14px;font-family:var(--am-mono);font-size:.68rem;
+  letter-spacing:.16em;text-transform:uppercase;color:#ffe9b8;
+  background:rgba(20,14,6,.55);padding:.45rem .9rem;border-radius:999px}
+.am-filmcap{font-size:.92rem;color:var(--am-ink-soft);max-width:44rem;margin:1.2rem auto 0}
+.am-filmbreak{padding-block:clamp(48px,7vw,96px) 0}
+.am-filmbreak .am-filmwide{margin-top:1.6rem}
+.am-filmbreak .am-filmcap{padding-bottom:clamp(48px,7vw,96px)}
+@media (prefers-reduced-motion:reduce){
+  .am-film-video{display:none}
+  .am-hero-film{background:url("media/hero-dawn-poster.jpg") center/cover no-repeat}
+  .am-filmwide{background:url("media/growth-cycle-poster.jpg") center/cover no-repeat;min-height:62vh}
+  .am-filmwide-drone{background-image:url("media/drone-node-poster.jpg")}
+}
+
+/* ---------- Pills (gold-outlined, E5 idiom) ---------- */
+.am-pill{font-family:var(--am-mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--am-gold);background:rgba(255,253,247,.7);border:1.5px solid var(--am-gold-line);
+  border-radius:999px;padding:.72rem 1.6rem;cursor:pointer;transition:background .3s,color .3s}
+.am-pill:hover{border-color:var(--am-gold)}
+.am-pill[aria-pressed="true"]{background:var(--am-gold);color:#fffdf7;border-color:var(--am-gold)}
+.am-pill:focus-visible{outline:3px solid var(--am-green);outline-offset:2px}
+
+/* ---------- Twin section ---------- */
+.am-twin{background:linear-gradient(180deg,var(--am-paper) 0%,#f4ecda 100%);border-block:1px solid var(--am-rule)}
+.am-twin-stage{display:grid;gap:1.25rem;background:var(--am-card);border:1px solid var(--am-rule);
+  border-radius:18px;padding:clamp(16px,3vw,32px);box-shadow:var(--am-shadow)}
+.am-twin-viewport{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/9.5;
+  border:1px solid rgba(143,111,38,.28);background:#f2e4c2}
+.am-twin-poster,.am-twin-canvas{position:absolute;inset:0;width:100%;height:100%}
+.am-twin-poster svg{display:block;width:100%;height:100%}
+.am-twin-canvas{display:none}
+.am-twin-live-dot{position:absolute;top:12px;left:12px;z-index:3;display:none;
+  font-family:var(--am-mono);font-size:.72rem;letter-spacing:.16em;color:var(--am-green-deep);
+  background:rgba(255,253,247,.88);border:1px solid var(--am-green);border-radius:999px;padding:.35rem .9rem}
+.am-twin-watermark{position:absolute;right:12px;bottom:10px;z-index:3;
+  font-family:var(--am-mono);font-size:.68rem;letter-spacing:.12em;color:#fff;
+  background:rgba(28,20,16,.62);border-radius:6px;padding:.3rem .7rem}
+.am-twin-controls{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem}
+.am-twin-legend{font-family:var(--am-mono);font-size:.82rem;color:var(--am-ink-soft);margin:0;
+  border-left:3px solid var(--am-green);padding-left:.8rem;flex:1 1 100%}
+.am-nodes{position:absolute;inset:0;z-index:2;pointer-events:none} /* Worker 2 generates the node buttons into this overlay, inside the viewport */
+.am-twin-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:.4rem}
+.am-twin-steps figure{margin:0;background:var(--am-paper);border:1px solid var(--am-rule);
+  border-radius:12px;padding:.9rem}
+.am-twin-steps svg{display:block;width:100%;height:auto}
+.am-twin-steps figcaption{font-size:.86rem;color:var(--am-ink-soft);margin-top:.6rem}
+.am-twin-steps figcaption strong{display:block;color:var(--am-ink);font-size:.92rem;margin-bottom:.25rem}
+.am-twin-note{font-family:var(--am-mono);font-size:.74rem;color:var(--am-ink-faint);margin:.4rem 0 0}
+
+/* ---------- Innovation chapters ---------- */
+.am-chapters{display:grid;gap:clamp(2rem,5vw,4rem)}
+.am-chapter{display:grid;gap:1.6rem;align-items:center}
+@media(min-width:860px){
+  .am-chapter{grid-template-columns:1fr 1fr}
+  .am-chapter:nth-child(even) .am-chapter-art{order:-1}
+}
+.am-chapter-art{background:var(--am-card);border:1px solid var(--am-rule);border-radius:14px;
+  padding:1.2rem;box-shadow:var(--am-shadow)}
+.am-chapter-art svg{display:block;width:100%;height:auto}
+.am-chapter-art figcaption{font-family:var(--am-mono);font-size:.74rem;color:var(--am-ink-faint);margin-top:.7rem}
+
+/* ---------- Innovation chapter mesh overlays (ambient canvas) ---------- */
+/* The canvas is an ambient layer behind the teaching SVG: hidden until the
+   am-mesh module reveals it after a successful first frame, so no-JS or
+   canvas failure leaves the SVG untouched. aria-hidden, no copy. */
+.am-chapter-art{position:relative;overflow:hidden}
+canvas[data-mesh]{position:absolute;inset:0;width:100%;height:100%;display:none;
+  pointer-events:none;opacity:.65}
+.am-chapter-art>svg,.am-chapter-art>figcaption{position:relative;z-index:1}
+@media (prefers-reduced-motion:reduce){canvas[data-mesh]{opacity:.5}}
+.am-chip{display:inline-block;font-family:var(--am-mono);font-size:.72rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--am-green-deep);border:1px solid var(--am-green);
+  border-radius:999px;padding:.3rem .9rem;margin-bottom:.8rem}
+
+/* ---------- Pilot ---------- */
+.am-pilot{background:var(--am-paper-2);border-block:1px solid var(--am-rule)}
+.am-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:1.6rem}
+.am-card{background:var(--am-card);border:1px solid var(--am-rule);border-radius:14px;
+  padding:1.6rem;box-shadow:var(--am-shadow)}
+.am-card h3{margin-top:0}
+.am-card .am-tag{font-family:var(--am-mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--am-gold);display:block;margin-bottom:.6rem}
+
+/* ---------- Invitation: three doors ---------- */
+.am-doors{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.2rem;margin-top:1.6rem}
+.am-door{background:var(--am-card);border:1px solid var(--am-rule);border-radius:14px;
+  padding:1.8rem;display:flex;flex-direction:column;gap:.8rem;box-shadow:var(--am-shadow)}
+.am-door h3{margin:0}
+.am-door p{margin:0;font-size:.97rem}
+.am-door .am-door-link{margin-top:auto;padding-top:1rem}
+.am-btn{display:inline-block;text-decoration:none;font-family:var(--am-mono);font-size:.8rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--am-gold);background:transparent;
+  border:1.5px solid var(--am-gold-line);border-radius:999px;padding:.85rem 1.8rem;transition:background .3s,color .3s}
+.am-btn:hover{background:var(--am-gold);color:#fffdf7;border-color:var(--am-gold)}
+.am-btn:focus-visible{outline:3px solid var(--am-green);outline-offset:2px}
+.am-scrollcue:focus-visible{outline:3px solid var(--am-green);outline-offset:3px}
+
+/* ---------- Form (E5 form protocol markup) ---------- */
+.am-form{display:grid;gap:.9rem;margin-top:1rem}
+.am-form label{font-family:var(--am-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--am-ink-soft);display:grid;gap:.35rem}
+.am-form input,.am-form textarea{font:1rem/1.5 var(--am-body);color:var(--am-ink);
+  background:#fff;border:1px solid var(--am-rule);border-radius:10px;padding:.75rem 1rem;width:100%;box-sizing:border-box}
+.am-form input:focus,.am-form textarea:focus{outline:2px solid var(--am-green);outline-offset:2px}
+.am-form .am-hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.am-form-status{font-size:.92rem;min-height:1.6em;margin:0}
+.am-form-status.ok{color:var(--am-green-deep)}
+.am-form-status.err{color:#8c1d21}
+
+/* ---------- Footer note ---------- */
+.am-colophon{padding-block:2.5rem 3.5rem;text-align:center}
+.am-colophon p{font-family:var(--am-mono);font-size:.74rem;color:var(--am-ink-faint);max-width:52rem;margin:0 auto}
+
+/* ---------- Fail-closed reveals (JS enhancement only) ---------- */
+.am-reveal{opacity:1;transform:none}
+html.am-js .am-reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+html.am-js .am-reveal.am-revealed{opacity:1;transform:none}
+html.am-js .am-breathe{animation:am-breathe 7s ease-in-out infinite}
+@keyframes am-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.018)}}
+@media (prefers-reduced-motion:reduce){
+  html.am-js .am-reveal{opacity:1;transform:none;transition:none}
+  html.am-js .am-breathe,.am-breathe{animation:none}
+  html{scroll-behavior:auto}
+}

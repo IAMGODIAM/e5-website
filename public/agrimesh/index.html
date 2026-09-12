@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AgriMesh — E5 Enclave</title>
+<meta name="description" content="AgriMesh is a proposed offline-first farm-sensing system: a self-healing sensor mesh with on-device intelligence, for the growers precision agriculture left behind."/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="E5 Enclave"/>
+<meta property="og:title" content="AgriMesh — E5 Enclave"/>
+<meta property="og:description" content="A farm that senses itself, heals itself, and belongs to the people who work it. A proposed offline-first sensing system, told by E5 Enclave Inc."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:image" content="https://e5enclave.com/assets/og.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="AgriMesh — E5 Enclave"/>
+<meta name="twitter:description" content="A farm that senses itself, heals itself, and belongs to the people who work it."/>
+<meta name="twitter:image" content="https://e5enclave.com/assets/og.png"/>
+<meta name="theme-color" content="#f7f2e7"/>
+<link rel="canonical" href="https://e5enclave.com/agrimesh/"/>
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/>
+<link rel="stylesheet" href="css/am.css"/>
+<noscript><style>html .am-reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body class="am">
+<!-- e5:chrome-head -->
+<div class="sov-chrome sov-chrome-head">
+<style id="e5-chrome-css">
+  /* Sovereign chrome — generated into every page by scripts/apply-chrome.mjs. Edit scripts/chrome/head.html, not the pages. */
+  .sov-chrome-head { display:contents; }
+  .e5-bar { position:sticky; top:0; z-index:40; background:rgba(5,6,9,.84); backdrop-filter:blur(18px) saturate(1.3); -webkit-backdrop-filter:blur(18px) saturate(1.3); border-bottom:1px solid #1A2030; }
+  .e5-brand { display:flex; align-items:center; gap:14px; min-height:44px; color:#EEF0F4; text-decoration:none; }
+  .e5-seal-mark { width:44px; height:44px; flex:none; display:block; border-radius:50%; background:#0A0D14;
+    box-shadow:0 0 0 1px #C9A24A, 0 0 0 2px rgba(5,6,9,.9), 0 0 0 3px rgba(233,211,160,.28), 0 0 18px rgba(201,162,74,.22); }
+  .e5-wordmark { font-family:'Cormorant Garamond',Garamond,serif; font-size:clamp(19px,1.7vw,24px); font-weight:600; letter-spacing:.2em; text-transform:uppercase; line-height:1; white-space:nowrap;
+    color:#E9D3A0; background:linear-gradient(100deg,#F5E6C4 0%,#E9D3A0 28%,#C9A24A 58%,#F5E6C4 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  @supports not (background-clip:text) { .e5-wordmark { background:none; -webkit-text-fill-color:#E9D3A0; } }
+  .e5-brand:hover .e5-seal-mark { box-shadow:0 0 0 1px #E9D3A0, 0 0 0 2px rgba(5,6,9,.9), 0 0 0 3px rgba(233,211,160,.45), 0 0 26px rgba(201,162,74,.38); }
+  .e5-nav { display:flex; align-items:center; gap:clamp(16px,2.2vw,32px); font-size:12px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; white-space:nowrap; }
+  .e5-nav > a[data-m] { color:#B6BCC8; padding:12px 0; }
+
+  /* Gold leaf — the one button finish used across the property. */
+  .e5-gilt, .nb-cta a, .vc-cta-primary, .btn-primary, .btn--primary, .btn--gold, .btn--solid, .cta-primary {
+    position:relative; isolation:isolate; display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    color:#050609 !important; border:1px solid #E9D3A0 !important; border-radius:0 !important; text-decoration:none;
+    font-family:'IBM Plex Sans',system-ui,sans-serif !important; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
+    background:
+      linear-gradient(180deg, rgba(255,250,235,.28) 0%, rgba(255,250,235,0) 42%, rgba(0,0,0,.22) 100%),
+      linear-gradient(110deg, #B8903A 0%, #E9D3A0 34%, #C9A24A 52%, #A88E4C 74%, #E9D3A0 100%) !important;
+    background-size:100% 100%, 240% 100% !important; background-position:0 0, 0% 50%;
+    box-shadow: inset 0 1px 0 rgba(255,244,214,.6), inset 0 -1px 0 rgba(0,0,0,.4), 0 1px 0 rgba(0,0,0,.65), 0 0 0 1px rgba(5,6,9,.6);
+    text-shadow:0 1px 0 rgba(255,244,214,.4);
+    transition:box-shadow .35s ease, background-position .6s ease;
+  }
+  .e5-gilt:hover, .e5-gilt:focus-visible, .nb-cta a:hover, .vc-cta-primary:hover, .btn-primary:hover, .btn--primary:hover, .btn--gold:hover, .btn--solid:hover, .cta-primary:hover {
+    color:#050609 !important; background-position:0 0, 100% 50% !important;
+    box-shadow: inset 0 1px 0 rgba(255,244,214,.75), inset 0 -1px 0 rgba(0,0,0,.4), 0 1px 0 rgba(0,0,0,.65), 0 0 0 1px rgba(5,6,9,.6), 0 0 22px rgba(201,162,74,.32);
+  }
+  .e5-gilt:focus-visible { outline:1px solid #F5E6C4; outline-offset:3px; }
+  .e5-give { min-height:44px; padding:0 22px; font-size:11px; }
+  .e5-gilt.e5-gilt-sm { min-height:36px; padding:0 16px; font-size:10px; font-family:'IBM Plex Mono',monospace !important; font-weight:500; letter-spacing:.18em; }
+  .e5-gilt-line { display:inline-flex; align-items:center; gap:10px; padding:11px 16px; border:1px solid #C9A24A; color:#E9D3A0; font:500 10px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase;
+    box-shadow: inset 0 0 0 1px rgba(5,6,9,.6), inset 0 0 0 2px rgba(233,211,160,.18); }
+
+  /* Blueprint: a fine plan grid in gold, laid under a section's content. */
+  .e5-plan { position:relative; }
+  .e5-plan::before { content:""; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.6;
+    background:
+      repeating-linear-gradient(90deg, rgba(201,162,74,.09) 0 1px, transparent 1px 24px),
+      repeating-linear-gradient(0deg,  rgba(201,162,74,.09) 0 1px, transparent 1px 24px),
+      repeating-linear-gradient(90deg, rgba(233,211,160,.16) 0 1px, transparent 1px 120px),
+      repeating-linear-gradient(0deg,  rgba(233,211,160,.16) 0 1px, transparent 1px 120px);
+    -webkit-mask-image:radial-gradient(ellipse 72% 64% at 62% 42%, #000 18%, transparent 78%); mask-image:radial-gradient(ellipse 72% 64% at 62% 42%, #000 18%, transparent 78%); }
+  .e5-plan > * { position:relative; }
+
+  /* Anchored sections clear the sticky bar. */
+  [id] { scroll-margin-top:84px; }
+
+  /* Mobile navigation: a disclosure that needs no script to open. */
+  .e5-mnav { display:none; position:relative; }
+  .e5-mnav-btn { list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; min-height:44px; min-width:44px; padding:0 4px; color:#C8CDD8; font:500 10px/1 'IBM Plex Mono',monospace; letter-spacing:.2em; text-transform:uppercase; }
+  .e5-mnav-btn::-webkit-details-marker { display:none; }
+  .e5-mnav-btn::marker { content:""; }
+  .e5-mnav-btn svg { display:block; }
+  .e5-mnav[open] .e5-mnav-btn { color:#E9D3A0; }
+  .e5-mnav-panel { position:absolute; top:calc(100% + 13px); right:calc(-1 * clamp(20px,4vw,48px)); width:100vw; display:flex; flex-direction:column;
+    background:rgba(5,6,9,.97); -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px); border-top:1px solid #1A2030; border-bottom:1px solid #6E5220; padding:8px clamp(20px,4vw,48px) 18px; }
+  .e5-mnav-panel a { display:flex; align-items:center; justify-content:space-between; min-height:48px; padding:0 2px; border-bottom:1px solid #12161F; color:#EEF0F4; font:500 13px/1 'IBM Plex Sans',system-ui,sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+  .e5-mnav-panel a:last-child { border-bottom:0; color:#E9D3A0; }
+  .e5-mnav-panel a::after { content:"→"; color:#A88E4C; font-family:'IBM Plex Mono',monospace; }
+  @media (max-width: 900px) {
+    .e5-mnav { display:block; }
+    .e5-nav { gap:10px; flex:none; }
+    .e5-brand { gap:11px; min-width:0; }
+    .e5-give { padding:0 14px; min-height:42px; }
+    .e5-mnav-btn span { display:none; }
+    .e5-wordmark { font-size:17px; letter-spacing:.14em; }
+  }
+  @media (max-width: 360px) { .e5-wordmark { font-size:15px; letter-spacing:.1em; } .e5-give { padding:0 11px; } }
+  @media (prefers-reduced-motion: reduce) { .e5-gilt, .nb-cta a, .vc-cta-primary, .btn-primary, .btn--primary, .btn--gold, .btn--solid, .cta-primary { transition:none; } }
+</style>
+<script>/* Google tag (GA4 G-05PYDYP5S0 + Ads AW-16672489240) — one place for the whole property; the front carries its own and is skipped. */(function(){if(window.gtag||document.querySelector('script[src*="googletagmanager.com/gtag/js"]'))return;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-05PYDYP5S0';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','G-05PYDYP5S0');gtag('config','AW-16672489240');})();</script>
+<div data-m="hide" style="position:relative; z-index:5; display:flex; justify-content:space-between; align-items:center; padding:12px clamp(20px,4vw,48px); border-bottom:1px solid #12161F; background:#06070B; font:400 10px/1 'IBM Plex Mono',monospace; letter-spacing:.24em; text-transform:uppercase; color:#A88E4C">
+    <span style="display:flex; align-items:center; gap:14px; white-space:nowrap"><span style="width:6px; height:6px; border-radius:50%; background:#3F6BD8; animation:e5-pulse 2.6s ease-out infinite"></span><span style="color:#C9A24A">E5 Enclave Incorporated</span><span style="color:#3A4256">·</span>501(c)(3) public charity<span style="color:#3A4256">·</span>Liberty City, Miami</span>
+    <span data-m="hidemd" style="display:flex; gap:22px; align-items:center; white-space:nowrap"><span>Est. MMXXIV</span><span style="color:#3A4256">·</span><span style="font-family:'Cormorant Garamond',serif; font-size:13px; letter-spacing:.08em; text-transform:none; color:#E9D3A0; font-style:italic">Nil satis nisi optimum</span></span>
+  </div>
+
+  <div class="e5-bar">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:12px clamp(20px,4vw,48px)">
+      <a href="/" class="e5-brand" aria-label="E5 Enclave Incorporated — home">
+        <img class="e5-seal-mark" src="/assets/front/brand/e5-seal-mark-96.webp" srcset="/assets/front/brand/e5-seal-mark-96.webp 96w, /assets/front/brand/e5-seal-mark-192.webp 192w, /assets/front/brand/e5-seal-mark-288.webp 288w" sizes="44px" width="44" height="44" alt="The seal of E5 Enclave Incorporated" decoding="async">
+        <span class="e5-wordmark">E5 Enclave</span>
+      </a>
+      <nav class="e5-nav" aria-label="Primary">
+        <a data-m="hide" href="/about/" class="h1">About</a>
+        <a data-m="hide" href="/pillars/" class="h1">Pillars</a>
+        <a data-m="hide" href="/restitution-246/" class="h1">Reparations</a>
+        <a data-m="hide" href="/record/" class="h1">The Record</a>
+        <a data-m="hide" href="/coalition/" class="h1">Coalition</a>
+        <a href="https://e5enclave.com/donate/" class="e5-gilt e5-give">Give<svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"></path></svg></a>
+        <details class="e5-mnav">
+          <summary class="e5-mnav-btn" aria-label="Site menu"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"></path></svg><span>Menu</span></summary>
+          <div class="e5-mnav-panel">
+            <a href="/about/">About</a>
+            <a href="/pillars/">Pillars</a>
+            <a href="/restitution-246/">Reparations</a>
+            <a href="/record/">The Record</a>
+            <a href="/coalition/">Coalition</a>
+            <a href="https://e5enclave.com/donate/">Give</a>
+          </div>
+        </details>
+      </nav>
+    </div>
+    <div style="height:1px; background:#12161F"><div data-progress="1" style="height:1px; width:0; background:linear-gradient(90deg,#C9A24A,#3F6BD8)"></div></div>
+  </div>
+<script>(function(){var d=document.querySelector('.e5-mnav');if(!d)return;d.addEventListener('click',function(e){if(e.target.closest('a'))d.open=false;});document.addEventListener('keydown',function(e){if(e.key==='Escape')d.open=false;});document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false;});})();</script>
+</div>
+<!-- /e5:chrome-head -->
+
+<main>
+  <!-- 1 · HOOK -->
+  <section class="am-hero am-reveal" aria-labelledby="am-h1">
+    <div class="am-hero-film" aria-hidden="true">
+      <video class="am-film-video" muted loop playsinline autoplay preload="metadata"
+             poster="media/hero-dawn-poster.jpg">
+        <source src="media/hero-dawn.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="am-wrap">
+      <p class="am-eyebrow" style="position:relative">AgriMesh · an E5 Enclave technology story</p>
+      <h1 id="am-h1">The field, at dawn.</h1>
+      <p class="am-thesis">A farm that senses itself, heals itself, and belongs to the people who work it.</p>
+      <p class="am-sub">AgriMesh is a proposed offline-first farm sensing system, now under development — a self-healing mesh of low-cost sensors and on-device intelligence, designed for the small farms and urban growers that precision agriculture left behind. It is pursued by AgriMesh Corporation (for-profit); E5 Enclave Inc. is the storyteller.</p>
+      <a class="am-scrollcue" href="#am-twin">Meet the living field below</a>
+    </div>
+  </section>
+
+  <!-- 2 · PROBLEM -->
+  <section aria-labelledby="am-problem">
+    <div class="am-wrap">
+      <p class="am-eyebrow am-reveal">The problem</p>
+      <h2 id="am-problem" class="am-reveal">The second acre.</h2>
+      <div class="am-reveal">
+        <p>Precision agriculture was built for the five-thousand-acre operation: machine fleets, subscription dashboards, and a data pipeline that assumes broadband reaches the field.</p>
+        <p>On a half-acre urban farm or a small family plot, none of that arrives. The hardware is priced for commodity acres. The software assumes a fiber line the field doesn't have. The nearest service technician may be counties away.</p>
+        <p>So the growers closest to the food farm blind — making irrigation and planting decisions by instinct alone, while the data tools sit one income bracket and one broadband gap out of reach. We call it the second acre: the ground the brochure was never written for.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · INVERSION -->
+  <section aria-labelledby="am-inversion" style="background:var(--am-paper-2);border-block:1px solid var(--am-rule)">
+    <div class="am-wrap">
+      <p class="am-eyebrow am-reveal">The inversion</p>
+      <h2 id="am-inversion" class="am-reveal">We listened.</h2>
+      <div class="am-reveal">
+        <p>The first version of this idea centered a distributed ledger — every sensor reading validated on-chain, with the ledger at the heart of the architecture.</p>
+        <p>A review panel pushed back. The ledger added complexity — and cost of attention — that the farm did not need. So we inverted the architecture: offline-first, the ledger deferred to an optional Phase II module, to be built only if institutional buyers ever demonstrate a real audit-driven need for it.</p>
+        <p>We kept what the field needs — sensors, mesh, on-device intelligence — and set aside what it doesn't. Rigor means rebuilding when the feedback is right.</p>
+        <p><strong>The NSF invited our full SBIR proposal — no award decision has been made.</strong> The SBIR effort is pursued by AgriMesh Corporation (for-profit), not by E5 Enclave Inc.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · FOUR INNOVATIONS -->
+  <section aria-labelledby="am-innovations">
+    <div class="am-wrap">
+      <p class="am-eyebrow am-reveal">How it works</p>
+      <h2 id="am-innovations" class="am-reveal">Four innovations, one field.</h2>
+      <div class="am-chapters">
+
+        <article class="am-chapter am-reveal">
+          <div>
+            <span class="am-chip">Innovation one</span>
+            <h3>Self-healing field mesh</h3>
+            <p>Farm devices talk to each other over a self-healing wireless mesh — proposed on open protocols like Babel and batman-adv — with no ISP in the middle. When a node drops, routes recalculate and the conversation continues. It is designed for the places broadband forgot: low-connectivity urban lots and rural fields alike.</p>
+            <p><a href="#am-twin">Watch it heal in the living field ↓</a></p>
+          </div>
+          <figure class="am-chapter-art">
+            <canvas class="am-mesh" data-mesh="heal" aria-hidden="true"></canvas>
+            <svg viewBox="0 0 400 240" role="img" aria-label="Diagram of six sensor nodes linked in a mesh; one link is dashed to show a rerouted path around a failed node.">
+              <g stroke="#2e6b38" stroke-width="2">
+                <line x1="70" y1="120" x2="160" y2="60"/><line x1="160" y1="60" x2="260" y2="80"/>
+                <line x1="260" y1="80" x2="340" y2="130"/><line x1="70" y1="120" x2="160" y2="170"/>
+                <line x1="160" y1="170" x2="270" y2="180"/><line x1="270" y1="180" x2="340" y2="130"/>
+                <line x1="160" y1="60" x2="160" y2="170"/>
+                <line x1="160" y1="170" x2="260" y2="80" stroke-dasharray="7 6" stroke="#8f6f26"/>
+              </g>
+              <g fill="#2e6b38">
+                <circle cx="70" cy="120" r="12"/><circle cx="160" cy="60" r="12"/><circle cx="260" cy="80" r="12"/>
+                <circle cx="340" cy="130" r="12"/><circle cx="160" cy="170" r="12"/><circle cx="270" cy="180" r="12"/>
+              </g>
+              <circle cx="160" cy="170" r="18" fill="none" stroke="#8c1d21" stroke-width="2.5"/>
+            </svg>
+            <figcaption>Proposed mesh: traffic reroutes around the failed node (circled).</figcaption>
+          </figure>
+        </article>
+
+        <article class="am-chapter am-reveal">
+          <div>
+            <span class="am-chip">Innovation two</span>
+            <h3>Hyper-local sensor arrays</h3>
+            <p>The design calls for low-cost standardized arrays — soil moisture at two depths, temperature, humidity, pressure, pH, and light — at roughly one array per two hundred square feet: far denser than typical commercial deployments. Redundant cross-validation between neighboring sensors filters anomalies before any decision is made.</p>
+          </div>
+          <figure class="am-chapter-art">
+            <canvas class="am-mesh" data-mesh="sensors" aria-hidden="true"></canvas>
+            <svg viewBox="0 0 400 240" role="img" aria-label="Diagram of a field grid with a sensor array in every cell, denser than a sparse commercial deployment shown beside it.">
+              <g fill="#2e6b38" opacity=".9">
+                <g>
+                  <circle cx="40" cy="40" r="7"/><circle cx="90" cy="40" r="7"/><circle cx="140" cy="40" r="7"/><circle cx="190" cy="40" r="7"/><circle cx="240" cy="40" r="7"/>
+                  <circle cx="40" cy="90" r="7"/><circle cx="90" cy="90" r="7"/><circle cx="140" cy="90" r="7"/><circle cx="190" cy="90" r="7"/><circle cx="240" cy="90" r="7"/>
+                  <circle cx="40" cy="140" r="7"/><circle cx="90" cy="140" r="7"/><circle cx="140" cy="140" r="7"/><circle cx="190" cy="140" r="7"/><circle cx="240" cy="140" r="7"/>
+                  <circle cx="40" cy="190" r="7"/><circle cx="90" cy="190" r="7"/><circle cx="140" cy="190" r="7"/><circle cx="190" cy="190" r="7"/><circle cx="240" cy="190" r="7"/>
+                </g>
+                <g opacity=".45">
+                  <circle cx="330" cy="60" r="7"/><circle cx="370" cy="60" r="7"/>
+                  <circle cx="330" cy="170" r="7"/><circle cx="370" cy="170" r="7"/>
+                </g>
+              </g>
+              <text x="140" y="222" text-anchor="middle" font-family="monospace" font-size="11" fill="#6b5c48">proposed: ~1 array / 200 sq ft</text>
+              <text x="350" y="222" text-anchor="middle" font-family="monospace" font-size="11" fill="#6b5c48">typical</text>
+            </svg>
+            <figcaption>Proposed array density vs. a typical commercial layout.</figcaption>
+          </figure>
+        </article>
+
+        <article class="am-chapter am-reveal">
+          <div>
+            <span class="am-chip">Innovation three</span>
+            <h3>On-device farm intelligence</h3>
+            <p>Lightweight models read the sensor streams on low-power edge computers and recommend the next action — irrigate now, or wait for the rain that's coming. No round trip to the cloud, and no pause when the uplink drops. The field keeps thinking with or without the internet.</p>
+          </div>
+          <figure class="am-chapter-art">
+            <canvas class="am-mesh" data-mesh="edge" aria-hidden="true"></canvas>
+            <svg viewBox="0 0 400 240" role="img" aria-label="Diagram showing sensor readings flowing into an on-device edge computer, which outputs an irrigation recommendation.">
+              <g fill="none" stroke="#2e6b38" stroke-width="2">
+                <rect x="24" y="70" width="96" height="100" rx="12"/>
+                <rect x="152" y="70" width="96" height="100" rx="12"/>
+                <rect x="280" y="70" width="96" height="100" rx="12"/>
+                <line x1="120" y1="120" x2="152" y2="120" marker-end="url(#amArr)"/>
+                <line x1="248" y1="120" x2="280" y2="120" marker-end="url(#amArr)"/>
+              </g>
+              <defs><marker id="amArr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#2e6b38" stroke-width="1.6"/></marker></defs>
+              <g font-family="monospace" font-size="11" fill="#1c1410" text-anchor="middle">
+                <text x="72" y="112">soil</text><text x="72" y="128">sensors</text>
+                <text x="200" y="112">edge</text><text x="200" y="128">computer</text>
+                <text x="328" y="112">irrigate-</text><text x="328" y="128">now?</text>
+              </g>
+            </svg>
+            <figcaption>Proposed flow: sense → decide on-device → act, no cloud required.</figcaption>
+          </figure>
+        </article>
+
+        <article class="am-chapter am-reveal">
+          <div>
+            <span class="am-chip">Innovation four</span>
+            <h3>Community-governed data</h3>
+            <p>Readings live in an encrypted local database, and the growers who work the land decide who sees them. No outside dashboard owns the season's data. Any sharing — with researchers, with buyers, with a cooperative — happens on terms the community sets.</p>
+          </div>
+          <figure class="am-chapter-art">
+            <canvas class="am-mesh" data-mesh="commons" aria-hidden="true"></canvas>
+            <svg viewBox="0 0 400 240" role="img" aria-label="Diagram of three growers around a shared database, each holding a key to their own share of the data.">
+              <g fill="none" stroke="#2e6b38" stroke-width="2">
+                <rect x="160" y="86" width="80" height="68" rx="10"/>
+                <line x1="120" y1="120" x2="160" y2="120"/><line x1="240" y1="120" x2="280" y2="120"/><line x1="200" y1="86" x2="200" y2="52"/>
+              </g>
+              <g fill="#2e6b38">
+                <circle cx="104" cy="120" r="14"/><circle cx="296" cy="120" r="14"/><circle cx="200" cy="38" r="14"/>
+              </g>
+              <g stroke="#8f6f26" stroke-width="2" fill="none">
+                <circle cx="200" cy="120" r="10"/><path d="M200,120 v-8 M196,116 h8"/>
+              </g>
+              <text x="200" y="222" text-anchor="middle" font-family="monospace" font-size="11" fill="#6b5c48">the data stays with the growers</text>
+            </svg>
+            <figcaption>Proposed governance: encrypted locally, shared on community terms.</figcaption>
+          </figure>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4.5 · THE GROWTH CYCLE (cinematic interlude) -->
+  <section class="am-filmbreak" aria-label="The growth cycle: an illustrative film">
+    <div class="am-wrap">
+      <p class="am-eyebrow am-reveal">The cycle</p>
+      <h2 class="am-reveal">Every season begins the same way.</h2>
+    </div>
+    <figure class="am-filmwide am-reveal" aria-hidden="true">
+      <video class="am-film-video" muted loop playsinline preload="none"
+             poster="media/growth-cycle-poster.jpg" data-film>
+        <source data-src="media/growth-cycle.mp4" type="video/mp4">
+      </video>
+      <span class="am-film-tag">Illustrative film</span>
+    </figure>
+    <div class="am-wrap">
+      <p class="am-filmcap am-reveal">Seed, sprout, flower, harvest — the cycle AgriMesh is being built to watch over. The system is proposed and under development; this film imagines the future it is designed to serve.</p>
+    </div>
+  </section>
+
+  <!-- 5 · THE TWIN -->
+  <section class="am-twin" aria-labelledby="am-twin-h">
+    <div class="am-wrap">
+      <p class="am-eyebrow am-reveal">The centerpiece</p>
+      <h2 id="am-twin-h" class="am-reveal">The living field.</h2>
+      <p class="am-lede am-reveal">This is the AgriMesh twin — a simulated replay of a field at dawn, rendered from a frozen, version-stamped dataset. Every frame is labeled. Nothing here pretends to be live data.</p>
+
+      <section id="am-twin" class="am-reveal" aria-label="Interactive field twin (simulated replay)">
+       <div class="am-twin-stage">
+        <div class="am-twin-viewport">
+          <div class="am-twin-poster" aria-label="Illustration: a dawn-lit field with rows of crops, sensor nodes, and a rising sun.">
+            <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Dawn over a field: the sun rises behind crop rows dotted with small sensor nodes.">
+              <defs>
+                <linearGradient id="amSky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#fbeed0"/><stop offset=".55" stop-color="#f6dfb2"/><stop offset="1" stop-color="#efcfa0"/>
+                </linearGradient>
+                <linearGradient id="amSoil" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#a8834f"/><stop offset="1" stop-color="#7d5a34"/>
+                </linearGradient>
+                <radialGradient id="amGlow" cx=".5" cy=".5" r=".5">
+                  <stop offset="0" stop-color="#ffe9b8"/><stop offset=".6" stop-color="#ffcf7d"/><stop offset="1" stop-color="#ffcf7d" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="1200" height="430" fill="url(#amSky)"/>
+              <ellipse cx="600" cy="430" rx="520" ry="150" fill="url(#amGlow)" opacity=".8"/>
+              <circle cx="600" cy="430" r="86" fill="#f7b04a"/>
+              <circle cx="600" cy="430" r="118" fill="none" stroke="#f7b04a" stroke-width="2" opacity=".45"/>
+              <g stroke="#c8a06a" stroke-width="1.4" opacity=".55">
+                <line x1="0" y1="150" x2="1200" y2="150"/><line x1="0" y1="230" x2="1200" y2="230"/>
+                <line x1="0" y1="310" x2="1200" y2="310"/>
+              </g>
+              <rect y="430" width="1200" height="270" fill="url(#amSoil)"/>
+              <g stroke="#5c4326" stroke-width="3" opacity=".8">
+                <path d="M-40,470 L400,700"/><path d="M200,470 L700,700"/><path d="M440,470 L1000,700"/>
+                <path d="M680,470 L1240,700"/><path d="M920,470 L1380,700"/>
+                <path d="M-40,640 L1240,470"/>
+              </g>
+              <g stroke="#3f6b34" stroke-width="4" stroke-linecap="round" opacity=".85">
+                <g>
+                  <path d="M120,540 l6,-26 M132,540 l-6,-26 M126,540 v-30"/>
+                  <path d="M300,560 l6,-26 M312,560 l-6,-26 M306,560 v-30"/>
+                  <path d="M480,545 l6,-26 M492,545 l-6,-26 M486,545 v-30"/>
+                  <path d="M660,565 l6,-26 M672,565 l-6,-26 M666,565 v-30"/>
+                  <path d="M840,550 l6,-26 M852,550 l-6,-26 M846,550 v-30"/>
+                  <path d="M1020,568 l6,-26 M1032,568 l-6,-26 M1026,568 v-30"/>
+                </g>
+              </g>
+              <g>
+                <g transform="translate(210,600)"><circle r="16" fill="#1d4a25"/><circle r="24" fill="none" stroke="#1d4a25" stroke-width="1.6" opacity=".55"/><circle r="5" fill="#9be15d"/></g>
+                <g transform="translate(560,625)"><circle r="16" fill="#1d4a25"/><circle r="24" fill="none" stroke="#1d4a25" stroke-width="1.6" opacity=".55"/><circle r="5" fill="#9be15d"/></g>
+                <g transform="translate(905,605)"><circle r="16" fill="#1d4a25"/><circle r="24" fill="none" stroke="#1d4a25" stroke-width="1.6" opacity=".55"/><circle r="5" fill="#9be15d"/></g>
+                <g transform="translate(1110,648)"><circle r="16" fill="#1d4a25"/><circle r="24" fill="none" stroke="#1d4a25" stroke-width="1.6" opacity=".55"/><circle r="5" fill="#9be15d"/></g>
+              </g>
+              <g stroke="#8f6f26" stroke-width="1.2" fill="none" opacity=".7">
+                <line x1="210" y1="600" x2="560" y2="625"/><line x1="560" y1="625" x2="905" y2="605"/><line x1="905" y1="605" x2="1110" y2="648"/>
+              </g>
+              <g fill="#6b5c48" opacity=".6">
+                <path d="M420,180 q10,-12 20,0 q10,-12 20,0"/><path d="M760,140 q10,-12 20,0 q10,-12 20,0"/>
+              </g>
+            </svg>
+          </div>
+          <canvas class="am-twin-canvas" role="img" aria-label="Simulated replay of the AgriMesh field twin: soil moisture and temperature as color fields, mesh traffic as moving particles."></canvas>
+          <div class="am-nodes"></div>
+          <span class="am-twin-live-dot" aria-hidden="true">SIMULATED REPLAY</span>
+          <span class="am-twin-watermark">SIMULATED DATA — illustrative replay</span>
+        </div>
+
+        <div class="am-twin-controls">
+          <div class="am-twin-pills" role="group" aria-label="Twin layers">
+            <button type="button" class="am-pill" data-layer="moisture" aria-pressed="true">Moisture</button>
+            <button type="button" class="am-pill" data-layer="temperature" aria-pressed="false">Temperature</button>
+            <button type="button" class="am-pill" data-layer="network" aria-pressed="false">Network</button>
+          </div>
+          <p class="am-twin-legend">Darker = drier soil</p>
+        </div>
+
+        <div class="am-twin-live" aria-live="polite"></div>
+
+        <div class="am-twin-steps" aria-label="The mesh heals itself: a four-frame sequence">
+          <figure class="am-reveal">
+            <svg viewBox="0 0 220 150" role="img" aria-label="Frame one: six nodes all connected, the mesh healthy.">
+              <g stroke="#2e6b38" stroke-width="1.8"><line x1="40" y1="75" x2="95" y2="35"/><line x1="95" y1="35" x2="150" y2="50"/><line x1="150" y1="50" x2="185" y2="90"/><line x1="40" y1="75" x2="95" y2="115"/><line x1="95" y1="115" x2="150" y2="105"/><line x1="150" y1="105" x2="185" y2="90"/><line x1="95" y1="35" x2="95" y2="115"/></g>
+              <g fill="#2e6b38"><circle cx="40" cy="75" r="9"/><circle cx="95" cy="35" r="9"/><circle cx="150" cy="50" r="9"/><circle cx="185" cy="90" r="9"/><circle cx="95" cy="115" r="9"/><circle cx="150" cy="105" r="9"/></g>
+            </svg>
+            <figcaption><strong>1 · Healthy</strong>Every node is talking. Mesh traffic moves along the strongest links; the soil map reads even.</figcaption>
+          </figure>
+          <figure class="am-reveal">
+            <svg viewBox="0 0 220 150" role="img" aria-label="Frame two: one node goes dark and its links fade.">
+              <g stroke="#2e6b38" stroke-width="1.8" opacity=".9"><line x1="40" y1="75" x2="95" y2="35"/><line x1="150" y1="50" x2="185" y2="90"/><line x1="40" y1="75" x2="95" y2="115"/><line x1="150" y1="105" x2="185" y2="90"/></g>
+              <g stroke="#b09a6e" stroke-width="1.4" stroke-dasharray="4 4" opacity=".7"><line x1="95" y1="35" x2="150" y2="50"/><line x1="95" y1="115" x2="150" y2="105"/></g>
+              <g fill="#2e6b38"><circle cx="40" cy="75" r="9"/><circle cx="95" cy="35" r="9"/><circle cx="185" cy="90" r="9"/><circle cx="95" cy="115" r="9"/><circle cx="150" cy="105" r="9"/></g>
+              <circle cx="150" cy="50" r="9" fill="#8c1d21"/>
+            </svg>
+            <figcaption><strong>2 · A node drops</strong>One sensor goes dark — a drained battery, a storm, an accident. Its links go quiet.</figcaption>
+          </figure>
+          <figure class="am-reveal">
+            <svg viewBox="0 0 220 150" role="img" aria-label="Frame three: neighbors reroute traffic around the dark node along new dashed paths.">
+              <g stroke="#2e6b38" stroke-width="1.8"><line x1="40" y1="75" x2="95" y2="35"/><line x1="40" y1="75" x2="95" y2="115"/><line x1="95" y1="115" x2="150" y2="105"/><line x1="150" y1="105" x2="185" y2="90"/></g>
+              <g stroke="#8f6f26" stroke-width="2.2" stroke-dasharray="7 5"><line x1="95" y1="35" x2="95" y2="115"/><line x1="95" y1="35" x2="185" y2="90" opacity=".65"/></g>
+              <g fill="#2e6b38"><circle cx="40" cy="75" r="9"/><circle cx="95" cy="35" r="9"/><circle cx="185" cy="90" r="9"/><circle cx="95" cy="115" r="9"/><circle cx="150" cy="105" r="9"/></g>
+              <circle cx="150" cy="50" r="9" fill="#8c1d21"/>
+            </svg>
+            <figcaption><strong>3 · The mesh reroutes</strong>Neighbors recalculate routes. Traffic bends around the hole; no data is orphaned.</figcaption>
+          </figure>
+          <figure class="am-reveal">
+            <svg viewBox="0 0 220 150" role="img" aria-label="Frame four: the node is restored and the full mesh is healthy again.">
+              <g stroke="#2e6b38" stroke-width="1.8"><line x1="40" y1="75" x2="95" y2="35"/><line x1="95" y1="35" x2="150" y2="50"/><line x1="150" y1="50" x2="185" y2="90"/><line x1="40" y1="75" x2="95" y2="115"/><line x1="95" y1="115" x2="150" y2="105"/><line x1="150" y1="105" x2="185" y2="90"/><line x1="95" y1="35" x2="95" y2="115"/></g>
+              <g fill="#2e6b38"><circle cx="40" cy="75" r="9"/><circle cx="95" cy="35" r="9"/><circle cx="150" cy="50" r="9"/><circle cx="185" cy="90" r="9"/><circle cx="95" cy="115" r="9"/><circle cx="150" cy="105" r="9"/></g>
+              <circle cx="150" cy="50" r="14" fill="none" stroke="#8f6f26" stroke-width="2"/>
+            </svg>
+            <figcaption><strong>4 · Healed</strong>A replacement node joins and the mesh absorbs it. The field is whole again — nobody called tech support.</figcaption>
+          </figure>
+        </div>
+        <p class="am-twin-note">All telemetry shown is simulated replay from a frozen dataset — not live data.</p>
+       </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- 6 · PILOT GROUND -->
+  <section aria-labelledby="am-pilot">
+    <div class="am-wrap">
+      <p class="am-eyebrow am-reveal">Pilot ground</p>
+      <h2 id="am-pilot" class="am-reveal">Where it grows.</h2>
+      <p class="am-lede am-reveal">AgriMesh is a testbed program, not a product with results to report. The work is proposed — the ground is real.</p>
+      <div class="am-cards">
+        <div class="am-card am-reveal">
+          <span class="am-tag">Proposed testbed</span>
+          <h3>Liberty City / Overtown</h3>
+          <p>The proposed AgriMesh testbed sits in Miami-Dade: urban growing sites in Liberty City and Overtown, where connectivity is thinnest and the growing is most hands-on. This is where the mesh is designed to prove itself first.</p>
+        </div>
+        <div class="am-card am-reveal">
+          <span class="am-tag">Planned</span>
+          <h3>Peri-urban / rural site</h3>
+          <p>A second site — peri-urban or rural — is planned to prove the mesh where broadband truly ends. Site selection is underway; nothing is claimed before the sensors are in the ground.</p>
+        </div>
+        <div class="am-card am-reveal">
+          <span class="am-tag">Earlier phase · distinct</span>
+          <h3>The FarmBlock Pilot</h3>
+          <p>Before AgriMesh, an earlier architecture called FarmBlock was piloted at two sites — a Liberty City community garden and a Homestead farm. The FarmBlock Pilot was a deployment phase of that earlier, ledger-centered system: related to this work, not identical to it.</p>
+        </div>
+      </div>
+      <figure class="am-filmwide am-filmwide-drone am-reveal" aria-hidden="true">
+        <video class="am-film-video" muted loop playsinline preload="none"
+               poster="media/drone-node-poster.jpg" data-film>
+          <source data-src="media/drone-node.mp4" type="video/mp4">
+        </video>
+        <span class="am-film-tag">Illustrative film</span>
+      </figure>
+      <p class="am-filmcap am-reveal">A drone checks in on a sensor node — the kind of visit AgriMesh is designed to make routine. Illustrative film; the system is proposed and under development.</p>
+    </div>
+  </section>
+
+  <!-- 7 · INVITATION -->
+  <section aria-labelledby="am-invite" style="background:var(--am-paper-2);border-block:1px solid var(--am-rule)">
+    <div class="am-wrap">
+      <p class="am-eyebrow am-reveal">Invitation</p>
+      <h2 id="am-invite" class="am-reveal">Three doors.</h2>
+      <div class="am-doors">
+        <div class="am-door am-reveal">
+          <h3>For growers</h3>
+          <p>Do you grow in Miami-Dade? Tell us what you grow and where. Pilot participation is proposed, not promised — this form is the first conversation.</p>
+          <form class="am-form" id="am-interest-form" novalidate
+                action="https://agrimesh-intake.e5enclave.com/submit" method="post">
+            <input type="hidden" name="source" value="agrimesh-flagship"/>
+            <label>Name
+              <input type="text" name="name" autocomplete="name" required/>
+            </label>
+            <label>Email
+              <input type="email" name="email" autocomplete="email" required/>
+            </label>
+            <label>City
+              <input type="text" name="city" autocomplete="address-level2"/>
+            </label>
+            <label>What do you grow?
+              <input type="text" name="crop" placeholder="e.g. collards, herbs, mangoes"/>
+            </label>
+            <div class="am-hp" aria-hidden="true">
+              <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"/></label>
+            </div>
+            <button type="submit" class="am-pill">Start the conversation</button>
+            <p class="am-form-status" id="am-form-status" role="status"></p>
+          </form>
+        </div>
+        <div class="am-door am-reveal">
+          <h3>For partners &amp; funders</h3>
+          <p>If you fund or build for smallholder agriculture — or you buy from the growers this technology serves — we'd like to talk.</p>
+          <div class="am-door-link"><a class="am-btn" href="/contact/">Contact E5 Enclave</a></div>
+        </div>
+        <div class="am-door am-reveal">
+          <h3>For the curious</h3>
+          <p>A teaching note: the mesh-healing sequence above is the first of a small teaching hub we're developing — simple, playable explanations of the technology, built for classrooms and curious growers. More to come.</p>
+          <p>AgriMesh is a technology layer. The community ownership model this technology serves lives at <a href="/black-dragons-initiative/#farmblock">the Black Dragons FarmBlock section</a> — and it is one of the technologies that could one day serve <a href="/programs/lineage-farms/">Lineage Farms</a> sites.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="am-colophon">
+    <div class="am-wrap">
+      <p>Every claim on this page is fenced: “proposed”, “under development”, and “testbed” are the words we use until a result exists. All visualizations are simulated replay from a frozen dataset — no live data is shown. The NSF invited our full SBIR proposal — no award decision has been made. E5 Enclave Inc. is a 501(c)(3) public charity; the SBIR effort is pursued by AgriMesh Corporation (for-profit).</p>
+    </div>
+  </div>
+</main>
+
+<script>
+/* Fail-closed scroll reveals: content is fully visible in CSS; this only
+   adds enhancement classes. A load failsafe guarantees legibility even if
+   the observer never fires. */
+(function(){
+  var root = document.documentElement;
+  if ('IntersectionObserver' in window) {
+    root.classList.add('am-js');
+    var els = document.querySelectorAll('.am-reveal');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('am-revealed'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    els.forEach(function(el){ io.observe(el); });
+    window.addEventListener('load', function(){
+      setTimeout(function(){
+        document.querySelectorAll('.am-reveal:not(.am-revealed)').forEach(function(el){ el.classList.add('am-revealed'); });
+      }, 2500);
+    });
+  }
+})();
+</script>
+<script>
+/* E5 form protocol — grower interest intake.
+   Endpoint is owned infrastructure (Worker + D1), origin-locked,
+   honeypotted, rate-limited, notifying contact@e5enclave.com. */
+const AM_INTAKE_ENDPOINT = "https://agrimesh-intake.e5enclave.com/submit";
+/* <!-- WORKER3: endpoint live 2026-09-12 --> */
+(function(){
+  var form = document.getElementById('am-interest-form');
+  if (!form) return;
+  var status = document.getElementById('am-form-status');
+  var say = function(msg, cls){ status.textContent = msg; status.className = 'am-form-status' + (cls ? ' ' + cls : ''); };
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var data = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      city: form.city.value.trim(),
+      crop: form.crop.value.trim(),
+      source: 'agrimesh-flagship'
+    };
+    /* Honeypot: bots fill it; humans never see it. Fake success, send nothing. */
+    if (form.website.value) { say('Thanks — we\'ll be in touch.', 'ok'); form.reset(); return; }
+    if (!data.name || !data.email) { say('Please add your name and email so we can reply.', 'err'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) { say('That email doesn\'t look complete — mind checking it?', 'err'); return; }
+    var btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    say('Sending…');
+    fetch(AM_INTAKE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function(res){
+      if (!res.ok) throw new Error('bad status ' + res.status);
+      say('Thanks — we\'ll be in touch.', 'ok');
+      form.reset();
+    }).catch(function(){
+      say('Something didn\'t send. Please try again, or reach us via the contact page.', 'err');
+    }).finally(function(){ btn.disabled = false; });
+  });
+})();
+</script>
+<script>
+/* Cinematic film loader: lazy <video> elements marked data-film load and play
+   only when scrolled into view, and pause offscreen. Hero film (real src)
+   loads eagerly with its poster. No-JS: <video> renders its poster frame as a
+   static cinematic still. reduced-motion: CSS hides video, shows poster. */
+(function(){
+  if (!('IntersectionObserver' in window)) return;
+  var vids = document.querySelectorAll('video[data-film]');
+  if (!vids.length) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var v = e.target;
+      if (e.isIntersecting) {
+        var s = v.querySelector('source[data-src]');
+        if (s && !s.getAttribute('src')) { s.setAttribute('src', s.getAttribute('data-src')); v.load(); }
+        var p = v.play();
+        if (p && p.catch) p.catch(function(){});
+      } else { v.pause(); }
+    });
+  }, { threshold: 0.15 });
+  vids.forEach(function(v){ io.observe(v); });
+})();
+</script>
+<script src="js/am-twin.js" defer></script>
+<script src="js/am-mesh.js" defer></script>
+<!-- e5:chrome-foot -->
+<div class="sov-chrome sov-chrome-foot" style="margin-top:clamp(60px,8vw,120px)">
+<div style="position:relative; z-index:5; margin-top:0; height:4px; background:linear-gradient(90deg,#6E5220,#C9A24A 24%,#E9D3A0 50%,#C9A24A 76%,#6E5220)"></div>
+  <div style="position:relative; z-index:5; background:#06070B; padding:64px clamp(20px,4vw,48px) 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:44px clamp(24px,3vw,48px)">
+    <div style="display:flex; flex-direction:column; gap:20px; grid-column:span 1">
+      <img src="/assets/front/brand/e5-seal-landscape-t.webp" width="360" height="240" alt="The seal of E5 Enclave Incorporated" style="mix-blend-mode:screen; width:220px; height:auto; display:block">
+      <span style="font:400 12px/1.9 'IBM Plex Mono',monospace; color:#9AA1B4">E5 Enclave Incorporated<br>501(c)(3) public charity · EIN 99-3822441<br>820 NW 64th Street<br>Liberty City, Miami, Florida 33150</span>
+      <span style="font-family:'Cormorant Garamond',serif; font-size:24px; font-style:italic; color:#E9D3A0">Nil satis nisi optimum</span>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:12px"><span style="font:500 9px/1 'IBM Plex Mono',monospace; letter-spacing:.24em; text-transform:uppercase; color:#A88E4C">Institution</span><a href="https://e5enclave.com/about/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">About</a><a href="https://e5enclave.com/doctrine/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Doctrine</a><a href="https://e5enclave.com/governance/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Credentials</a><a href="https://e5enclave.com/disclosures/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Accountability</a></div>
+    <div style="display:flex; flex-direction:column; gap:12px"><span style="font:500 9px/1 'IBM Plex Mono',monospace; letter-spacing:.24em; text-transform:uppercase; color:#A88E4C">The Record</span><a href="https://e5enclave.com/research/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Research papers</a><a href="https://e5enclave.com/record/measure-the-wound/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Dispatches</a><a href="https://e5enclave.com/liberty-city/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Places</a><a href="https://e5enclave.com/the-record/lineage/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Lineage</a><a href="https://e5enclave.com/record/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Data</a></div>
+    <div style="display:flex; flex-direction:column; gap:12px"><span style="font:500 9px/1 'IBM Plex Mono',monospace; letter-spacing:.24em; text-transform:uppercase; color:#A88E4C">Before Congress</span><a href="https://e5enclave.com/restitution-246/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Project 2033</a><a href="https://dc.e5enclave.com" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">The DC Package ↗</a><a href="https://e5enclave.com/executive-order/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Executive Order</a></div>
+    <div style="display:flex; flex-direction:column; gap:12px"><span style="font:500 9px/1 'IBM Plex Mono',monospace; letter-spacing:.24em; text-transform:uppercase; color:#A88E4C">Act</span><a href="https://e5enclave.com/coalition/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Join the Coalition</a><a href="https://e5enclave.com/programs/lineage-farms/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">The farms</a><a href="https://e5enclave.com/donate/" style="font-size:14px; color:#B6BCC8; padding:4px 0" class="h1">Give</a></div>
+  </div>
+  <div style="position:relative; z-index:5; background:#06070B; margin-top:56px; padding:22px clamp(20px,4vw,48px); border-top:1px solid #12161F; display:flex; justify-content:space-between; align-items:center; gap:30px; font:400 10px/1.6 'IBM Plex Mono',monospace; letter-spacing:.14em; text-transform:uppercase; color:#7E869A">
+    <span style="display:flex; gap:18px; flex-wrap:wrap"><span>NVIDIA Inception Program</span><span style="color:#3A4256">·</span><span>Google for Nonprofits</span><span style="color:#3A4256">·</span><span>Splunk Product and Training Donation Program</span><span style="color:#3A4256">·</span><span>Hyperagent Founding 500</span><span style="color:#3A4256">·</span><a href="https://elevenlabs.io/impact-program" style="color:#9AA1B4" class="h1">ElevenLabs Impact Program ↗</a></span>
+    <span style="display:flex; gap:18px; flex-wrap:wrap; align-items:center; justify-content:flex-end"><span style="color:#A88E4C; letter-spacing:.24em">Follow</span><a href="https://www.instagram.com/e5enclave/" style="color:#9AA1B4" class="h-foot">Instagram · @e5enclave</a><span style="color:#3A4256">·</span><a href="https://www.youtube.com/@E5BlackDragons" style="color:#9AA1B4" class="h-foot">YouTube · @E5BlackDragons</a><span style="color:#3A4256">·</span><a href="https://www.tiktok.com/@e5blackdragons" style="color:#9AA1B4" class="h-foot">TikTok · @e5blackdragons</a><span style="color:#3A4256">·</span><a href="https://x.com/e5enclave" style="color:#9AA1B4" class="h-foot">X · @e5enclave</a><span style="color:#3A4256">·</span><a href="https://github.com/IAMGODIAM" style="color:#9AA1B4" class="h-foot">GitHub · IAMGODIAM</a><span style="color:#3A4256">·</span><a href="mailto:contact@e5enclave.com" style="color:#9AA1B4" class="h-foot">contact@e5enclave.com</a></span>
+  </div>
+  <div data-m="col" style="position:relative; z-index:5; background:#06070B; padding:22px clamp(20px,4vw,48px) 40px; border-top:1px solid #12161F; display:flex; justify-content:space-between; gap:18px 30px; font:400 11px/1.7 'IBM Plex Mono',monospace; color:#7E869A">
+    <span>Form 990 and the IRS determination letter are open for public inspection at 820 NW 64th Street and furnished on written request.</span>
+    <span style="display:flex; flex-wrap:wrap; gap:18px"><a href="https://e5enclave.com/privacy-policy/" style="color:#7E869A" class="h1">Privacy</a><a href="https://e5enclave.com/terms-of-service/" style="color:#7E869A" class="h1">Terms</a><a href="https://e5enclave.com/donor-privacy/" style="color:#7E869A" class="h1">Donor privacy</a><a href="https://e5enclave.com/accessibility/" style="color:#7E869A" class="h1">Accessibility</a></span>
+  </div>
+</div>
+<!-- /e5:chrome-foot -->
+</body>
+</html>
