@@ -499,7 +499,8 @@
             <div class="am-hp" aria-hidden="true">
               <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"/></label>
             </div>
-            <button type="submit" class="am-pill">Start the conversation</button>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAExGnuJoDnOTHE-M" data-callback="e5tsDone" data-expired-callback="e5tsExpired" style="margin:14px 0;"></div>
+<button type="submit" class="am-pill">Start the conversation</button>
             <p class="am-form-status" id="am-form-status" role="status"></p>
           </form>
         </div>
@@ -547,6 +548,7 @@
   }
 })();
 </script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
 /* E5 form protocol — grower interest intake.
    Endpoint is owned infrastructure (Worker + D1), origin-locked,
@@ -554,6 +556,11 @@
 const AM_INTAKE_ENDPOINT = "https://agrimesh-intake.e5enclave.com/submit";
 /* <!-- WORKER3: endpoint live 2026-09-12 --> */
 (function(){
+  /* Turnstile (bot check) - widget renders above; token verified server-side
+     by agrimesh-intake (missing/invalid token -> 403). */
+  var e5tsToken = '';
+  window.e5tsDone = function(t){ e5tsToken = t || ''; };
+  window.e5tsExpired = function(){ e5tsToken = ''; };
   var form = document.getElementById('am-interest-form');
   if (!form) return;
   var status = document.getElementById('am-form-status');
@@ -565,12 +572,14 @@ const AM_INTAKE_ENDPOINT = "https://agrimesh-intake.e5enclave.com/submit";
       email: form.email.value.trim(),
       city: form.city.value.trim(),
       crop: form.crop.value.trim(),
-      source: 'agrimesh-flagship'
+      source: 'agrimesh-flagship',
+      turnstileToken: e5tsToken
     };
     /* Honeypot: bots fill it; humans never see it. Fake success, send nothing. */
     if (form.website.value) { say('Thanks — we\'ll be in touch.', 'ok'); form.reset(); return; }
     if (!data.name || !data.email) { say('Please add your name and email so we can reply.', 'err'); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) { say('That email doesn\'t look complete — mind checking it?', 'err'); return; }
+    if(!e5tsToken){ say('One moment \u2014 the security check is still finishing. Please press send again.', 'err'); return; }
     var btn = form.querySelector('button[type="submit"]');
     btn.disabled = true;
     say('Sending…');
@@ -582,6 +591,7 @@ const AM_INTAKE_ENDPOINT = "https://agrimesh-intake.e5enclave.com/submit";
       if (!res.ok) throw new Error('bad status ' + res.status);
       say('Thanks — we\'ll be in touch.', 'ok');
       form.reset();
+      e5tsToken=''; if(window.turnstile){try{turnstile.reset();}catch(_){}};
     }).catch(function(){
       say('Something didn\'t send. Please try again, or reach us via the contact page.', 'err');
     }).finally(function(){ btn.disabled = false; });
