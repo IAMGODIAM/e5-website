@@ -65,7 +65,7 @@ body.am{background:var(--am-paper);color:var(--am-ink);font-family:var(--am-body
   text-shadow:0 2px 14px rgba(24,15,5,.6)}
 .am-hero .am-sub{position:relative;color:#f7ecd4;max-width:44rem;margin:0 auto 2rem;font-size:1.02rem;
   text-shadow:0 1px 10px rgba(24,15,5,.6)}
-.am-scrollcue{position:relative;display:inline-block;font-family:var(--am-mono);font-size:.78rem;
+.am a.am-scrollcue{position:relative;display:inline-block;font-family:var(--am-mono);font-size:.78rem;
   letter-spacing:.2em;text-transform:uppercase;color:#fff7e2;text-decoration:none;
   border:1px solid rgba(255,233,184,.85);border-radius:999px;padding:.7rem 1.5rem;
   background:rgba(16,10,4,.82);font-weight:700;text-shadow:0 1px 6px rgba(0,0,0,.8)}
