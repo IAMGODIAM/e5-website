@@ -246,7 +246,7 @@ html.js .reveal.pre.in.d3 { transition-delay: .36s; }
 .pillar-01 .pnum-giant { margin-top: -0.12em; }
 
 /* 02 — BLACK INTERLUDE */
-.interlude { background: var(--vc-coal); color: var(--vc-bone); border-bottom: 0; position: relative; overflow: hidden; }
+.interlude { background: var(--vc-coal); color: #F2EDE3; border-bottom: 0; position: relative; overflow: hidden; }
 .interlude .pnum-giant {
   font-size: clamp(140px, 20vw, 320px); -webkit-text-stroke: 1.5px var(--vc-champagne-dim);
   color: rgba(217,186,108,0.06);
@@ -255,7 +255,7 @@ html.js .reveal.pre.in.d3 { transition-delay: .36s; }
 .interlude .giant-statement {
   font-family: var(--vc-display); font-weight: 500;
   font-size: clamp(40px, 6vw, 96px); line-height: 1.02; letter-spacing: -0.02em;
-  max-width: 14ch; margin: 26px 0 30px; color: var(--vc-bone);
+  max-width: 14ch; margin: 26px 0 30px; color: #F2EDE3;
 }
 .interlude .giant-statement em { font-style: italic; color: var(--vc-champagne); }
 .interlude .pillar-copy { color: var(--vc-bone-dim); columns: 2; column-gap: 56px; max-width: 90ch; }
@@ -268,9 +268,10 @@ html.js .reveal.pre.in.d3 { transition-delay: .36s; }
 .duo { background: var(--vc-coal); border: 1px solid var(--vc-ink); position: relative; overflow: hidden; }
 .duo svg { width: 100%; height: auto; display: block; }
 .duo figcaption {
-  position: absolute; left: 18px; bottom: 14px;
+  position: absolute; left: 18px; bottom: 18px;
   font-family: var(--vc-mono); font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
   color: var(--vc-champagne-dim);
+  background: var(--vc-coal); padding: 8px 12px 7px; border: 1px solid rgba(217,186,108,.35);
 }
 
 /* 04 — ledger table */
@@ -285,7 +286,7 @@ html.js .reveal.pre.in.d3 { transition-delay: .36s; }
 @media (max-width: 900px) { .pillar-01 .p01-grid, .pillar-03 .p03-grid { grid-template-columns: 1fr; } }
 
 /* ---------- IV · mechanism: engraved diagram on black ---------- */
-.mech { background: var(--vc-coal); color: var(--vc-bone); padding: clamp(72px, 9vw, 150px) 0; border-bottom: 1px solid var(--vc-ink); position: relative; overflow: hidden; }
+.mech { background: var(--vc-coal); color: #F2EDE3; padding: clamp(72px, 9vw, 150px) 0; border-bottom: 1px solid var(--vc-ink); position: relative; overflow: hidden; }
 .mech .chapter-eyebrow { color: var(--vc-champagne); }
 .mech-statement {
   font-family: var(--vc-display); font-weight: 500;
@@ -297,7 +298,7 @@ html.js .reveal.pre.in.d3 { transition-delay: .36s; }
 .mech-grid { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); gap: clamp(28px,5vw,80px); align-items: start; }
 .mech-diagram { border: 1px solid rgba(217,186,108,.4); background: var(--vc-coal-2); padding: clamp(18px,3vw,40px); position: relative; }
 .mech-diagram svg { width: 100%; height: auto; }
-.mech-copy h3 { font-family: var(--vc-display); font-size: clamp(26px, 2.8vw, 40px); font-weight: 500; margin: 0 0 20px; color: var(--vc-bone); }
+.mech-copy h3 { font-family: var(--vc-display); font-size: clamp(26px, 2.8vw, 40px); font-weight: 500; margin: 0 0 20px; color: #F2EDE3; }
 .mech-copy p { color: var(--vc-bone-dim); font-size: 16.5px; line-height: 1.75; margin: 0 0 1.2em; max-width: 52ch; }
 @media (max-width: 900px) { .mech-grid { grid-template-columns: 1fr; } }
 
@@ -349,7 +350,7 @@ html.js .reveal.pre.in.d3 { transition-delay: .36s; }
 @media (max-width: 900px) { .doc-stage { grid-template-columns: 1fr; } }
 
 /* ---------- VI · begin: enlistment ledger ---------- */
-.begin { background: var(--vc-coal); color: var(--vc-bone); padding: clamp(80px, 10vw, 160px) 0; position: relative; overflow: hidden; }
+.begin { background: var(--vc-coal); color: #F2EDE3; padding: clamp(80px, 10vw, 160px) 0; position: relative; overflow: hidden; }
 .begin .chapter-eyebrow { color: var(--vc-champagne); }
 .begin-title { font-family: var(--vc-display); font-weight: 500; font-size: clamp(44px, 6vw, 96px); line-height: 1; letter-spacing: -0.02em; margin: 0 0 24px; }
 .begin-title em { font-style: italic; color: var(--vc-champagne); }
@@ -367,7 +368,7 @@ html.js .reveal.pre.in.d3 { transition-delay: .36s; }
 .ledger-form label:first-of-type { margin-top: 8px; }
 .ledger-form input, .ledger-form select, .ledger-form textarea {
   width: 100%; background: transparent; border: 0; border-bottom: 1px solid rgba(217,186,108,.45);
-  color: var(--vc-bone); font-family: var(--vc-display); font-size: 22px; padding: 10px 2px 12px;
+  color: #F2EDE3; font-family: var(--vc-display); font-size: 22px; padding: 10px 2px 12px;
   outline: none; border-radius: 0;
 }
 .ledger-form select { appearance: none; -webkit-appearance: none; cursor: pointer; }
@@ -381,7 +382,7 @@ html.js .reveal.pre.in.d3 { transition-delay: .36s; }
   font-size: 12px; letter-spacing: .34em; text-transform: uppercase; font-weight: 700;
   padding: 20px 42px; transition: background .25s, transform .25s;
 }
-.ledger-send:hover { background: var(--vc-bone); }
+.ledger-send:hover { background: var(--vc-champagne-2); }
 .bd-status, .ledger-status { font-family: var(--vc-mono); font-size: 13px; letter-spacing: .06em; margin-top: 22px; min-height: 1.6em; color: var(--vc-bone-dim); }
 .bd-status, .ledger-status.ok { color: var(--vc-champagne); } .bd-status, .ledger-status.err { color: #e8a0a0; }
 
@@ -696,7 +697,7 @@ html.js .reveal.pre.in{opacity:1;transform:none;transition:opacity .8s ease,tran
 <g stroke="currentColor" stroke-width="1.5" opacity="0.7">
 <path d="M30,100 h-8 M178,100 h-8" />
 </g>
-<text x="100" y="182" text-anchor="middle" font-family="Georgia,serif" font-size="11" letter-spacing="4" fill="currentColor">EST · MMXXIV</text>
+<text x="100" y="176" text-anchor="middle" font-family="Georgia,serif" font-size="9" letter-spacing="3" fill="currentColor">EST · MMXXIV</text>
 </svg>
       <figcaption>The seal of the campaign</figcaption>
     </figure>
@@ -833,7 +834,7 @@ html.js .reveal.pre.in{opacity:1;transform:none;transition:opacity .8s ease,tran
 <g stroke="currentColor" stroke-width="1.5" opacity="0.7">
 <path d="M30,100 h-8 M178,100 h-8" />
 </g>
-<text x="100" y="182" text-anchor="middle" font-family="Georgia,serif" font-size="11" letter-spacing="4" fill="currentColor">EST · MMXXIV</text>
+<text x="100" y="176" text-anchor="middle" font-family="Georgia,serif" font-size="9" letter-spacing="3" fill="currentColor">EST · MMXXIV</text>
 </svg></div>
     <div class="wrap">
       <div class="pillar-kicker reveal">Pillar 05</div>
@@ -998,7 +999,7 @@ html.js .reveal.pre.in{opacity:1;transform:none;transition:opacity .8s ease,tran
 <g stroke="currentColor" stroke-width="1.5" opacity="0.7">
 <path d="M30,100 h-8 M178,100 h-8" />
 </g>
-<text x="100" y="182" text-anchor="middle" font-family="Georgia,serif" font-size="11" letter-spacing="4" fill="currentColor">EST · MMXXIV</text>
+<text x="100" y="176" text-anchor="middle" font-family="Georgia,serif" font-size="9" letter-spacing="3" fill="currentColor">EST · MMXXIV</text>
 </svg></div>
           <div class="doc-ed">Revised edition &middot; 2026-09-11 &middot; PDF</div>
           <h3 class="doc-title">Declaration of Self-Determination of the BLACK Dragons</h3>
@@ -1028,7 +1029,7 @@ html.js .reveal.pre.in{opacity:1;transform:none;transition:opacity .8s ease,tran
 <g stroke="currentColor" stroke-width="1.5" opacity="0.7">
 <path d="M30,100 h-8 M178,100 h-8" />
 </g>
-<text x="100" y="182" text-anchor="middle" font-family="Georgia,serif" font-size="11" letter-spacing="4" fill="currentColor">EST · MMXXIV</text>
+<text x="100" y="176" text-anchor="middle" font-family="Georgia,serif" font-size="9" letter-spacing="3" fill="currentColor">EST · MMXXIV</text>
 </svg></div>
           <div class="doc-ed">Revised edition &middot; 2026-09-11 &middot; PDF</div>
           <h3 class="doc-title">Leviathan Rising: A Declaration of Sovereign Determination</h3>
