@@ -93,7 +93,7 @@ body.am{background:var(--am-paper);color:var(--am-ink);font-family:var(--am-body
 .am-twin-controls{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem}
 .am-twin-legend{font-family:var(--am-mono);font-size:.82rem;color:var(--am-ink-soft);margin:0;
   border-left:3px solid var(--am-green);padding-left:.8rem;flex:1 1 100%}
-.am-nodes{display:none} /* Worker 2 generates the node buttons into this container */
+.am-nodes{position:absolute;inset:0;z-index:2;pointer-events:none} /* Worker 2 generates the node buttons into this overlay, inside the viewport */
 .am-twin-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:.4rem}
 .am-twin-steps figure{margin:0;background:var(--am-paper);border:1px solid var(--am-rule);
   border-radius:12px;padding:.9rem}

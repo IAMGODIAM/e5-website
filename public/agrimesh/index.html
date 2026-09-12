@@ -306,7 +306,8 @@
       <h2 id="am-twin-h" class="am-reveal">The living field.</h2>
       <p class="am-lede am-reveal">This is the AgriMesh twin — a simulated replay of a field at dawn, rendered from a frozen, version-stamped dataset. Every frame is labeled. Nothing here pretends to be live data.</p>
 
-      <section id="am-twin" class="am-twin-stage am-reveal" aria-label="Interactive field twin (simulated replay)">
+      <section id="am-twin" class="am-reveal" aria-label="Interactive field twin (simulated replay)">
+       <div class="am-twin-stage">
         <div class="am-twin-viewport">
           <div class="am-twin-poster" aria-label="Illustration: a dawn-lit field with rows of crops, sensor nodes, and a rising sun.">
             <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Dawn over a field: the sun rises behind crop rows dotted with small sensor nodes.">
@@ -360,6 +361,7 @@
             </svg>
           </div>
           <canvas class="am-twin-canvas" role="img" aria-label="Simulated replay of the AgriMesh field twin: soil moisture and temperature as color fields, mesh traffic as moving particles."></canvas>
+          <div class="am-nodes"></div>
           <span class="am-twin-live-dot" aria-hidden="true">SIMULATED REPLAY</span>
           <span class="am-twin-watermark">SIMULATED DATA — illustrative replay</span>
         </div>
@@ -373,7 +375,6 @@
           <p class="am-twin-legend">Darker = drier soil</p>
         </div>
 
-        <div class="am-nodes" aria-hidden="true"></div>
         <div class="am-twin-live" aria-live="polite"></div>
 
         <div class="am-twin-steps" aria-label="The mesh heals itself: a four-frame sequence">
@@ -412,6 +413,7 @@
           </figure>
         </div>
         <p class="am-twin-note">All telemetry shown is simulated replay from a frozen dataset — not live data.</p>
+       </div>
       </section>
     </div>
   </section>

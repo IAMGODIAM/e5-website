@@ -15,15 +15,22 @@
  *    never a void. All state changes are mirrored to the aria-live region and
  *    the plain-language legend (fail-closed).
  *
- * DOM contract (page shell owned by Worker 1):
- *   section#am-twin > .am-twin-stage
- *     .am-twin-poster            (hidden by this script ONLY on successful start)
- *     canvas.am-twin-canvas      (hidden by shell; unhidden here on start)
- *     .am-twin-pills > button[data-layer="moisture"|"temperature"|"network"]
- *     .am-twin-legend            (text updated per layer)
- *     .am-nodes                  (empty; node <button>s generated here)
- *     .am-twin-steps             (static HTML frames — left alone)
- *     .am-twin-live              (aria-live="polite" narration target)
+ * DOM contract (page shell):
+ *   section#am-twin
+ *     .am-twin-stage
+ *       .am-twin-viewport           (position:relative; the canvas sizing basis)
+ *         .am-twin-poster          (hidden by this script ONLY on successful start)
+ *         canvas.am-twin-canvas    (hidden by shell; unhidden here on start)
+ *         .am-nodes                (empty; node <button>s generated here, % of viewport)
+ *       .am-twin-pills > button[data-layer="moisture"|"temperature"|"network"]
+ *       .am-twin-legend            (text updated per layer)
+ *       .am-twin-steps             (static HTML frames — left alone)
+ *       .am-twin-live              (aria-live="polite" narration target)
+ *
+ * NOTE (2026-09-12 postmortem): Element.querySelector() matches DESCENDANTS
+ * ONLY — never the element itself. The stage MUST be a child of section#am-twin
+ * (the shell once carried the class on the section itself, which made
+ * root.querySelector('.am-twin-stage') return null and silently killed the twin).
  *
  * Performance contract:
  *   - Adaptive particle budget with FPS governor: if avg frame time > 40ms
@@ -109,7 +116,7 @@ function createTwin(env) {
     beatTimers: []
   };
 
-  var root, stage, poster, canvas, ctx, pillsBox, legend, nodesBox, live;
+  var root, stage, viewport, poster, canvas, ctx, pillsBox, legend, nodesBox, live;
 
   /* ---------------- element helpers ---------------- */
   function el(sel, base) { return (base || root).querySelector(sel); }
@@ -420,8 +427,11 @@ function createTwin(env) {
 
   /* ---------------- sizing ---------------- */
   function resize() {
-    if (!stage || !canvas) return;
-    var rect = stage.getBoundingClientRect ? stage.getBoundingClientRect() : { width: 800, height: 600 };
+    if (!viewport || !canvas) return;
+    // The canvas fills .am-twin-viewport (CSS: absolute inset 0), so the
+    // viewport — not the whole card — is the sizing basis. Node % positions
+    // in .am-nodes (also inset 0 of the viewport) then align with canvas px.
+    var rect = viewport.getBoundingClientRect ? viewport.getBoundingClientRect() : { width: 800, height: 600 };
     var W = Math.max(1, Math.round(rect.width || 800));
     var H = Math.max(1, Math.round(rect.height || 600));
     if (W === state.W && H === state.H && canvas.width) return;
@@ -511,10 +521,8 @@ function createTwin(env) {
   }
 
   function buildNodeButtons() {
-    nodesBox.style.position = 'absolute';
-    nodesBox.style.inset = '0';
-    nodesBox.style.pointerEvents = 'none';
-    nodesBox.style.zIndex = '2';
+    // Overlay positioning lives in CSS (.am-nodes: absolute inset 0 of the
+    // viewport, pointer-events none; buttons re-enable pointer events).
     var i;
     for (i = 0; i < state.nodes.length; i++) {
       (function (n) {
@@ -621,6 +629,7 @@ function createTwin(env) {
     return loadReplay().then(function (replay) {
       state.replay = replay;
       stage = root.querySelector('.am-twin-stage');
+      viewport = root.querySelector('.am-twin-viewport');
       poster = root.querySelector('.am-twin-poster');
       canvas = root.querySelector('canvas.am-twin-canvas');
       pillsBox = root.querySelector('.am-twin-pills');
@@ -628,7 +637,7 @@ function createTwin(env) {
       nodesBox = root.querySelector('.am-nodes');
       live = root.querySelector('.am-twin-live');
 
-      if (!stage || !canvas || !nodesBox) return state; // shell incomplete: poster stays
+      if (!stage || !viewport || !canvas || !nodesBox) return state; // shell incomplete: poster stays
 
       var nav = win.navigator || {};
       var conn = nav.connection || {};
