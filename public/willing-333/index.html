@@ -494,6 +494,7 @@
     .then(function(res){
       if(res.s === 200 && res.d && res.d.ok){
         form.reset();
+        if (typeof gtag === 'function') { gtag('event', 'conversion', {'send_to': 'AW-16672489240/b4DyCJf73PQcEJj-h44-'}); }
         setStatus('Thank you — your response has been received. A member of the E5 team will review it.', true);
         btn.textContent = 'Sent ✓';
       } else {
