@@ -1001,109 +1001,375 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <!-- /e5:chrome-head -->
 
 
-<main id="main-content" class="sv-interior"><section class="section section--compact"><div class="container container--narrow"><span class="section-header__label">Initiative</span><h1 class="display display--lg">Black community<br><span class="text-gold">development, organized.</span></h1><p class="body body--lg text-muted">The Black Dragons Initiative is E5 Enclave's social-justice and community-development vertical — organizing power, data, and advocacy for the lineage.</p></div></section><section class="section section--compact"><div class="container container--narrow"><h2 class="display display--md" style="margin-bottom:1rem;">What the Black Dragons does</h2><div class="body body--lg text-muted" style="line-height:1.7;">the Black Dragons builds the organizing infrastructure behind E5's mission: community development, data-driven advocacy, and direct support for justice campaigns.</div></div></section><section class="section section--compact"><div class="container container--narrow"><h2 class="display display--md" style="margin-bottom:1rem;">Explore the program</h2><div class="body body--lg text-muted" style="line-height:1.7;">The Black Dragons Initiative is one of E5's flagship programs. See the full program page for how it connects to the Academy and the Farms.</div></div></section><section class="section section--compact"><div class="container container--narrow" style="text-align:center;"><a href="/record/" style="color:#d4b96a;text-decoration:underline;">← Back to The Record</a></div></section></main>
+<style>
+/* ===== Black Dragons hub — bespoke layer over the vc tokens ===== */
+.bd-wrap{position:relative;overflow:clip}
+.bd-grain{position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
+  background-image:radial-gradient(rgba(10,9,8,.05) 1px, transparent 1.6px);
+  background-size:26px 26px}
+.bd-hero{position:relative;padding:clamp(56px,9vw,132px) clamp(20px,5vw,72px) clamp(40px,6vw,84px);
+  display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,64px);align-items:center}
+@media(max-width:900px){.bd-hero{grid-template-columns:1fr}}
+.bd-kicker{font:500 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.32em;text-transform:uppercase;color:var(--vc-oxblood);margin-bottom:22px}
+.bd-h1{font-family:var(--vc-display);font-weight:500;font-size:clamp(46px,7.2vw,104px);line-height:1.02;letter-spacing:-.01em;margin:0 0 26px}
+.bd-h1 .it{font-style:italic;color:var(--vc-gold-text)}
+.bd-stand{font-size:clamp(17px,1.6vw,21px);line-height:1.65;color:var(--vc-ink-3);max-width:34em}
+.bd-badge{display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:10px 18px;border:1px solid var(--vc-rule-2);border-radius:999px;
+  font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:var(--vc-ink-2)}
+.bd-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--vc-oxblood)}
+/* 3-D founding-principles plate */
+.bd-plate-scene{perspective:1400px}
+.bd-plate{transform-style:preserve-3d;background:linear-gradient(160deg,var(--vc-bone-2),var(--vc-bone));
+  border:1px solid var(--vc-rule-2);border-radius:6px;padding:clamp(24px,3vw,44px);
+  box-shadow:24px 32px 80px rgba(10,9,8,.22), 2px 3px 0 rgba(10,9,8,.08);
+  transition:transform .25s ease-out;position:relative}
+.bd-plate::before{content:"";position:absolute;inset:10px;border:1px solid var(--vc-gold);opacity:.5;border-radius:3px;pointer-events:none;transform:translateZ(30px)}
+.bd-plate h3{font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.3em;text-transform:uppercase;color:var(--vc-oxblood);margin:0 0 18px;transform:translateZ(50px)}
+.bd-plate ol{list-style:none;margin:0;padding:0;display:grid;gap:14px;transform:translateZ(50px)}
+.bd-plate li{font-family:var(--vc-display);font-size:clamp(19px,1.8vw,25px);font-style:italic;line-height:1.25;color:var(--vc-ink-2)}
+.bd-plate li b{display:block;font-family:'IBM Plex Mono',monospace;font-style:normal;font-size:10px;letter-spacing:.24em;color:var(--vc-muted);margin-bottom:4px}
+/* sections */
+.bd-sec{position:relative;padding:clamp(48px,7vw,104px) clamp(20px,5vw,72px)}
+.bd-sec-head{max-width:60em;margin-bottom:clamp(28px,4vw,56px)}
+.bd-sec-head .n{font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.32em;color:var(--vc-gold-text);text-transform:uppercase}
+.bd-sec-head h2{font-family:var(--vc-display);font-weight:500;font-size:clamp(34px,4.4vw,62px);line-height:1.05;margin:14px 0 16px}
+.bd-sec-head p{color:var(--vc-ink-3);font-size:17px;line-height:1.65;max-width:44em}
+/* pillar ladder — asymmetric, staggered */
+.bd-ladder{display:grid;gap:clamp(18px,2.6vw,34px)}
+.bd-pillar{display:grid;grid-template-columns:110px minmax(0,1fr);gap:clamp(16px,3vw,44px);align-items:start;
+  padding:clamp(22px,3vw,38px);border-top:1px solid var(--vc-rule-2);position:relative;
+  transition:background .3s ease}
+.bd-pillar:hover{background:rgba(var(--vc-bone-rgb),.55)}
+.bd-pillar:nth-child(odd){margin-right:clamp(0px,9vw,180px)}
+.bd-pillar:nth-child(even){margin-left:clamp(0px,9vw,180px);text-align:left}
+@media(max-width:700px){.bd-pillar:nth-child(odd),.bd-pillar:nth-child(even){margin-left:0;margin-right:0}.bd-pillar{grid-template-columns:64px minmax(0,1fr)}}
+.bd-pnum{font-family:var(--vc-display);font-size:clamp(52px,6vw,88px);line-height:.9;color:transparent;
+  -webkit-text-stroke:1.5px var(--vc-gold);font-weight:600}
+.bd-pillar h3{font-family:var(--vc-display);font-size:clamp(26px,3vw,40px);font-weight:500;margin:0 0 12px;line-height:1.1}
+.bd-pillar p{margin:0;color:var(--vc-ink-3);font-size:16.5px;line-height:1.7;max-width:46em}
+.bd-pillar .debt{font-style:italic;color:var(--vc-ink-2)}
+/* mechanism panel — offset card */
+.bd-mech{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,64px);align-items:center}
+@media(max-width:900px){.bd-mech{grid-template-columns:1fr}}
+.bd-mech-card{background:var(--vc-ink);color:var(--vc-bone);border-radius:6px;padding:clamp(28px,4vw,52px);
+  transform:rotate(-1.2deg);box-shadow:20px 28px 70px rgba(10,9,8,.28);position:relative}
+.bd-mech-card h3{font-family:var(--vc-display);font-size:clamp(26px,3vw,38px);font-weight:500;margin:0 0 16px;color:#E9D3A0}
+.bd-mech-card p{color:#C9C4B8;font-size:16px;line-height:1.7;margin:0 0 14px}
+.bd-mech-card p:last-child{margin-bottom:0}
+.bd-mech-copy h3{font-family:var(--vc-display);font-size:clamp(24px,2.6vw,34px);font-weight:500;margin:0 0 14px}
+.bd-mech-copy p{color:var(--vc-ink-3);font-size:16.5px;line-height:1.7;margin:0 0 14px;max-width:44em}
+/* farmblock band */
+.bd-farm{border-top:1px solid var(--vc-rule-2);border-bottom:1px solid var(--vc-rule-2);
+  padding:clamp(36px,5vw,64px) clamp(20px,5vw,72px);display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(20px,4vw,56px)}
+@media(max-width:900px){.bd-farm{grid-template-columns:1fr}}
+.bd-farm .tag{font:500 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.3em;text-transform:uppercase;color:var(--vc-oxblood)}
+.bd-farm h3{font-family:var(--vc-display);font-size:clamp(28px,3.4vw,46px);font-weight:500;margin:12px 0 0;line-height:1.08}
+.bd-farm p{color:var(--vc-ink-3);font-size:16.5px;line-height:1.75;margin:0 0 14px;max-width:52em}
+.bd-farm .distinction{font-size:17px;color:var(--vc-ink-2);border-left:3px solid var(--vc-gold);padding-left:18px;font-style:italic}
+/* legacy strip */
+.bd-legacy{padding:clamp(36px,5vw,64px) clamp(20px,5vw,72px);max-width:56em}
+.bd-legacy p{font-family:var(--vc-display);font-size:clamp(20px,2.4vw,30px);font-style:italic;line-height:1.5;color:var(--vc-ink-2)}
+.bd-legacy .attr{font-family:'IBM Plex Mono',monospace;font-style:normal;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--vc-muted);margin-top:18px;display:block}
+/* documents */
+.bd-docs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px)}
+@media(max-width:900px){.bd-docs{grid-template-columns:1fr}}
+.bd-doc{border:1px solid var(--vc-rule-2);border-radius:6px;padding:clamp(24px,3vw,40px);background:rgba(var(--vc-bone-rgb),.4);
+  display:flex;flex-direction:column;gap:14px;transition:transform .3s ease, box-shadow .3s ease}
+.bd-doc:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(10,9,8,.14)}
+.bd-doc .prov{font-size:12.5px;line-height:1.65;color:var(--vc-muted);border-left:2px solid var(--vc-gold);padding-left:14px}
+.bd-doc h3{font-family:var(--vc-display);font-size:clamp(24px,2.6vw,34px);font-weight:500;margin:0;line-height:1.15}
+.bd-doc .ed{font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:var(--vc-oxblood)}
+.bd-doc p.desc{margin:0;color:var(--vc-ink-3);font-size:15.5px;line-height:1.65}
+.bd-btn{align-self:flex-start;margin-top:6px;display:inline-flex;align-items:center;gap:10px;background:var(--vc-oxblood);color:#f6f1e4;
+  font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;
+  padding:16px 26px;border-radius:3px;transition:filter .2s ease}
+.bd-btn:hover{filter:brightness(1.18)}
+/* intake */
+.bd-intake{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,64px)}
+@media(max-width:900px){.bd-intake{grid-template-columns:1fr}}
+.bd-form{background:var(--vc-bone-2);border:1px solid var(--vc-rule-2);border-radius:6px;padding:clamp(24px,3vw,40px)}
+.bd-form label{display:block;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:var(--vc-ink-2);margin:20px 0 8px}
+.bd-form label:first-of-type{margin-top:0}
+.bd-form input,.bd-form select,.bd-form textarea{width:100%;box-sizing:border-box;background:var(--vc-bone);border:1px solid var(--vc-rule-2);
+  border-radius:3px;padding:13px 14px;font-size:15px;color:var(--vc-ink);font-family:'Inter',sans-serif}
+.bd-form textarea{min-height:110px;resize:vertical}
+.bd-hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.bd-status{margin-top:16px;font-size:14px;line-height:1.6;min-height:1.6em}
+.bd-status.ok{color:#2e5c2e}.bd-status.err{color:var(--vc-oxblood)}
+/* programs strip */
+.bd-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,30px);margin-top:8px}
+@media(max-width:900px){.bd-strip{grid-template-columns:1fr}}
+.bd-strip a{border:1px solid var(--vc-rule-2);border-radius:6px;padding:26px 24px;text-decoration:none;color:inherit;display:block;
+  transition:transform .3s ease, box-shadow .3s ease;background:rgba(var(--vc-bone-rgb),.35)}
+.bd-strip a:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(10,9,8,.13)}
+.bd-strip .k{font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.28em;text-transform:uppercase;color:var(--vc-oxblood)}
+.bd-strip h4{font-family:var(--vc-display);font-size:23px;font-weight:500;margin:12px 0 8px}
+.bd-strip p{margin:0;font-size:14.5px;line-height:1.6;color:var(--vc-ink-3)}
+.bd-nonen{margin-top:22px;font-size:12.5px;line-height:1.65;color:var(--vc-muted);border-top:1px solid var(--vc-rule);padding-top:18px;max-width:64em}
+/* motion */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .bd-plate{transform:none!important}
+  .bd-mech-card{transform:none}
+  .bd-doc:hover,.bd-strip a:hover{transform:none}
+}
+</style>
+<main id="main-content" class="bd-wrap">
+<div class="bd-grain" aria-hidden="true"></div>
+
+<!-- HERO -->
+<header class="bd-hero">
+  <div class="reveal">
+    <div class="bd-kicker">An E5 Enclave Inc. campaign</div>
+    <h1 class="bd-h1">Self-determination,<br><span class="it">organized.</span></h1>
+    <p class="bd-stand">The Black Dragons Initiative is E5 Enclave&rsquo;s community-development campaign for Black neighborhoods &mdash; building the institutions, the land base, and the economic foundations that self-determination requires, through nonpartisan civic action.</p>
+    <span class="bd-badge"><span class="dot" aria-hidden="true"></span> Nonpartisan &middot; 501(c)(3) &middot; Liberty City, Miami</span>
+  </div>
+  <div class="bd-plate-scene reveal">
+    <div class="bd-plate" id="bd-plate" aria-label="The campaign's four guiding principles">
+      <h3>Four guiding principles</h3>
+      <ol>
+        <li><b>I</b> Political independence</li>
+        <li><b>II</b> Economic self-sufficiency</li>
+        <li><b>III</b> Cultural renaissance</li>
+        <li><b>IV</b> Radical solidarity</li>
+      </ol>
+    </div>
+  </div>
+</header>
+
+<!-- WHAT THE CAMPAIGN IS -->
+<section class="bd-sec" aria-labelledby="bd-what">
+  <div class="bd-sec-head reveal">
+    <div class="n">The campaign</div>
+    <h2 id="bd-what">A container for the work, not a report on it</h2>
+    <p>The Black Dragons Initiative gathers E5 Enclave&rsquo;s longest-running threads &mdash; community development, land, economic justice, and civic organization &mdash; into a single campaign. It is pre-execution by design: a public framework for the chapters, pilots, and institutions the work will build, beginning in Liberty City and Overtown. Everything below is the plan the campaign is organized to carry out.</p>
+  </div>
+</section>
+
+<!-- FIVE PILLARS -->
+<section class="bd-sec" aria-labelledby="bd-pillars" style="padding-top:0">
+  <div class="bd-sec-head reveal">
+    <div class="n">Strategic framework</div>
+    <h2 id="bd-pillars">Five pillars</h2>
+    <p>The campaign&rsquo;s five pillars describe what gets built: institutions the community owns, an economy the community controls, land the community holds, governance the community runs, and alliances that reach across the world.</p>
+  </div>
+  <div class="bd-ladder">
+    <article class="bd-pillar reveal">
+      <div class="bd-pnum" aria-hidden="true">01</div>
+      <div><h3>Building Institutional Autonomy</h3>
+      <p>The institutions of daily life &mdash; schools, clinics, financial institutions, media &mdash; owned and governed by the communities they serve, so a neighborhood&rsquo;s needs are decided in the neighborhood.</p></div>
+    </article>
+    <article class="bd-pillar reveal">
+      <div class="bd-pnum" aria-hidden="true">02</div>
+      <div><h3>Securing Economic Justice and the Debt Owed</h3>
+      <p><span class="debt">A debt is owed for centuries of extracted labor and wealth.</span> The campaign claims that debt as the foundation for exit from extractive systems and the establishment of self-sustaining Black economic life &mdash; cooperative enterprise, community-owned capital, and shared ownership of productive assets. The founding documents present the debt evidence at the top of the verified range; E5 Enclave takes no position on any settlement figure.</p></div>
+    </article>
+    <article class="bd-pillar reveal">
+      <div class="bd-pnum" aria-hidden="true">03</div>
+      <div><h3>Reclaiming Land and Resources</h3>
+      <p>Land is the base of everything the campaign builds. The work moves land into community hands and keeps it there &mdash; through the land-trust mechanism below &mdash; so rising values enrich the people who live on the land instead of displacing them.</p></div>
+    </article>
+    <article class="bd-pillar reveal">
+      <div class="bd-pnum" aria-hidden="true">04</div>
+      <div><h3>Establishing Community-Controlled Governance</h3>
+      <p>Neighborhood councils and assemblies where residents set priorities and hold local institutions accountable. The campaign practices democracy at the block level and advocates for policies that serve Black communities through nonpartisan civic engagement.</p></div>
+    </article>
+    <article class="bd-pillar reveal">
+      <div class="bd-pnum" aria-hidden="true">05</div>
+      <div><h3>Forging Pan-African Unity and Global Alliances</h3>
+      <p>The struggle is global, and so is the solidarity: ties across the diaspora and the Global South, and alliance with other oppressed communities &mdash; Black liberation as the spearhead of a broader freedom.</p></div>
+    </article>
+  </div>
+</section>
+
+<!-- LAND-TRUST MECHANISM -->
+<section class="bd-sec" aria-labelledby="bd-mech">
+  <div class="bd-mech">
+    <div class="bd-mech-card reveal">
+      <h3>The mechanism</h3>
+      <p>Community land trusts take land off the speculative market and hold it in community ownership in perpetuity.</p>
+      <p>Homes, gardens, and gathering spaces built on trust-held land stay affordable and community-governed no matter how the market moves around them.</p>
+    </div>
+    <div class="bd-mech-copy reveal">
+      <h3 id="bd-mech">Land held in common, in perpetuity</h3>
+      <p>A land trust is the campaign&rsquo;s anti-displacement engine. Parcels acquired by the trust are removed from speculation permanently: the land stays in community hands while the buildings on it can be owned, leased, or cooperatively managed by the people who use them.</p>
+      <p>This is how the campaign answers gentrification &mdash; not with opposition alone, but with an ownership structure that makes displacement structurally impossible on the land the community holds.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FARMBLOCK -->
+<section class="bd-farm reveal" aria-labelledby="bd-farm">
+  <div>
+    <div class="tag">Inside the campaign</div>
+    <h3 id="bd-farm">The FarmBlock Pilot</h3>
+  </div>
+  <div>
+    <p>The FarmBlock Pilot applies agricultural technology &mdash; sensors, mesh networks, and community-governed data systems &mdash; to neighborhood growing in Liberty City and Overtown: a working test of how a block can feed itself and own the infrastructure that makes it possible.</p>
+    <p class="distinction">The FarmBlock Pilot is the Black Dragons campaign&rsquo;s agricultural-technology pilot; Lineage Farms is E5&rsquo;s flagship food-sovereignty program.</p>
+  </div>
+</section>
+
+<!-- LEGACY -->
+<section class="bd-legacy reveal" aria-labelledby="bd-legacy">
+  <p id="bd-legacy">The campaign&rsquo;s founding document honors Ralph McCartney of Overtown &mdash; a local hero whose legacy of community building anchors the McCartney Academy, a proposed project of E5 Enclave Inc.</p>
+  <span class="attr">The Leviathan Manifesto &middot; legacy grounding for the Academy</span>
+</section>
+
+<!-- FOUNDING DOCUMENTS -->
+<section class="bd-sec" aria-labelledby="bd-docs">
+  <div class="bd-sec-head reveal">
+    <div class="n">The record</div>
+    <h2 id="bd-docs">Founding documents</h2>
+    <p>The campaign&rsquo;s two founding texts, published in revised 2026-09-11 editions. They are preserved as written, in their own register &mdash; the campaign page above speaks in E5 Enclave&rsquo;s institutional voice; the documents speak in theirs.</p>
+  </div>
+  <div class="bd-docs">
+    <article class="bd-doc reveal" aria-labelledby="bd-doc1">
+      <div class="prov">E5 Enclave Inc. is a nonpartisan 501(c)(3) nonprofit organization. This founding document is preserved as written; two campaign-intervention provisions incompatible with 501(c)(3) nonpartisan status were struck in the 2026-09-11 revision with visible markers and dated notes, per the Chairman&rsquo;s ratified amendments. E5 Enclave Inc. does not endorse unlawful conduct.</div>
+      <div class="ed">Revised edition &middot; 2026-09-11 &middot; PDF</div>
+      <h3 id="bd-doc1">Declaration of Self-Determination of the BLACK Dragons</h3>
+      <p class="desc">The founding covenant: preamble, five guiding principles, calls to action, and conclusion &mdash; the Aboveground Railroad of Self-Determination in the document&rsquo;s own voice.</p>
+      <a class="bd-btn" href="/assets/docs/black-dragons/declaration-self-determination-revised-2026-09-11.pdf">Download the PDF</a>
+    </article>
+    <article class="bd-doc reveal" aria-labelledby="bd-doc2">
+      <div class="prov">E5 Enclave Inc. is a nonpartisan 501(c)(3) nonprofit organization. This founding document is preserved as written; campaign-intervention provisions incompatible with 501(c)(3) nonpartisan status were struck in the 2026-09-11 revision with visible markers and dated notes, per the Chairman&rsquo;s ratified amendments. E5 Enclave Inc. does not endorse unlawful conduct.</div>
+      <div class="ed">Revised edition &middot; 2026-09-11 &middot; PDF</div>
+      <h3 id="bd-doc2">Leviathan Rising: A Declaration of Sovereign Determination</h3>
+      <p class="desc">The campaign&rsquo;s strategic manifesto: principles, history, the five-pillar framework, organizational structure, and call to action &mdash; including a prominent revision note documenting every change.</p>
+      <a class="bd-btn" href="/assets/docs/black-dragons/leviathan-manifesto-revised-2026-09-11.pdf">Download the PDF</a>
+    </article>
+  </div>
+</section>
+
+<!-- CHAPTER INTEREST INTAKE -->
+<section class="bd-sec" aria-labelledby="bd-join">
+  <div class="bd-intake">
+    <div class="reveal">
+      <div class="bd-sec-head" style="margin-bottom:0">
+        <div class="n">Begin</div>
+        <h2 id="bd-join">Start a chapter.<br>Join the work.</h2>
+        <p>There is no chapter network yet &mdash; this form is how one begins. Tell us who you are and what you want to build; every submission is read by a person at E5 Enclave. The campaign&rsquo;s founding document once pointed readers to a chapter-finder address that was never published; this intake replaces it.</p>
+      </div>
+    </div>
+    <form class="bd-form reveal" id="bd-intake-form" novalidate>
+      <label for="bd-name">Name</label>
+      <input id="bd-name" name="name" type="text" autocomplete="name" required maxlength="200">
+      <label for="bd-email">Email</label>
+      <input id="bd-email" name="email" type="email" autocomplete="email" required maxlength="320">
+      <label for="bd-city">City</label>
+      <input id="bd-city" name="city" type="text" autocomplete="address-level2" maxlength="200">
+      <label for="bd-interest">I&rsquo;m interested in</label>
+      <select id="bd-interest" name="interest" required>
+        <option value="">Choose one&hellip;</option>
+        <option value="start-chapter">Starting a chapter in my community</option>
+        <option value="join-chapter">Joining when a chapter forms near me</option>
+        <option value="partner">Partnering as an organization</option>
+        <option value="learn">Learning more about the campaign</option>
+      </select>
+      <label for="bd-message">What do you want to build?</label>
+      <textarea id="bd-message" name="message" required maxlength="5000"></textarea>
+      <div class="bd-hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <button class="bd-btn" type="submit" style="border:0;cursor:pointer;margin-top:22px">Send it</button>
+      <p class="bd-status" id="bd-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<!-- PROGRAMS STRIP -->
+<section class="bd-sec" aria-labelledby="bd-programs" style="padding-top:0">
+  <div class="bd-sec-head reveal">
+    <div class="n">The estate</div>
+    <h2 id="bd-programs">Programs of E5 Enclave Inc.</h2>
+  </div>
+  <div class="bd-strip">
+    <a class="reveal" href="/programs/mccartney-academy/">
+      <span class="k">Proposed project</span>
+      <h4>McCartney Academy</h4>
+      <p>Planned STEAM academies across multiple school sites &mdash; a proposed project honoring the legacy of Ralph McCartney of Overtown.</p>
+    </a>
+    <a class="reveal" href="/programs/lineage-farms/">
+      <span class="k">Flagship program</span>
+      <h4>Lineage Farms</h4>
+      <p>E5&rsquo;s flagship food-sovereignty program: community-governed growing, land stewardship, and the infrastructure of feeding ourselves.</p>
+    </a>
+    <a class="reveal" href="/programs/block-to-the-boardroom/">
+      <span class="k">The Block Program</span>
+      <h4>Block to the Boardroom</h4>
+      <p>Rehabilitating Black neighborhood blocks with emerging technology &mdash; learn-to-earn STEM and Web3 pipelines, and land returned to community hands.</p>
+    </a>
+  </div>
+  <p class="bd-nonen reveal">These programs are educational and civic initiatives of E5 Enclave Inc., a nonpartisan 501(c)(3) nonprofit organization. Their listing here describes the organization&rsquo;s work; no endorsement of unlawful conduct is made or implied.</p>
+</section>
+</main>
 <script>
-  // Palette toggle (editorial ↔ original)
-  (function(){
-    var KEY = 'e5-palette';
-    var html = document.documentElement;
-    var saved = null;
-    try { saved = localStorage.getItem(KEY); } catch(_) {}
-    if (saved === 'original' || saved === 'editorial') {
-      html.setAttribute('data-palette', saved);
-    } else {
-      html.setAttribute('data-palette', 'editorial');
-    }
-    var btn = document.getElementById('vc-palette-toggle');
-    if (!btn) return;
-    btn.addEventListener('click', function(){
-      var cur = html.getAttribute('data-palette') === 'original' ? 'original' : 'editorial';
-      var next = cur === 'editorial' ? 'original' : 'editorial';
-      html.setAttribute('data-palette', next);
-      try { localStorage.setItem(KEY, next); } catch(_) {}
-    });
-  })();
-
-  // Rolling counters — institutional accounting, not slot-machine roll.
-  (function(){
-    var nodes = document.querySelectorAll('[data-counter-target]');
-    if (!nodes.length) return;
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function format(n){ return n.toLocaleString('en-US'); }
-    function run(node){
-      var target = parseInt(node.getAttribute('data-counter-target'), 10) || 0;
-      if (reduced) { node.textContent = format(target); return; }
-      var dur = Math.min(2200, 600 + target * 1.2);
-      var start = performance.now();
-      function tick(now){
-        var t = Math.min(1, (now - start) / dur);
-        var eased = 1 - Math.pow(1 - t, 3);
-        var v = Math.round(target * eased);
-        node.textContent = format(v);
-        if (t < 1) requestAnimationFrame(tick);
-        else {
-          node.classList.add('tick');
-          setTimeout(function(){ node.classList.remove('tick'); }, 700);
-        }
-      }
-      requestAnimationFrame(tick);
-    }
-    if (!('IntersectionObserver' in window)) { nodes.forEach(run); return; }
-    var io2 = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting) { run(e.target); io2.unobserve(e.target); }
-      });
-    }, { threshold: 0.4 });
-    nodes.forEach(function(n){ io2.observe(n); });
-  })();
-
-  // Reveal-on-scroll
-  (function(){
-    var els = document.querySelectorAll('.reveal');
-    if (!('IntersectionObserver' in window)) {
-      els.forEach(function(e){ e.classList.add('in'); });
-      return;
-    }
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-    els.forEach(function(e){ io.observe(e); });
-  })();
-
-  // Pointer-aware gold gleam on the foundation slab
-  (function(){
-    var slab = document.querySelector('.vc-foundation');
-    if (!slab || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+(function(){
+  // 3-D pointer tilt on the principles plate (skipped under reduced motion)
+  var plate = document.getElementById('bd-plate');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (plate && !reduced) {
+    var scene = plate.closest('.bd-plate-scene');
     var raf = 0;
-    slab.addEventListener('mousemove', function(e){
+    scene.addEventListener('mousemove', function(e){
       if (raf) cancelAnimationFrame(raf);
       raf = requestAnimationFrame(function(){
-        var rect = slab.getBoundingClientRect();
-        var x = ((e.clientX - rect.left) / rect.width) * 100;
-        slab.style.setProperty('--gleam-x', Math.max(0, Math.min(100, x)) + '%');
+        var r = scene.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - .5;
+        var y = (e.clientY - r.top) / r.height - .5;
+        plate.style.transform = 'rotateY(' + (x*10).toFixed(2) + 'deg) rotateX(' + (-y*10).toFixed(2) + 'deg)';
       });
     });
-    slab.addEventListener('mouseleave', function(){
-      slab.style.setProperty('--gleam-x', '50%');
+    scene.addEventListener('mouseleave', function(){ plate.style.transform = 'rotateY(0deg) rotateX(0deg)'; });
+  }
+  // Reveal-on-scroll
+  var els = document.querySelectorAll('#main-content .reveal');
+  if (!('IntersectionObserver' in window)) { els.forEach(function(e){e.classList.add('in');}); }
+  else {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.1, rootMargin:'0px 0px -50px 0px'});
+    els.forEach(function(e){ io.observe(e); });
+  }
+  // Chapter-interest intake
+  var form = document.getElementById('bd-intake-form');
+  var status = document.getElementById('bd-status');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    status.className = 'bd-status'; status.textContent = '';
+    var payload = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      city: form.city.value.trim(),
+      interest: form.interest.value,
+      message: form.message.value.trim(),
+      website: form.website.value
+    };
+    if (!payload.name || !payload.email || !payload.interest || !payload.message) {
+      status.className = 'bd-status err'; status.textContent = 'Please complete every required field.'; return;
+    }
+    status.textContent = 'Sending\u2026';
+    fetch('https://black-dragons-intake.yisraelleemccartney.workers.dev/submit', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
+    }).then(function(r){ return r.json().then(function(d){ return {ok: r.ok && d.ok, err: d.error}; }); })
+    .then(function(res){
+      if (res.ok) { status.className = 'bd-status ok'; status.textContent = 'Received. A person at E5 Enclave will read it and reply.'; form.reset(); }
+      else { status.className = 'bd-status err'; status.textContent = 'That didn\u2019t send (' + (res.err || 'unknown error') + '). Please try again, or write to contact@e5enclave.com.'; }
+    }).catch(function(){
+      status.className = 'bd-status err'; status.textContent = 'That didn\u2019t send. Please try again, or write to contact@e5enclave.com.';
     });
-  })();
-
+  });
   // Smooth scroll for in-page anchors
   document.addEventListener('click', function(e){
     var a = e.target.closest && e.target.closest('a[href^="#"]');
     if (!a) return;
-    var id = a.getAttribute('href').slice(1);
-    if (!id) return;
-    var t = document.getElementById(id);
-    if (t) {
-      e.preventDefault();
-      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      history.replaceState(null, '', '#' + id);
-    }
+    var t = document.getElementById(a.getAttribute('href').slice(1));
+    if (t) { e.preventDefault(); t.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block: 'start'}); }
   });
+})();
 </script>
+<script>/*revealFailsafe*/window.addEventListener('load',function(){setTimeout(function(){document.querySelectorAll('#main-content .reveal:not(.in)').forEach(function(e){e.classList.add('in');});},1400);});</script>
+
 <script>/*revealFailsafe*/window.addEventListener('load',function(){setTimeout(function(){document.querySelectorAll('.reveal:not(.in)').forEach(function(e){e.classList.add('in');});},1200);});</script><!-- e5:chrome-foot -->
 <div class="sov-chrome sov-chrome-foot" style="margin-top:clamp(60px,8vw,120px)">
 <div style="position:relative; z-index:5; margin-top:0; height:4px; background:linear-gradient(90deg,#6E5220,#C9A24A 24%,#E9D3A0 50%,#C9A24A 76%,#6E5220)"></div>
