@@ -3,6 +3,7 @@
 <html lang="en">
 <head><script>document.documentElement.classList.add('js');</script><link rel="stylesheet" href="/variant.css">
 <link rel="stylesheet" href="css/bd50-cinematic.css">
+<link rel="stylesheet" href="css/bd50-farm.css">
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Black Dragons Initiative — E5 Enclave</title>
@@ -604,39 +605,52 @@ html.js .reveal.pre.in.d3{transition-delay:.36s}
   </div>
 </section>
 
-<!-- INTERLUDE · FARMBLOCK -->
-<section class="bd50-duo" aria-label="Inside the campaign">
-  <div class="txt">
+<!-- INTERLUDE · FARMBLOCK · LIVING FARM -->
+<section class="bd50-farm" id="farmblock" aria-label="The FarmBlock Pilot">
+  <div class="wrap bd50-farm-head">
     <div class="bd50-tag reveal">Inside the campaign</div>
     <h2 class="reveal">The FarmBlock Pilot</h2>
     <p class="reveal d1">The FarmBlock Pilot applies agricultural technology &mdash; sensors, mesh networks, and community-governed data systems &mdash; to neighborhood growing in Liberty City and Overtown: a working test of how a block can feed itself and own the infrastructure that makes it possible.</p>
     <p class="bd50-note reveal d2">The FarmBlock Pilot is the Black Dragons campaign&rsquo;s agricultural-technology pilot; Lineage Farms is E5&rsquo;s flagship food-sovereignty program.</p>
   </div>
-  <div class="art reveal" aria-hidden="true">
-<svg viewBox="0 0 600 520" role="img" aria-label="Abstract mesh network over field contours" preserveAspectRatio="xMidYMid slice">
-<rect width="600" height="520" fill="#0d0b09"/>
-<g fill="none" stroke="#d9ba6c" stroke-width="1" opacity="0.28">
-<path d="M-20,120 C140,80 260,160 420,110 C520,85 580,100 640,80"/>
-<path d="M-20,200 C140,160 260,240 420,190 C520,165 580,180 640,160"/>
-<path d="M-20,280 C140,240 260,320 420,270 C520,245 580,260 640,240"/>
-<path d="M-20,360 C140,320 260,400 420,350 C520,325 580,340 640,320"/>
-<path d="M-20,440 C140,400 260,480 420,430 C520,405 580,420 640,400"/>
-</g>
-<g stroke="#d9ba6c" stroke-width="1.2" opacity="0.85">
-<line x1="120" y1="140" x2="240" y2="220"/><line x1="240" y1="220" x2="380" y2="150"/>
-<line x1="380" y1="150" x2="480" y2="260"/><line x1="240" y1="220" x2="330" y2="340"/>
-<line x1="330" y1="340" x2="480" y2="260"/><line x1="120" y1="140" x2="90" y2="300"/>
-<line x1="90" y1="300" x2="330" y2="340"/><line x1="480" y1="260" x2="540" y2="400"/>
-</g>
-<g fill="#0d0b09" stroke="#d9ba6c" stroke-width="2">
-<circle cx="120" cy="140" r="9"/><circle cx="240" cy="220" r="9"/><circle cx="380" cy="150" r="9"/>
-<circle cx="480" cy="260" r="9"/><circle cx="330" cy="340" r="9"/><circle cx="90" cy="300" r="9"/><circle cx="540" cy="400" r="9"/>
-</g>
-<g fill="#d9ba6c"><circle cx="240" cy="220" r="3.5"/><circle cx="480" cy="260" r="3.5"/></g>
-<g font-family="monospace" font-size="12" fill="#d9ba6c" opacity="0.7" letter-spacing="2">
-<text x="258" y="212">NODE 02</text><text x="498" y="252">NODE 04</text>
-</g>
-</svg>
+  <div class="wrap">
+    <div class="bd50-farm-stage reveal">
+      <canvas class="bd50-farm-canvas" aria-hidden="true"></canvas>
+      <img class="bd50-farm-poster" src="img/farmblock-dusk.jpg" alt="" aria-hidden="true" loading="lazy">
+      <div class="bd50-farm-telemetry" aria-hidden="true">
+        <span class="tl-bar"></span>AG-TECH PILOT<br>
+        <span class="tl-dim">LIBERTY CITY &middot; OVERTOWN</span><br>
+        <span class="tl-dim">SENSORS &middot; MESH &middot; COMMUNITY DATA</span>
+      </div>
+      <div class="bd50-farm-pins">
+        <button type="button" class="bd50-farm-pin" data-zone="fields" aria-pressed="false" style="--x:30%;--y:74%"><span class="dot"></span><span class="lbl">01 &middot; THE FIELDS</span></button>
+        <button type="button" class="bd50-farm-pin" data-zone="greenhouses" aria-pressed="false" style="--x:50%;--y:47%"><span class="dot"></span><span class="lbl">02 &middot; THE GREENHOUSES</span></button>
+        <button type="button" class="bd50-farm-pin" data-zone="water" aria-pressed="false" style="--x:80%;--y:80%"><span class="dot"></span><span class="lbl">03 &middot; WATER</span></button>
+        <button type="button" class="bd50-farm-pin" data-zone="climate" aria-pressed="false" style="--x:72%;--y:28%"><span class="dot"></span><span class="lbl">04 &middot; CLIMATE</span></button>
+      </div>
+      <div class="bd50-farm-card" hidden>
+        <span class="num" aria-hidden="true"></span>
+        <h3></h3>
+        <p></p>
+        <button type="button" class="x" aria-label="Close zone card">&times;</button>
+      </div>
+      <div class="bd50-farm-toggles" role="group" aria-label="Highlight farm zones">
+        <button type="button" data-zone="fields" aria-pressed="false">Crops</button>
+        <button type="button" data-zone="greenhouses" aria-pressed="false">Greenhouses</button>
+        <button type="button" data-zone="water" aria-pressed="false">Water</button>
+        <button type="button" data-zone="climate" aria-pressed="false">Climate</button>
+      </div>
+    </div>
+    <div class="bd50-farm-grid">
+      <article><div class="num">01</div><h3>THE FIELDS</h3><p>Neighborhood growing in Liberty City and Overtown.</p></article>
+      <article><div class="num">02</div><h3>THE GREENHOUSES</h3><p>Agricultural technology, applied to neighborhood growing.</p></article>
+      <article><div class="num">03</div><h3>WATER</h3><p>Sensors, mesh networks, and community-governed data systems.</p></article>
+      <article><div class="num">04</div><h3>CLIMATE</h3><p>A working test of how a block can feed itself and own the infrastructure that makes it possible.</p></article>
+    </div>
+    <blockquote class="bd50-farm-callout reveal">
+      <p>A working test of <em>how a block can feed itself</em> and own the infrastructure that makes it possible.</p>
+      <span class="src">The FarmBlock Pilot &middot; E5 Enclave Inc.</span>
+    </blockquote>
   </div>
 </section>
 
@@ -864,6 +878,7 @@ html.js .reveal.pre.in.d3{transition-delay:.36s}
 
 <script>/*revealFailsafe*/window.addEventListener('load',function(){setTimeout(function(){document.querySelectorAll('.reveal:not(.in)').forEach(function(e){e.classList.add('in');});},1200);});</script><script src="js/vendor/three.min.js" defer></script>
 <script src="js/bd50-cinematic.js" defer></script>
+<script src="js/bd50-farm.js" defer></script>
 <!-- e5:chrome-foot -->
 <div class="sov-chrome sov-chrome-foot" style="margin-top:clamp(60px,8vw,120px)">
 <div style="position:relative; z-index:5; margin-top:0; height:4px; background:linear-gradient(90deg,#6E5220,#C9A24A 24%,#E9D3A0 50%,#C9A24A 76%,#6E5220)"></div>
