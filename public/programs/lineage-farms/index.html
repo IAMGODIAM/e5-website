@@ -1000,38 +1000,194 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <!-- /e5:chrome-head -->
 
 
+<style>
+  .lf-form-shell { background:#0b0c0e; color:#f4f1e9; border-radius:18px; padding:clamp(30px,5vw,56px); margin-top:8px; }
+  .lf-form-shell h3 { font-family:Georgia,serif; font-size:clamp(24px,3vw,34px); margin:0 0 10px; font-weight:700; color:#f4f1e9; }
+  .lf-form-shell p.sub { color:rgba(244,241,233,.7); max-width:640px; margin:0 0 28px; font-size:16px; }
+  .lf-frow { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:640px){ .lf-frow{ grid-template-columns:1fr; } }
+  .lf-field{ margin-bottom:18px; }
+  .lf-field label{ display:block; font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:#c9a86a; margin-bottom:8px; }
+  .lf-field input[type="text"], .lf-field input[type="email"], .lf-field textarea, .lf-field select{
+    width:100%; background:rgba(244,241,233,.06); border:1px solid rgba(244,241,233,.22);
+    border-radius:10px; color:#f4f1e9; padding:13px 15px; font:inherit; font-size:15px; }
+  .lf-field select option{ color:#11110f; }
+  .lf-field input::placeholder, .lf-field textarea::placeholder{ color:rgba(244,241,233,.38); }
+  .lf-field input:focus, .lf-field textarea:focus, .lf-field select:focus{ outline:2px solid #c9a86a; border-color:#c9a86a; }
+  .lf-field textarea{ min-height:120px; resize:vertical; }
+  .lf-hp{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+  .lf-btn{ display:inline-block; padding:15px 30px; border-radius:999px; font-weight:600; font-size:15px; text-decoration:none; border:1px solid transparent; cursor:pointer; background:#c9a86a; color:#0b0c0e; }
+  .lf-btn:disabled{ opacity:.6; cursor:default; }
+  #lf-status{ margin-top:18px; font-size:15px; display:none; }
+  #lf-status.ok{ display:block; color:#9fd6a8; }
+  #lf-status.err{ display:block; color:#f0a8a0; }
+  .lf-fineprint{ margin-top:22px; font-size:13px; color:rgba(244,241,233,.5); max-width:700px; }
+  .lf-grid2{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; margin-top:10px; }
+  .lf-card{ background:rgba(255,255,255,.55); border:1px solid rgba(17,17,15,.2); border-radius:14px; padding:26px 26px 24px; display:block; }
+  .lf-card h3{ font-family:Georgia,serif; font-size:21px; margin:0 0 10px; font-weight:700; }
+  .lf-card p{ margin:0; font-size:15px; color:#3a392f; }
+  .lf-card .k{ font-size:11px; font-weight:700; letter-spacing:.2em; color:#7e6329; text-transform:uppercase; display:block; margin-bottom:8px; }
+</style>
+
 <main id="main-content" class="sv-interior">
   <section class="section section--compact">
     <div class="container container--narrow">
-      <span class="section-header__label">Flagship Program 02</span>
+      <span class="section-header__label">Flagship Program 02 &middot; In Development</span>
       <h1 class="display display--lg">Food sovereignty,<br><span class="text-gold">block by block.</span></h1>
-      <p class="body body--lg text-muted">Lineage Farms — through the FarmBlock model — converts vacant and underused land in Liberty City into productive urban agriculture that feeds the community and builds ownership.</p>
+      <p class="body body--lg text-muted">Lineage Farms is E5 Enclave&rsquo;s plan for cooperative urban agriculture in Liberty City &mdash; converting vacant and underused land into productive growing space the community owns. The work is in development: this page describes the model, the path, and how to join it.</p>
     </div>
   </section>
+
   <section class="section section--compact">
     <div class="container container--narrow">
       <h2 class="display display--md" style="margin-bottom:1rem;">The FarmBlock model</h2>
-      <div class="body body--lg text-muted" style="line-height:1.7;">Each FarmBlock turns a single city block into a working food system: growing space, distribution, training, and local jobs. Food sovereignty means the lineage controls its own nourishment — not dependent on the grocery deserts that policy created.</div>
+      <div class="body body--lg text-muted" style="line-height:1.7;">
+        <p style="margin:0 0 1em;">Each FarmBlock would turn a single city block into a working food system: growing space, distribution, training, and local jobs. Food sovereignty means the lineage controls its own nourishment &mdash; not dependent on the grocery deserts that policy created.</p>
+        <p style="margin:0;">The model starts with pilot blocks in Liberty City: permissioned sites, soil and water assessments, and growing plans matched to what the land and the neighborhood can sustain.</p>
+      </div>
     </div>
   </section>
+
   <section class="section section--compact">
     <div class="container container--narrow">
-      <h2 class="display display--md" style="margin-bottom:1rem;">Land the community owns</h2>
-      <div class="body body--lg text-muted" style="line-height:1.7;">This is not a community garden. FarmBlock is an ownership and economic-development strategy — productive land held by the lineage, generating yield, dignity, and a hedge against displacement.</div>
+      <h2 class="display display--md" style="margin-bottom:1rem;">Land the community would own</h2>
+      <div class="body body--lg text-muted" style="line-height:1.7;">
+        <p style="margin:0 0 1em;">This is not a community garden. FarmBlock is designed as an ownership and economic-development strategy &mdash; productive land held by the lineage, generating yield, dignity, and a hedge against displacement.</p>
+        <p style="margin:0;">Ownership structures &mdash; land trusts, cooperative title, long-term leases &mdash; are being evaluated now, before the first bed is planted, so the land can&rsquo;t be taken back once it starts producing.</p>
+      </div>
     </div>
   </section>
+
   <section class="section section--compact">
     <div class="container container--narrow">
       <h2 class="display display--md" style="margin-bottom:1rem;">Tied to the Academy</h2>
-      <div class="body body--lg text-muted" style="line-height:1.7;">Lineage Farms and McCartney Academy reinforce each other: students learn the land, the land feeds the school, and the block becomes a closed loop of nourishment and instruction.</div>
+      <div class="body body--lg text-muted" style="line-height:1.7;">Lineage Farms and the proposed McCartney Academy are designed to reinforce each other: students learning the land, the land feeding the school, and the block becoming a closed loop of nourishment and instruction. Both programs are in development; the tie is a design commitment, not an operating reality &mdash; yet.</div>
     </div>
   </section>
+
   <section class="section section--compact">
-    <div class="container container--narrow" style="text-align:center;">
-      <a href="/donate/" class="btn btn--gold" style="display:inline-block;background:#d4b96a;color:#0a0a0a;font-weight:700;padding:14px 28px;border-radius:8px;text-decoration:none;">Grow with us →</a>
+    <div class="container container--narrow">
+      <h2 class="display display--md" style="margin-bottom:1rem;">What &ldquo;in development&rdquo; means</h2>
+      <div class="body body--lg text-muted" style="line-height:1.7;">
+        <p style="margin:0 0 1em;">There are no operating farm blocks today. What exists is the model, the target geography, early site conversations, and this open call for the people and land partners who will build it.</p>
+        <p style="margin:0;">If you own or steward vacant land in Liberty City, want to volunteer, or want to support the work &mdash; the form below is where that begins.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--compact" id="interest">
+    <div class="container container--narrow">
+      <h2 class="display display--md" style="margin-bottom:1rem;">Grow with us</h2>
+      <p class="body body--lg text-muted" style="margin-bottom:1.5rem;">Volunteers, land partners, and supporters &mdash; tell us who you are and how you&rsquo;d like to be involved. A member of the E5 team reviews every response.</p>
+      <div class="lf-form-shell">
+        <h3>Lineage Farms &mdash; Interest Form</h3>
+        <p class="sub">Fields marked * are required.</p>
+        <form id="lf-form" novalidate>
+          <div class="lf-frow">
+            <div class="lf-field">
+              <label for="lf-name">Full name *</label>
+              <input type="text" id="lf-name" name="name" placeholder="Your full name" required autocomplete="name" />
+            </div>
+            <div class="lf-field">
+              <label for="lf-email">Email *</label>
+              <input type="email" id="lf-email" name="email" placeholder="you@example.com" required autocomplete="email" />
+            </div>
+          </div>
+          <div class="lf-field">
+            <label for="lf-interest">I am a *</label>
+            <select id="lf-interest" name="interest" required>
+              <option value="">Select one&hellip;</option>
+              <option value="volunteer">Volunteer</option>
+              <option value="land-partner">Land partner (I own or steward land)</option>
+              <option value="supporter">Supporter</option>
+            </select>
+          </div>
+          <div class="lf-field">
+            <label for="lf-message">Message *</label>
+            <textarea id="lf-message" name="message" placeholder="Tell us about your land, your skills, or how you'd like to help." required></textarea>
+          </div>
+          <div class="lf-hp" aria-hidden="true">
+            <label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <button type="submit" class="lf-btn" id="lf-submit">Grow with us &rarr;</button>
+          <p id="lf-status" role="status"></p>
+          <p class="lf-fineprint">By responding you are expressing interest only. E5 Enclave makes no representation about timelines, site selection, or program authorization. E5 Enclave Incorporated is a 501(c)(3) nonprofit organization.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--compact" id="programs">
+    <div class="container container--narrow">
+      <span class="section-header__label">Programs of E5 Enclave Inc.</span>
+      <h2 class="display display--md" style="margin-bottom:1rem;">The wider work</h2>
+      <p class="body body--lg text-muted" style="margin-bottom:1.5rem;">Other programs of E5 Enclave Inc., listed for context. Each program stands on its own; none listed here is a partner of Lineage Farms, and none endorses it.</p>
+      <div class="lf-grid2">
+        <a class="lf-card" href="/programs/mccartney-academy/" style="text-decoration:none; color:inherit">
+          <span class="k">Education &middot; Proposed</span>
+          <h3>McCartney Academy</h3>
+          <p>A proposed Black-centered K&ndash;12 STEAM academy in Liberty City &mdash; scholarship, leadership, and emerging technologies.</p>
+        </a>
+        <a class="lf-card" href="/restitution-246/" style="text-decoration:none; color:inherit">
+          <span class="k">Reparations research</span>
+          <h3>Project 2033</h3>
+          <p>E5 Enclave&rsquo;s reparations research hub &mdash; the documented debt, the congressional case, and the path to Black economic parity.</p>
+        </a>
+        <a class="lf-card" href="/willing-333/" style="text-decoration:none; color:inherit">
+          <span class="k">Technology &middot; An invitation</span>
+          <h3>The Willing 333</h3>
+          <p>Technology in service of neighborhoods &mdash; 333 companies invited to build a Miami Civic Robotics Commons.</p>
+        </a>
+        <a class="lf-card" href="/programs/block-to-the-boardroom/" style="text-decoration:none; color:inherit">
+          <span class="k">Civic leadership</span>
+          <h3>Block to the Boardroom</h3>
+          <p>A civic leadership pipeline &mdash; governance, public policy, and institutional management, from neighborhood blocks to boardroom tables.</p>
+        </a>
+      </div>
     </div>
   </section>
 </main>
+<script>
+(function(){
+  var form = document.getElementById('lf-form');
+  if(!form) return;
+  var status = document.getElementById('lf-status');
+  var btn = document.getElementById('lf-submit');
+  var ENDPOINT = 'https://lineage-farms-intake.yisraelleemccartney.workers.dev/submit';
+  function setStatus(msg, ok){ status.textContent = msg; status.className = ok ? 'ok' : 'err'; }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('lf-name').value.trim();
+    var email = document.getElementById('lf-email').value.trim();
+    var interest = document.getElementById('lf-interest').value;
+    var message = document.getElementById('lf-message').value.trim();
+    if(!name || !email || !interest || !message){ setStatus('Please complete all required fields.', false); return; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ setStatus('Please enter a valid email address.', false); return; }
+    var honeypot = form.querySelector('input[name="website"]').value;
+    btn.disabled = true; btn.textContent = 'Sending\u2026';
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, interest: interest, message: message, website: honeypot })
+    }).then(function(r){ return r.json().then(function(d){ return { s: r.status, d: d }; }); })
+    .then(function(res){
+      if(res.s === 200 && res.d && res.d.ok){
+        form.reset();
+        setStatus('Thank you \u2014 your interest has been recorded. A member of the E5 team will be in touch.', true);
+        btn.textContent = 'Sent \u2713';
+      } else {
+        setStatus('Something went wrong (' + (res.d && res.d.error ? res.d.error : 'please try again') + '). You can also reach us at contact@e5enclave.com.', false);
+        btn.disabled = false; btn.textContent = 'Grow with us \u2192';
+      }
+    }).catch(function(){
+      setStatus('Network error \u2014 please check your connection and try again, or write to contact@e5enclave.com.', false);
+      btn.disabled = false; btn.textContent = 'Grow with us \u2192';
+    });
+  });
+})();
+</script>
+
+
 <script>
   // Palette toggle (editorial ↔ original)
   (function(){
