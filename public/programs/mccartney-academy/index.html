@@ -5,11 +5,11 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>McCartney Academy — E5 Enclave</title>
-<meta name="description" content="The McCartney Academy — a school and business center for Liberty City, carrying the name and lineage of Ralph McCartney."/>
+<meta name="description" content="McCartney Academy — a proposed Black-centered K–12 STEAM academy for Liberty City, planned through Florida’s Schools of Hope program. Join the interest list."/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="E5 Enclave"/>
 <meta property="og:title" content="E5 Enclave — A Lineage-led Think Tank"/>
-<meta property="og:description" content="The McCartney Academy — a school and business center for Liberty City, carrying the name and lineage of Ralph McCartney."/>
+<meta property="og:description" content="McCartney Academy — a proposed Black-centered K–12 STEAM academy for Liberty City, planned through Florida’s Schools of Hope program."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:image" content="https://e5enclave.com/assets/og.png"/>
 <meta property="og:image:width" content="1200"/>
@@ -1000,38 +1000,213 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <!-- /e5:chrome-head -->
 
 
+<style>
+  .ma-form-shell { background:#0b0c0e; color:#f4f1e9; border-radius:18px; padding:clamp(30px,5vw,56px); margin-top:8px; }
+  .ma-form-shell h3 { font-family:Georgia,serif; font-size:clamp(24px,3vw,34px); margin:0 0 10px; font-weight:700; color:#f4f1e9; }
+  .ma-form-shell p.sub { color:rgba(244,241,233,.7); max-width:640px; margin:0 0 28px; font-size:16px; }
+  .ma-frow { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:640px){ .ma-frow{ grid-template-columns:1fr; } }
+  .ma-field{ margin-bottom:18px; }
+  .ma-field label{ display:block; font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:#c9a86a; margin-bottom:8px; }
+  .ma-field input[type="text"], .ma-field input[type="email"], .ma-field textarea, .ma-field select{
+    width:100%; background:rgba(244,241,233,.06); border:1px solid rgba(244,241,233,.22);
+    border-radius:10px; color:#f4f1e9; padding:13px 15px; font:inherit; font-size:15px; }
+  .ma-field select option{ color:#11110f; }
+  .ma-field input::placeholder, .ma-field textarea::placeholder{ color:rgba(244,241,233,.38); }
+  .ma-field input:focus, .ma-field textarea:focus, .ma-field select:focus{ outline:2px solid #c9a86a; border-color:#c9a86a; }
+  .ma-field textarea{ min-height:120px; resize:vertical; }
+  .ma-hp{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+  .ma-btn{ display:inline-block; padding:15px 30px; border-radius:999px; font-weight:600; font-size:15px; text-decoration:none; border:1px solid transparent; cursor:pointer; background:#c9a86a; color:#0b0c0e; }
+  .ma-btn:disabled{ opacity:.6; cursor:default; }
+  #ma-status{ margin-top:18px; font-size:15px; display:none; }
+  #ma-status.ok{ display:block; color:#9fd6a8; }
+  #ma-status.err{ display:block; color:#f0a8a0; }
+  .ma-fineprint{ margin-top:22px; font-size:13px; color:rgba(244,241,233,.5); max-width:700px; }
+  .ma-grid2{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; margin-top:10px; }
+  .ma-card{ background:rgba(255,255,255,.55); border:1px solid rgba(17,17,15,.2); border-radius:14px; padding:26px 26px 24px; display:block; }
+  .ma-card h3{ font-family:Georgia,serif; font-size:21px; margin:0 0 10px; font-weight:700; }
+  .ma-card p{ margin:0; font-size:15px; color:#3a392f; }
+  .ma-card .k{ font-size:11px; font-weight:700; letter-spacing:.2em; color:#7e6329; text-transform:uppercase; display:block; margin-bottom:8px; }
+</style>
+
 <main id="main-content" class="sv-interior">
   <section class="section section--compact">
     <div class="container container--narrow">
-      <span class="section-header__label">Flagship Program 01</span>
-      <h1 class="display display--lg">The school<br><span class="text-gold">the lineage needed.</span></h1>
-      <p class="body body--lg text-muted">McCartney Academy is a Black-centered K-12 institution anchored at Charles R. Drew in Liberty City, Miami — named in honor of Ralph McCartney, the Liberty City elder who once guarded those same halls.</p>
+      <span class="section-header__label">Flagship Program 01 &middot; Proposed</span>
+      <h1 class="display display--lg">The school<br><span class="text-gold">the lineage is building.</span></h1>
+      <p class="body body--lg text-muted">McCartney Academy is a <strong>proposed</strong> Black-centered K&ndash;12 STEAM academy for Liberty City, Miami &mdash; planned through Florida&rsquo;s Schools of Hope program as districts shutter neighborhood schools. It does not exist yet. This page describes the plan, the path, and how to join the work of building it.</p>
     </div>
   </section>
+
+  <section class="section section--compact">
+    <div class="container container--narrow">
+      <h2 class="display display--md" style="margin-bottom:1rem;">Why now</h2>
+      <div class="body body--lg text-muted" style="line-height:1.7;">
+        <p style="margin:0 0 1em;">School districts across Florida are closing neighborhood schools, and the buildings left behind become someone else&rsquo;s opportunity. The Schools of Hope program exists for exactly this moment: it allows mission-driven operators to open new public schools in the communities losing theirs.</p>
+        <p style="margin:0;">E5 Enclave proposes to answer that opening with a school the lineage owns &mdash; planned across multiple school sites, beginning in Liberty City, pairing rigorous academics with the technologies shaping the emerging future.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section section--compact">
     <div class="container container--narrow">
       <h2 class="display display--md" style="margin-bottom:1rem;">Why Charles R. Drew</h2>
-      <div class="body body--lg text-muted" style="line-height:1.7;">E5 Enclave's founder walked this exact corridor — Charles R. Drew K-8, then Miami Northwestern. The McCartney Academy is designed to fill the precise pipeline gap he lived through: a school that builds scholars and sovereignty in the same breath, in the community that raised them.</div>
+      <div class="body body--lg text-muted" style="line-height:1.7;">E5 Enclave&rsquo;s founder walked this exact corridor &mdash; Charles R. Drew K-8, then Miami Northwestern. The proposed Academy would fill the precise pipeline gap he lived through: a school that builds scholars and sovereignty in the same breath, in the community that raised them.</div>
     </div>
   </section>
+
   <section class="section section--compact">
     <div class="container container--narrow">
       <h2 class="display display--md" style="margin-bottom:1rem;">Named for an elder</h2>
-      <div class="body body--lg text-muted" style="line-height:1.7;">Ralph McCartney was a Liberty City elder with Overtown roots who served on the M-DCPS committee that watched Booker Washington High phased out — and who worked security at Charles R. Drew during our founder's own years there. The Academy carries his name so the lineage is never forgotten.</div>
+      <div class="body body--lg text-muted" style="line-height:1.7;">Ralph McCartney was a Liberty City elder with Overtown roots who served on the M-DCPS committee that watched Booker T. Washington High phased out &mdash; and who worked security at Charles R. Drew during our founder&rsquo;s own years there. The Academy would carry his name so the lineage is never forgotten.</div>
     </div>
   </section>
+
   <section class="section section--compact">
     <div class="container container--narrow">
-      <h2 class="display display--md" style="margin-bottom:1rem;">Black-centered K-12</h2>
-      <div class="body body--lg text-muted" style="line-height:1.7;">A full K-12 model grounded in the Five Pillars: academic rigor, cultural foundation, economic literacy, civic power, and spiritual grounding. Not a charter experiment — institutional infrastructure the lineage owns.</div>
+      <h2 class="display display--md" style="margin-bottom:1rem;">Black-centered K&ndash;12, STEM and emerging technology</h2>
+      <div class="body body--lg text-muted" style="line-height:1.7;">
+        <p style="margin:0 0 1em;">The proposed model is a full K&ndash;12 academy grounded in five pillars: academic rigor, cultural foundation, economic literacy, civic power, and spiritual grounding &mdash; with STEM, artificial intelligence, and robotics woven through the curriculum from the earliest grades.</p>
+        <p style="margin:0;">Not a charter experiment. The design intent is institutional infrastructure the lineage would own: curriculum, culture, and capability under community governance, built to produce the next generation of institutional architects.</p>
+      </div>
     </div>
   </section>
+
   <section class="section section--compact">
-    <div class="container container--narrow" style="text-align:center;">
-      <a href="/donate/" class="btn btn--gold" style="display:inline-block;background:#d4b96a;color:#0a0a0a;font-weight:700;padding:14px 28px;border-radius:8px;text-decoration:none;">Support the Academy →</a>
+    <div class="container container--narrow">
+      <h2 class="display display--md" style="margin-bottom:1rem;">The path, as proposed</h2>
+      <div class="body body--lg text-muted" style="line-height:1.7;">
+        <p style="margin:0 0 1em;"><strong>Listening and design.</strong> Community listening, educator and family input, curriculum architecture, and site feasibility &mdash; the work now underway.</p>
+        <p style="margin:0 0 1em;"><strong>Authorization.</strong> A Schools of Hope application and the district, facility, and governance approvals a public school requires. Nothing opens without them.</p>
+        <p style="margin:0;"><strong>Founding cohort.</strong> Family enrollment, educator hiring, and a first school year &mdash; only after authorization and readiness are secured.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--compact">
+    <div class="container container--narrow">
+      <h2 class="display display--md" style="margin-bottom:1rem;">What &ldquo;proposed&rdquo; means</h2>
+      <div class="body body--lg text-muted" style="line-height:1.7;">
+        <p style="margin:0 0 1em;">There is no campus yet, no enrollment, no tuition, and no school year on the calendar. Any page, post, or person describing McCartney Academy as operating is mistaken &mdash; including earlier versions of this page, which have been corrected.</p>
+        <p style="margin:0;">What exists today is the plan, the name, the lineage behind it, and an open interest list. If you want this school to exist, the list below is where that begins.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--compact" id="interest">
+    <div class="container container--narrow">
+      <h2 class="display display--md" style="margin-bottom:1rem;">Join the interest list</h2>
+      <p class="body body--lg text-muted" style="margin-bottom:1.5rem;">Parents, educators, partners, and supporters &mdash; tell us who you are and how you&rsquo;d like to be involved. A member of the E5 team reviews every response.</p>
+      <div class="ma-form-shell">
+        <h3>McCartney Academy &mdash; Interest Form</h3>
+        <p class="sub">This is an interest list for a proposed school, not an application for enrollment. Fields marked * are required.</p>
+        <form id="ma-form" novalidate>
+          <div class="ma-frow">
+            <div class="ma-field">
+              <label for="ma-name">Full name *</label>
+              <input type="text" id="ma-name" name="name" placeholder="Your full name" required autocomplete="name" />
+            </div>
+            <div class="ma-field">
+              <label for="ma-email">Email *</label>
+              <input type="email" id="ma-email" name="email" placeholder="you@example.com" required autocomplete="email" />
+            </div>
+          </div>
+          <div class="ma-field">
+            <label for="ma-interest">I am a *</label>
+            <select id="ma-interest" name="interest" required>
+              <option value="">Select one&hellip;</option>
+              <option value="parent">Parent or guardian</option>
+              <option value="educator">Educator</option>
+              <option value="partner">Potential partner</option>
+              <option value="supporter">Supporter</option>
+            </select>
+          </div>
+          <div class="ma-field">
+            <label for="ma-message">Message *</label>
+            <textarea id="ma-message" name="message" placeholder="What draws you to the Academy, and how would you like to help?" required></textarea>
+          </div>
+          <div class="ma-hp" aria-hidden="true">
+            <label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <button type="submit" class="ma-btn" id="ma-submit">Join the interest list &rarr;</button>
+          <p id="ma-status" role="status"></p>
+          <p class="ma-fineprint">By responding you are expressing interest only. This is not an application for enrollment, and E5 Enclave makes no representation about authorization, timelines, or approvals. E5 Enclave Incorporated is a 501(c)(3) nonprofit organization.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--compact" id="programs">
+    <div class="container container--narrow">
+      <span class="section-header__label">Programs of E5 Enclave Inc.</span>
+      <h2 class="display display--md" style="margin-bottom:1rem;">The wider work</h2>
+      <p class="body body--lg text-muted" style="margin-bottom:1.5rem;">Other programs of E5 Enclave Inc., listed for context. Each program stands on its own; none listed here is a partner of McCartney Academy, and none endorses it.</p>
+      <div class="ma-grid2">
+        <a class="ma-card" href="/programs/lineage-farms/" style="text-decoration:none; color:inherit">
+          <span class="k">Food sovereignty</span>
+          <h3>Lineage Farms</h3>
+          <p>Cooperative urban agriculture &mdash; land stewardship, food sovereignty, and circular economics in practice.</p>
+        </a>
+        <a class="ma-card" href="/restitution-246/" style="text-decoration:none; color:inherit">
+          <span class="k">Reparations research</span>
+          <h3>Project 2033</h3>
+          <p>E5 Enclave&rsquo;s reparations research hub &mdash; the documented debt, the congressional case, and the path to Black economic parity.</p>
+        </a>
+        <a class="ma-card" href="/willing-333/" style="text-decoration:none; color:inherit">
+          <span class="k">Technology &middot; An invitation</span>
+          <h3>The Willing 333</h3>
+          <p>Technology in service of neighborhoods &mdash; 333 companies invited to build a Miami Civic Robotics Commons.</p>
+        </a>
+        <a class="ma-card" href="/programs/block-to-the-boardroom/" style="text-decoration:none; color:inherit">
+          <span class="k">Civic leadership</span>
+          <h3>Block to the Boardroom</h3>
+          <p>A civic leadership pipeline &mdash; governance, public policy, and institutional management, from neighborhood blocks to boardroom tables.</p>
+        </a>
+      </div>
     </div>
   </section>
 </main>
+<script>
+(function(){
+  var form = document.getElementById('ma-form');
+  if(!form) return;
+  var status = document.getElementById('ma-status');
+  var btn = document.getElementById('ma-submit');
+  var ENDPOINT = 'https://mccartney-intake.yisraelleemccartney.workers.dev/submit';
+  function setStatus(msg, ok){ status.textContent = msg; status.className = ok ? 'ok' : 'err'; }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('ma-name').value.trim();
+    var email = document.getElementById('ma-email').value.trim();
+    var interest = document.getElementById('ma-interest').value;
+    var message = document.getElementById('ma-message').value.trim();
+    if(!name || !email || !interest || !message){ setStatus('Please complete all required fields.', false); return; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ setStatus('Please enter a valid email address.', false); return; }
+    var honeypot = form.querySelector('input[name="website"]').value;
+    btn.disabled = true; btn.textContent = 'Sending\u2026';
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, interest: interest, message: message, website: honeypot })
+    }).then(function(r){ return r.json().then(function(d){ return { s: r.status, d: d }; }); })
+    .then(function(res){
+      if(res.s === 200 && res.d && res.d.ok){
+        form.reset();
+        setStatus('Thank you \u2014 your interest has been recorded. A member of the E5 team will be in touch.', true);
+        btn.textContent = 'Sent \u2713';
+      } else {
+        setStatus('Something went wrong (' + (res.d && res.d.error ? res.d.error : 'please try again') + '). You can also reach us at contact@e5enclave.com.', false);
+        btn.disabled = false; btn.textContent = 'Join the interest list \u2192';
+      }
+    }).catch(function(){
+      setStatus('Network error \u2014 please check your connection and try again, or write to contact@e5enclave.com.', false);
+      btn.disabled = false; btn.textContent = 'Join the interest list \u2192';
+    });
+  });
+})();
+</script>
+
+
 <script>
   // Palette toggle (editorial ↔ original)
   (function(){
