@@ -1,0 +1,66 @@
+/* ============================================================
+   bd50-mesh.css — Chapter IV community-ownership mesh
+   (canvas + HTML label overlays) and the FarmBlock
+   innovation strip. Black / oxblood red / gold.
+   Fail-closed: without JS the static engraved SVG inside
+   .bd50-mesh-stage carries the diagram; the canvas and the
+   label overlays only ever appear once JS mounts the live
+   mesh (.mesh-live). No text ever rests at opacity 0.
+   Copy frozen — presentation only.
+   ============================================================ */
+
+/* ---------- mechanism stage ---------- */
+.bd50-mesh-stage{position:relative}
+.mesh-live.mesh-wide .bd50-mesh-stage{aspect-ratio:16/10}
+/* stacked mode: JS sets an explicit pixel height from measured plates */
+.bd50-mech-figure.mesh-live svg{display:none}
+.bd50-mesh-canvas{position:absolute;inset:0;width:100%;height:100%;display:none}
+.mesh-live .bd50-mesh-canvas{display:block}
+/* no-JS or canvas failure: canvas + overlays never appear, the SVG stands */
+html:not(.js) .bd50-mesh-canvas,
+html:not(.js) .bd50-mesh-labels,
+.bd50-mech-figure:not(.mesh-live) .bd50-mesh-canvas,
+.bd50-mech-figure:not(.mesh-live) .bd50-mesh-labels{display:none}
+
+.bd50-mesh-labels{position:absolute;inset:0;z-index:3;pointer-events:none}
+.bd50-mesh-plate{position:absolute;left:var(--x,50%);top:var(--y,50%);
+  transform:translate(-50%,-50%);text-align:center;
+  padding:clamp(9px,1.4vw,14px) clamp(12px,1.8vw,20px);
+  background:rgba(10,8,7,.86);
+  border:1px solid var(--bd-gold);
+  box-shadow:0 0 0 4px rgba(10,8,7,.86),0 0 0 5px rgba(217,168,63,.32),
+    0 0 40px rgba(140,29,33,.5);
+  max-width:min(78%,340px)}
+.bd50-mesh-plate .t{display:block;font-family:var(--bd-mono);
+  font-size:clamp(11px,1.35vw,14px);letter-spacing:.28em;font-weight:600;
+  color:var(--bd-gold-2);line-height:1.75;text-indent:.28em}
+.bd50-mesh-plate .s{display:block;font-family:var(--bd-mono);
+  font-size:clamp(8px,1vw,10px);letter-spacing:.16em;color:var(--bd-ivory-dim);
+  margin-top:7px;line-height:1.7;text-indent:.16em}
+.bd50-mesh-note{position:absolute;left:var(--x,50%);top:var(--y,50%);
+  transform:translate(-50%,-50%);font-family:var(--bd-mono);
+  font-size:clamp(7.5px,.95vw,9.5px);letter-spacing:.22em;white-space:nowrap;
+  color:var(--bd-gold-dim);text-indent:.22em}
+.bd50-mesh-note.it{font-family:var(--bd-display);font-style:italic;
+  letter-spacing:.02em;font-size:clamp(12px,1.5vw,15px);
+  color:rgba(217,186,108,.82);text-indent:0;white-space:normal;text-align:center}
+.mesh-live.mesh-stacked .bd50-mesh-note{white-space:normal;max-width:94%;text-align:center}
+
+/* ---------- innovation strip (FarmBlock) ---------- */
+.bd50-innov{margin-top:clamp(52px,6vw,88px);border-top:1px solid var(--bd-rule);
+  padding-top:clamp(28px,3vw,44px)}
+.bd50-innov-eyebrow{font-family:var(--bd-mono);font-size:11px;letter-spacing:.5em;
+  text-transform:uppercase;font-weight:600;color:var(--bd-red-hot);margin-bottom:26px}
+.bd50-innov-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(14px,1.8vw,26px)}
+.bd50-innov-card{border:1px solid var(--bd-rule-soft);border-left:2px solid var(--bd-gold);
+  background:rgba(14,10,9,.62);padding:clamp(18px,2vw,26px)}
+.bd50-innov-card .n{font-family:var(--bd-mono);font-size:10px;letter-spacing:.3em;
+  color:var(--bd-gold-dim);margin-bottom:12px}
+.bd50-innov-card h3{font-family:var(--bd-mono);font-size:12px;letter-spacing:.2em;
+  color:var(--bd-gold-2);margin:0 0 12px;font-weight:600;line-height:1.75}
+.bd50-innov-card p{font-size:14px;line-height:1.7;color:var(--bd-ivory-dim);margin:0}
+.bd50-innov-frame{margin:26px 0 0;font-family:var(--bd-display);font-style:italic;
+  font-size:clamp(15px,1.5vw,18px);line-height:1.55;color:var(--bd-ivory-faint);max-width:72ch}
+@media(max-width:1100px){.bd50-innov-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.bd50-innov-grid{grid-template-columns:minmax(0,1fr)}}

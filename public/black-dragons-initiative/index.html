@@ -4,6 +4,7 @@
 <head><script>document.documentElement.classList.add('js');</script><link rel="stylesheet" href="/variant.css">
 <link rel="stylesheet" href="css/bd50-cinematic.css">
 <link rel="stylesheet" href="css/bd50-farm.css">
+<link rel="stylesheet" href="css/bd50-mesh.css">
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Black Dragons Initiative — E5 Enclave</title>
@@ -555,6 +556,7 @@ html.js .reveal.pre.in.d3{transition-delay:.36s}
       <p class="bd50-statement reveal">Community land trusts take land off the speculative market and hold it in community ownership in perpetuity.</p>
       <p class="bd50-sub reveal d1">Homes, gardens, and gathering spaces built on trust-held land stay affordable and community-governed no matter how the market moves around them.</p>
       <figure class="bd50-mech-figure reveal d1">
+      <div class="bd50-mesh-stage">
 <svg viewBox="0 0 640 460" role="img" aria-label="Community land trust mechanism diagram">
 <defs>
 <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
@@ -595,6 +597,30 @@ html.js .reveal.pre.in.d3{transition-delay:.36s}
 <text x="120" y="414" font-size="15">stays governed</text>
 </g>
 </svg>
+        <canvas class="bd50-mesh-canvas" aria-hidden="true"></canvas>
+        <div class="bd50-mesh-labels">
+          <div class="bd50-mesh-plate" data-node="parcels">
+            <span class="t">PARCELS<br>ACQUIRED</span>
+          </div>
+          <div class="bd50-mesh-plate" data-node="trust">
+            <span class="t">COMMUNITY<br>LAND TRUST</span>
+            <span class="s">OFF THE SPECULATIVE MARKET</span>
+          </div>
+          <div class="bd50-mesh-note" data-note="removed">REMOVED FROM SPECULATION &middot; PERMANENTLY</div>
+          <div class="bd50-mesh-plate" data-node="land">
+            <span class="t">THE LAND</span>
+            <span class="s">COMMUNITY HANDS &middot; IN PERPETUITY</span>
+            <span class="s">NEVER RESOLD FOR SPECULATION</span>
+          </div>
+          <div class="bd50-mesh-note it" data-note="baseof">the base of<br>everything</div>
+          <div class="bd50-mesh-plate" data-node="buildings">
+            <span class="t">THE BUILDINGS</span>
+            <span class="s">OWNED &middot; LEASED &middot; COOPERATIVELY</span>
+            <span class="s">MANAGED BY THE PEOPLE WHO USE THEM</span>
+          </div>
+          <div class="bd50-mesh-note it" data-note="stays">stays affordable,<br>stays governed</div>
+        </div>
+      </div>
       </figure>
       <div class="bd50-body reveal d2">
         <h3 class="bd50-h3">Land held in common, in perpetuity</h3>
@@ -651,6 +677,32 @@ html.js .reveal.pre.in.d3{transition-delay:.36s}
       <p>A working test of <em>how a block can feed itself</em> and own the infrastructure that makes it possible.</p>
       <span class="src">The FarmBlock Pilot &middot; E5 Enclave Inc.</span>
     </blockquote>
+    <div class="bd50-innov reveal">
+      <div class="bd50-innov-eyebrow">The innovation &middot; as proposed</div>
+      <div class="bd50-innov-grid">
+        <article class="bd50-innov-card">
+          <div class="n">01</div>
+          <h3>SELF-HEALING FIELD MESH</h3>
+          <p>A proposed wireless mesh that keeps farm devices connected with no ISP broadband &mdash; routes recalculate automatically when a node fails.</p>
+        </article>
+        <article class="bd50-innov-card">
+          <div class="n">02</div>
+          <h3>HYPER-LOCAL SENSOR ARRAYS</h3>
+          <p>Proposed low-cost arrays reading soil moisture, temperature, humidity, pH, and light at the bed level, with redundant cross-validation.</p>
+        </article>
+        <article class="bd50-innov-card">
+          <div class="n">03</div>
+          <h3>ON-DEVICE FARM INTELLIGENCE</h3>
+          <p>Proposed lightweight AI on edge hardware &mdash; reading soil and weather streams and recommending actions, designed to run entirely offline.</p>
+        </article>
+        <article class="bd50-innov-card">
+          <div class="n">04</div>
+          <h3>FEELESS FARM DATA LEDGER</h3>
+          <p>A proposed feeless ledger validating sensor readings, so thousands of daily micro-transactions stay economical.</p>
+        </article>
+      </div>
+      <p class="bd50-innov-frame">These are concepts from E5 Enclave&rsquo;s NSF SBIR Phase I proposals &mdash; under development, not deployed systems.</p>
+    </div>
   </div>
 </section>
 
@@ -887,6 +939,7 @@ html.js .reveal.pre.in.d3{transition-delay:.36s}
 <script>/*revealFailsafe*/window.addEventListener('load',function(){setTimeout(function(){document.querySelectorAll('.reveal:not(.in)').forEach(function(e){e.classList.add('in');});},1200);});</script><script src="js/vendor/three.min.js" defer></script>
 <script src="js/bd50-cinematic.js" defer></script>
 <script src="js/bd50-farm.js" defer></script>
+<script src="js/bd50-mesh.js" defer></script>
 <!-- e5:chrome-foot -->
 <div class="sov-chrome sov-chrome-foot" style="margin-top:clamp(60px,8vw,120px)">
 <div style="position:relative; z-index:5; margin-top:0; height:4px; background:linear-gradient(90deg,#6E5220,#C9A24A 24%,#E9D3A0 50%,#C9A24A 76%,#6E5220)"></div>
