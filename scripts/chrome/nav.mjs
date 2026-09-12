@@ -3,7 +3,7 @@
 export const NAV = [
   { label: 'About',           route: '/about/',           hash: '#doctrine' },
   { label: 'Pillars',         route: '/pillars/',         hash: '#pillars'  },
-  { label: 'Reparations', route: '/restitution-246/', hash: '#congress' },
+  { label: 'Reparations', route: '/project-2033/', hash: '#congress' },
   { label: 'The Record',      route: '/record/',          hash: '#record'   },
   { label: 'Coalition',       route: '/coalition/',       hash: '#network'  },
 ];
