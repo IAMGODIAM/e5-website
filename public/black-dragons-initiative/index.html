@@ -134,7 +134,7 @@ html.js .reveal.pre.in.d3{transition-delay:.36s}
 @media(max-width:960px){.bd50-hero-inner{grid-template-columns:minmax(0,1fr);padding-top:120px}.bd50-emblem{width:min(64%,330px);order:-1}}
 
 /* ---------- chapter scaffolding ---------- */
-.bd50-chapter{padding:clamp(76px,9vw,150px) 0;position:relative;background:var(--bd-ink);border-bottom:1px solid var(--bd-rule-soft)}
+.bd50-chapter{padding:clamp(60px,6.5vw,110px) 0;position:relative;background:var(--bd-ink);border-bottom:1px solid var(--bd-rule-soft)}
 .bd50-chapter.alt{background:var(--bd-coal)}
 .bd50-grid{display:grid;grid-template-columns:clamp(72px,10vw,132px) minmax(0,1fr);gap:clamp(20px,4vw,72px)}
 .bd50-rail{position:relative;padding-right:clamp(12px,2vw,28px)}
@@ -179,7 +179,7 @@ html.js .reveal.pre.in.d3{transition-delay:.36s}
 .bd50-ledger-row .lk{font-family:var(--bd-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--bd-red-hot);font-weight:600}
 .bd50-ledger-row .lv{font-family:var(--bd-display);font-size:clamp(20px,2.2vw,30px);line-height:1.35;color:var(--bd-ivory)}
 @media(max-width:640px){.bd50-ledger-row{grid-template-columns:minmax(0,1fr);gap:8px}}
-.bd50-watermark{position:absolute;right:-4%;top:50%;transform:translateY(-50%);width:min(46vw,560px);opacity:.10;pointer-events:none;mask-image:radial-gradient(ellipse at center,#000 40%,transparent 72%);-webkit-mask-image:radial-gradient(ellipse at center,#000 40%,transparent 72%)}
+.bd50-watermark{position:absolute;right:0;top:50%;transform:translateY(-50%);width:min(46vw,560px);opacity:.17;pointer-events:none;mask-image:radial-gradient(ellipse at center,#000 52%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at center,#000 52%,transparent 80%)}
 
 /* fire interlude — pillar 02 */
 .bd50-fire{background:linear-gradient(155deg,#3d0b0e 0%,#7c181c 46%,#a3242a 72%,#5c1014 100%);border-top:2px solid var(--bd-red-hot);border-bottom:2px solid var(--bd-red-hot);overflow:hidden}
@@ -227,7 +227,7 @@ html.js .reveal.pre.in.d3{transition-delay:.36s}
 .bd50-prov{margin-top:28px;padding:20px 22px;border-left:3px solid var(--bd-red-hot);background:rgba(140,29,33,.14);font-size:13.5px;line-height:1.7;color:var(--bd-ivory-dim)}
 
 /* ---------- begin / ledger ---------- */
-.bd50-begin{background:var(--bd-ink);padding:clamp(84px,10vw,170px) 0;position:relative;overflow:hidden;border-bottom:1px solid var(--bd-rule-soft)}
+.bd50-begin{background:var(--bd-ink);padding:clamp(64px,7vw,120px) 0;position:relative;overflow:hidden;border-bottom:1px solid var(--bd-rule-soft)}
 .bd50-begin-art{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(1300px,150vw);opacity:.13;pointer-events:none;mask-image:radial-gradient(ellipse at center,#000 28%,transparent 68%);-webkit-mask-image:radial-gradient(ellipse at center,#000 28%,transparent 68%)}
 .bd50-begin-inner{position:relative;z-index:1}
 .bd50-begin-title{font-family:var(--bd-display);font-weight:500;font-size:clamp(46px,6.2vw,100px);line-height:1;letter-spacing:-.02em;margin:0 0 26px;color:var(--bd-ivory)}
@@ -806,13 +806,17 @@ html.js .reveal.pre.in.d3{transition-delay:.36s}
   var secs = ['ch-principles','ch-framework','ch-pillars','ch-mechanism','ch-record','ch-begin']
     .map(function(id){ return document.getElementById(id); }).filter(Boolean);
   if ('IntersectionObserver' in window && secs.length) {
+    // Highlight the chapter occupying the largest share of the central
+    // viewport band, so the rail tracks the section actually in view.
     var sio = new IntersectionObserver(function(es){
+      var best=null, bestR=0;
       es.forEach(function(e){
-        if (e.isIntersecting) {
-          links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('data-spine') === e.target.id); });
-        }
+        if (e.isIntersecting && e.intersectionRatio > bestR) { bestR = e.intersectionRatio; best = e.target; }
       });
-    }, {rootMargin:'-40% 0px -55% 0px'});
+      if (best) {
+        links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('data-spine') === best.id); });
+      }
+    }, {rootMargin:'-20% 0px -20% 0px', threshold:[0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1]});
     secs.forEach(function(s){ sio.observe(s); });
   }
   // Chapter-interest intake
