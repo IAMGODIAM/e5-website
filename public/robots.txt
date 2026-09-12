@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /assets/docs/black-dragons/
 Sitemap: https://e5enclave.com/sitemap.xml
