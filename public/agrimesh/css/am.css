@@ -73,6 +73,7 @@ body.am{background:var(--am-paper);color:var(--am-ink);font-family:var(--am-body
   border-radius:999px;padding:.72rem 1.6rem;cursor:pointer;transition:background .3s,color .3s}
 .am-pill:hover{border-color:var(--am-gold)}
 .am-pill[aria-pressed="true"]{background:var(--am-gold);color:#fffdf7;border-color:var(--am-gold)}
+.am-pill:focus-visible{outline:3px solid var(--am-green);outline-offset:2px}
 
 /* ---------- Twin section ---------- */
 .am-twin{background:linear-gradient(180deg,var(--am-paper) 0%,#f4ecda 100%);border-block:1px solid var(--am-rule)}
@@ -136,6 +137,8 @@ body.am{background:var(--am-paper);color:var(--am-ink);font-family:var(--am-body
   letter-spacing:.14em;text-transform:uppercase;color:var(--am-gold);background:transparent;
   border:1.5px solid var(--am-gold-line);border-radius:999px;padding:.85rem 1.8rem;transition:background .3s,color .3s}
 .am-btn:hover{background:var(--am-gold);color:#fffdf7;border-color:var(--am-gold)}
+.am-btn:focus-visible{outline:3px solid var(--am-green);outline-offset:2px}
+.am-scrollcue:focus-visible{outline:3px solid var(--am-green);outline-offset:3px}
 
 /* ---------- Form (E5 form protocol markup) ---------- */
 .am-form{display:grid;gap:.9rem;margin-top:1rem}

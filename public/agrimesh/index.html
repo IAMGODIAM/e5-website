@@ -451,7 +451,9 @@
         <div class="am-door am-reveal">
           <h3>For growers</h3>
           <p>Do you grow in Miami-Dade? Tell us what you grow and where. Pilot participation is proposed, not promised — this form is the first conversation.</p>
-          <form class="am-form" id="am-interest-form" novalidate>
+          <form class="am-form" id="am-interest-form" novalidate
+                action="https://agrimesh-intake.e5enclave.com/submit" method="post">
+            <input type="hidden" name="source" value="agrimesh-flagship"/>
             <label>Name
               <input type="text" name="name" autocomplete="name" required/>
             </label>
@@ -519,8 +521,8 @@
 /* E5 form protocol — grower interest intake.
    Endpoint is owned infrastructure (Worker + D1), origin-locked,
    honeypotted, rate-limited, notifying contact@e5enclave.com. */
-const AM_INTAKE_ENDPOINT = "https://REPLACE-ME.workers.dev/submit";
-/* <!-- WORKER3: replace with real endpoint --> */
+const AM_INTAKE_ENDPOINT = "https://agrimesh-intake.e5enclave.com/submit";
+/* <!-- WORKER3: endpoint live 2026-09-12 --> */
 (function(){
   var form = document.getElementById('am-interest-form');
   if (!form) return;
