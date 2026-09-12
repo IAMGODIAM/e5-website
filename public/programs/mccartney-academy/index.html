@@ -1128,7 +1128,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
           <div class="ma-hp" aria-hidden="true">
             <label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
           </div>
-          <button type="submit" class="ma-btn" id="ma-submit">Join the interest list &rarr;</button>
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAExGnuJoDnOTHE-M" data-callback="e5tsDone" data-expired-callback="e5tsExpired" style="margin:14px 0;"></div>
+<button type="submit" class="ma-btn" id="ma-submit">Join the interest list &rarr;</button>
           <p id="ma-status" role="status"></p>
           <p class="ma-fineprint">By responding you are expressing interest only. This is not an application for enrollment, and E5 Enclave makes no representation about authorization, timelines, or approvals. E5 Enclave Incorporated is a 501(c)(3) nonprofit organization.</p>
         </form>
@@ -1166,10 +1167,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     </div>
   </section>
 </main>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
 (function(){
   var form = document.getElementById('ma-form');
   if(!form) return;
+  /* Turnstile (bot check) — widget renders above; token is verified
+     server-side by the intake Worker (missing/invalid token -> 403). */
+  var e5tsToken = '';
+  window.e5tsDone = function(t){ e5tsToken = t || ''; };
+  window.e5tsExpired = function(){ e5tsToken = ''; };
   var status = document.getElementById('ma-status');
   var btn = document.getElementById('ma-submit');
   var ENDPOINT = 'https://mccartney-intake.yisraelleemccartney.workers.dev/submit';
@@ -1182,16 +1189,18 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     var message = document.getElementById('ma-message').value.trim();
     if(!name || !email || !interest || !message){ setStatus('Please complete all required fields.', false); return; }
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ setStatus('Please enter a valid email address.', false); return; }
+    if(!e5tsToken){ setStatus('One moment \u2014 the security check is still finishing. Please press send again.', false); return; }
     var honeypot = form.querySelector('input[name="website"]').value;
     btn.disabled = true; btn.textContent = 'Sending\u2026';
     fetch(ENDPOINT, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ name: name, email: email, interest: interest, message: message, website: honeypot })
+      body: JSON.stringify({ name: name, email: email, interest: interest, message: message, website: honeypot, turnstileToken: e5tsToken })
     }).then(function(r){ return r.json().then(function(d){ return { s: r.status, d: d }; }); })
     .then(function(res){
       if(res.s === 200 && res.d && res.d.ok){
         form.reset();
+        e5tsToken = ''; if (window.turnstile) { try { turnstile.reset(); } catch (_) {} };
         setStatus('Thank you \u2014 your interest has been recorded. A member of the E5 team will be in touch.', true);
         btn.textContent = 'Sent \u2713';
       } else {

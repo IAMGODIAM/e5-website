@@ -785,6 +785,7 @@ html.js .reveal.pre.in.d3{transition-delay:.36s}
           <textarea id="bd-message" name="message" required maxlength="5000"></textarea>
         </div>
         <div class="bd-hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAExGnuJoDnOTHE-M" data-callback="e5tsDone" data-expired-callback="e5tsExpired" style="margin:14px 0;"></div>
         <button class="bd50-send" type="submit">Send it</button>
         <p class="bd-status" id="bd-status" role="status" aria-live="polite"></p>
       </form>
@@ -830,6 +831,7 @@ html.js .reveal.pre.in.d3{transition-delay:.36s}
 </script>
 
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
 (function(){
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -897,6 +899,11 @@ html.js .reveal.pre.in.d3{transition-delay:.36s}
     secs.forEach(function(s){ sio.observe(s); });
   }
   // Chapter-interest intake
+  /* Turnstile (bot check) — widget renders above; token is verified
+     server-side by the intake Worker (missing/invalid token -> 403). */
+  var e5tsToken = '';
+  window.e5tsDone = function(t){ e5tsToken = t || ''; };
+  window.e5tsExpired = function(){ e5tsToken = ''; };
   var form = document.getElementById('bd-intake-form');
   var status = document.getElementById('bd-status');
   form.addEventListener('submit', function(e){
@@ -908,18 +915,20 @@ html.js .reveal.pre.in.d3{transition-delay:.36s}
       city: form.city.value.trim(),
       interest: form.interest.value,
       message: form.message.value.trim(),
-      website: form.website.value
+      website: form.website.value,
+      turnstileToken: e5tsToken
     };
     if (!payload.name || !payload.email || !payload.interest || !payload.message) {
       status.className = 'bd-status err'; status.textContent = 'Please complete every required field.'; return;
     }
+    status.className = 'bd-status err'; status.textContent = 'One moment \u2014 the security check is still finishing. Please press send again.'; return;
     status.textContent = 'Sending\u2026';
     fetch('https://black-dragons-intake.yisraelleemccartney.workers.dev/submit', {
       method: 'POST', headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(payload)
     }).then(function(r){ return r.json().then(function(d){ return {ok: r.ok && d.ok, err: d.error}; }); })
     .then(function(res){
-      if (res.ok) { status.className = 'bd-status ok'; status.textContent = 'Received. A person at E5 Enclave will read it and reply.'; form.reset(); }
+      if (res.ok) { status.className = 'bd-status ok'; status.textContent = 'Received. A person at E5 Enclave will read it and reply.'; form.reset(); e5tsToken = ''; if (window.turnstile) { try { turnstile.reset(); } catch (_) {} }; }
       else { status.className = 'bd-status err'; status.textContent = 'That didn\u2019t send (' + (res.err || 'unknown error') + '). Please try again, or write to contact@e5enclave.com.'; }
     }).catch(function(){
       status.className = 'bd-status err'; status.textContent = 'That didn\u2019t send. Please try again, or write to contact@e5enclave.com.';
