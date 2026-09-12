@@ -57,6 +57,15 @@
  *     every ~25 s with a faint light trail and blinking nav light. Atmosphere
  *     only. Never appears in static/reduced-motion frames.
  *   Perf budget unchanged: DPR <= 1.5, same FPS governor, same hard-pauses.
+ * Farm-sim game reskin (2026-09-12, round 3 — aesthetics only, honesty rules
+ *   unchanged): the twin renders as a Township/Town Star-style game board —
+ *   cheerful sky, crop beds with growth stages (sprout/bushy/flowering/ready),
+ *   barn/silo/greenhouse/windmill, butterflies, drifting cloud shadows.
+ *   Nodes are game tokens over in-world sensor posts (farmhouse hub for the
+ *   gateway); packets render partly as quadcopter drone units flying their
+ *   REAL BFS routes. Moisture-layer crop tint uses the same frozen blobs
+ *   (legend says so). All simulation logic, fail-closed fallbacks, watermark,
+ *   and claim rules untouched.
  * ========================================================================== */
 (function (global) {
 'use strict';
@@ -76,27 +85,29 @@ var FRAME_BUDGET_MS = 40;   // avg frame time above this triggers degradation
 var MAX_DPR = 1.5;
 
 var LEGENDS = {
-  moisture:    'Soil moisture \u2014 darker = drier soil. Contoured color field, simulated replay.',
+  moisture:    'Soil moisture \u2014 darker = drier soil; crops look thirstier where dry. Contoured color field, simulated replay.',
   temperature: 'Soil temperature \u2014 darker = warmer soil. Contoured color field, simulated replay.',
   network:     'Mesh traffic \u2014 each moving dot is one data packet traveling the mesh links. Simulated replay.'
 };
 var LAYER_LABELS = { moisture: 'soil moisture', temperature: 'soil temperature', network: 'mesh traffic' };
 
 var NODE_CSS =
-  '.am-node-btn{position:absolute;width:38px;height:38px;margin:0;padding:0;' +
-  'border-radius:9999px;border:2px solid #2f7a3d;background:rgba(255,255,255,.94);' +
-  'color:#1d4a26;font:600 13px/1 system-ui,-apple-system,sans-serif;cursor:pointer;' +
-  'box-shadow:0 1px 4px rgba(60,40,10,.28),0 0 9px rgba(90,154,82,.5);transform:translate(-50%,-50%);' +
-  'pointer-events:auto;transition:background .2s,border-color .2s,color .2s;}' +
-  '.am-node-btn:hover{border-color:#b08d3e;box-shadow:0 1px 4px rgba(60,40,10,.28),0 0 14px rgba(176,141,62,.65);}' +
+  '.am-node-btn{position:absolute;width:36px;height:36px;margin:0;padding:0;' +
+  'border-radius:9999px;border:3px solid #2f7a3d;background:#fffdf4;' +
+  'color:#2c5a2e;font:700 14px/1 system-ui,-apple-system,sans-serif;cursor:pointer;' +
+  'box-shadow:0 3px 0 rgba(60,40,10,.28),0 0 10px rgba(90,154,82,.55);transform:translate(-50%,-100%);' +
+  'pointer-events:auto;transition:transform .15s,box-shadow .15s,border-color .2s;}' +
+  '.am-node-btn::after{content:"";position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);' +
+  'width:0;height:0;border:6px solid transparent;border-top:8px solid #2f7a3d;}' +
+  '.am-node-btn:hover{transform:translate(-50%,-100%) scale(1.12);' +
+  'box-shadow:0 3px 0 rgba(60,40,10,.28),0 0 16px rgba(176,141,62,.7);}' +
   '.am-node-btn:focus-visible{outline:3px solid #b08d3e;outline-offset:2px;}' +
-  '.am-node-btn.is-gateway{border-color:#b08d3e;background:#fff8e6;color:#6b4d12;' +
-  'animation:am-node-pulse 2.6s ease-in-out infinite;}' +
-  '.am-node-btn.is-offline{background:#e9e2d2;border-color:#a33333;border-style:dashed;color:#7a2a2a;}' +
-  '@keyframes am-node-pulse{' +
-  '0%,100%{box-shadow:0 1px 4px rgba(60,40,10,.28),0 0 0 0 rgba(176,141,62,.5);}' +
-  '50%{box-shadow:0 1px 4px rgba(60,40,10,.28),0 0 14px 4px rgba(176,141,62,.30);}}' +
-  '@media (prefers-reduced-motion:reduce){.am-node-btn,.am-node-btn.is-gateway{animation:none!important;}}';
+  '.am-node-btn.is-gateway{border-color:#b08d3e;background:#fff8e6;color:#6b4d12;width:42px;height:42px;font-size:16px;}' +
+  '.am-node-btn.is-gateway::after{border-top-color:#b08d3e;}' +
+  '.am-node-btn.is-offline{background:#e9e2d2;border-color:#a33333;border-style:dashed;color:#7a2a2a;' +
+  'box-shadow:0 3px 0 rgba(60,20,10,.25);}' +
+  '.am-node-btn.is-offline::after{border-top-color:#a33333;}' +
+  '@media (prefers-reduced-motion:reduce){.am-node-btn:hover{transform:translate(-50%,-100%);}}';
 
 /* ================================================================== */
 function createTwin(env) {
@@ -135,7 +146,9 @@ function createTwin(env) {
     scrollTimer: 0,
     beatTimers: [],
     motes: [],            // dawn-atmosphere gold motes (sky band only)
-    drone: null           // { active, t0, nextAt, dur } — flyover accent
+    critters: [],         // butterflies (seeded; sky/field wanderers)
+    clouds: [],           // drifting cloud shadows on the field (seeded)
+    windmill: null        // {x, y, s} hub — set when the bg prerenders
   };
 
   var root, stage, viewport, poster, canvas, ctx, pillsBox, legend, nodesBox, live;
@@ -281,61 +294,318 @@ function createTwin(env) {
     }
   }
 
-  /* ---------------- static background: dawn field ---------------- */
-  function renderBackground(w, h) {
+  /* ---------------- game-board background (round 3) ---------------- */
+  // Farm-sim game board: cheerful sky, puffy clouds, bright sun, lush crop
+  // beds with growth stages, barn/silo/greenhouse/windmill, fence. Crop tint
+  // is driven by the SAME frozen moisture blobs when the moisture layer is
+  // active (the legend says so) — decorative; data stays in the contour
+  // field + links + particles.
+  function rr(x, px, py, pw, ph, rad) {
+    x.beginPath();
+    x.moveTo(px + rad, py);
+    x.arcTo(px + pw, py, px + pw, py + ph, rad);
+    x.arcTo(px + pw, py + ph, px, py + ph, rad);
+    x.arcTo(px, py + ph, px, py, rad);
+    x.arcTo(px, py, px + pw, py, rad);
+    x.closePath();
+  }
+
+  // Dryness 0..1 at fractional coords, sampled from the frozen moisture blobs
+  // (same data that paints the contour field).
+  function moistureAt(fx, fy) {
+    var blobs = (state.replay.blobs && state.replay.blobs.moisture) || [];
+    var v = 0, i;
+    for (i = 0; i < blobs.length; i++) {
+      var b = blobs[i];
+      var dx = fx - b.x, dy = fy - b.y;
+      var d = Math.sqrt(dx * dx + dy * dy) / (b.r || 0.2);
+      if (d < 1) {
+        var f = Math.pow(1 - d, 1.5);
+        if (b.v * f > v) v = b.v * f;
+      }
+    }
+    return v;
+  }
+
+  // One game crop sprite. stage: 0 sprout, 1 bushy, 2 flowering, 3 ready.
+  // dry (0..1): greens shift toward straw and leaves droop — honest, because
+  // it is the simulated replay moisture, and the legend explains it.
+  function drawCropSprite(x, gx, gy, s, stage, dry) {
+    var g1 = dry > 0.66 ? '#c2a054' : (dry > 0.33 ? '#93b04a' : '#4da047');
+    var g2 = dry > 0.66 ? '#9a7c3c' : (dry > 0.33 ? '#74903a' : '#37803a');
+    var droop = dry > 0.66 ? 0.7 : 1;
+    x.save();
+    x.translate(gx, gy);
+    if (dry > 0.66) x.rotate(0.12); // thirsty lean
+    x.lineCap = 'round';
+    var k, L;
+    if (stage === 0) {
+      x.strokeStyle = g1; x.lineWidth = Math.max(1.5, s * 0.14);
+      x.beginPath(); x.moveTo(0, 0); x.lineTo(0, -s * 0.85 * droop); x.stroke();
+      x.fillStyle = g1;
+      x.beginPath(); x.ellipse(-s * 0.26, -s * 0.55 * droop, s * 0.30, s * 0.15, -0.5, 0, Math.PI * 2); x.fill();
+      x.beginPath(); x.ellipse(s * 0.26, -s * 0.62 * droop, s * 0.30, s * 0.15, 0.5, 0, Math.PI * 2); x.fill();
+    } else if (stage === 1) {
+      x.fillStyle = g1;
+      var leaves = [[0, -0.95, 0.60, 0.36, 0], [-0.52, -0.62, 0.52, 0.30, -0.6], [0.52, -0.62, 0.52, 0.30, 0.6], [-0.28, -0.34, 0.46, 0.30, -0.3], [0.28, -0.34, 0.46, 0.30, 0.3]];
+      for (k = 0; k < leaves.length; k++) {
+        L = leaves[k];
+        x.beginPath();
+        x.ellipse(L[0] * s, L[1] * s * droop, L[2] * s, L[3] * s, L[4], 0, Math.PI * 2);
+        x.fill();
+      }
+      x.fillStyle = g2;
+      x.beginPath(); x.ellipse(0, -s * 0.55 * droop, s * 0.30, s * 0.22, 0, 0, Math.PI * 2); x.fill();
+    } else if (stage === 2) {
+      x.fillStyle = g1;
+      var lv = [[0, -0.9, 0.58, 0.34, 0], [-0.5, -0.6, 0.5, 0.3, -0.6], [0.5, -0.6, 0.5, 0.3, 0.6]];
+      for (k = 0; k < lv.length; k++) {
+        x.beginPath();
+        x.ellipse(lv[k][0] * s, lv[k][1] * s * droop, lv[k][2] * s, lv[k][3] * s, lv[k][4], 0, Math.PI * 2);
+        x.fill();
+      }
+      // blossoms: white petals, gold centers
+      var bl = [[-0.3, -1.05], [0.25, -0.85], [0.02, -0.58]];
+      for (k = 0; k < bl.length; k++) {
+        var bx2 = bl[k][0] * s, by2 = bl[k][1] * s * droop, br = s * 0.22;
+        x.fillStyle = '#ffffff';
+        for (var p = 0; p < 5; p++) {
+          var pa = (p / 5) * Math.PI * 2;
+          x.beginPath(); x.arc(bx2 + Math.cos(pa) * br * 0.8, by2 + Math.sin(pa) * br * 0.8, br * 0.55, 0, Math.PI * 2); x.fill();
+        }
+        x.fillStyle = '#f2b73c';
+        x.beginPath(); x.arc(bx2, by2, br * 0.5, 0, Math.PI * 2); x.fill();
+      }
+    } else {
+      x.strokeStyle = '#cfa14a';
+      x.lineWidth = Math.max(1.5, s * 0.1);
+      for (var st = -1; st <= 1; st++) {
+        x.beginPath();
+        x.moveTo(st * s * 0.3, 0);
+        x.quadraticCurveTo(st * s * 0.42, -s * 0.7 * droop, st * s * 0.3, -s * 1.15 * droop);
+        x.stroke();
+        x.fillStyle = '#e8c46a';
+        x.beginPath();
+        x.ellipse(st * s * 0.3, -s * 1.2 * droop, s * 0.16, s * 0.3, st * 0.2, 0, Math.PI * 2);
+        x.fill();
+      }
+    }
+    x.restore();
+  }
+
+  function drawBarn(x, bx, by, bw) {
+    var bh = bw * 0.78;
+    x.save();
+    x.fillStyle = 'rgba(40,60,30,0.25)';
+    x.beginPath(); x.ellipse(bx + bw * 0.55, by + 4, bw * 0.62, 8, 0, 0, Math.PI * 2); x.fill();
+    x.fillStyle = '#c0392b';
+    rr(x, bx, by - bh, bw, bh, 4); x.fill();
+    x.fillStyle = '#8e2b20';
+    x.beginPath();
+    x.moveTo(bx - bw * 0.06, by - bh);
+    x.lineTo(bx + bw * 0.5, by - bh - bw * 0.42);
+    x.lineTo(bx + bw * 1.06, by - bh);
+    x.closePath(); x.fill();
+    x.fillStyle = '#a93226';
+    x.beginPath();
+    x.moveTo(bx + bw * 0.18, by - bh);
+    x.lineTo(bx + bw * 0.5, by - bh - bw * 0.24);
+    x.lineTo(bx + bw * 0.82, by - bh);
+    x.closePath(); x.fill();
+    var dw = bw * 0.34, dh = bh * 0.62, dx = bx + bw * 0.5 - dw / 2, dy = by - dh;
+    x.fillStyle = '#f5efe2';
+    x.fillRect(dx, dy, dw, dh);
+    x.strokeStyle = '#c0392b'; x.lineWidth = Math.max(2, bw * 0.03);
+    x.strokeRect(dx, dy, dw, dh);
+    x.beginPath();
+    x.moveTo(dx, dy); x.lineTo(dx + dw, dy + dh);
+    x.moveTo(dx + dw, dy); x.lineTo(dx, dy + dh);
+    x.stroke();
+    x.fillStyle = '#f5efe2';
+    x.beginPath(); x.arc(bx + bw * 0.5, by - bh - bw * 0.16, bw * 0.07, 0, Math.PI * 2); x.fill();
+    x.strokeStyle = '#8e2b20'; x.lineWidth = 2; x.stroke();
+    x.restore();
+  }
+
+  function drawSilo(x, sx, sy, sw) {
+    var sh = sw * 2.6;
+    x.save();
+    x.fillStyle = '#cfd6da';
+    rr(x, sx, sy - sh, sw, sh, sw * 0.28); x.fill();
+    x.fillStyle = '#aab3b8';
+    x.beginPath();
+    x.ellipse(sx + sw / 2, sy - sh, sw / 2, sw * 0.32, 0, Math.PI, 0);
+    x.fill();
+    x.fillStyle = 'rgba(255,255,255,0.5)';
+    x.fillRect(sx + sw * 0.22, sy - sh + 4, sw * 0.18, sh - 8);
+    x.restore();
+  }
+
+  function drawGreenhouse(x, gx, gy, gw) {
+    var gh = gw * 0.52;
+    x.save();
+    x.fillStyle = 'rgba(40,60,30,0.22)';
+    x.beginPath(); x.ellipse(gx + gw * 0.5, gy + 3, gw * 0.56, 7, 0, 0, Math.PI * 2); x.fill();
+    x.fillStyle = 'rgba(214,236,244,0.92)';
+    x.beginPath();
+    x.moveTo(gx, gy);
+    x.lineTo(gx, gy - gh * 0.55);
+    x.quadraticCurveTo(gx, gy - gh, gx + gw * 0.5, gy - gh);
+    x.quadraticCurveTo(gx + gw, gy - gh, gx + gw, gy - gh * 0.55);
+    x.lineTo(gx + gw, gy);
+    x.closePath(); x.fill();
+    x.strokeStyle = '#f5f2e8'; x.lineWidth = Math.max(2, gw * 0.03);
+    x.stroke();
+    x.strokeStyle = 'rgba(120,150,160,0.8)'; x.lineWidth = 1.5;
+    for (var k = 1; k < 4; k++) {
+      var rx = gx + (gw * k) / 4;
+      x.beginPath(); x.moveTo(rx, gy); x.lineTo(rx, gy - gh * 0.86); x.stroke();
+    }
+    x.fillStyle = '#4da047';
+    for (var p = 0; p < 6; p++) {
+      var px = gx + gw * (0.12 + p * 0.15);
+      x.beginPath(); x.ellipse(px, gy - 10, 5, 8, 0, 0, Math.PI * 2); x.fill();
+    }
+    x.restore();
+  }
+
+  function drawWindmillBase(x, wx, wy, s) {
+    x.save();
+    x.fillStyle = '#9a8a72';
+    x.beginPath();
+    x.moveTo(wx - s * 0.16, wy + s * 1.5);
+    x.lineTo(wx - s * 0.07, wy);
+    x.lineTo(wx + s * 0.07, wy);
+    x.lineTo(wx + s * 0.16, wy + s * 1.5);
+    x.closePath(); x.fill();
+    x.strokeStyle = '#6f6151'; x.lineWidth = 2;
+    x.beginPath();
+    x.moveTo(wx - s * 0.115, wy + s * 0.75); x.lineTo(wx + s * 0.115, wy + s * 0.75);
+    x.moveTo(wx - s * 0.135, wy + s * 1.1); x.lineTo(wx + s * 0.135, wy + s * 1.1);
+    x.stroke();
+    x.fillStyle = '#5d5348';
+    x.beginPath(); x.arc(wx, wy, s * 0.09, 0, Math.PI * 2); x.fill();
+    x.restore();
+  }
+
+  function renderBackground(w, h, layer) {
     var c = doc.createElement('canvas');
     c.width = Math.max(2, Math.round(w)); c.height = Math.max(2, Math.round(h));
     var x = c.getContext('2d');
     if (!x) return null;
-    var skyH = h * 0.16;
+    var skyH = h * 0.22;
+    var i, j;
 
-    // dawn sky band: warm gradient
+    // cheerful game-dawn sky
     var g = x.createLinearGradient(0, 0, 0, skyH);
-    g.addColorStop(0, '#ffdf9e');
-    g.addColorStop(0.55, '#fbeccb');
-    g.addColorStop(1, '#fdf8ea');
+    g.addColorStop(0, '#a8d8f0');
+    g.addColorStop(0.6, '#d8ecf7');
+    g.addColorStop(1, '#fdeecd');
     x.fillStyle = g;
     x.fillRect(0, 0, w, skyH);
 
-    // low sun glow
-    var sg = x.createRadialGradient(w * 0.72, skyH * 0.6, 4, w * 0.72, skyH * 0.6, w * 0.30);
-    sg.addColorStop(0, 'rgba(255,190,105,0.65)');
-    sg.addColorStop(1, 'rgba(255,190,105,0)');
+    // bright game sun with rays
+    var sunX = w * 0.74, sunY = skyH * 0.5, sunR = Math.min(w, h) * 0.045;
+    x.save();
+    x.strokeStyle = 'rgba(255,196,90,0.75)';
+    x.lineWidth = Math.max(2, sunR * 0.12);
+    x.lineCap = 'round';
+    for (i = 0; i < 8; i++) {
+      var a = (i / 8) * Math.PI * 2 + 0.2;
+      x.beginPath();
+      x.moveTo(sunX + Math.cos(a) * sunR * 1.45, sunY + Math.sin(a) * sunR * 1.45);
+      x.lineTo(sunX + Math.cos(a) * sunR * 1.9, sunY + Math.sin(a) * sunR * 1.9);
+      x.stroke();
+    }
+    var sg = x.createRadialGradient(sunX, sunY, sunR * 0.3, sunX, sunY, sunR * 2.6);
+    sg.addColorStop(0, 'rgba(255,224,150,0.9)');
+    sg.addColorStop(1, 'rgba(255,224,150,0)');
     x.fillStyle = sg;
-    x.fillRect(0, 0, w, skyH);
+    x.fillRect(sunX - sunR * 2.6, sunY - sunR * 2.6, sunR * 5.2, sunR * 5.2);
+    x.fillStyle = '#ffd968';
+    x.beginPath(); x.arc(sunX, sunY, sunR, 0, Math.PI * 2); x.fill();
+    x.fillStyle = '#ffdf8a';
+    x.beginPath(); x.arc(sunX - sunR * 0.2, sunY - sunR * 0.2, sunR * 0.72, 0, Math.PI * 2); x.fill();
+    x.restore();
 
-    // field base: warm paper/ivory ground
+    // puffy cartoon clouds (static)
+    var cloud = function (cx, cy, s) {
+      x.save();
+      x.fillStyle = 'rgba(255,255,255,0.95)';
+      var puff = [[0, 0, 1], [-1.1, 0.25, 0.72], [1.1, 0.25, 0.78], [-0.45, -0.42, 0.62], [0.5, -0.38, 0.66]];
+      for (var k = 0; k < puff.length; k++) {
+        x.beginPath();
+        x.arc(cx + puff[k][0] * s, cy + puff[k][1] * s, puff[k][2] * s, 0, Math.PI * 2);
+        x.fill();
+      }
+      x.fillStyle = 'rgba(190,214,228,0.5)';
+      x.beginPath();
+      x.ellipse(cx, cy + s * 0.62, s * 1.55, s * 0.34, 0, 0, Math.PI * 2);
+      x.fill();
+      x.restore();
+    };
+    cloud(w * 0.16, skyH * 0.34, w * 0.035);
+    cloud(w * 0.44, skyH * 0.55, w * 0.026);
+    cloud(w * 0.90, skyH * 0.66, w * 0.030);
+
+    // lush field base
     g = x.createLinearGradient(0, skyH, 0, h);
-    g.addColorStop(0, '#f7f0dc');
-    g.addColorStop(1, '#e7d5ae');
+    g.addColorStop(0, '#8fce6e');
+    g.addColorStop(0.5, '#79c25f');
+    g.addColorStop(1, '#5da84c');
     x.fillStyle = g;
     x.fillRect(0, skyH, w, h - skyH);
 
-    // horizon line
-    x.strokeStyle = 'rgba(122,94,52,0.4)'; x.lineWidth = Math.max(1, state.dpr);
-    x.beginPath(); x.moveTo(0, skyH); x.lineTo(w, skyH); x.stroke();
+    // horizon glow strip
+    x.fillStyle = 'rgba(255,244,214,0.5)';
+    x.fillRect(0, skyH - 2, w, 4);
 
-    // perspective crop rows
-    var rows = 9, i;
-    for (i = 0; i < rows; i++) {
-      var t = i / (rows - 1);
-      var y = skyH + (h - skyH) * Math.pow(t, 1.6);
-      x.strokeStyle = 'rgba(122,94,52,0.15)';
-      x.lineWidth = (1 + t * 1.6) * state.dpr;
-      x.beginPath();
-      x.moveTo(0, y);
-      x.quadraticCurveTo(w / 2, y + 6 * (1 - t), w, y);
-      x.stroke();
+    // crop beds: 6 rounded game tiles in perspective, each with a seeded
+    // growth stage (patchwork farm look)
+    var rnd = seededRand(777);
+    var bedStages = [];
+    for (i = 0; i < 6; i++) bedStages.push(Math.floor(rnd() * 4));
+    for (i = 0; i < 6; i++) {
+      var t = i / 5;
+      var by = skyH + (h - skyH) * (0.10 + t * 0.72);
+      var bh = (h - skyH) * (0.085 + t * 0.035);
+      var bx = w * (0.05 + t * 0.015), bw = w * (0.90 - t * 0.03);
+      x.fillStyle = 'rgba(62,110,52,0.55)';
+      rr(x, bx - 3, by - 3, bw + 6, bh + 8, 10);
+      x.fill();
+      x.fillStyle = '#6b4a2e';
+      rr(x, bx, by, bw, bh, 9);
+      x.fill();
+      x.fillStyle = '#7d5a38';
+      rr(x, bx, by, bw, bh * 0.38, 9);
+      x.fill();
+      for (var rI = 0; rI < 2; rI++) {
+        var ry = by + bh * (0.30 + rI * 0.42);
+        var n = Math.max(4, Math.round(bw / (34 - t * 14)));
+        for (j = 0; j < n; j++) {
+          var px = bx + (bw * (j + 0.5)) / n;
+          var s = (10 + t * 16) * (0.9 + rnd() * 0.25);
+          var dry = (layer === 'moisture') ? moistureAt(px / w, ry / h) : 0;
+          drawCropSprite(x, px, ry, s, bedStages[i], dry);
+        }
+      }
     }
-    // faint converging furrows toward a vanishing point (subtle depth cue)
-    x.strokeStyle = 'rgba(122,94,52,0.07)';
-    x.lineWidth = state.dpr;
-    var vpx = w * 0.5, vpy = skyH;
-    for (i = -6; i <= 6; i++) {
-      x.beginPath();
-      x.moveTo(vpx, vpy);
-      x.lineTo(w * 0.5 + i * w * 0.16, h);
-      x.stroke();
+
+    // farm buildings + windmill (blades drawn per-frame)
+    drawBarn(x, w * 0.045, h * 0.865, w * 0.115);
+    drawSilo(x, w * 0.175, h * 0.865, w * 0.045);
+    drawGreenhouse(x, w * 0.815, h * 0.865, w * 0.13);
+    state.windmill = { x: w * 0.905, y: h * 0.335, s: Math.min(w, h) * 0.075 };
+    drawWindmillBase(x, state.windmill.x, state.windmill.y, state.windmill.s);
+
+    // wooden fence along the bottom
+    var fy = h * 0.975;
+    x.fillStyle = '#8a6a44';
+    x.fillRect(0, fy - 6, w, 5);
+    x.fillRect(0, fy + 8, w, 5);
+    x.fillStyle = '#9c7a4f';
+    for (i = 0; i * 46 < w + 46; i++) {
+      x.fillRect(i * 46, fy - 14, 9, 30);
     }
     return c;
   }
@@ -382,6 +652,211 @@ function createTwin(env) {
     return c;
   }
 
+  /* ---------------- game props: critters, pads, posts, farmhouse --- */
+  // Seeded butterflies + drifting cloud shadows. Decorative only.
+  function initCritters() {
+    var rnd = seededRand(4242);
+    state.clouds = [];
+    var i;
+    for (i = 0; i < 2; i++) {
+      state.clouds.push({ x: 0.25 + rnd() * 0.5, y: 0.25 + rnd() * 0.5, r: 0.16 + rnd() * 0.08, a: 0.10, speed: 0.05 + rnd() * 0.05, phase: rnd() * 6.283 });
+    }
+    state.critters = [];
+    for (i = 0; i < 5; i++) {
+      state.critters.push({
+        x: 0.15 + rnd() * 0.7, y: 0.35 + rnd() * 0.45,
+        s: 3 + rnd() * 2.5,
+        phase: rnd() * 6.283,
+        speed: 0.35 + rnd() * 0.4,
+        hue: rnd() < 0.5 ? '255,170,60' : '150,190,255'
+      });
+    }
+  }
+
+  // Soft drifting shade on the field — drawn over the field layer, under links.
+  function drawCloudShadows(tSec, animate) {
+    var W = state.W, H = state.H, skyH = H * 0.22;
+    for (var i = 0; i < state.clouds.length; i++) {
+      var cl = state.clouds[i];
+      var drift = animate ? Math.sin(tSec * cl.speed + cl.phase) * W * 0.06 : 0;
+      var cx = cl.x * W + drift, cy = skyH + cl.y * (H - skyH);
+      var R = cl.r * Math.min(W, H);
+      var g = ctx.createRadialGradient(cx, cy, 4, cx, cy, R);
+      g.addColorStop(0, 'rgba(40,70,90,' + cl.a.toFixed(3) + ')');
+      g.addColorStop(1, 'rgba(40,70,90,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, R, R * 0.45, 0, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function drawCritters(tSec, animate) {
+    var W = state.W, H = state.H, skyH = H * 0.22;
+    for (var i = 0; i < state.critters.length; i++) {
+      var b = state.critters[i];
+      var wx = animate ? Math.sin(tSec * b.speed + b.phase) * W * 0.05 : 0;
+      var wy = animate ? Math.cos(tSec * b.speed * 0.8 + b.phase) * H * 0.03 : 0;
+      var bx = b.x * W + wx, by = skyH + b.y * (H - skyH) + wy - H * 0.06;
+      var flap = animate ? Math.abs(Math.sin(tSec * 9 + b.phase)) : 0.35;
+      ctx.save();
+      ctx.translate(bx, by);
+      ctx.fillStyle = 'rgba(' + b.hue + ',0.95)';
+      ctx.save();
+      ctx.rotate(-0.5 - flap * 0.5);
+      ctx.beginPath(); ctx.ellipse(-b.s * 0.5, 0, b.s * 0.62, b.s * 0.34, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+      ctx.save();
+      ctx.rotate(0.5 + flap * 0.5);
+      ctx.beginPath(); ctx.ellipse(b.s * 0.5, 0, b.s * 0.62, b.s * 0.34, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+      ctx.fillStyle = 'rgba(60,50,40,0.9)';
+      ctx.beginPath(); ctx.ellipse(0, 0, b.s * 0.16, b.s * 0.42, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  function drawWindmillBlades(tSec, animate) {
+    var wm = state.windmill;
+    if (!wm) return;
+    var ang = animate ? tSec * 0.9 : 0.4;
+    ctx.save();
+    ctx.translate(wm.x, wm.y);
+    ctx.fillStyle = 'rgba(240,235,220,0.95)';
+    ctx.strokeStyle = '#8a7a63';
+    ctx.lineWidth = 1.5;
+    for (var i = 0; i < 4; i++) {
+      ctx.save();
+      ctx.rotate(ang + (i * Math.PI) / 2);
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(wm.s * 0.14, -wm.s * 0.75);
+      ctx.lineTo(wm.s * 0.30, -wm.s * 0.72);
+      ctx.lineTo(wm.s * 0.10, 0);
+      ctx.closePath();
+      ctx.fill(); ctx.stroke();
+      ctx.restore();
+    }
+    ctx.fillStyle = '#5d5348';
+    ctx.beginPath(); ctx.arc(0, 0, wm.s * 0.09, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+  }
+
+  // In-world node objects, drawn under the HTML game-token buttons (which are
+  // anchored bottom-center at each node point). Online = cheerful + blinking
+  // LED; offline = grayed "storm damage" with a dashed red ring.
+  function drawGameProps(tSec, animate) {
+    for (var i = 0; i < state.nodes.length; i++) {
+      var n = state.nodes[i];
+      var p = state.nodePx[n.id];
+      if (!p) continue;
+      var on = isOnline(n.id);
+      if (n.gateway) drawFarmhouse(p.x, p.y, on, tSec, animate);
+      else drawSensorPost(p.x, p.y, on, tSec, animate, n.id);
+    }
+    drawWindmillBlades(tSec, animate);
+    drawCritters(tSec, animate);
+  }
+
+  function drawPad(px, py, on) {
+    ctx.save();
+    if (on) {
+      var g = ctx.createRadialGradient(px, py, 2, px, py, 20);
+      g.addColorStop(0, 'rgba(255,255,255,0.55)');
+      g.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(px, py, 20, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.7)';
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(px, py, 15, 0, Math.PI * 2); ctx.stroke();
+    } else {
+      ctx.strokeStyle = 'rgba(163,51,51,0.85)';
+      ctx.lineWidth = 2.5;
+      ctx.setLineDash([6, 5]);
+      ctx.beginPath(); ctx.arc(px, py, 17, 0, Math.PI * 2); ctx.stroke();
+      ctx.setLineDash([]);
+    }
+    ctx.restore();
+  }
+
+  function drawSensorPost(px, py, on, tSec, animate, id) {
+    drawPad(px, py, on);
+    ctx.save();
+    ctx.strokeStyle = on ? '#7a6a55' : '#8a8078';
+    ctx.lineWidth = 4;
+    ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(px, py + 8); ctx.lineTo(px, py + 30); ctx.stroke();
+    // tilted solar panel
+    ctx.save();
+    ctx.translate(px, py + 22);
+    ctx.rotate(-0.35);
+    ctx.fillStyle = on ? '#2e4a6b' : '#7a7f88';
+    ctx.fillRect(-11, -7, 22, 14);
+    ctx.strokeStyle = on ? '#1d2f47' : '#5c6167';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(-11, -7, 22, 14);
+    ctx.strokeStyle = 'rgba(255,255,255,0.55)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(-11, 0); ctx.lineTo(11, 0); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, -7); ctx.lineTo(0, 7); ctx.stroke();
+    ctx.restore();
+    // status LED: blinking green online, dull red offline
+    var blink = on ? (animate ? (0.55 + 0.45 * Math.sin(tSec * 4 + id)) : 0.8) : 0.25;
+    ctx.fillStyle = on ? 'rgba(90,220,120,' + blink.toFixed(2) + ')' : 'rgba(150,60,60,0.7)';
+    ctx.beginPath(); ctx.arc(px + 7, py + 12, 3.2, 0, Math.PI * 2); ctx.fill();
+    if (on && animate) {
+      ctx.fillStyle = 'rgba(90,220,120,0.25)';
+      ctx.beginPath(); ctx.arc(px + 7, py + 12, 6.5, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  function drawFarmhouse(px, py, on, tSec, animate) {
+    drawPad(px, py, on);
+    var w = 64, h = 40;
+    var bx = px - w / 2, by = py + 6;
+    ctx.save();
+    ctx.fillStyle = 'rgba(40,60,30,0.28)';
+    ctx.beginPath(); ctx.ellipse(px, by + h + 4, w * 0.62, 8, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = on ? '#f7f0dd' : '#cfc8b8';
+    rr(ctx, bx, by, w, h, 5); ctx.fill();
+    ctx.strokeStyle = on ? '#b08d3e' : '#8a8578';
+    ctx.lineWidth = 2.5;
+    rr(ctx, bx, by, w, h, 5); ctx.stroke();
+    // roof
+    ctx.fillStyle = on ? '#c0392b' : '#8a6a62';
+    ctx.beginPath();
+    ctx.moveTo(bx - 6, by + 2);
+    ctx.lineTo(px, by - 22);
+    ctx.lineTo(bx + w + 6, by + 2);
+    ctx.closePath(); ctx.fill();
+    // dish on the roof — the mesh hub
+    ctx.strokeStyle = on ? '#4a4a52' : '#777777';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.moveTo(px + 10, by - 14); ctx.lineTo(px + 18, by - 30); ctx.stroke();
+    ctx.fillStyle = on ? '#e8e4d8' : '#a09a8c';
+    ctx.beginPath(); ctx.arc(px + 20, by - 32, 7, Math.PI * 0.9, Math.PI * 1.9); ctx.fill();
+    ctx.strokeStyle = on ? '#4a4a52' : '#777777'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(px + 20, by - 32, 7, Math.PI * 0.9, Math.PI * 1.9); ctx.stroke();
+    // door + windows
+    ctx.fillStyle = on ? '#7a5230' : '#6a625a';
+    rr(ctx, px - 8, by + h - 22, 16, 22, 3); ctx.fill();
+    ctx.fillStyle = on ? '#bfe3f2' : '#9aa2a8';
+    ctx.fillRect(bx + 8, by + 10, 12, 10);
+    ctx.fillRect(bx + w - 20, by + 10, 12, 10);
+    // chimney smoke (cheerful, animated)
+    if (on && animate) {
+      for (var k = 0; k < 3; k++) {
+        var u = ((tSec * 0.35 + k / 3) % 1);
+        var sx = bx + w * 0.78 + Math.sin(u * 5) * 6;
+        var sy2 = by - 8 - u * 34;
+        ctx.fillStyle = 'rgba(235,235,235,' + (0.5 * (1 - u)).toFixed(2) + ')';
+        ctx.beginPath(); ctx.arc(sx, sy2, 3 + u * 5, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+    ctx.restore();
+  }
+
   /* ---------------- dawn atmosphere (cinematic pass) ---------------- */
   // Decorative sky-band-only layer: sun-glow pulse, drifting gold motes,
   // light-ray wash, drone flyover. Never touches the data field; never moves
@@ -402,7 +877,6 @@ function createTwin(env) {
         speed: 0.25 + rnd() * 0.5
       });
     }
-    state.drone = { active: false, t0: 0, nextAt: 6, dur: 9 };
   }
 
   function drawAtmosphere(tSec, animate) {
@@ -451,52 +925,11 @@ function createTwin(env) {
     }
     ctx.globalCompositeOperation = 'source-over';
     ctx.restore();
-
-    drawDrone(tSec, animate, skyH);
-  }
-
-  // Small sleek silhouette crossing the sky band every ~25 s: faint light
-  // trail + blinking nav light. Pure atmosphere; hidden in static frames.
-  function drawDrone(tSec, animate, skyH) {
-    var d = state.drone;
-    if (!d || !animate) return;
-    if (!d.active && tSec >= d.nextAt) { d.active = true; d.t0 = tSec; }
-    if (!d.active) return;
-    var u = (tSec - d.t0) / d.dur;
-    if (u >= 1) { d.active = false; d.nextAt = tSec + 25; return; }
-    var W = state.W;
-    var x = (-0.08 + 1.16 * u) * W;
-    var y = skyH * 0.42 + Math.sin(u * 6.283) * skyH * 0.05;
-    ctx.save();
-    // faint light trail
-    ctx.strokeStyle = 'rgba(255,214,140,0.35)';
-    ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x - W * 0.05, y - 2);
-    ctx.stroke();
-    // silhouette
-    ctx.fillStyle = 'rgba(44,40,34,0.85)';
-    ctx.beginPath();
-    ctx.ellipse(x, y, 7, 3.2, 0, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(44,40,34,0.7)';
-    ctx.lineWidth = 1.2;
-    ctx.beginPath();
-    ctx.moveTo(x - 7, y - 2); ctx.lineTo(x - 11, y - 5);
-    ctx.moveTo(x + 7, y - 2); ctx.lineTo(x + 11, y - 5);
-    ctx.stroke();
-    // blinking nav light
-    if ((tSec * 2.5) % 1 < 0.5) {
-      ctx.fillStyle = 'rgba(255,90,70,0.95)';
-      ctx.beginPath(); ctx.arc(x + 3, y - 4, 1.8, 0, Math.PI * 2); ctx.fill();
-    }
-    ctx.restore();
   }
 
   function buildStaticCanvases() {
     var w = Math.round(state.W * state.dpr), h = Math.round(state.H * state.dpr);
-    state.bgCanvas = renderBackground(w, h);
+    state.bgCanvas = renderBackground(w, h, state.layer); // crop tint follows the layer
     state.fieldCanvas = buildFieldLayer(state.layer, w, h);
   }
 
@@ -551,17 +984,23 @@ function createTwin(env) {
     ctx.restore();
   }
 
-  /* Packets: additive halo for the glow, then a normal-blend core so each
-     packet stays readable in sunlight. */
-  function drawParticles() {
+  /* Packets as game units: every ~60th active particle renders as a cute
+     quadcopter drone flying its REAL BFS route (a delivery/monitoring run) —
+     the packet flow reads as gameplay. Motion data unchanged; only the
+     sprite differs. */
+  var DRONE_EVERY = 60;
+
+  function drawParticles(tSec, animate) {
     var alpha = state.layer === 'network' ? 1 : 0.32;
-    var i, p, pos;
-    // halo pass
+    var i, p, pos, di;
+    // halo pass (dots only — drones skip it)
     ctx.save();
     ctx.globalCompositeOperation = 'lighter';
+    di = 0;
     for (i = 0; i < state.particles.length; i++) {
       p = state.particles[i];
       if (!p.active || p.route.length < 2) continue;
+      if (di++ % DRONE_EVERY === 0) continue;
       pos = particlePos(p);
       ctx.fillStyle = 'rgba(120,200,110,' + (0.20 * alpha).toFixed(3) + ')';
       ctx.beginPath();
@@ -569,17 +1008,74 @@ function createTwin(env) {
       ctx.fill();
     }
     ctx.restore();
-    // core pass
+    // core pass: dots + drone units
     ctx.save();
-    ctx.fillStyle = 'rgba(38,102,52,' + alpha.toFixed(2) + ')';
+    di = 0;
     for (i = 0; i < state.particles.length; i++) {
       p = state.particles[i];
       if (!p.active || p.route.length < 2) continue;
       pos = particlePos(p);
+      if (di++ % DRONE_EVERY === 0) { drawPatrolDrone(pos.x, pos.y, tSec, animate, alpha); continue; }
+      ctx.fillStyle = 'rgba(38,102,52,' + alpha.toFixed(2) + ')';
       ctx.beginPath();
       ctx.arc(pos.x, pos.y, 2, 0, Math.PI * 2);
       ctx.fill();
     }
+    ctx.restore();
+  }
+
+  function drawPatrolDrone(dx, dy, tSec, animate, alpha) {
+    ctx.save();
+    ctx.globalAlpha = Math.max(0.35, alpha);
+    // soft shadow on the field — sells the 3D game feel
+    ctx.fillStyle = 'rgba(40,60,30,0.22)';
+    ctx.beginPath();
+    ctx.ellipse(dx + 7, dy + 10, 10, 4, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.translate(dx, dy);
+    if (animate) ctx.translate(0, Math.sin(tSec * 3 + dx * 0.05) * 1.5);
+    // rotor arms
+    ctx.strokeStyle = '#4a5560';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(-9, -6); ctx.lineTo(-13, -10);
+    ctx.moveTo(9, -6); ctx.lineTo(13, -10);
+    ctx.moveTo(-9, 6); ctx.lineTo(-13, 10);
+    ctx.moveTo(9, 6); ctx.lineTo(13, 10);
+    ctx.stroke();
+    // spinning rotors
+    var ra = animate ? tSec * 28 : 0.6;
+    ctx.fillStyle = 'rgba(220,230,238,0.75)';
+    var rotors = [[-13, -10], [13, -10], [-13, 10], [13, 10]];
+    for (var k = 0; k < 4; k++) {
+      ctx.save();
+      ctx.translate(rotors[k][0], rotors[k][1]);
+      ctx.rotate(ra + k * 0.7);
+      ctx.beginPath();
+      ctx.ellipse(0, 0, 7, 2.2, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+    // body
+    ctx.fillStyle = '#ffffff';
+    rr(ctx, -9, -6, 18, 12, 5); ctx.fill();
+    ctx.strokeStyle = '#2e9e8f';
+    ctx.lineWidth = 2;
+    rr(ctx, -9, -6, 18, 12, 5); ctx.stroke();
+    // camera eye
+    ctx.fillStyle = '#2e9e8f';
+    ctx.beginPath(); ctx.arc(0, 0, 3, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#bff0e8';
+    ctx.beginPath(); ctx.arc(-1, -1, 1.2, 0, Math.PI * 2); ctx.fill();
+    // parcel slung below — the "delivery"
+    ctx.strokeStyle = '#8a6a44';
+    ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(-4, 6); ctx.lineTo(-4, 12); ctx.moveTo(4, 6); ctx.lineTo(4, 12); ctx.stroke();
+    ctx.fillStyle = '#d9a94e';
+    ctx.fillRect(-6, 12, 12, 8);
+    ctx.strokeStyle = '#a87f3a';
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(-6, 12, 12, 8);
     ctx.restore();
   }
 
@@ -605,8 +1101,10 @@ function createTwin(env) {
       ctx.drawImage(state.fieldCanvas, 0, 0, state.W, state.H);
       ctx.globalAlpha = 1;
     }
+    drawCloudShadows(tSec, animate); // drifting shade on the field
     drawLinks();
-    drawParticles();
+    drawParticles(tSec, animate);    // dots + patrol-drone game units
+    drawGameProps(tSec, animate);    // pads, sensor posts, farmhouse, windmill, butterflies
     drawAtmosphere(tSec, animate); // sky-band only; decorative, moves no data
     drawWatermark(); // every frame, permanent
   }
@@ -695,8 +1193,8 @@ function createTwin(env) {
       btns[i].setAttribute('aria-pressed', on ? 'true' : 'false');
     }
     if (legend) legend.textContent = LEGENDS[name];
-    if (state.fieldCanvas || state.W > 0) {
-      state.fieldCanvas = buildFieldLayer(name, Math.round(state.W * state.dpr), Math.round(state.H * state.dpr));
+    if (state.W > 0) {
+      buildStaticCanvases(); // bg crop tint follows the moisture layer
       if (!shouldRun()) staticRender(); // keep the static frame fresh when the loop is off
     }
     if (!silent) narrate('Showing ' + LAYER_LABELS[name] + '. ' + LEGENDS[name]);
@@ -840,6 +1338,7 @@ function createTwin(env) {
       for (i = 0; i < state.nodes.length; i++) state.nodeById[state.nodes[i].id] = state.nodes[i];
       buildGraph();
       initAtmosphere();
+      initCritters();
 
       canvas.setAttribute('role', 'img');
       if (!canvas.getAttribute('aria-label')) {
@@ -929,7 +1428,8 @@ function createTwin(env) {
 
       updateRunning();
       return state;
-    }).catch(function () {
+    }).catch(function (e) {
+      if (typeof console !== 'undefined') console.error('AMTWIN-START-FAIL', e && e.stack || e);
       return state; // any boot failure: poster stays
     });
   }
@@ -971,7 +1471,7 @@ if (typeof document !== 'undefined' && typeof window !== 'undefined' && typeof m
         cancelAnimationFrame: window.cancelAnimationFrame.bind(window),
         IntersectionObserver: window.IntersectionObserver || null
       }).start();
-    } catch (e) { /* poster stays */ }
+    } catch (e) { if (typeof console !== 'undefined') console.error('AMTWIN-BOOT-FAIL', e && e.stack || e); }
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
