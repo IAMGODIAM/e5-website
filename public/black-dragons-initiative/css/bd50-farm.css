@@ -97,6 +97,10 @@ html:not(.js) .bd50-farm-toggles,.farm-static .bd50-farm-toggles{display:none}
 .bd50-farm-toggles button:focus-visible{outline:2px solid var(--bd-gold-2);outline-offset:2px}
 /* when the card is open, lift the toggles above it on short stages */
 .bd50-farm-card:not([hidden])~.bd50-farm-toggles{bottom:auto;top:14px}
+/* while the card is open, keep pins + pills above it so re-tapping
+   the active pin/pill toggles the card closed (hit-test fix) */
+.bd50-farm-stage.farm-card-open .bd50-farm-pins,
+.bd50-farm-stage.farm-card-open .bd50-farm-toggles{z-index:9}
 
 /* ---------- narrative grid (fallback + mobile) ---------- */
 .bd50-farm-grid{display:none;grid-template-columns:repeat(4,minmax(0,1fr));

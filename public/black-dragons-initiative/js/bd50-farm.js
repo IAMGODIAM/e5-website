@@ -352,6 +352,7 @@ if (reduced) render(8);
 
 /* ---------------- pins, toggles, cards ---------------- */
 var card = section.querySelector('.bd50-farm-card');
+var stage = section.querySelector('.bd50-farm-stage');
 var cardNum = card ? card.querySelector('.num') : null;
 var cardTitle = card ? card.querySelector('h3') : null;
 var cardText = card ? card.querySelector('p') : null;
@@ -363,8 +364,13 @@ function openCard(zone) {
   if (cardTitle) cardTitle.textContent = z.title;
   if (cardText) cardText.textContent = z.text;
   card.hidden = false;
+  /* keep pins + pills above the open card so re-tap toggles closed */
+  if (stage) stage.classList.add('farm-card-open');
 }
-function closeCard() { if (card) card.hidden = true; }
+function closeCard() {
+  if (card) card.hidden = true;
+  if (stage) stage.classList.remove('farm-card-open');
+}
 
 function setActive(zone, open) {
   activeZone = zone || null;

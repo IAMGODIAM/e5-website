@@ -825,10 +825,18 @@ html.js .reveal.pre.in.d3{transition-delay:.36s}
   if ('IntersectionObserver' in window && secs.length) {
     // Highlight the chapter occupying the largest share of the central
     // viewport band, so the rail tracks the section actually in view.
+    // Ratios are stored per section across callbacks: picking the max
+    // from a single callback's entry batch can mis-highlight when only
+    // one section's ratio changes in that batch.
+    var spyRatios = {};
     var sio = new IntersectionObserver(function(es){
-      var best=null, bestR=0;
       es.forEach(function(e){
-        if (e.isIntersecting && e.intersectionRatio > bestR) { bestR = e.intersectionRatio; best = e.target; }
+        spyRatios[e.target.id] = (e.isIntersecting ? e.intersectionRatio : 0);
+      });
+      var best=null, bestR=0;
+      secs.forEach(function(s){
+        var r = spyRatios[s.id] || 0;
+        if (r > bestR) { bestR = r; best = s; }
       });
       if (best) {
         links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('data-spine') === best.id); });
