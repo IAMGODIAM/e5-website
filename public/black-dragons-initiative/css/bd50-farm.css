@@ -101,6 +101,11 @@ html:not(.js) .bd50-farm-toggles,.farm-static .bd50-farm-toggles{display:none}
    the active pin/pill toggles the card closed (hit-test fix) */
 .bd50-farm-stage.farm-card-open .bd50-farm-pins,
 .bd50-farm-stage.farm-card-open .bd50-farm-toggles{z-index:9}
+/* the pins/toggles containers overlay the whole stage — make only their
+   buttons hit-testable so the card's × close button stays clickable
+   beneath them while pins/pills remain tappable (re-tap close intact) */
+.bd50-farm-pins,.bd50-farm-toggles{pointer-events:none}
+.bd50-farm-pin,.bd50-farm-toggles button{pointer-events:auto}
 
 /* ---------- narrative grid (fallback + mobile) ---------- */
 .bd50-farm-grid{display:none;grid-template-columns:repeat(4,minmax(0,1fr));
