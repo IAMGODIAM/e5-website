@@ -5,11 +5,11 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Block to the Boardroom — E5 Enclave</title>
-<meta name="description" content="Block to the Boardroom — E5 Enclave's civic leadership pipeline: training community members in governance, public policy, and institutional management."/>
+<meta name="description" content="Block to the Boardroom — E5 Enclave’s block program: block rehabilitation, learn-to-earn STEM and Web3 pipelines, community land ownership, gentrification reversal."/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="E5 Enclave"/>
 <meta property="og:title" content="Block to the Boardroom — E5 Enclave"/>
-<meta property="og:description" content="Block to the Boardroom — E5 Enclave's civic leadership pipeline: training community members in governance, public policy, and institutional management."/>
+<meta property="og:description" content="Block to the Boardroom — E5 Enclave’s block program: block rehabilitation, learn-to-earn STEM and Web3 pipelines, community land ownership, gentrification reversal."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:image" content="https://e5enclave.com/assets/og.png"/>
 <meta property="og:image:width" content="1200"/>
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="E5 Enclave — A Lineage-led Think Tank"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="E5 Enclave — A Lineage-led Think Tank"/>
-<meta name="twitter:description" content="A lineage-led think tank comprised of a Coalition of the Willing. Founded 2 June 2024 · Liberty City."/>
+<meta name="twitter:description" content="Block to the Boardroom — E5 Enclave’s block program: block rehabilitation, learn-to-earn STEM and Web3 pipelines, community land ownership, gentrification reversal."/>
 <meta name="twitter:image" content="https://e5enclave.com/assets/og.png"/>
 <meta name="theme-color" content="#050609">
 <link rel="canonical" href="https://e5enclave.com/programs/block-to-the-boardroom/"/>
@@ -1000,45 +1000,286 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <!-- /e5:chrome-head -->
 
 
+<style>
+  /* ============================================================
+     Block to the Boardroom — bespoke layer (b2b-*), on the
+     sovereign interior register. Motion, depth, asymmetric measure.
+     ============================================================ */
+  .b2b-h-off { display:block; margin-left:clamp(0px,7vw,110px); }
+  .b2b-cta-row { display:flex; gap:18px; flex-wrap:wrap; align-items:center; margin-top:34px; }
+  .b2b-ghost { display:inline-block; padding:15px 30px; border-radius:999px; font-weight:600; font-size:15px;
+    border:1px solid var(--sv-gold-deep); color:var(--sv-ink-hi); text-decoration:none; letter-spacing:.04em;
+    transition:background .3s ease, transform .3s ease; }
+  .b2b-ghost:hover { background:rgba(201,162,74,.12); transform:translateY(-2px); }
+  .b2b-fineprint { margin-top:2rem; font-size:13px; color:var(--sv-muted); max-width:64ch; line-height:1.7; }
+
+  /* Orbital ring — slow 3-D rotation behind the hero headline. */
+  .b2b-orbit { position:absolute; top:-160px; right:-140px; width:min(50vw,600px); aspect-ratio:1;
+    border:1px solid rgba(201,162,74,.45); border-radius:50%; pointer-events:none;
+    animation:b2b-spin 80s linear infinite; z-index:0; }
+  .b2b-orbit::before { content:""; position:absolute; inset:11%; border:1px dashed rgba(201,162,74,.26); border-radius:50%; }
+  .b2b-orbit::after { content:""; position:absolute; top:7%; left:50%; width:14px; height:14px; margin-left:-7px;
+    border-radius:50%; background:radial-gradient(circle,#f5e6c4,#a8884a 72%); box-shadow:0 0 26px rgba(201,162,74,.85); }
+  @keyframes b2b-spin { to { transform:rotate(360deg); } }
+
+  /* Three strands — deliberately asymmetric: no square grid, staggered measures. */
+  .b2b-strands { display:grid; grid-template-columns:repeat(12,1fr); gap:24px; margin-top:14px; }
+  .b2b-strand { background:rgba(255,255,255,.52); border:1px solid var(--sv-rule); border-radius:18px;
+    padding:clamp(26px,3vw,42px); position:relative;
+    transition:transform .5s cubic-bezier(.2,.7,.3,1), box-shadow .5s ease; }
+  .b2b-strand:hover { transform:translateY(-9px) rotateX(2.5deg); box-shadow:0 28px 60px -26px rgba(10,9,8,.38); }
+  .b2b-s1 { grid-column:1/8; }
+  .b2b-s2 { grid-column:8/13; margin-top:64px; }
+  .b2b-s3 { grid-column:3/11; margin-top:6px; }
+  .b2b-ghost-num { position:absolute; top:-38px; right:20px; font-family:var(--sv-serif);
+    font-size:clamp(64px,7vw,112px); line-height:1; color:transparent;
+    -webkit-text-stroke:1px var(--sv-gold-mid); opacity:.55; pointer-events:none; }
+  .b2b-strand .k { font-size:11px; font-weight:700; letter-spacing:.2em; color:var(--sv-gold-ink);
+    text-transform:uppercase; display:block; margin-bottom:10px; }
+  .b2b-strand h3 { font-family:var(--sv-serif); font-size:clamp(23px,2.4vw,31px); margin:0 0 12px; font-weight:600; letter-spacing:-.01em; }
+  .b2b-strand p { margin:0 0 1em; font-size:15.5px; line-height:1.7; color:var(--sv-ink-3); font-family:var(--sv-sans); font-weight:300; }
+  .b2b-doc { font-size:13.5px; color:var(--sv-muted); border-top:1px solid var(--sv-rule); padding-top:14px; margin-top:4px; }
+  .b2b-doc em { color:var(--sv-gold-ink); font-style:italic; }
+
+  /* The reversal engine — dark panel for depth contrast. */
+  .b2b-dark { background:#0b0c0e; color:#f4f1e9; border-radius:22px; padding:clamp(36px,5vw,68px) clamp(28px,5vw,72px);
+    position:relative; overflow:hidden; }
+  .b2b-dark::before { content:""; position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse 80% 60% at 72% 18%, rgba(201,162,74,.17), transparent 62%); }
+  .b2b-dark > * { position:relative; }
+  .b2b-dark h2 { font-family:var(--sv-serif); font-weight:500; font-size:clamp(30px,4vw,52px); line-height:1.05;
+    letter-spacing:-.014em; margin:0 0 1.1rem; color:#f4f1e9; max-width:20ch; }
+  .b2b-dark h2 em { font-style:italic; color:var(--sv-gold-hi); font-weight:400; }
+  .b2b-dark p { color:rgba(244,241,233,.8); font-size:16.5px; line-height:1.75; max-width:64ch; font-family:var(--sv-sans); font-weight:300; }
+  .b2b-dark p + p { margin-top:1.1em; }
+  .b2b-dark .accent { color:var(--sv-gold-hi); }
+
+  /* Ledger of proposals — accounting register, hairline rules. */
+  .b2b-ledger { border-top:1px solid var(--sv-gold-deep); margin-top:8px; }
+  .b2b-row { display:grid; grid-template-columns:minmax(170px,230px) 1fr; gap:6px 30px;
+    padding:24px 0; border-bottom:1px solid var(--sv-rule); align-items:baseline; }
+  .b2b-fig { font-family:var(--sv-mono); font-size:clamp(20px,2.2vw,28px); color:var(--sv-ink-hi); white-space:nowrap; }
+  .b2b-row p { margin:.25em 0 0; font-size:15.5px; line-height:1.7; color:var(--sv-ink-3); font-family:var(--sv-sans); font-weight:300; max-width:64ch; }
+  .b2b-tag { display:inline-block; font-family:var(--sv-mono); font-size:10px; font-weight:500; letter-spacing:.22em;
+    text-transform:uppercase; color:#0b0c0e; background:var(--sv-gold); border-radius:999px; padding:6px 13px; margin-top:10px; }
+
+  /* The seed — offset measure, gold spine. */
+  .b2b-seed { border-left:2px solid var(--sv-gold); padding-left:clamp(22px,3vw,44px); max-width:640px; }
+
+  /* Closing CTA — dark, centered, gilt. */
+  .b2b-cta { background:linear-gradient(160deg,#0b0c0e 0%,#161b26 58%,#0b0c0e 100%); color:#f4f1e9;
+    border-radius:26px; padding:clamp(48px,7vw,100px) clamp(28px,6vw,84px); text-align:center;
+    position:relative; overflow:hidden; }
+  .b2b-cta::before { content:""; position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse 62% 82% at 50% 112%, rgba(201,162,74,.24), transparent 66%); }
+  .b2b-cta > * { position:relative; }
+  .b2b-cta h2 { font-family:var(--sv-serif); font-weight:500; font-size:clamp(36px,5.4vw,74px); line-height:1;
+    letter-spacing:-.014em; margin:0 0 1.1rem; color:#f4f1e9; }
+  .b2b-cta h2 em { font-style:italic; color:var(--sv-gold-hi); font-weight:400; }
+  .b2b-cta p { color:rgba(244,241,233,.74); font-size:17px; line-height:1.7; max-width:54ch; margin:0 auto 2.2rem;
+    font-family:var(--sv-sans); font-weight:300; }
+  .b2b-cta-row { display:flex; gap:18px; flex-wrap:wrap; align-items:center; justify-content:center; }
+  .b2b-cta .b2b-ghost { border-color:rgba(233,211,160,.5); color:#f4f1e9; }
+  .b2b-cta .b2b-ghost:hover { background:rgba(201,162,74,.16); }
+  .b2b-cta .b2b-fineprint { color:rgba(244,241,233,.5); margin-left:auto; margin-right:auto; }
+
+  /* Programs strip — shared estate pattern. */
+  .b2b-grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; margin-top:10px; }
+  .b2b-card { background:rgba(255,255,255,.55); border:1px solid rgba(17,17,15,.2); border-radius:14px;
+    padding:26px 26px 24px; display:block; transition:transform .4s ease, box-shadow .4s ease; }
+  .b2b-card:hover { transform:translateY(-5px); box-shadow:0 18px 40px -20px rgba(10,9,8,.3); }
+  .b2b-card h3 { font-family:Georgia,serif; font-size:21px; margin:0 0 10px; font-weight:700; }
+  .b2b-card p { margin:0; font-size:15px; color:#3a392f; }
+  .b2b-card .k { font-size:11px; font-weight:700; letter-spacing:.2em; color:#7e6329; text-transform:uppercase; display:block; margin-bottom:8px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .b2b-orbit { animation:none; }
+    .b2b-strand:hover, .b2b-card:hover, .b2b-ghost:hover { transform:none; }
+  }
+  @media (max-width: 900px) {
+    .b2b-strands { display:flex; flex-direction:column; }
+    .b2b-s2, .b2b-s3 { margin-top:0; }
+    .b2b-row { grid-template-columns:1fr; gap:4px; }
+    .b2b-orbit { width:78vw; top:-110px; right:-90px; }
+    .b2b-h-off { margin-left:0; }
+  }
+</style>
+
 <main id="main-content" class="sv-interior">
-<section class="section section--compact" style="padding:48px 0;">
-<div class="container" style="max-width:66ch;margin:0 auto;padding:0 24px;">
-<p class="eyebrow" style="font-family:var(--vc-text);text-transform:uppercase;letter-spacing:.3em;font-size:12px;color:var(--vc-gold-text,#7e6329);margin:0 0 20px;font-weight:600;">Programs &middot; Engagement Pillar &middot; Flagship</p>
-<h1 class="display display--lg">Block to the Boardroom</h1>
-<p style="font-family:var(--vc-display);font-style:italic;font-size:clamp(19px,2.1vw,26px);line-height:1.4;color:var(--vc-gold-text,#7e6329);max-width:42ch;margin:0 0 8px;">From neighborhood blocks to boardroom tables.</p>
-<p style="font-family:var(--vc-text);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--vc-muted);margin:18px 0 0;">Status: Active &mdash; Cohort Forming</p>
-</div>
-</section>
+  <!-- HERO -->
+  <section class="section">
+    <div class="b2b-orbit" aria-hidden="true"></div>
+    <div class="container container--narrow">
+      <span class="section-header__label reveal">Programs of E5 Enclave Inc. &middot; The Block Program</span>
+      <h1 class="display display--lg reveal" style="transition-delay:.08s">From the block,<br><span class="text-gold b2b-h-off">to the boardroom.</span></h1>
+      <p class="body body--lg text-muted reveal" style="transition-delay:.16s">Block to the Boardroom is E5 Enclave&rsquo;s program for the neighborhoods that raised us: rehabilitating Black neighborhood blocks with emerging technology, building learn-to-earn STEM and Web3 pipelines, and moving the land beneath our feet back into community hands. The block is the foundation. The boardroom is where its builders take their seats.</p>
+      <div class="b2b-cta-row reveal" style="transition-delay:.24s">
+        <a class="e5-gilt" href="/coalition/apply/">Apply to the Coalition &rarr;</a>
+        <a class="b2b-ghost" href="#plan">Read the plan</a>
+      </div>
+      <p class="b2b-fineprint reveal" style="transition-delay:.3s">E5 Enclave Incorporated is a nonpartisan 501(c)(3) nonprofit organization. This program engages in no electoral activity of any kind.</p>
+    </div>
+  </section>
 
-<section class="section section--compact" style="padding:48px 0;">
-<div class="container" style="max-width:66ch;margin:0 auto;padding:0 24px;">
-<h2 class="display display--md" style="margin-bottom:1rem;">The Pipeline</h2>
-<p>Block to the Boardroom is E5 Enclave&rsquo;s civic leadership pipeline &mdash; one of our three flagship programs alongside the McCartney Academy and FarmBlock. It trains community members in governance, public policy, and institutional management, so that the neighborhoods carrying the weight of policy finally have a seat where policy is made.</p>
-<p>The premise is in the name. Leadership already lives on the block &mdash; in the elders who hold the corner together, the organizers who fill the gaps institutions leave, the parents who run whole systems on will alone. What the block is owed is a pipeline: the training, the credentials, and the entry points that turn standing in the community into standing in the rooms where budgets, boards, and policy are decided.</p>
-</div>
-</section>
+  <!-- THE PLAN: THREE STRANDS -->
+  <section class="section section--compact" id="plan">
+    <div class="container">
+      <span class="section-header__label reveal">The plan</span>
+      <h2 class="display display--md reveal" style="margin-bottom:1rem;">Three strands, one block</h2>
+      <p class="body body--lg text-muted reveal" style="margin-bottom:2.5rem; max-width:62ch;">Block to the Boardroom gathers the &ldquo;block&rdquo; lineage of E5&rsquo;s founding documents into a single program &mdash; three strands of work that turn a neighborhood block from a place people leave into a place people own.</p>
+      <div class="b2b-strands">
+        <article class="b2b-strand b2b-s1 reveal">
+          <span class="b2b-ghost-num" aria-hidden="true">01</span>
+          <span class="k">Block rehabilitation</span>
+          <h3>Building Better Blocks</h3>
+          <p>Bring emerging technology to the neighborhood block: connected, efficient, sustainable urban environments that support Black-owned businesses &mdash; business incubators, affordable housing, STEM workforce development, and sensor networks woven through the streetscape.</p>
+          <p class="b2b-doc">The concept originates in <em>Building Better Blocks (B3)</em>, a project document dated January 2023 &mdash; a proposal, not an operating program.</p>
+        </article>
+        <article class="b2b-strand b2b-s2 reveal" style="transition-delay:.1s">
+          <span class="b2b-ghost-num" aria-hidden="true">02</span>
+          <span class="k">Learn-to-earn pipeline</span>
+          <h3>Black Block Builders</h3>
+          <p>Advanced STEM education and Web3 fluency &mdash; blockchain, cryptography, no-code tools, artificial intelligence &mdash; delivered as learn-to-earn pathways. Participants earn while they learn the skills of the digital economy, then deploy them in peer-to-peer marketplaces and community exchanges.</p>
+          <p class="b2b-doc">The concept originates in <em>Black Block Builders</em>, an SBIR-style small-business research grant bid developed through Web 333 LLC &mdash; a proposal, not an operating program.</p>
+        </article>
+        <article class="b2b-strand b2b-s3 reveal" style="transition-delay:.2s">
+          <span class="b2b-ghost-num" aria-hidden="true">03</span>
+          <span class="k">Land-buying engine</span>
+          <h3>Gentrification reversal</h3>
+          <p>Revenue and resources directed at the oldest form of wealth: land. The program&rsquo;s economic logic is to purchase land and invest it in the community &mdash; increasing Black ownership of homes, businesses, and land, and reversing the displacement that &ldquo;revitalization&rdquo; usually brings.</p>
+          <p class="b2b-doc">The mechanism is named in the founding documents: profits from community enterprise converted into land and sustainable wealth-building, held by the community.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<section class="section section--compact" style="padding:48px 0;">
-<div class="container" style="max-width:66ch;margin:0 auto;padding:0 24px;">
-<h2 class="display display--md" style="margin-bottom:1rem;">The Training</h2>
-<p>The pipeline develops working command of three domains:</p>
-<p><strong>Governance</strong> &mdash; how boards, councils, and public bodies actually operate: fiduciary duty, bylaws, procedure, and the discipline of institutional stewardship.</p>
-<p><strong>Public policy</strong> &mdash; policy literacy and civic education: how legislation moves, how budgets are built, how public comment and advocacy shape outcomes.</p>
-<p><strong>Institutional management</strong> &mdash; the operating skills that hold institutions together: planning, compliance, accountability, and the management of people and resources.</p>
-<p>Block to the Boardroom is the flagship of E5&rsquo;s Engagement pillar &mdash; the pillar of civic education, public policy literacy, media, storytelling, and mobilization.</p>
-</div>
-</section>
+  <!-- THE REVERSAL ENGINE -->
+  <section class="section section--compact">
+    <div class="container">
+      <div class="b2b-dark reveal">
+        <span class="section-header__label" style="color:#e9d3a0;">The reversal engine</span>
+        <h2>When a block gets better, <em>its people usually get pushed out.</em></h2>
+        <p>This program inverts that sequence. Rehabilitation raises the block&rsquo;s value; <span class="accent">community ownership captures it.</span> The discipline runs from the small to the large: fix the broken window before the block follows &mdash; maintenance as anti-displacement policy, every vacant lot a future garden or lab instead of a developer&rsquo;s option.</p>
+        <p>As value returns to the block, the land-buying engine converts it into ownership that cannot be flipped away: homes, businesses, and land held by the people who live on the block.</p>
+      </div>
+    </div>
+  </section>
 
-<section class="section section--compact" style="padding:48px 0;">
-<div class="container" style="max-width:66ch;margin:0 auto;padding:0 24px;">
-<h2 class="display display--md" style="margin-bottom:1rem;">Stand With the Work</h2>
-<p>The first cohort is forming now. If you want to train, to teach, or to open a boardroom door, the path in is the Coalition.</p>
-<p style="margin-top:1.6rem;"><a href="/coalition/apply/" style="font-family:var(--vc-text);font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--vc-bone,#f4eee2);background:var(--vc-ink,#0a0908);text-decoration:none;padding:14px 30px;display:inline-block;">Apply to the Coalition &rarr;</a>&nbsp;&nbsp;<a href="/contact/" style="font-family:var(--vc-text);font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--vc-ink);text-decoration:none;border:1px solid var(--vc-ink);padding:14px 30px;display:inline-block;">Contact the Council &rarr;</a></p>
-</div>
-</section>
+  <!-- LEDGER OF PROPOSALS -->
+  <section class="section section--compact">
+    <div class="container container--narrow">
+      <span class="section-header__label reveal">Proposal discipline</span>
+      <h2 class="display display--md reveal" style="margin-bottom:1rem;">A ledger of proposals</h2>
+      <p class="body body--lg text-muted reveal" style="margin-bottom:2rem;">Every figure on this page is labeled. Each number below comes from a proposal document &mdash; none of them describes money raised, a program operating, or an outcome achieved.</p>
+      <div class="b2b-ledger">
+        <div class="b2b-row reveal">
+          <span class="b2b-fig">$500,000</span>
+          <div><p>Total project budget in the Black Block Builders grant-bid document.</p><span class="b2b-tag">Proposed</span></div>
+        </div>
+        <div class="b2b-row reveal">
+          <span class="b2b-fig">$5M / year</span>
+          <div><p>Revenue potential &ldquo;within five years of launching,&rdquo; estimated in the same bid. An aspiration, never realized.</p><span class="b2b-tag">Projection &middot; not a result</span></div>
+        </div>
+        <div class="b2b-row reveal">
+          <span class="b2b-fig">$1,999,998</span>
+          <div><p>Funding requested by <em>Project Reconstruction and Repair: A Vision for Pine Bluff, Arkansas</em> &mdash; a 36-month proposal. Never raised; never spent.</p><span class="b2b-tag">Proposed</span></div>
+        </div>
+        <div class="b2b-row reveal">
+          <span class="b2b-fig">$1,030,002</span>
+          <div><p>The additional funding the Pine Bluff proposal said it would still need beyond the request &mdash; through in-kind donations, fundraising, and partner contributions.</p><span class="b2b-tag">Proposal gap</span></div>
+        </div>
+        <div class="b2b-row reveal">
+          <span class="b2b-fig">50% &middot; 30%</span>
+          <div><p>Outcome targets in the Pine Bluff proposal: more fresh-produce consumption, less food insecurity, less housing insecurity, lower housing costs. Targets, never measured.</p><span class="b2b-tag">Targets &middot; not results</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PINE BLUFF: THE REPLICATION NARRATIVE -->
+  <section class="section section--compact">
+    <div class="container container--narrow">
+      <span class="section-header__label reveal">Geography</span>
+      <h2 class="display display--md reveal" style="margin-bottom:1rem;">Pine Bluff, the replication narrative</h2>
+      <div class="body body--lg text-muted reveal" style="line-height:1.7;">
+        <p style="margin:0 0 1em;">Pine Bluff, Arkansas is the named pilot site in the source documents. The B3 document names it as a potential site for the first rehabilitated block; <em>Project Reconstruction and Repair</em> is a full proposal for it &mdash; an 8,000-square-foot organic garden, twelve double-decker container housing units, advanced STEM education, and a community mesh network.</p>
+        <p style="margin:0;">None of it is operating. There is no E5 activity in Pine Bluff today. The proposal is preserved here as the replication narrative &mdash; the blueprint the model could travel in, once it is proven in Miami.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE SEED -->
+  <section class="section section--compact">
+    <div class="container container--narrow">
+      <span class="section-header__label reveal">Lineage</span>
+      <h2 class="display display--md reveal" style="margin-bottom:1rem;">The seed</h2>
+      <div class="b2b-seed reveal">
+        <p class="body body--lg text-muted" style="line-height:1.7; margin:0 0 1em;">The vision began in a recorded conversation in March 2022: buy the vacant lots instead of watching them decay, turn empty buildings into homes, gardens feeding food banks, learn-to-earn coding for neighborhood youth. Every document that followed descends from those ideas.</p>
+        <p class="body body--lg text-muted" style="line-height:1.7; margin:0;">Only the ideas appear on this page. Specific personal claims from that conversation are not presented as fact.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT PROPOSED MEANS -->
+  <section class="section section--compact">
+    <div class="container container--narrow">
+      <span class="section-header__label reveal">Honest accounting</span>
+      <h2 class="display display--md reveal" style="margin-bottom:1rem;">What &ldquo;proposed&rdquo; means</h2>
+      <div class="body body--lg text-muted reveal" style="line-height:1.7;">
+        <p style="margin:0 0 1em;">None of the figures above describe money raised, a program operating, or outcomes achieved. There is no lab, garden, or housing unit operating under this program today.</p>
+        <p style="margin:0;">Any page, post, or person describing Block to the Boardroom as an operating program is mistaken &mdash; including earlier versions of this page, which have been corrected.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--compact">
+    <div class="container">
+      <div class="b2b-cta reveal">
+        <h2>The path in <em>is the Coalition.</em></h2>
+        <p>Block to the Boardroom is built by the people it serves. If you want to train, to teach, to open a boardroom door &mdash; or to bring a block with you &mdash; the way in is the Coalition. Tell them you&rsquo;re coming for Block to the Boardroom.</p>
+        <div class="b2b-cta-row">
+          <a class="e5-gilt" href="/coalition/apply/">Apply to the Coalition &rarr;</a>
+          <a class="b2b-ghost" href="/coalition/">Explore the Coalition</a>
+        </div>
+        <p class="b2b-fineprint">E5 Enclave Incorporated is a nonpartisan 501(c)(3) nonprofit organization.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS STRIP -->
+  <section class="section section--compact" id="programs">
+    <div class="container container--narrow">
+      <span class="section-header__label reveal">Programs of E5 Enclave Inc.</span>
+      <h2 class="display display--md reveal" style="margin-bottom:1rem;">The wider work</h2>
+      <p class="body body--lg text-muted reveal" style="margin-bottom:1.5rem;">Other programs of E5 Enclave Inc., listed for context. Each program stands on its own; none listed here is a partner of Block to the Boardroom, and none endorses it.</p>
+      <div class="b2b-grid2">
+        <a class="b2b-card reveal" href="/programs/lineage-farms/" style="text-decoration:none; color:inherit">
+          <span class="k">Food sovereignty</span>
+          <h3>Lineage Farms</h3>
+          <p>Cooperative urban agriculture &mdash; land stewardship, food sovereignty, and circular economics in practice.</p>
+        </a>
+        <a class="b2b-card reveal" href="/restitution-246/" style="text-decoration:none; color:inherit; transition-delay:.08s">
+          <span class="k">Reparations research</span>
+          <h3>Project 2033</h3>
+          <p>E5 Enclave&rsquo;s reparations research hub &mdash; the documented debt, the congressional case, and the path to Black economic parity.</p>
+        </a>
+        <a class="b2b-card reveal" href="/willing-333/" style="text-decoration:none; color:inherit; transition-delay:.16s">
+          <span class="k">Technology &middot; An invitation</span>
+          <h3>The Willing 333</h3>
+          <p>Technology in service of neighborhoods &mdash; 333 companies invited to build a Miami Civic Robotics Commons.</p>
+        </a>
+        <a class="b2b-card reveal" href="/programs/mccartney-academy/" style="text-decoration:none; color:inherit; transition-delay:.24s">
+          <span class="k">Black-centered K&ndash;12 &middot; Proposed</span>
+          <h3>McCartney Academy</h3>
+          <p>A proposed Black-centered K&ndash;12 STEAM academy for Liberty City &mdash; planned through Florida&rsquo;s Schools of Hope program.</p>
+        </a>
+      </div>
+    </div>
+  </section>
 </main>
 <script>
-  // Palette toggle (editorial ↔ original)
+  // Palette toggle (editorial <-> original)
   (function(){
     var KEY = 'e5-palette';
     var html = document.documentElement;
@@ -1059,39 +1300,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     });
   })();
 
-  // Rolling counters — institutional accounting, not slot-machine roll.
-  (function(){
-    var nodes = document.querySelectorAll('[data-counter-target]');
-    if (!nodes.length) return;
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function format(n){ return n.toLocaleString('en-US'); }
-    function run(node){
-      var target = parseInt(node.getAttribute('data-counter-target'), 10) || 0;
-      if (reduced) { node.textContent = format(target); return; }
-      var dur = Math.min(2200, 600 + target * 1.2);
-      var start = performance.now();
-      function tick(now){
-        var t = Math.min(1, (now - start) / dur);
-        var eased = 1 - Math.pow(1 - t, 3);
-        var v = Math.round(target * eased);
-        node.textContent = format(v);
-        if (t < 1) requestAnimationFrame(tick);
-        else {
-          node.classList.add('tick');
-          setTimeout(function(){ node.classList.remove('tick'); }, 700);
-        }
-      }
-      requestAnimationFrame(tick);
-    }
-    if (!('IntersectionObserver' in window)) { nodes.forEach(run); return; }
-    var io2 = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting) { run(e.target); io2.unobserve(e.target); }
-      });
-    }, { threshold: 0.4 });
-    nodes.forEach(function(n){ io2.observe(n); });
-  })();
-
   // Reveal-on-scroll
   (function(){
     var els = document.querySelectorAll('.reveal');
@@ -1105,24 +1313,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
     els.forEach(function(e){ io.observe(e); });
-  })();
-
-  // Pointer-aware gold gleam on the foundation slab
-  (function(){
-    var slab = document.querySelector('.vc-foundation');
-    if (!slab || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var raf = 0;
-    slab.addEventListener('mousemove', function(e){
-      if (raf) cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(function(){
-        var rect = slab.getBoundingClientRect();
-        var x = ((e.clientX - rect.left) / rect.width) * 100;
-        slab.style.setProperty('--gleam-x', Math.max(0, Math.min(100, x)) + '%');
-      });
-    });
-    slab.addEventListener('mouseleave', function(){
-      slab.style.setProperty('--gleam-x', '50%');
-    });
   })();
 
   // Smooth scroll for in-page anchors
@@ -1139,6 +1329,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     }
   });
 </script>
+
 <script>/*revealFailsafe*/window.addEventListener('load',function(){setTimeout(function(){document.querySelectorAll('.reveal:not(.in)').forEach(function(e){e.classList.add('in');});},1200);});</script><!-- e5:chrome-foot -->
 <div class="sov-chrome sov-chrome-foot" style="margin-top:clamp(60px,8vw,120px)">
 <div style="position:relative; z-index:5; margin-top:0; height:4px; background:linear-gradient(90deg,#6E5220,#C9A24A 24%,#E9D3A0 50%,#C9A24A 76%,#6E5220)"></div>
