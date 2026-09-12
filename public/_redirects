@@ -119,3 +119,9 @@
 /reparations/                 /restitution-246/                301
 /project-2033                 /restitution-246/                301
 /project-2033/                /restitution-246/                301
+
+# --- The Willing 333 (2026-09-12): alias routes → canonical page ---
+/the-willing-333               /willing-333/                      301
+/the-willing-333/              /willing-333/                      301
+/pages/willing-333             /willing-333/                      301
+/pages/willing-333/            /willing-333/                      301
