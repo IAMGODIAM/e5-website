@@ -2,10 +2,17 @@
    p33-hero.js — "The Compounding Vault" hero for Project 2033
    Gold-mote depth field (interest accruing) + slow vault dial
    (gold torus, counter-rotating ring, ledger tick marks).
-   Decorative only: canvas is aria-hidden, injected by script.
+   Material pass (second pass): UnrealBloom-equivalent gold
+   halation (bright-pass + separable Gaussian blur, hand-written
+   GLSL) + film grain via Paper Shaders noise (Apache-2.0,
+   vendored js/vendor/paper-shaders/), composited on a
+   fullscreen triangle. Decorative only: canvas is aria-hidden,
+   injected by script.
    Fail-closed per subsystem — never breaks the page.
    Ladder: reduced-motion / no-WebGL / no-THREE  -> static poster
            saveData or hwConcurrency<=4          -> one static frame
+   Loop: lifecycle-aware — rAF + IntersectionObserver pause +
+   document.hidden park + frame-budget degradation (governor).
    ============================================================ */
 (function () {
 'use strict';
@@ -27,9 +34,21 @@ try {
   weakCpu = (navigator.hardwareConcurrency || 8) <= 4;
 } catch (e) {}
 
+/* hero_media_state instrumentation hook: report the fallback path */
+function reportMediaState(fallback) {
+  try {
+    if (window.__p33Measured) return;
+    window.__p33Measured = true;
+    var ev = new CustomEvent('p33:media-state', { detail: { fallback: fallback } });
+    document.dispatchEvent(ev);
+  } catch (e) {}
+}
+
+if (reduced) reportMediaState('reduced-motion');
+
 function boot() {
-  if (typeof window.THREE === 'undefined') return; /* static poster */
-  try { initScene(); } catch (e) { /* hero stays static; never break */ }
+  if (typeof window.THREE === 'undefined') { reportMediaState('webgl-fail'); return; } /* static poster */
+  try { initScene(); } catch (e) { reportMediaState('webgl-fail'); /* hero stays static; never break */ }
   /* mark live only once the canvas exists */
   if (hero.querySelector('canvas.p33-hero-canvas')) {
     docEl.classList.add('p33-live');
@@ -56,9 +75,10 @@ function initScene() {
   var renderer;
   try {
     renderer = new T.WebGLRenderer({ canvas: canvas, alpha: true, antialias: false, powerPreference: 'low-power' });
-  } catch (e) { canvas.remove(); return; /* no WebGL: static hero */ }
+  } catch (e) { canvas.remove(); reportMediaState('webgl-fail'); return; /* no WebGL: static hero */ }
   renderer.setClearColor(0x000000, 0);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+  renderer.autoClear = true;
 
   var scene = new T.Scene();
   var camera = new T.PerspectiveCamera(52, 1, 0.1, 160);
@@ -147,11 +167,155 @@ function initScene() {
   world.position.set(dialX, dialY, -10);
   scene.add(world);
 
+  /* ============ MATERIAL PASS: post-processing ============
+     Pipeline (all hand-written GLSL, fullscreen triangle):
+       scene -> sceneRT -> bright-pass -> bloomRT (half res)
+       -> separable Gaussian blur x2 -> composite:
+          scene + bloom * gold tint (halation)
+          + film grain (Paper Shaders proceduralHash21, Apache-2.0)
+          + banding fix (Paper Shaders colorBandingFix)
+     This is the UnrealBloom algorithm (bright-pass + blur +
+     additive composite), implemented directly against the
+     vendored r149 UMD build — no extra runtime weight. */
+  var postOK = false, sceneRT = null, bloomA = null, bloomB = null;
+  var postScene = null, postCam = null;
+  var brightMat = null, blurMat = null, compMat = null;
+  var PAPER = (typeof window.__PAPER_GLSL !== 'undefined') ? window.__PAPER_GLSL : null;
+
+  function makeRT(w, h) {
+    return new T.WebGLRenderTarget(Math.max(2, w | 0), Math.max(2, h | 0), {
+      type: T.HalfFloatType, depthBuffer: true, stencilBuffer: false
+    });
+  }
+  var triGeo = new T.BufferGeometry();
+  triGeo.setAttribute('position', new T.BufferAttribute(new Float32Array([-1, -1, 0, 3, -1, 0, -1, 3, 0]), 3));
+  triGeo.setAttribute('uv', new T.BufferAttribute(new Float32Array([0, 0, 2, 0, 0, 2]), 2));
+
+  var VERT = 'varying vec2 vUv;\nvoid main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }';
+
+  function buildPost() {
+    postScene = new T.Scene();
+    postCam = new T.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+    brightMat = new T.ShaderMaterial({
+      uniforms: { tSrc: { value: null }, uThreshold: { value: 0.55 } },
+      vertexShader: VERT,
+      fragmentShader: [
+        'uniform sampler2D tSrc; uniform float uThreshold; varying vec2 vUv;',
+        'void main(){',
+        '  vec3 c = texture2D(tSrc, vUv).rgb;',
+        '  float l = dot(c, vec3(0.299, 0.587, 0.114));',
+        '  float w = smoothstep(uThreshold, uThreshold + 0.25, l);',
+        '  gl_FragColor = vec4(c * w, 1.0);',
+        '}'
+      ].join('\n'),
+      depthTest: false, depthWrite: false
+    });
+
+    blurMat = new T.ShaderMaterial({
+      uniforms: { tSrc: { value: null }, uDir: { value: new T.Vector2(1, 0) }, uTexel: { value: new T.Vector2(1 / 512, 1 / 512) } },
+      vertexShader: VERT,
+      fragmentShader: [
+        'uniform sampler2D tSrc; uniform vec2 uDir; uniform vec2 uTexel; varying vec2 vUv;',
+        'void main(){',
+        '  vec3 c = texture2D(tSrc, vUv).rgb * 0.2270270270;',
+        '  vec2 off1 = uDir * uTexel * 1.3846153846;',
+        '  vec2 off2 = uDir * uTexel * 3.2307692308;',
+        '  c += texture2D(tSrc, vUv + off1).rgb * 0.3162162162;',
+        '  c += texture2D(tSrc, vUv - off1).rgb * 0.3162162162;',
+        '  c += texture2D(tSrc, vUv + off2).rgb * 0.0540540541;',
+        '  c += texture2D(tSrc, vUv - off2).rgb * 0.0540540541;',
+        '  gl_FragColor = vec4(c, 1.0);',
+        '}'
+      ].join('\n'),
+      depthTest: false, depthWrite: false
+    });
+
+    var hashGLSL = PAPER ? PAPER.proceduralHash21 : 'float hash21(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233))) * 43758.5453); }';
+    var bandGLSL = PAPER ? PAPER.colorBandingFix : '';
+
+    compMat = new T.ShaderMaterial({
+      uniforms: {
+        tScene: { value: null }, tBloom: { value: null },
+        uResolution: { value: new T.Vector2(1, 1) },
+        uTime: { value: 0 },
+        uBloomStrength: { value: 0.85 },
+        uGrain: { value: 0.055 }
+      },
+      vertexShader: VERT,
+      fragmentShader: [
+        'uniform sampler2D tScene; uniform sampler2D tBloom;',
+        'uniform vec2 uResolution; uniform float uTime;',
+        'uniform float uBloomStrength; uniform float uGrain;',
+        'varying vec2 vUv;',
+        hashGLSL,
+        'void main(){',
+        '  vec4 s = texture2D(tScene, vUv);',
+        '  vec3 bl = texture2D(tBloom, vUv).rgb;',
+        '  vec3 color = s.rgb;',
+        /* gold halation: warm-tinted bloom, stronger on highlights */
+        '  color += bl * uBloomStrength * vec3(1.0, 0.82, 0.50);',
+        /* film grain — Paper Shaders procedural hash; stronger in shadows */
+        '  float lum = dot(color, vec3(0.299, 0.587, 0.114));',
+        '  float g = hash21(vUv * uResolution * 0.5 + vec2(fract(uTime * 13.7) * 91.0, fract(uTime * 7.31) * 57.0)) - 0.5;',
+        '  color += g * uGrain * (0.35 + 0.65 * (1.0 - smoothstep(0.0, 0.75, lum)));',
+        bandGLSL,
+        '  gl_FragColor = vec4(color, s.a);', /* preserve canvas transparency for the CSS vault gradient */
+        '}'
+      ].join('\n'),
+      depthTest: false, depthWrite: false, transparent: true
+    });
+
+    postScene.add(new T.Mesh(triGeo, brightMat));
+    postOK = true;
+  }
+
+  function sizePost(w, h) {
+    if (sceneRT) { sceneRT.dispose(); bloomA.dispose(); bloomB.dispose(); }
+    var pr = renderer.getPixelRatio();
+    sceneRT = makeRT(w * pr, h * pr);
+    bloomA = makeRT((w * pr) / 2, (h * pr) / 2);
+    bloomB = makeRT((w * pr) / 2, (h * pr) / 2);
+    blurMat.uniforms.uTexel.value.set(2 / (w * pr), 2 / (h * pr));
+    compMat.uniforms.uResolution.value.set(w * pr, h * pr);
+  }
+
+  function runPost(t) {
+    /* scene -> RT */
+    renderer.setRenderTarget(sceneRT);
+    renderer.render(scene, camera);
+    /* bright pass -> bloomA */
+    brightMat.uniforms.tSrc.value = sceneRT.texture;
+    postScene.children[0].material = brightMat;
+    renderer.setRenderTarget(bloomA);
+    renderer.render(postScene, postCam);
+    /* separable blur: x into bloomB, y back into bloomA */
+    blurMat.uniforms.tSrc.value = bloomA.texture;
+    blurMat.uniforms.uDir.value.set(1, 0);
+    postScene.children[0].material = blurMat;
+    renderer.setRenderTarget(bloomB);
+    renderer.render(postScene, postCam);
+    blurMat.uniforms.tSrc.value = bloomB.texture;
+    blurMat.uniforms.uDir.value.set(0, 1);
+    renderer.setRenderTarget(bloomA);
+    renderer.render(postScene, postCam);
+    /* composite -> screen */
+    compMat.uniforms.tScene.value = sceneRT.texture;
+    compMat.uniforms.tBloom.value = bloomA.texture;
+    compMat.uniforms.uTime.value = t;
+    postScene.children[0].material = compMat;
+    renderer.setRenderTarget(null);
+    renderer.render(postScene, postCam);
+  }
+
+  try { buildPost(); } catch (e) { postOK = false; }
+
   function size() {
     var w = hero.clientWidth || 1, h = hero.clientHeight || 1;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
+    if (postOK) { try { sizePost(w, h); } catch (e) { postOK = false; } }
   }
   size();
   var resizeT = null;
@@ -255,11 +419,13 @@ function initScene() {
     var target = Math.max(0, Math.min(1, 1 - y / (heroH * 0.92)));
     fade += (target - fade) * Math.min(1, dt * 5);
 
-    renderer.render(scene, camera);
+    if (postOK) { try { runPost(t); } catch (e) { postOK = false; renderer.setRenderTarget(null); renderer.render(scene, camera); } }
+    else { renderer.render(scene, camera); }
   }
 
   /* static single frame for saveData / weak CPUs */
   if (saveData || weakCpu) {
+    reportMediaState('data-saver');
     try {
       ignite = 1;
       draw(performance.now() + 2400);
@@ -268,6 +434,7 @@ function initScene() {
     return;
   }
 
+  /* lifecycle-aware loop: rAF + IO visibility pause + hidden park */
   function loop(now) {
     rafId = null;
     if (document.hidden || !heroVisible) return; /* parked; re-armed by observers */
