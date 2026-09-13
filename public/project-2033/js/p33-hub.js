@@ -138,3 +138,69 @@ form.addEventListener('submit', function (e) {
     });
 });
 })();
+
+/* ---------- packet-index member filter ----------
+   Informing interactivity (falsification test: if the filter did
+   not narrow the 62 links to the member you need, the failure is
+   obvious — you cannot find the packet). Enhancement only:
+   injected with JS, so no-JS readers get the full list with no
+   dead input. Task-relevant motion only (instant hide/show). */
+(function () {
+  var details = document.querySelector('.p33-dl-all');
+  if (!details) return;
+  var sub = details.querySelector('.p33-dl-all-sub');
+  var list = details.querySelector('.p33-dl-list');
+  if (!sub || !list) return;
+  var items = Array.prototype.slice.call(list.querySelectorAll('li'));
+  if (!items.length) return;
+
+  var wrap = document.createElement('div');
+  wrap.className = 'p33-filter';
+  var label = document.createElement('label');
+  label.setAttribute('for', 'p33MemberFilter');
+  label.textContent = 'Find your member';
+  var input = document.createElement('input');
+  input.type = 'search';
+  input.id = 'p33MemberFilter';
+  input.setAttribute('placeholder', 'Type a name \u2014 e.g. Pressley');
+  input.setAttribute('autocomplete', 'off');
+  input.setAttribute('aria-describedby', 'p33FilterCount');
+  var count = document.createElement('p');
+  count.className = 'p33-filter-count';
+  count.id = 'p33FilterCount';
+  count.setAttribute('role', 'status');
+  var none = document.createElement('p');
+  none.className = 'p33-dl-none';
+  none.hidden = true;
+  none.textContent = 'No member matches that name \u2014 try a last name.';
+  wrap.appendChild(label);
+  wrap.appendChild(input);
+  wrap.appendChild(count);
+  sub.parentNode.insertBefore(wrap, sub.nextSibling);
+  list.parentNode.insertBefore(none, list.nextSibling);
+
+  var total = items.length;
+  function paint(n) {
+    count.textContent = (n === total) ? (total + ' packets')
+      : (n + ' of ' + total + ' packets');
+  }
+  paint(total);
+
+  input.addEventListener('input', function () {
+    var q = input.value.trim().toLowerCase();
+    var shown = 0;
+    for (var i = 0; i < items.length; i++) {
+      var hit = !q || items[i].textContent.toLowerCase().indexOf(q) !== -1;
+      items[i].hidden = !hit;
+      if (hit) shown++;
+    }
+    none.hidden = shown !== 0;
+    paint(shown);
+  });
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && input.value) {
+      input.value = '';
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+  });
+})();
