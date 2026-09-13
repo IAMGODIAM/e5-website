@@ -320,6 +320,68 @@ html.e5-reduced-motion [data-enter]{opacity:1;transform:none;transition:none}
   html.js [data-enter]{opacity:1;transform:none}
 }
 </style>
+
+<style>
+/* ============ AGRIMESH LEGIBILITY TREATMENT (2026-09-13) ============
+   Chairman's order: warm ivory text on dark, phone-legible everywhere.
+   Page-scoped and scheme-independent: these rules hard-code the resolved
+   colors instead of relying on inherited data-e5-scheme variables, so the
+   treatment holds in every render path. */
+
+/* --- Tier cards: dark stays dark, text goes warm ivory --- */
+.e5-give .e5-tier{background:#151009;border:1px solid rgba(214,168,75,.30);color:#fffdf4}
+.e5-give .e5-tier:has(.tier__radio:checked){border-color:#d6a84b;
+  box-shadow:0 10px 34px -12px rgba(214,168,75,.55),inset 0 0 0 1px rgba(214,168,75,.35)}
+.e5-give .tier__amount{color:#fffdf4;text-shadow:0 2px 22px rgba(24,15,5,.6)}
+.e5-give .tier__amount .tier__freq{color:#ffe9b8;text-shadow:0 1px 10px rgba(24,15,5,.6)}
+.e5-give .tier__impact{color:#fffdf4;text-shadow:0 2px 14px rgba(24,15,5,.6)}
+.e5-give .tier__desc{color:#f7ecd4;text-shadow:0 1px 10px rgba(24,15,5,.6)}
+.e5-give .tier__badge{background:rgba(16,10,4,.82);color:#ffe9b8;
+  border:1px solid rgba(255,233,184,.35);text-shadow:0 1px 6px rgba(0,0,0,.8)}
+.e5-give .e5-tier .btn{color:#ffe9b8;border-color:rgba(255,233,184,.45);
+  text-shadow:0 1px 6px rgba(0,0,0,.8)}
+.e5-give .e5-tier .btn:hover{border-color:#ffe9b8;color:#fffdf4;background:rgba(255,233,184,.06)}
+.e5-give .e5-tier .btn--primary{background:#d6a84b;border-color:#d6a84b;color:#140f04;text-shadow:none}
+.e5-give .e5-tier .btn--primary:hover{background:#ecd9a4;border-color:#ecd9a4;color:#140f04}
+.e5-give .tier__radio:checked + .btn{border-color:#d6a84b}
+
+/* --- Hero: AgriMesh glow treatment on display type --- */
+.e5-hero .e5-hero-h{color:#fffdf4;text-shadow:0 2px 22px rgba(24,15,5,.6)}
+.e5-hero .e5-hero-h em{color:#ffe9b8}
+.e5-hero .e5-hero-deck{color:#fdf3dd;text-shadow:0 2px 14px rgba(24,15,5,.6)}
+.e5-hero .e5-hero-proof{color:#f7ecd4;text-shadow:0 1px 10px rgba(24,15,5,.6)}
+.e5-hero .e5-hero-proof a{color:#ffe9b8}
+.e5-hero .e5-eyebrow{color:#ffe9b8}
+.e5-hero .e5-cta-secondary{color:#ffe9b8;border-color:rgba(255,233,184,.5);
+  text-shadow:0 1px 6px rgba(0,0,0,.8)}
+.e5-hero .e5-cta-secondary:hover{border-color:#ffe9b8;color:#fffdf4}
+
+/* --- Give section on ivory: explicit ink (scheme-independent) --- */
+.e5-give .e5-eyebrow{color:#7a5c14}
+.e5-give .e5-give-h{color:#1a1714}
+.e5-give .e5-give-sub h3{color:#1a1714}
+.e5-give .e5-give-sub p{color:#1a1714}
+.e5-give .e5-give-sub .e5-sub-note{color:#4a4238}
+.e5-give .e5-custom label{color:#4a4238}
+.e5-give .donate__custom-input{background:#fffdf4;border-color:#8b7e65}
+.e5-give .donate__input{color:#1a1714}
+.e5-give .donate__input::placeholder{color:#6b5e54;opacity:.9}
+.e5-give .donate__dollar{color:#7a5c14}
+.e5-give .donate__freq{color:#4a4238}
+.e5-give .e5-freq > span{color:#4a4238}
+.e5-give .donate__freq-option{color:#1a1714;border-color:#8b7e65}
+.e5-give .e5-chip > span{color:#4a4238}
+.e5-give .e5-chip .btn{color:#1a1714;border-color:#7a5c14}
+.e5-give .e5-trustline{color:#4a4238}
+.e5-give .e5-noscript p{color:#1a1714}
+.e5-give .e5-noscript .btn{color:#1a1714;border-color:#8b7e65}
+
+/* --- Trust band on ivory: explicit ink --- */
+.e5-trust .e5-eyebrow{color:#7a5c14}
+.e5-trust .e5-trust-h{color:#1a1714}
+.e5-trust .e5-trust-item p{color:#1a1714}
+</style>
+
 </head>
 <body>
 <a class="e5-skip" href="#give">Skip to the giving instrument</a>
