@@ -866,7 +866,8 @@ html, body { overflow-x: clip; } /* decorative bleed (ring, grain) never scrolls
    Pure CSS, @supports-gated; informs (shows where you are). */
 .p33-letter-progress { display: block; height: 3px; margin: 0 0 20px; border-radius: 2px;
   background: linear-gradient(90deg, var(--p33-gold-deep), var(--p33-gold-hi));
-  transform: scaleX(0); transform-origin: 0 50%; }
+  transform: scaleX(0); transform-origin: 0 50%;
+  position: sticky; top: 12px; z-index: 5; /* pinned while the letter scrolls: the read-progress stays observable */ }
 @supports (animation-timeline: view()) {
   .p33-letter { view-timeline-name: --p33-letter-read; view-timeline-axis: block; }
   .p33-letter-progress { animation: p33-letter-fill linear both; animation-timeline: --p33-letter-read; animation-range: entry exit; }
