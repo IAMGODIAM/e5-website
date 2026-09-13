@@ -139,7 +139,7 @@ form.addEventListener('submit', function (e) {
 });
 })();
 
-/* ---------- packet-index member filter ----------
+/* ---------- packet-index member filter (v2 rebuild) ----------
    Informing interactivity (falsification test: if the filter did
    not narrow the 62 links to the member you need, the failure is
    obvious — you cannot find the packet). Enhancement only:
