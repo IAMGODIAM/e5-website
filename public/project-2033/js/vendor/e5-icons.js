@@ -1,18 +1,27 @@
 /* ============================================================
-   p33-icons.js — Project 2033 bespoke SVG icon-motion system
-   17 custom-drawn gold line-work icons (48x48, stroke 1.7, round
-   joins), drawn in the E5 icon language, plus 7 hub markers
-   (2026-09-13) for the #hub congressional hub. Never stock,
-   never icon fonts. Draw-on entrances via DrawSVG (GSAP,
-   vendored) — staggered path draws, total <=1.2s, settling to a
-   clean static state. Motion explains the action; conversion-path
-   icons stay static (no icon lives in the conversion path on this
-   page). Hub kickers carry data-p33-static and never draw —
-   task-relevant motion only on and around the sign-on form.
-   Fail-closed: no-JS => text-only; reduced-motion => icons appear
-   complete with no draw animation; DrawSVG missing => skip.
-   Provenance: original vector work for this page, 2026-09-12/13.
+   e5-icons.js — E5 shared motion-icon library · v1.0.0 (2026-09-13)
+   24 bespoke gold line-work icons (48x48, stroke 1.7, round
+   joins/caps, currentColor). Never stock, never icon fonts.
+   Consolidated from the Project 2033 cinematic build (17 page
+   icons, 2026-09-12) and the #hub attention upgrade (7 hub
+   markers, 2026-09-13). Provenance: original vector work for
+   E5 Enclave Inc., drawn in the E5 icon language.
+
+   Usage:
+     <span data-e5-ico="hubLetter"></span>
+     <script src="/js/e5-icons.js"></script>
+   Draw-on entrances (GSAP DrawSVG, vendored) fire per host card
+   via ScrollTrigger; stagger 70ms/path, 550ms each, <=1.2s total,
+   settling static — never looping. Hosts: [data-e5-draw-host]
+   or the default card selectors below. Mark an icon static with
+   data-e5-static (form-adjacent doctrine: no decorative motion
+   around forms).
+
+   Fail-closed: no-JS => empty slot (decorative only, never load-
+   bearing); prefers-reduced-motion => icons render complete with
+   no draw animation; DrawSVG/GSAP missing => static icons.
    ============================================================ */
+
 (function () {
 'use strict';
 
@@ -20,14 +29,6 @@ var docEl = document.documentElement;
 var reduced = false;
 try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
 
-/* ---- svg shell: 48x48, currentColor, aria-hidden (decorative) ---- */
-function S(inner) {
-  return '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" ' +
-    'stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" ' +
-    'aria-hidden="true" focusable="false">' + inner + '</svg>';
-}
-
-/* Each icon is an ordered array of fragments — draw order = array order. */
 var ICONS = {
   /* ---- 02 · THE RECORD quartet ---- */
   measure: [ /* ledger book, rising plotted line, end dot */
@@ -211,50 +212,74 @@ var ICONS = {
   ]
 };
 
-/* ---- inject into [data-p33-ico] slots ---- */
-try {
-  var slots = document.querySelectorAll('[data-p33-ico]');
+/* ---- svg shell: 48x48, currentColor, decorative ---- */
+function S(inner) {
+  return '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" ' +
+    'stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" ' +
+    'aria-hidden="true" focusable="false">' + inner + '</svg>';
+}
+
+/* ---- inject into [data-e5-ico] slots ---- */
+function inject(root) {
+  var scope = root || document;
+  var slots;
+  try { slots = scope.querySelectorAll('[data-e5-ico]'); } catch (e) { return; }
   for (var i = 0; i < slots.length; i++) {
-    var frags = ICONS[slots[i].getAttribute('data-p33-ico')];
+    var frags = ICONS[slots[i].getAttribute('data-e5-ico')];
     if (frags) slots[i].innerHTML = S(frags.join(''));
   }
-} catch (e) { /* icons are decorative; never break the page */ }
+}
 
 /* ---- draw-on entrances via DrawSVG ----
-   Each icon's host card/step/row triggers its own draw when it
-   enters the viewport. Stagger 70ms/path, 550ms draw each —
-   total <= 1.2s for the largest icon (9 paths: 0.55 + 8*0.07 = 1.11s).
-   Settles to a clean static state; never loops. */
-try {
-  var canDraw = !reduced &&
-    typeof window.gsap !== 'undefined' &&
-    typeof window.ScrollTrigger !== 'undefined' &&
-    typeof window.DrawSVGPlugin !== 'undefined';
-  if (canDraw) {
+   opts.hosts: selector for draw trigger hosts (default below)
+   opts.stagger / opts.duration: per-path timing (defaults 0.07 / 0.55)
+   opts.triggerStart: ScrollTrigger start (default 'top 82%')
+   Icons carrying data-e5-static never draw (form-adjacent doctrine). */
+function drawOn(root, opts) {
+  opts = opts || {};
+  var stagger = typeof opts.stagger === 'number' ? opts.stagger : 0.07;
+  var duration = typeof opts.duration === 'number' ? opts.duration : 0.55;
+  var triggerStart = opts.triggerStart || 'top 82%';
+  var hostSel = opts.hosts ||
+    '[data-e5-draw-host], .e5-card, .p33-card, .p33-step, .p33-pillar, .p33-ledger-row, .p33-dl-card';
+  var scope = root || document;
+  try {
+    var canDraw = !reduced &&
+      typeof window.gsap !== 'undefined' &&
+      typeof window.ScrollTrigger !== 'undefined' &&
+      typeof window.DrawSVGPlugin !== 'undefined';
+    if (!canDraw) return;
     gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
-    var drawn = document.querySelectorAll('[data-p33-ico] svg');
+    var drawn = scope.querySelectorAll('[data-e5-ico] svg');
     for (var d = 0; d < drawn.length; d++) (function (svg) {
       var shapes = svg.querySelectorAll('path, circle, ellipse');
       if (!shapes.length) return;
-      if (svg.closest('[data-p33-static]')) return; /* hub kickers: static by doctrine */
-      var host = svg.closest('.p33-card, .p33-step, .p33-pillar, .p33-ledger-row, .p33-dl-card') || svg;
+      if (svg.closest('[data-e5-static]')) return;
+      var host = svg.closest(hostSel) || svg;
       gsap.set(shapes, { drawSVG: '0%' });
       ScrollTrigger.create({
         trigger: host,
-        start: 'top 82%',
+        start: triggerStart,
         once: true,
         onEnter: function () {
           gsap.to(shapes, {
             drawSVG: '100%',
-            duration: 0.55,
-            stagger: 0.07,
+            duration: duration,
+            stagger: stagger,
             ease: 'power2.inOut',
             overwrite: true
           });
         }
       });
     })(drawn[d]);
-  }
-} catch (e) { /* draw-on is decorative; icons remain complete statically */ }
+  } catch (e) { /* draw-on is decorative; icons remain complete statically */ }
+}
+
+window.E5Icons = { ICONS: ICONS, inject: inject, drawOn: drawOn, version: '1.0.0' };
+
+function boot() { inject(document); drawOn(document); }
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', boot);
+} else { boot(); }
 
 })();
