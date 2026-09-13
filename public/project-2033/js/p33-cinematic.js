@@ -1,11 +1,13 @@
 /* ============================================================
-   p33-cinematic.js — Project 2033 hub interactions
-   - bespoke gold line-work icon set (record quartet + parity pillars)
-   - staged hero entrance release (fail-closed: no JS => hero visible)
-   - scroll reveal + failsafe, counters, tilt, monument parallax
-   - five-question accordion progress, smooth anchors
-   - brief download + core-statement copy (copy verbatim, 2026-09-12)
-   Decorative subsystems never break the page: try/catch per block.
+   p33-cinematic.js — Project 2033 hub motion choreography
+   Single engine: GSAP (vendored) + ScrollTrigger + Lenis.
+   - Staged hero entrance (<=900ms) + variable-font weight swell
+   - ScrollTrigger reveals (stagger <=120ms), SplitText ledes
+   - Lenis smooth scroll (reduced-motion => native)
+   - Counters, tilt, monument parallax, faq progress, grain toggle
+   - Brief download + core-statement copy (copy verbatim, 2026-09-12)
+   Fail-closed per subsystem: CSS staged states + no-JS fallbacks
+   survive any vendor failure. Decorative motion never breaks copy.
    ============================================================ */
 (function () {
 'use strict';
@@ -14,113 +16,151 @@ var docEl = document.documentElement;
 var reduced = false;
 try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
 
-/* ---------------- 1. bespoke icon set ---------------- */
-function S(inner) {
-  return '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" ' +
-    'stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" ' +
-    'aria-hidden="true" focusable="false">' + inner + '</svg>';
-}
+var hasGsap = typeof window.gsap !== 'undefined';
+var hasST = typeof window.ScrollTrigger !== 'undefined';
+var hasSplit = typeof window.SplitText !== 'undefined';
+var useGsap = hasGsap && hasST && !reduced;
+if (hasGsap && hasST) { try { gsap.registerPlugin(ScrollTrigger); } catch (e) {} }
 
-var ICONS = {
-  /* Measure — open ledger book with a rising plotted line */
-  measure: S('<path d="M10 9.5c4.7-1.8 9.3-1.8 14 0v22.5c-4.7-1.8-9.3-1.8-14 0Z"/>' +
-    '<path d="M24 9.5c4.7-1.8 9.3-1.8 14 0v22.5c-4.7-1.8-9.3-1.8-14 0Z"/>' +
-    '<path d="M24 9.5V32"/>' +
-    '<path d="M13.5 25.5l4-5 3.2 2.6 6-7.6"/>' +
-    '<circle cx="30.7" cy="15.5" r="1.3"/>'),
-  /* Document — scroll with a wax-seal circle */
-  document: S('<path d="M16 5.5h16a2 2 0 0 1 2 2v27a2 2 0 0 1-2 2H16a2 2 0 0 1-2-2v-27a2 2 0 0 1 2-2Z"/>' +
-    '<path d="M18.5 14.5h11M18.5 19.5h11M18.5 24.5h7"/>' +
-    '<circle cx="28" cy="31.5" r="4.5"/>' +
-    '<circle cx="28" cy="31.5" r="1.6"/>'),
-  /* Carry it to Congress — abstract dome, arc + columns */
-  congress: S('<path d="M24 4.5v3"/>' +
-    '<circle cx="24" cy="3.8" r="1.2"/>' +
-    '<path d="M9 29a15 15 0 0 1 30 0"/>' +
-    '<path d="M13.5 29v-1.5a10.5 10.5 0 0 1 21 0V29"/>' +
-    '<path d="M16 33v8M22 33v8M26 33v8M32 33v8"/>' +
-    '<path d="M10.5 41.5h27"/>'),
-  /* Advance the law — balanced scales with a gold pivot */
-  law: S('<path d="M24 6.5V38"/>' +
-    '<path d="M24 6.5l2.2 2.6-2.2 2.6-2.2-2.6Z"/>' +
-    '<path d="M12 12.5h24"/>' +
-    '<path d="M12 12.5l-6 11M12 12.5l6 11"/>' +
-    '<path d="M4.5 26a7.5 7.5 0 0 0 15 0"/>' +
-    '<path d="M36 12.5l-6 11M36 12.5l6 11"/>' +
-    '<path d="M28.5 26a7.5 7.5 0 0 0 15 0"/>' +
-    '<path d="M18 41.5h12"/>'),
-  /* Land — furrowed rows under a sun arc */
-  land: S('<path d="M24 2.5V5"/>' +
-    '<path d="M13.8 5.6l1.7 1.7M34.2 5.6l-1.7 1.7"/>' +
-    '<path d="M15.5 13.5a8.5 8.5 0 0 1 17 0"/>' +
-    '<path d="M6 29c8-3 16 3 24 0s8-3 12 0"/>' +
-    '<path d="M6 35.5c8-3 16 3 24 0s8-3 12 0"/>' +
-    '<path d="M6 42c8-3 16 3 24 0s8-3 12 0"/>'),
-  /* Learning — open book with rising rays */
-  learning: S('<path d="M24 5.5V11"/>' +
-    '<path d="M16.5 8l2.5 4.2M31.5 8l-2.5 4.2"/>' +
-    '<path d="M24 20c-3.4-2.6-7.8-3.2-13-2.6V36c5.2-.6 9.6 0 13 2.6 3.4-2.6 7.8-3.2 13-2.6V17.4c-5.2-.6-9.6 0-13 2.6Z"/>' +
-    '<path d="M24 20v18.6"/>'),
-  /* Enterprise — hexagon coin with a storefront awning mark */
-  enterprise: S('<path d="M24 5l16.5 9.5v19L24 43 7.5 33.5v-19Z"/>' +
-    '<path d="M15.5 23.5h17"/>' +
-    '<path d="M15.5 25a2.8 2.8 0 0 0 5.7 0 2.8 2.8 0 0 0 5.6 0 2.8 2.8 0 0 0 5.7 0"/>' +
-    '<path d="M21 30.5h6V37h-6Z"/>'),
-  /* District — map pin ringed by small district dots */
-  district: S('<path d="M24 42.5c-7-8.2-11.5-14-11.5-20.8a11.5 11.5 0 0 1 23 0c0 6.8-4.5 12.6-11.5 20.8Z"/>' +
-    '<circle cx="24" cy="21.5" r="4"/>' +
-    '<circle cx="9" cy="9" r="1.6"/><circle cx="39" cy="9" r="1.6"/>' +
-    '<circle cx="9" cy="39" r="1.6"/><circle cx="39" cy="39" r="1.6"/>')
-};
-
+/* ---------------- 0. Lenis smooth scroll ----------------
+   Lenis is the active smoother. ScrollSmoother is vendored
+   (per plan) but NOT activated: it requires a body wrapper
+   restructure that risks the baked sovereign chrome. */
+var lenis = null;
 try {
-  var slots = document.querySelectorAll('[data-p33-ico]');
-  for (var i = 0; i < slots.length; i++) {
-    var name = slots[i].getAttribute('data-p33-ico');
-    if (ICONS[name]) slots[i].innerHTML = ICONS[name];
+  if (!reduced && typeof window.Lenis !== 'undefined') {
+    lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+    if (hasGsap) {
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
+      gsap.ticker.lagSmoothing(0);
+    } else {
+      var rafLenis = function (t) { lenis.raf(t); requestAnimationFrame(rafLenis); };
+      requestAnimationFrame(rafLenis);
+    }
   }
-} catch (e) { /* icons are decorative; never break the page */ }
+} catch (e) { lenis = null; }
 
-/* ---------------- 2. staged entrance release ----------------
+/* ---------------- 1. staged hero entrance ----------------
    The inline stager after </header> added html.p33-cine before
-   first paint. Release here; layered backstops guarantee -go. */
-function release() {
+   first paint (elements start hidden/translated). No-JS => the
+   class is never added => hero visible. Reduced-motion =>
+   instant state via the CSS reduced-motion block. */
+function cssRelease() {
   try { docEl.classList.add('p33-cine-go'); } catch (e) {}
 }
-try {
-  if (reduced) { release(); }
-  else {
-    requestAnimationFrame(function () { requestAnimationFrame(release); });
-  }
-  window.addEventListener('load', function () { setTimeout(release, 1500); });
-} catch (e) {}
 
-/* ---------------- 3. scroll reveal + failsafe ---------------- */
+try {
+  if (useGsap) {
+    /* GSAP drives the entrance: kicker -> H1 lines (masked) ->
+       deck -> panel, total <=900ms, stagger <=120ms. The CSS
+       -go class is never added on this path; inline GSAP
+       values override the .p33-cine stylesheet states. */
+    var h1 = document.getElementById('hero-title');
+    var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+    tl.fromTo('.p33-hero-kicker', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5 }, 0)
+      .fromTo('.p33-h1-line', { yPercent: 110 }, { yPercent: 0, duration: 0.7, stagger: 0.12 }, 0.1)
+      .fromTo('.p33-hero-deck', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5 }, 0.35)
+      .fromTo('.p33-hero-panel', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4 }, 0.5);
+    /* variable-font weight swell on the headline: 340 -> 520 */
+    if (h1) {
+      var w = { v: 340 };
+      gsap.to(w, {
+        v: 520, duration: 0.8, ease: 'expo.out', delay: 0.1,
+        onUpdate: function () {
+          h1.style.fontVariationSettings = '"wght" ' + w.v.toFixed(0);
+        },
+        onComplete: function () { h1.style.fontVariationSettings = ''; }
+      });
+    }
+    /* backstop: if anything in the timeline failed, CSS release */
+    setTimeout(function () {
+      try {
+        var k = document.querySelector('.p33-hero-kicker');
+        if (k && parseFloat(getComputedStyle(k).opacity) < 0.5) cssRelease();
+      } catch (e) { cssRelease(); }
+    }, 2200);
+  } else {
+    if (reduced) { cssRelease(); }
+    else {
+      requestAnimationFrame(function () { requestAnimationFrame(cssRelease); });
+    }
+    window.addEventListener('load', function () { setTimeout(cssRelease, 1500); });
+  }
+} catch (e) { cssRelease(); }
+
+/* ---------------- 2. scroll reveals ---------------- */
+function revealFinal(els) {
+  for (var i = 0; i < els.length; i++) {
+    els[i].classList.add('in');
+    els[i].style.opacity = '1';
+    els[i].style.transform = 'none';
+  }
+}
 try {
   var scope = document.getElementById('p33-main');
-  var revealEls = scope ? scope.querySelectorAll('.p33-reveal') : [];
-  var revealed = function (el) { el.classList.add('in'); };
-  if (!reduced && 'IntersectionObserver' in window) {
+  var revealEls = scope ? Array.prototype.slice.call(scope.querySelectorAll('.p33-reveal')) : [];
+
+  /* SplitText masked line reveals for section ledes (not reduced-motion) */
+  if (useGsap && hasSplit) {
+    try {
+      var ledes = [];
+      for (var li = 0; li < revealEls.length; li++) {
+        if (revealEls[li].classList.contains('p33-lede')) ledes.push(revealEls[li]);
+      }
+      for (var s2 = 0; s2 < ledes.length; s2++) (function (lede) {
+        var split = new SplitText(lede, { type: 'lines', mask: 'lines' });
+        var lines = split.lines || [];
+        /* remove from the generic batch so it isn't double-animated */
+        var ix = revealEls.indexOf(lede);
+        if (ix > -1) revealEls.splice(ix, 1);
+        gsap.set(lines, { yPercent: 110 });
+        gsap.set(lede, { opacity: 1, y: 0 });
+        lede.classList.add('in');
+        ScrollTrigger.create({
+          trigger: lede, start: 'top 85%', once: true,
+          onEnter: function () {
+            gsap.to(lines, { yPercent: 0, duration: 0.7, stagger: 0.09, ease: 'expo.out', overwrite: true });
+          }
+        });
+      })(ledes[s2]);
+    } catch (e) { /* fall through to generic reveals */ }
+  }
+
+  if (useGsap && revealEls.length) {
+    ScrollTrigger.batch(revealEls, {
+      start: 'top 88%',
+      once: true,
+      onEnter: function (batch) {
+        gsap.to(batch, {
+          opacity: 1, y: 0, duration: 0.8, stagger: 0.12,
+          ease: 'power3.out', overwrite: true,
+          onComplete: function () {
+            for (var b = 0; b < batch.length; b++) batch[b].classList.add('in');
+          }
+        });
+      }
+    });
+  } else if (!reduced && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       for (var k = 0; k < entries.length; k++) {
         if (entries[k].isIntersecting) {
-          revealed(entries[k].target);
+          entries[k].target.classList.add('in');
           io.unobserve(entries[k].target);
         }
       }
     }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
     for (var r = 0; r < revealEls.length; r++) io.observe(revealEls[r]);
   } else {
-    for (var r2 = 0; r2 < revealEls.length; r2++) revealed(revealEls[r2]);
+    revealFinal(revealEls);
   }
+  /* failsafe: everything visible by load + 1.4s */
   window.addEventListener('load', function () {
-    setTimeout(function () {
-      for (var q = 0; q < revealEls.length; q++) revealed(revealEls[q]);
-    }, 1400);
+    setTimeout(function () { revealFinal(revealEls); if (hasST) { try { ScrollTrigger.refresh(); } catch (e) {} } }, 1400);
   });
 } catch (e) {}
 
-/* ---------------- 4. counters ---------------- */
+/* ---------------- 3. counters ---------------- */
 function easeOutExpo(x) { return x >= 1 ? 1 : 1 - Math.pow(2, -10 * x); }
 function fmt(n) { return n.toLocaleString('en-US'); }
 try {
@@ -128,6 +168,15 @@ try {
   var runCounter = function (el) {
     var target = parseInt(el.getAttribute('data-count'), 10) || 0;
     if (reduced) { el.textContent = fmt(target); return; }
+    if (useGsap) {
+      var o = { v: 0 };
+      gsap.to(o, {
+        v: target, duration: 2, ease: 'expo.out',
+        onUpdate: function () { el.textContent = fmt(Math.round(o.v)); },
+        onComplete: function () { el.textContent = fmt(target); }
+      });
+      return;
+    }
     var t0 = null, dur = 2000;
     function tick(now) {
       if (!t0) t0 = now;
@@ -153,7 +202,7 @@ try {
   }
 } catch (e) {}
 
-/* ---------------- 5. pointer tilt (vault cards) ---------------- */
+/* ---------------- 4. pointer tilt (vault cards) ---------------- */
 try {
   if (!reduced && window.matchMedia('(pointer: fine)').matches) {
     var cards = document.querySelectorAll('.p33-tilt');
@@ -170,7 +219,7 @@ try {
   }
 } catch (e) {}
 
-/* ---------------- 6. monument band parallax (transform-only) ---------------- */
+/* ---------------- 5. monument band parallax (transform-only) ---------------- */
 try {
   if (!reduced) {
     var bandRules = document.querySelector('.p33-monument-rules');
@@ -192,7 +241,7 @@ try {
   }
 } catch (e) {}
 
-/* ---------------- 7. five-question progress hairline ---------------- */
+/* ---------------- 6. five-question progress hairline ---------------- */
 try {
   var faqSec = document.getElementById('questions');
   var bar = faqSec ? faqSec.querySelector('.p33-qprogress-bar') : null;
@@ -209,7 +258,7 @@ try {
   paintBar();
 } catch (e) {}
 
-/* ---------------- 8. grain register toggle ---------------- */
+/* ---------------- 7. grain register toggle ---------------- */
 try {
   var grain = document.querySelector('.p33-grain');
   if (grain) {
@@ -233,7 +282,7 @@ try {
   }
 } catch (e) {}
 
-/* ---------------- 9. smooth anchors (reduced-motion aware) ---------------- */
+/* ---------------- 8. smooth anchors (Lenis-aware, reduced-motion aware) ---------------- */
 try {
   var main = document.getElementById('p33-main');
   if (main) {
@@ -244,13 +293,14 @@ try {
       var dest = id && document.getElementById(id);
       if (!dest) return;
       e.preventDefault();
-      dest.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
       try { history.replaceState(null, '', '#' + id); } catch (err) {}
+      if (lenis && !reduced) { lenis.scrollTo(dest, { offset: -84, duration: 1.2 }); }
+      else { dest.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }); }
     });
   }
 } catch (e) {}
 
-/* ---------------- 10. brief download + core statement copy ---------------- */
+/* ---------------- 9. brief download + core statement copy ---------------- */
 var CORE_STATEMENT = "Project 2033 advances reparations as the material settlement of a documented national debt \u2014 the foundation for durable Black economic parity. The debt runs from trillions at the most conservative to quadrillions at full accounting. Project 2033 names no settlement price \u2014 it names the ledger. The scale must follow the evidence. The remedy must outlive an election cycle: a sovereign public trust, independent administration, and institutions for land, learning, enterprise, and law that turn acknowledgment into lasting power.";
 
 var BRIEF_TEXT = "PROJECT 2033\n" +
@@ -303,11 +353,16 @@ try {
       link.remove();
       setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
       say('Brief downloaded.');
+      try { document.dispatchEvent(new CustomEvent('p33:goal-complete', { detail: { ctaId: 'cta-download-brief' } })); } catch (e2) {}
     } catch (e) { say('Download failed — try again.'); }
   });
 
   var cp = document.getElementById('copyStatement');
   if (cp) cp.addEventListener('click', function () {
+    function done() {
+      say('Core statement copied.');
+      try { document.dispatchEvent(new CustomEvent('p33:goal-complete', { detail: { ctaId: 'cta-copy-statement' } })); } catch (e2) {}
+    }
     function fallback() {
       try {
         var ta = document.createElement('textarea');
@@ -318,14 +373,11 @@ try {
         ta.select();
         var ok = document.execCommand('copy');
         ta.remove();
-        say(ok ? 'Core statement copied.' : 'Select and copy from the downloaded brief instead.');
+        if (ok) done(); else say('Select and copy from the downloaded brief instead.');
       } catch (e) { say('Select and copy from the downloaded brief instead.'); }
     }
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(CORE_STATEMENT).then(
-        function () { say('Core statement copied.'); },
-        function () { fallback(); }
-      );
+      navigator.clipboard.writeText(CORE_STATEMENT).then(done, fallback);
     } else { fallback(); }
   });
 } catch (e) {}
