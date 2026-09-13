@@ -1,10 +1,11 @@
 /* ============================================================
-   e5-icons.js — E5 shared motion-icon library · v1.0.0 (2026-09-13)
-   24 bespoke gold line-work icons (48x48, stroke 1.7, round
+   e5-icons.js — E5 shared motion-icon library · v1.1.0 (2026-09-13)
+   33 bespoke gold line-work icons (48x48, stroke 1.7, round
    joins/caps, currentColor). Never stock, never icon fonts.
    Consolidated from the Project 2033 cinematic build (17 page
    icons, 2026-09-12) and the #hub attention upgrade (7 hub
-   markers, 2026-09-13). Provenance: original vector work for
+   markers, 2026-09-13), and the Black Dragons v50 set (4 principles
+   + 5 pillars, 2026-09-13). Provenance: original vector work for
    E5 Enclave Inc., drawn in the E5 icon language.
 
    Usage:
@@ -209,6 +210,85 @@ var ICONS = {
   hubFlame: [ /* commemoration flame, inner ember — the Lankford letter */
     '<path d="M24 5.5c2.8 6.8 10.5 10.6 10.5 18.5a10.5 10.5 0 0 1-21 0c0-4.8 2.8-7.8 4.8-9.8.7 2.5 2.2 3.9 3.9 4.4-.6-4.4.2-9.3 1.8-13.1Z"/>',
     '<path d="M24 27c1.6 2.6 4 4.2 4 7a4 4 0 0 1-8 0c0-1.9 1.2-3.1 2-4 .4 1 1.1 1.7 2 2-.3-1.8-.3-3.5 0-5Z"/>'
+  ],
+  /* ---- BLACK DRAGONS · v50 principles + pillars (2026-09-13) ---- */
+  /* Source: dragons/redesign-blackredgold-v50 branch (PR #50),
+     public/black-dragons-initiative/js/bd50-cinematic.js. Render-audited
+     2026-09-13: all 9 bboxes inside the 48-unit viewBox. */
+  bdPinFlame: [ /* I · Political independence — flame held in a broken circle */
+    '<path d=\"M38 15A15.5 15.5 0 1 0 38 33\"/>',
+    '<path d=\"M24 36.5c-4.8-3.5-7.2-7.2-7.2-11.4a7.2 7.2 0 0 1 14.4 0c0 4.2-2.4 7.9-7.2 11.4Z\"/>',
+    '<path d=\"M24 31.6c-2.1-1.6-3.1-3.3-3.1-5.3a3.1 3.1 0 0 1 6.2 0c0 2-1 3.7-3.1 5.3Z\"/>'
+  ],
+  bdPinSeedling: [ /* II · Economic self-sufficiency — seedling in a hexagon */
+    '<path d=\"M24 5l16.5 9.5v19L24 43 7.5 33.5v-19Z\"/>',
+    '<path d=\"M24 34.5V23\"/>',
+    '<path d=\"M24 27.5c-5 0-8.5-3.4-8.5-8.4 5 0 8.5 3.4 8.5 8.4Z\"/>',
+    '<path d=\"M24 24.5c5 0 8.5-3.4 8.5-8.4-5 0-8.5 3.4-8.5 8.4Z\"/>'
+  ],
+  bdPinBook: [ /* III · Cultural renaissance — open book under rising rays */
+    '<path d=\"M24 17c-3-2.4-7-3-12-2.4V35c5-.6 9 0 12 2.4 3-2.4 7-3 12-2.4V14.6c-5-.6-9 0-12 2.4Z\"/>',
+    '<path d=\"M24 17v20.4\"/>',
+    '<path d=\"M24 5v4.5\"/>',
+    '<path d=\"M15 7.6l2.2 3.8\"/>',
+    '<path d=\"M33 7.6l-2.2 3.8\"/>'
+  ],
+  bdPinRings: [ /* IV · Radical solidarity — three interlocking rings */
+    '<circle cx=\"18\" cy=\"19.5\" r=\"7.5\"/>',
+    '<circle cx=\"30\" cy=\"19.5\" r=\"7.5\"/>',
+    '<circle cx=\"24\" cy=\"30\" r=\"7.5\"/>',
+    '<path d=\"M12 41.5a4 4 0 0 1 8 0 4 4 0 0 1 8 0 4 4 0 0 1 8 0\"/>'
+  ],
+  bdPillarColumn: [ /* 01 · Institutional Autonomy — column with pediment */
+    '<path d=\"M10 14.5L24 6.5l14 8\"/>',
+    '<path d=\"M12.5 18.5h23\"/>',
+    '<path d=\"M12.5 37.5h23\"/>',
+    '<path d=\"M17.5 18.5v19\"/>',
+    '<path d=\"M24 18.5v19\"/>',
+    '<path d=\"M30.5 18.5v19\"/>',
+    '<path d=\"M9.5 41.5h29\"/>'
+  ],
+  bdPillarScales: [ /* 02 · Economic Justice — scales with heart-coin */
+    '<path d=\"M24 7v31\"/>',
+    '<path d=\"M13 12.5h22\"/>',
+    '<path d=\"M13 12.5l-5 10\"/>',
+    '<path d=\"M13 12.5l5 10\"/>',
+    '<path d=\"M5.5 25A7.5 7.5 0 0 0 20.5 25\"/>',
+    '<path d=\"M35 12.5l-5 10\"/>',
+    '<path d=\"M35 12.5l5 10\"/>',
+    '<path d=\"M27.5 25A7.5 7.5 0 0 0 42.5 25\"/>',
+    '<path d=\"M24 27.5l2.6 3.2-2.6 3.2-2.6-3.2Z\"/>',
+    '<path d=\"M17.5 41.5h13\"/>'
+  ],
+  bdPillarField: [ /* 03 · Land and Resources — field parcel under the sun */
+    '<circle cx=\"24\" cy=\"11\" r=\"4.2\"/>',
+    '<path d=\"M7 40.5L18.5 19h11L41 40.5\"/>',
+    '<path d=\"M4.5 40.5h39\"/>',
+    '<path d=\"M24 40.5V27\"/>',
+    '<path d=\"M17.5 40.5l2.8-9.5\"/>',
+    '<path d=\"M30.5 40.5l-2.8-9.5\"/>'
+  ],
+  bdPillarCouncil: [ /* 04 · Community-Controlled Governance — council ring, one fire */
+    '<circle cx=\"24\" cy=\"24\" r=\"4.6\"/>',
+    '<circle cx=\"24\" cy=\"24\" r=\"1.4\"/>',
+    '<circle cx=\"24\" cy=\"10.5\" r=\"1.9\"/>',
+    '<circle cx=\"33.5\" cy=\"14.5\" r=\"1.9\"/>',
+    '<circle cx=\"37.5\" cy=\"24\" r=\"1.9\"/>',
+    '<circle cx=\"33.5\" cy=\"33.5\" r=\"1.9\"/>',
+    '<circle cx=\"24\" cy=\"37.5\" r=\"1.9\"/>',
+    '<circle cx=\"14.5\" cy=\"33.5\" r=\"1.9\"/>',
+    '<circle cx=\"10.5\" cy=\"24\" r=\"1.9\"/>',
+    '<circle cx=\"14.5\" cy=\"14.5\" r=\"1.9\"/>'
+  ],
+  bdPillarGlobe: [ /* 05 · Pan-African Unity — globe under a linking arc */
+    '<circle cx=\"24\" cy=\"27\" r=\"11.5\"/>',
+    '<ellipse cx=\"24\" cy=\"27\" rx=\"5.2\" ry=\"11.5\"/>',
+    '<path d=\"M12.5 27h23\"/>',
+    '<path d=\"M14.5 21.5h19\"/>',
+    '<path d=\"M14.5 32.5h19\"/>',
+    '<path d=\"M11 9.5a15 15 0 0 1 26 0\"/>',
+    '<circle cx=\"11\" cy=\"9.5\" r=\"1.9\"/>',
+    '<circle cx=\"37\" cy=\"9.5\" r=\"1.9\"/>'
   ]
 };
 
@@ -275,7 +355,7 @@ function drawOn(root, opts) {
   } catch (e) { /* draw-on is decorative; icons remain complete statically */ }
 }
 
-window.E5Icons = { ICONS: ICONS, inject: inject, drawOn: drawOn, version: '1.0.0' };
+window.E5Icons = { ICONS: ICONS, inject: inject, drawOn: drawOn, version: '1.1.0' };
 
 function boot() { inject(document); drawOn(document); }
 if (document.readyState === 'loading') {
