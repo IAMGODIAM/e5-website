@@ -827,3 +827,60 @@ html, body { overflow-x: clip; } /* decorative bleed (ring, grain) never scrolls
 @media print {
   #p33SignForm, #sign .p33-sign-note, .p33-dl-all { display: none; }
 }
+
+/* ==========================================================
+   THE HUB · attention-capture additions (2026-09-13)
+   Bespoke icon slots, social cue, member filter, letter
+   reading-progress hyperframe. Task-relevant motion only;
+   no ambient loops; fail-closed under reduced-motion/no-JS.
+   ========================================================== */
+
+/* live-count social cue under the sign-on subhead.
+   [data-p33-count] paints the number; no-JS reads "signers". */
+.p33-sign-cue { max-width: 640px; font-size: 15px; line-height: 1.7; color: var(--p33-fog); margin: -6px 0 28px; }
+.p33-sign-cue strong { color: var(--p33-gold-hi); font-weight: 600; }
+
+/* hub kicker icons — STATIC by doctrine (form-adjacent restraint;
+   the "Sign the record" kicker sits above the sign-on form). */
+.p33-ico--hub { display: inline-block; vertical-align: -0.22em; margin-right: .55em; color: var(--p33-gold); }
+.p33-ico--hub svg { width: 1.3em; height: 1.3em; display: block; }
+
+/* download-card icons — draw-on entrances via the DrawSVG system
+   (host selector extended to .p33-dl-card), settle static. */
+.p33-dl-card .p33-ico--dl { display: block; color: var(--p33-gold); margin-bottom: 14px; }
+.p33-dl-card .p33-ico--dl svg { width: 46px; height: 46px; display: block; }
+
+/* member filter — informing interactivity (falsification test:
+   if it did not narrow the 62 links to the member you need, the
+   failure is obvious). Injected by JS; no-JS gets the full list. */
+.p33-filter { margin: 20px 0 6px; max-width: 440px; }
+.p33-filter label { display: block; font: 500 10px/1.6 var(--p33-mono); letter-spacing: .22em; text-transform: uppercase; color: var(--p33-gold); margin-bottom: 8px; }
+.p33-filter input { width: 100%; background: rgba(13, 14, 18, .55); border: 1px solid rgba(233, 211, 160, .28); color: var(--p33-paper); padding: 12px 14px; font-size: 16px; border-radius: 2px; }
+.p33-filter input::placeholder { color: rgba(214, 201, 178, .55); }
+.p33-filter input:focus { outline: 2px solid var(--p33-gold-hi); outline-offset: 2px; border-color: var(--p33-gold-hi); }
+.p33-filter-count { font-size: 13px; color: var(--p33-fog); margin: 8px 0 0; min-height: 1.5em; }
+.p33-dl-none { color: var(--p33-fog); font-style: italic; margin: 12px 0 0; }
+
+/* letter reading-progress hyperframe — one scroll-driven sequence:
+   the gold rule fills as the letter passes through the viewport.
+   Pure CSS, @supports-gated; informs (shows where you are). */
+.p33-letter-progress { display: block; height: 3px; margin: 0 0 20px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--p33-gold-deep), var(--p33-gold-hi));
+  transform: scaleX(0); transform-origin: 0 50%; }
+@supports (animation-timeline: view()) {
+  .p33-letter { view-timeline-name: --p33-letter-read; view-timeline-axis: block; }
+  .p33-letter-progress { animation: p33-letter-fill linear both; animation-timeline: --p33-letter-read; animation-range: entry exit; }
+  @keyframes p33-letter-fill { to { transform: scaleX(1); } }
+}
+
+/* reduced motion: everything still, everything visible */
+@media (prefers-reduced-motion: reduce) {
+  .p33-letter-progress { animation: none; transform: scaleX(1); }
+  .p33-dl-card .p33-ico--dl svg { transform: none; }
+}
+
+/* small screens: kicker icons scale with the kicker text */
+@media (max-width: 760px) {
+  .p33-sign-cue { font-size: 14px; }
+  .p33-dl-card .p33-ico--dl svg { width: 40px; height: 40px; }
+}
