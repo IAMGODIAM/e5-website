@@ -1,17 +1,18 @@
 <!doctype html>
 <!--
   E5 Enclave · Donate — cinematic rebuild · Brand Bible v1
-  Scheme: Oxblood Royal (hero) + Ivory Record (giving instrument + trust).
+  Scheme: Noir & Gold (hero) + Ivory Record (giving instrument + trust).
   Tokens: /tokens.css (v3). Cinematic layer: /assets/cinematic/e5-cinematic.css
   + donate-specific initializer /donate/donate-cinematic.js (same pattern as
   e5-cinematic.js: capability gating, quality tiers, reduced-motion, API).
   Conversion goal: donate. hero-rule: ratified.
-  BUILD NOTE — payment: the "Continue to Payment" button has NO payment
-  destination wired (no form, no checkout link, no handler) — identical to the
-  page it replaces. Wiring a destination is a money-moving action and needs the
-  Chairman's explicit decision. The $5 chip is likewise handler-free, as before.
+  BUILD NOTE — payment: "Continue to Payment" routes through the live Stripe
+  payment map (six donate.stripe.com keys, byte-for-byte from the live page,
+  verified 2026-09-12/13) with tier×frequency routing + gtag begin_checkout.
+  The $5 chip routes to the once5 key. A <noscript> fallback links all six
+  Stripe destinations directly.
 -->
-<html lang="en" data-e5-scheme="oxblood">
+<html lang="en" data-e5-scheme="obsidian">
 <head>
 <script>document.documentElement.classList.add('js');</script>
 <meta charset="utf-8"/>
@@ -32,7 +33,7 @@
 <meta name="twitter:title" content="E5 Enclave — A Lineage-led Think Tank"/>
 <meta name="twitter:description" content="A lineage-led think tank comprised of a Coalition of the Willing. Founded 2 June 2024 · Liberty City."/>
 <meta name="twitter:image" content="https://e5enclave.com/assets/og.png"/>
-<meta name="theme-color" content="#1b0a0a"/>
+<meta name="theme-color" content="#0a0a0a"/>
 <link rel="canonical" href="https://e5enclave.com/donate/"/>
 <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png"/>
@@ -88,28 +89,28 @@ h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;line-hei
 .e5-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.6875rem;font-weight:500;
   letter-spacing:.32em;text-transform:uppercase;color:var(--e5-gold-light);margin:0 0 1.4rem}
 
-/* ═══════════ HERO — Oxblood Royal cinematic frame ═══════════ */
+/* ═══════════ HERO — Noir & Gold cinematic frame ═══════════ */
 .e5-hero{
-  /* Page-level contrast corrections (measured): oxblood muted lifted to 6.59:1,
-     ivory primary CTA deepened to 7.28:1 — see build notes weight/contrast audit. */
+  /* Page-level contrast corrections (measured on obsidian): H1 13.56:1,
+     eyebrow 14.17:1, proof 6.8:1, gilt CTA 8.74:1 — see build notes. */
   --e5-text-muted:#a89480;
   position:relative;isolation:isolate;overflow:clip;
   min-height:max(var(--e5-cine-hero-min),620px);
   display:flex;align-items:center;
   color:var(--e5-text);
   background:
-    radial-gradient(120% 90% at 78% 18%, rgba(214,168,75,.13), transparent 55%),
-    radial-gradient(90% 70% at 12% 88%, rgba(122,21,24,.5), transparent 60%),
-    linear-gradient(180deg,#241012 0%, var(--e5-bg) 46%, #120606 100%);
+    radial-gradient(120% 90% at 78% 18%, rgba(214,168,75,.14), transparent 55%),
+    radial-gradient(80% 60% at 15% 85%, rgba(214,168,75,.05), transparent 60%),
+    linear-gradient(180deg,#0d0a07 0%, var(--e5-bg) 48%, #050505 100%);
 }
 .e5-hero .e5-cinematic-canvas{z-index:var(--e5-z-canvas)}
-.e5-hero-grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.5;mix-blend-mode:overlay;
+.e5-hero-grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.35;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E");}
 .e5-hero-vignette{position:absolute;inset:0;z-index:1;pointer-events:none;background:var(--e5-cine-vignette)}
 .e5-hero-light{position:absolute;inset:-10% -20%;z-index:1;pointer-events:none;
   background:linear-gradient(112deg,transparent 42%,rgba(236,217,164,.07) 52%,rgba(214,168,75,.10) 57%,transparent 68%);}
 .e5-hero-seal{position:absolute;z-index:1;pointer-events:none;color:var(--e5-gold);
-  width:min(44vw,540px);height:auto;right:-7vw;top:50%;translate:0 -50%;opacity:.42}
+  width:min(40vw,480px);height:auto;right:-6vw;top:50%;translate:0 -50%;opacity:.5}
 /* Asymmetric composition: copy rides the left third, headline well above
    viewport center; the seal carries the right-side optical mass. */
 .e5-hero-inner{position:relative;z-index:var(--e5-z-content);
@@ -144,6 +145,10 @@ h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;line-hei
   font-size:clamp(1.25rem,1.8vw,1.5rem);line-height:1.5;color:var(--e5-text);
   max-width:34ch;margin:2.4rem 0 0;padding-left:1.4rem;border-left:1px solid var(--e5-gold)}
 .e5-hero-motion{position:absolute;z-index:3;right:clamp(20px,4vw,48px);bottom:26px}
+/* Motion toggle on the dark hero: the estate stylesheet falls back to dark ink —
+   illegible here. Page-scoped correction (measured 12.55:1). */
+.e5-hero .e5-motion-toggle{color:#d8cdb4;border-color:rgba(216,205,180,.35);background:rgba(5,5,5,.35)}
+.e5-hero .e5-motion-toggle:hover{border-color:var(--e5-gold);color:var(--e5-gold-light)}
 /* Entrance choreography: hierarchy order, ≤120ms stagger, ≤900ms total.
    (last delay 480ms + 420ms duration = 900ms) */
 html.js [data-enter]{opacity:0;transform:translateY(20px);
@@ -184,6 +189,10 @@ html.js.e5-cinematic-ready [data-enter]{opacity:1;transform:none}
   .e5-tier:nth-child(4){margin-top:3.8rem}
 }
 .e5-tier:has(.tier__radio:checked){border:var(--e5-c-tier-selected-border);box-shadow:var(--e5-c-tier-selected-glow)}
+/* Featured tier: a single gold-leaf top rule — the quiet mark of the house choice. */
+.donate__tier--featured{position:relative}
+.donate__tier--featured::before{content:"";position:absolute;top:-1px;left:-1px;right:-1px;height:2px;
+  background:linear-gradient(90deg,#8a6a24 0%,#ecd9a4 50%,#8a6a24 100%)}
 .tier__badge{align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:.62rem;font-weight:500;
   letter-spacing:.28em;text-transform:uppercase;background:var(--e5-c-badge-bg);color:var(--e5-c-badge-text);
   padding:.45rem .8rem;margin-bottom:.4rem}
@@ -434,18 +443,13 @@ html.e5-reduced-motion [data-enter]{opacity:1;transform:none;transition:none}
     <div class="e5-hero-grain" aria-hidden="true"></div>
     <div class="e5-hero-vignette" aria-hidden="true"></div>
     <div class="e5-hero-light" aria-hidden="true"></div>
-    <svg class="e5-hero-seal" viewBox="0 0 200 200" aria-hidden="true" focusable="false" data-enter style="--i:1">
-      <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1" opacity=".55"/>
-      <circle cx="100" cy="100" r="78" fill="none" stroke="currentColor" stroke-width="1" opacity=".32"/>
-      <circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" stroke-width="1" opacity=".22"/>
-      <g fill="currentColor" opacity=".8">
-        <circle cx="100" cy="4" r="2.4"/><circle cx="168" cy="32" r="2.4"/>
-        <circle cx="196" cy="100" r="2.4"/><circle cx="168" cy="168" r="2.4"/>
-        <circle cx="100" cy="196" r="2.4"/><circle cx="32" cy="168" r="2.4"/>
-        <circle cx="4" cy="100" r="2.4"/><circle cx="32" cy="32" r="2.4"/>
-      </g>
-      <text x="100" y="122" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif"
-        font-style="italic" font-size="66" fill="currentColor" opacity=".85">E5</text>
+    <svg class="e5-hero-seal" viewBox="0 0 200 240" aria-hidden="true" focusable="false" data-enter style="--i:1">
+      <text x="100" y="118" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif"
+        font-style="italic" font-size="96" fill="currentColor" opacity=".92">E5</text>
+      <line x1="58" y1="152" x2="142" y2="152" stroke="currentColor" stroke-width="1" opacity=".55"/>
+      <rect x="96.5" y="148.5" width="7" height="7" transform="rotate(45 100 152)" fill="currentColor" opacity=".85"/>
+      <text x="100" y="186" text-anchor="middle" font-family="'IBM Plex Mono',monospace"
+        font-size="11" letter-spacing="6" fill="currentColor" opacity=".6">EST · MMXXIV</text>
     </svg>
     <div class="e5-hero-inner">
       <div class="e5-hero-copy">
@@ -573,7 +577,7 @@ html.e5-reduced-motion [data-enter]{opacity:1;transform:none;transition:none}
           <a href="https://apps.irs.gov/app/eos/details/#" target="_blank" rel="noopener">Verify on IRS &rarr;</a>
         </div>
         <div class="e5-trust-item">
-          <svg class="e5-trust-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><title>Federal registration</title><circle cx="12" cy="12" r="8.8"/><path d="M12 7.4l1.45 2.95 3.25.47-2.35 2.3.55 3.24-2.9-1.52-2.9 1.52.55-3.24-2.35-2.3 3.25-.47L12 7.4Z"/></svg>
+          <svg class="e5-trust-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><title>Federal registration</title><path d="M12 5.4l2.1 4.25 4.7.68-3.4 3.32.8 4.67-4.2-2.2-4.2 2.2.8-4.67-3.4-3.32 4.7-.68L12 5.4Z"/></svg>
           <h3>Federal Identifiers</h3>
           <p>UEI H8NGXEYE2HH8. CAGE 07E88. SAM.gov registration renewal in progress.</p>
           <a href="https://sam.gov/entity/H8NGXEYE2HH8" target="_blank" rel="noopener">Look up on SAM.gov &rarr;</a>
@@ -638,6 +642,14 @@ html.e5-reduced-motion [data-enter]{opacity:1;transform:none;transition:none}
     var m=freq()==='monthly';
     qsa('.tier__freq').forEach(function(s){s.textContent=m?'/month':' one-time';});
     var df=qs('.donate__freq');if(df)df.textContent=m?'/month':' one-time';
+    qsa('input[name=amount]').forEach(function(r){
+      var lab=document.querySelector('label[for="'+r.id+'"]');
+      if(!lab)return;
+      var on=!!r.checked;
+      lab.textContent=on?'Selected':'Select';
+      lab.classList.toggle('btn--primary',on);
+      lab.classList.toggle('btn--secondary',!on);
+    });
     status();
   }
   function give(){
