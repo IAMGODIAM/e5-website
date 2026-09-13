@@ -42,10 +42,14 @@ try {
 } catch (e) { lenis = null; }
 
 /* ---------------- 1. staged hero entrance ----------------
-   The inline stager after </header> added html.p33-cine before
-   first paint (elements start hidden/translated). No-JS => the
-   class is never added => hero visible. Reduced-motion =>
-   instant state via the CSS reduced-motion block. */
+   Visible-by-default: hero text is NEVER hidden by markup/CSS alone.
+   The p33-cine staging class is added here, by JS, in the same task that
+   builds the GSAP timeline — so no-JS users and any pre-animation JS
+   failure always see the headline. Reduced-motion => never staged =>
+   instant visible state, never a stuck transform. */
+function cssStage() {
+  try { docEl.classList.add('p33-cine'); } catch (e) {}
+}
 function cssRelease() {
   try { docEl.classList.add('p33-cine-go'); } catch (e) {}
 }
@@ -56,10 +60,16 @@ try {
        deck -> panel, total <=900ms, stagger <=120ms. The CSS
        -go class is never added on this path; inline GSAP
        values override the .p33-cine stylesheet states. */
+    cssStage();
     var h1 = document.getElementById('hero-title');
     var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
     tl.fromTo('.p33-hero-kicker', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5 }, 0)
-      .fromTo('.p33-h1-line', { yPercent: 110 }, { yPercent: 0, duration: 0.7, stagger: 0.12 }, 0.1)
+      /* y:0 in BOTH vars: the CSS staged state (translateY(110%)) computes to a
+         pixel matrix that GSAP parses as y; without y:0 that pixel offset is never
+         animated and the headline sticks at +110% forever. (Ship-blocking bug.)
+         opacity is in the tween too: the staged state sets opacity:0 and the
+         GSAP path never adds p33-cine-go, so nothing else would fade it in. */
+      .fromTo('.p33-h1-line', { yPercent: 110, y: 0, opacity: 0 }, { yPercent: 0, y: 0, opacity: 1, duration: 0.7, stagger: 0.12 }, 0.1)
       .fromTo('.p33-hero-deck', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5 }, 0.35)
       .fromTo('.p33-hero-panel', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4 }, 0.5);
     /* variable-font weight swell on the headline: 340 -> 520 */
@@ -73,18 +83,30 @@ try {
         onComplete: function () { h1.style.fontVariationSettings = ''; }
       });
     }
-    /* backstop: if anything in the timeline failed, CSS release */
+    /* backstop: if ANY hero target is still hidden or stuck at an
+       offset (not just the kicker), CSS release. Catches partial
+       timeline failures like the stuck-h1 regression. */
     setTimeout(function () {
       try {
+        var stuck = false;
         var k = document.querySelector('.p33-hero-kicker');
-        if (k && parseFloat(getComputedStyle(k).opacity) < 0.5) cssRelease();
+        if (k && parseFloat(getComputedStyle(k).opacity) < 0.5) stuck = true;
+        var h1ls = document.querySelectorAll('.p33-h1-line');
+        for (var hi = 0; hi < h1ls.length && !stuck; hi++) {
+          var m = getComputedStyle(h1ls[hi]).transform;
+          /* settled = none | matrix(1,0,0,1,0,0); anything else = stuck mid-offset */
+          if (m && m !== 'none' && !/^matrix\(1,\s*0,\s*0,\s*1,\s*0,\s*0(\.0+)?\)$/.test(m)) stuck = true;
+        }
+        if (stuck) cssRelease();
       } catch (e) { cssRelease(); }
     }, 2200);
+  } else if (reduced) {
+    /* reduced-motion: never staged => instant visible state, no transitions,
+       no stuck transforms. (The CSS reduced-motion block is belt-and-braces.) */
   } else {
-    if (reduced) { cssRelease(); }
-    else {
-      requestAnimationFrame(function () { requestAnimationFrame(cssRelease); });
-    }
+    /* no-GSAP path: CSS transition entrance, staged only once JS commits to it */
+    cssStage();
+    requestAnimationFrame(function () { requestAnimationFrame(cssRelease); });
     window.addEventListener('load', function () { setTimeout(cssRelease, 1500); });
   }
 } catch (e) { cssRelease(); }
@@ -100,6 +122,26 @@ function revealFinal(els) {
 try {
   var scope = document.getElementById('p33-main');
   var revealEls = scope ? Array.prototype.slice.call(scope.querySelectorAll('.p33-reveal')) : [];
+  var splitLineSets = []; /* SplitText lede lines, for the failsafe below */
+
+  /* failsafe FIRST: everything visible by load + 1.4s, including SplitText
+     ledes (which are spliced out of revealEls below). Registered before any
+     reveal machinery runs so an exception in setup can't skip it. */
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      revealFinal(revealEls);
+      try {
+        if (useGsap) {
+          for (var s = 0; s < splitLineSets.length; s++) {
+            /* y:0 alongside yPercent: same parsed-pixel-offset hazard as the
+               hero h1 — never leave a translated line behind */
+            gsap.set(splitLineSets[s], { yPercent: 0, y: 0 });
+          }
+        }
+      } catch (e2) {}
+      if (hasST) { try { ScrollTrigger.refresh(); } catch (e) {} }
+    }, 1400);
+  });
 
   /* SplitText masked line reveals for section ledes (not reduced-motion) */
   if (useGsap && hasSplit) {
@@ -111,6 +153,7 @@ try {
       for (var s2 = 0; s2 < ledes.length; s2++) (function (lede) {
         var split = new SplitText(lede, { type: 'lines', mask: 'lines' });
         var lines = split.lines || [];
+        splitLineSets.push(lines);
         /* remove from the generic batch so it isn't double-animated */
         var ix = revealEls.indexOf(lede);
         if (ix > -1) revealEls.splice(ix, 1);
@@ -154,10 +197,8 @@ try {
   } else {
     revealFinal(revealEls);
   }
-  /* failsafe: everything visible by load + 1.4s */
-  window.addEventListener('load', function () {
-    setTimeout(function () { revealFinal(revealEls); if (hasST) { try { ScrollTrigger.refresh(); } catch (e) {} } }, 1400);
-  });
+  /* (failsafe moved to the top of this section: registered before reveal
+     machinery so setup exceptions can't skip it; also covers SplitText ledes) */
 } catch (e) {}
 
 /* ---------------- 3. counters ---------------- */
