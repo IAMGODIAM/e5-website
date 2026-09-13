@@ -906,17 +906,13 @@ html.e5-reduced-motion [data-enter]{opacity:1;transform:none;transition:none}
   "use strict";
   var L={"m10":"https://donate.stripe.com/aFacN7618ezg55V46387K0e","m25":"https://donate.stripe.com/6oU5kF4X4dvc55VeKH87K0f","m50":"https://donate.stripe.com/8x23cx3T00Iq69Z1XV87K0h","m100":"https://donate.stripe.com/7sY00lbls2Qy55V8mj87K0g","once_custom":"https://donate.stripe.com/9B64gBgFM9eW7e38mj87K0c","once5":"https://donate.stripe.com/cNicN775cgHo55Vaur87K0d"};
 
-/* ═══ STRIPE_LINK_SLOTS — leadership tiers (staged 2026-09-13) ═══
-   Restricted Stripe key pending (Chairman's vault drop). Create via:
-     POST /v1/payment_links
-       line_items[0][price_data][currency]=usd
-       line_items[0][price_data][product_data][name]=E5 Enclave monthly gift
-       line_items[0][price_data][unit_amount]=25000 | 50000
-       line_items[0][price_data][recurring][interval]=month
-   Paste each returned buy.stripe.com URL below. Leadership cards render
-   ONLY when their URL is present — no dead buttons, no "coming soon".
+/* ═══ STRIPE_LINK_SLOTS — leadership tiers (live 2026-09-13) ═══
+   Created via Stripe API (POST /v1/payment_links, custom.stripe key):
+     plink_1UF4rcReplmGVgmeHYfVaFk4 → m250 ($250/mo)
+     plink_1UF4reReplmGVgme6gw1u2l1 → m500 ($500/mo)
+   Leadership cards render ONLY when their URL is present.
    The six live keys in L above stay byte-identical. */
-  var LEADERSHIP={"m250":"","m500":""};
+  var LEADERSHIP={"m250":"https://buy.stripe.com/4gMdRb1KSaj02XN6eb87K0i","m500":"https://buy.stripe.com/dRm7sN3T00Iq9mb6eb87K0j"};
   var U={};for(var lk in LEADERSHIP){if(LEADERSHIP[lk])U[lk]=LEADERSHIP[lk];}
   var qs=function(s){return document.querySelector(s)};
   var qsa=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
