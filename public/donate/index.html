@@ -474,7 +474,7 @@ html.e5-reduced-motion [data-enter]{opacity:1;transform:none;transition:none}
             <p class="e5-eyebrow">Give Monthly</p>
             <h3>Every dollar. <span>Specific impact.</span></h3>
           </div>
-          <p class="e5-sub-note">Recurring gifts are the backbone of sustainable infrastructure. Monthly giving sustains programs year-round.</p>
+          <p class="e5-sub-note">Recurring gifts are the backbone of sustainable infrastructure. Monthly giving sustains programs year-round. You will complete your gift on Stripe’s secure page and receive a receipt by email.</p>
         </div>
 
         <div class="e5-tiers">
@@ -536,13 +536,26 @@ html.e5-reduced-motion [data-enter]{opacity:1;transform:none;transition:none}
         </div>
 
         <div class="donate__action e5-action">
-          <button type="button" class="btn btn--primary btn--lg">Continue to Payment</button>
+          <button type="button" class="btn btn--primary btn--lg" id="give-continue">Continue to Payment</button>
           <p class="body body--xs text-muted donate__trust e5-trustline">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2.8 4.8 5.6v5.7c0 4.3 3 8.3 7.2 9.9 4.2-1.6 7.2-5.6 7.2-9.9V5.6L12 2.8Z"/><path d="m8.6 11.8 2.5 2.5 4.5-4.8"/></svg>
-            Secure payment via Stripe &middot; 256-bit SSL &middot; EIN 99-3822441
+            Secure payment via Stripe &middot; 256-bit SSL &middot; Card, Apple Pay, Google Pay, Link and Cash App Pay accepted &mdash; we never see your card number &middot; EIN 99-3822441
           </p>
           <p class="e5-sr-only" role="status" id="give-status">$25 per month selected.</p>
         </div>
+        <noscript>
+          <div class="donate__noscript e5-noscript">
+            <p class="body body--sm">JavaScript is off &mdash; choose a level to give directly on Stripe&rsquo;s secure page:</p>
+            <p class="e5-noscript-links">
+              <a class="btn btn--secondary btn--sm" href="https://donate.stripe.com/aFacN7618ezg55V46387K0e?client_reference_id=web-donate-m10">Give $10 monthly</a>
+              <a class="btn btn--secondary btn--sm" href="https://donate.stripe.com/6oU5kF4X4dvc55VeKH87K0f?client_reference_id=web-donate-m25">Give $25 monthly</a>
+              <a class="btn btn--secondary btn--sm" href="https://donate.stripe.com/8x23cx3T00Iq69Z1XV87K0h?client_reference_id=web-donate-m50">Give $50 monthly</a>
+              <a class="btn btn--secondary btn--sm" href="https://donate.stripe.com/7sY00lbls2Qy55V8mj87K0g?client_reference_id=web-donate-m100">Give $100 monthly</a>
+              <a class="btn btn--secondary btn--sm" href="https://donate.stripe.com/9B64gBgFM9eW7e38mj87K0c?client_reference_id=web-donate-once_custom">Give once / custom amount</a>
+              <a class="btn btn--secondary btn--sm" href="https://donate.stripe.com/cNicN775cgHo55Vaur87K0d?client_reference_id=web-donate-once5">Give $5 once</a>
+            </p>
+          </div>
+        </noscript>
       </div>
     </div>
   </section>
@@ -606,6 +619,57 @@ html.e5-reduced-motion [data-enter]{opacity:1;transform:none;transition:none}
 </div>
 <!-- /e5:chrome-foot -->
 <script type="module">(function(){function n(i){try{typeof gtag=="function"&&gtag("event","conversion",{send_to:i})}catch{}}document.addEventListener("click",function(i){var t=i.target.closest&&i.target.closest("a, button");if(t){var e=(t.getAttribute("href")||"").toLowerCase(),o=(t.textContent||"").toLowerCase();/\/donate\/?$/.test(e)||/zeffy|stripe|checkout|givebutter/.test(e)||/donate|give/.test(o)&&t.classList.contains("btn--primary")?(n("AW-16672489240/_T-KCLGGnawcEJj-h44-"),n("AW-16672489240/B11GCOnl97UcEJj-h44-")):/\/project-2033\/?$/.test(e)||/restitution|reparation/.test(o)&&t.classList.contains("btn--primary")?n("AW-16672489240/RJkQCMaJtKwcEJj-h44-"):(e.indexOf("mailto:")===0||e.indexOf("/cdn-cgi/l/email-protection")===0)&&n("AW-16672489240/FeLJCIGooawcEJj-h44-")}},!0)})();</script>
+<script>
+/* Stripe giving instrument — live payment map carried over byte-for-byte from the
+   live /donate/ page (verified 2026-09-12). Keys: m10/m25/m50/m100 = monthly tiers,
+   once_custom = one-time & custom amounts, once5 = $5 starter chip. */
+(function(){
+  "use strict";
+  var L={"m10":"https://donate.stripe.com/aFacN7618ezg55V46387K0e","m25":"https://donate.stripe.com/6oU5kF4X4dvc55VeKH87K0f","m50":"https://donate.stripe.com/8x23cx3T00Iq69Z1XV87K0h","m100":"https://donate.stripe.com/7sY00lbls2Qy55V8mj87K0g","once_custom":"https://donate.stripe.com/9B64gBgFM9eW7e38mj87K0c","once5":"https://donate.stripe.com/cNicN775cgHo55Vaur87K0d"};
+  var qs=function(s){return document.querySelector(s)};
+  var qsa=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+  function freq(){var r=qs('input[name=freq]:checked');return r?r.value:'monthly';}
+  function tierAmt(){var r=qs('input[name=amount]:checked');if(!r)return null;var m=/^amt(\d+)$/.exec(r.id||'');return m?m[1]:null;}
+  function ref(t){return 'web-donate-'+t;}
+  function go(t){var u=L[t];if(!u)return;try{if(typeof gtag==='function'){gtag('event','begin_checkout',{currency:'USD',items:[{item_id:t}]});}}catch(_){}window.location.assign(u+'?client_reference_id='+encodeURIComponent(ref(t)));}
+  function note(msg){var n=qs('#give-status');if(n)n.textContent=msg;}
+  function status(){var n=tierAmt(),m=freq()==='monthly';if(n)note('Give $'+n+(m?' per month':' one-time')+' selected.');}
+  function paint(){
+    var m=freq()==='monthly';
+    qsa('.tier__freq').forEach(function(s){s.textContent=m?'/month':' one-time';});
+    var df=qs('.donate__freq');if(df)df.textContent=m?'/month':' one-time';
+    status();
+  }
+  function give(){
+    var input=qs('#customAmount'),raw=input?String(input.value).trim():'';
+    if(raw!==''){
+      var amt=parseFloat(raw);
+      if(!(isFinite(amt)&&amt>0)){note('Enter an amount to continue.');return;}
+      if(freq()==='monthly'){
+        var k='m'+Math.round(amt);
+        if(Number.isInteger(amt)&&L[k]){go(k);return;}
+        note('Monthly giving is available at $10, $25, $50 or $100. For another amount, switch to One-time.');
+        return;
+      }
+      go('once_custom');return;
+    }
+    var n=tierAmt();
+    if(!n){note('Choose a level or enter a custom amount.');return;}
+    if(freq()==='monthly'){go('m'+n);return;}
+    go('once_custom');
+  }
+  qsa('input[name=freq]').forEach(function(r){r.addEventListener('change',paint);});
+  qsa('input[name=amount]').forEach(function(r){r.addEventListener('change',paint);});
+  var chip=qs('.donate__chip');if(chip)chip.addEventListener('click',function(){go('once5');});
+  var btn=qs('#give-continue');if(btn)btn.addEventListener('click',give);
+  var amt=qs('#customAmount');
+  if(amt){
+    amt.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();give();}});
+    amt.addEventListener('input',function(){status();});
+  }
+  paint();
+})();
+</script>
 <script src="/donate/donate-cinematic.js" defer></script>
 </body>
 </html>
