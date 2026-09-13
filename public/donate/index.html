@@ -380,6 +380,116 @@ html.e5-reduced-motion [data-enter]{opacity:1;transform:none;transition:none}
 .e5-trust .e5-eyebrow{color:#7a5c14}
 .e5-trust .e5-trust-h{color:#1a1714}
 .e5-trust .e5-trust-item p{color:#1a1714}
+<style>
+/* ============ CONVERSION PASS (2026-09-13) — research-grounded offerings ============
+   Brief: public/donate/CONVERSION_BRIEF.md (Cialdini; Mortensen et al. 2019;
+   Donor Bill of Rights; nonprofit accounting; DonorSearch; Revolution Love).
+   AgriMesh legibility rules hold: warm ivory on dark + glows, phone-legible.
+   Zero circles anywhere — accents are rotated-square diamonds. */
+
+/* --- Trend + because microcopy (give section, ivory) --- */
+.e5-give .e5-trend{color:#4a4238;border-left:1px solid #d6a84b;padding-left:1.4rem;
+  font-size:.95rem;max-width:62ch;margin-top:1rem}
+.e5-give .e5-trend::before{content:"↗ "}
+.e5-give .e5-because{color:#4a4238;font-size:.9rem;max-width:62ch;margin:1rem 0 0}
+
+/* --- Leadership tiers (rendered only when Stripe URLs exist) --- */
+.e5-leadership{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1.1rem;margin-top:1.4rem}
+.e5-leadership[hidden]{display:none}
+.e5-lead{background:#151009;border:1px solid rgba(214,168,75,.45);color:#fffdf4;
+  padding:1.6rem;text-decoration:none;display:flex;flex-direction:column;gap:.7rem;
+  transition:border-color .2s}
+.e5-lead:hover{border-color:#d6a84b}
+.e5-lead .tier__amount{color:#fffdf4;text-shadow:0 2px 22px rgba(24,15,5,.6);
+  font-size:2rem}
+.e5-lead .tier__amount .tier__freq{color:#ffe9b8;font-size:1rem}
+.e5-lead .tier__impact{color:#fffdf4;text-shadow:0 2px 14px rgba(24,15,5,.6);margin:0}
+.e5-lead .tier__desc{color:#f7ecd4;text-shadow:0 1px 10px rgba(24,15,5,.6);margin:0}
+.e5-lead .tier__btn{margin-top:auto;align-self:flex-start}
+
+/* --- Diamond accent (never a circle) --- */
+.e5-dia{width:9px;height:9px;background:#d6a84b;transform:rotate(45deg);
+  display:inline-block;flex:none}
+
+/* --- WAYS: dark, asymmetric, phone-legible --- */
+.e5-ways{background:#0b0a08;color:#fffdf4;
+  padding:clamp(64px,9vw,128px) clamp(20px,5vw,64px)}
+.e5-ways-inner{max-width:1120px;margin:0 auto}
+.e5-ways .e5-eyebrow{color:#ffe9b8;letter-spacing:.24em;text-transform:uppercase;
+  font-size:.75rem;margin:0 0 1rem}
+.e5-ways-h{color:#fffdf4;text-shadow:0 2px 22px rgba(24,15,5,.6);
+  font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.05;margin:0 0 1rem;max-width:20ch}
+.e5-ways-h span{color:#ffe9b8}
+.e5-ways-deck{color:#f7ecd4;text-shadow:0 1px 10px rgba(24,15,5,.6);
+  max-width:62ch;margin:0 0 2.5rem;font-size:1.05rem}
+.e5-ways-grid{display:grid;gap:1.2rem}
+.e5-way{background:#151009;border:1px solid rgba(214,168,75,.30);color:#fffdf4;
+  padding:1.8rem;display:flex;flex-direction:column;gap:.8rem}
+.e5-way--lead{border-color:rgba(214,168,75,.55)}
+.e5-way h3{color:#fffdf4;text-shadow:0 2px 14px rgba(24,15,5,.6);margin:0;
+  font-size:1.35rem}
+.e5-way p{color:#f7ecd4;text-shadow:0 1px 10px rgba(24,15,5,.6);margin:0;
+  font-size:.98rem;line-height:1.65}
+.e5-way p strong{color:#ffe9b8}
+.e5-way .btn{margin-top:auto;align-self:flex-start}
+.e5-way .btn--primary{background:#d6a84b;border-color:#d6a84b;color:#140f04}
+.e5-way .btn--primary:hover{background:#ecd9a4;border-color:#ecd9a4}
+.e5-way .btn--secondary{color:#ffe9b8;border-color:rgba(255,233,184,.45);
+  text-shadow:0 1px 6px rgba(0,0,0,.8)}
+.e5-way .btn--secondary:hover{border-color:#ffe9b8;color:#fffdf4}
+.e5-ways-pair{display:grid;gap:1.2rem}
+@media(min-width:900px){
+  .e5-ways-pair{grid-template-columns:1fr 1fr}
+  .e5-ways-pair--offset{margin-top:2.2rem}
+  .e5-way--wide{max-width:60%}
+}
+
+/* --- REPORT: dark stewardship promise --- */
+.e5-report{background:#06070b;color:#fffdf4;
+  padding:clamp(64px,9vw,128px) clamp(20px,5vw,64px);
+  border-top:1px solid rgba(214,168,75,.18)}
+.e5-report-inner{max-width:1120px;margin:0 auto}
+.e5-report .e5-eyebrow{color:#ffe9b8;letter-spacing:.24em;text-transform:uppercase;
+  font-size:.75rem;margin:0 0 1rem}
+.e5-report-h{color:#fffdf4;text-shadow:0 2px 22px rgba(24,15,5,.6);
+  font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.05;margin:0 0 1rem}
+.e5-report-h span{color:#ffe9b8}
+.e5-report-deck{color:#f7ecd4;text-shadow:0 1px 10px rgba(24,15,5,.6);
+  max-width:62ch;margin:0 0 2.2rem;font-size:1.05rem}
+.e5-report-points{display:grid;gap:1.2rem;margin:0 0 2.2rem}
+@media(min-width:900px){.e5-report-points{grid-template-columns:repeat(3,1fr)}}
+.e5-report-point{background:#151009;border:1px solid rgba(214,168,75,.30);
+  padding:1.6rem;display:flex;flex-direction:column;gap:.7rem}
+.e5-report-point h3{color:#fffdf4;text-shadow:0 2px 14px rgba(24,15,5,.6);margin:0}
+.e5-report-point p{color:#f7ecd4;text-shadow:0 1px 10px rgba(24,15,5,.6);
+  margin:0;font-size:.95rem}
+.e5-report .btn--primary{background:#d6a84b;border-color:#d6a84b;color:#140f04}
+.e5-report .btn--primary:hover{background:#ecd9a4;border-color:#ecd9a4}
+
+/* --- RIGHTS: ivory, explicit ink --- */
+.e5-rights{background:#fffdf4;color:#1a1714;
+  padding:clamp(64px,9vw,128px) clamp(20px,5vw,64px)}
+.e5-rights-inner{max-width:1120px;margin:0 auto}
+.e5-rights .e5-eyebrow{color:#7a5c14;letter-spacing:.24em;text-transform:uppercase;
+  font-size:.75rem;margin:0 0 1rem}
+.e5-rights-h{color:#1a1714;font-size:clamp(2rem,4.5vw,3.2rem);
+  line-height:1.05;margin:0 0 1rem}
+.e5-rights-h span{color:#7a5c14}
+.e5-rights-deck{color:#4a4238;max-width:68ch;margin:0 0 2.2rem;font-size:1.02rem}
+.e5-rights-list{list-style:none;margin:0;padding:0;display:grid;gap:1rem;
+  counter-reset:rights}
+@media(min-width:900px){.e5-rights-list{grid-template-columns:1fr 1fr;gap:1rem 2.5rem}}
+.e5-rights-list li{counter-increment:rights;color:#1a1714;font-size:.96rem;
+  line-height:1.6;padding-left:3rem;position:relative}
+.e5-rights-list li::before{content:counter(rights,decimal-leading-zero);
+  position:absolute;left:0;top:.1rem;color:#7a5c14;
+  font-family:'Cormorant Garamond',serif;font-size:1.25rem}
+.e5-rights-list li strong{color:#1a1714}
+
+@media(prefers-reduced-motion:reduce){
+  .e5-lead{transition:none}
+}
 </style>
 
 </head>
@@ -541,6 +651,7 @@ html.e5-reduced-motion [data-enter]{opacity:1;transform:none;transition:none}
             <h3>Every dollar. <span>Specific impact.</span></h3>
           </div>
           <p class="e5-sub-note">Recurring gifts are the backbone of sustainable infrastructure. Monthly giving sustains programs year-round. You will complete your gift on Stripe’s secure page and receive a receipt by email.</p>
+          <p class="e5-trend">Monthly giving keeps growing across nonprofits — monthly revenue rose 5% last year while one-time giving stayed flat (M+R Benchmarks 2025). It is the steadiest way to fund this work.</p>
         </div>
 
         <div class="e5-tiers">
@@ -595,6 +706,9 @@ html.e5-reduced-motion [data-enter]{opacity:1;transform:none;transition:none}
             <span>One-time</span>
           </label>
         </div>
+        <p class="e5-because">Monthly is preselected because steady funding builds steady infrastructure. Switch anytime — one gift, once, is always welcome too.</p>
+
+        <div class="e5-leadership" id="leadership-row" hidden></div>
 
         <div class="donate__quickgive e5-chip">
           <span class="body body--sm text-muted">New here? Start small:</span>
@@ -623,6 +737,105 @@ html.e5-reduced-motion [data-enter]{opacity:1;transform:none;transition:none}
           </div>
         </noscript>
       </div>
+    </div>
+  </section>
+
+  <!-- ═════════ WAYS · beyond the card (conversion pass 2026-09-13) ═════════ -->
+  <section class="e5-ways" id="ways" data-e5-scheme="obsidian" aria-labelledby="ways-h2">
+    <div class="e5-ways-inner">
+      <p class="e5-eyebrow">Beyond the Card</p>
+      <h2 class="e5-ways-h" id="ways-h2">Six more ways to move money <span>to the mission.</span></h2>
+      <p class="e5-ways-deck">Not every gift fits on a card form. Each path below starts with one email to our team — a real person replies, because that is how significant gifts should work.</p>
+      <div class="e5-ways-grid">
+        <article class="e5-way e5-way--lead">
+          <span class="e5-dia" aria-hidden="true"></span>
+          <h3>Donor-advised funds</h3>
+          <p>Your DAF is a giving account waiting for a destination. Recommend a grant to <strong>E5 Enclave Inc, EIN 99-3822441</strong> — DAF grants reached $64.9&nbsp;billion in 2024, up 19% (Annual DAF Report 2025).</p>
+          <a class="btn btn--primary" href="mailto:contact@e5enclave.com?subject=Donor-advised%20fund%20grant%20to%20E5%20Enclave%20Inc">Start a DAF grant</a>
+        </article>
+        <div class="e5-ways-pair">
+          <article class="e5-way">
+            <span class="e5-dia" aria-hidden="true"></span>
+            <h3>Stock &amp; securities</h3>
+            <p>Gifts of appreciated stock may let you give more while avoiding capital-gains tax — ask your advisor whether it fits your situation, then we coordinate the transfer.</p>
+            <a class="btn btn--secondary" href="mailto:contact@e5enclave.com?subject=Stock%20gift%20to%20E5%20Enclave%20Inc">Ask about a stock gift</a>
+          </article>
+          <article class="e5-way">
+            <span class="e5-dia" aria-hidden="true"></span>
+            <h3>Planned &amp; legacy giving</h3>
+            <p>Name E5 Enclave Inc in your will, trust, or as a beneficiary — the longest commitment you can make to the work, and the one that outlives us all.</p>
+            <a class="btn btn--secondary" href="mailto:contact@e5enclave.com?subject=Legacy%20gift%20conversation%20with%20E5%20Enclave%20Inc">Start the conversation</a>
+          </article>
+        </div>
+        <div class="e5-ways-pair e5-ways-pair--offset">
+          <article class="e5-way">
+            <span class="e5-dia" aria-hidden="true"></span>
+            <h3>Employer matching</h3>
+            <p>Many employers match charitable gifts dollar-for-dollar. Check with your HR or matching portal, then send us the confirmation — we handle the rest.</p>
+            <a class="btn btn--secondary" href="mailto:contact@e5enclave.com?subject=Employer%20matching%20gift%20for%20E5%20Enclave%20Inc">Ask about matching</a>
+          </article>
+          <article class="e5-way">
+            <span class="e5-dia" aria-hidden="true"></span>
+            <h3>Tribute &amp; memorial gifts</h3>
+            <p>Give in honor of someone — or in memory of them. We will acknowledge your tribute to whomever you name, in the words you choose.</p>
+            <a class="btn btn--secondary" href="mailto:contact@e5enclave.com?subject=Tribute%20gift%20to%20E5%20Enclave%20Inc">Make a tribute gift</a>
+          </article>
+        </div>
+        <article class="e5-way e5-way--wide">
+          <span class="e5-dia" aria-hidden="true"></span>
+          <h3>In-kind &amp; pro-bono</h3>
+          <p>Equipment, space, or professional skill — if it serves the mission, we will put it to work and document it like any other gift.</p>
+          <a class="btn btn--secondary" href="mailto:contact@e5enclave.com?subject=In-kind%20gift%20offer%20for%20E5%20Enclave%20Inc">Offer an in-kind gift</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ REPORT · stewardship promise (conversion pass 2026-09-13) ═════════ -->
+  <section class="e5-report" id="report" data-e5-scheme="obsidian" aria-labelledby="report-h2">
+    <div class="e5-report-inner">
+      <p class="e5-eyebrow">Reciprocity</p>
+      <h2 class="e5-report-h" id="report-h2">We <span>report back.</span></h2>
+      <p class="e5-report-deck">Giving is a relationship, not a transaction. Your gift is used for the purpose you gave it — restricted gifts are tracked, honored, and reported, because nonprofit accounting answers to accountability first.</p>
+      <div class="e5-report-points">
+        <div class="e5-report-point">
+          <span class="e5-dia" aria-hidden="true"></span>
+          <h3>Receipt, immediately</h3>
+          <p>Stripe sends your tax receipt by email the moment your gift clears.</p>
+        </div>
+        <div class="e5-report-point">
+          <span class="e5-dia" aria-hidden="true"></span>
+          <h3>Impact letter, annually</h3>
+          <p>Once a year, a plain-language letter: what came in, what it did, what is next.</p>
+        </div>
+        <div class="e5-report-point">
+          <span class="e5-dia" aria-hidden="true"></span>
+          <h3>Books, on request</h3>
+          <p>Form 990, the IRS determination letter, and financial statements — open for inspection on request.</p>
+        </div>
+      </div>
+      <a class="btn btn--primary" href="mailto:contact@e5enclave.com?subject=Directed%20gift%20to%20an%20E5%20program">Direct your gift to a program</a>
+    </div>
+  </section>
+
+  <!-- ═════════ RIGHTS · Donor Bill of Rights (conversion pass 2026-09-13) ═════════ -->
+  <section class="e5-rights" id="rights" data-e5-scheme="ivory" aria-labelledby="rights-h2">
+    <div class="e5-rights-inner">
+      <p class="e5-eyebrow">The Fine Print, Up Front</p>
+      <h2 class="e5-rights-h" id="rights-h2">Your rights <span>as a donor.</span></h2>
+      <p class="e5-rights-deck">We subscribe to the Donor Bill of Rights — the sector&rsquo;s standard, developed by the Association of Fundraising Professionals, the Association for Healthcare Philanthropy, the Council for Advancement and Support of Education, and the Giving Institute (adopted 1993). Ten promises, in plain language:</p>
+      <ol class="e5-rights-list">
+        <li><strong>Know the mission.</strong> To be informed of our mission, how we intend to use donated resources, and our capacity to use them well.</li>
+        <li><strong>Know the board.</strong> To know who serves on our governing board, and to expect prudent stewardship from them.</li>
+        <li><strong>See the books.</strong> To have access to our most recent financial statements.</li>
+        <li><strong>Purpose honored.</strong> To be assured your gift is used for the purpose you gave it.</li>
+        <li><strong>Be acknowledged.</strong> To receive appropriate acknowledgement and recognition.</li>
+        <li><strong>Stay private.</strong> To be assured your donation information is handled with respect and confidentiality, to the extent provided by law.</li>
+        <li><strong>Be treated professionally.</strong> To expect professional conduct from everyone who represents us to you.</li>
+        <li><strong>Know who asks.</strong> To be told whether the person seeking your gift is a volunteer, an employee, or a hired solicitor.</li>
+        <li><strong>Leave the list.</strong> To have your name removed from any mailing list we share, on request.</li>
+        <li><strong>Ask anything.</strong> To ask questions freely — and receive prompt, truthful, forthright answers.</li>
+      </ol>
     </div>
   </section>
 
@@ -692,6 +905,19 @@ html.e5-reduced-motion [data-enter]{opacity:1;transform:none;transition:none}
 (function(){
   "use strict";
   var L={"m10":"https://donate.stripe.com/aFacN7618ezg55V46387K0e","m25":"https://donate.stripe.com/6oU5kF4X4dvc55VeKH87K0f","m50":"https://donate.stripe.com/8x23cx3T00Iq69Z1XV87K0h","m100":"https://donate.stripe.com/7sY00lbls2Qy55V8mj87K0g","once_custom":"https://donate.stripe.com/9B64gBgFM9eW7e38mj87K0c","once5":"https://donate.stripe.com/cNicN775cgHo55Vaur87K0d"};
+
+/* ═══ STRIPE_LINK_SLOTS — leadership tiers (staged 2026-09-13) ═══
+   Restricted Stripe key pending (Chairman's vault drop). Create via:
+     POST /v1/payment_links
+       line_items[0][price_data][currency]=usd
+       line_items[0][price_data][product_data][name]=E5 Enclave monthly gift
+       line_items[0][price_data][unit_amount]=25000 | 50000
+       line_items[0][price_data][recurring][interval]=month
+   Paste each returned buy.stripe.com URL below. Leadership cards render
+   ONLY when their URL is present — no dead buttons, no "coming soon".
+   The six live keys in L above stay byte-identical. */
+  var LEADERSHIP={"m250":"","m500":""};
+  var U={};for(var lk in LEADERSHIP){if(LEADERSHIP[lk])U[lk]=LEADERSHIP[lk];}
   var qs=function(s){return document.querySelector(s)};
   var qsa=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
   function freq(){var r=qs('input[name=freq]:checked');return r?r.value:'monthly';}
@@ -700,6 +926,35 @@ html.e5-reduced-motion [data-enter]{opacity:1;transform:none;transition:none}
   function go(t){var u=L[t];if(!u)return;try{if(typeof gtag==='function'){gtag('event','begin_checkout',{currency:'USD',items:[{item_id:t}]});}}catch(_){}window.location.assign(u+'?client_reference_id='+encodeURIComponent(ref(t)));}
   function note(msg){var n=qs('#give-status');if(n)n.textContent=msg;}
   function status(){var n=tierAmt(),m=freq()==='monthly';if(n)note('Give $'+n+(m?' per month':' one-time')+' selected.');}
+  function goU(t){var u=U[t];if(!u)return;
+    try{if(typeof gtag==='function'){gtag('event','begin_checkout',{currency:'USD',items:[{item_id:t}]});}}catch(_){}
+    window.location.assign(u+'?client_reference_id='+encodeURIComponent(ref(t)));}
+  /* Leadership row: render only tiers that have live payment URLs. */
+  (function(){
+    var row=qs('#leadership-row');if(!row)return;
+    var defs={
+      "m250":{amt:"$250",impact:"A program month, documented",
+        desc:"Underwrites a month of field documentation — every site visit logged, photographed, and reported."},
+      "m500":{amt:"$500",impact:"A coalition table, sustained",
+        desc:"Keeps a justice-family coalition table running — meeting space, records, and rapid-response capacity."}
+    };
+    var n=0;
+    for(var k in defs){
+      if(!U[k])continue;n++;
+      var d=defs[k],a=document.createElement('a');
+      a.className='e5-lead e5-tier';a.setAttribute('aria-label','Give '+d.amt+' per month');
+      a.href=U[k]+'?client_reference_id='+encodeURIComponent(ref(k));
+      a.innerHTML='<span class="tier__amount">'+d.amt+'<span class="tier__freq">/month</span></span>'+
+        '<h3 class="tier__impact">'+d.impact+'</h3>'+
+        '<p class="tier__desc">'+d.desc+'</p>'+
+        '<span class="btn btn--primary tier__btn">Give '+d.amt+'/mo</span>';
+      row.appendChild(a);
+    }
+    if(n>0){row.hidden=false;
+      var lab=document.createElement('p');lab.className='e5-because';
+      lab.textContent='Leadership circle — for those ready to carry more of the work.';
+      row.parentNode.insertBefore(lab,row);}
+  })();
   function paint(){
     var m=freq()==='monthly';
     qsa('.tier__freq').forEach(function(s){s.textContent=m?'/month':' one-time';});
@@ -721,7 +976,7 @@ html.e5-reduced-motion [data-enter]{opacity:1;transform:none;transition:none}
       if(!(isFinite(amt)&&amt>0)){note('Enter an amount to continue.');return;}
       if(freq()==='monthly'){
         var k='m'+Math.round(amt);
-        if(Number.isInteger(amt)&&L[k]){go(k);return;}
+        if(Number.isInteger(amt)&&(L[k]||U[k])){(U[k]?goU(k):go(k));return;}
         note('Monthly giving is available at $10, $25, $50 or $100. For another amount, switch to One-time.');
         return;
       }
