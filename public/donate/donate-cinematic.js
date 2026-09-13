@@ -88,10 +88,10 @@
     track('hero_cta_click', { cta_id: id, label: (a.textContent || '').trim().slice(0, 40) });
     if (id === 'hero-give-monthly') track('hero_goal_start', { goal: 'donate', cta_id: id });
   });
-  /* hero_goal_complete: no conversion instrument is wired on this page (the
-     "Continue to Payment" control has no payment destination — Chairman's
-     decision pending). The dispatch below is the future hook; it fires on the
-     custom 'e5:donate-complete' event when a destination is wired. */
+  /* hero_goal_complete: the giving instrument below is live — "Continue to
+     Payment" routes through the page's Stripe payment map (tier×frequency),
+     and the custom 'e5:donate-complete' event remains the hook for any
+     future post-payment confirmation. */
   document.addEventListener('e5:donate-complete', function (e) {
     var d = (e && e.detail) || {};
     track('hero_goal_complete', { goal: 'donate', cta_id: d.cta_id || 'give-continue', value: d.value });
