@@ -1625,6 +1625,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
             <label class="f-label" for="phone">Phone <span class="hint">(optional)</span></label>
             <input class="f-input" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(555) 000-0000" />
           </div>
+          <div class="field full">
+            <label class="manifesto-check" for="sms_opt_in">
+              <input type="checkbox" id="sms_opt_in" name="sms_opt_in" />
+              <span><strong>Text me case alerts.</strong> Occasional texts about hearings, rulings, and urgent actions. Msg &amp; data rates may apply. Reply STOP to quit anytime.</span>
+            </label>
+          </div>
           <div class="field third">
             <label class="f-label" for="city">City</label>
             <input class="f-input" type="text" id="city" name="city" placeholder="City" />
@@ -2213,7 +2219,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         message:v('message'),
         want_address:'no',
         sign_manifesto:(document.getElementById('sign_manifesto')||{checked:true}).checked, opt_in_newsletter:'yes',
-        source:'e5enclave_justice_karmelo',
+        sms_opt_in:(document.getElementById('sms_opt_in')||{checked:false}).checked?'yes':'',
+        source:(new URLSearchParams(location.search).get('src')||'e5enclave_justice_karmelo').slice(0,120),
         turnstile_token:e5TsToken()
       };
       try{
