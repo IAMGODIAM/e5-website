@@ -1,14 +1,17 @@
 /* ============================================================
    p33-icons.js — Project 2033 bespoke SVG icon-motion system
    17 custom-drawn gold line-work icons (48x48, stroke 1.7, round
-   joins), drawn in the E5 icon language. Never stock, never icon
-   fonts. Draw-on entrances via DrawSVG (GSAP, vendored) —
-   staggered path draws, total <=1.2s, settling to a clean static
-   state. Motion explains the action; conversion-path icons stay
-   static (no icon lives in the conversion path on this page).
+   joins), drawn in the E5 icon language, plus 7 hub markers
+   (2026-09-13) for the #hub congressional hub. Never stock,
+   never icon fonts. Draw-on entrances via DrawSVG (GSAP,
+   vendored) — staggered path draws, total <=1.2s, settling to a
+   clean static state. Motion explains the action; conversion-path
+   icons stay static (no icon lives in the conversion path on this
+   page). Hub kickers carry data-p33-static and never draw —
+   task-relevant motion only on and around the sign-on form.
    Fail-closed: no-JS => text-only; reduced-motion => icons appear
    complete with no draw animation; DrawSVG missing => skip.
-   Provenance: original vector work for this page, 2026-09-12.
+   Provenance: original vector work for this page, 2026-09-12/13.
    ============================================================ */
 (function () {
 'use strict';
@@ -158,6 +161,53 @@ var ICONS = {
     '<path d="M24 14c-3.4-2.6-7.6-3.2-13-2.6v20c5.4-.6 9.6 0 13 2.6 3.4-2.6 7.6-3.2 13-2.6v-20c-5.4-.6-9.6 0-13 2.6Z"/>',
     '<path d="M24 14v20"/>',
     '<path d="M32.5 7.5V17l-3-2.4-3 2.4V7.5"/>'
+  ],
+
+  /* ---- THE HUB · REPARATIONS NOW markers (2026-09-13) ---- */
+  hubLetter: [ /* envelope, flap, wax seal — "Read the letter" */
+    '<path d="M10 18.5a2.5 2.5 0 0 1 2.5-2.5h23a2.5 2.5 0 0 1 2.5 2.5v15a2.5 2.5 0 0 1-2.5 2.5h-23A2.5 2.5 0 0 1 10 33.5Z"/>',
+    '<path d="M11.5 18L24 27.5 36.5 18"/>',
+    '<circle cx="24" cy="27.5" r="4.4"/>',
+    '<circle cx="24" cy="27.5" r="1.5"/>'
+  ],
+  hubSign: [ /* pen nib, slit, breather, signature flourish — "Sign the record" */
+    '<path d="M33 6.5l8.5 8.5L28 28.5l-6.5-6.5Z"/>',
+    '<path d="M37.2 10.8l-8.6 8.6"/>',
+    '<circle cx="31.4" cy="16.6" r="1.2"/>',
+    '<path d="M8 38.5c5.5 0 7.5-5.5 11.5-5.5 3 0 3.6 3.6 7 3.6 3.6 0 5.4-2.8 11.5-2.8"/>'
+  ],
+  hubPacket: [ /* sheet, folded corner, download arrow, tray — "Download the packet" */
+    '<path d="M14 6.5h12.5L34 14v27.5H14Z"/>',
+    '<path d="M26.5 6.5V14H34"/>',
+    '<path d="M24 21.5v11"/>',
+    '<path d="M19.8 28.3l4.2 4.2 4.2-4.2"/>',
+    '<path d="M17 38h14"/>'
+  ],
+  hubAsk: [ /* placard on post, demand lines — the ask card */
+    '<path d="M12 10.5a2.5 2.5 0 0 1 2.5-2.5h19a2.5 2.5 0 0 1 2.5 2.5v12a2.5 2.5 0 0 1-2.5 2.5h-19A2.5 2.5 0 0 1 12 22.5Z"/>',
+    '<path d="M17 13.5h14"/>',
+    '<path d="M17 17.5h14"/>',
+    '<path d="M17 21.5h8.5"/>',
+    '<path d="M24 25v15"/>',
+    '<path d="M18 40h12"/>'
+  ],
+  hubBrief: [ /* single sheet, rising ledger line, end dot — the brief */
+    '<path d="M13 6.5h14.5L35 14v27.5H13Z"/>',
+    '<path d="M27.5 6.5V14H35"/>',
+    '<path d="M18 33l5-6.2 3.8 3 6.4-7.6"/>',
+    '<circle cx="33.2" cy="22.2" r="1.4"/>'
+  ],
+  hubWhip: [ /* whip-count table, column rule, check — the whip map */
+    '<path d="M8 14.5A2.5 2.5 0 0 1 10.5 12h27a2.5 2.5 0 0 1 2.5 2.5V33a2.5 2.5 0 0 1-2.5 2.5h-27A2.5 2.5 0 0 1 8 33Z"/>',
+    '<path d="M8 19.5h32"/>',
+    '<path d="M23 19.5v16"/>',
+    '<path d="M12.5 27.5l3.5 3.5 7-8"/>',
+    '<path d="M27.5 25.5h8"/>',
+    '<path d="M27.5 30h8"/>'
+  ],
+  hubFlame: [ /* commemoration flame, inner ember — the Lankford letter */
+    '<path d="M24 5.5c2.8 6.8 10.5 10.6 10.5 18.5a10.5 10.5 0 0 1-21 0c0-4.8 2.8-7.8 4.8-9.8.7 2.5 2.2 3.9 3.9 4.4-.6-4.4.2-9.3 1.8-13.1Z"/>',
+    '<path d="M24 27c1.6 2.6 4 4.2 4 7a4 4 0 0 1-8 0c0-1.9 1.2-3.1 2-4 .4 1 1.1 1.7 2 2-.3-1.8-.3-3.5 0-5Z"/>'
   ]
 };
 
@@ -186,7 +236,8 @@ try {
     for (var d = 0; d < drawn.length; d++) (function (svg) {
       var shapes = svg.querySelectorAll('path, circle, ellipse');
       if (!shapes.length) return;
-      var host = svg.closest('.p33-card, .p33-step, .p33-pillar, .p33-ledger-row') || svg;
+      if (svg.closest('[data-p33-static]')) return; /* hub kickers: static by doctrine */
+      var host = svg.closest('.p33-card, .p33-step, .p33-pillar, .p33-ledger-row, .p33-dl-card') || svg;
       gsap.set(shapes, { drawSVG: '0%' });
       ScrollTrigger.create({
         trigger: host,
