@@ -365,6 +365,19 @@ html.js .reveal.pre.in.d3{transition-delay:.36s}
     .e5-mnav-btn span { display:none; }
     .e5-wordmark { font-size:17px; letter-spacing:.14em; }
   }
+  /* data-m responsive utilities — the site-wide micro-layout language.
+     Canonical definitions (were page-local/dead on most pages; front-page hero
+     variants like hero/herotext/heroside/stage/mapband/scan/two stay page-local). */
+  @media (max-width: 1180px) {
+    [data-m~="hidemd"] { display:none !important; }
+  }
+  @media (max-width: 900px) {
+    [data-m~="hide"] { display:none !important; }
+    [data-m~="stack"] { grid-template-columns:minmax(0,1fr) !important; }
+    [data-m~="col"] { flex-direction:column !important; align-items:stretch !important; }
+    [data-m~="left"] { text-align:left !important; }
+    [data-m~="nob"] { border-right:none !important; border-bottom:1px solid #1A2030; }
+  }
   @media (max-width: 360px) { .e5-wordmark { font-size:15px; letter-spacing:.1em; } .e5-give { padding:0 11px; } }
   @media (prefers-reduced-motion: reduce) { .e5-gilt, .nb-cta a, .vc-cta-primary, .btn-primary, .btn--primary, .btn--gold, .btn--solid, .cta-primary { transition:none; } }
 </style>
