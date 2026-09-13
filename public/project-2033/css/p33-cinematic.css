@@ -729,3 +729,101 @@ html, body { overflow-x: clip; } /* decorative bleed (ring, grain) never scrolls
   .p33-ledger-amount, .p33-counter-value, .p33-debt-head h2 { color: #111; }
   body { background: #fff; }
 }
+
+/* ============================================================
+   THE HUB · REPARATIONS NOW (2026-09-13)
+   Congressional action hub: the letter, the sign-on, the packet.
+   ============================================================ */
+.p33-hub { border-top: 1px solid rgba(201,162,74,.25); }
+.p33-hub-title { font: 500 clamp(46px, 6.4vw, 104px)/1.02 var(--p33-display); letter-spacing: -.02em; color: var(--p33-paper); max-width: 15ch; margin: 22px 0 18px; }
+.p33-hub-title em { color: var(--p33-gold-hi); }
+.p33-hub-deck { max-width: 700px; font-size: 18px; line-height: 1.7; color: var(--p33-fog); margin: 0; }
+.p33-hub-block { margin-top: clamp(64px, 9vh, 110px); }
+.p33-hub-block > .p33-kicker { display: block; margin-bottom: 26px; }
+
+/* --- the letter document --- */
+.p33-letter { max-width: 780px; margin-left: clamp(0px, 7%, 120px); background: rgba(13,14,18,.62); border: 1px solid rgba(233,211,160,.30); border-top: 2px solid var(--p33-gold); padding: clamp(30px, 4vw, 60px); color: var(--p33-paper); box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+.p33-letter-head { text-align: center; margin: 0 0 30px; }
+.p33-letter-org { font: 500 14px/1.6 var(--p33-mono); letter-spacing: .44em; text-indent: .44em; color: var(--p33-gold-hi); margin: 0 0 6px; }
+.p33-letter-sub { font: 400 10.5px/1.7 var(--p33-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--p33-fog); margin: 0 0 10px; }
+.p33-letter-date { font: 400 11px/1.6 var(--p33-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--p33-fog); margin: 0; }
+.p33-letter-addr { font: 400 15px/1.7 var(--p33-sans); color: var(--p33-fog); margin: 0 0 24px; }
+.p33-letter-re { border-left: 3px solid var(--p33-gold); padding: 2px 0 2px 18px; font: 400 17px/1.6 var(--p33-sans); color: var(--p33-paper); margin: 0 0 28px; }
+.p33-letter-re strong { font-weight: 600; }
+.p33-letter-body p { font: 400 clamp(18px, 2vw, 21px)/1.62 var(--p33-display); color: #EDE8DC; margin: 0 0 1.1em; }
+.p33-letter-fold { border-top: 1px solid rgba(201,162,74,.35); padding-top: 20px; }
+.p33-letter-sign { margin-top: 34px; }
+.p33-letter-sign p { margin: 0 0 6px; color: var(--p33-fog); font-size: 15px; }
+.p33-sig-name { font: italic 600 clamp(26px, 3vw, 34px)/1.3 var(--p33-display); color: var(--p33-gold-hi); }
+.p33-sig-title { font: 400 14px/1.7 var(--p33-sans); }
+.p33-letter-cap { margin: 20px 0 0 clamp(0px, 7%, 120px); max-width: 640px; font-size: 14px; line-height: 1.65; color: var(--p33-fog); }
+
+/* --- sign band --- */
+.p33-sign-count { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; margin: 0 0 10px; }
+.p33-sign-num { font: 500 clamp(60px, 8vw, 116px)/1 var(--p33-display); color: var(--p33-gold-hi); letter-spacing: -.02em; }
+.p33-sign-num .p33-shimmer { background: linear-gradient(105deg, var(--p33-gold) 20%, var(--p33-gold-hi) 42%, #FFF7E0 50%, var(--p33-gold-hi) 58%, var(--p33-gold) 80%); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+.p33-sign-words { font: 400 clamp(20px, 2.6vw, 30px)/1.3 var(--p33-display); font-style: italic; color: var(--p33-paper); }
+.p33-sign-note { max-width: 640px; font-size: 14px; color: var(--p33-fog); margin: 0 0 30px; }
+.p33-signform { padding: clamp(26px, 3vw, 44px); max-width: 880px; }
+.p33-fgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 22px; }
+.p33-ffield label { display: block; font: 500 10px/1.6 var(--p33-mono); letter-spacing: .22em; text-transform: uppercase; color: var(--p33-gold); margin-bottom: 8px; }
+.p33-ffield input[type=text], .p33-ffield input[type=email], .p33-ffield textarea { width: 100%; box-sizing: border-box; background: rgba(5,6,9,.62); border: 1px solid rgba(201,162,74,.35); color: var(--p33-paper); padding: 13px 14px; font: 400 16px/1.5 var(--p33-sans); border-radius: 0; appearance: none; }
+.p33-ffield input::placeholder, .p33-ffield textarea::placeholder { color: rgba(168,164,152,.55); }
+.p33-ffield input:focus, .p33-ffield textarea:focus { outline: none; border-color: var(--p33-gold-hi); box-shadow: 0 0 0 1px var(--p33-gold-hi); }
+.p33-ffield textarea { resize: vertical; min-height: 88px; }
+.p33-ffull { grid-column: 1 / -1; }
+.p33-fstate { max-width: 130px; }
+.p33-fhint { letter-spacing: .06em; color: var(--p33-fog); }
+.p33-cert { display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.6; color: var(--p33-fog); cursor: pointer; margin-top: 4px; }
+.p33-cert input { width: 22px; height: 22px; flex: none; margin-top: 1px; accent-color: var(--p33-gold); }
+.p33-hp { position: absolute !important; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+.p33-fsubmit { margin-top: 24px; }
+.p33-fsubmit[disabled] { opacity: .55; cursor: wait; }
+.p33-ferr { color: #F2B8B8; background: rgba(120,20,20,.22); border: 1px solid rgba(200,80,80,.5); padding: 12px 16px; font-size: 14px; margin: 18px 0 0; }
+.p33-ferr:focus { outline: 2px solid #F2B8B8; outline-offset: 2px; }
+.p33-ssuccess { padding: clamp(30px, 4vw, 52px); max-width: 880px; }
+.p33-ssuccess h3 { font: 500 clamp(30px, 4vw, 48px)/1.15 var(--p33-display); color: var(--p33-paper); margin: 0 0 12px; }
+.p33-ssuccess h3 em { color: var(--p33-gold-hi); }
+.p33-ssuccess p { color: var(--p33-fog); font-size: 17px; margin: 0; }
+
+/* --- downloads --- */
+.p33-dl-cards { margin-top: 34px; }
+.p33-dl-card { display: block; text-decoration: none; max-width: 560px; padding: 26px 30px 24px; margin: 0 0 20px; background: rgba(13,14,18,.58); border: 1px solid rgba(233,211,160,.22); border-top: 1px solid rgba(201,162,74,.6); transition: border-color .3s; }
+.p33-dl-card:nth-child(2) { margin-left: clamp(30px, 9%, 150px); }
+.p33-dl-card:nth-child(3) { margin-left: clamp(15px, 4%, 70px); }
+.p33-dl-card:nth-child(4) { margin-left: clamp(45px, 13%, 220px); }
+.p33-dl-card:hover, .p33-dl-card:focus-visible { border-color: var(--p33-gold-hi); }
+.p33-dl-card h3 { font: 600 clamp(24px, 2.6vw, 32px)/1.2 var(--p33-display); color: var(--p33-paper); margin: 10px 0 8px; }
+.p33-dl-card p { font-size: 15px; line-height: 1.65; color: var(--p33-fog); margin: 0 0 14px; }
+.p33-dl-card .p33-kicker { font-size: 10px; }
+.p33-dl-meta { font: 500 10px/1.6 var(--p33-mono); letter-spacing: .24em; text-transform: uppercase; color: var(--p33-gold); }
+.p33-dl-all { margin-top: 46px; border-top: 1px solid rgba(201,162,74,.4); }
+.p33-dl-all summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 2px; }
+.p33-dl-all summary::-webkit-details-marker { display: none; }
+.p33-dl-all summary:focus-visible { outline: 2px solid var(--p33-gold-hi); outline-offset: 4px; }
+.p33-dl-all-q { font: 500 clamp(22px, 2.6vw, 32px)/1.25 var(--p33-display); color: var(--p33-paper); }
+.p33-dl-all-mark { position: relative; flex: none; width: 34px; height: 34px; border: 1px solid rgba(201,162,74,.55); border-radius: 50%; }
+.p33-dl-all-mark::before, .p33-dl-all-mark::after { content: ""; position: absolute; background: var(--p33-gold-hi); left: 50%; top: 50%; }
+.p33-dl-all-mark::before { width: 12px; height: 1.6px; transform: translate(-50%,-50%); }
+.p33-dl-all-mark::after { width: 1.6px; height: 12px; transform: translate(-50%,-50%); transition: opacity .25s; }
+.p33-dl-all[open] .p33-dl-all-mark::after { opacity: 0; }
+.p33-dl-all-sub { font-size: 14px; color: var(--p33-fog); margin: 0 0 18px; }
+.p33-dl-list { list-style: none; margin: 0; padding: 0 0 30px; columns: 3; column-gap: 34px; }
+.p33-dl-list li { break-inside: avoid; }
+.p33-dl-list a { display: block; padding: 7px 0; font-size: 14.5px; color: var(--p33-fog); text-decoration: none; }
+.p33-dl-list a:hover, .p33-dl-list a:focus-visible { color: var(--p33-gold-hi); }
+
+/* hub responsive */
+@media (max-width: 760px) {
+  .p33-letter, .p33-letter-cap { margin-left: 0; }
+  .p33-fgrid { grid-template-columns: 1fr; }
+  .p33-fstate { max-width: none; }
+  .p33-dl-card, .p33-dl-card:nth-child(2), .p33-dl-card:nth-child(3), .p33-dl-card:nth-child(4) { margin-left: 0; }
+  .p33-dl-list { columns: 2; }
+  .p33-sign-count { gap: 10px; }
+}
+@media (max-width: 480px) { .p33-dl-list { columns: 1; } }
+@media (prefers-reduced-motion: reduce) { .p33-dl-card { transition: none; } }
+@media print {
+  #p33SignForm, #sign .p33-sign-note, .p33-dl-all { display: none; }
+}
