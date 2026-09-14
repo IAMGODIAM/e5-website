@@ -29,7 +29,7 @@ function walk(dir, out = []) {
 
 // Stale or unsupported claims. Each entry: [regex, reason]. Lifted when the underlying fact changes.
 const FORBIDDEN_CLAIMS = [
-  [/active\s+federal\s+contractor/i,        'SAM registration lapsed 4 Aug 2026 (O1) — remove until renewed'],
+  [/active\s+federal\s+contractor/i,        'use the canonical line: "SAM.gov registration Active — verified Sep 2026, expires Apr 16, 2027" (O1)'],
   [/Active\s+through\s+Aug(?:ust)?\s+4,?\s+2026/i, 'SAM expiry date has passed (O1)'],
   [/SBIR\s*\/\s*STTR\s+Eligible/i,          'a 501(c)(3) is not an SBIR/STTR awardee; attribute to AgriMesh Corporation or remove (O10)'],
   [/\bDIBBS\b/,                              'DLA DIBBS account suspended 2 Sep 2026 (O2)'],
@@ -39,10 +39,10 @@ const FORBIDDEN_CLAIMS = [
   [/world(?:'|’)s\s+first/i,                 'unverifiable superlative — "among the first" or cite the method (11 §3)'],
   [/\[email(?:&#160;|&nbsp;|\s)protected\]/i,'Cloudflare email-obfuscation placeholder baked into source — write the address'],
   [/2026\s*<\/div><div[^>]*>\s*Founding\s+year/i, 'founding year is 2024 (D8)'],
-  [/registrant\s+in\s+good\s+standing/i,      'SAM registration lapsed 4 Aug 2026 (O1) — "renewal in progress" until a .gov confirmation exists'],
-  [/Federal\s+registrant\.\s*Active\s+status/i,'SAM registration lapsed 4 Aug 2026 (O1)'],
-  [/Active\s+through\s+August\s+2026/i,        'SAM expiry date has passed (O1)'],
-  [/nonprofit\s*\+\s*federal\s+contractor/i,   'SAM registration lapsed 4 Aug 2026 (O1)'],
+  [/registrant\s+in\s+good\s+standing/i,      'prefer the canonical line: "SAM.gov registration Active — verified Sep 2026, expires Apr 16, 2027" (O1)'],
+  [/Federal\s+registrant\.\s*Active\s+status/i,'prefer the canonical line: "SAM.gov registration Active — verified Sep 2026, expires Apr 16, 2027" (O1)'],
+  [/Active\s+through\s+August\s+2026/i,        'SAM expiry is Apr 16, 2027 (O1) — use the canonical Active line with the verified date'],
+  [/nonprofit\s*\+\s*federal\s+contractor/i,   'federal-contractor framing is stale — SAM.gov registration Active (O1); use the canonical line'],
   [/Full\s+financials/i,                        'no financials are published — institutional disclosure sits at the federal floor (D5)'],
   [/Open\s+bylaws/i,                            'bylaws are not published (D5)'],
   [/bylaws[^<.]{0,60}published/i,               'bylaws are not published (D5)'],
