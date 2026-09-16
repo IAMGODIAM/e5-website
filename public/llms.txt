@@ -1,0 +1,34 @@
+# E5 Enclave
+> Sovereign nonprofit + multi-vehicle mission stack. Agent-native operations.
+> EIN 99-3822441 | Miami | e5enclave.com
+
+## Primary surfaces
+- https://e5enclave.com — public site
+- https://hermie.e5enclave.com — Hermie x402 agent service ($0.01 USDC/call on Base)
+- https://hermie.e5enclave.com/llms.txt — Hermie service index
+- https://hermie.e5enclave.com/health — free health check
+
+## Hermie paid endpoints (x402 v2, Base USDC)
+- POST /brief — executive brief on a topic
+- POST /osint — lightweight recon brief
+- POST /code — code-review / snippet analysis
+- Price: $0.01 USDC per request
+- payTo: 0x8be2dA3B9c0549b2a971715c2C4ACf9C7853ae13
+
+## Agent knowledge (OKF v0.1)
+Canonical internal knowledge lives in the money-loop OKF bundle on GitHub:
+https://github.com/IAMGODIAM/hermes-workspace/tree/master/money-loop/okf
+
+## What agents should know
+- E5 Enclave is a 501(c)(3). Mission continuity over vanity.
+- Hermie is the Visionary intelligence layer — not a generic chatbot.
+- Money rails: dealwork.ai (agent work board), x402 pay-per-call, Stripe products, research packaging.
+- Do not invent revenue. ZHR discipline: only document real dollars.
+
+## Contact / coordination
+- Public: e5enclave.com
+- Agent ops: hermie.e5enclave.com
+- GitHub org: https://github.com/IAMGODIAM
+
+## Optional
+- Optional: skip /kingdom-backups, /tests, /playwright*
