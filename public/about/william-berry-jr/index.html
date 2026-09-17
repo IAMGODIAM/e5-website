@@ -22,7 +22,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:wght@300;400;500;600;700&display=swap"/>
 <style>
 :root{
   --vc-display:"Cormorant Garamond","Playfair Display","Times New Roman",serif;
@@ -57,11 +57,32 @@ main.sv-interior{display:block;max-width:1180px;margin:0 auto;padding:0 clamp(20
 .vc-prose ul{margin:0 0 1.15em;padding-left:1.4em}
 .vc-prose li{margin-bottom:.55em}
 .mono{display:flex;gap:clamp(20px,4vw,40px);align-items:center;margin:0 0 2em}
-.mono-mark{flex:0 0 auto;width:104px;height:104px;border-radius:50%;border:2px solid var(--vc-gold);display:flex;align-items:center;justify-content:center;font-family:var(--vc-display);font-size:40px;font-weight:600;color:var(--vc-oxblood);background:var(--vc-bone-2)}
-.mono-cap{font-size:13.5px;color:var(--vc-muted);max-width:44ch;margin:0}
 a{color:var(--vc-oxblood)}
 a:focus-visible{outline:2px solid var(--vc-oxblood);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+
+/* ===== cinematic-editorial technique CSS — /about/william-berry-jr/ ===== */
+.wb-hero-fig{display:flex;gap:clamp(20px,4vw,40px);align-items:center;margin:0 0 2.4em}
+.wb-mono{flex:0 0 auto;width:104px;height:104px;color:var(--vc-oxblood)}
+.wb-lead{font-family:var(--vc-display);font-style:italic;font-size:clamp(20px,2.6vw,28px);line-height:1.42;
+  color:var(--vc-ink-2);margin:0;max-width:36ch;font-variation-settings:"wght" 340}
+@media(max-width:640px){.wb-hero-fig{align-items:flex-start}.wb-mono{width:84px;height:84px}}
+.ledger{list-style:none;margin:0 0 1em;padding:0;border-top:1px solid var(--vc-rule)}
+.ledger li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:14px;padding:12px 0;
+  border-bottom:1px solid var(--vc-rule);align-items:baseline}
+.led-code{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.16em;color:var(--vc-gold-text)}
+.led-note{font-size:14px;color:var(--vc-muted)}
+.prac-lede{max-width:66ch}
+.prac-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin:1.6em 0 0}
+.prac{display:flex;flex-direction:column;gap:12px;align-items:flex-start;border:1px solid var(--vc-rule);
+  border-radius:12px;padding:18px;text-decoration:none;background:rgba(255,255,255,.24)}
+.prac:hover{border-color:var(--vc-gold)}
+.prac-ico{display:block;width:48px;height:48px;color:var(--vc-oxblood)}
+.prac-ico svg{width:100%;height:100%;display:block}
+.prac-name{font-size:14.5px;font-weight:600;color:var(--vc-ink-2);line-height:1.4}
+.wb-lede-small{font-size:15px;color:var(--vc-ink-3);max-width:70ch}
+
 </style>
 </head>
 <body>
@@ -200,42 +221,52 @@ a:focus-visible{outline:2px solid var(--vc-oxblood);outline-offset:2px}
 </header>
 
 <article class="vc-prose">
-<div class="mono">
-  <div class="mono-mark" role="img" aria-label="Monogram: W B">WB</div>
-  <p class="mono-cap">A career built in the field — point-of-sale systems, multi-site deployments, and the unglamorous work of keeping businesses running.</p>
+<div class="wb-hero-fig">
+  <svg id="wb-mono" class="wb-mono" data-motion="initials drawn" viewBox="0 0 132 132" role="img" aria-label="Monogram: W B">
+    <circle id="wb-ring" cx="66" cy="66" r="60" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path id="wb-w" d="M32 46 L42 86 L52 58 L62 86 L72 46" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="wb-b" d="M82 46 V86 M82 46 h8 c10 0 10 16 0 16 h-8 M82 62 h10 c11 0 11 24 0 24 h-10" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <p class="wb-lead" id="wb-lead" data-motion="weight ramp on scroll">A career built in the field — point-of-sale systems, multi-site deployments, and the unglamorous work of keeping businesses running.</p>
 </div>
 
-<p>William is a hands-on technology leader whose career covers the full stack of commercial IT delivery: from server rooms to field operations. As <strong>Chief Technology Officer of Assist A Boss</strong> (Lake Mary, Florida), he leads a technology crew serving businesses — and does nationwide IT field work through Field Nation.</p>
+<section class="ed-rev" data-motion="timeline reveal" aria-label="Career ledger">
+<h2>Career ledger</h2>
+<ol class="ledger">
+  <li><span class="led-code">§01</span><span><strong>Chief Technology Officer</strong> — Assist A Boss, Lake Mary, Florida</span></li>
+  <li><span class="led-code">§02</span><span><strong>Owner</strong> — World Seo Group (SEO/SEM and web hosting)</span></li>
+  <li><span class="led-code">§03</span><span><strong>Director of Technology</strong> — StartWorkNow.com</span></li>
+  <li><span class="led-code">§04</span><span><strong>Server Administrator</strong> — TyTeHosting.com</span></li>
+  <li><span class="led-code">§05</span><span><strong>Senior Field Technician</strong> — Field Nation (nationwide IT field work)</span></li>
+  <li><span class="led-code">§06</span><span><strong>Director of Tech &amp; Marketing</strong> — Discounted Moving</span></li>
+  <li><span class="led-code">§07</span><span><strong>IT Director</strong> — ATA Systems Inc</span></li>
+  <li><span class="led-code">§08</span><span><strong>Field services engineering</strong> — Insight and Brown &amp; Brown Insurance</span></li>
+</ol>
+<p class="led-note">Studied at Seminole State College of Florida and Lake Brantley.</p>
+</section>
 
-<p>His practice covers the work most IT firms avoid — the physical, on-site, deadline-driven kind:</p>
-<ul>
-<li><strong>Point-of-sale systems</strong> — deployments, replacements, and service contracts for retailers and restaurants in every state.</li>
-<li><strong>Deployments &amp; rollouts</strong> — new systems stood up site by site, and coordinated multi-location rollouts with one point of accountability.</li>
-<li><strong>Migrations &amp; upgrades</strong> — moving businesses to new platforms and hardware without breaking the business day.</li>
-<li><strong>Moves &amp; relocation</strong> — office and workstation moves that get teams back online fast.</li>
-<li><strong>Backup connectivity</strong> — secondary internet solutions for businesses that cannot afford to go dark.</li>
-</ul>
+<section class="ed-rev" data-motion="timeline reveal" aria-label="Practice">
+<h2>Practice</h2>
+<p class="prac-lede">His practice covers the work most IT firms avoid — the physical, on-site, deadline-driven kind. The canonical record lives on the <a href="/services/">technology services page</a>:</p>
+<div class="prac-grid">
+  <a class="prac" data-e5-draw-host data-motion="practice glyph draw" href="/services/#svc-01"><span class="prac-ico" data-e5-ico="svcPos" aria-hidden="true"></span><span class="prac-name">POS Systems Contracts</span></a>
+  <a class="prac" data-e5-draw-host data-motion="practice glyph draw" href="/services/#svc-03"><span class="prac-ico" data-e5-ico="svcDeploy" aria-hidden="true"></span><span class="prac-name">Deployments</span></a>
+  <a class="prac" data-e5-draw-host data-motion="practice glyph draw" href="/services/#svc-05"><span class="prac-ico" data-e5-ico="svcMigrate" aria-hidden="true"></span><span class="prac-name">Migrations</span></a>
+  <a class="prac" data-e5-draw-host data-motion="practice glyph draw" href="/services/#svc-06"><span class="prac-ico" data-e5-ico="svcVan" aria-hidden="true"></span><span class="prac-name">Computer Moves &amp; Relocation</span></a>
+  <a class="prac" data-e5-draw-host data-motion="practice glyph draw" href="/services/#svc-07"><span class="prac-ico" data-e5-ico="svcUplink" aria-hidden="true"></span><span class="prac-name">Backup ISP Solutions</span></a>
+</div>
+</section>
 
-<hr>
-<h2>Background</h2>
-<ul>
-<li><strong>Chief Technology Officer</strong> — Assist A Boss, Lake Mary, Florida</li>
-<li><strong>Owner</strong> — World Seo Group (SEO/SEM and web hosting)</li>
-<li><strong>Director of Technology</strong> — StartWorkNow.com</li>
-<li><strong>Server Administrator</strong> — TyTeHosting.com</li>
-<li><strong>Senior Field Technician</strong> — Field Nation (nationwide IT field work)</li>
-<li><strong>Director of Tech &amp; Marketing</strong> — Discounted Moving</li>
-<li><strong>IT Director</strong> — ATA Systems Inc</li>
-<li><strong>Field services engineering</strong> — Insight and Brown &amp; Brown Insurance</li>
-</ul>
-<p>Studied at Seminole State College of Florida and Lake Brantley.</p>
+<p class="wb-lede-small ed-rev" data-motion="timeline reveal">William is a hands-on technology leader whose career covers the full stack of commercial IT delivery: from server rooms to field operations. As <strong>Chief Technology Officer of Assist A Boss</strong> (Lake Mary, Florida), he leads a technology crew serving businesses — and does nationwide IT field work through Field Nation.</p>
 
-<hr>
+<section class="ed-rev" data-motion="timeline reveal" aria-label="At E5 Enclave">
 <h2>At E5 Enclave</h2>
 <p>As Chief Technology Officer, William directs the organization's <a href="/services/">technology services practice</a> — the same seven service lines he named in his April 2026 request, delivered by his Assist A Boss crew: POS systems contracts, upgrades, deployments, rollouts, migrations, computer moves and relocation, and backup ISP solutions.</p>
 <p>Businesses seeking these services can reach the practice directly through our <a href="https://client-engine.yisraelleemccartney.workers.dev">service intake</a>.</p>
+</section>
 </article>
 </main>
+
 
 <!-- e5:chrome-foot -->
 <div class="sov-chrome sov-chrome-foot" style="margin-top:clamp(60px,8vw,120px)">
@@ -261,5 +292,10 @@ a:focus-visible{outline:2px solid var(--vc-oxblood);outline-offset:2px}
   </div>
 </div>
 <!-- /e5:chrome-foot -->
+<script src="/project-2033/js/vendor/gsap.min.js" defer></script>
+<script src="/project-2033/js/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/project-2033/js/vendor/DrawSVGPlugin.min.js" defer></script>
+<script src="/project-2033/js/vendor/e5-icons.js" defer></script>
+<script src="/assets/editorial/william.js" defer></script>
 </body>
 </html>
