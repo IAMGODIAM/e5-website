@@ -279,6 +279,8 @@
     .pending-links { border-top: 1px solid rgba(255,255,255,.55); }
     .pending-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid rgba(255,255,255,.55); padding: 18px 0; font-weight: 800; }
     .pending-row span:last-child { font: 600 .68rem/1.3 "IBM Plex Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: #ffe3b6; }
+    .pending-row a { color: #ffe3b6; text-decoration: underline; text-underline-offset: 3px; }
+    .pending-row a:hover { color: #fff; }
     .copy-wrap { margin-top: 28px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
     .copy-button { border: 1px solid white; background: white; color: #1a0b0d; padding: 14px 17px; font: 800 .9rem/1.2 "Public Sans", sans-serif; cursor: pointer; }
     .copy-status { font: 500 .72rem/1.4 "IBM Plex Mono", monospace; min-height: 1em; }
@@ -527,7 +529,7 @@
       <div class="shell support-grid">
         <div>
           <h2 id="support-heading">Stand with E5.</h2>
-          <p>Read the record. Ask OpenAI to answer the $865 question. Share the evidence in your own words. Fundraising pages will be added here after their account and payout details are verified.</p>
+          <p>Read the record. Ask OpenAI to answer the $865 question. Share the evidence in your own words. The GoFundMe campaign is live; the GiveSendGo page remains on hold.</p>
           <div class="copy-wrap">
             <button class="copy-button" type="button" id="copyRefrain">Copy the campaign refrain</button>
             <span class="copy-status" id="copyStatus" aria-live="polite"></span>
@@ -535,7 +537,7 @@
         </div>
         <div class="pending-links" aria-label="Fundraiser link status">
           <div class="pending-row"><span>GiveSendGo</span><span>Link pending</span></div>
-          <div class="pending-row"><span>GoFundMe</span><span>Link pending</span></div>
+          <div class="pending-row"><span>GoFundMe</span><span><a href="https://www.gofundme.com/f/the-865-question" target="_blank" rel="noopener">Donate &rarr;</a></span></div>
           <div class="pending-row"><span>Planned shared initial goal</span><span>$1,000 gross</span></div>
         </div>
       </div>
