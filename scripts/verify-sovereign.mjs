@@ -27,7 +27,10 @@ const visibleText = html => html
 // adding the Sovereign masthead on top of it would stack two sticky bars (the artifact recorded on
 // Restitution 246 in 11 §8.9b). Frozen by D19 until the rebuild, so it is exempt, not restyled.
 // Add to this list only with a decision recorded in the bundle.
-const SELF_CHROMED = new Set(['public/justice/kohen-wiley/index.html']);
+// /openai/ added 2026-09-16: bespoke campaign page for The $865 Question (OpenAI refund dispute).
+// Decision: the Chairman's explicit instruction 'launch the site to e5enclave.com/openai' (2026-09-16).
+// It carries its own campaign chrome by design; exempt like kohen-wiley, not restyled.
+const SELF_CHROMED = new Set(['public/justice/kohen-wiley/index.html', 'public/openai/index.html']);
 
 for (const route of routes) {
   const rel = route === '/' ? 'public/index.html' : `public${route.replace(/\/$/, '')}/index.html`;
