@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://e5enclave.com/</loc></url>
-  <url><loc>https://e5enclave.com/about/</loc></url>
+  <url><loc>https://e5enclave.com/about/</loc>
+<loc>https://e5enclave.com/about/william-berry-jr/</loc>
+<loc>https://e5enclave.com/services/</loc></url>
   <url><loc>https://e5enclave.com/accessibility/</loc></url>
   <url><loc>https://e5enclave.com/agrimesh/</loc></url>
   <url><loc>https://e5enclave.com/black-dragons-initiative/</loc></url>
@@ -43,7 +45,6 @@
   <url><loc>https://e5enclave.com/the-record/lineage/samuel-j-cornelius/</loc></url>
   <url><loc>https://e5enclave.com/the-record/lineage/kay-coles-james/</loc></url>
 <url><loc>https://e5enclave.com/liberty-city/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://e5enclave.com/openai/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
 <url><loc>https://e5enclave.com/overtown/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://e5enclave.com/little-haiti/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://e5enclave.com/brownsville/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
