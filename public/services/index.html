@@ -76,6 +76,62 @@ a{color:var(--vc-oxblood)}
 .cta-band a{color:var(--vc-gold-2)}
 a:focus-visible{outline:2px solid var(--vc-oxblood);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+
+/* ===== signal-lab instrument layer — /services/ technique CSS ===== */
+/* Poster-first: everything below is complete without JS. */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:30px}
+@media(min-width:920px){.hero-grid{grid-template-columns:minmax(0,1fr) 300px;align-items:start}}
+.inst-rail{border:1px solid var(--vc-rule);border-radius:12px;padding:18px 20px;background:rgba(255,255,255,.24);
+  font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,monospace;font-size:11px;letter-spacing:.14em;
+  color:var(--vc-ink-3);animation:ir-in .8s ease both}
+@keyframes ir-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.ir-k{margin:0 0 10px;color:var(--vc-gold-text);font-size:10px;letter-spacing:.2em}
+.ir-list{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:7px}
+.ir-list:last-of-type{margin-bottom:0}
+.ir-stamp{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--vc-rule);color:var(--vc-muted);font-size:10px;letter-spacing:.18em}
+.opener{font-size:clamp(18px,2.2vw,22px)}
+
+/* ----- film frames ----- */
+.film-frame{position:relative;margin:2.8em 0;background:#0a0d10;border:1px solid #1c222c;border-radius:14px;overflow:hidden;color:#dfe4ec}
+.ff-chrome{position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #1c222c}
+.ff-title{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.18em;color:#e9d3a0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ff-stamp{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.14em;color:#8b93a7;white-space:nowrap}
+.ff-svg{display:block;width:100%;height:auto}
+.ff-tickwrap{margin:0;padding:12px 16px;border-top:1px solid #1c222c}
+.ff-tick{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;letter-spacing:.1em;color:#d9a441}
+.ff-foot{position:relative}
+.ff-controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:2px 16px 44px}
+.ff-scrublabel{display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.16em;color:#8b93a7}
+.ff-scrub{width:min(280px,52vw);accent-color:#d9a441}
+.ff-play,.ff-replay{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.16em;background:none;border:1px solid #3a4356;color:#dfe4ec;border-radius:999px;padding:9px 16px;cursor:pointer}
+.ff-play:hover,.ff-replay:hover{border-color:#d9a441;color:#e9d3a0}
+.ff-play:focus-visible,.ff-replay:focus-visible{outline:2px solid #d9a441;outline-offset:2px}
+.ff-bug{position:absolute;left:16px;bottom:14px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.18em;color:#d9a441;animation:none !important;pointer-events:none;white-space:nowrap}
+
+/* ----- §-coded service figures ----- */
+.svc-fig{display:grid;grid-template-columns:72px minmax(0,1fr);gap:18px;padding:28px 0;border-top:1px solid var(--vc-rule)}
+.svc-fig:last-of-type{border-bottom:1px solid var(--vc-rule)}
+.svc-code{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.2em;color:var(--vc-gold-text);margin:0;padding-top:8px}
+.svc-fig h3{font-family:var(--vc-display);font-weight:600;font-size:clamp(24px,2.8vw,34px);margin:0 0 .35em;line-height:1.1}
+.svc-fig p{margin:0 0 .7em;max-width:64ch}
+.svc-fig .for{font-size:14px;color:var(--vc-muted)}
+.svc-fig .for strong{color:var(--vc-ink-2);font-weight:600}
+@media(max-width:640px){.svc-fig{grid-template-columns:minmax(0,1fr);gap:4px;padding:22px 0}}
+
+/* ----- fenced intake console (single CTA) ----- */
+.console{border:1px solid var(--vc-rule);border-radius:16px;padding:clamp(28px,4vw,44px);margin:2.8em 0;background:var(--vc-ink);color:#f4eee2}
+.console-k{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.22em;color:var(--vc-gold-2);margin:0 0 16px}
+.console h2{color:#f4eee2;margin:0 0 .5em}
+.console p{color:rgba(244,238,226,.82);max-width:58ch}
+.console a{color:var(--vc-gold-2)}
+
+/* ----- process glyphs ----- */
+.proc-step{display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;align-items:start;margin:0 0 1.5em}
+.proc-ico{display:block;width:56px;height:56px;color:var(--vc-oxblood)}
+.proc-ico svg{width:100%;height:100%;display:block}
+.proc-step p{margin:0;max-width:64ch}
+
 </style>
 </head>
 <body>
@@ -209,82 +265,225 @@ a:focus-visible{outline:2px solid var(--vc-oxblood);outline-offset:2px}
 <main id="main" class="sv-interior">
 <header class="vc-page-head">
   <div class="vc-page-eyebrow">E5 Enclave Incorporated · Technology Services</div>
-  <h1 class="vc-page-h">Technology services,<br><em>offered in every state.</em></h1>
-  <p class="vc-page-deck">IT services for businesses that cannot afford downtime — led by our Chief Technology Officer. We take service requests in every state: tell us what you need through the intake below, and a person follows up.</p>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <h1 class="vc-page-h">Technology services,<br><em>offered in every state.</em></h1>
+      <p class="vc-page-deck">IT services for businesses that cannot afford downtime — led by our Chief Technology Officer. We take service requests in every state: tell us what you need through the intake below, and a person follows up.</p>
+    </div>
+    <aside class="inst-rail" aria-label="Page index">
+      <p class="ir-k">SEC-INDEX · 07 SERVICE FIGURES</p>
+      <ol class="ir-list">
+        <li>§01 POS SYSTEMS CONTRACTS</li>
+        <li>§02 UPGRADES</li>
+        <li>§03 DEPLOYMENTS</li>
+        <li>§04 ROLLOUTS</li>
+        <li>§05 MIGRATIONS</li>
+        <li>§06 MOVES &amp; RELOCATION</li>
+        <li>§07 BACKUP ISP</li>
+      </ol>
+      <p class="ir-k">FIG-INDEX</p>
+      <ol class="ir-list">
+        <li>FIG.01 FAILOVER REPLAY</li>
+        <li>FIG.02 CUTOVER SWEEP</li>
+      </ol>
+      <p class="ir-stamp">STATIC DOCUMENT · DESIGNED BEHAVIOR</p>
+    </aside>
+  </div>
 </header>
 
 <article class="vc-prose">
-<p>When your registers stop, your office moves, or your internet drops, the cost is measured in hours — not tickets. These are the services we take in:</p>
+<p class="opener">When your registers stop, your office moves, or your internet drops, the cost is measured in hours — not tickets. These are the services we take in:</p>
 
-<div class="svc-grid">
-  <section class="svc-card">
-    <p class="svc-n">01</p>
+<figure class="film-frame" id="fig-failover" data-motion="failover route replay" aria-label="Figure 01 — Failover: primary to backup ISP. Simulated designed behavior.">
+  <div class="ff-chrome">
+    <span class="ff-title">FIG.01 — FAILOVER: PRIMARY → BACKUP ISP</span>
+    <span class="ff-stamp">FRM 0642 · LINK MARGIN −3 dB</span>
+  </div>
+  <svg class="ff-svg" viewBox="0 0 640 300" role="img" aria-label="Schematic: your site connects to a primary ISP and a dashed backup ISP path. In the settled state the backup path carries traffic.">
+    <g font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2">
+      <text x="90" y="196" text-anchor="middle" fill="#8b93a7">YOUR SITE</text>
+      <text x="330" y="76" text-anchor="middle" fill="#8b93a7">PRIMARY LINK</text>
+      <text x="330" y="232" text-anchor="middle" fill="#8b93a7">BACKUP LINK</text>
+      <text x="566" y="88" text-anchor="middle" fill="#8b93a7">PRIMARY ISP</text>
+      <text x="566" y="220" text-anchor="middle" fill="#8b93a7">BACKUP ISP</text>
+    </g>
+    <path id="ff-pri" d="M114,150 C250,96 400,88 542,112" fill="none" stroke="#9aa3b5" stroke-width="3" opacity="0.7"/>
+    <path id="ff-bkp" d="M114,150 C250,204 400,212 542,188" fill="none" stroke="#d9a441" stroke-width="3" stroke-dasharray="9 7"/>
+    <circle id="ff-site" cx="90" cy="150" r="24" fill="none" stroke="#e9d3a0" stroke-width="2.5"/>
+    <circle cx="90" cy="150" r="6" fill="#e9d3a0"/>
+    <circle cx="566" cy="112" r="10" fill="none" stroke="#9aa3b5" stroke-width="2"/>
+    <circle cx="566" cy="188" r="10" fill="none" stroke="#d9a441" stroke-width="2"/>
+    <g id="ff-x" opacity="0" stroke="#d9a441" stroke-width="5" stroke-linecap="round">
+      <line x1="318" y1="92" x2="342" y2="116"/>
+      <line x1="342" y1="92" x2="318" y2="116"/>
+    </g>
+    <g fill="#e9d3a0">
+      <circle class="ff-dp" r="4" opacity="0" transform="translate(180 128)"/>
+      <circle class="ff-dp" r="4" opacity="0" transform="translate(260 110)"/>
+      <circle class="ff-dp" r="4" opacity="0" transform="translate(340 102)"/>
+      <circle class="ff-dp" r="4" opacity="0" transform="translate(420 104)"/>
+      <circle class="ff-dp" r="4" opacity="0" transform="translate(500 112)"/>
+      <circle class="ff-db" r="4" transform="translate(160 164)"/>
+      <circle class="ff-db" r="4" transform="translate(250 188)"/>
+      <circle class="ff-db" r="4" transform="translate(340 198)"/>
+      <circle class="ff-db" r="4" transform="translate(430 196)"/>
+      <circle class="ff-db" r="4" transform="translate(510 180)"/>
+    </g>
+  </svg>
+  <p class="ff-tickwrap"><span class="ff-tick" aria-live="polite">LINK STABLE ON BACKUP · PRIMARY RESTORES OFF-FILM (DESIGNED)</span></p>
+  <div class="ff-controls">
+    <label class="ff-scrublabel">REPLAY SCRUBBER
+      <input class="ff-scrub" type="range" min="0" max="1000" value="1000" aria-label="Replay scrubber"/>
+    </label>
+    <button class="ff-play" type="button">▶ PLAY</button>
+    <button class="ff-replay" type="button" hidden>↻ REPLAY</button>
+  </div>
+  <span class="ff-bug">SIMULATED · DESIGNED BEHAVIOR</span>
+</figure>
+
+<section class="svc-fig" id="svc-01">
+  <p class="svc-code">§01</p>
+  <div class="svc-body">
     <h3>POS Systems Contracts</h3>
     <p>Point-of-sale systems — new deployments, replacements, and ongoing service contracts — in <strong>every state</strong>.</p>
     <p class="for"><strong>For:</strong> retailers, restaurants, hospitality groups, and multi-location businesses.</p>
-    <a href="https://client-engine.yisraelleemccartney.workers.dev">Request POS service →</a>
-  </section>
-  <section class="svc-card">
-    <p class="svc-n">02</p>
+  </div>
+</section>
+
+<section class="svc-fig" id="svc-02">
+  <p class="svc-code">§02</p>
+  <div class="svc-body">
     <h3>Upgrades</h3>
     <p>Hardware and software upgrades across your locations — planned, staged, and verified so nothing breaks mid-shift.</p>
     <p class="for"><strong>For:</strong> businesses outgrowing aging workstations, servers, or network gear.</p>
-    <a href="https://client-engine.yisraelleemccartney.workers.dev">Request an upgrade →</a>
-  </section>
-  <section class="svc-card">
-    <p class="svc-n">03</p>
+  </div>
+</section>
+
+<section class="svc-fig" id="svc-03">
+  <p class="svc-code">§03</p>
+  <div class="svc-body">
     <h3>Deployments</h3>
     <p>New systems deployed on schedule, site by site — imaged, configured, and tested before they touch your floor.</p>
     <p class="for"><strong>For:</strong> companies standing up new locations or refreshing their fleet.</p>
-    <a href="https://client-engine.yisraelleemccartney.workers.dev">Request a deployment →</a>
-  </section>
-  <section class="svc-card">
-    <p class="svc-n">04</p>
+  </div>
+</section>
+
+<section class="svc-fig" id="svc-04">
+  <p class="svc-code">§04</p>
+  <div class="svc-body">
     <h3>Rollouts</h3>
     <p>Coordinated multi-site rollouts with a single point of accountability — every location cut over in sequence, none left behind.</p>
     <p class="for"><strong>For:</strong> chains and franchises pushing one change everywhere at once.</p>
-    <a href="https://client-engine.yisraelleemccartney.workers.dev">Request a rollout →</a>
-  </section>
-  <section class="svc-card">
-    <p class="svc-n">05</p>
+  </div>
+</section>
+
+<section class="svc-fig" id="svc-05">
+  <p class="svc-code">§05</p>
+  <div class="svc-body">
     <h3>Migrations</h3>
     <p>Moving your systems and data to new platforms — without breaking the business day. Email, servers, cloud, and line-of-business apps.</p>
     <p class="for"><strong>For:</strong> businesses changing platforms and needing it to go right the first time.</p>
-    <a href="https://client-engine.yisraelleemccartney.workers.dev">Request a migration →</a>
-  </section>
-  <section class="svc-card">
-    <p class="svc-n">06</p>
+  </div>
+</section>
+
+<section class="svc-fig" id="svc-06">
+  <p class="svc-code">§06</p>
+  <div class="svc-body">
     <h3>Computer Moves &amp; Relocation</h3>
     <p>Office moves and workstation relocation — equipment moved, reconnected, and your team back online fast.</p>
     <p class="for"><strong>For:</strong> offices moving across the street or across the country.</p>
-    <a href="https://client-engine.yisraelleemccartney.workers.dev">Request a move →</a>
-  </section>
-  <section class="svc-card">
-    <p class="svc-n">07</p>
+  </div>
+</section>
+
+<section class="svc-fig" id="svc-07">
+  <p class="svc-code">§07</p>
+  <div class="svc-body">
     <h3>Backup ISP Solutions</h3>
     <p>Secondary internet connectivity — failover that keeps you taking payments and serving customers when your primary line goes down.</p>
     <p class="for"><strong>For:</strong> companies that lose money the minute the internet drops.</p>
-    <a href="https://client-engine.yisraelleemccartney.workers.dev">Request backup ISP →</a>
-  </section>
-</div>
+  </div>
+</section>
 
-<div class="cta-band">
+<figure class="film-frame" id="fig-cutover" data-motion="cutover sweep" aria-label="Figure 02 — Rollout cutover sequence. Simulated designed behavior.">
+  <div class="ff-chrome">
+    <span class="ff-title">FIG.02 — ROLLOUT CUTOVER SEQUENCE</span>
+    <span class="ff-stamp">SWEEP 012 · NODES 12/12</span>
+  </div>
+  <svg class="ff-svg" viewBox="0 0 640 300" role="img" aria-label="Schematic: a sweep line crosses twelve site nodes left to right; each node draws its checklist. All twelve are cut over in the settled state.">
+    <g font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5" fill="#8b93a7" text-anchor="middle">
+      <text x="40" y="258">S01</text><text x="90.9" y="258">S02</text><text x="141.8" y="258">S03</text>
+      <text x="192.7" y="258">S04</text><text x="243.6" y="258">S05</text><text x="294.5" y="258">S06</text>
+      <text x="345.5" y="258">S07</text><text x="396.4" y="258">S08</text><text x="447.3" y="258">S09</text>
+      <text x="498.2" y="258">S10</text><text x="549.1" y="258">S11</text><text x="600" y="258">S12</text>
+    </g>
+    <line x1="20" y1="120" x2="620" y2="120" stroke="#2a2f3a" stroke-width="1"/>
+    <g id="ff-sites" fill="none" stroke="#8fc39a" stroke-width="2.5">
+      <circle class="ff-site" data-x="40" cx="40" cy="210" r="13"/>
+      <circle class="ff-site" data-x="90.9" cx="90.9" cy="210" r="13"/>
+      <circle class="ff-site" data-x="141.8" cx="141.8" cy="210" r="13"/>
+      <circle class="ff-site" data-x="192.7" cx="192.7" cy="210" r="13"/>
+      <circle class="ff-site" data-x="243.6" cx="243.6" cy="210" r="13"/>
+      <circle class="ff-site" data-x="294.5" cx="294.5" cy="210" r="13"/>
+      <circle class="ff-site" data-x="345.5" cx="345.5" cy="210" r="13"/>
+      <circle class="ff-site" data-x="396.4" cx="396.4" cy="210" r="13"/>
+      <circle class="ff-site" data-x="447.3" cx="447.3" cy="210" r="13"/>
+      <circle class="ff-site" data-x="498.2" cx="498.2" cy="210" r="13"/>
+      <circle class="ff-site" data-x="549.1" cx="549.1" cy="210" r="13"/>
+      <circle class="ff-site" data-x="600" cx="600" cy="210" r="13"/>
+    </g>
+    <g fill="none" stroke="#8fc39a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path class="ff-chk" d="M35,210 l3.6,4.2 l7.4,-9.4"/>
+      <path class="ff-chk" d="M85.9,210 l3.6,4.2 l7.4,-9.4"/>
+      <path class="ff-chk" d="M136.8,210 l3.6,4.2 l7.4,-9.4"/>
+      <path class="ff-chk" d="M187.7,210 l3.6,4.2 l7.4,-9.4"/>
+      <path class="ff-chk" d="M238.6,210 l3.6,4.2 l7.4,-9.4"/>
+      <path class="ff-chk" d="M289.5,210 l3.6,4.2 l7.4,-9.4"/>
+      <path class="ff-chk" d="M340.5,210 l3.6,4.2 l7.4,-9.4"/>
+      <path class="ff-chk" d="M391.4,210 l3.6,4.2 l7.4,-9.4"/>
+      <path class="ff-chk" d="M442.3,210 l3.6,4.2 l7.4,-9.4"/>
+      <path class="ff-chk" d="M493.2,210 l3.6,4.2 l7.4,-9.4"/>
+      <path class="ff-chk" d="M544.1,210 l3.6,4.2 l7.4,-9.4"/>
+      <path class="ff-chk" d="M595,210 l3.6,4.2 l7.4,-9.4"/>
+    </g>
+    <g id="ff-sweep" transform="translate(600 0)">
+      <rect x="-14" y="100" width="14" height="160" fill="#d9a441" opacity="0.14"/>
+      <line x1="0" y1="100" x2="0" y2="260" stroke="#d9a441" stroke-width="2.5"/>
+    </g>
+  </svg>
+  <p class="ff-tickwrap"><span class="ff-tick" aria-live="polite">SITE 12/12 CUT OVER · NONE LEFT BEHIND (DESIGNED)</span></p>
+  <div class="ff-controls">
+    <button class="ff-replay" type="button" hidden>↻ REPLAY</button>
+  </div>
+  <span class="ff-bug">SIMULATED · DESIGNED BEHAVIOR</span>
+</figure>
+
+<div class="console" aria-label="Service intake">
+  <p class="console-k">INTAKE CONSOLE · A PERSON FOLLOWS UP</p>
   <h2>Need one of these? Start here.</h2>
   <p>Our intake takes a few minutes: tell us which service you need, where, and when. Everything you share is used only to follow up on your request. Led by <a href="/about/william-berry-jr/">William Berry Jr.</a>, Chief Technology Officer of E5 Enclave Incorporated.</p>
   <div class="btn-row">
     <a class="btn btn-gold" href="https://client-engine.yisraelleemccartney.workers.dev">Start the service intake</a>
-    <a class="btn btn-ghost" href="/contact/">Contact us instead</a>
   </div>
 </div>
 
 <hr>
 <h2>How it works</h2>
-<p><strong>1. You request.</strong> Pick your service in the intake and tell us the scope — locations, timeline, what's at stake.</p>
-<p><strong>2. We scope it.</strong> A technologist reviews your request and confirms the plan, the crew, and the schedule.</p>
-<p><strong>3. The crew delivers.</strong> Field technicians execute on site; you get one point of accountability from start to finish.</p>
+<div class="proc-step" data-e5-draw-host data-motion="process glyph draw">
+  <span class="proc-ico" data-e5-ico="hubAsk" aria-hidden="true"></span>
+  <p><strong>1. You request.</strong> Pick your service in the intake and tell us the scope — locations, timeline, what's at stake.</p>
+</div>
+<div class="proc-step" data-e5-draw-host data-motion="process glyph draw">
+  <span class="proc-ico" data-e5-ico="measure" aria-hidden="true"></span>
+  <p><strong>2. We scope it.</strong> A technologist reviews your request and confirms the plan, the crew, and the schedule.</p>
+</div>
+<div class="proc-step" data-e5-draw-host data-motion="process glyph draw">
+  <span class="proc-ico" data-e5-ico="hubBrief" aria-hidden="true"></span>
+  <p><strong>3. The crew delivers.</strong> Field technicians execute on site; you get one point of accountability from start to finish.</p>
+</div>
 <p class="note">E5 Enclave Incorporated is a 501(c)(3) public charity (EIN 99-3822441). Technology services are delivered under the direction of our Chief Technology Officer.</p>
 </article>
 </main>
+
 
 <!-- e5:chrome-foot -->
 <div class="sov-chrome sov-chrome-foot" style="margin-top:clamp(60px,8vw,120px)">
@@ -310,5 +509,10 @@ a:focus-visible{outline:2px solid var(--vc-oxblood);outline-offset:2px}
   </div>
 </div>
 <!-- /e5:chrome-foot -->
+<script src="/project-2033/js/vendor/gsap.min.js" defer></script>
+<script src="/project-2033/js/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/project-2033/js/vendor/DrawSVGPlugin.min.js" defer></script>
+<script src="/project-2033/js/vendor/e5-icons.js" defer></script>
+<script src="/assets/signal-lab/services-figs.js" defer></script>
 </body>
 </html>
