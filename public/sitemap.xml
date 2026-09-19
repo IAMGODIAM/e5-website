@@ -53,4 +53,6 @@
 <url><loc>https://e5enclave.com/overtown/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://e5enclave.com/little-haiti/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://e5enclave.com/brownsville/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://e5enclave.com/openai/</loc></url>
+  <url><loc>https://e5enclave.com/programs/black-dragons-initiative/</loc></url>
 </urlset>
