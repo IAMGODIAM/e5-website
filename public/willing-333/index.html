@@ -516,7 +516,7 @@
       if(res.s === 200 && res.d && res.d.ok){
         form.reset();
         e5tsToken = ''; if (window.turnstile) { try { turnstile.reset(); } catch (_) {} };
-        if (typeof gtag === 'function') { gtag('event', 'conversion', {'send_to': 'AW-16672489240/b4DyCJf73PQcEJj-h44-'}); }
+        if (typeof gtag === 'function') { gtag('event', 'conversion', {'send_to': 'AW-16672489240/b4DyCJf73PQcEJj-h44-'}); gtag('event', 'generate_lead', {'send_to': 'G-3YJ6C72JSJ', 'value': 1, 'event_label': 'willing333_intake'}); }
         setStatus('Thank you — your response has been received. A member of the E5 team will review it.', true);
         btn.textContent = 'Sent ✓';
       } else {

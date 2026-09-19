@@ -910,7 +910,7 @@ html.e5-reduced-motion [data-enter]{opacity:1;transform:none;transition:none}
   </div>
 </div>
 <!-- /e5:chrome-foot -->
-<script type="module">(function(){function n(i){try{typeof gtag=="function"&&gtag("event","conversion",{send_to:i})}catch{}}document.addEventListener("click",function(i){var t=i.target.closest&&i.target.closest("a, button");if(t){var e=(t.getAttribute("href")||"").toLowerCase(),o=(t.textContent||"").toLowerCase();/\/donate\/?$/.test(e)||/zeffy|stripe|checkout|givebutter/.test(e)||/donate|give/.test(o)&&t.classList.contains("btn--primary")?(n("AW-16672489240/_T-KCLGGnawcEJj-h44-"),n("AW-16672489240/B11GCOnl97UcEJj-h44-")):/\/project-2033\/?$/.test(e)||/restitution|reparation/.test(o)&&t.classList.contains("btn--primary")?n("AW-16672489240/RJkQCMaJtKwcEJj-h44-"):(e.indexOf("mailto:")===0||e.indexOf("/cdn-cgi/l/email-protection")===0)&&n("AW-16672489240/FeLJCIGooawcEJj-h44-")}},!0)})();</script>
+<script type="module">(function(){function n(i){try{typeof gtag=="function"&&gtag("event","conversion",{send_to:i})}catch{}}document.addEventListener("click",function(i){var t=i.target.closest&&i.target.closest("a, button");if(t){var e=(t.getAttribute("href")||"").toLowerCase(),o=(t.textContent||"").toLowerCase();/\/donate\/?$/.test(e)||/zeffy|stripe|checkout|givebutter/.test(e)||/donate|give/.test(o)&&t.classList.contains("btn--primary")?(n("AW-16672489240/_T-KCLGGnawcEJj-h44-"),n("AW-16672489240/B11GCOnl97UcEJj-h44-"),(function(){try{typeof gtag==="function"&&gtag("event","donate_click",{send_to:"G-3YJ6C72JSJ"})}catch{}})()):/\/project-2033\/?$/.test(e)||/restitution|reparation/.test(o)&&t.classList.contains("btn--primary")?n("AW-16672489240/RJkQCMaJtKwcEJj-h44-"):(e.indexOf("mailto:")===0||e.indexOf("/cdn-cgi/l/email-protection")===0)&&n("AW-16672489240/FeLJCIGooawcEJj-h44-")}},!0)})();</script>
 <script>
 /* Stripe giving instrument — live payment map carried over byte-for-byte from the
    live /donate/ page (verified 2026-09-12). Keys: m10/m25/m50/m100 = monthly tiers,
@@ -932,11 +932,11 @@ html.e5-reduced-motion [data-enter]{opacity:1;transform:none;transition:none}
   function freq(){var r=qs('input[name=freq]:checked');return r?r.value:'monthly';}
   function tierAmt(){var r=qs('input[name=amount]:checked');if(!r)return null;var m=/^amt(\d+)$/.exec(r.id||'');return m?m[1]:null;}
   function ref(t){return 'web-donate-'+t;}
-  function go(t){var u=L[t];if(!u)return;try{if(typeof gtag==='function'){gtag('event','begin_checkout',{currency:'USD',items:[{item_id:t}]});}}catch(_){}window.location.assign(u+'?client_reference_id='+encodeURIComponent(ref(t)));}
+  function go(t){var u=L[t];if(!u)return;try{if(typeof gtag==='function'){gtag('event','begin_checkout',{'send_to':'G-3YJ6C72JSJ',currency:'USD',items:[{item_id:t}]});}}catch(_){}window.location.assign(u+'?client_reference_id='+encodeURIComponent(ref(t)));}
   function note(msg){var n=qs('#give-status');if(n)n.textContent=msg;}
   function status(){var n=tierAmt(),m=freq()==='monthly';if(n)note('Give $'+n+(m?' per month':' one-time')+' selected.');}
   function goU(t){var u=U[t];if(!u)return;
-    try{if(typeof gtag==='function'){gtag('event','begin_checkout',{currency:'USD',items:[{item_id:t}]});}}catch(_){}
+    try{if(typeof gtag==='function'){gtag('event','begin_checkout',{'send_to':'G-3YJ6C72JSJ',currency:'USD',items:[{item_id:t}]});}}catch(_){}
     window.location.assign(u+'?client_reference_id='+encodeURIComponent(ref(t)));}
   /* Leadership row: render only tiers that have live payment URLs. */
   (function(){

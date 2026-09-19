@@ -1139,7 +1139,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         status.style.display='block';
         status.textContent = d && d.success ? 'Message received. The Council will respond.' : 'Thank you — your message was sent.';
         document.getElementById('contactForm').reset(); btn.textContent='Sent ✓'; e5TsReset();
-        try{ if(typeof gtag==='function'){ gtag('event','conversion',{'send_to':'AW-16672489240/FeLJCIGooawcEJj-h44-'}); gtag('event','generate_lead',{'event_label':'contact_form'}); } }catch(e){}
+        try{ if(typeof gtag==='function'){ gtag('event','conversion',{'send_to':'AW-16672489240/FeLJCIGooawcEJj-h44-'}); gtag('event','generate_lead',{'send_to':'G-3YJ6C72JSJ','value':1,'event_label':'contact_form'}); } }catch(e){}
       }).catch(function(){
         status.style.display='block'; status.textContent='Sent. Thank you.'; btn.textContent='Sent ✓';
       });
