@@ -1,147 +1,141 @@
+/* svc-board.js — FIG.C "The rollout board": DOM play-once film (~10s).
+   16 nodes: 12 site tiles + reroute arc + gap label + crew token + stamp.
+   Frozen choreography, timestamped on SvMotion's shared clock; the 600ms
+   honest gap is the interval between two events (t=4500, t=5100) — no frame
+   counters, no uncorrected setTimeout chains. Animated properties are
+   transform + opacity only (tile state swaps are instantaneous flips;
+   the blink/pulse keyframes use opacity/transform only).
+   Replaces the canvas svc-board.js (replacement, not addition).
+   Honesty: SIMULATED · DESIGNED BEHAVIOR bug in-frame; OPS REPLAY adjacent;
+   every value illustrative, invented for the visualization. */
 (function(){
-  var cv = document.getElementById('sv-board-cv');
-  if (!cv) return;
-  var ctx = cv.getContext('2d');
-  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var conn = (navigator.connection || {});
-  var constrained = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) || conn.saveData === true;
-  var playBtn = document.getElementById('sv-board-play');
+  var M = window.SvMotion;
+  var stage = document.getElementById('sv-board-stage');
+  if (!stage || !M) return; /* fail-closed: markup default is the end frame */
+  var tiles = Array.prototype.slice.call(stage.querySelectorAll('.sv-tile'));
+  if (tiles.length !== 12) return;
   var tick = document.getElementById('sv-board-tick');
-  var W = 1200, H = 560, ROW_Y = 104, ROW_H = 35;
-  var N = 12;
-  var C = {gold:'201,162,74', pale:'233,211,160', green:'127,201,143', amber:'217,164,65',
-           red:'217,106,91', dim:'107,114,132', mut:'154,161,180'};
+  var live = document.getElementById('sv-board-live');
+  var playBtn = document.getElementById('sv-board-play');
+  var gap = document.getElementById('sv-board-gap');
+  var DUR = 10000, GAP_T0 = 4500, GAP_T1 = 5100;
 
-  var REPLAY = {
-    replay_id: 'rollout-board-v1', version: 1,
-    description: 'Frozen simulated replay dataset for the rollout-board centerpiece. ' +
-      'Every value is illustrative and invented for the visualization — no measured telemetry. ' +
-      "Choreography is frozen; 'replayed' is literally true.",
-    watermark: 'SIMULATED · DESIGNED BEHAVIOR',
-    events: [
-      {t:0,    type:'wave', wave:1, of:4},
-      {t:600,  site:1, state:'cut'}, {t:1100, site:2, state:'cut'}, {t:1600, site:3, state:'cut'},
-      {t:2300, type:'wave', wave:2, of:4},
-      {t:2900, site:4, state:'cut'}, {t:3400, site:5, state:'cut'}, {t:3900, site:6, state:'cut'},
-      {t:4600, type:'wave', wave:3, of:4},
-      {t:5200, site:7, state:'cut'}, {t:5700, site:8, state:'cut'},
-      {t:6400, site:9, state:'failed', note:'WAVE 03/04 · SITE 09 FAILED'},
-      {t:6400, type:'gap', ms:600, note:'CREW REROUTING · HELD 600MS'},
-      {t:7000, site:9, state:'held', note:'WAVE RE-SEQUENCED AROUND SITE 09'},
-      {t:7600, type:'wave', wave:4, of:4},
-      {t:8200, site:10, state:'cut'}, {t:8700, site:11, state:'cut'}, {t:9200, site:12, state:'cut'},
-      {t:10000, site:9, state:'cut', note:'SITE 09 RETRY — CUT'},
-      {t:10800, type:'done', note:'12/12 CUT OVER · NONE LEFT BEHIND'}
-    ]
-  };
-
-  var states = {}, wave = 0, waveOf = 4, stamp = 'BOARD ARMED · 12 SITES QUEUED', stampFlash = 0,
-      playing = false, startT = 0, evIdx = 0, raf = 0, donePlayed = false;
-  for (var s = 1; s <= N; s++) states[s] = 'queued';
-
-  function dprSetup(){
-    var dpr = Math.min(2, window.devicePixelRatio || 1);
-    cv.width = W * dpr; cv.height = H * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    draw(0);
+  function stamp(s){ if (tick) tick.textContent = s; }
+  function say(s){ if (live) live.textContent = s; }
+  function setState(n, st){ tiles[n - 1].setAttribute('data-state', st); }
+  function hist9(on){
+    if (on) tiles[8].setAttribute('data-hist', 'fault');
+    else tiles[8].removeAttribute('data-hist');
   }
-  function lampColor(st, tt){
-    if (st === 'cut') return 'rgba(' + C.green + ',.95)';
-    if (st === 'failed') return 'rgba(' + C.red + ',.95)';
-    if (st === 'held') return 'rgba(' + C.amber + ',.95)';
-    if (st === 'cutting') return 'rgba(' + C.amber + ',' + (0.5 + 0.5 * Math.sin(tt / 160)).toFixed(2) + ')';
-    return 'rgba(' + C.dim + ',.4)';
+
+  /* Frozen choreography. NOTE: no events may be scheduled with
+     GAP_T0 < t < GAP_T1 — the gap label's own fade-in at t=4500 is the
+     only transition inside the window, and it is part of the gap. */
+  var EV = [
+    {t: 0,    fn: function(){ stamp('WAVE 01/03 · CUTOVER IN SEQUENCE'); }},
+    {t: 300,  fn: function(){ setState(1, 'cut'); }},
+    {t: 600,  fn: function(){ setState(2, 'cut'); }},
+    {t: 900,  fn: function(){ setState(3, 'cut'); }},
+    {t: 1200, fn: function(){ setState(4, 'cut'); }},
+    {t: 1500, fn: function(){ stamp('WAVE 02/03 · CUTOVER IN SEQUENCE'); setState(5, 'cut'); }},
+    {t: 1800, fn: function(){ setState(6, 'cut'); }},
+    {t: 2200, fn: function(){ stamp('WAVES 01–02 · 6/12 CUT'); }},
+    {t: 2600, fn: function(){ stamp('WAVE 03/03 · CUTOVER IN SEQUENCE'); setState(7, 'cut'); }},
+    {t: 3000, fn: function(){ setState(8, 'cut'); }},
+    {t: 3400, fn: function(){
+      setState(9, 'fault');
+      stamp('SITE 09 · FAULT');
+      say('Simulated replay: site 09 fault. Crew rerouting.');
+    }},
+    /* 3400–4500: fault hold. 4500–5100: THE HONEST GAP — no events. */
+    {t: GAP_T0, fn: function(){
+      gap.classList.add('on');
+      stamp('CREW REROUTING · DETECTION TAKES TIME');
+    }},
+    {t: GAP_T1, fn: function(){
+      stage.setAttribute('data-arc', '1');
+      stage.setAttribute('data-crew', '1');
+      setState(9, 'held');
+      stamp('REROUTED AROUND SITE 09 · WAVE 03 RE-SEQUENCED');
+    }},
+    {t: 5400, fn: function(){ setState(10, 'cut'); }},
+    {t: 5800, fn: function(){ setState(11, 'cut'); }},
+    {t: 6200, fn: function(){ setState(12, 'cut'); }},
+    {t: 6600, fn: function(){ stamp('REROUTED · 11/12 CUT'); }},
+    {t: 7500, fn: function(){ setState(9, 'retry'); stamp('SITE 09 · RETRY'); }},
+    {t: 8300, fn: function(){
+      setState(9, 'cut'); hist9(true);
+      gap.classList.remove('on');
+      stamp('12/12 · NONE LEFT BEHIND');
+      say('Simulated replay: site 09 restored. 12 of 12 sites cut over.');
+    }},
+    {t: 8800, fn: function(){ armReplay(); }}
+  ];
+
+  /* startFrame: rewind all 16 nodes to the armed state. */
+  function startFrame(){
+    for (var n = 1; n <= 12; n++) setState(n, 'queued');
+    hist9(false);
+    stage.removeAttribute('data-arc');
+    stage.removeAttribute('data-crew');
+    gap.classList.remove('on');
+    stamp('BOARD ARMED · 12 SITES QUEUED');
+    if (playBtn){ playBtn.hidden = false; playBtn.disabled = false; playBtn.textContent = '▶ PLAY'; }
   }
-  function statusText(st){
-    return {queued:'QUEUED', cutting:'CUTTING…', cut:'CUT', failed:'FAILED', held:'HELD — REROUTED'}[st] || st;
+  /* endFrame: the composed end state (also the no-JS / reduced-motion frame). */
+  function endFrame(){
+    for (var n = 1; n <= 12; n++) setState(n, 'cut');
+    hist9(true);
+    stage.setAttribute('data-arc', '1');
+    stage.setAttribute('data-crew', '1');
+    gap.classList.remove('on');
+    stamp('12/12 · NONE LEFT BEHIND');
   }
-  function draw(tt){
-    ctx.clearRect(0, 0, W, H);
-
-    ctx.font = '600 21px "IBM Plex Mono", monospace'; ctx.textAlign = 'left';
-    ctx.fillStyle = 'rgba(' + C.pale + ',.92)';
-    ctx.fillText('ROLLOUT BOARD', 48, 52);
-    ctx.textAlign = 'right';
-    ctx.fillStyle = 'rgba(' + C.gold + ',.9)';
-    ctx.fillText(wave ? ('WAVE ' + String(wave).padStart(2,'0') + '/' + String(waveOf).padStart(2,'0')) : 'WAVE —/04', 1152, 52);
-    ctx.strokeStyle = 'rgba(201,162,74,.25)'; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(48, 70); ctx.lineTo(1152, 70); ctx.stroke();
-
-    var cut = 0;
-    for (var i = 1; i <= N; i++){
-      var st = states[i], y = ROW_Y + (i - 1) * ROW_H;
-      if (st === 'cut') cut++;
-      ctx.strokeStyle = 'rgba(201,162,74,.10)';
-      ctx.beginPath(); ctx.moveTo(48, y + ROW_H - 6); ctx.lineTo(1152, y + ROW_H - 6); ctx.stroke();
-
-      ctx.beginPath(); ctx.arc(84, y + 10, 9, 0, 6.2832);
-      ctx.fillStyle = lampColor(st, tt); ctx.fill();
-      if (st === 'cut'){ ctx.strokeStyle = 'rgba(' + C.green + ',.9)'; ctx.lineWidth = 2.5;
-        ctx.beginPath(); ctx.arc(84, y + 10, 13, 0, 6.2832); ctx.stroke(); }
-
-      ctx.font = '20px "IBM Plex Mono", monospace'; ctx.textAlign = 'left';
-      ctx.fillStyle = st === 'queued' ? 'rgba(' + C.mut + ',.55)' : 'rgba(237,239,244,.92)';
-      ctx.fillText('SITE ' + (i < 10 ? '0' : '') + i, 116, y + 17);
-      ctx.textAlign = 'right';
-      var col = st === 'cut' ? C.green : st === 'failed' ? C.red : st === 'held' ? C.amber : C.dim;
-      ctx.fillStyle = 'rgba(' + col + ',' + (st === 'queued' ? '.55' : '.95') + ')';
-      ctx.fillText(statusText(st), 1152, y + 17);
-    }
-
-    ctx.textAlign = 'left'; ctx.font = '20px "IBM Plex Mono", monospace';
-    var sa = stampFlash > 0 ? 1 : 0.85;
-    ctx.fillStyle = 'rgba(' + C.amber + ',' + sa.toFixed(2) + ')';
-    ctx.fillText(stamp, 48, H - 56);
-    ctx.fillStyle = 'rgba(' + C.mut + ',.6)';
-    ctx.font = '18px "IBM Plex Mono", monospace';
-    ctx.fillText(cut + '/12 CUT OVER', 48, H - 26);
-
-    ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(' + C.amber + ',.75)';
-    ctx.font = '17px "IBM Plex Mono", monospace';
-    ctx.fillText(REPLAY.watermark, 1152, H - 26);
-    if (tick) tick.textContent = stamp;
+  function armReplay(){
+    if (!playBtn) return;
+    playBtn.hidden = false; playBtn.disabled = false; playBtn.textContent = '↻ REPLAY';
   }
-  function narrate(msg){ if (tick) tick.textContent = msg; }
-  function applyEvent(e){
-    if (e.type === 'wave'){ wave = e.wave; waveOf = e.of || 4; stamp = 'WAVE ' + String(wave).padStart(2,'0') + '/' + String(waveOf).padStart(2,'0') + ' · CUTOVER IN SEQUENCE'; narrate(stamp); }
-    else if (e.type === 'gap'){ stamp = e.note; stampFlash = 3; narrate('Honest gap: the crew reroutes. ' + e.note); }
-    else if (e.type === 'done'){ stamp = e.note; narrate(e.note + '. Simulated replay complete.'); finish(); }
-    else if (e.site){ states[e.site] = e.state; stamp = e.note || ('SITE ' + String(e.site).padStart(2,'0') + ' ' + statusText(e.state)); narrate(stamp); }
-  }
-  function step(){
-    var el = performance.now() - startT;
-    while (evIdx < REPLAY.events.length && REPLAY.events[evIdx].t <= el){ applyEvent(REPLAY.events[evIdx]); evIdx++; }
-    if (stampFlash > 0) stampFlash -= 1 / 60;
-    draw(el);
-    if (evIdx < REPLAY.events.length){ raf = requestAnimationFrame(step); }
-    else { playing = false; }
+
+  var ctl = M.film({dur: DUR, events: EV, onDone: function(){
+    begun = false; /* re-arm: the visible REPLAY control must start a second run */
+    endFrame();
+    armReplay();
+  }});
+  var begun = false;
+  function begin(){
+    if (begun || ctl.isPlaying()) return;
+    begun = true;
+    ctl.cancel();
+    startFrame();
+    if (playBtn){ playBtn.disabled = true; playBtn.textContent = 'PLAYING'; }
+    ctl.play();
   }
   function reset(){
-    for (var s = 1; s <= N; s++) states[s] = 'queued';
-    wave = 0; stamp = 'BOARD ARMED · 12 SITES QUEUED'; evIdx = 0; donePlayed = false;
-    playBtn.textContent = '▶ PLAY'; playBtn.hidden = false;
+    ctl.cancel();
+    begun = false;
+    startFrame();
   }
-  function play(){
-    reset(); playing = true; startT = performance.now(); playBtn.hidden = true;
-    raf = requestAnimationFrame(step);
-  }
-  function finish(){
-    playing = false; donePlayed = true;
-    playBtn.textContent = '↻ REPLAY'; playBtn.hidden = false;
-  }
-  if (playBtn) playBtn.addEventListener('click', play);
 
-  dprSetup();
-  window.addEventListener('resize', dprSetup);
-  if (reduced || constrained){
-    for (var s2 = 1; s2 <= N; s2++) states[s2] = 'cut';
-    wave = 4; stamp = '12/12 CUT OVER · NONE LEFT BEHIND';
-    draw(0);
-    if (playBtn) playBtn.hidden = reduced;
-  } else if ('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(en){
-      if (en[0].isIntersecting && !playing && !donePlayed){ play(); io.disconnect(); }
-    }, {threshold: 0.4});
-    io.observe(cv);
+  /* Offscreen pause: the shared clock shifts, the choreography survives. */
+  var autoPaused = false;
+  M.watchOffscreen(stage,
+    function(){ if (ctl.isPlaying()){ ctl.pause(); autoPaused = true; } },
+    function(){ if (autoPaused){ autoPaused = false; ctl.resume(); } });
+
+  if (playBtn) playBtn.addEventListener('click', begin);
+
+  if (M.reduced){
+    endFrame();
+    if (playBtn) playBtn.hidden = true;
+    return;
   }
+  if (M.constrained() || !('IntersectionObserver' in window)){
+    /* Skip autoplay: the end frame IS the fallback; the replay control
+       is visible and the user can press play. */
+    endFrame();
+    armReplay();
+    return;
+  }
+  reset();
+  M.onceVisible(stage, begin, 0.35);
 })();
