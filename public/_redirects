@@ -19,6 +19,8 @@
 # Bare program slugs → canonical /programs/ paths
 /mccartney-academy            /programs/mccartney-academy/      301
 /mccartney-academy/           /programs/mccartney-academy/      301
+/mccartney-academy/survey     /programs/mccartney-academy/survey/  301
+/mccartney-academy/survey/    /programs/mccartney-academy/survey/  301
 /lineage-farms                /programs/lineage-farms/          301
 /lineage-farms/               /programs/lineage-farms/          301
 /lineage-farm                 /programs/lineage-farms/          301

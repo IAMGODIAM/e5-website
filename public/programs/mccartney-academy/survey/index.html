@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>McCartney Academy — Parent Interest Survey | E5 Enclave Inc.</title>
+<meta name="description" content="The McCartney Academy parent interest survey: 13 questions, about five minutes. Liberty City parents shape the school proposal. Not an application. Not enrollment.">
+<link rel="stylesheet" href="../assets/css/main.css">
+<style>
+/* Survey-page bridge: pointer back to the parent vision page */
+.vision-bridge{margin-top:56px;border-top:1px solid rgba(201,162,74,.25);padding-top:32px;max-width:44rem}
+.vision-bridge p{font-size:16.5px;line-height:1.7;color:#c9cfdd;margin:0 0 14px}
+.vision-bridge .bridge-link{font-family:var(--sans);font-weight:600;color:var(--gold-bright);text-decoration:underline;text-underline-offset:4px}
+.vision-bridge .bridge-link:hover{color:var(--paper)}
+</style>
+
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site-head">
+  <a class="brand" href="../" aria-label="McCartney Academy — back to the vision page">
+    <span class="brand-mark" aria-hidden="true">M</span>
+    <span>
+      <span class="brand-name">McCartney Academy</span><br>
+      <span class="brand-sub">E5 Enclave Inc. &middot; Liberty City, Miami</span>
+    </span>
+  </a>
+  <a class="head-cta" href="#survey"><span class="cta-full">Take the survey</span><span class="cta-short">Survey</span></a>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO — the listening-first opener ============ -->
+<section class="hero" id="top" aria-label="The parent interest survey">
+  <div class="hero-dawn" aria-hidden="true"></div>
+  <div class="hero-dust" aria-hidden="true"></div>
+  <div class="hero-veil" aria-hidden="true"></div>
+
+  <div class="hero-inner wrap">
+    <p class="hero-kicker">Phase 0 &middot; The parent interest survey</p>
+    <h1>We&rsquo;re <em>listening</em> first.</h1>
+
+    <p class="hero-lede">
+      E5 Enclave Inc. is developing a plan for a <strong>new, tuition-free public
+      school</strong> in Liberty City &mdash; possibly opening August 2028 if approved.
+      This survey asks Liberty City parents what you want in a school. <strong>It is
+      not an application. It is not an enrollment form.</strong> Your answers help show
+      a future school partner that families here want this option.
+    </p>
+    <p class="hero-lede" style="font-size:17px">
+      Answering takes about <strong>5 minutes</strong> &mdash; 13 plain-language questions.
+      We will only contact you about this school project if you say we can.
+    </p>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <a href="#survey" tabindex="-1"><span>Start the survey</span><span class="cue"></span></a>
+  </div>
+</section>
+
+<!-- ============ SURVEY MOUNT SLOT — the main event ============ -->
+<section class="section section-paper" id="survey" aria-labelledby="survey-h">
+  <div class="wrap">
+    <div class="form-slot" data-reveal>
+      <div class="form-slot-inner">
+        <div>
+          <p class="kicker" style="color:var(--gold-bright)">The survey</p>
+          <h3 id="survey-h">Tell us what your <em>family</em> needs.</h3>
+          <p class="form-lede">
+            Thirteen questions about what matters in a school &mdash; safety, teaching,
+            after-school care, transportation &mdash; and the grade levels your children
+            will be in for the 2028&ndash;29 school year. What parents tell us shapes
+            the grade plan and the priorities the application proposes. <strong
+            style="color:var(--gold-bright)">Families are the authors of this
+            school, not its audience.</strong>
+          </p>
+          <p class="form-lede" style="font-size:15px">
+            These are expressions of interest, not applications or enrollments.
+            Answering the survey commits you to nothing.
+          </p>
+          <div class="form-consent">
+            <p class="consent-label">Our consent promise</p>
+            <p>&ldquo;I agree that E5 Enclave Inc. may contact me about the McCartney Academy
+            school proposal. I can opt out anytime &mdash; reply STOP to any text, or write
+            contact@e5enclave.com &mdash; and E5 will delete my information on request.&rdquo;</p>
+          </div>
+        </div>
+        <div>
+          <!-- Reserved mount point for the forms/data engineer.
+               Drop the engineered 13-question survey form into #mccartney-interest-form.
+               Field styling is pre-wired in assets/css/main.css. -->
+          <div class="form-mount">
+            <div class="mount-inner" id="mccartney-interest-form">
+              <!-- ============================================================
+                McCartney Academy — Phase 0 parent demand survey (engineered section)
+                Posts to the LIVE mccartney-intake worker, survey branch (kind:"survey").
+                Contract: honeypot field "website", Turnstile key "turnstileToken",
+                question keys q1_area … q13_notes (matches worker.patched.js validateSurvey).
+                Honeypot-first, origin lock, Turnstile fail-closed, per-IP rate limit all
+                enforced server-side. No frameworks, no third-party form backends,
+                no analytics trackers.
+              ============================================================ -->
+              <!-- ============================================================
+                McCartney Academy — Phase 0 parent demand survey (engineered section)
+                Posts to the LIVE mccartney-intake worker, survey branch (kind:"survey").
+                Contract: honeypot field "website", Turnstile key "turnstileToken",
+                question keys q1_area … q13_notes (matches worker.patched.js validateSurvey).
+                Honeypot-first, origin lock, Turnstile fail-closed, per-IP rate limit all
+                enforced server-side. No frameworks, no third-party form backends,
+                no analytics trackers.
+              ============================================================ -->
+              <form id="mca-form" data-endpoint="https://mccartney-intake.yisraelleemccartney.workers.dev/submit" method="post" action="#" novalidate>
+                <p class="mca-lede">A short survey — about five minutes — asking Liberty City parents what you want in a school. <strong>It is not an application. It is not an enrollment form.</strong> We only contact you about this school project if you say we can.</p>
+
+                <!-- ============ Q1 — Consent and contact permission ============ -->
+                <fieldset class="mca-q" id="q1">
+                  <legend><span class="mca-num">1</span> Can we reach you?</legend>
+
+                  <p class="mca-subq">Do you live in or near Liberty City, Miami?</p>
+                  <div class="mca-opts" role="radiogroup" aria-label="Do you live in or near Liberty City, Miami?">
+                    <label class="mca-opt"><input type="radio" name="liberty_city" value="yes" required> Yes</label>
+                    <label class="mca-opt"><input type="radio" name="liberty_city" value="no"> No</label>
+                  </div>
+
+                  <div class="mca-consent-box">
+                    <p class="mca-consent-text">&ldquo;I agree that E5 Enclave Inc. may contact me about the McCartney Academy school proposal. I can opt out anytime — reply STOP to any text, or write contact@e5enclave.com — and E5 will delete my information on request.&rdquo;</p>
+                    <label class="mca-opt mca-consent-check">
+                      <input type="checkbox" name="consent" id="consent">
+                      <span><strong>Yes — you may contact me</strong> about the McCartney Academy school proposal.</span>
+                    </label>
+                    <p class="mca-hint">Leave this unchecked if you only want your answers counted, with no follow-up contact.</p>
+                  </div>
+
+                  <label for="f-name">Name <span class="mca-optional">(optional)</span></label>
+                  <input type="text" id="f-name" name="name" autocomplete="name" maxlength="120">
+
+                  <div class="mca-row">
+                    <div>
+                      <label for="f-phone">Phone</label>
+                      <input type="tel" id="f-phone" name="phone" autocomplete="tel" inputmode="tel" maxlength="24" placeholder="(305) 555-0123">
+                    </div>
+                    <div>
+                      <label for="f-email">Email <span class="mca-optional">(optional)</span></label>
+                      <input type="email" id="f-email" name="email" autocomplete="email" maxlength="160">
+                    </div>
+                  </div>
+                  <p class="mca-hint">If you checked the box above, give us at least one way to reach you — phone or email.</p>
+
+                  <p class="mca-subq">Preferred language</p>
+                  <div class="mca-opts" role="radiogroup" aria-label="Preferred language">
+                    <label class="mca-opt"><input type="radio" name="preferred_language" value="en"> English</label>
+                    <label class="mca-opt"><input type="radio" name="preferred_language" value="es"> Spanish</label>
+                    <label class="mca-opt"><input type="radio" name="preferred_language" value="ht"> Haitian Creole</label>
+                  </div>
+
+                  <p class="mca-subq">How should we reach you?</p>
+                  <div class="mca-opts" role="radiogroup" aria-label="Preferred contact method">
+                    <label class="mca-opt"><input type="radio" name="contact_method" value="text"> Text</label>
+                    <label class="mca-opt"><input type="radio" name="contact_method" value="call"> Call</label>
+                    <label class="mca-opt"><input type="radio" name="contact_method" value="email"> Email</label>
+                  </div>
+
+                  <label for="f-zip">Home ZIP code <span class="mca-optional">(optional)</span></label>
+                  <input type="text" id="f-zip" name="zip" inputmode="numeric" maxlength="5" placeholder="33147" style="max-width:10rem">
+                </fieldset>
+
+                <!-- ============ Q2 — Grade levels 2028–29 ============ -->
+                <fieldset class="mca-q" id="q2">
+                  <legend><span class="mca-num">2</span> Your children&rsquo;s grades <span class="mca-for">for 2028&ndash;29</span></legend>
+                  <p class="mca-hint">Check every grade your children will be in during the school&rsquo;s planned first year (2028&ndash;29).</p>
+                  <div class="mca-opts mca-grid" role="group" aria-label="Grade levels for 2028-29">
+                    <label class="mca-opt"><input type="checkbox" name="grades" value="pre-k"> Pre-K</label>
+                    <label class="mca-opt"><input type="checkbox" name="grades" value="k"> K</label>
+                    <label class="mca-opt"><input type="checkbox" name="grades" value="1"> 1</label>
+                    <label class="mca-opt"><input type="checkbox" name="grades" value="2"> 2</label>
+                    <label class="mca-opt"><input type="checkbox" name="grades" value="3"> 3</label>
+                    <label class="mca-opt"><input type="checkbox" name="grades" value="4"> 4</label>
+                    <label class="mca-opt"><input type="checkbox" name="grades" value="5"> 5</label>
+                    <label class="mca-opt"><input type="checkbox" name="grades" value="6"> 6</label>
+                    <label class="mca-opt"><input type="checkbox" name="grades" value="7"> 7</label>
+                    <label class="mca-opt"><input type="checkbox" name="grades" value="8"> 8</label>
+                    <label class="mca-opt"><input type="checkbox" name="grades" value="9"> 9</label>
+                    <label class="mca-opt"><input type="checkbox" name="grades" value="10"> 10</label>
+                    <label class="mca-opt"><input type="checkbox" name="grades" value="11"> 11</label>
+                    <label class="mca-opt"><input type="checkbox" name="grades" value="12"> 12</label>
+                  </div>
+                </fieldset>
+
+                <!-- ============ Q3 — Current school situation ============ -->
+                <fieldset class="mca-q" id="q3">
+                  <legend><span class="mca-num">3</span> Where do your children go to school now?</legend>
+                  <p class="mca-hint">Check all that apply.</p>
+                  <div class="mca-opts">
+                    <label class="mca-opt"><input type="checkbox" name="current_school" value="mdc-liberty"> A Miami-Dade public school in or near Liberty City</label>
+                    <label class="mca-opt"><input type="checkbox" name="current_school" value="mdc-outside"> A Miami-Dade public school outside Liberty City</label>
+                    <label class="mca-opt"><input type="checkbox" name="current_school" value="charter"> A charter school</label>
+                    <label class="mca-opt"><input type="checkbox" name="current_school" value="private"> A private school</label>
+                    <label class="mca-opt"><input type="checkbox" name="current_school" value="homeschool"> Homeschool</label>
+                    <label class="mca-opt"><input type="checkbox" name="current_school" value="too-young"> Not yet in school (too young)</label>
+                  </div>
+                </fieldset>
+
+                <!-- ============ Q4 — Interest ============ -->
+                <fieldset class="mca-q" id="q4">
+                  <legend><span class="mca-num">4</span> How interested are you?</legend>
+                  <p class="mca-hint">E5 Enclave Inc. is working to bring a new tuition-free public school to Liberty City. How interested would you be in this option for your child?</p>
+                  <div class="mca-opts" role="radiogroup" aria-label="Interest in the new school option">
+                    <label class="mca-opt"><input type="radio" name="interest" value="very" required> Very interested</label>
+                    <label class="mca-opt"><input type="radio" name="interest" value="somewhat"> Somewhat interested</label>
+                    <label class="mca-opt"><input type="radio" name="interest" value="not-sure"> Not sure yet — I need more information</label>
+                    <label class="mca-opt"><input type="radio" name="interest" value="not-interested"> Not interested</label>
+                  </div>
+                </fieldset>
+
+                <!-- ============ Q5 — Top 3 priorities ============ -->
+                <fieldset class="mca-q" id="q5">
+                  <legend><span class="mca-num">5</span> What matters most to you?</legend>
+                  <p class="mca-hint">Pick your <strong>top 3</strong>. <span id="prio-count" aria-live="off"></span></p>
+                  <div class="mca-opts" role="group" aria-label="Top 3 priorities">
+                    <label class="mca-opt"><input type="checkbox" name="priorities" value="safety"> Safety (safe building, safe arrival and dismissal)</label>
+                    <label class="mca-opt"><input type="checkbox" name="priorities" value="reading-math"> Strong reading and math teaching</label>
+                    <label class="mca-opt"><input type="checkbox" name="priorities" value="after-school"> After-school programs (tutoring, sports, arts)</label>
+                    <label class="mca-opt"><input type="checkbox" name="priorities" value="discipline"> Fair, clear discipline</label>
+                    <label class="mca-opt"><input type="checkbox" name="priorities" value="teachers-know-child"> Teachers who know my child</label>
+                    <label class="mca-opt"><input type="checkbox" name="priorities" value="values"> Values and character teaching</label>
+                    <label class="mca-opt"><input type="checkbox" name="priorities" value="free-meals"> Free meals</label>
+                    <label class="mca-opt"><input type="checkbox" name="priorities" value="transport"> Transportation (school bus)</label>
+                    <label class="mca-opt"><input type="checkbox" name="priorities" value="other"> Other</label>
+                  </div>
+                  <label for="f-prio-other" class="mca-inline-label">Other priority <span class="mca-optional">(optional)</span></label>
+                  <input type="text" id="f-prio-other" name="priorities_other" maxlength="120">
+                </fieldset>
+
+                <!-- ============ Q6 — Safety deep-dive ============ -->
+                <fieldset class="mca-q" id="q6">
+                  <legend><span class="mca-num">6</span> What would make you feel your child is <em>safe</em> at school?</legend>
+                  <label for="f-safety" class="mca-inline-label">One or two things <span class="mca-optional">(optional)</span></label>
+                  <textarea id="f-safety" name="safety_needs" rows="2" maxlength="2000"></textarea>
+                </fieldset>
+
+                <!-- ============ Q7 — After-school care ============ -->
+                <fieldset class="mca-q" id="q7">
+                  <legend><span class="mca-num">7</span> Would you need after-school care?</legend>
+                  <div class="mca-opts" role="radiogroup" aria-label="After-school care needs">
+                    <label class="mca-opt"><input type="radio" name="afterschool_care" value="every-day" required> Yes, every school day</label>
+                    <label class="mca-opt"><input type="radio" name="afterschool_care" value="some-days"> Yes, some days</label>
+                    <label class="mca-opt"><input type="radio" name="afterschool_care" value="no"> No</label>
+                  </div>
+                  <div id="q7b" hidden>
+                    <label for="f-until" class="mca-inline-label">If yes — until what time? <span class="mca-optional">(e.g., 5pm, 6pm)</span></label>
+                    <input type="text" id="f-until" name="afterschool_until" maxlength="20" style="max-width:12rem">
+                  </div>
+                </fieldset>
+
+                <!-- ============ Q8 — Transportation ============ -->
+                <fieldset class="mca-q" id="q8">
+                  <legend><span class="mca-num">8</span> How would your child get to and from school?</legend>
+                  <div class="mca-opts" role="radiogroup" aria-label="Transportation">
+                    <label class="mca-opt"><input type="radio" name="transport" value="bus" required> School bus</label>
+                    <label class="mca-opt"><input type="radio" name="transport" value="drive-walk"> I would drive / walk them</label>
+                    <label class="mca-opt"><input type="radio" name="transport" value="family"> Another family member</label>
+                    <label class="mca-opt"><input type="radio" name="transport" value="not-sure"> Not sure yet</label>
+                  </div>
+                </fieldset>
+
+                <!-- ============ Q9 — The one thing ============ -->
+                <fieldset class="mca-q" id="q9">
+                  <legend><span class="mca-num">9</span> What <em>one thing</em> would make you choose this new school?</legend>
+                  <label for="f-reason" class="mca-inline-label">One line <span class="mca-optional">(optional)</span></label>
+                  <input type="text" id="f-reason" name="choose_reason" maxlength="2000">
+                </fieldset>
+
+                <!-- ============ Q10 — Concerns ============ -->
+                <fieldset class="mca-q" id="q10">
+                  <legend><span class="mca-num">10</span> What worries you most about a brand-new school?</legend>
+                  <p class="mca-hint">Check all that apply.</p>
+                  <div class="mca-opts">
+                    <label class="mca-opt"><input type="checkbox" name="concerns" value="none"> Nothing — new is fine</label>
+                    <label class="mca-opt"><input type="checkbox" name="concerns" value="unproven"> Unproven teachers or leadership</label>
+                    <label class="mca-opt"><input type="checkbox" name="concerns" value="location"> Location — I don&rsquo;t know where it would be</label>
+                    <label class="mca-opt"><input type="checkbox" name="concerns" value="see-first"> I need to see it before I decide</label>
+                    <label class="mca-opt"><input type="checkbox" name="concerns" value="other"> Other</label>
+                  </div>
+                  <label for="f-concern-other" class="mca-inline-label">Other concern <span class="mca-optional">(optional)</span></label>
+                  <input type="text" id="f-concern-other" name="concerns_other" maxlength="200">
+                </fieldset>
+
+                <!-- ============ Q11 — Hard commitment ============ -->
+                <fieldset class="mca-q" id="q11">
+                  <legend><span class="mca-num">11</span> If McCartney Academy moves forward, would you&hellip;</legend>
+                  <div class="mca-opts" role="radiogroup" aria-label="Commitment">
+                    <label class="mca-opt"><input type="radio" name="commitment" value="interest-list" required> Put my child on the <strong>interest list</strong> <span class="mca-hint">(not an application — just &ldquo;keep me informed&rdquo;)</span></label>
+                    <label class="mca-opt"><input type="radio" name="commitment" value="info-session"> Come to an <strong>information session</strong> in Liberty City to learn more</label>
+                    <label class="mca-opt"><input type="radio" name="commitment" value="both"> Both</label>
+                    <label class="mca-opt"><input type="radio" name="commitment" value="neither"> Neither right now</label>
+                  </div>
+                </fieldset>
+
+                <!-- ============ Q12 — How heard ============ -->
+                <fieldset class="mca-q" id="q12">
+                  <legend><span class="mca-num">12</span> How did you hear about this survey?</legend>
+                  <div class="mca-opts" role="radiogroup" aria-label="How did you hear about this survey?">
+                    <label class="mca-opt"><input type="radio" name="heard_about" value="church"> Church / faith community</label>
+                    <label class="mca-opt"><input type="radio" name="heard_about" value="community-org"> Community organization</label>
+                    <label class="mca-opt"><input type="radio" name="heard_about" value="friend-family"> Friend or family</label>
+                    <label class="mca-opt"><input type="radio" name="heard_about" value="e5-event"> E5 Enclave event or contact</label>
+                    <label class="mca-opt"><input type="radio" name="heard_about" value="local-business"> Laundromat / barbershop / local business</label>
+                    <label class="mca-opt"><input type="radio" name="heard_about" value="other"> Other</label>
+                  </div>
+                  <label for="f-heard-other" class="mca-inline-label">Other source <span class="mca-optional">(optional)</span></label>
+                  <input type="text" id="f-heard-other" name="heard_about_other" maxlength="200">
+                </fieldset>
+
+                <!-- ============ Q13 — Anything else ============ -->
+                <fieldset class="mca-q" id="q13">
+                  <legend><span class="mca-num">13</span> Anything else?</legend>
+                  <label for="f-else" class="mca-inline-label">Anything you want the people planning this school to know <span class="mca-optional">(optional)</span></label>
+                  <textarea id="f-else" name="anything_else" rows="3" maxlength="2000"></textarea>
+                </fieldset>
+
+                <!-- Honeypot: invisible to humans, irresistible to bots.
+                     Keep the name "website" in sync with the worker (handleSurveySubmit). -->
+                <div class="mca-hp" aria-hidden="true">
+                  <label for="f-website">Website</label>
+                  <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off">
+                </div>
+
+                <!-- Turnstile — shared intake widget e5-intake-forms (augments, never replaces, the protocol).
+                     Callback attributes live on the widget itself so wiring is deterministic
+                     even if the async Turnstile script renders early. -->
+                <div class="mca-turnstile">
+                  <div class="cf-turnstile" data-sitekey="0x4AAAAAAExGnuJoDnOTHE-M" data-theme="dark"
+                       data-callback="mcaTurnstileOk" data-error-callback="mcaTurnstileFail" data-expired-callback="mcaTurnstileExpired"></div>
+                </div>
+                <p class="mca-form-error" id="mca-error" role="alert" hidden></p>
+
+                <button type="submit" id="mca-submit">Send my survey</button>
+                <p class="mca-progress" id="mca-progress" aria-live="polite" hidden>Sending&hellip;</p>
+                <div class="mca-done" id="mca-done" aria-live="polite" hidden>
+                  <p><strong>Thank you.</strong> Your answers are in.</p>
+                  <p class="mca-hint">This was not an application or enrollment — just your voice in the plan. E5 Enclave Inc. will only contact you if you asked us to. Opt out anytime: reply STOP to any text, or write <a href="mailto:contact@e5enclave.com">contact@e5enclave.com</a>.</p>
+                </div>
+              </form>
+              <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+              <style>
+              /* Scoped extras for the interest form (base input styling pre-wired by the page) */
+              #mccartney-interest-form .mca-lede{color:#c9cfdd;font-size:15px;line-height:1.7;margin:0 0 26px}
+              #mccartney-interest-form .mca-lede strong{color:var(--paper)}
+              #mccartney-interest-form .mca-q{border:0;border-top:1px solid rgba(201,162,74,.25);padding:22px 0 6px;margin:0}
+              #mccartney-interest-form .mca-q legend{font-family:var(--serif);font-size:21px;color:var(--paper);padding:0;margin-bottom:6px}
+              #mccartney-interest-form .mca-num{display:inline-block;font-family:var(--mono);font-size:12px;color:var(--ink-deep);background:var(--gold);border-radius:999px;min-width:26px;height:26px;line-height:26px;text-align:center;margin-right:10px;vertical-align:2px}
+              #mccartney-interest-form .mca-for{color:#aeb6c8;font-size:16px}
+              #mccartney-interest-form .mca-subq{font-family:var(--sans);font-size:15px;font-weight:600;color:var(--paper);margin:16px 0 8px;text-transform:none;letter-spacing:0}
+              #mccartney-interest-form .mca-hint{font-size:13.5px;color:#aeb6c8;margin:6px 0 10px;line-height:1.6}
+              #mccartney-interest-form .mca-optional{color:#aeb6c8;font-weight:400;letter-spacing:0;text-transform:none}
+              #mccartney-interest-form .mca-inline-label{text-transform:none;letter-spacing:0;font-family:var(--sans);font-size:15px;font-weight:600;color:var(--paper)}
+              #mccartney-interest-form .mca-opts{display:flex;flex-direction:column;gap:4px;margin:4px 0 14px}
+              #mccartney-interest-form .mca-opts.mca-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+              #mccartney-interest-form .mca-opt{display:block;font-family:var(--sans);font-size:15px;font-weight:400;color:#d5dae6;text-transform:none;letter-spacing:0;padding:9px 10px;border-radius:3px;cursor:pointer;margin:0}
+              #mccartney-interest-form .mca-opt:hover{background:rgba(201,162,74,.08)}
+              #mccartney-interest-form .mca-opt input{float:left;width:20px;height:20px;margin:1px 10px 6px 0;accent-color:var(--gold);cursor:pointer}
+              #mccartney-interest-form .mca-opt strong{color:var(--paper)}
+              #mccartney-interest-form .mca-row{display:grid;grid-template-columns:1fr;gap:0}
+              @media(min-width:560px){#mccartney-interest-form .mca-row{grid-template-columns:1fr 1fr;gap:16px}}
+              #mccartney-interest-form .mca-consent-box{border:1px solid rgba(201,162,74,.4);border-radius:3px;background:rgba(201,162,74,.07);padding:16px;margin:16px 0}
+              #mccartney-interest-form .mca-consent-text{font-size:14px;line-height:1.65;color:#d5dae6;font-style:italic;margin:0 0 12px}
+              #mccartney-interest-form .mca-consent-check{background:rgba(5,6,9,.35)}
+              #mccartney-interest-form .mca-consent-check span{font-size:15px}
+              /* Honeypot: off-screen, never display:none (survives autofill, invisible to humans) */
+              #mccartney-interest-form .mca-hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+              #mccartney-interest-form .mca-turnstile{margin:18px 0 6px}
+              #mccartney-interest-form .mca-form-error{color:#ff9d8a;font-size:14px;margin:10px 0}
+              #mccartney-interest-form .mca-progress{font-size:14px;color:#c9cfdd;margin:12px 0}
+              #mccartney-interest-form #mca-submit:disabled{opacity:.55;cursor:wait}
+              #mccartney-interest-form .mca-done{border:1px solid rgba(201,162,74,.5);border-radius:3px;background:rgba(201,162,74,.08);padding:20px;margin-top:18px}
+              #mccartney-interest-form .mca-done p{color:#d5dae6;font-size:15px;line-height:1.7;margin:0 0 8px}
+              #mccartney-interest-form .mca-done a{color:var(--gold-bright)}
+              </style>
+              <script>
+              (function(){
+                "use strict";
+                var form = document.getElementById("mca-form");
+                if (!form) return;
+                var ENDPOINT = form.getAttribute("data-endpoint") || "";
+                var errBox = document.getElementById("mca-error");
+                var progress = document.getElementById("mca-progress");
+                var doneBox = document.getElementById("mca-done");
+                var submitBtn = document.getElementById("mca-submit");
+                var turnstileToken = "";
+                var turnstileFailed = false;
+
+                var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                function showError(msg){
+                  errBox.textContent = msg;
+                  errBox.hidden = false;
+                  errBox.scrollIntoView({behavior: reduceMotion ? "auto" : "smooth", block:"center"});
+                }
+                function clearError(){ errBox.hidden = true; errBox.textContent = ""; }
+
+                /* Q5: enforce max 3 priorities */
+                var prioBoxes = Array.prototype.slice.call(form.querySelectorAll('input[name="priorities"]'));
+                var prioCount = document.getElementById("prio-count");
+                function updatePrio(){
+                  var checked = prioBoxes.filter(function(b){ return b.checked; });
+                  prioBoxes.forEach(function(b){ b.disabled = !b.checked && checked.length >= 3; });
+                  prioCount.textContent = checked.length + " of 3 selected";
+                }
+                prioBoxes.forEach(function(b){ b.addEventListener("change", updatePrio); });
+                updatePrio();
+
+                /* Q7b: show "until what time" only when after-school care is yes */
+                var careRadios = Array.prototype.slice.call(form.querySelectorAll('input[name="afterschool_care"]'));
+                var q7b = document.getElementById("q7b");
+                function updateQ7b(){
+                  var v = careRadios.filter(function(r){ return r.checked; })[0];
+                  q7b.hidden = !(v && v.value !== "no");
+                }
+                careRadios.forEach(function(r){ r.addEventListener("change", updateQ7b); });
+
+                /* Turnstile hooks — callback attributes are declared directly on the
+                   widget div above (deterministic); the functions just record the token. */
+                window.mcaTurnstileOk = function(token){ turnstileToken = token; turnstileFailed = false; };
+                window.mcaTurnstileFail = function(){ turnstileToken = ""; turnstileFailed = true; };
+                window.mcaTurnstileExpired = function(){ turnstileToken = ""; };
+
+                function checked(name){
+                  var el = form.querySelector('input[name="'+name+'"]:checked');
+                  return el ? el.value : "";
+                }
+                function checkedAll(name){
+                  return Array.prototype.slice.call(form.querySelectorAll('input[name="'+name+'"]:checked')).map(function(e){ return e.value; });
+                }
+                function val(id){ var el = document.getElementById(id); return el ? el.value.trim() : ""; }
+
+                form.addEventListener("submit", function(ev){
+                  ev.preventDefault();
+                  clearError();
+
+                  if (!ENDPOINT) { showError("This form is not connected yet. Please try again later."); return; }
+                  if (turnstileFailed) { showError("The verification check didn't load. Check your connection and reload the page, then try again."); return; }
+                  if (!turnstileToken) { showError("Please wait for the verification check to finish, then try again."); return; }
+
+                  /* Client-side validation (server re-validates everything) */
+                  var consent = document.getElementById("consent").checked;
+                  var phone = val("f-phone");
+                  var email = val("f-email");
+                  var grades = checkedAll("grades");
+                  var interest = checked("interest");
+                  var commitment = checked("commitment");
+                  var afterschool = checked("afterschool_care");
+                  var transport = checked("transport");
+                  var zip = val("f-zip");
+
+                  if (!checked("liberty_city")) return showError("Please answer whether you live in or near Liberty City (question 1).");
+                  if (consent && !phone && !email) return showError("You checked the contact box — please give us a phone number or an email so we can reach you.");
+                  if (phone && phone.replace(/\D/g,"").length < 7) return showError("That phone number looks too short. Please check it.");
+                  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return showError("That email address doesn't look right. Please check it.");
+                  if (zip && !/^\d{5}$/.test(zip)) return showError("ZIP code should be 5 digits.");
+                  if (grades.length === 0) return showError("Please check at least one grade for 2028–29 (question 2) — it's how we plan the school.");
+                  if (!interest) return showError("Please tell us how interested you are (question 4).");
+                  if (checkedAll("priorities").length > 3) return showError("Please pick no more than 3 priorities (question 5).");
+                  if (!afterschool) return showError("Please answer the after-school care question (question 7).");
+                  if (!transport) return showError("Please answer the transportation question (question 8).");
+                  if (!commitment) return showError("Please answer what you'd do if the school moves forward (question 11).");
+
+                  var payload = {
+                    kind: "survey",
+                    q1_area: checked("liberty_city"),
+                    consent: consent,
+                    name: val("f-name"),
+                    phone: phone,
+                    email: email,
+                    lang: checked("preferred_language"),
+                    contact_method: checked("contact_method"),
+                    zip: zip,
+                    q2_grades: grades,
+                    q3_current: checkedAll("current_school"),
+                    q4_interest: interest,
+                    q5_priorities: checkedAll("priorities"),
+                    q5_priorities_other: val("f-prio-other"),
+                    q6_safety_text: val("f-safety"),
+                    q7_afterschool: afterschool,
+                    q7_until: val("f-until"),
+                    q8_transport: transport,
+                    q9_choose_one: val("f-reason"),
+                    q10_concerns: checkedAll("concerns"),
+                    q10_concerns_other: val("f-concern-other"),
+                    q11_commitment: commitment,
+                    q12_source: checked("heard_about"),
+                    q12_source_other: val("f-heard-other"),
+                    q13_notes: val("f-else"),
+                    venue: "web",
+                    website: val("f-website"), /* honeypot — humans leave this empty */
+                    turnstileToken: turnstileToken
+                  };
+
+                  submitBtn.disabled = true;
+                  progress.hidden = false;
+
+                  fetch(ENDPOINT, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                  }).then(function(res){
+                    return res.json().catch(function(){ return { ok:false }; }).then(function(data){
+                      return { status: res.status, data: data };
+                    });
+                  }).then(function(r){
+                    progress.hidden = true;
+                    submitBtn.disabled = false;
+                    if (r.status === 429) { showError("Too many tries from this device. Please wait a few minutes and try again."); return; }
+                    if (r.data && r.data.ok) {
+                      form.querySelectorAll("fieldset, .mca-turnstile, #mca-submit, #mca-progress").forEach(function(el){ el.style.display = "none"; });
+                      doneBox.hidden = false;
+                      doneBox.scrollIntoView({behavior: reduceMotion ? "auto" : "smooth", block:"center"});
+                    } else if (r.status === 403) {
+                      turnstileToken = "";
+                      if (window.turnstile) { try { window.turnstile.reset(); } catch(e){} }
+                      showError("The verification check didn't pass. Please try again.");
+                    } else if (r.status === 422) {
+                      showError("Something in the form needs attention. Please check the questions and try again.");
+                    } else {
+                      showError("We couldn't send your survey just now. Please try again — nothing was lost on your end.");
+                    }
+                  }).catch(function(){
+                    progress.hidden = true;
+                    submitBtn.disabled = false;
+                    showError("We couldn't reach the server. Check your connection and try again.");
+                  });
+                });
+              })();
+              </script>
+              <script>
+              (function(){
+                "use strict";
+                var form = document.getElementById("mca-form");
+                if (!form) return;
+                var ENDPOINT = form.getAttribute("data-endpoint") || "";
+                var errBox = document.getElementById("mca-error");
+                var progress = document.getElementById("mca-progress");
+                var doneBox = document.getElementById("mca-done");
+                var submitBtn = document.getElementById("mca-submit");
+                var turnstileToken = "";
+                var turnstileFailed = false;
+
+                var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                function showError(msg){
+                  errBox.textContent = msg;
+                  errBox.hidden = false;
+                  errBox.scrollIntoView({behavior: reduceMotion ? "auto" : "smooth", block:"center"});
+                }
+                function clearError(){ errBox.hidden = true; errBox.textContent = ""; }
+
+                /* Q5: enforce max 3 priorities */
+                var prioBoxes = Array.prototype.slice.call(form.querySelectorAll('input[name="priorities"]'));
+                var prioCount = document.getElementById("prio-count");
+                function updatePrio(){
+                  var checked = prioBoxes.filter(function(b){ return b.checked; });
+                  prioBoxes.forEach(function(b){ b.disabled = !b.checked && checked.length >= 3; });
+                  prioCount.textContent = checked.length + " of 3 selected";
+                }
+                prioBoxes.forEach(function(b){ b.addEventListener("change", updatePrio); });
+                updatePrio();
+
+                /* Q7b: show "until what time" only when after-school care is yes */
+                var careRadios = Array.prototype.slice.call(form.querySelectorAll('input[name="afterschool_care"]'));
+                var q7b = document.getElementById("q7b");
+                function updateQ7b(){
+                  var v = careRadios.filter(function(r){ return r.checked; })[0];
+                  q7b.hidden = !(v && v.value !== "no");
+                }
+                careRadios.forEach(function(r){ r.addEventListener("change", updateQ7b); });
+
+                /* Turnstile hooks — callback attributes are declared directly on the
+                   widget div above (deterministic); the functions just record the token. */
+                window.mcaTurnstileOk = function(token){ turnstileToken = token; turnstileFailed = false; };
+                window.mcaTurnstileFail = function(){ turnstileToken = ""; turnstileFailed = true; };
+                window.mcaTurnstileExpired = function(){ turnstileToken = ""; };
+
+                function checked(name){
+                  var el = form.querySelector('input[name="'+name+'"]:checked');
+                  return el ? el.value : "";
+                }
+                function checkedAll(name){
+                  return Array.prototype.slice.call(form.querySelectorAll('input[name="'+name+'"]:checked')).map(function(e){ return e.value; });
+                }
+                function val(id){ var el = document.getElementById(id); return el ? el.value.trim() : ""; }
+
+                form.addEventListener("submit", function(ev){
+                  ev.preventDefault();
+                  clearError();
+
+                  if (!ENDPOINT) { showError("This form is not connected yet. Please try again later."); return; }
+                  if (turnstileFailed) { showError("The verification check didn't load. Check your connection and reload the page, then try again."); return; }
+                  if (!turnstileToken) { showError("Please wait for the verification check to finish, then try again."); return; }
+
+                  /* Client-side validation (server re-validates everything) */
+                  var consent = document.getElementById("consent").checked;
+                  var phone = val("f-phone");
+                  var email = val("f-email");
+                  var grades = checkedAll("grades");
+                  var interest = checked("interest");
+                  var commitment = checked("commitment");
+                  var afterschool = checked("afterschool_care");
+                  var transport = checked("transport");
+                  var zip = val("f-zip");
+
+                  if (!checked("liberty_city")) return showError("Please answer whether you live in or near Liberty City (question 1).");
+                  if (consent && !phone && !email) return showError("You checked the contact box — please give us a phone number or an email so we can reach you.");
+                  if (phone && phone.replace(/\D/g,"").length < 7) return showError("That phone number looks too short. Please check it.");
+                  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return showError("That email address doesn't look right. Please check it.");
+                  if (zip && !/^\d{5}$/.test(zip)) return showError("ZIP code should be 5 digits.");
+                  if (grades.length === 0) return showError("Please check at least one grade for 2028–29 (question 2) — it's how we plan the school.");
+                  if (!interest) return showError("Please tell us how interested you are (question 4).");
+                  if (checkedAll("priorities").length > 3) return showError("Please pick no more than 3 priorities (question 5).");
+                  if (!afterschool) return showError("Please answer the after-school care question (question 7).");
+                  if (!transport) return showError("Please answer the transportation question (question 8).");
+                  if (!commitment) return showError("Please answer what you'd do if the school moves forward (question 11).");
+
+                  var payload = {
+                    kind: "survey",
+                    q1_area: checked("liberty_city"),
+                    consent: consent,
+                    name: val("f-name"),
+                    phone: phone,
+                    email: email,
+                    lang: checked("preferred_language"),
+                    contact_method: checked("contact_method"),
+                    zip: zip,
+                    q2_grades: grades,
+                    q3_current: checkedAll("current_school"),
+                    q4_interest: interest,
+                    q5_priorities: checkedAll("priorities"),
+                    q5_priorities_other: val("f-prio-other"),
+                    q6_safety_text: val("f-safety"),
+                    q7_afterschool: afterschool,
+                    q7_until: val("f-until"),
+                    q8_transport: transport,
+                    q9_choose_one: val("f-reason"),
+                    q10_concerns: checkedAll("concerns"),
+                    q10_concerns_other: val("f-concern-other"),
+                    q11_commitment: commitment,
+                    q12_source: checked("heard_about"),
+                    q12_source_other: val("f-heard-other"),
+                    q13_notes: val("f-else"),
+                    venue: "web",
+                    website: val("f-website"), /* honeypot — humans leave this empty */
+                    turnstileToken: turnstileToken
+                  };
+
+                  submitBtn.disabled = true;
+                  progress.hidden = false;
+
+                  fetch(ENDPOINT, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                  }).then(function(res){
+                    return res.json().catch(function(){ return { ok:false }; }).then(function(data){
+                      return { status: res.status, data: data };
+                    });
+                  }).then(function(r){
+                    progress.hidden = true;
+                    submitBtn.disabled = false;
+                    if (r.status === 429) { showError("Too many tries from this device. Please wait a few minutes and try again."); return; }
+                    if (r.data && r.data.ok) {
+                      form.querySelectorAll("fieldset, .mca-turnstile, #mca-submit, #mca-progress").forEach(function(el){ el.style.display = "none"; });
+                      doneBox.hidden = false;
+                      doneBox.scrollIntoView({behavior: reduceMotion ? "auto" : "smooth", block:"center"});
+                    } else if (r.status === 403) {
+                      turnstileToken = "";
+                      if (window.turnstile) { try { window.turnstile.reset(); } catch(e){} }
+                      showError("The verification check didn't pass. Please try again.");
+                    } else if (r.status === 422) {
+                      showError("Something in the form needs attention. Please check the questions and try again.");
+                    } else {
+                      showError("We couldn't send your survey just now. Please try again — nothing was lost on your end.");
+                    }
+                  }).catch(function(){
+                    progress.hidden = true;
+                    submitBtn.disabled = false;
+                    showError("We couldn't reach the server. Check your connection and try again.");
+                  });
+                });
+              })();
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE HONEST TIMELINE + CEILING ============ -->
+<section class="section section-paper" id="timeline" aria-labelledby="timeline-h" style="padding-top:0">
+  <div class="wrap">
+    <p class="kicker">Where this stands</p>
+    <h2 class="h2" id="timeline-h">The <em>honest</em> timeline.</h2>
+    <p class="standfirst">
+      The school does not exist yet &mdash; no building, no operator, no programs.
+      What exists is the work: a charter application to the school district, with a
+      target opening after that.
+    </p>
+    <div data-reveal>
+      <ol class="timeline" aria-label="Honest timeline">
+        <li>
+          <p class="t-when">Now &mdash; Phase 0</p>
+          <h3>We are listening first.</h3>
+          <p>This parent survey and the interest list across Liberty City. Parent voices shape the proposal before it is written.</p>
+        </li>
+        <li>
+          <p class="t-when">2027</p>
+          <h3>Charter application.</h3>
+          <p>The application goes to the school district &mdash; planned for 2027. Nothing is guaranteed &mdash; the district must approve it.</p>
+        </li>
+        <li>
+          <p class="t-when">August 2028</p>
+          <h3>The aim.</h3>
+          <p>The opening we are working toward &mdash; if the application is approved and the pieces are in place.</p>
+        </li>
+      </ol>
+    </div>
+
+    <p class="standfirst" style="font-size:14px">The district&rsquo;s application deadline is being verified against current policy before we state a date.</p>
+
+    <div class="ceiling-band" data-reveal>
+      <h3>What we will not claim.</h3>
+      <ul class="ceiling-list">
+        <li><span class="x" aria-hidden="true">&times;</span><span><strong>No site.</strong> No location has been selected; site selection happens during the application process.</span></li>
+        <li><span class="x" aria-hidden="true">&times;</span><span><strong>No operator.</strong> The charter-management partner will be chosen after demand is proven &mdash; not before.</span></li>
+        <li><span class="x" aria-hidden="true">&times;</span><span><strong>No programs.</strong> Nothing is designed yet; programs get built with the future operator, shaped by what families tell us.</span></li>
+        <li><span class="x" aria-hidden="true">&times;</span><span><strong>No promises.</strong> August 2028 is an aim, not a guarantee. The district decides.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE RECORD — verified lineage facts ============ -->
+<section class="section section-ink" id="record" aria-labelledby="record-h">
+  <div class="wrap">
+    <p class="kicker">The record</p>
+    <h2 class="h2" id="record-h">Why the name <em>McCartney.</em></h2>
+    <p class="standfirst">
+      McCartney Academy is named for a man whose service is on the public record &mdash;
+      honored on the floor of Congress, proclaimed by a city, and preserved in his own
+      words. We state here only what the record establishes.
+    </p>
+
+    <div class="record-grid">
+
+      <article class="record-card card-congress" data-reveal>
+        <p class="card-seal">Congressional Record</p>
+        <h3>&ldquo;Tribute to Ralph McCartney&rdquo;</h3>
+        <p class="cite">Hon. Carrie P. Meek &middot; U.S. House of Representatives<br>
+        February 1, 1994 &middot; Vol. 140, pp. 602&ndash;603</p>
+        <p class="quote-line">&ldquo;That I was a McCartney.&rdquo;</p>
+        <p class="body-copy">
+          The tribute records his birth on March 11, 1934, the last of eight children of
+          Leon and Lillian McCartney, in the Overtown community &mdash; and three of the
+          works he carried out there: the pedestrian overpass at Edison Park Elementary
+          across I-95, the Department of Defense Race Relations Institute, and the
+          rebuilding of Booker T. Washington.
+        </p>
+        <ul class="facts">
+          <li><span class="f-year">1994</span><span>Honored on the floor of the U.S. House by Rep. Carrie P. Meek of Florida.</span></li>
+          <li><span class="f-year">Roles</span><span>Urban League of Greater Miami; Dade County Community Relations Board; Economic Opportunity Program, Inc.; director of the Neighbor Center; Rev. Leon Sullivan&rsquo;s OIC of Dade County.</span></li>
+        </ul>
+      </article>
+
+      <article class="record-card card-oral" data-reveal="right">
+        <p class="card-seal">Oral history</p>
+        <h3>&ldquo;Tell the Story&rdquo;</h3>
+        <p class="cite">UF Samuel Proctor Oral History Program<br>
+        Recorded August 14, 1997 &middot; Interviewer: Devon Williams</p>
+        <p class="body-copy">
+          Ralph McCartney sat for a full oral-history interview &mdash; his life, in his
+          own words, recorded for the archive. The transcript runs fifty-eight pages.
+        </p>
+      </article>
+
+      <article class="record-card card-procl" data-reveal="left">
+        <p class="card-seal">City proclamation</p>
+        <h3>&ldquo;A Community of Brotherhood and Sisterhood&rdquo;</h3>
+        <p class="cite">City of Opa-locka &middot; May 25, 1994<br>
+        Mayor Robert B. Ingram</p>
+        <p class="body-copy">
+          Three months after the congressional tribute, the City of Opa-locka proclaimed
+          its own honor &mdash; a community of brotherhood and sisterhood, in his name.
+        </p>
+      </article>
+
+      <article class="record-card card-house" data-reveal>
+        <p class="card-seal">The family home</p>
+        <h3>820 NW 64th Street</h3>
+        <p class="cite">Miami, FL 33150 &middot; Folio 0131140360790<br>
+        Built 1938 &middot; 1,198 sq. ft. &middot; Seventh Ave Park</p>
+        <p class="body-copy">
+          The family home stands in Liberty City &mdash; a 1938
+          residence, and the root the school&rsquo;s name grows from.
+        </p>
+      </article>
+
+    </div>
+
+    <p class="record-footnote">
+      <strong>Our standard:</strong> every fact above traces to a document. Where the record
+      is silent &mdash; the date of his passing, the full ownership history of the house &mdash;
+      we say so, plainly. A school named for a man should never invent his story.
+    </p>
+
+    <!-- Bridge to the full vision on the parent page -->
+    <div class="vision-bridge" data-reveal>
+      <p>
+        This page is the survey. For the full vision &mdash; the story behind the name,
+        the developing proposal, and the honest accounting of where it stands &mdash;
+        visit the McCartney Academy page.
+      </p>
+      <p><a class="bridge-link" href="../">Read the full vision &rarr;</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ — the 6 most survey-relevant ============ -->
+<section class="section section-paper" id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <p class="kicker">Honest answers</p>
+    <h2 class="h2" id="faq-h">Questions parents <em>ask.</em></h2>
+    <p class="standfirst">If we don&rsquo;t know the answer yet, we say so &mdash; and we won&rsquo;t guess.</p>
+
+    <div class="faq-list" data-reveal>
+
+      <div class="faq-item">
+        <h3 style="margin:0">
+          <button class="faq-q" type="button">
+            Is this a real thing, or just a survey?
+            <span class="plus" aria-hidden="true">+</span>
+          </button>
+        </h3>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Honest answer: right now it&rsquo;s a serious effort to develop a real charter
+          application &mdash; but <strong>the school doesn&rsquo;t exist yet</strong>, and it
+          won&rsquo;t exist unless the district approves it. This survey is the first real
+          step, and parent demand is what makes the application credible.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <h3 style="margin:0">
+          <button class="faq-q" type="button">
+            What happens with my information?
+            <span class="plus" aria-hidden="true">+</span>
+          </button>
+        </h3>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Only <strong>E5 Enclave Inc.</strong> holds it. We use it to (1) show the
+          district that families want this school and (2) send you updates about the
+          proposal &mdash; <strong>only if you opt in</strong>. We never sell or share
+          your information. You can opt out anytime and we delete it.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <h3 style="margin:0">
+          <button class="faq-q" type="button">
+            What grades will it serve?
+            <span class="plus" aria-hidden="true">+</span>
+          </button>
+        </h3>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Not finalized.</strong> Tell us what grade levels your children will be
+          in for the 2028&ndash;29 school year in question 2 of the survey &mdash;
+          parent demand shapes the grade plan we propose.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <h3 style="margin:0">
+          <button class="faq-q" type="button">
+            When does it open?
+            <span class="plus" aria-hidden="true">+</span>
+          </button>
+        </h3>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>We&rsquo;re aiming for <strong>August 2028</strong>. The charter application is
+          due in 2027 (exact deadline being verified), and the school district has to approve it &mdash; so nothing is
+          guaranteed yet. That&rsquo;s exactly why we&rsquo;re collecting parent demand now:
+          the application has to show real family interest.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <h3 style="margin:0">
+          <button class="faq-q" type="button">
+            What about transportation and after-school care?
+            <span class="plus" aria-hidden="true">+</span>
+          </button>
+        </h3>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Those are exactly the kinds of things the survey asks about. Transportation
+          and after-school plans get designed with our future operator &mdash; and we
+          need your answers to know what to build. No routes or programs are promised
+          until they are.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <h3 style="margin:0">
+          <button class="faq-q" type="button">
+            Is it really free?
+            <span class="plus" aria-hidden="true">+</span>
+          </button>
+        </h3>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Yes.</strong> As a public charter school it will be tuition-free,
+          funded like every other public school in Miami-Dade County.</p>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-brand">McCartney Academy &mdash; Parent Survey</p>
+        <p>This is the parent interest survey for a proposed tuition-free public charter
+        school for Liberty City, developing under E5 Enclave Inc. &mdash; the founding
+        community organization. The school does not exist yet; the application is planned for 2027,
+        aiming for August 2028. Survey answers are expressions of
+        interest &mdash; not applications, not enrollments.</p>
+      </div>
+      <nav aria-label="On this page">
+        <p class="foot-h">On this page</p>
+        <ul>
+          <li><a href="#survey">Take the survey</a></li>
+          <li><a href="#timeline">The honest timeline</a></li>
+          <li><a href="#record">Why the name McCartney</a></li>
+          <li><a href="#faq">Questions parents ask</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="foot-h">The institution</p>
+        <ul>
+          <li><a href="https://e5enclave.com">E5 Enclave Inc.</a></li>
+          <li><a href="../">McCartney Academy &mdash; the vision</a></li>
+        </ul>
+        <p style="margin-top:14px;font-size:13px">This is an E5 Enclave Inc. project.
+        It is not affiliated with any other organization.</p>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>&copy; 2026 E5 Enclave Inc. &middot; Liberty City, Miami</span>
+      <span>Developing &mdash; not yet operating</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>
