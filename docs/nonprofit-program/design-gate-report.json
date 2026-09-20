@@ -1,0 +1,120 @@
+{
+  "gate": "design-second-brain pre-ship gate",
+  "verdict": "PASS",
+  "job": {
+    "site": "e5enclave.com",
+    "target": "/nonprofits/",
+    "artifact_type": "page",
+    "artifact_path": "public/nonprofits/index.html"
+  },
+  "notes": "E5 Community Technology Program standalone page (/nonprofits/), war-room name verdict in docs/nonprofit-program/war-room-verdict.md. Cinematic hero with finite play-once commons sequence, readiness-audit reciprocity beat, seven reframed lines with custom icons, verification-pipeline replay centerpiece, honest-substitute proof section, three-door ask, colophon. Chrome applied via scripts/apply-chrome.mjs; sitemap updated. Repo gates pass: verify-claims 0 failures, verify-sovereign 56 routes 0 failures.",
+  "checks": [
+    {
+      "id": "P1",
+      "check": "hero: cinematic set-piece per protocols/CINEMATIC_HERO_RULE.md (ratified 2026-09-12; attest; flagged hero-rule: ratified)",
+      "kind": "manual",
+      "status": "pass",
+      "evidence": "runner attested PASS firsthand"
+    },
+    {
+      "id": "P2",
+      "check": "motion: no ambient loops; reduced-motion honored (auto-scan + attest)",
+      "kind": "auto",
+      "status": "pass",
+      "evidence": "no infinite CSS animations; reviewer must still attest motion budget"
+    },
+    {
+      "id": "P3",
+      "check": "vendoring: no CDN script tags for 3D/animation libs",
+      "kind": "auto",
+      "status": "pass",
+      "evidence": "no CDN script tags for 3D/animation libraries detected (turnstile/fonts allowlisted)"
+    },
+    {
+      "id": "P4",
+      "check": "layout: bespoke, non-template composition (attest)",
+      "kind": "manual",
+      "status": "pass",
+      "evidence": "runner attested PASS firsthand"
+    },
+    {
+      "id": "P5",
+      "check": "brand: palette matches site registry (attest)",
+      "kind": "manual",
+      "status": "pass",
+      "evidence": "runner attested PASS firsthand"
+    },
+    {
+      "id": "P6",
+      "check": "icons: custom/cleared only (attest)",
+      "kind": "manual",
+      "status": "pass",
+      "evidence": "runner attested PASS firsthand"
+    },
+    {
+      "id": "P7",
+      "check": "forms: E5 form protocol + Turnstile lockstep (auto-scan; E2E attested separately)",
+      "kind": "auto",
+      "status": "na",
+      "evidence": "no <form> in artifact"
+    },
+    {
+      "id": "P8",
+      "check": "independence: no new paid service (attest)",
+      "kind": "manual",
+      "status": "pass",
+      "evidence": "runner attested PASS firsthand"
+    },
+    {
+      "id": "P9",
+      "check": "accessibility: contrast computed, keyboard walkthrough, live region (attest)",
+      "kind": "manual",
+      "status": "pass",
+      "evidence": "runner attested PASS firsthand"
+    },
+    {
+      "id": "P10",
+      "check": "copy: Pinker + Cialdini + sourced numbers (attest)",
+      "kind": "manual",
+      "status": "pass",
+      "evidence": "runner attested PASS firsthand"
+    },
+    {
+      "id": "P11",
+      "check": "video: Ebony MC + Eli VO casting if video job (attest; N/A otherwise)",
+      "kind": "manual",
+      "status": "pass",
+      "evidence": "runner attested PASS firsthand"
+    },
+    {
+      "id": "P12",
+      "check": "verification: artifact viewed live firsthand (attest)",
+      "kind": "manual",
+      "status": "pass",
+      "evidence": "runner attested PASS firsthand"
+    },
+    {
+      "id": "P13",
+      "check": "voice: no IAMGODIAM in public copy; signature rule (auto-scan + attest)",
+      "kind": "auto",
+      "status": "pass",
+      "evidence": "no IAMGODIAM in visible copy (URLs excluded); signature-rule still to attest"
+    },
+    {
+      "id": "P14",
+      "check": "no-deploy: no commits to main/merges/deploy triggers (attest)",
+      "kind": "manual",
+      "status": "pass",
+      "evidence": "runner attested PASS firsthand"
+    },
+    {
+      "id": "P15",
+      "check": "reference-consult: where house protocols don't answer a style/palette/font question, arsenal/reference/ (ui-ux-pro-max catalogs) consulted before inventing; catalogs are lookup only, never design authority (attest)",
+      "kind": "manual",
+      "status": "pass",
+      "evidence": "runner attested PASS firsthand"
+    }
+  ],
+  "fail_closed_violations": [],
+  "next": "run roma.py verify --file plan.json (T4); ship decision (T7) stays PROPOSED pending explicit approval"
+}
