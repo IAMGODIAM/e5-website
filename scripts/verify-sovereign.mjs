@@ -30,7 +30,11 @@ const visibleText = html => html
 // /openai/ added 2026-09-16: bespoke campaign page for The $865 Question (OpenAI refund dispute).
 // Decision: the Chairman's explicit instruction 'launch the site to e5enclave.com/openai' (2026-09-16).
 // It carries its own campaign chrome by design; exempt like kohen-wiley, not restyled.
-const SELF_CHROMED = new Set(['public/justice/kohen-wiley/index.html', 'public/openai/index.html']);
+// /ralph/ added 2026-09-25: bespoke cinematic tribute to Ralph Caswell McCartney (1934-2008), the E5
+// namesake. Decision: the Chairman's instruction 'please make it live' (2026-09-25), shipped here because
+// the ralph.e5enclave.com Worker deploy is waiting on a fresh Cloudflare token. Own letterboxed header by
+// design (a second sticky masthead would stack over the cinematic hero); exempt like /openai/, not restyled.
+const SELF_CHROMED = new Set(['public/justice/kohen-wiley/index.html', 'public/openai/index.html', 'public/ralph/index.html']);
 
 for (const route of routes) {
   const rel = route === '/' ? 'public/index.html' : `public${route.replace(/\/$/, '')}/index.html`;
