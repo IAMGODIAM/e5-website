@@ -1,0 +1,26 @@
+{
+  "measure-of-the-wound": {
+    "concept_id": "22270905",
+    "record_id": 22703028,
+    "version": "1.4.4",
+    "doi": "10.5281/zenodo.22703028",
+    "doi_url": "https://doi.org/10.5281/zenodo.22703028",
+    "concept_doi": "10.5281/zenodo.22270905",
+    "concept_doi_url": "https://doi.org/10.5281/zenodo.22270905",
+    "record_url": "https://zenodo.org/records/22703028",
+    "published": "2026-09-11",
+    "published_display": "September 11, 2026",
+    "published_month": "September 2026",
+    "year": "2026",
+    "license_id": "cc-zero",
+    "license_label": "CC0 1.0",
+    "files": [
+      {
+        "name": "measure-of-the-wound-v1.4.4.zip",
+        "size": 2551867,
+        "size_display": "2.4 MB"
+      }
+    ],
+    "synced_at": "2026-09-12T00:20:15.050Z"
+  }
+}
