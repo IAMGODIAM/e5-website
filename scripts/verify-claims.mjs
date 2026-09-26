@@ -57,7 +57,10 @@ const FORBIDDEN_CLAIMS = [
 ];
 
 // Placeholder tokens that must never ship on a public page.
-const PLACEHOLDERS = [/Standing By/, /Coming Soon/i, /\bTBD\b/, /\bLorem\b/, /Next Case/, /\bPlaceholder\b/i, /<redacted>/i, /\bredacted\b/i];
+// `redacted` is matched only as a bracketed design-tool token. The bare word is substantive
+// vocabulary on /justice/nolan-wells/ (the publicly released grand jury report IS redacted),
+// so a bare-word rule would refuse to ship accurate copy. Narrowed 2026-09-22.
+const PLACEHOLDERS = [/Standing By/, /Coming Soon/i, /\bTBD\b/, /\bLorem\b/, /Next Case/, /\bPlaceholder\b/i, /<redacted>/i, /\[redacted\]/i];
 
 const textOf = html => html
   .replace(/<script[\s\S]*?<\/script>/gi, ' ')
