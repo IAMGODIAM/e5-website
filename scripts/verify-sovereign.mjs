@@ -33,7 +33,11 @@ const visibleText = html => html
 // /justice/nolan-wells/ added 2026-09-22: Case No. 002 campaign page built from the Claude Design
 // handoff. Like kohen-wiley and openai it carries its own sticky sub-nav and masthead by design;
 // stacking the Sovereign chrome on top would double the sticky bar. Exempt, not restyled.
-const SELF_CHROMED = new Set(['public/justice/kohen-wiley/index.html', 'public/openai/index.html', 'public/justice/nolan-wells/index.html']);
+// /ralph/ added 2026-09-25: bespoke cinematic tribute to Ralph Caswell McCartney (1934-2008), the E5
+// namesake. Decision: the Chairman's instruction 'please make it live' (2026-09-25), shipped here because
+// the ralph.e5enclave.com Worker deploy is waiting on a fresh Cloudflare token. Own letterboxed header by
+// design (a second sticky masthead would stack over the cinematic hero); exempt like /openai/, not restyled.
+const SELF_CHROMED = new Set(['public/justice/kohen-wiley/index.html', 'public/openai/index.html', 'public/justice/nolan-wells/index.html', 'public/ralph/index.html']);
 
 for (const route of routes) {
   const rel = route === '/' ? 'public/index.html' : `public${route.replace(/\/$/, '')}/index.html`;
