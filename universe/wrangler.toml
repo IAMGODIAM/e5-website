@@ -1,0 +1,5 @@
+# Cloudflare Pages config for the e5-universe project (universe.e5enclave.com).
+# Overrides the repo-root wrangler.toml (which belongs to the e5-website brand site)
+# when Pages builds with root_dir = "universe".
+name = "e5-universe"
+pages_build_output_dir = "public"
