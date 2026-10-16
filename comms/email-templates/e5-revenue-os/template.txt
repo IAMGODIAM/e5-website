@@ -1,0 +1,26 @@
+E5 ENCLAVE INCORPORATED
+{{overline}}
+
+{{headline}}
+------------------------------------------------------------
+
+{{body_text}}
+
+{{cta_label}}: {{cta_url}}
+
+{{closing_text}}
+
+{{signer_name}}
+{{signer_title}}
+{{signer_org}}
+{{signer_email}} · {{signer_phone}}
+
+------------------------------------------------------------
+Nil satis nisi optimum
+
+E5 Enclave Incorporated · 501(c)(3) public charity · EIN 99-3822441
+820 NW 64th St, Liberty City, Miami, FL 33150 · https://e5enclave.com
+
+{{footer_note}}
+{{unsubscribe_line}}
+
