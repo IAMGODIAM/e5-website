@@ -2,6 +2,8 @@
 
 Backup copy of the E5 outreach email design. Not wired into the site build.
 
+Sample copy, claims unverified, not for sending. Figures and descriptions in template_preview.html (funder counts, peer average, "25 or more verified funders in five business days", the think-tank framing) have no source. Funder Map is a paid E5 service and carries the same unrelated-business-income question as RingLatch.
+
 | File | Provenance | Date | Made by |
 |---|---|---|---|
 | template.html | IAMGODIAM/e5-revenue-os `email/template.html` at commit `d91a54f` | 2026-09-02 | "E5 Revenue OS (Cowork)" session; Comms Steward authorship not confirmed |
