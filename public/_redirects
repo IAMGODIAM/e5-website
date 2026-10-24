@@ -131,3 +131,11 @@
 # --- Oct 10 Political Education Party (co-hosted) — short link for ads and print ---
 /oct10                        /events/political-education-party/   302
 /oct10/                       /events/political-education-party/   302
+
+# --- Kohen Wiley record page retired to the memorial (2026-10-24, Chairman's ruling) ---
+# The E5 institutional record page at /justice/kohen-wiley/ is replaced by a redirect to
+# the memorial homepage. 302 (temporary) is deliberate: the move stays reversible.
+# Page file deleted (the /dc precedent); exact path only — /justice/kohen-wiley/motion-lab/
+# and the media assets under this path are not redirected and keep serving.
+/justice/kohen-wiley          https://babykohen.com/              302
+/justice/kohen-wiley/         https://babykohen.com/              302
