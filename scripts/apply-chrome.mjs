@@ -25,6 +25,11 @@ const HEAD = read('head.html');
 const FOOT = read('foot.html');
 const PHOTO = read('photo-credits.html');
 
+// The donor-privacy link is part of the shared footer except on surfaces
+// where donor surfaces are out of bounds (SPEC boundary lanes): a variant
+// with donorPrivacy: false renders the {{DONOR_PRIVACY}} slot empty.
+const DONOR_PRIVACY_ANCHOR = '<a href="https://e5enclave.com/donor-privacy/" style="color:#7E869A" class="h1">Donor privacy</a>';
+
 export function render(kind, variantName) {
   const v = VARIANTS[variantName];
   if (!v) throw new Error(`unknown chrome variant "${variantName}"`);
@@ -33,7 +38,7 @@ export function render(kind, variantName) {
     const mobile = NAV.map(n => `            <a href="${v.href(n)}">${n.label}</a>`).join('\n');
     return HEAD.replace('{{HOME_HREF}}', v.homeHref).replace('{{NAV_LINKS}}', links).replace('{{MOBILE_LINKS}}', mobile).replaceAll('{{GIVE_HREF}}', GIVE_HREF) + '\n';
   }
-  return FOOT.replace('{{FOOT_MARGIN}}', v.footMargin).replace('{{PHOTO_CREDITS}}\n', v.photoCredits ? `  ${PHOTO}\n` : '') + '\n';
+  return FOOT.replace('{{FOOT_MARGIN}}', v.footMargin).replace('{{PHOTO_CREDITS}}\n', v.photoCredits ? `  ${PHOTO}\n` : '').replace('{{DONOR_PRIVACY}}', v.donorPrivacy === false ? '' : DONOR_PRIVACY_ANCHOR) + '\n';
 }
 
 function* walk(dir) {
