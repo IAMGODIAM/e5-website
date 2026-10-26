@@ -50,7 +50,7 @@ for (const route of routes) {
     if (!/E5/.test(html)) fail(rel, 'self-chromed page must identify E5');
   } else
   for (const k of ['head', 'foot']) {
-    if ((html.match(new RegExp(`<!-- e5:chrome-${k}( front)? -->`, 'g')) || []).length !== 1) fail(rel, `expected exactly one e5:chrome-${k} marker`);
+    if ((html.match(new RegExp(`<!-- e5:chrome-${k}( [\\w-]+)? -->`, 'g')) || []).length !== 1) fail(rel, `expected exactly one e5:chrome-${k} marker`);
     if ((html.match(new RegExp(`<!-- /e5:chrome-${k} -->`, 'g')) || []).length !== 1) fail(rel, `expected exactly one closing e5:chrome-${k} marker`);
   }
   if (!SELF_CHROMED.has(rel) && !html.includes('class="e5-seal-mark"')) fail(rel, 'masthead seal missing');

@@ -12,5 +12,6 @@ export const GIVE_HREF = 'https://e5enclave.com/donate/';
 
 export const VARIANTS = {
   route: { homeHref: '/',    href: n => n.route, footMargin: 'clamp(60px,8vw,120px)', photoCredits: false },
+  karmelo: { homeHref: '/',  href: n => n.route, footMargin: 'clamp(60px,8vw,120px)', photoCredits: false, donorPrivacy: false },
   front: { homeHref: '#top', href: n => n.hash,  footMargin: 'clamp(80px,9vw,140px)', photoCredits: true  },
 };
