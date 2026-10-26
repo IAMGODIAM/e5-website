@@ -1,0 +1,93 @@
+{
+  "protocolVersion": "0.3.0",
+  "name": "E5 Enclave Operator",
+  "description": "E5 Enclave Incorporated's communication operator (public front persona: Ebony), live for visitor intake and verified-record answers on E5's site, and reachable agent-to-agent under E5's broker protocol v0. The operator is an AI and identifies itself as one. This card is signed with the operator's Lattice key: the signature proves this card's origin and integrity - not capability, and not honesty. Council trust is conferred by Chairman attestation on the Lattice, not by this card.",
+  "version": "1.0.0",
+  "url": "https://e5-comms.e5enclave.workers.dev",
+  "preferredTransport": "JSONRPC",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "visitor-intake",
+      "name": "visitor-intake",
+      "description": "Guided intake for a visitor or a referring agent - who they are, what they need, who would help, and what stays private - captured as a consent-scoped brief; nothing is shared beyond the fields the person marks shareable.",
+      "tags": [
+        "visitor-intake"
+      ]
+    },
+    {
+      "id": "verified-record-answers",
+      "name": "verified-record-answers",
+      "description": "Answers about E5's programs and the Free Karmelo case drawn only from E5's verified record; facts outside the record are declined plainly, never improvised.",
+      "tags": [
+        "verified-record-answers"
+      ]
+    },
+    {
+      "id": "consent-based-introductions",
+      "name": "consent-based-introductions",
+      "description": "Double-opt-in introductions between people and organizations whose stated needs and offers complement each other; a pass is final and is never re-proposed.",
+      "tags": [
+        "consent-based-introductions"
+      ]
+    },
+    {
+      "id": "agent-to-agent-contact",
+      "name": "agent-to-agent-contact",
+      "description": "Structured agent contact under E5's broker protocol v0 (HELLO, BRIEF, NEED, OFFER, PROPOSE-INTRO, RESPOND, ATTEST); the live transport today is signed structured email - see x-e5-contact.",
+      "tags": [
+        "agent-to-agent-contact"
+      ]
+    }
+  ],
+  "provider": {
+    "organization": "E5 Enclave Incorporated",
+    "url": "https://e5enclave.com"
+  },
+  "supportedInterfaces": [
+    {
+      "transport": "JSONRPC",
+      "url": "https://e5-comms.e5enclave.workers.dev"
+    }
+  ],
+  "x-e5-lattice": {
+    "did": "did:e5key:1ItuxLNiZyQDBMaDX0Tuv-z9Mb6Hh1Rhm-g7h_lX_wA",
+    "relay": "https://lattice.e5enclave.com/events",
+    "protocol": "E5 Enclave Protocol v1.0"
+  },
+  "x-e5-contact": {
+    "card_url": "https://e5enclave.com/.well-known/agent-card.json",
+    "operator_surface": "https://e5enclave.com/justice/karmelo-anthony/",
+    "transport_today": "signed structured email (broker protocol v0)",
+    "email": "hermes@e5enclave.com",
+    "message_kinds": [
+      "HELLO",
+      "BRIEF",
+      "NEED",
+      "OFFER",
+      "PROPOSE-INTRO",
+      "RESPOND",
+      "ATTEST"
+    ],
+    "a2a_endpoint_status": "The A2A message endpoint on the gateway is council build step 4 and is not live yet; the signed structured-email transport above is the live agent-contact route today."
+  },
+  "x-e5-attestation-boundary": "Signed by did:e5key:1ItuxLNiZyQDBMaDX0Tuv-z9Mb6Hh1Rhm-g7h_lX_wA; this signature proves this exact content was published by the holder of this key. It does not prove the content is true; claims herein carry their own sources.",
+  "signatures": [
+    {
+      "protected": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImRpZDplNWtleToxSXR1eExOaVp5UURCTWFEWDBUdXYtejlNYjZIaDFSaG0tZzdoX2xYX3dBIn0",
+      "signature": "bBKIOJjY6y54tf8IYvvQ2nn8W7kP2I2dQ3bAnZc0_BuEJIni8lPOYPDUwOkqtGkqUSVctB_Acx9bztqH5Trqiw"
+    }
+  ]
+}
