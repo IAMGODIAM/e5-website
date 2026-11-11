@@ -1,7 +1,7 @@
 {
   "protocolVersion": "0.3.0",
   "name": "E5 Enclave Operator",
-  "description": "E5 Enclave Incorporated's communication operator (public front persona: Ebony), live for visitor intake and verified-record answers on E5's site, and reachable agent-to-agent under E5's broker protocol v0. The operator is an AI and identifies itself as one. This card is signed with the operator's Lattice key: the signature proves this card's origin and integrity - not capability, and not honesty. Council trust is conferred by Chairman attestation on the Lattice, not by this card.",
+  "description": "E5 Enclave Incorporated's communication operator (public front persona: Ebony), live for visitor intake and verified-record answers on E5's site, and reachable agent-to-agent under E5's broker protocol v0. The operator is an AI and identifies itself as one. This card is signed with the operator's Lattice key: the signature proves this card's origin and integrity - not capability, and not honesty. Council trust is conferred by the E5 disposition system \u2014 a Disposition Root attestation standing with its disposition record in the hub ledger (root set and ledger via the disposition surface below) \u2014 not by this card.",
   "version": "1.0.0",
   "url": "https://e5-comms.e5enclave.workers.dev",
   "preferredTransport": "JSONRPC",
@@ -64,7 +64,11 @@
   ],
   "x-e5-lattice": {
     "did": "did:e5key:1ItuxLNiZyQDBMaDX0Tuv-z9Mb6Hh1Rhm-g7h_lX_wA",
-    "relay": "https://lattice.e5enclave.com/events",
+    "trust": "disposition-system",
+    "root_set": "https://e5-hub.yisraelleemccartney.workers.dev/root-set",
+    "dispositions": "https://e5-dispositions.yisraelleemccartney.workers.dev",
+    "ledger": "hub disposition_ledger (hash-linked, append-only)",
+    "reanchor": "D-1, disposition ledger seq 21; receipts-issuer statement event ca3866314912f5688021d675f2451fceba7a014099e5f5c272c09b50f25a7a28",
     "protocol": "E5 Enclave Protocol v1.0"
   },
   "x-e5-contact": {
@@ -87,7 +91,7 @@
   "signatures": [
     {
       "protected": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImRpZDplNWtleToxSXR1eExOaVp5UURCTWFEWDBUdXYtejlNYjZIaDFSaG0tZzdoX2xYX3dBIn0",
-      "signature": "bBKIOJjY6y54tf8IYvvQ2nn8W7kP2I2dQ3bAnZc0_BuEJIni8lPOYPDUwOkqtGkqUSVctB_Acx9bztqH5Trqiw"
+      "signature": "4fXhsdiAFc9cPQX83FsIxrpgHNZ6KbFrDy84lKL41rqp09gcgegQCqIXj_7AE5RKuoGzcbW7-6IssCNvW-salg"
     }
   ]
 }
