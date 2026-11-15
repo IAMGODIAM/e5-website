@@ -884,6 +884,34 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
 <link rel="stylesheet" href="/assets/front/sovereign-chrome.css">
+<style>
+  /* RingLatch offer card + next-steps: e5 interior card language, with a
+     Sawdust-style gold cap and price/outcome lines. */
+  .rl-offer { max-width: 36rem; margin: 1.6rem 0 2rem; }
+  .rl-offer::after { content:""; position:absolute; top:-1px; left:-1px; right:-1px; height:4px; background:linear-gradient(90deg,var(--sv-gold-hi,var(--vc-gold-2,#c4a468)),var(--sv-gold,var(--vc-gold,#a8884a)) 40%,var(--sv-gold-deep,var(--vc-gold-text,#7e6329))); }
+  .rl-offer-price { font-weight:600; letter-spacing:.02em; color:var(--sv-ink-hi,var(--vc-ink)); margin:0 !important; }
+  .rl-offer-outcome { margin:0 !important; }
+  .rl-next { margin: 2rem 0; }
+  .rl-next ol { margin: .6rem 0 0; }
+  .rl-trust { margin: 1.4rem 0; font-style: italic; }
+  .rl-reading { margin: 1.4rem 0 2rem; }
+  .rl-confirm { font-family: var(--sv-sans, inherit); font-size: 13px; letter-spacing: .04em; }
+  #snapshot-form { display:flex; flex-direction:column; gap:22px; max-width:540px; margin:28px 0 0; position:relative; }
+  #snapshot-form fieldset { border:1px solid var(--vc-rule, rgba(10,9,8,.14)); margin:0; padding:16px 16px 8px; }
+  #snapshot-form legend { padding:0 8px; font-size:12px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; }
+  #snapshot-form .snap-field { margin:0 0 16px; }
+  #snapshot-form .snap-label { display:block; margin:0 0 6px; font-size:13px; }
+  #snapshot-form .snap-hint, #snapshot-form .snap-error { display:block; margin:6px 0 0; font-size:13px; line-height:1.45; }
+  #snapshot-form .snap-hint { color:var(--vc-muted,#6b6457); }
+  #snapshot-form .snap-error { color:var(--vc-oxblood,#6d1f20); }
+  #snapshot-form .snap-error:empty { display:none; }
+  #snapshot-form .snap-check { display:flex; gap:12px; align-items:flex-start; margin:0 0 16px; }
+  #snapshot-form .snap-check input { margin-top:4px; flex:none; width:18px; height:18px; }
+  #snapshot-form .snap-check label { margin:0; font-size:15px; line-height:1.45; }
+  #snapshot-form .snapshot-hp { position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden; }
+  #snapshot-form .snap-micro { font-size:.95rem; font-style:italic; color:var(--vc-muted,#6b6457); margin:.4rem 0 0; }
+  #snapshot-error { color:var(--vc-oxblood,#6d1f20); }
+</style>
 </head>
 
 <body>
@@ -1025,87 +1053,240 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <section class="vc-prose reveal" id="snapshot-section">
 <p>A person on our team (not a recording, not an AI) places 10 ordinary calls to your business at different times. We don't record any call. Then you get a one-page report. It's free, you're under no obligation, and the findings are yours to keep.</p>
 
-<form id="snapshot-form" method="post" action="/api/snapshot" novalidate style="display:flex;flex-direction:column;gap:16px;max-width:540px;margin:28px 0 0;position:relative;">
-  <div>
-    <label for="snap-name">Name</label>
-    <input class="form__input" type="text" id="snap-name" name="name" autocomplete="name" required maxlength="120">
-  </div>
-  <div>
-    <label for="snap-business">Business name</label>
-    <input class="form__input" type="text" id="snap-business" name="business_name" autocomplete="organization" required maxlength="120">
-  </div>
-  <div>
-    <label for="snap-phone">Business phone (the number to test)</label>
-    <input class="form__input" type="tel" id="snap-phone" name="phone" autocomplete="tel" required maxlength="30" inputmode="tel">
-  </div>
-  <div>
-    <label for="snap-trade">Trade</label>
-    <select class="form__input" id="snap-trade" name="trade" required>
-      <option value="" selected disabled>Select one</option>
-      <option value="HVAC">HVAC</option>
-      <option value="Plumbing">Plumbing</option>
-      <option value="Dental">Dental</option>
-      <option value="Other">Other</option>
-    </select>
-  </div>
-  <div class="snapshot-hp" aria-hidden="true">
-    <label for="company_url">Company website</label>
-    <input type="text" id="company_url" name="company_url" tabindex="-1" autocomplete="off">
-  </div>
-  <div style="display:flex;gap:12px;align-items:flex-start;">
-    <input type="checkbox" id="snap-consent" name="consent" value="yes" required style="margin-top:4px;flex:none;width:18px;height:18px;">
-    <label for="snap-consent">I consent to E5 Enclave placing 10 test calls to my business line, made by people, with no AI voice and no recording.</label>
-  </div>
-  <p id="snapshot-error" class="body" style="display:none;color:var(--vc-oxblood,#6d1f20);" role="alert"></p>
+<div id="snapshot-error" class="body" style="display:none;" role="alert" aria-live="assertive"></div>
+
+<form id="snapshot-form" method="post" action="/api/snapshot" novalidate>
+  <input type="hidden" name="form_started" id="form_started" value="">
+
+  <fieldset>
+    <legend>You</legend>
+    <div class="snap-field">
+      <label class="snap-label" for="snap-name">Name</label>
+      <input class="form__input" type="text" id="snap-name" name="name" autocomplete="name" required maxlength="120" aria-describedby="err-name">
+      <span class="snap-error" id="err-name"></span>
+    </div>
+    <div class="snap-field">
+      <label class="snap-label" for="snap-email">Email</label>
+      <input class="form__input" type="email" id="snap-email" name="email" autocomplete="email" inputmode="email" required maxlength="160" aria-describedby="hint-email err-email">
+      <span class="snap-hint" id="hint-email">Where the report goes.</span>
+      <span class="snap-error" id="err-email"></span>
+    </div>
+    <div class="snap-field">
+      <label class="snap-label" for="snap-role">Your role</label>
+      <select class="form__input" id="snap-role" name="role" required aria-describedby="err-role">
+        <option value="" selected disabled>Select one</option>
+        <option value="Owner">Owner</option>
+        <option value="Office or service manager">Office or service manager</option>
+        <option value="Other">Other</option>
+      </select>
+      <span class="snap-error" id="err-role"></span>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Your business</legend>
+    <div class="snap-field">
+      <label class="snap-label" for="snap-business">Business name</label>
+      <input class="form__input" type="text" id="snap-business" name="business_name" autocomplete="organization" required maxlength="120" aria-describedby="err-business_name">
+      <span class="snap-error" id="err-business_name"></span>
+    </div>
+    <div class="snap-field">
+      <label class="snap-label" for="snap-trade">Trade</label>
+      <select class="form__input" id="snap-trade" name="trade" required aria-describedby="err-trade">
+        <option value="" selected disabled>Select one</option>
+        <option value="HVAC">HVAC</option>
+        <option value="Plumbing">Plumbing</option>
+        <option value="Dental">Dental</option>
+        <option value="Other">Other</option>
+      </select>
+      <span class="snap-error" id="err-trade"></span>
+    </div>
+    <div class="snap-field">
+      <label class="snap-label" for="snap-city">City or service area</label>
+      <input class="form__input" type="text" id="snap-city" name="city" autocomplete="address-level2" required maxlength="120" aria-describedby="err-city">
+      <span class="snap-error" id="err-city"></span>
+    </div>
+    <div class="snap-field">
+      <label class="snap-label" for="snap-crews">Crews or trucks (or chairs for dental)</label>
+      <input class="form__input" type="number" id="snap-crews" name="crews" inputmode="numeric" min="0" max="9999" step="1" aria-describedby="hint-crews err-crews">
+      <span class="snap-hint" id="hint-crews">Optional.</span>
+      <span class="snap-error" id="err-crews"></span>
+    </div>
+    <div class="snap-field">
+      <label class="snap-label" for="snap-heard">How did you hear about us?</label>
+      <input class="form__input" type="text" id="snap-heard" name="heard_about" maxlength="200" aria-describedby="hint-heard err-heard_about">
+      <span class="snap-hint" id="hint-heard">Optional.</span>
+      <span class="snap-error" id="err-heard_about"></span>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Your phones</legend>
+    <div class="snap-field">
+      <label class="snap-label" for="snap-phone">Business phone (the number to test)</label>
+      <input class="form__input" type="tel" id="snap-phone" name="phone" autocomplete="tel" required maxlength="40" inputmode="tel" aria-describedby="hint-phone err-phone">
+      <span class="snap-hint" id="hint-phone">A US 10-digit number. Dashes, spaces, and parentheses are fine.</span>
+      <span class="snap-error" id="err-phone"></span>
+    </div>
+    <div class="snap-field">
+      <label class="snap-label" for="snap-hours">Business hours</label>
+      <input class="form__input" type="text" id="snap-hours" name="hours" required maxlength="400" placeholder="Mon–Fri 7–5, Sat 8–12" aria-describedby="hint-hours err-hours">
+      <span class="snap-hint" id="hint-hours">We need them to place calls during and after hours.</span>
+      <span class="snap-error" id="err-hours"></span>
+    </div>
+    <div class="snap-field">
+      <label class="snap-label" for="snap-after">How are after-hours calls handled today?</label>
+      <select class="form__input" id="snap-after" name="after_hours" required aria-describedby="err-after_hours">
+        <option value="" selected disabled>Select one</option>
+        <option value="Voicemail">Voicemail</option>
+        <option value="Answering service">Answering service</option>
+        <option value="Forwarded to a cell">Forwarded to a cell</option>
+        <option value="Nothing, it rings out">Nothing, it rings out</option>
+        <option value="Not sure">Not sure</option>
+      </select>
+      <span class="snap-error" id="err-after_hours"></span>
+    </div>
+    <div class="snap-field">
+      <label class="snap-label" for="snap-weekly">Roughly how many inbound calls a week?</label>
+      <select class="form__input" id="snap-weekly" name="weekly_calls" aria-describedby="hint-weekly err-weekly_calls">
+        <option value="" selected>Select one (optional)</option>
+        <option value="Under 50">Under 50</option>
+        <option value="50–150">50–150</option>
+        <option value="150–400">150–400</option>
+        <option value="400+">400+</option>
+        <option value="Not sure">Not sure</option>
+      </select>
+      <span class="snap-hint" id="hint-weekly">Optional.</span>
+      <span class="snap-error" id="err-weekly_calls"></span>
+    </div>
+    <div class="snap-field">
+      <label class="snap-label" for="snap-donot">Times we should NOT call</label>
+      <input class="form__input" type="text" id="snap-donot" name="do_not_call" maxlength="400" aria-describedby="hint-donot err-do_not_call">
+      <span class="snap-hint" id="hint-donot">Optional. For example, a dispatch rush.</span>
+      <span class="snap-error" id="err-do_not_call"></span>
+    </div>
+    <div class="snapshot-hp" aria-hidden="true">
+      <label for="company_url">Company website</label>
+      <input type="text" id="company_url" name="company_url" tabindex="-1" autocomplete="off">
+    </div>
+    <div class="snap-check">
+      <input type="checkbox" id="snap-consent" name="consent" value="yes" required aria-describedby="err-consent">
+      <label for="snap-consent">I consent to E5 Enclave placing 10 test calls to my business line, made by people, with no AI voice and no recording.</label>
+    </div>
+    <span class="snap-error" id="err-consent"></span>
+    <div class="snap-check">
+      <input type="checkbox" id="snap-authorized" name="authorized" value="yes" required aria-describedby="err-authorized">
+      <label for="snap-authorized">I own this business or am authorized to approve these test calls.</label>
+    </div>
+    <span class="snap-error" id="err-authorized"></span>
+  </fieldset>
+
   <p><button type="submit" class="btn btn--primary cta-primary" id="snapshot-submit">Request your free snapshot &rarr;</button></p>
+  <p class="snap-micro">No spam, no list-selling. This goes straight to our team.</p>
 </form>
 
 <div id="snapshot-thanks" hidden>
   <p>Thank you. We received your snapshot request and will be in touch.</p>
+<section class="rl-next" aria-labelledby="rl-next-h">
+<h2 id="rl-next-h">What happens next</h2>
+<p class="rl-confirm">[CONFIRM: reply time]</p>
+<ol>
+  <li>You request the snapshot.</li>
+  <li>We schedule the 10 calls inside your hours and after hours.</li>
+  <li>You get a one-page report.</li>
+  <li>You decide on the $3,000 audit.</li>
+</ol>
+</section>
+<p class="rl-trust">Calls placed by people, findings reviewed by a human, and the report is yours to keep.</p>
+<p class="rl-reading">Free further reading: <a href="https://sawdustsilicon.com/playbook/no-08/">Sawdust Playbook No. 08, “Never miss a caller.”</a></p>
+
 </div>
 </section>
-<style>
-  .snapshot-hp{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;}
-  #snapshot-form label{display:block;margin:0 0 6px;font-size:13px;}
-</style>
 <script>
 (function(){
   var form = document.getElementById('snapshot-form');
   var thanks = document.getElementById('snapshot-thanks');
-  var err = document.getElementById('snapshot-error');
+  var summary = document.getElementById('snapshot-error');
   var btn = document.getElementById('snapshot-submit');
+  var started = document.getElementById('form_started');
+  if (started && !started.value) started.value = String(Date.now());
+
   var TRADES = {HVAC:1, Plumbing:1, Dental:1, Other:1};
-  function showError(msg){
-    err.textContent = msg;
-    err.style.display = 'block';
-  }
+  var ROLES = {'Owner':1, 'Office or service manager':1, Other:1};
+  var AFTER = {'Voicemail':1, 'Answering service':1, 'Forwarded to a cell':1, 'Nothing, it rings out':1, 'Not sure':1};
+  var WEEKLY = {'Under 50':1, '50–150':1, '150–400':1, '400+':1, 'Not sure':1};
+
   function digits(s){ return String(s||'').replace(/\D/g,''); }
-  function val(){
-    var name = form.name.value.trim();
-    var business = form.business_name.value.trim();
-    var phone = form.phone.value.trim();
-    var trade = form.trade.value;
-    var consent = form.consent.checked;
-    if (!name) return 'Please enter your name.';
-    if (!business) return 'Please enter your business name.';
-    if (!phone || digits(phone).length < 7 || digits(phone).length > 15) return 'Please enter a valid business phone number.';
-    if (!TRADES[trade]) return 'Please select a trade.';
-    if (!consent) return 'Please confirm your consent for the 10 test calls.';
-    return null;
+  function usPhone(s){
+    var d = digits(s);
+    if (d.length === 11 && d.charAt(0) === '1') d = d.slice(1);
+    return d.length === 10 ? d : null;
   }
+  function validEmail(s){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s); }
+
+  function clearErrors(){
+    summary.style.display = 'none';
+    summary.textContent = '';
+    form.querySelectorAll('.snap-error').forEach(function(el){ el.textContent = ''; });
+    form.querySelectorAll('[aria-invalid]').forEach(function(el){ el.removeAttribute('aria-invalid'); });
+  }
+  function setError(field, msg){
+    var input = form.elements[field];
+    var err = document.getElementById('err-' + field);
+    if (input) input.setAttribute('aria-invalid', 'true');
+    if (err) err.textContent = msg;
+    return msg;
+  }
+  function validate(){
+    clearErrors();
+    var first = null;
+    function fail(field, msg){ if (!first) first = {field:field, msg:msg}; setError(field, msg); }
+    if (!form.name.value.trim()) fail('name', 'Please enter your name.');
+    var email = form.email.value.trim();
+    if (!email || !validEmail(email)) fail('email', 'Please enter a valid email address.');
+    if (!ROLES[form.role.value]) fail('role', 'Please select your role.');
+    if (!form.business_name.value.trim()) fail('business_name', 'Please enter your business name.');
+    if (!TRADES[form.trade.value]) fail('trade', 'Please select a trade.');
+    if (!form.city.value.trim()) fail('city', 'Please enter your city or service area.');
+    if (!usPhone(form.phone.value)) fail('phone', 'Please enter a valid US business phone number (10 digits).');
+    if (!form.hours.value.trim()) fail('hours', 'Please enter your business hours.');
+    if (!AFTER[form.after_hours.value]) fail('after_hours', 'Please tell us how after-hours calls are handled today.');
+    if (form.weekly_calls.value && !WEEKLY[form.weekly_calls.value]) fail('weekly_calls', 'Please choose a weekly call volume, or leave it blank.');
+    if (form.crews.value !== '' && !/^\d{1,4}$/.test(form.crews.value)) fail('crews', 'Please enter the number of crews, trucks, or chairs, or leave it blank.');
+    if (!form.consent.checked) fail('consent', 'Please confirm your consent for the 10 test calls.');
+    if (!form.authorized.checked) fail('authorized', 'Please confirm you own this business or are authorized to approve these test calls.');
+    if (first) {
+      summary.textContent = first.msg;
+      summary.style.display = 'block';
+      var el = form.elements[first.field];
+      if (el && el.focus) el.focus();
+      return false;
+    }
+    return true;
+  }
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    err.style.display = 'none';
-    var problem = val();
-    if (problem) { showError(problem); return; }
+    if (!validate()) return;
     btn.disabled = true;
     var body = {
       name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      role: form.role.value,
       business_name: form.business_name.value.trim(),
-      phone: form.phone.value.trim(),
       trade: form.trade.value,
+      city: form.city.value.trim(),
+      phone: form.phone.value.trim(),
+      hours: form.hours.value.trim(),
+      after_hours: form.after_hours.value,
+      weekly_calls: form.weekly_calls.value,
+      crews: form.crews.value,
+      do_not_call: form.do_not_call.value.trim(),
+      heard_about: form.heard_about.value.trim(),
       consent: form.consent.checked,
-      company_url: form.company_url.value
+      authorized: form.authorized.checked,
+      company_url: form.company_url.value,
+      form_started: form.form_started.value
     };
     fetch('/api/snapshot', {
       method: 'POST',
@@ -1114,7 +1295,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     }).then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d}; }); })
       .then(function(res){
         if (!res.ok || !res.d || !res.d.ok) {
-          showError((res.d && res.d.error) || 'Something went wrong. Please try again.');
+          var msg = (res.d && res.d.error) || 'Something went wrong. Please try again.';
+          if (res.d && res.d.field) setError(res.d.field, msg);
+          summary.textContent = msg;
+          summary.style.display = 'block';
           btn.disabled = false;
           return;
         }
@@ -1123,13 +1307,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         thanks.scrollIntoView({block:'nearest'});
       })
       .catch(function(){
-        showError('Something went wrong. Please try again.');
+        summary.textContent = 'Something went wrong. Please try again.';
+        summary.style.display = 'block';
         btn.disabled = false;
       });
   });
 })();
 </script>
 </main>
+
 
 
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a12376df4a544bb6',t:'MTc4MjU1Mjk1NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>

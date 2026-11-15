@@ -1,11 +1,39 @@
 // Cloudflare Pages Function: RingLatch free 10-call snapshot intake.
 // Stores consented requests in Workers KV (SNAPSHOT_REQUESTS).
 // Email Routing on e5enclave.com is unconfigured, so this path is KV only.
+// Turnstile is not used here: it would need a new site key and secret
+// (a new infra key, which is a human gate). Proposed later, after approval.
 
 const TRADES = new Set(['HVAC', 'Plumbing', 'Dental', 'Other']);
-const MAX = { name: 120, business_name: 120, phone: 30 };
+const ROLES = new Set(['Owner', 'Office or service manager', 'Other']);
+const AFTER_HOURS = new Set([
+  'Voicemail',
+  'Answering service',
+  'Forwarded to a cell',
+  'Nothing, it rings out',
+  'Not sure',
+]);
+const WEEKLY_CALLS = new Set(['Under 50', '50–150', '150–400', '400+', 'Not sure']);
+
+const MAX = {
+  name: 120,
+  email: 160,
+  business_name: 120,
+  city: 120,
+  phone: 40,
+  hours: 400,
+  do_not_call: 400,
+  heard_about: 200,
+};
 const RATE_LIMIT = 8;
 const RATE_WINDOW_SEC = 3600;
+const MIN_SUBMIT_MS = 3000;
+const MAX_SUBMIT_MS = 24 * 60 * 60 * 1000;
+
+const CONSENT_TEXT =
+  'I consent to E5 Enclave placing 10 test calls to my business line, made by people, with no AI voice and no recording.';
+const AUTHORITY_TEXT =
+  'I own this business or am authorized to approve these test calls.';
 
 const corsHeaders = (origin) =>
   origin
@@ -43,11 +71,31 @@ function digits(s) {
   return String(s || '').replace(/\D/g, '');
 }
 
+function usPhone(s) {
+  let d = digits(s);
+  if (d.length === 11 && d.startsWith('1')) d = d.slice(1);
+  return d.length === 10 ? d : null;
+}
+
+function validEmail(s) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s);
+}
+
 function clean(s, max) {
   return String(s || '')
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, '')
     .trim()
     .slice(0, max);
+}
+
+function isChecked(raw) {
+  return (
+    raw === true ||
+    raw === 'true' ||
+    raw === 'yes' ||
+    raw === 'on' ||
+    raw === '1'
+  );
 }
 
 async function readBody(request) {
@@ -66,33 +114,108 @@ async function readBody(request) {
   return {};
 }
 
-function validate(body) {
-  const name = clean(body.name, MAX.name);
-  const business_name = clean(body.business_name, MAX.business_name);
-  const phone = clean(body.phone, MAX.phone);
-  const trade = String(body.trade || '').trim();
-  const consentRaw = body.consent;
-  const consent =
-    consentRaw === true ||
-    consentRaw === 'true' ||
-    consentRaw === 'yes' ||
-    consentRaw === 'on' ||
-    consentRaw === '1';
-  const honeypot = String(body.company_url || body.website || '').trim();
+function tooFast(body) {
+  const raw = body.form_started;
+  if (raw === undefined || raw === null || String(raw).trim() === '') {
+    // Allow a no-JS post; honeypot + rate limit still apply.
+    return false;
+  }
+  const started = Number(raw);
+  if (!Number.isFinite(started) || started <= 0) return true;
+  const elapsed = Date.now() - started;
+  if (elapsed < MIN_SUBMIT_MS || elapsed > MAX_SUBMIT_MS) return true;
+  return false;
+}
 
+function validate(body) {
+  const honeypot = String(body.company_url || body.website || '').trim();
   if (honeypot) return { honeypot: true };
 
-  if (!name) return { error: 'Please enter your name.' };
-  if (!business_name) return { error: 'Please enter your business name.' };
-  const n = digits(phone);
-  if (!phone || n.length < 7 || n.length > 15) {
-    return { error: 'Please enter a valid business phone number.' };
+  const name = clean(body.name, MAX.name);
+  const email = clean(body.email, MAX.email).toLowerCase();
+  const role = String(body.role || '').trim();
+  const business_name = clean(body.business_name, MAX.business_name);
+  const trade = String(body.trade || '').trim();
+  const city = clean(body.city, MAX.city);
+  const phone_raw = clean(body.phone, MAX.phone);
+  const hours = clean(body.hours, MAX.hours);
+  const after_hours = String(body.after_hours || '').trim();
+  const weekly_calls = String(body.weekly_calls || '').trim();
+  const crews_raw = String(body.crews ?? '').trim();
+  const do_not_call = clean(body.do_not_call, MAX.do_not_call);
+  const heard_about = clean(body.heard_about, MAX.heard_about);
+  const consent = isChecked(body.consent);
+  const authorized = isChecked(body.authorized);
+
+  if (!name) return { error: 'Please enter your name.', field: 'name' };
+  if (!email || !validEmail(email)) {
+    return { error: 'Please enter a valid email address.', field: 'email' };
   }
-  if (!TRADES.has(trade)) return { error: 'Please select a trade.' };
+  if (!ROLES.has(role)) return { error: 'Please select your role.', field: 'role' };
+  if (!business_name) {
+    return { error: 'Please enter your business name.', field: 'business_name' };
+  }
+  if (!TRADES.has(trade)) return { error: 'Please select a trade.', field: 'trade' };
+  if (!city) {
+    return { error: 'Please enter your city or service area.', field: 'city' };
+  }
+  const phone = usPhone(phone_raw);
+  if (!phone) {
+    return {
+      error: 'Please enter a valid US business phone number (10 digits).',
+      field: 'phone',
+    };
+  }
+  if (!hours) {
+    return { error: 'Please enter your business hours.', field: 'hours' };
+  }
+  if (!AFTER_HOURS.has(after_hours)) {
+    return {
+      error: 'Please tell us how after-hours calls are handled today.',
+      field: 'after_hours',
+    };
+  }
+  if (weekly_calls && !WEEKLY_CALLS.has(weekly_calls)) {
+    return { error: 'Please choose a weekly call volume, or leave it blank.', field: 'weekly_calls' };
+  }
+  let crews = null;
+  if (crews_raw !== '') {
+    if (!/^\d{1,4}$/.test(crews_raw)) {
+      return {
+        error: 'Please enter the number of crews, trucks, or chairs, or leave it blank.',
+        field: 'crews',
+      };
+    }
+    crews = parseInt(crews_raw, 10);
+  }
   if (!consent) {
-    return { error: 'Please confirm your consent for the 10 test calls.' };
+    return { error: 'Please confirm your consent for the 10 test calls.', field: 'consent' };
   }
-  return { name, business_name, phone, trade, consent: true };
+  if (!authorized) {
+    return {
+      error: 'Please confirm you own this business or are authorized to approve these test calls.',
+      field: 'authorized',
+    };
+  }
+
+  return {
+    name,
+    email,
+    role,
+    business_name,
+    trade,
+    city,
+    phone,
+    phone_raw,
+    hours,
+    after_hours,
+    weekly_calls: weekly_calls || '',
+    crews,
+    do_not_call,
+    heard_about,
+    consent: true,
+    authorized: true,
+  };
 }
 
 async function rateLimited(kv, ip) {
@@ -131,9 +254,15 @@ export async function onRequestPost(context) {
     return json({ ok: false, error: 'Please check the form and try again.' }, 400, origin);
   }
 
+  if (tooFast(body)) {
+    return json({ ok: false, error: 'Please try again in a moment.' }, 400, origin);
+  }
+
   const result = validate(body);
   if (result.honeypot) return json({ ok: true }, 200, origin);
-  if (result.error) return json({ ok: false, error: result.error }, 400, origin);
+  if (result.error) {
+    return json({ ok: false, error: result.error, field: result.field || null }, 400, origin);
+  }
 
   const ip = request.headers.get('CF-Connecting-IP') || '';
   if (await rateLimited(kv, ip)) {
@@ -150,12 +279,23 @@ export async function onRequestPost(context) {
     id,
     created_at,
     name: result.name,
+    email: result.email,
+    role: result.role,
     business_name: result.business_name,
-    phone: result.phone,
     trade: result.trade,
+    city: result.city,
+    phone: result.phone,
+    phone_raw: result.phone_raw,
+    hours: result.hours,
+    after_hours: result.after_hours,
+    weekly_calls: result.weekly_calls,
+    crews: result.crews,
+    do_not_call: result.do_not_call,
+    heard_about: result.heard_about,
     consent: true,
-    consent_text:
-      'I consent to E5 Enclave placing 10 test calls to my business line, made by people, with no AI voice and no recording.',
+    consent_text: CONSENT_TEXT,
+    authorized: true,
+    authority_text: AUTHORITY_TEXT,
   };
   await kv.put(`snapshot:${created_at}:${id}`, JSON.stringify(record));
   return json({ ok: true }, 200, origin);
