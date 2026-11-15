@@ -13,3 +13,15 @@ name = "e5-website"
 pages_build_output_dir = "dist"
 compatibility_date = "2026-05-18"
 compatibility_flags = ["nodejs_compat"]
+
+# RingLatch snapshot intake — Workers KV, free tier.
+# The top-level binding applies to local and production deploys.
+# env.preview is required so git branch previews also receive the binding.
+# Adding this does not publish production; production picks it up on the next main deploy.
+[[kv_namespaces]]
+binding = "SNAPSHOT_REQUESTS"
+id = "f363f5ec1987491d81fdcf473a704f18"
+
+[[env.preview.kv_namespaces]]
+binding = "SNAPSHOT_REQUESTS"
+id = "f363f5ec1987491d81fdcf473a704f18"
